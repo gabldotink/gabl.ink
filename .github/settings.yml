@@ -1,0 +1,32 @@
+%YAML 1.2
+# SPDX-License-Identifier: CC-BY-4.0 OR MIT
+---
+
+branches:
+- name: 'master'
+  protection:
+    required_pull_request_reviews:
+      dismiss_stale_reviews: false
+      require_code_owner_reviews: true
+      required_approving_review_count: 1
+  required_linear_history: true
+
+repository:
+  allow_merge_commit: false
+  allow_rebase_merge:  true
+  allow_squash_merge:  true
+  default_branch: 'master'
+  delete_branch_on_merge: false
+  description: 'code and content for the gabl.ink website'
+  enable_automated_security_fixes: false
+  enable_vulnerability_alerts: true
+  has_downloads: true
+  has_issues:    true
+  has_projects: false
+  has_wiki:     false
+  homepage: 'https://gabl.ink'
+  name: 'gabl.ink'
+  private: true
+  topics: 'gabl.ink,comic,webcomic'
+
+...
