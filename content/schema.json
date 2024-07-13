@@ -5,8 +5,15 @@
   "description":"schema for gabl.ink content JSON files",
   "type":"object"
   "properties":{
+    "author":{
+      "description":"[string(s)] the creator(s) of the item",
+      "type":[
+        "string",
+        "array"
+      ]
+    },
     "base":{
-      "description":"the part of the ID after the last slash",
+      "description":"[string] the part of the item’s ID after the last slash",
       "type":"string"
     }
   }
