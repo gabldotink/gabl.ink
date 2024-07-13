@@ -1,7 +1,7 @@
 {
   "$id":"https://gabl.ink/content/schema.json"
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "description":"Schema for gabl.ink content JSON files",
+  "description":"schema for gabl.ink content JSON files",
   "title":"gabl.ink content JSON schema",
   "type":"object"
 }
