@@ -1,25 +1,28 @@
 {
-  "authors":[
-    "gabl"
-  ],
-  "licenses":[
+  "author":"gabl",
+  "license":[
     "CC-BY-4.0",
     "CC-BY-SA-4.0",
     "CC-BY-NC-SA-4.0"
   ],
-  "published":{
-    "day":1,
-    "month":4,
-    "year":2022
-  },
-  "revised":{
-    "day":11,
-    "month":7,
-    "year":2024
+  "date":{
+    "published":{
+      "day":1,
+      "month":4,
+      "year":2022
+    },
+    "revised":{
+      "day":11,
+      "month":7,
+      "year":2024
+    }
   },
   "id":"en/jrco/01/01/01",
   "title":"“Thursday” title page",
   "type":"page",
   "language":"en",
-  "parent":"en/jrco/01/01"
+  "parent":"en/jrco/01/01",
+  "format":{
+    "image":"png"
+  }
 }
