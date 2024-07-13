@@ -10,7 +10,10 @@
       "type":[
         "string",
         "array"
-      ]
+      ],
+      "items":{
+        "type":"string"
+      }
     },
     "base":{
       "description":"[string] the part of the item’s ID after the last slash",
