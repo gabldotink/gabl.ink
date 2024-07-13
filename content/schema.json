@@ -1,7 +1,13 @@
 {
   "$id":"https://gabl.ink/content/schema.json"
   "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "description":"schema for gabl.ink content JSON files",
   "title":"gabl.ink content JSON schema",
+  "description":"schema for gabl.ink content JSON files",
   "type":"object"
+  "properties":{
+    "base":{
+      "description":"the part of the ID after the last slash",
+      "type":"string"
+    }
+  }
 }
