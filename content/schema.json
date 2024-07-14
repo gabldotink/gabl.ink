@@ -1,9 +1,9 @@
 {
-  "$id":"https://gabl.ink/content/schema.json"
+  "$id":"https://gabl.ink/content/schema.json",
   "$schema":"https://json-schema.org/draft/2020-12/schema",
   "title":"gabl.ink content JSON schema",
   "description":"schema for gabl.ink content JSON files",
-  "type":"object"
+  "type":"object",
   "properties":{
     "author":{
       "description":"[string(s)] the creator(s) of the item",
@@ -18,6 +18,48 @@
     "base":{
       "description":"[string] the part of the item’s ID after the last slash",
       "type":"string"
+    },
+    "date":{
+      "description":"[objects] calendar dates for the item (in America/Denver time)",
+      "type":"object",
+      "properties":{
+        "published":{
+          "description":"[object] calendar date of the item’s first publication (in America/Denver time)",
+          "type":"object",
+          "properties":{
+            "day":{
+              "description":"[integer] day of the month of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            },
+            "month":{
+              "description":"[integer] number of the month of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            },
+            "year":{
+              "description":"[integer] calendar year of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            }
+          }
+        },
+        "revised":{
+          "description":"[object] calendar date of the item’s last revision (in America/Denver time)",
+          "type":"object",
+          "properties":{
+            "day":{
+              "description":"[integer] day of the month of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            },
+            "month":{
+              "description":"[integer] number of the month of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            },
+            "year":{
+              "description":"[integer] calendar year of the item’s first publication (in America/Denver time)",
+              "type":"integer"
+            }
+          }
+        }
+      }
     }
   }
 }
