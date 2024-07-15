@@ -1,29 +1,31 @@
 {
-  "author":"gabl",
-  "base":"01",
+  "id":{
+    "full":"en/jrco/01/01/01",
+    "parent":"en/jrco/01/01",
+    "base":"01"
+  },
+  "content":"page",
+  "language":"en-US",
+  "title":"“Thursday” title page",
   "date":{
     "published":{
-      "day":1,
+      "year":2022,
       "month":4,
-      "year":2022
+      "day":1
     },
     "revised":{
-      "day":13,
+      "year":2024,
       "month":7,
-      "year":2024
+      "day":15
     }
   },
+  "author":"gabl",
   "format":{
     "image":"png"
   },
-  "id":"en/jrco/01/01/01",
-  "language":"en",
   "license":[
     "CC-BY-4.0",
     "CC-BY-SA-4.0",
     "CC-BY-NC-SA-4.0"
-  ],
-  "parent":"en/jrco/01/01",
-  "title":"“Thursday” title page",
-  "type":"page"
+  ]
 }

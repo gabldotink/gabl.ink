@@ -5,19 +5,45 @@
   "description":"schema for gabl.ink content JSON files",
   "type":"object",
   "properties":{
-    "author":{
-      "description":"[string(s)] the creator(s) of the item",
-      "type":[
-        "string",
-        "array"
-      ],
-      "items":{
-        "type":"string"
+    "id":{
+      "description":"[object] identifier (ID) for the item",
+      "type":"object",
+      "pattern":"^[A-Za-z0-9-]+$",
+      "properties":{
+        "full":{
+          "description":"[string] full identifier (ID) for the item",
+          "type":"string",
+          "pattern":"^[A-Za-z0-9-]+(/[a-z0-9])*$"
+        },
+        "parent":{
+          "description":"[string/null] parent identifier (ID) for the item",
+          "type":[
+            "string",
+            "null"
+          ],
+          "pattern":"^[A-Za-z0-9-]+(/[a-z0-9])*$"
+        },
+        "base":{
+          "description":"[string] part of the item’s identifier (ID) after the last slash, or same as full ID for root-level ID",
+          "type":"string",
+          "pattern":"^[A-Za-z0-9-]+$"
+        }
       }
     },
-    "base":{
-      "description":"[string] the part of the item’s ID after the last slash",
-      "type":"string"
+    "content":{
+      "description":"[string] content type for the item",
+      "type":"string",
+      "pattern":"page"
+    },
+    "language":{
+      "description":"[string] (primary) IETF language code for the item",
+      "type":"string",
+      "pattern":"^[A-Za-z0-9-]+$"
+    },
+    "title":{
+      "description":"[string] title for the item",
+      "type":"string",
+      "pattern":".+"
     },
     "date":{
       "description":"[objects] calendar dates for the item (UTC)",
@@ -60,6 +86,46 @@
           }
         }
       }
+    },
+    "author":{
+      "description":"[string(s)] the creator(s) of the item",
+      "type":[
+        "string",
+        "array"
+      ],
+      "items":{
+        "type":"string"
+      },
+      "pattern":".+"
+    },
+    "format":{
+      "description":"[object] file format extension(s) for the item (no dot)",
+      "type":"object",
+      "pattern":"^[A-Za-z0-9._-]{1,125}$",
+      "properties":{
+        "image":{
+          "description":"[string(s)] image file format extension(s) for the item (no dot)",
+          "type":[
+            "string",
+            "array"
+          ],
+          "items":{
+            "type":"string"
+          },
+          "pattern":"^[A-Za-z0-9._-]{1,121}$"
+        }
+      }
+    },
+    "license":{
+      "description":"[string(s)] SPDX license identifier(s) for the item",
+      "type":[
+        "string",
+        "array"
+      ],
+      "items":{
+        "type":"string"
+      },
+      "pattern":"^[A-Za-z0-9.+-]+$"
     }
   }
 }
