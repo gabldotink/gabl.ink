@@ -20,41 +20,41 @@
       "type":"string"
     },
     "date":{
-      "description":"[objects] calendar dates for the item (in America/Denver time)",
+      "description":"[objects] calendar dates for the item (UTC)",
       "type":"object",
       "properties":{
         "published":{
-          "description":"[object] calendar date of the item’s first publication (in America/Denver time)",
+          "description":"[object] calendar date of the item’s first publication (UTC)",
           "type":"object",
           "properties":{
             "day":{
-              "description":"[integer] day of the month of the item’s first publication (in America/Denver time)",
+              "description":"[integer] day of the month of the item’s first publication (UTC)",
               "type":"integer"
             },
             "month":{
-              "description":"[integer] number of the month of the item’s first publication (in America/Denver time)",
+              "description":"[integer] number of the month of the item’s first publication (UTC)",
               "type":"integer"
             },
             "year":{
-              "description":"[integer] calendar year of the item’s first publication (in America/Denver time)",
+              "description":"[integer] calendar year of the item’s first publication (UTC)",
               "type":"integer"
             }
           }
         },
         "revised":{
-          "description":"[object] calendar date of the item’s last revision (in America/Denver time)",
+          "description":"[object] calendar date of the item’s last revision (UTC)",
           "type":"object",
           "properties":{
             "day":{
-              "description":"[integer] day of the month of the item’s first publication (in America/Denver time)",
+              "description":"[integer] day of the month of the item’s latest revision (UTC)",
               "type":"integer"
             },
             "month":{
-              "description":"[integer] number of the month of the item’s first publication (in America/Denver time)",
+              "description":"[integer] number of the month of the item’s latest revision (UTC)",
               "type":"integer"
             },
             "year":{
-              "description":"[integer] calendar year of the item’s first publication (in America/Denver time)",
+              "description":"[integer] calendar year of the item’s latest revision (UTC)",
               "type":"integer"
             }
           }
