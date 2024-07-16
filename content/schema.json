@@ -27,7 +27,7 @@
         "base":{
           "description":"[string] part of the item’s identifier (ID) after the last slash, or same as full ID for root-level ID",
           "type":"string",
-          "minLength":1
+          "minLength":1,
           "pattern":"^[A-Za-z0-9-]+$"
         }
       }
@@ -95,7 +95,7 @@
             },
             "year":{
               "description":"[integer] year of the item’s latest revision (UTC)",
-              "type":"integer"
+              "type":"integer",
               "minimum":2024
             }
           }
@@ -129,7 +129,7 @@
             "type":"string"
           },
           "minLength":1,
-          "maxLength":121
+          "maxLength":121,
           "pattern":"^[A-Za-z0-9._-]{1,121}$"
         }
       }
