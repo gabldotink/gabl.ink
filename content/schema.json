@@ -8,7 +8,6 @@
     "id":{
       "description":"[object] identifier (ID) for the item",
       "type":"object",
-      "pattern":"^[A-Za-z0-9-]+$",
       "properties":{
         "full":{
           "description":"[string] full identifier (ID) for the item",
@@ -33,12 +32,12 @@
     "content":{
       "description":"[string] content type for the item",
       "type":"string",
-      "pattern":"page"
+      "pattern":".+"
     },
     "language":{
       "description":"[string] (primary) IETF language code for the item",
       "type":"string",
-      "pattern":"^[A-Za-z0-9-]+$"
+      "pattern":"^[A-Za-z0-9-]{2,}$"
     },
     "title":{
       "description":"[string] title for the item",
@@ -99,12 +98,11 @@
       "pattern":".+"
     },
     "format":{
-      "description":"[object] file format extension(s) for the item (no dot)",
+      "description":"[object] avilable file format(s) for the item (filename extension, no dot)",
       "type":"object",
-      "pattern":"^[A-Za-z0-9._-]{1,125}$",
       "properties":{
         "image":{
-          "description":"[string(s)] image file format extension(s) for the item (no dot)",
+          "description":"[string(s)] available image file format(s) for the item (filename extension, no dot)",
           "type":[
             "string",
             "array"
