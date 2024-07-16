@@ -13,7 +13,7 @@
         "full":{
           "description":"[string] full identifier (ID) for the item",
           "type":"string",
-          "pattern":"^[A-Za-z0-9-]+(/[a-z0-9])*$"
+          "pattern":"^[A-Za-z0-9-]{2,}(/[a-z0-9])*$"
         },
         "parent":{
           "description":"[string/null] parent identifier (ID) for the item",
@@ -21,7 +21,7 @@
             "string",
             "null"
           ],
-          "pattern":"^[A-Za-z0-9-]+(/[a-z0-9])*$"
+          "pattern":"^[A-Za-z0-9-]{2,}(/[a-z0-9])*$"
         },
         "base":{
           "description":"[string] part of the item’s identifier (ID) after the last slash, or same as full ID for root-level ID",
@@ -62,7 +62,7 @@
               "type":"integer"
             },
             "year":{
-              "description":"[integer] calendar year of the item’s first publication (UTC)",
+              "description":"[integer] year of the item’s first publication (UTC)",
               "type":"integer"
             }
           }
@@ -80,7 +80,7 @@
               "type":"integer"
             },
             "year":{
-              "description":"[integer] calendar year of the item’s latest revision (UTC)",
+              "description":"[integer] year of the item’s latest revision (UTC)",
               "type":"integer"
             }
           }
