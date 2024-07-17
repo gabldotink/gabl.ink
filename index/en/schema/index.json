@@ -1,5 +1,5 @@
 {
-  "$id":"https://gabl.ink/en/schema/index.json",
+  "$id":"https://gabl.ink/infex/en/schema/index.json",
   "$schema":"https://json-schema.org/draft/2020-12/schema",
   "title":"gabl.ink content JSON schema",
   "description":"schema for gabl.ink content JSON files",
