@@ -13,6 +13,7 @@ User-agent: Applebot
 User-agent: archive.org_bot
 User-agent: Arquivo-web-crawler
 User-agent: ChatGPT-User
+User-agent: curl
 User-agent: gabl.ink
 User-agent: ia_archiver
 User-agent: ia_archiver-web.archive.org
@@ -20,5 +21,7 @@ User-agent: heritrix
 User-agent: HTTrack
 User-agent: Nicecrawler
 User-agent: PerplexityBot
+User-agent: Wget
+User-agent: wget2
 User-agent: YouBot
 Allow: /
