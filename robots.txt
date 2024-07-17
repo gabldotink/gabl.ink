@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: CC0 OR 0BSD OR CC-BY-4.0 OR MIT
+# SPDX-License-Identifier: CC0 OR 0BSD OR CC-BY-4.0
 
 # Anyone can do whatever. Mirror the whole site, automate downloads,
 # whatever. Don’t DoS, obviously, but besides that, do whatever.
@@ -7,7 +7,7 @@ Allow: /
 
 # These user agents should always be allowed to access all files; they
 # are likely fetching helpful information for users, archiving the
-# website, or other activities, which I am happy to facilitate.
+# website, or similar activities, which I am happy to facilitate.
 User-agent: Amazonbot
 User-agent: Applebot
 User-agent: archive.org_bot
