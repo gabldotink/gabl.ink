@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: CC0 OR 0BSD OR CC-BY-4.0 OR MIT
+
+# Anyone can do whatever. Mirror the whole site, automate downloads,
+# whatever. Don’t DoS, obviously, but besides that, do whatever.
+User-agent: *
+Allow: /
+
+# These user agents should always be allowed to access all files; they
+# are likely fetching helpful information for users, archiving the
+# website, or other activities, which I am happy to facilitate.
+User-agent: Amazonbot
+User-agent: Applebot
+User-agent: archive.org_bot
+User-agent: Arquivo-web-crawler
+User-agent: ChatGPT-User
+User-agent: gabl.ink
+User-agent: ia_archiver
+User-agent: ia_archiver-web.archive.org
+User-agent: heritrix
+User-agent: HTTrack
+User-agent: Nicecrawler
+User-agent: PerplexityBot
+User-agent: YouBot
+Allow: /
