@@ -80,6 +80,13 @@
               "type":"integer",
               "minimum":1,
               "maximum":31
+            },
+            "full":{
+              "description":"[string] ISO 8601 date of the item’s first publication (UTC), up to 9999-12-31",
+              "type":"string",
+              "minimum":10,
+              "maximum":10
+              "pattern":"^[2-9][0-9]{3}-([1-9]|[12][012])-([1-9]|[12][0-9]|3[01])$"
             }
           },
           "required":[
@@ -110,7 +117,7 @@
               "maximum":31
             },
             "full":{
-              "description":"[string] ISO 8601 date of the item’s first publication (UTC), up to 9999-12-31",
+              "description":"[string] ISO 8601 date of the item’s latest update (UTC), up to 9999-12-31",
               "type":"string",
               "format":"date",
               "minLength":10,
@@ -171,7 +178,7 @@
       },
       "required":[
         "image"
-      ],
+      ]
     },
     "license":{
       "description":"[string(s)] SPDX license identifier(s) for the item",
