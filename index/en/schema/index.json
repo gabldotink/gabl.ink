@@ -1,5 +1,5 @@
 {
-  "$id":"https://gabl.ink/infex/en/schema/index.json",
+  "$id":"https://gabl.ink/index/en/schema/index.json",
   "$schema":"https://json-schema.org/draft/2020-12/schema",
   "title":"gabl.ink content JSON schema",
   "description":"schema for gabl.ink content JSON files",
@@ -29,7 +29,12 @@
           "type":"string",
           "minLength":1,
           "pattern":"^[A-Za-z0-9-]+$"
-        }
+        },
+        "required":[
+          "full",
+          "parent",
+          "base"
+        ]
       }
     },
     "content":{
@@ -76,7 +81,12 @@
               "minimum":1,
               "maximum":31
             }
-          }
+          },
+          "required":[
+            "year",
+            "month",
+            "day"
+          ]
         },
         "updated":{
           "description":"[object] calendar date of the item’s last update (UTC)",
@@ -112,8 +122,19 @@
               "type":"integer",
               "minimum":0
             }
-          }
-        }
+          },
+          "required":[
+            "year",
+            "month",
+            "day",
+            "full",
+            "hour"
+          ]
+        },
+        "required":[
+          "published",
+          "updated"
+        ]
       }
     },
     "author":{
@@ -144,9 +165,13 @@
           },
           "minLength":1,
           "maxLength":121,
-          "pattern":"^[A-Za-z0-9._-]{1,121}$"
+          "pattern":"^[A-Za-z0-9._-]{1,121}$",
+          "uniqueItems":true
         }
-      }
+      },
+      "required":[
+        "image"
+      ],
     },
     "license":{
       "description":"[string(s)] SPDX license identifier(s) for the item",
@@ -160,5 +185,15 @@
       "minLength":1,
       "pattern":"^[A-Za-z0-9.+-]+$"
     }
-  }
+  },
+  "required":[
+    "id",
+    "content",
+    "language",
+    "title",
+    "date",
+    "author",
+    "format",
+    "license"
+  ]
 }
