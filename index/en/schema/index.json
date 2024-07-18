@@ -123,19 +123,13 @@
               "minLength":10,
               "maxLength":10,
               "pattern":"^[2-9][0-9]{3}-([1-9]|[12][012])-([1-9]|[12][0-9]|3[01])$"
-            },
-            "hour":{
-              "description":"[integer] increments each time the item is updated on the same day (UTC), not a unit of time",
-              "type":"integer",
-              "minimum":0
             }
           },
           "required":[
             "year",
             "month",
             "day",
-            "full",
-            "hour"
+            "full"
           ]
         },
         "required":[
