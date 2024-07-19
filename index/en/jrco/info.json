@@ -1,7 +1,7 @@
 {
   "id":{
     "full":"en/jrco",
-    "parent":en,
+    "parent":"en",
     "base":"jrco",
     "child":"01"
   },
