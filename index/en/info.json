@@ -2,7 +2,8 @@
   "id":{
     "full":"en",
     "parent":null,
-    "base":"en"
+    "base":"en",
+    "child":"jrco"
   },
   "content":"language",
   "language":"en-US",
