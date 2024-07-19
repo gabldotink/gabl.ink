@@ -25,7 +25,7 @@ item_regex='^[A-Za-z0-9._-]+$'
 readonly item_regex
 export item_regex
 
-#if ! $(printf '%s' "$item"|grep -E "$item_regex");then
+#if ! "$(printf '%s' "$item"|grep -E "$item_regex")";then
   printf 'usage: %s <item>
 
 This script updates the “date.updated” key of an item based on file
