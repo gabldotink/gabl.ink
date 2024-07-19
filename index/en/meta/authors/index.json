@@ -1,8 +1,10 @@
 {
   "gabl":{
-    "first":"Gabriel",
-    "last":null,
-    "nick":"gabl",
+    "name":{
+      "first":"Gabriel",
+      "last":null,
+      "nick":"gabl"
+    },
     "email":{
       "standard":{
         "name":"gabl",
