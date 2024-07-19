@@ -1,0 +1,28 @@
+{
+  "gabl":
+    "first":"Gabriel",
+    "last":null,
+    "nick":"gabl",
+    "email":{
+      "standard":{
+        "name":"gabl",
+        "domain":"gabl.ink",
+        "full":"gabl@gabl.ink"
+      },
+      "idn":{
+        "name":"gabl",
+        "domain":"gabl.ink",
+        "full":"gabl@gabl.ink"
+      }
+    },
+    "website":"https://gabl.ink/",
+    "x":{
+      "handle":"gabldotink",
+      "numeric":"1352061598836264960"
+    },
+    "github":{
+      "handle":"gabldotink",
+      "numeric":"99302669"
+    }
+  }
+}
