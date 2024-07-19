@@ -3,7 +3,10 @@
     "full":"en",
     "parent":null,
     "base":"en",
-    "child":"jrco"
+    "child":[
+      "jrco",
+      "meta"
+    ]
   },
   "content":"language",
   "language":"en-US",
