@@ -94,7 +94,7 @@
               "maximum":31
             },
             "full":{
-              "description":"[string] ISO 8601 date of the item’s first publication (UTC),\nup to 9999-12-31",
+              "description":"[string] RFC 3339 date of the item’s first publication (UTC),\nup to 9999-12-31",
               "type":"string",
               "minimum":10,
               "maximum":10,
@@ -130,7 +130,7 @@
               "maximum":31
             },
             "full":{
-              "description":"[string] ISO 8601 date of the item’s latest update (UTC),\nup to 9999-12-31",
+              "description":"[string] RFC 3339 date of the item’s latest update (UTC),\nup to 9999-12-31",
               "type":"string",
               "format":"date",
               "minLength":10,
