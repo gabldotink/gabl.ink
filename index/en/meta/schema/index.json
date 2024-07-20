@@ -76,7 +76,7 @@
           "type":"object",
           "properties":{
             "year":{
-              "description":"[integer] year of the item’s first publication (UTC), up to 9999",
+              "description":"[integer] year of the item’s first publication (UTC),\nfrom 2022 to 9999",
               "type":"integer",
               "minimum":2022,
               "maximum":9999
@@ -94,8 +94,9 @@
               "maximum":31
             },
             "full":{
-              "description":"[string] RFC 3339 date of the item’s first publication (UTC),\nup to 9999-12-31",
+              "description":"[string] RFC 3339 date of the item’s first publication (UTC),\nfrom 2022-04-01 to 9999-12-31",
               "type":"string",
+              "format":"date",
               "minimum":10,
               "maximum":10,
               "pattern":"^[2-9][0-9]{3}-([1-9]|[12][012])-([1-9]|[12][0-9]|3[01])$"
@@ -113,9 +114,10 @@
           "type":"object",
           "properties":{
             "year":{
-              "description":"[integer] year of the item’s latest update (UTC)",
+              "description":"[integer] year of the item’s latest update (UTC),\nfrom 2024 to 9999",
               "type":"integer",
-              "minimum":2024
+              "minimum":2024,
+              "maximum":9999
             },
             "month":{
               "description":"[integer] number of the month of the item’s latest update (UTC)",
@@ -129,19 +131,40 @@
               "minimum":1,
               "maximum":31
             },
+            "hour":{
+              "description":"[integer] hour of the day of the items latest update (UTC)",
+              "type":"integer",
+              "minimum":0,
+              "maximum":23
+            },
+            "minute":{
+              "description":"[integer] minute of the hour of the items latest update (UTC)",
+              "type":"integer",
+              "minimum":0,
+              "maximum":59
+            },
+            "second":{
+              "description":"[integer] second of the minute of the items latest update (UTC)",
+              "type":"integer",
+              "minimum":0,
+              "maximum":60
+            },
             "full":{
-              "description":"[string] RFC 3339 date of the item’s latest update (UTC),\nup to 9999-12-31",
+              "description":"[string] RFC 3339 date and time of the item’s latest update (UTC),\nfrom 2024-07-12T00:00:00+00:00 to 9999-12-31T23:59:60+00:00",
               "type":"string",
-              "format":"date",
-              "minLength":10,
-              "maxLength":10,
-              "pattern":"^[2-9][0-9]{3}-([1-9]|[12][012])-([1-9]|[12][0-9]|3[01])$"
+              "format":"date-time",
+              "minLength":25,
+              "maxLength":25,
+              "pattern":"^[2-9][0-9]{3}-([1-9]|[12][012])-([1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)\\+00:00$"
             }
           },
           "required":[
             "year",
             "month",
             "day",
+            "hour",
+            "minute",
+            "second",
             "full"
           ]
         },
