@@ -49,7 +49,7 @@ set_json(){
 
   # todo: “jq” dependency
   # todo: “sponge” dependency
-  jq --arg key "$key" --arg value "$value" \
+  jq --arg key "$key" --argjson value "$value" \
     '.date.updated.$key = $value' "$index/$item/info.json" \
    |sponge "$index/$item/info.json"
 }
