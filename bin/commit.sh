@@ -52,7 +52,8 @@ set_json(){
 
   # todo: “jq” dependency
   # todo: “sponge” dependency
-  jq --arg key "$key" --argjson value "$value" \
+  # jq -c = jq --compact-output
+  jq -c --arg key "$key" --argjson value "$value" \
     '.date.updated[$key] = $value' "$index/$item/info.json" \
     |sponge "$index/$item/info.json"
 }
@@ -64,6 +65,6 @@ set_json H hour
 set_json M minute
 set_json S second
 
-jq --arg f "$(date -ud "@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
-  '.date.updated.full = $f' "$index/$item/info.json" \
+jq -c --arg full "$(date -ud "@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
+  '.date.updated.full = $full' "$index/$item/info.json" \
   |sponge "$index/$item/info.json"
