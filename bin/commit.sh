@@ -64,6 +64,6 @@ set_json H hour
 set_json M minute
 set_json S second
 
-jq --arg f "$(date -ud "@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00)" \
+jq --arg f "$(date -ud "@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
   '.date.updated.full = $f' "$index/$item/info.json" \
   |sponge "$index/$item/info.json"
