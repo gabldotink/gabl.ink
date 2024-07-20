@@ -60,36 +60,35 @@ second="$(jq -r .date.updated.second \
                 "$bin_dir/../index/$item/info.json")"
 export second
 
-# todo: find POSIX alternative to “date -r”
+# todo: find POSIX alternative to GNU “date” options
 # todo: cache “date” outputs instead of running multiple times
 # todo: use parallel processes for “date”
-# todo: strip leading zeros
 # todo: do “test && year= ; export year”?
 # “date -ur” = “date --utc --reference”
 for i in "$bin_dir/../index/$item/"*;do
   export i
-  if [ "$(date -ur "$i" '+%Y')" -gt "$year" ];then
-    year="$(date -ur "$i" '+%Y')"
+  if [ "$(date -ur "$i" '+%-Y')" -gt "$year" ];then
+    year="$(date -ur "$i" '+%-Y')"
     export year
   fi
-  if [ "$(date -ur "$i" '+%m')" -gt "$month" ];then
-    month="$(date -ur "$i" '+%m')"
+  if [ "$(date -ur "$i" '+%-m')" -gt "$month" ];then
+    month="$(date -ur "$i" '+%-m')"
     export month
   fi
-  if [ "$(date -ur "$i" '+%d')" -gt "$day" ];then
-    day="$(date -ur "$i" '+%d')"
+  if [ "$(date -ur "$i" '+%-d')" -gt "$day" ];then
+    day="$(date -ur "$i" '+%-d')"
     export day
   fi
-  if [ "$(date -ur "$i" '+%H')" -gt "$hour" ];then
-    hour="$(date -ur "$i" '+%d')"
+  if [ "$(date -ur "$i" '+%-H')" -gt "$hour" ];then
+    hour="$(date -ur "$i" '+%-H')"
     export hour
   fi
-  if [ "$(date -ur "$i" '+%M')" -gt "$minute" ];then
-    minute="$(date -ur "$i" '+%d')"
+  if [ "$(date -ur "$i" '+%-M')" -gt "$minute" ];then
+    minute="$(date -ur "$i" '+%-M')"
     export minute
   fi
-  if [ "$(date -ur "$i" '+%S')" -gt "$second" ];then
-    second="$(date -ur "$i" '+%S')"
+  if [ "$(date -ur "$i" '+%-S')" -gt "$second" ];then
+    second="$(date -ur "$i" '+%-S')"
     export second
   fi
 done
