@@ -20,6 +20,9 @@ index="$(dirname "$script")/../index"
 readonly index
 export index
 
+readonly script item index
+export script item index
+
 # todo: implement validation
 #item_regex='^[A-Za-z0-9._-]+$'
 #readonly item_regex
@@ -60,3 +63,7 @@ set_json d day
 set_json H hour
 set_json M minute
 set_json S second
+
+jq --arg f "$(date -ud "@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00)" \
+  '.date.updated.full = $f' "$index/$item/info.json" \
+  |sponge "$index/$item/info.json"
