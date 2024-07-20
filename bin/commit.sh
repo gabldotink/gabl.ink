@@ -45,7 +45,6 @@ set_json(){
 
   # “date -d” = “date --date”
   value="$(date -ud "@$epoch" "+%-$s")"
-  readonly value
   export value
 
   # todo: “jq” dependency
