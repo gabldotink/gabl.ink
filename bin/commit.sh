@@ -41,7 +41,6 @@ export epoch
 set_json(){
   s="$1"
   key="$2"
-  readonly s key
   export s key
 
   # “date -d” = “date --date”
