@@ -11,11 +11,11 @@ export POSIXLY_CORRECT
 script="$0"
 item="$1"
 # todo: improve regular expression
-item_regex='[a-z][a-z0-9._-]+$'
+item_regex='[a-z][a-z0-9_-]+$'
 readonly script item item_regex
 export script item item_regex
 
-if ! "$(printf '%s\n' "$item"|grep -E "$item_regex")";then
+if "$(printf '%s\n' "$item"|grep -Eve "$item_regex">/dev/null)";then
   printf 'usage: %s <item>
 
 This script updates the “date.updated” key of an item based on the
@@ -24,6 +24,7 @@ system time. (Or, it will, once I’m done with it.)\n' "$script"
 fi
 
 index="$(dirname "$script")/../index"
+info_json="$index/$item/info.json"
 # todo: GNU “date” dependency
 epoch="$(date -u '+%-s')"
 readonly index epoch
@@ -40,8 +41,8 @@ set_json(){
   # todo: “jq” dependency
   # todo: “sponge” dependency
   jq --compact-output --arg key "$key" --argjson value "$value" \
-    '.date.updated[$key] = $value' "$index/$item/info.json" \
-    |sponge "$index/$item/info.json"
+    '.date.updated[$key] = $value' "$info_json" \
+    |sponge "$info_json">/dev/null
 }
 
 set_json Y year
@@ -51,6 +52,7 @@ set_json H hour
 set_json M minute
 set_json S second
 
-jq -c --arg full "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
-  '.date.updated.full = $full' "$index/$item/info.json" \
-  |sponge "$index/$item/info.json"
+jq --compact-output --arg full \
+  "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
+  '.date.updated.full = $full' "$info_json" \
+  |sponge "$info_json">/dev/null
