@@ -52,7 +52,7 @@ set_json(){
 
   # todo: “jq” dependency
   # todo: “sponge” dependency
-  # jq -c = jq --compact-output
+  # “jq -c” = “jq --compact-output”
   jq -c --arg key "$key" --argjson value "$value" \
     '.date.updated[$key] = $value' "$index/$item/info.json" \
     |sponge "$index/$item/info.json"
