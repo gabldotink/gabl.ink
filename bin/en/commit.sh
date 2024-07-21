@@ -24,8 +24,8 @@ system time. (Or, it will, once I’m done with it.)\n' "$script"
   exit 1
 fi
 
-until [ "$(dirname "$item")" = index ];do
-  items="$item $(dirname "$item")"
+until [ "$(dirname "$items")" = index ];do
+  items="$items $(dirname "$items")"
   export items
 done
 
