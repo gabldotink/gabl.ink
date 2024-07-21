@@ -5,17 +5,18 @@
 # system time. (Or, it will, once I’m done with it.)
 
 # activate POSIX mode for Bash
-readonly POSIXLY_CORRECT
-export POSIXLY_CORRECT
+readonly POSIXLY_CORRECT &
+export POSIXLY_CORRECT &
 
-script="$0"
-items="$1"
+script="$0" &
+id="$1" &
 # todo: improve regular expression
-item_regex='[a-z][a-z0-9_-]+$'
+id_regex='[a-z][a-z0-9_-]+$' &
+export script id item_regex &
+wait
 readonly script item_regex
-export script items item_regex
 
-if "$(printf '%s\n' "$item"|grep -Eve "$item_regex">/dev/null)";then
+if "$(printf '%s\n' "$id"|grep -Eve "$id_regex">/dev/null)";then
   # shellcheck disable=SC1112
   printf 'usage: %s <item>
 
@@ -24,39 +25,41 @@ system time. (Or, it will, once I’m done with it.)\n' "$script"
   exit 1
 fi
 
-until [ "$(dirname "$items")" = index ];do
-  items="$items $(dirname "$items")"
-  export items
-done
-
-readonly items
+items="$id"
 export items
 
+until [ "$(dirname "$id")" = index ];do
+  id="$(dirname "$id")"
+  items="$items $id"
+done
+readonly items &
+
+epoch="$(date -u '+%s')" &
 # todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../index")"
-readonly index
-export index
+index="$(readlink --canonicalize "$(dirname "$script")/../../index")" &
+export epoch index &
+wait
+readonly epoch index
+
+set_json(){
+  s="$1"
+  key="$2"
+  export s key
+
+  # todo: GNU “date” dependency
+  value="$(date -u --date="@$epoch" "+%-$s")"
+  export value
+
+  # todo: “jq” dependency
+  # todo: “sponge” dependency
+  jq --compact-output --arg key "$key" --argjson value "$value" \
+    '.date.updated[$key] = $value' "$output" \
+    |sponge "$output">/dev/null
+}
 
 for item in $items;do
-  export item
-  info_json="$index/$item/info.json"
-  # todo: GNU “date” dependency
-  epoch="$(date -u '+%-s')"
-
-  set_json(){
-    s="$1"
-    key="$2"
-    export s key
-
-    value="$(date -u --date="@$epoch" "+%-$s")"
-    export value
-
-    # todo: “jq” dependency
-    # todo: “sponge” dependency
-    jq --compact-output --arg key "$key" --argjson value "$value" \
-      '.date.updated[$key] = $value' "$info_json" \
-      |sponge "$info_json">/dev/null
-  }
+  output="$index/$item/info.json"
+  export output
 
   set_json Y year
   set_json m month
