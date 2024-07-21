@@ -13,7 +13,7 @@ items="$1"
 # todo: improve regular expression
 item_regex='[a-z][a-z0-9_-]+$'
 readonly script item_regex
-export script item item_regex
+export script items item_regex
 
 if "$(printf '%s\n' "$item"|grep -Eve "$item_regex">/dev/null)";then
   # shellcheck disable=SC1112
