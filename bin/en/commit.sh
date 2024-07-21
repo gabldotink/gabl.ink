@@ -23,7 +23,8 @@ system time. (Or, it will, once I’m done with it.)\n' "$script"
   exit 1
 fi
 
-index="$(dirname "$script")/../index"
+# todo: readlink dependency
+index="$(readlink --canonicalize "$(dirname "$script")/../../index")"
 info_json="$index/$item/info.json"
 # todo: GNU “date” dependency
 epoch="$(date -u '+%-s')"
