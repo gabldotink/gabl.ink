@@ -9,17 +9,8 @@ readonly POSIXLY_CORRECT
 export POSIXLY_CORRECT
 
 script="$0"
-readonly script
-export script
-
 item="$1"
-readonly item
-export item
-
 index="$(dirname "$script")/../index"
-readonly index
-export index
-
 readonly script item index
 export script item index
 
