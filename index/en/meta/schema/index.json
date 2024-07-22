@@ -236,7 +236,6 @@
           "uniqueItems":true
         },
         "required":[
-          "image",
           "info"
         ]
       },
