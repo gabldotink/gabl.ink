@@ -5,15 +5,14 @@
 # system time. (Or, it will, once I’m done with it.)
 
 # activate POSIX mode for Bash
-readonly POSIXLY_CORRECT &
-export POSIXLY_CORRECT &
+readonly POSIXLY_CORRECT
+export POSIXLY_CORRECT
 
-script="$0" &
-id="$1" &
+script="$0"
+id="$1"
 # todo: improve regular expression
-id_regex='[a-z][a-z0-9_-]+$' &
-export script id item_regex &
-wait
+id_regex='[a-z][a-z0-9_-]+$'
+export script id item_regex
 readonly script item_regex
 
 if "$(printf '%s\n' "$id"|grep -Eve "$id_regex">/dev/null)";then
@@ -32,12 +31,12 @@ until [ "$(dirname "$id")" = index ];do
   id="$(dirname "$id")"
   items="$items $id"
 done
-readonly items &
+readonly items
 
-epoch="$(date -u '+%s')" &
+epoch="$(date -u '+%s')"
 # todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../index")" &
-export epoch index &
+index="$(readlink --canonicalize "$(dirname "$script")/../../index")"
+export epoch index
 wait
 readonly epoch index
 
