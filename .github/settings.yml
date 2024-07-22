@@ -26,7 +26,7 @@ repository:
   has_wiki:     false
   homepage: 'https://gabl.ink'
   name: 'gabl.ink'
-  private: true
+  private: false
   topics: 'gabl.ink,comic,webcomic'
 
 ...
