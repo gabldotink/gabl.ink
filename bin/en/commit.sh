@@ -69,6 +69,6 @@ for item in $items;do
 
   jq --compact-output --arg full \
     "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
-    '.date.updated.full = $full' "$info_json" \
+    '.date.updated.full = $full' "$output" \
     |sponge "$info_json">/dev/null
 done
