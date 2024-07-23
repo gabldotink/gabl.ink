@@ -211,7 +211,8 @@
           "description":"[string(s)] available image file format(s) of the item\n(filename extension, no dot)",
           "type":[
             "string",
-            "array"
+            "array",
+            "null"
           ],
           "items":{
             "type":"string"
@@ -225,7 +226,8 @@
           "description":"[string(s)] available data file format(s) of the item\n(filename extension, no dot)",
           "type":[
             "string",
-            "array"
+            "array",
+            "null"
           ],
           "items":{
             "type":"string"
@@ -236,6 +238,7 @@
           "uniqueItems":true
         },
         "required":[
+          "image",
           "info"
         ]
       },
