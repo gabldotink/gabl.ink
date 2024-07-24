@@ -6,7 +6,7 @@
   "type":"object",
   "properties":{
     "id":{
-      "description":"[object] identifier (ID) of the item",
+      "description":"[object] identifiers (IDs) of the item",
       "type":"object",
       "properties":{
         "full":{
