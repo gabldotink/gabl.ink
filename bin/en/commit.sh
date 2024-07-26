@@ -37,10 +37,9 @@ epoch="$(date -u '+%s')"
 # todo: “readlink” dependency
 index="$(readlink --canonicalize "$(dirname "$script")/../../index")"
 export epoch index
-wait
 readonly epoch index
 
-set_json(){
+write_json(){
   s="$1"
   key="$2"
   export s key
@@ -55,17 +54,19 @@ set_json(){
     '.date.updated[$key] = $value' "$output" \
     |sponge "$output">/dev/null
 }
+export write_json
+readonly write_json
 
 for item in $items;do
   output="$index/$item/info.json"
   export output
 
-  set_json Y year
-  set_json m month
-  set_json d day
-  set_json H hour
-  set_json M minute
-  set_json S second
+  write_json Y year
+  write_json m month
+  write_json d day
+  write_json H hour
+  write_json M minute
+  write_json S second
 
   jq --compact-output --arg full \
     "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
