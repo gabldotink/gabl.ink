@@ -129,6 +129,11 @@
           "description":"[object] calendar date of the item’s last update (UTC)",
           "type":"object",
           "properties":{
+            "epoch":{
+              "description":"[integer] Unix time epoch of the item’s latest update (UTC),\nfrom 1720742400 to 253402300800",
+              "type":"integer",
+              "minimum":1720742400,
+              "maximum":253402300800
             "year":{
               "description":"[integer] year of the item’s latest update (UTC),\nfrom 2024 to 9999",
               "type":"integer",
@@ -175,6 +180,7 @@
             }
           },
           "required":[
+            "epoch",
             "year",
             "month",
             "day",
