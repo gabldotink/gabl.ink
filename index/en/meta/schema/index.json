@@ -80,7 +80,7 @@
       },
       "required":[
         "text",
-        "pronunciation"
+        "ipa"
       ]
     },
     "date":{
