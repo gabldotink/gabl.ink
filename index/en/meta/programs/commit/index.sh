@@ -15,7 +15,7 @@ id_regex='[a-z][a-z0-9-]+$'
 export script id item_regex
 readonly script item_regex
 
-if "$(printf '%s\n' "$id"|grep -Eve "$id_regex">/dev/null)";then
+if "$(printf '%s\n' "$id"|grep -Eve "$id_regex")";then
   # shellcheck disable=SC1112
   printf 'usage: %s <item>
 
@@ -52,7 +52,7 @@ write_json(){
   # todo: “sponge” dependency
   jq --compact-output --arg key "$key" --argjson value "$value" \
     '.date.updated[$key] = $value' "$output" \
-    |sponge "$output">/dev/null
+    |sponge "$output"
 }
 export write_json
 readonly write_json
@@ -71,5 +71,5 @@ for item in $items;do
   jq --compact-output --arg full \
     "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
     '.date.updated.full = $full' "$output" \
-    |sponge "$info_json">/dev/null
+    |sponge "$info_json"
 done
