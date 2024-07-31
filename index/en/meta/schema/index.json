@@ -162,7 +162,7 @@
           ]
         },
         "updated":{
-          "description":"[object] calendar date of the item’s last update (UTC)",
+          "description":"[object] calendar date of the item’s latest update (UTC)",
           "type":"object",
           "properties":{
             "epoch":{
