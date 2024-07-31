@@ -1,8 +1,5 @@
 # SPDX-License-Identifier: CC0-1.0
 
-# This file is part of gabl.ink. https://gabl.ink/
-# © 2024 gabl.ink. No rights reserved. United States of America.
-
 .gitattributes text eol=lf
 *.html text eol=lf
 *.json text eol=lf
