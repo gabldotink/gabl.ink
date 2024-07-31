@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: CC0-1.0 OR CC-BY-4.0
 
+.gitattributes text eol=lf
 *.html text eol=lf
 *.json text eol=lf
-*.md   text eol=lf
-*.sh   text eol=lf
-*.txt  text eol=lf
-*.yml  text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
