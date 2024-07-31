@@ -35,7 +35,7 @@ readonly items
 
 epoch="$(date -u '+%s')"
 # todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../index")"
+index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 export epoch index
 readonly epoch index
 
