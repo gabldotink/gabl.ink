@@ -11,7 +11,7 @@ export POSIXLY_CORRECT
 script="$0"
 id="$1"
 # todo: improve regular expression
-id_regex='[a-z][a-z0-9-]+$'
+id_regex='^[a-z][a-z0-9-]+$'
 export script id item_regex
 readonly script item_regex
 
