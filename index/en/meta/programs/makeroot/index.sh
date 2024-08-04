@@ -7,10 +7,15 @@ export script
 
 # todo: “readlink” dependency
 root="$(readlink --canonicalize "$(dirname "$script")/../../../../..")"
-index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
-readonly root index
-export root index
+readonly root
+export root
 
+index="$root/index"
+readonly index
+export index
+
+cp -fp   "$index/en/meta/htaccess/index.htaccess" \
+         "$root/.htaccess"
 cp -fp   "$index/en/meta/robots/index.txt" \
          "$root/robots.txt"
 cp -fp   "$index/en/meta/git/attributes/index.gitattributes" \

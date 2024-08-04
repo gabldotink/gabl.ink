@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: CC0-1.0
+
+AddType text/plain            .gitattributes
+AddType text/plain            .htaccess
+AddType application/xhtml+xml .html
+AddType application/json      .json
+AddType text/markdown         .md
+AddType application/x-sh      .sh
+AddType text/plain            .txt
+AddType application/yaml      .yml
