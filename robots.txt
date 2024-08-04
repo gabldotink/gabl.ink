@@ -1,1 +1,41 @@
-./index/en/meta/robots/index.txt
+# SPDX-License-Identifier: CC0-1.0
+# ==================== wrap lines at 72 characters ====================
+
+# You can do whatever. Mirror the whole site, automate downloads,
+# whatever. Don’t DoS, obviously, but besides that, do whatever.
+User-agent: *
+Allow: /
+
+# These user agents should always be allowed to access all files; they
+# are likely fetching helpful information for people, archiving the
+# website, or similar activities, which I am happy to facilitate.
+User-agent: Amazonbot
+User-agent: Applebot
+User-agent: archive.org_bot
+User-agent: ArchiveBot
+User-agent: ArchiveTeam
+User-agent: Arquivo-web-crawler
+User-agent: ChatGPT-User
+User-agent: curl
+User-agent: gabl.ink
+User-agent: git
+User-agent: ia_archiver
+User-agent: ia_archiver-web.archive.org
+User-agent: heritrix
+User-agent: HTTrack
+User-agent: HTTrack Website Copier
+User-agent: larbin
+User-agent: Meta-ExternalFetcher
+User-agent: MSIECrawler
+User-agent: Nicecrawler
+User-agent: Offline Explorer
+User-agent: PerplexityBot
+User-agent: SiteSnagger
+User-agent: Teleport
+User-agent: TeleportPro
+User-agent: WebCopier
+User-agent: WebZIP
+User-agent: Wget
+User-agent: wget2
+User-agent: YouBot
+Allow: /
