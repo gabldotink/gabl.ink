@@ -32,7 +32,7 @@ index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 readonly index
 export index
 
-until [ "$(dirname "$id")" = index ];do
+until [ "$(readlink --canonicalize "$(dirname "$id")")" = "$index" ];do
   id="$(dirname "$id")"
   items="$items $id"
 done
@@ -74,5 +74,5 @@ for item in $items;do
   jq --compact-output --arg full \
     "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
     '.date.updated.full = $full' "$output" \
-    |sponge "$info_json"
+    |sponge "$output"
 done
