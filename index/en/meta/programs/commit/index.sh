@@ -12,10 +12,10 @@ script="$0"
 id="$1"
 # todo: improve regular expression
 id_regex='^[a-z][a-z0-9-]+$'
-readonly script item_regex
-export script id item_regex
+readonly script id_regex
+export script id id_regex
 
-if "$(printf '%s\n' "$id"|grep -Eve "$id_regex")";then
+if ! "$(printf '%s\n' "$id"|grep -Ee "$id_regex")";then
   # shellcheck disable=SC1112
   printf 'usage: %s <item>
 
@@ -32,15 +32,15 @@ index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 readonly index
 export index
 
-until [ "$(readlink --canonicalize "$(dirname "$id")")" = "$index" ];do
+until [ "$(readlink --canonicalize "$id")" = "$index" ];do
   id="$(dirname "$id")"
   items="$items $id"
 done
 readonly items
 
 epoch="$(date -u '+%s')"
-export epoch
 readonly epoch
+export epoch
 
 write_json(){
   s="$1"
@@ -63,6 +63,10 @@ readonly write_json
 for item in $items;do
   output="$index/$item/info.json"
   export output
+
+  jq --compact-output --argjson epoch "$epoch" \
+    '.date.updated.epoch = $epoch' "$output" \
+    |sponge "$output"
 
   write_json Y year
   write_json m month
