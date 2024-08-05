@@ -12,8 +12,8 @@ script="$0"
 id="$1"
 # todo: improve regular expression
 id_regex='^[a-z][a-z0-9-]+$'
-export script id item_regex
 readonly script item_regex
+export script id item_regex
 
 if "$(printf '%s\n' "$id"|grep -Eve "$id_regex")";then
   # shellcheck disable=SC1112
@@ -27,6 +27,11 @@ fi
 items="$id"
 export items
 
+# todo: “readlink” dependency
+index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
+readonly index
+export index
+
 until [ "$(dirname "$id")" = index ];do
   id="$(dirname "$id")"
   items="$items $id"
@@ -34,10 +39,8 @@ done
 readonly items
 
 epoch="$(date -u '+%s')"
-# todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
-export epoch index
-readonly epoch index
+export epoch
+readonly epoch
 
 write_json(){
   s="$1"
