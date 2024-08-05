@@ -15,7 +15,7 @@ id_regex='^[a-z][a-z0-9-]+$'
 readonly script id_regex
 export script id id_regex
 
-if ! "$(printf '%s\n' "$id"|grep -Ee "$id_regex")";then
+if "$(printf '%s\n' "$id"|grep -Ee "$id_regex")";then
   # shellcheck disable=SC1112
   printf 'usage: %s <item>
 
@@ -32,8 +32,9 @@ index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 readonly index
 export index
 
-until [ "$(readlink --canonicalize "$id")" = "$index" ];do
+while true;do
   id="$(dirname "$id")"
+  [ "$id" = . ] && break
   items="$items $id"
 done
 readonly items
