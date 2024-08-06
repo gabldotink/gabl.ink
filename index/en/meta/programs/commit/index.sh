@@ -2,11 +2,7 @@
 # SPDX-License-Identifier: CC-BY-4.0
 
 # This script updates the “date.updated” key of an item based on the
-# system time. (Or, it will, once I’m done with it.)
-
-# activate POSIX mode for Bash
-readonly POSIXLY_CORRECT
-export POSIXLY_CORRECT
+# system time.
 
 script="$0"
 id="$1"
@@ -20,7 +16,7 @@ if "$(printf '%s\n' "$id"|grep -Ee "$id_regex")";then
   printf 'usage: %s <item>
 
 This script updates the “date.updated” key of an item based on the
-system time. (Or, it will, once I’m done with it.)\n' "$script"
+system time.' "$script"
   exit 1
 fi
 
