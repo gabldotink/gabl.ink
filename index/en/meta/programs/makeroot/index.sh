@@ -1,20 +1,17 @@
 #!/bin/sh
 # SPDX-License-Identifier: CC0-1.0
 
-readonly POSIXLY_CORRECT
 export POSIXLY_CORRECT
 
 script="$0"
-readonly script
 export script
 
 # todo: “readlink” dependency
 root="$(readlink --canonicalize "$(dirname "$script")/../../../../..")"
-readonly root
 export root
+unset script
 
 index="$root/index"
-readonly index
 export index
 
 cp -fp   "$index/en/meta/htaccess/index.htaccess" \
