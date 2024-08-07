@@ -1,6 +1,9 @@
 #!/bin/sh
 # SPDX-License-Identifier: CC0-1.0
 
+readonly POSIXLY_CORRECT
+export POSIXLY_CORRECT
+
 script="$0"
 readonly script
 export script
