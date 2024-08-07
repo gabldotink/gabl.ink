@@ -4,14 +4,12 @@
 # This script updates the “date.updated” key of an item based on the
 # system time.
 
-readonly POSIXLY_CORRECT
 export POSIXLY_CORRECT
 
 script="$0"
 id="$1"
 # todo: improve regular expression
 id_regex='^[a-z][a-z0-9-]+$'
-readonly script id_regex
 export script id id_regex
 
 if "$(printf '%s\n' "$id" | grep -Ee "$id_regex")";then
@@ -28,7 +26,6 @@ export items
 
 # todo: “readlink” dependency
 index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
-readonly index
 export index
 
 while true;do
@@ -36,10 +33,8 @@ while true;do
   [ "$id" = . ] && break
   items="$items $id"
 done
-readonly items
 
 epoch="$(date -u '+%s')"
-readonly epoch
 export epoch
 
 write_json(){
@@ -58,9 +53,9 @@ write_json(){
   )" > "$output"
 }
 export write_json
-readonly write_json
 
 for item in $items;do
+  export item
   output="$index/$item/info.json"
   export output
 
