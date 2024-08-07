@@ -14,7 +14,7 @@ id_regex='^[a-z][a-z0-9-]+$'
 readonly script id_regex
 export script id id_regex
 
-if "$(printf '%s\n' "$id"|grep -Ee "$id_regex")";then
+if "$(printf '%s\n' "$id" | grep -Ee "$id_regex")";then
   # shellcheck disable=SC1112
   printf 'usage: %s <item>
 
@@ -51,11 +51,11 @@ write_json(){
   value="$(date -u --date="@$epoch" "+%-$s")"
   export value
 
-  # todo: “jq” dependency
-  # todo: “sponge” dependency
-  jq --compact-output --arg key "$key" --argjson value "$value" \
-    '.date.updated[$key] = $value' "$output" \
-    |sponge "$output"
+  printf '%s\n' "$(
+    # todo: “jq” dependency
+    jq --compact-output --arg key "$key" --argjson value "$value" \
+      '.date.updated[$key] = $value' "$output"
+  )" > "$output"
 }
 export write_json
 readonly write_json
@@ -64,9 +64,10 @@ for item in $items;do
   output="$index/$item/info.json"
   export output
 
-  jq --compact-output --argjson epoch "$epoch" \
-    '.date.updated.epoch = $epoch' "$output" \
-    |sponge "$output"
+  printf '%s\n' "$(
+    jq --compact-output --argjson epoch "$epoch" \
+      '.date.updated.epoch = $epoch' "$output" \
+  )" > "$output"
 
   write_json Y year
   write_json m month
@@ -75,8 +76,11 @@ for item in $items;do
   write_json M minute
   write_json S second
 
-  jq --compact-output --arg full \
-    "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
-    '.date.updated.full = $full' "$output" \
-    |sponge "$output"
+  printf '%s\n' "$(
+    jq --compact-output --arg full \
+      "$(date -u --date="@$epoch" '+%Y-%m-%dT%H:%M:%S+00:00')" \
+      '.date.updated.full = $full' "$output" \
+  )" > "$output"
 done
+
+exit 0
