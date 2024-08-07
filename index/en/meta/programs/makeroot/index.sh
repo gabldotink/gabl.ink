@@ -9,7 +9,6 @@ export script
 # todo: “readlink” dependency
 root="$(readlink --canonicalize "$(dirname "$script")/../../../../..")"
 export root
-unset script
 
 index="$root/index"
 export index
