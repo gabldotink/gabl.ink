@@ -4,6 +4,9 @@
 # This script updates the “date.updated” key of an item based on the
 # system time.
 
+readonly POSIXLY_CORRECT
+export POSIXLY_CORRECT
+
 script="$0"
 id="$1"
 # todo: improve regular expression
