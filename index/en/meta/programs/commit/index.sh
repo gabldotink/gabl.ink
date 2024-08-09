@@ -6,6 +6,17 @@
 
 export POSIXLY_CORRECT
 
+exit_function(){
+  printf \
+'A signal to stop was received.
+No files were changed.\n'
+  set -x
+  exit 3
+}
+export exit_function
+
+trap exit_function
+
 script="$0"
 id="$1"
 # todo: improve regular expression
@@ -14,11 +25,12 @@ export script id id_regex
 
 if "$(printf '%s\n' "$id" | grep -Ee "$id_regex")";then
   # shellcheck disable=SC1112
-  printf 'usage: %s <item>
+  printf \
+'usage: %s <item>
 
 This script updates the “date.updated” key of an item based on the
 system time.' "$script"
-  exit 1
+  exit 2
 fi
 
 items="$id"
@@ -54,6 +66,14 @@ write_json(){
 }
 export write_json
 
+exit_function(){
+  printf \
+'A signal to stop was received.
+Some changes were made.\n'
+  set -x
+  exit 3
+}
+
 for item in $items;do
   export item
   output="$index/$item/info.json"
@@ -78,4 +98,8 @@ for item in $items;do
   )" > "$output"
 done
 
+trap -
+
+printf 'All operations were completed successfully.\n'
+set -x
 exit 0
