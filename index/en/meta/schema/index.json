@@ -124,7 +124,7 @@
       ]
     },
     "title":{
-      "description":"[named objects] title",
+      "description":"[object] title",
       "type":"object",
       "properties":{
         "text":{
