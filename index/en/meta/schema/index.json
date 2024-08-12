@@ -7,33 +7,32 @@
   "type":"object",
   "properties":{
     "id":{
-      "description":"[named objects] identifiers (IDs) of the item",
+      "description":"[named objects] identifiers (IDs)",
       "type":"object",
       "properties":{
         "full":{
-          "description":"[string] full identifier (ID) of the item",
+          "description":"[string] full identifier (ID)",
           "type":"string",
           "minLength":2,
           "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
         },
         "parent":{
-          "description":"[string/null] full identifier (ID) of the item’s parent,\nor null for a root-level ID",
+          "description":"[string/null] full identifier (ID) of parent, or null for a root-level ID",
           "type":[
             "string",
             "null"
           ],
           "minLength":2,
-          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$",
-          "default":null
+          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
         },
         "base":{
-          "description":"[string] part of the item’s identifier (ID) after the last slash,\nor same as the full ID for a root-level ID",
+          "description":"[string] part of identifier (ID) after the last slash, or same as the full ID for a root-level ID",
           "type":"string",
           "minLength":1,
           "pattern":"^[a-z0-9-]+$"
         },
         "child":{
-          "description":"[string(s)/null] base identifier(s) (IDs)\nof items that are children to the item",
+          "description":"[string(s)/null] base identifier(s) (IDs) of child items",
           "type":[
             "string",
             "array",
@@ -43,11 +42,10 @@
             "type":"string",
             "pattern":"^[a-z0-9-]+$"
           },
-          "pattern":"^[a-z0-9-]+$",
-          "default":null
+          "pattern":"^[a-z0-9-]+$"
         },
         "alternate":{
-          "description":"[string(s)/null] full identifier(s) (IDs)\nof items that are alternate versions of the item",
+          "description":"[string(s)/null] full identifier(s) (IDs) of alternate versions",
           "type":[
             "string",
             "array",
@@ -57,7 +55,6 @@
             "type":"string"
           },
           "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
-          "default":null
         },
         "required":[
           "full",
@@ -69,45 +66,90 @@
       }
     },
     "content":{
-      "description":"[string] content type for the item",
+      "description":"[string] content type of the item",
       "type":"string",
       "minLength":1,
       "pattern":".+"
     },
     "language":{
-      "description":"[string] primary IETF BCP 47 language code of the item",
-      "type":"string",
-      "minLength":2,
-      "pattern":"^[a-z][a-z0-9-]+$"
-    },
-    "title":{
-      "description":"[named objects] title of the item",
+      "description":"[object] primary IETF BCP 47 language code",
       "type":"object",
       "properties":{
-        "text":{
-          "description":"[string] title of the item in plaintext",
-          "type":"string",
-          "minLength":1,
-          "pattern":".+"
+        "language":{
+          "description":"[string/null] primary ISO 639 or extension language tag (two letters if possible, or three otherwise, or null if full language code is entirely private-use tags)",
+          "type":[
+            "string",
+            "null"
+          ],
+          "minLength":2,
+          "maxLength":3,
+          "pattern":"^[a-z]{2,3}$"
         },
-        "ipa":{
-          "description":"[string] title of the item in IPA",
-          "type":"string",
-          "minLength":1,
-          "pattern":".+"
+        "script":{
+          "description":"[string/null] primary ISO 15924 or extension script tag (null if irrelevant or not present in full language code)",
+          "type":[
+            "string",
+            "null"
+          ],
+          "minLength":4,
+          "maxLength":4,
+          "pattern":"^[A-Z][a-z]{3}$"
         },
-        "sampa":{
-          "description":"[string/null] title of the item in SAMPA (null if not possible)",
+        "region":{
+          "description":"[string/null] primary ISO 3166 or extension region tag (two letters if possible, or three digits otherwise, or null if irrelevant or not present in full language code)",
+          "type":[
+            "string",
+            "null"
+          ],
+          "minLength":2,
+          "maxLength":3,
+          "$comment":"There are currently no numeric language codes beginning with “9,” but I’m not sure if that’s explicitly reserved or anything.",
+          "pattern":"^[A-Z]{2}|[0-9]{3}$"
+        },
+        "private":{
+          "description":"[string/null] primary private-use tag (no “x-,” multiple tags if needed, or null if not present in full language code)",
           "type":[
             "string",
             "null"
           ],
           "minLength":1,
-          "pattern":".+",
-          "default":null
+          "pattern":"^[a-z0-9][a-z0-9-]+$"
+        }
+      },
+      "required":[
+        "language",
+        "script",
+        "region",
+        "private"
+      ]
+    },
+    "title":{
+      "description":"[named objects] title",
+      "type":"object",
+      "properties":{
+        "text":{
+          "description":"[string] title in plaintext",
+          "type":"string",
+          "minLength":1,
+          "pattern":".+"
+        },
+        "ipa":{
+          "description":"[string] title in IPA",
+          "type":"string",
+          "minLength":1,
+          "pattern":".+"
+        },
+        "sampa":{
+          "description":"[string/null] title in SAMPA (null if not possible)",
+          "type":[
+            "string",
+            "null"
+          ],
+          "minLength":1,
+          "pattern":".+"
         },
         "x-sampa":{
-          "description":"[string] title of the item in X-SAMPA",
+          "description":"[string] title in X-SAMPA",
           "type":"string",
           "minLength":1,
           "pattern":".+"
@@ -121,33 +163,33 @@
       ]
     },
     "date":{
-      "description":"[named objects] calendar dates of the item (UTC)",
+      "description":"[named objects] calendar dates (UTC)",
       "type":"object",
       "properties":{
         "published":{
-          "description":"[object] calendar date of the item’s first publication (UTC)",
+          "description":"[object] calendar date of first publication (UTC)",
           "type":"object",
           "properties":{
             "year":{
-              "description":"[integer] year of the item’s first publication (UTC),\nfrom 2022 to 9999",
+              "description":"[integer] year of first publication (UTC), from 2022 to 9999",
               "type":"integer",
               "minimum":2022,
               "maximum":9999
             },
             "month":{
-              "description":"[integer] number of the month of the item’s first publication (UTC)",
+              "description":"[integer] number of the month of first publication (UTC)",
               "type":"integer",
               "minimum":1,
               "maximum":12
             },
             "day":{
-              "description":"[integer] day of the month of the item’s first publication (UTC)",
+              "description":"[integer] day of the month of first publication (UTC)",
               "type":"integer",
               "minimum":1,
               "maximum":31
             },
             "full":{
-              "description":"[string] RFC 3339 date of the item’s first publication (UTC),\nfrom 2022-04-01 to 9999-12-31",
+              "description":"[string] RFC 3339 date of first publication (UTC), from 2022-04-01 to 9999-12-31",
               "type":"string",
               "format":"date",
               "minimum":10,
@@ -163,53 +205,53 @@
           ]
         },
         "updated":{
-          "description":"[object] calendar date of the item’s latest update (UTC)",
+          "description":"[object] calendar date of latest update (UTC)",
           "type":"object",
           "properties":{
             "epoch":{
-              "description":"[integer] Unix time epoch of the item’s latest update (UTC),\nfrom 1720742400 to 253402300800",
+              "description":"[integer] Unix time epoch of latest update (UTC), from 1720742400 to 253402300800",
               "type":"integer",
               "minimum":1720742400,
               "maximum":253402300800
             },
             "year":{
-              "description":"[integer] year of the item’s latest update (UTC),\nfrom 2024 to 9999",
+              "description":"[integer] year of latest update (UTC), from 2024 to 9999",
               "type":"integer",
               "minimum":2024,
               "maximum":9999
             },
             "month":{
-              "description":"[integer] number of the month of the item’s latest update (UTC)",
+              "description":"[integer] number of the month of latest update (UTC)",
               "type":"integer",
               "minimum":1,
               "maximum":12
             },
             "day":{
-              "description":"[integer] day of the month of the item’s latest update (UTC)",
+              "description":"[integer] day of the month of latest update (UTC)",
               "type":"integer",
               "minimum":1,
               "maximum":31
             },
             "hour":{
-              "description":"[integer] hour of the day of the item’s latest update (UTC)",
+              "description":"[integer] hour of the day of latest update (UTC)",
               "type":"integer",
               "minimum":0,
               "maximum":23
             },
             "minute":{
-              "description":"[integer] minute of the hour of the item’s latest update (UTC)",
+              "description":"[integer] minute of the hour of latest update (UTC)",
               "type":"integer",
               "minimum":0,
               "maximum":59
             },
             "second":{
-              "description":"[integer] second of the minute of the item’s latest update (UTC)",
+              "description":"[integer] second of the minute of latest update (UTC)",
               "type":"integer",
               "minimum":0,
               "maximum":60
             },
             "full":{
-              "description":"[string] RFC 3339 date and time of the item’s latest update (UTC),\nfrom 2024-07-12T00:00:00+00:00 to 9999-12-31T23:59:60+00:00",
+              "description":"[string] RFC 3339 date and time of latest update (UTC), from 2024-07-12T00:00:00+00:00 to 9999-12-31T23:59:60+00:00",
               "type":"string",
               "format":"date-time",
               "minLength":25,
@@ -235,7 +277,7 @@
       }
     },
     "author":{
-      "description":"[string(s)] the creator(s) of the item",
+      "description":"[string(s)] creator(s)",
       "type":[
         "string",
         "array"
@@ -250,11 +292,11 @@
       "uniqueItems":true
     },
     "format":{
-      "description":"[object] avilable file format(s) of the item\n(filename extension, no dot)",
+      "description":"[object] avilable file format(s) (filename extension, no dot)",
       "type":"object",
       "properties":{
         "image":{
-          "description":"[string(s)/null] available image file format(s) of the item\n(filename extension, no dot)",
+          "description":"[string(s)/null] available image file format(s) (filename extension, no dot)",
           "type":[
             "string",
             "array",
@@ -269,11 +311,10 @@
           "minLength":1,
           "maxLength":121,
           "pattern":"^[A-Za-z0-9._-]{1,121}$",
-          "default":null,
           "uniqueItems":true
         },
         "info":{
-          "description":"[string(s)] available data file format(s) of the item\n(filename extension, no dot)",
+          "description":"[string(s)] available data file format(s) (filename extension, no dot)",
           "type":[
             "string",
             "array"
@@ -295,7 +336,7 @@
         ]
       },
       "license":{
-        "description":"[string(s)] SPDX license identifier(s) for the item",
+        "description":"[string(s)] SPDX license identifier(s)",
         "type":[
           "string",
           "array"
