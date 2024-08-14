@@ -7,3 +7,6 @@
 *.sh   text eol=lf linguist-language=Shell    gitlab-language=shell
 *.txt  text eol=lf linguist-language=Text     gitlab-language=text
 *.yml  text eol=lf linguist-language=YAML     gitlab-language=yaml
+
+*.png binary
+*.mp4 binary

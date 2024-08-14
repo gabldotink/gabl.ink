@@ -295,6 +295,22 @@
       "description":"[object] avilable file format(s) (filename extension, no dot)",
       "type":"object",
       "properties":{
+        "info":{
+          "description":"[string(s)] available data file format(s) (filename extension, no dot)",
+          "type":[
+            "string",
+            "array"
+          ],
+          "items":{
+            "type":"string",
+            "minLength":1,
+            "maxLength":122
+          },
+          "minLength":1,
+          "maxLength":122,
+          "pattern":"^[A-Za-z0-9._-]{1,122}$",
+          "uniqueItems":true
+        },
         "image":{
           "description":"[string(s)/null] available image file format(s) (filename extension, no dot)",
           "type":[
@@ -313,26 +329,26 @@
           "pattern":"^[A-Za-z0-9._-]{1,121}$",
           "uniqueItems":true
         },
-        "info":{
-          "description":"[string(s)] available data file format(s) (filename extension, no dot)",
+        "video":{
+          "description":"[string(s)/null] available video file format(s) (filename extension, no dot)",
           "type":[
             "string",
-            "array"
+            "array",
+            "null"
           ],
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":122,
-            "pattern":"^[A-Za-z0-9._-]{1,122}$"
+            "maxLength":121,
+            "pattern":"^[A-Za-z0-9._-]{1,121}$"
           },
           "minLength":1,
-          "maxLength":122,
-          "pattern":"^[A-Za-z0-9._-]{1,122}$",
-          "uniqueItems":true
+          "maxLength":121,
+          "pattern":"^[A-Za-z0-9._-]{1,121}$"
         },
         "required":[
-          "image",
-          "info"
+          "info",
+          "image"
         ]
       },
       "license":{
