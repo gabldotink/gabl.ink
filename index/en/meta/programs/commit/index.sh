@@ -20,7 +20,7 @@ trap exit_function INT TERM HUP QUIT
 script="$0"
 id="$1"
 # todo: improve regular expression
-id_regex='^[a-z][a-z0-9-]+$'
+id_regex='^[a-z][a-z0-9/-]+$'
 export script id id_regex
 
 if "$(printf '%s\n' "$id" | grep -Ee "$id_regex")";then
