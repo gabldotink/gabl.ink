@@ -12,7 +12,7 @@ No files were changed.\n'
 }
 export exit_function
 
-trap exit_function
+trap exit_function INT TERM HUP QUIT
 
 script="$0"
 export script
@@ -46,7 +46,10 @@ mkdir -p "$root/.github"
 cp -fp   "$index/en/meta/github/settings/index.yml" \
          "$root/.github/settings.yml"
 
-trap -
+# exiting is not needed at this time
+exit_function(){
+  true
+}
 
 printf 'All operations were completed successfully.\n'
 set -x

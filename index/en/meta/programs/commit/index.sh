@@ -1,5 +1,5 @@
 #!/bin/sh
-# SPDX-License-Identifier: CC-BY-4.0
+# SPDX-License-Identifier: CC0-1.0
 
 # This script updates the “date.updated” key of an item based on the
 # system time.
@@ -15,7 +15,7 @@ No files were changed.\n'
 }
 export exit_function
 
-trap exit_function
+trap exit_function INT TERM HUP QUIT
 
 script="$0"
 id="$1"
@@ -98,7 +98,10 @@ for item in $items;do
   )" > "$output"
 done
 
-trap -
+# exiting is not needed at this time
+exit_function(){
+  true
+}
 
 printf 'All operations were completed successfully.\n'
 set -x
