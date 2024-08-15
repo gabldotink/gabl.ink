@@ -292,11 +292,11 @@
       "uniqueItems":true
     },
     "format":{
-      "description":"[object] avilable file format(s) (filename extension, no dot)",
+      "description":"[object] available file format(s) (filename extension, no dot)",
       "type":"object",
       "properties":{
         "info":{
-          "description":"[string(s)] available data file format(s) (filename extension, no dot)",
+          "description":"[string(s)] available file format(s) for “info” files (filename extension, no dot)",
           "type":[
             "string",
             "array"
@@ -311,8 +311,22 @@
           "pattern":"^[A-Za-z0-9._-]{1,122}$",
           "uniqueItems":true
         },
+        "dotfiles":{
+          "description":"[string(s)/null] available files starting with a dot (full filename, minus first dot)",
+          "type":[
+            "string",
+            "array",
+            "null"
+          ],
+          "items":{
+            "type":"string",
+            "minLength":1,
+            "maxLength":126,
+            "pattern":"^[A-Za-z0-9._-]{1,126}$"
+          }
+        },
         "image":{
-          "description":"[string(s)/null] available image file format(s) (filename extension, no dot)",
+          "description":"[string(s)/null] available file format(s) for “image” files (filename extension, no dot)",
           "type":[
             "string",
             "array",
@@ -330,7 +344,7 @@
           "uniqueItems":true
         },
         "video":{
-          "description":"[string(s)/null] available video file format(s) (filename extension, no dot)",
+          "description":"[string(s)/null] available file format(s) for “video” files (filename extension, no dot)",
           "type":[
             "string",
             "array",
