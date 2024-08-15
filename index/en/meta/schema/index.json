@@ -362,7 +362,9 @@
         },
         "required":[
           "info",
-          "image"
+          "dotfiles",
+          "image",
+          "video"
         ]
       },
       "license":{
