@@ -20,11 +20,12 @@ trap exit_function INT TERM HUP QUIT
 
 script="$0"
 id="$1"
-# todo: improve regular expression
-id_regex='^[a-z][a-z0-9/-]+$'
-export script id id_regex
+export script id
 
-if "$(printf '%s\n' "$id" | grep -Ee "$id_regex")";then
+if [ "$id" = ''   ]||
+   [ "$id" = -h   ]||
+   [ "$id" = '-?' ]||
+   [ "$id" = --help ];then
   printf \
 'usage: %s <item>
 
