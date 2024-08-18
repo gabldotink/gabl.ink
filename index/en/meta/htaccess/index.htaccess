@@ -11,4 +11,6 @@ AddType text/x-shellscript .sh
 AddType text/plain         .txt
 AddType application/yaml   .yml
 
-Header add X-UA-Compatible "IE=edge,chrome=1"
+<FilesMatch "^.+\.html$">
+  Header add X-UA-Compatible "IE=edge,chrome=1"
+</FilesMatch>
