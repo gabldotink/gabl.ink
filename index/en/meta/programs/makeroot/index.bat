@@ -1,12 +1,12 @@
 @echo off
 rem SPDX-License-Identifier: CC0-1.0
 
-set "script=%~0"
-set "root=%~dp0..\..\..\..\.."
-set "index=%root%\index"
+set script="%~0"
+set root="%~dp0..\..\..\..\.."
+set index="%root%\index"
 
 copy /b /v /y "%index%\en\meta\htaccess\index.htaccess" ^
-              "%root%/.htaccess"
+              "%root%\.htaccess"
 copy /b /v /y "%index%\en\meta\robots\index.txt" ^
               "%root%\robots.txt"
 copy /b /v /y "%index%\en\meta\git\attributes\index.gitattributes" ^
