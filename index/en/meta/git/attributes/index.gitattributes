@@ -1,13 +1,14 @@
 # SPDX-License-Identifier: CC0-1.0
 
-*.gitattributes text eol=lf linguist-language=Git-Attributes gitlab-language=properties
-*.htaccess text eol=lf linguist-language=ApacheConf gitlab-language=text
-*.html text eol=lf linguist-language=HTML     gitlab-language=html
-*.json text eol=lf linguist-language=JSON     gitlab-language=json
-*.md   text eol=lf linguist-language=Markdown gitlab-language=markdown
-*.sh   text eol=lf linguist-language=Shell    gitlab-language=shell
-*.txt  text eol=lf linguist-language=Text     gitlab-language=text
-*.yml  text eol=lf linguist-language=YAML     gitlab-language=yaml
+*.bat text eol=crlf linguist-language=Batchfile
+*.gitattributes text eol=lf linguist-language=Git-Attributes
+*.htaccess text eol=lf linguist-language=ApacheConf
+*.html text eol=lf linguist-language=HTML
+*.json text eol=lf linguist-language=JSON
+*.md   text eol=lf linguist-language=Markdown
+*.sh   text eol=lf linguist-language=Shell
+*.txt  text eol=lf linguist-language=Text
+*.yml  text eol=lf linguist-language=YAML
 
 *.png binary
 *.mp4 binary
