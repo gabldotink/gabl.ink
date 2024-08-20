@@ -18,7 +18,10 @@ extract(){
 }
 export extract
 
-printf '<!DOCTYPE html>
+if \
+[ "$(jq --raw-output --monochrome-output .type "$index/$id/info.json")"\
+  = page ];then
+  printf '<!DOCTYPE html>
 <html lang="%s"
       xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
@@ -41,5 +44,6 @@ printf '<!DOCTYPE html>
 ' "$(extract language.full)" \
   "$(extract language.full)" \
   "$(extract title.text)"
+fi
 
 exit 0
