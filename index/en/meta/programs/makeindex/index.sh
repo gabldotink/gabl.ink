@@ -11,26 +11,32 @@ export script id
 index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 export index
 
-extract(){
+j(){
   key="$1"
   export key
+  # todo: “jq” dependency
   jq --raw-output --monochrome-output ".$key" "$index/$id/info.json"
 }
 export extract
 
 if \
 [ "$(jq --raw-output --monochrome-output .type "$index/$id/info.json")"\
-  = page ];then
-  printf '<!DOCTYPE html>
+  = comic_page ];then
+  printf \
+'<!DOCTYPE html>
 <html lang="%s"
-      xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">
-<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+      xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
+  "$(j language.full)"
+printf '
+<!-- SPDX-License-Identifier: %s -->' "$(j license)"
+printf '
 <!-- ============= wrap lines at 72 printed characters ============= -->
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1"/>
-    <title>%s</title>
+    <title>%s</title>' "$(j title.text)"
+printf '
     <meta name="robots"
           content="index,follow"/>
     <style>
@@ -40,10 +46,7 @@ if \
   <body>
 
   </body>
-</html>
-' "$(extract language.full)" \
-  "$(extract language.full)" \
-  "$(extract title.text)"
+</html>\n'
 fi
 
 exit 0
