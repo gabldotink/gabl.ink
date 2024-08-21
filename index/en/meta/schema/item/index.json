@@ -1,9 +1,9 @@
 {
-  "$id":"https://gabl.ink/index/en/meta/schema/index.json",
+  "$id":"https://gabl.ink/index/en/meta/schema/item/index.json",
   "$schema":"https://json-schema.org/draft/2020-12/schema",
   "$comment":"SPDX-License-Identifier: CC0-1.0",
-  "title":"gabl.ink content JSON schema",
-  "description":"schema for gabl.ink content JSON files",
+  "title":"gabl.ink item JSON schema",
+  "description":"info JSON schema for gabl.ink content items",
   "type":"object",
   "properties":{
     "id":{
