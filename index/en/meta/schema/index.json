@@ -1,5 +1,5 @@
 {
-  "$id":"https://gabl.ink/index/en/schema/index.json",
+  "$id":"https://gabl.ink/index/en/meta/schema/index.json",
   "$schema":"https://json-schema.org/draft/2020-12/schema",
   "$comment":"SPDX-License-Identifier: CC0-1.0",
   "title":"gabl.ink content JSON schema",
