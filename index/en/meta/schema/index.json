@@ -163,33 +163,33 @@
       ]
     },
     "date":{
-      "description":"[named objects] calendar dates (UTC)",
+      "description":"[named objects] calendar dates",
       "type":"object",
       "properties":{
         "published":{
-          "description":"[object] calendar date of first publication (UTC)",
+          "description":"[object] calendar date of first publication",
           "type":"object",
           "properties":{
             "year":{
-              "description":"[integer] year of first publication (UTC), from 2022 to 9999",
+              "description":"[integer] year of first publication, from 2022 to 9999",
               "type":"integer",
               "minimum":2022,
               "maximum":9999
             },
             "month":{
-              "description":"[integer] number of the month of first publication (UTC)",
+              "description":"[integer] number of the month of first publication",
               "type":"integer",
               "minimum":1,
               "maximum":12
             },
             "day":{
-              "description":"[integer] day of the month of first publication (UTC)",
+              "description":"[integer] day of the month of first publication",
               "type":"integer",
               "minimum":1,
               "maximum":31
             },
             "full":{
-              "description":"[string] RFC 3339 date of first publication (UTC), from 2022-04-01 to 9999-12-31",
+              "description":"[string] RFC 3339 date of first publication, from 2022-04-01 to 9999-12-31",
               "type":"string",
               "format":"date",
               "minimum":10,
