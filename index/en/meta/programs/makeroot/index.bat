@@ -1,4 +1,5 @@
 @echo off
+/e:on
 rem SPDX-License-Identifier: CC0-1.0
 
 set script="%~0"
