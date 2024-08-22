@@ -25,18 +25,14 @@ if \
   printf \
 '<!DOCTYPE html>
 <html lang="%s"
-      xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
-  "$(j language.full)"
-printf '
-<!-- SPDX-License-Identifier: %s -->' "$(j license)"
-printf '
+      xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">
+<!-- SPDX-License-Identifier: %s -->
 <!-- ============= wrap lines at 72 printed characters ============= -->
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1"/>
-    <title>%s</title>' "$(j title.text)"
-printf '
+    <title>%s</title>
     <meta name="robots"
           content="index,follow"/>
     <style>
@@ -46,7 +42,10 @@ printf '
   <body>
 
   </body>
-</html>\n'
+</html>
+' "$(j language.text)" \
+  "$(j language.text)" \
+  "$(j license)"
 fi
 
 exit 0
