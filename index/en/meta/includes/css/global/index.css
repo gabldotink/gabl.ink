@@ -1,0 +1,14 @@
+/* SPDX-License-Identifier: CC0-1.0 */
+
+ em {
+  font-style:italic;
+}
+.bl {
+  list-style-type:disc; 
+}
+.it {
+  font-style:italic; 
+}
+.nw {
+  white-space:nowrap; 
+}
