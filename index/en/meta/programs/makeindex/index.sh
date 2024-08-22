@@ -32,12 +32,26 @@ if \
     <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1"/>
-    <title>%s</title>
+    <title>gabl.ink – %s</title>
     <meta name="robots"
           content="index,follow"/>
-    <style>
-
-    </style>
+    <link rel="canonical"
+          href="https://gabl.ink/index/%s/index.html"
+          hreflang="%s"/>
+    <!-- todo: internationalize this link -->
+    <link rel="stylesheet"
+     href="https://gabl.ink/index/en/meta/includes/css/global/index.css"
+          hreflang="%s"/>
+    <meta property="og:title"
+          content="%s"/>
+    <meta property="og:type"
+          content="article"/>
+    <meta property="og:url"
+          content="https://gabl.ink/index/%s/index.html"/>
+    <!-- todo: work with “image” arrays (or make new property for a
+       - “preferred” image) -->
+    <meta property="og:image"
+          content="https://gabl.ink/index/%s/image%s"/>
   </head>
   <body>
 
@@ -45,7 +59,14 @@ if \
 </html>
 ' "$(j language.text)" \
   "$(j language.text)" \
-  "$(j license)"
+  "$(j license)" \
+  "$(j title.text)" \
+  "$(j id.full)" \
+  "$(j language.full)" \
+  "$(j title.text)" \
+  "$(j id.full)" \
+  "$(j id.full)" \
+  "$(j formats.image)"
 fi
 
 exit 0

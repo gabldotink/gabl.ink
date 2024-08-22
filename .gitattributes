@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 #*.bat text eol=crlf linguist-language=Batchfile
+*.css  text eol=lf linguist-language=CSS
 *.gitattributes text eol=lf linguist-language=Git-Attributes
 *.htaccess text eol=lf linguist-language=ApacheConf
 *.html text eol=lf linguist-language=HTML

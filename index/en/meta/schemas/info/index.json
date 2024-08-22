@@ -292,11 +292,11 @@
       "uniqueItems":true
     },
     "format":{
-      "description":"[object] available file format(s) (filename extension, no dot)",
+      "description":"[object] available file format(s) (with dot, slashes allowed)",
       "type":"object",
       "properties":{
         "info":{
-          "description":"[string(s)] available file format(s) for “info” files (filename extension, no dot)",
+          "description":"[string(s)] available file format(s) for “info” files (with dot, slashes allowed)",
           "type":[
             "string",
             "array"
@@ -304,15 +304,15 @@
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":122
+            "maxLength":123
           },
           "minLength":1,
-          "maxLength":122,
-          "pattern":"^[A-Za-z0-9._-]{1,122}$",
+          "maxLength":123,
+          "pattern":"^[A-Za-z0-9._/-]{1,123}$",
           "uniqueItems":true
         },
-        "dotfiles":{
-          "description":"[string(s)/null] available files starting with a dot (full filename, minus first dot)",
+        "dotfile":{
+          "description":"[string(s)/null] available files starting with a dot (full filename)",
           "type":[
             "string",
             "array",
@@ -321,12 +321,12 @@
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":126,
-            "pattern":"^[A-Za-z0-9._-]{1,126}$"
+            "maxLength":127,
+            "pattern":"^[A-Za-z0-9._/-]{1,127}$"
           }
         },
         "image":{
-          "description":"[string(s)/null] available file format(s) for “image” files (filename extension, no dot)",
+          "description":"[string(s)/null] available file format(s) for “image” files (with dot, slashes allowed)",
           "type":[
             "string",
             "array",
@@ -335,16 +335,16 @@
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":121,
-            "pattern":"^[A-Za-z0-9._-]{1,121}$"
+            "maxLength":122,
+            "pattern":"^[A-Za-z0-9._/-]{1,122}$"
           },
           "minLength":1,
-          "maxLength":121,
-          "pattern":"^[A-Za-z0-9._-]{1,121}$",
+          "maxLength":122,
+          "pattern":"^[A-Za-z0-9._/-]{1,122}$",
           "uniqueItems":true
         },
         "video":{
-          "description":"[string(s)/null] available file format(s) for “video” files (filename extension, no dot)",
+          "description":"[string(s)/null] available file format(s) for “video” files (with dot, slashes allowed)",
           "type":[
             "string",
             "array",
@@ -353,16 +353,16 @@
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":121,
-            "pattern":"^[A-Za-z0-9._-]{1,121}$"
+            "maxLength":122,
+            "pattern":"^[A-Za-z0-9._/-]{1,122}$"
           },
           "minLength":1,
-          "maxLength":121,
-          "pattern":"^[A-Za-z0-9._-]{1,121}$"
+          "maxLength":122,
+          "pattern":"^[A-Za-z0-9._/-]{1,122}$"
         },
         "required":[
           "info",
-          "dotfiles",
+          "dotfile",
           "image",
           "video"
         ]
