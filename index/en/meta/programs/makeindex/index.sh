@@ -66,7 +66,7 @@ if \
   "$(j title.text)" \
   "$(j id.full)" \
   "$(j id.full)" \
-  "$(j formats.image)"
+  "$(j format.image)"
 fi
 
 exit 0
