@@ -3,12 +3,27 @@
  em {
   font-style:italic;
 }
+  q {
+  quotes:"“","”","‘","’";
+}
 .bl {
   list-style-type:disc; 
+}
+.dq::before {
+  content:"“";
+}
+.dq::after {
+  content:"”";
 }
 .it {
   font-style:italic; 
 }
 .nw {
   white-space:nowrap; 
+}
+.sq::before {
+  content:"‘";
+}
+.sq::after {
+  content:"’";
 }
