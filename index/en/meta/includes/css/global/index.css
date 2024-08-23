@@ -5,7 +5,7 @@
   quotes:"“","”","‘","’";
 }
 .bl {
-  list-style-type:disc; 
+  list-style-type:disc;
 }
 .dq::before {
   content:"“";
@@ -14,10 +14,13 @@
   content:"”";
 }
 .it {
-  font-style:italic; 
+  font-style:italic;
+}
+.no {
+  font:inherit;
 }
 .nw {
-  white-space:nowrap; 
+  white-space:nowrap;
 }
 .sq::before {
   content:"‘";
