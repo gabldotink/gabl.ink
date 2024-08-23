@@ -4,6 +4,9 @@
   q {
   quotes:"“","”","‘","’";
 }
+.bd {
+  font-weight:bold;
+}
 .bl {
   list-style-type:disc;
 }
@@ -39,4 +42,7 @@
 }
 .sq::after {
   content:"’";
+}
+.ul {
+  text-decoration:underline;
 }
