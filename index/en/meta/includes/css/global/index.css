@@ -7,6 +7,12 @@
 .bl {
   list-style-type:disc;
 }
+.dg::before {
+  content:"« ";
+}
+.dg::after {
+  content:" »";
+}
 .dq::before {
   content:"“";
 }
@@ -21,6 +27,12 @@
 }
 .nw {
   white-space:nowrap;
+}
+.sg::before {
+  content:"‹ ";
+}
+.sg::after {
+  content:" ›";
 }
 .sq::before {
   content:"‘";
