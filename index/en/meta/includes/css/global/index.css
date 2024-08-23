@@ -31,6 +31,9 @@
 .nw {
   white-space:nowrap;
 }
+.ol {
+  text-decoration-line:overline;
+}
 .sg::before {
   content:"‹ ";
 }
@@ -43,6 +46,9 @@
 .sq::after {
   content:"’";
 }
+.st {
+  text-decoration-line:line-through;
+}
 .ul {
-  text-decoration:underline;
+  text-decoration-line:underline;
 }
