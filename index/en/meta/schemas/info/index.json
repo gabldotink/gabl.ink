@@ -159,6 +159,7 @@
           "type":"string",
           "minLength":1,
           "pattern":".+"
+        }
       },
       "required":[
         "text",
@@ -321,6 +322,20 @@
           },
           "uniqueItems":true
         },
+        "article":{
+          "description":"[strings/null] available file format(s) for “article” files (with dot, slashes allowed)",
+          "type":[
+            "array",
+            "null"
+          ],
+          "items":{
+            "type":"string",
+            "minLength":1,
+            "maxLength":120,
+            "pattern":"^[A-Za-z0-9._/-]{1,120}$"
+          },
+          "uniqueItems":true
+        },
         "image":{
           "description":"[strings/null] available file format(s) for “image” files (with dot, slashes allowed)",
           "type":[
@@ -352,6 +367,7 @@
         "required":[
           "info",
           "dotfile",
+          "article",
           "image",
           "video"
         ]
