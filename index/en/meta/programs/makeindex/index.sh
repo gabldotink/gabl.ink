@@ -40,7 +40,7 @@ if \
           hreflang="%s"/>
     <!-- todo: internationalize this link -->
     <link rel="stylesheet"
-     href="https://gabl.ink/index/en/meta/includes/css/global/index.css"
+          href="//gabl.ink/index/en/meta/includes/css/global/index.css"
           hreflang="%s"/>
     <meta property="og:title"
           content="%s"/>
