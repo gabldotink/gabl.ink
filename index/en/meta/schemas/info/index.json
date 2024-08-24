@@ -153,13 +153,19 @@
           "type":"string",
           "minLength":1,
           "pattern":".+"
-        }
+        },
+        "logline":{
+          "description":"[string] one-sentence summary",
+          "type":"string",
+          "minLength":1,
+          "pattern":".+"
       },
       "required":[
         "text",
         "ipa",
         "sampa",
-        "x-sampa"
+        "x-sampa",
+        "logline"
       ]
     },
     "date":{

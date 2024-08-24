@@ -24,9 +24,10 @@ content="$(extract content)"
 language_full="$(extract language.full)"
 language_locale="$(extract language.locale)"
 title_text="$(extract title.text)"
+title_logline="$(extract title.logline)"
 format_image_0="$(extract format.image[0])"
 license_0="$(extract license[0])"
-export id_full content language_full language_locale title_text format_image_0 license_0
+export id_full content language_full language_locale title_text title_logline format_image_0 license_0
 
 if \
 [ "$content" = comic_page ];then
@@ -41,6 +42,8 @@ if \
     <meta name="viewport"
           content="width=device-width,initial-scale=1"/>
     <title>gabl.ink – %s</title>
+    <meta name="description"
+          content="%s"/>
     <meta name="robots"
           content="index,follow"/>
     <link rel="canonical"
@@ -50,14 +53,16 @@ if \
     <link rel="stylesheet"
           href="//gabl.ink/index/en/meta/css/global/index.css"
           hreflang="%s"/>
-    <meta property="og:title"
-          content="%s"/>
     <meta property="og:type"
           content="article"/>
+    <meta property="og:title"
+          content="%s"/>
+    <meta property="og:description"
+          content="%s"/>
     <meta property="og:url"
           content="https://gabl.ink/index/%s/index.html"/>
     <meta property="og:image"
-          content="https://gabl.ink/index/%s/image%s"/>
+          content="//gabl.ink/index/%s/image%s"/>
     <meta property="og:locale"
           content="%s"/>
   </head>
@@ -69,10 +74,12 @@ if \
   "$language_full" \
   "$license_0" \
   "$title_text" \
+  "$title_logline" \
   "$id_full" \
   "$language_full" \
   "$language_full" \
   "$title_text" \
+  "$title_logline" \
   "$id_full" \
   "$id_full" \
   "$format_image_0" \
