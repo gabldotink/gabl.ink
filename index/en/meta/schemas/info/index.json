@@ -72,51 +72,55 @@
       "type":"object",
       "properties":{
         "language":{
-          "description":"[string/null] primary ISO 639 or extension language tag (two letters if possible, or three otherwise, or null if full language code is entirely private-use tags)",
-          "type":[
-            "string",
-            "null"
-          ],
+          "description":"[string] primary ISO 639 or extension language tag (two letters if possible, or three otherwise)",
+          "type":"string",
           "minLength":2,
           "maxLength":3,
           "pattern":"^[a-z]{2,3}$"
         },
         "script":{
-          "description":"[string/null] primary ISO 15924 or extension script tag (null if irrelevant or not present in full language code)",
-          "type":[
-            "string",
-            "null"
-          ],
+          "description":"[string] primary ISO 15924 or extension script tag",
+          "type":"string",
           "minLength":4,
           "maxLength":4,
           "pattern":"^[A-Z][a-z]{3}$"
         },
         "region":{
-          "description":"[string/null] primary ISO 3166 or extension region tag (two letters if possible, or three digits otherwise, or null if irrelevant or not present in full language code)",
-          "type":[
-            "string",
-            "null"
-          ],
+          "description":"[string] primary ISO 3166 or extension region tag (two letters if possible, or three digits otherwise",
+          "type":"string",
           "minLength":2,
           "maxLength":3,
-          "$comment":"There are currently no numeric language codes beginning with “9,” but I’m not sure if that’s explicitly reserved or anything.",
+          "$comment":"There are currently no numeric language codes beginning with “9,” but I’m not sure if they’re explicitly reserved or anything.",
           "pattern":"^[A-Z]{2}|[0-9]{3}$"
         },
         "private":{
-          "description":"[string/null] primary private-use tag (no “x-,” multiple tags if needed, or null if not present in full language code)",
+          "description":"[string/null] primary private-use tag(s) (no “x-,” null if irrelevant)",
           "type":[
             "string",
             "null"
           ],
           "minLength":1,
           "pattern":"^[a-z0-9][a-z0-9-]+$"
+        },
+        "full":{
+          "description":"[string] full primary IETF BCP 47 language code",
+          "type":"string",
+          "minLength":2,
+          "pattern":"^[a-z]{2}[A-Za-z0-9-]*$"
+        },
+        "locale":{
+          "description":"[string] full primary locale code",
+          "type":"string",
+          "minLength":2,
+          "pattern":"^[a-z]{2}_[A-Z]{2}$"
         }
       },
       "required":[
         "language",
         "script",
         "region",
-        "private"
+        "private",
+        "full"
       ]
     },
     "title":{

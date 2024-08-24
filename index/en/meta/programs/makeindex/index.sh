@@ -19,13 +19,14 @@ extract(){
 }
 export extract
 
-id_full="$(extract .id.full)"
-content="$(extract .content)"
+id_full="$(extract id.full)"
+content="$(extract content)"
 language_full="$(extract language.full)"
+language_locale="$(extract language.locale)"
 title_text="$(extract title.text)"
-format_image_0="$(extract .format.image[0])"
-license_0="$(extract .license[0])"
-export id_full content language_full title_text format_image_0 license_0
+format_image_0="$(extract format.image[0])"
+license_0="$(extract license[0])"
+export id_full content language_full language_locale title_text format_image_0 license_0
 
 if \
 [ "$content" = comic_page ];then
@@ -57,6 +58,8 @@ if \
           content="https://gabl.ink/index/%s/index.html"/>
     <meta property="og:image"
           content="https://gabl.ink/index/%s/image%s"/>
+    <meta property="og:locale"
+          content="%s"/>
   </head>
   <body>
 
@@ -72,7 +75,8 @@ if \
   "$title_text" \
   "$id_full" \
   "$id_full" \
-  "$format_image_0"
+  "$format_image_0" \
+  "$language_locale"
 fi
 
 exit 0
