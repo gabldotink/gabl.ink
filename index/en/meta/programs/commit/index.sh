@@ -6,17 +6,6 @@
 
 export POSIXLY_CORRECT
 
-exit_function(){
-  printf \
-'A signal to stop was received.
-No files were changed.\n'
-  set -x
-  exit 3
-}
-export exit_function
-
-trap exit_function INT TERM HUP QUIT
-
 script="$0"
 id="$1"
 export script id
@@ -67,14 +56,6 @@ write_json(){
 }
 export write_json
 
-exit_function(){
-  printf \
-'A signal to stop was received.
-Some changes were made.\n'
-  set -x
-  exit 3
-}
-
 for item in $items;do
   export item
   output="$index/$item/info.json"
@@ -98,11 +79,6 @@ for item in $items;do
       '.date.updated.full = $full' "$output" \
   )" > "$output"
 done
-
-# exiting is not needed at this time
-exit_function(){
-  true
-}
 
 printf 'All operations were completed successfully.\n'
 set -x

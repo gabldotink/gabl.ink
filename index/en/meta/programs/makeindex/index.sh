@@ -11,7 +11,7 @@ export script id
 index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
 export index
 
-j(){
+extract(){
   key="$1"
   export key
   # todo: “jq” dependency
@@ -19,9 +19,16 @@ j(){
 }
 export extract
 
+id_full="$(extract .id.full)"
+content="$(extract .content)"
+language_full="$(extract language.full)"
+title_text="$(extract title.text)"
+format_image_0="$(extract .format.image[0])"
+license_0="$(extract .license[0])"
+export id_full content language_full title_text format_image_0 license_0
+
 if \
-[ "$(jq --raw-output --monochrome-output .type "$index/$id/info.json")"\
-  = comic_page ];then
+[ "$content" = comic_page ];then
   printf \
 '<!DOCTYPE html>
 <html lang="%s"
@@ -40,7 +47,7 @@ if \
           hreflang="%s"/>
     <!-- todo: internationalize this link -->
     <link rel="stylesheet"
-          href="//gabl.ink/index/en/meta/includes/css/global/index.css"
+          href="//gabl.ink/index/en/meta/css/global/index.css"
           hreflang="%s"/>
     <meta property="og:title"
           content="%s"/>
@@ -48,8 +55,6 @@ if \
           content="article"/>
     <meta property="og:url"
           content="https://gabl.ink/index/%s/index.html"/>
-    <!-- todo: work with “image” arrays (or make new property for a
-       - “preferred” image) -->
     <meta property="og:image"
           content="https://gabl.ink/index/%s/image%s"/>
   </head>
@@ -57,16 +62,17 @@ if \
 
   </body>
 </html>
-' "$(j language.text)" \
-  "$(j language.text)" \
-  "$(j license)" \
-  "$(j title.text)" \
-  "$(j id.full)" \
-  "$(j language.full)" \
-  "$(j title.text)" \
-  "$(j id.full)" \
-  "$(j id.full)" \
-  "$(j format.image)"
+' "$language_full" \
+  "$language_full" \
+  "$license_0" \
+  "$title_text" \
+  "$id_full" \
+  "$language_full" \
+  "$language_full" \
+  "$title_text" \
+  "$id_full" \
+  "$id_full" \
+  "$format_image_0"
 fi
 
 exit 0

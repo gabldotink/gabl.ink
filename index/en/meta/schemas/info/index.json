@@ -32,29 +32,25 @@
           "pattern":"^[a-z0-9-]+$"
         },
         "child":{
-          "description":"[string(s)/null] base identifier(s) (IDs) of child items",
+          "description":"[strings/null] base identifier(s) (IDs) of child items",
           "type":[
-            "string",
             "array",
             "null"
           ],
           "items":{
             "type":"string",
             "pattern":"^[a-z0-9-]+$"
-          },
-          "pattern":"^[a-z0-9-]+$"
+          }
         },
         "alternate":{
-          "description":"[string(s)/null] full identifier(s) (IDs) of alternate versions",
+          "description":"[strings/null] full identifier(s) (IDs) of alternate versions",
           "type":[
-            "string",
             "array",
             "null"
           ],
           "items":{
             "type":"string"
-          },
-          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
+          }
         },
         "required":[
           "full",
@@ -277,44 +273,33 @@
       }
     },
     "author":{
-      "description":"[string(s)] creator(s)",
-      "type":[
-        "string",
-        "array"
-      ],
+      "description":"[string] creator(s)",
+      "type":"array",
       "items":{
         "type":"string",
         "minLength":1,
         "pattern":".+"
       },
-      "minLength":1,
-      "pattern":".+",
       "uniqueItems":true
     },
     "format":{
-      "description":"[object] available file format(s) (with dot, slashes allowed)",
+      "description":"[named objects] available file format(s) (with dot, slashes allowed)",
       "type":"object",
       "properties":{
         "info":{
-          "description":"[string(s)] available file format(s) for “info” files (with dot, slashes allowed)",
-          "type":[
-            "string",
-            "array"
-          ],
+          "description":"[strings] available file format(s) for “info” files (with dot, slashes allowed)",
+          "type":"array",
           "items":{
             "type":"string",
             "minLength":1,
-            "maxLength":123
+            "maxLength":123,
+            "pattern":"^[A-Za-z0-9._/-]{1,123}$"
           },
-          "minLength":1,
-          "maxLength":123,
-          "pattern":"^[A-Za-z0-9._/-]{1,123}$",
           "uniqueItems":true
         },
         "dotfile":{
-          "description":"[string(s)/null] available files starting with a dot (full filename)",
+          "description":"[strings/null] available files starting with a dot (full filename)",
           "type":[
-            "string",
             "array",
             "null"
           ],
@@ -323,12 +308,12 @@
             "minLength":1,
             "maxLength":127,
             "pattern":"^[A-Za-z0-9._/-]{1,127}$"
-          }
+          },
+          "uniqueItems":true
         },
         "image":{
-          "description":"[string(s)/null] available file format(s) for “image” files (with dot, slashes allowed)",
+          "description":"[strings/null] available file format(s) for “image” files (with dot, slashes allowed)",
           "type":[
-            "string",
             "array",
             "null"
           ],
@@ -338,15 +323,11 @@
             "maxLength":122,
             "pattern":"^[A-Za-z0-9._/-]{1,122}$"
           },
-          "minLength":1,
-          "maxLength":122,
-          "pattern":"^[A-Za-z0-9._/-]{1,122}$",
           "uniqueItems":true
         },
         "video":{
-          "description":"[string(s)/null] available file format(s) for “video” files (with dot, slashes allowed)",
+          "description":"[strings/null] available file format(s) for “video” files (with dot, slashes allowed)",
           "type":[
-            "string",
             "array",
             "null"
           ],
@@ -356,9 +337,7 @@
             "maxLength":122,
             "pattern":"^[A-Za-z0-9._/-]{1,122}$"
           },
-          "minLength":1,
-          "maxLength":122,
-          "pattern":"^[A-Za-z0-9._/-]{1,122}$"
+          "uniqueItems":true
         },
         "required":[
           "info",
@@ -368,18 +347,13 @@
         ]
       },
       "license":{
-        "description":"[string(s)] SPDX license identifier(s)",
-        "type":[
-          "string",
-          "array"
-        ],
+        "description":"[strings] SPDX license identifier(s)",
+        "type":"array",
         "items":{
           "type":"string",
           "minLength":1,
           "pattern":"^[A-Za-z0-9.+-]+$"
         },
-        "minLength":1,
-        "pattern":"^[A-Za-z0-9.+-]+$",
         "uniqueItems":true
       }
     }

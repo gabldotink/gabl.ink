@@ -3,17 +3,6 @@
 
 export POSIXLY_CORRECT
 
-exit_function(){
-  printf \
-'A signal to stop was received.
-No files were changed.\n'
-  set -x
-  exit 3
-}
-export exit_function
-
-trap exit_function INT TERM HUP QUIT
-
 script="$0"
 export script
 
@@ -23,14 +12,6 @@ export root
 
 index="$root/index"
 export index
-
-exit_function(){
-  printf \
-'A signal to stop was received.
-Some files were changed.\n'
-  set -x
-  exit 3
-}
 
 cp -fp   "$index/en/meta/htaccess/index.htaccess" \
          "$root/.htaccess"
@@ -45,11 +26,6 @@ cp -fp   "$index/en/meta/github/readme/index.md" \
 mkdir -p "$root/.github"
 cp -fp   "$index/en/meta/github/settings/index.yml" \
          "$root/.github/settings.yml"
-
-# exiting is not needed at this time
-exit_function(){
-  true
-}
 
 printf 'All operations were completed successfully.\n'
 set -x
