@@ -27,11 +27,12 @@
 }
 .no {
   font:inherit;
+  text-decoration:inherit;
 }
 .nw {
   white-space:nowrap;
 }
-.ol {
+.ov {
   text-decoration-line:overline;
 }
 .sg::before {
@@ -49,6 +50,6 @@
 .st {
   text-decoration-line:line-through;
 }
-.ul {
+.un {
   text-decoration-line:underline;
 }
