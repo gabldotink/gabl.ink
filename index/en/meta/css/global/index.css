@@ -10,6 +10,9 @@
 .bl {
   list-style-type:disc;
 }
+.ca {
+  text-transform:capitalize
+}
 .dg::before {
   content:"« ";
 }
@@ -28,12 +31,16 @@
 .it {
   font-style:italic;
 }
+.lo {
+  text-transform:lowercase;
+}
 .ni {
   font-style:normal;
 }
 .no {
   font:inherit;
   text-decoration:inherit;
+  text-transform:inherit;
 }
 .nw {
   white-space:nowrap;
@@ -61,4 +68,7 @@
 }
 .un {
   text-decoration-line:underline;
+}
+.up {
+  text-transform:uppercase;
 }
