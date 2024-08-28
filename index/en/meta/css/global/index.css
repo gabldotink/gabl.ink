@@ -24,7 +24,7 @@
   list-style-type:disc;
 }
 .ca {
-  text-transform:capitalize
+  text-transform:capitalize;
 }
 .dg::before {
   content:"« ";
