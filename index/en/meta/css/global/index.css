@@ -15,6 +15,7 @@
 }
  strong {
   font-weight:bold;
+  text-decoration-line:inherit;
 }
 .bd {
   font-weight:bold;
