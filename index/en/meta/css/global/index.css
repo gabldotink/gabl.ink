@@ -16,6 +16,9 @@
 .dg::after {
   content:" »";
 }
+.dn {
+  display:none;
+}
 .dq::before {
   content:"“";
 }
@@ -24,6 +27,9 @@
 }
 .it {
   font-style:italic;
+}
+.ni {
+  font-style:normal;
 }
 .no {
   font:inherit;
@@ -34,6 +40,9 @@
 }
 .ov {
   text-decoration-line:overline;
+}
+.sc {
+  font-variant:small-caps;
 }
 .sg::before {
   content:"‹ ";
