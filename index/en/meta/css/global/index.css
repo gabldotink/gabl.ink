@@ -4,6 +4,9 @@
   b {
   font-weight:bold;
 }
+ cite {
+  font-style:inherit;
+}
  em {
   font-style:italic;
 }
