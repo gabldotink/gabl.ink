@@ -24,7 +24,7 @@ content="$(extract content)"
 language_full="$(extract language.full)"
 language_locale="$(extract language.locale)"
 title_text="$(extract title.text)"
-title_logline="$(extract title.logline)"
+title_description="$(extract title.description)"
 format_image_0="$(extract format.image[0])"
 license_0="$(extract license[0])"
 export id_full content language_full language_locale title_text title_logline format_image_0 license_0
@@ -74,12 +74,12 @@ if \
   "$language_full" \
   "$license_0" \
   "$title_text" \
-  "$title_logline" \
+  "$title_description" \
   "$id_full" \
   "$language_full" \
   "$language_full" \
   "$title_text" \
-  "$title_logline" \
+  "$title_description" \
   "$id_full" \
   "$id_full" \
   "$format_image_0" \

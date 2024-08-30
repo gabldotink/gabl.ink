@@ -154,7 +154,7 @@
           "minLength":1,
           "pattern":".+"
         },
-        "logline":{
+        "description":{
           "description":"[string] one-sentence summary",
           "type":"string",
           "minLength":1,
