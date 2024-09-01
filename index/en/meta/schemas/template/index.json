@@ -1,0 +1,16 @@
+{
+  "$id":"https://gabl.ink/index/en/meta/schema/template/index.json",
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$comment":"SPDX-License-Identifier: CC0-1.0",
+  "title":"gabl.ink JSON schema template",
+  "description":"generic template for a JSON schema",
+  "type":"object",
+  "properties":{
+    "example":{
+      "description":"[type]"
+    }
+  },
+  "required":[
+    "example"
+  ]
+}
