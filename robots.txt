@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: CC0-1.0
-# ==================== wrap lines at 72 characters ====================
+# ================= wrap lines at 72 printed characters ================
 
 # You can do whatever. Mirror the whole site, automate downloads,
 # whatever. Don’t DoS, obviously, but besides that, do whatever.
