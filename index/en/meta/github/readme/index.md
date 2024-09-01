@@ -1,4 +1,5 @@
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- =============  wrap lines at 72 printed characters ============ -->
 # gabl.ink
 
 This is the source repository for the new [gabl.ink](https://gabl.ink/)

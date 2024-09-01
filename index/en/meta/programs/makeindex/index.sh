@@ -1,5 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: CC0-1.0
+# ================= wrap lines at 72 printed characters ================
 
 export POSIXLY_CORRECT
 
