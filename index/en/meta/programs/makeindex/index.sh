@@ -28,7 +28,7 @@ title_text="$(extract title.text)"
 title_description="$(extract title.description)"
 format_image_0="$(extract format.image[0])"
 license_0="$(extract license[0])"
-export id_full content language_full language_locale title_text title_logline format_image_0 license_0
+export id_full content language_full language_locale title_text title_description format_image_0 license_0
 
 if \
 [ "$content" = comic_page ];then
