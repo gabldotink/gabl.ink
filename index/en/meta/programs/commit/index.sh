@@ -27,8 +27,7 @@ fi
 items="$id"
 export items
 
-# todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
+index="$(dirname "$script")/../../../.."
 export index
 
 while true;do

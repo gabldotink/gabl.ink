@@ -8,8 +8,7 @@ script="$0"
 id="$1"
 export script id
 
-# todo: “readlink” dependency
-index="$(readlink --canonicalize "$(dirname "$script")/../../../..")"
+index="$(dirname "$script")/../../../.."
 export index
 
 extract(){

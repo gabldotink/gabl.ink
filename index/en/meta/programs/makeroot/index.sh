@@ -7,8 +7,7 @@ export POSIXLY_CORRECT
 script="$0"
 export script
 
-# todo: “readlink” dependency
-root="$(readlink --canonicalize "$(dirname "$script")/../../../../..")"
+root="$(dirname "$script")/../../../../.."
 export root
 
 index="$root/index"
