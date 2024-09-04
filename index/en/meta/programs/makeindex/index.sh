@@ -60,6 +60,8 @@ if \
           content="%s"/>
     <meta property="og:description"
           content="%s"/>
+    <meta property="og:site_name"
+          content="gabl.ink"/>
     <meta property="og:url"
           content="https://gabl.ink/index/%s/index.html"/>
     <meta property="og:image"
