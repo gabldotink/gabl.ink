@@ -4,6 +4,7 @@
 #AddType application/bat    .bat
 AddType text/css           .css
 AddType text/plain         .gitattributes
+AddType text/plain         .gitconfig
 AddType text/plain         .htaccess
 AddType text/html          .html
 #AddType image/jpeg         .jpg

@@ -4,6 +4,7 @@
 #*.bat text eol=crlf linguist-language=Batchfile
 *.css  text eol=lf linguist-language=CSS
 *.gitattributes text eol=lf linguist-language=Git-Attributes
+*.gitconfig text eol=lf linguist-language=Git-Config
 *.htaccess text eol=lf linguist-language=ApacheConf
 *.html text eol=lf linguist-language=HTML
 *.json text eol=lf linguist-language=JSON

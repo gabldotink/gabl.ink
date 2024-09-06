@@ -19,6 +19,8 @@ cp -fp   "$index/en/meta/robots/index.txt" \
          "$root/robots.txt"
 cp -fp   "$index/en/meta/git/attributes/index.gitattributes" \
          "$root/.gitattributes"
+cp -fp   "$index/en/meta/git/config/index.gitconfig" \
+         "$root/.gitconfig"
 cp -fp   "$index/mul/meta/root/index.html" \
          "$root/index.html"
 cp -fp   "$index/en/meta/github/readme/index.md" \

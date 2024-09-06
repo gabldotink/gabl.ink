@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: CC0-1.0
+
+[core]
+eol = lf
+
+[gitweb]
+description = the gabl.ink website
