@@ -1,0 +1,22 @@
+{
+  "name":{
+    "given":[
+      "Gabriel"
+    ],
+    "family":null,
+    "nick":"gabl",
+    "full":"gabl"
+  },
+  "email":{
+    "standard":{
+      "name":"gabl",
+      "domain":"gabl.ink",
+      "full":"gabl@gabl.ink"
+    },
+    "the_other_type_I_do_not_remember":{
+      "name":"gabl",
+      "domain":"gabl.ink",
+      "full":"gabl@gabl.ink"
+    }
+  }
+}
