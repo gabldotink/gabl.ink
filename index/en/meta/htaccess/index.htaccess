@@ -20,3 +20,5 @@ AddType application/yaml   .yml
 <FilesMatch "^.+\.html$">
   Header add X-UA-Compatible "IE=edge,chrome=1"
 </FilesMatch>
+
+ErrorDocument 404 https://gabl.ink/index/en/status/http/404/index.html
