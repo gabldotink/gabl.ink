@@ -21,7 +21,7 @@ cp -fp   "$index/en/meta/git/attributes/index.gitattributes" \
          "$root/.gitattributes"
 cp -fp   "$index/en/meta/git/config/index.gitconfig" \
          "$root/.gitconfig"
-cp -fp   "$index/mul/meta/root/index.html" \
+cp -fp   "$index/mul/meta/home/index.html" \
          "$root/index.html"
 cp -fp   "$index/en/meta/github/readme/index.md" \
          "$root/readme.md"
