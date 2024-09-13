@@ -32,7 +32,8 @@
     "id":"UCaf5hnmFzF1DoIE-MhaP7gQ"
   },
   "bluesky":{
-    "handle":"gabl.ink"
+    "handle":"gabl.ink",
+    "did":"did:plc:ropjoorbyhi24e4u5wff6hr3"
   },
   "mastodon":{
     "handle":"gabl",
