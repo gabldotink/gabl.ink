@@ -37,7 +37,7 @@
       "did":"did:plc:ropjoorbyhi24e4u5wff6hr3"
     },
     "mastodon":{
-      "handle":"gabl",
+      "username":"gabl",
       "domain":"mstdn.party",
       "full":"gabl@mstdn.party"
     },
@@ -52,6 +52,9 @@
         "discriminator":null,
         "full":null
       }
+    },
+    "cohost":{
+      "username":"gabldotink"
     }
   }
 }
