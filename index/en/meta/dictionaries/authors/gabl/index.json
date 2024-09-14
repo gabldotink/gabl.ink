@@ -42,5 +42,13 @@
   },
   "reddit":{
     "username":"gabldotink"
+  },
+  "discord":{
+    "handle":"gabldotink",
+    "legacy":{
+      "username":null,
+      "discriminator":null,
+      "full":null
+    }
   }
 }
