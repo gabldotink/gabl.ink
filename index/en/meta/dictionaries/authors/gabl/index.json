@@ -44,7 +44,8 @@
     "username":"gabldotink"
   },
   "discord":{
-    "handle":"gabldotink",
+    "username":"gabldotink",
+    "id":"1187094419778846800",
     "legacy":{
       "username":null,
       "discriminator":null,
