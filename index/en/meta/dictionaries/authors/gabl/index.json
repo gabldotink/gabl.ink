@@ -1,9 +1,11 @@
 {
   "name":{
+    "prefix":null,
     "given":[
       "Gabriel"
     ],
     "family":null,
+    "suffix":null
     "nick":"gabl",
     "full":"gabl"
   },
@@ -27,6 +29,9 @@
     "x":{
       "username":"gabldotink",
       "id":"1352061598836264960"
+    },
+    "github":{
+      "username":"gabldotink"
     },
     "youtube":{
       "username":"gabldotink",
