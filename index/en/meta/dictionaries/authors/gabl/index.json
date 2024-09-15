@@ -28,13 +28,18 @@
       "username":"gabldotink",
       "id":"1352061598836264960"
     },
-    "tumblr":{
-      "username":"gabldotink",
-      "url":null
-    },
     "youtube":{
       "username":"gabldotink",
       "id":"UCaf5hnmFzF1DoIE-MhaP7gQ"
+    },
+    "discord":{
+      "username":"gabldotink",
+      "id":"1187094419778846800",
+      "legacy":{
+        "username":null,
+        "discriminator":null,
+        "full":null
+      }
     },
     "bluesky":{
       "username":"gabl.ink",
@@ -45,17 +50,12 @@
       "domain":"mstdn.party",
       "full":"gabl@mstdn.party"
     },
+    "tumblr":{
+      "username":"gabldotink",
+      "url":null
+    },
     "reddit":{
       "username":"gabldotink"
-    },
-    "discord":{
-      "username":"gabldotink",
-      "id":"1187094419778846800",
-      "legacy":{
-        "username":null,
-        "discriminator":null,
-        "full":null
-      }
     },
     "cohost":{
       "username":"gabldotink"
