@@ -14,7 +14,7 @@
           "description":"[string] full identifier (ID)",
           "type":"string",
           "minLength":2,
-          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
+          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9_-])*$"
         },
         "parent":{
           "description":"[string/null] full identifier (ID) of parent, or null for a root-level ID",
@@ -23,13 +23,13 @@
             "null"
           ],
           "minLength":2,
-          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9-])*$"
+          "pattern":"^[a-z][a-z0-9-]+(/[a-z0-9_-])*$"
         },
         "base":{
           "description":"[string] part of identifier (ID) after the last slash, or same as the full ID for a root-level ID",
           "type":"string",
           "minLength":1,
-          "pattern":"^[a-z0-9-]+$"
+          "pattern":"^[a-z0-9_-]+$"
         },
         "child":{
           "description":"[strings/null] base identifier(s) (IDs) of child items",
@@ -39,7 +39,7 @@
           ],
           "items":{
             "type":"string",
-            "pattern":"^[a-z0-9-]+$"
+            "pattern":"^[a-z0-9_-]+$"
           }
         },
         "alternate":{
@@ -166,7 +166,7 @@
         "ipa",
         "sampa",
         "x-sampa",
-        "logline"
+        "description"
       ]
     },
     "date":{
