@@ -14,10 +14,11 @@ AddType video/mp4          .mp4
 AddType image/png          .png
 AddType text/x-shellscript .sh
 AddType text/plain         .txt
+AddType text/vcard         .vcf
 #AddType video/webm         .webm
 AddType application/yaml   .yml
 
-<FilesMatch "^.+\.html$">
+<FilesMatch "^.*\.html$">
   Header add X-UA-Compatible "IE=edge,chrome=1"
 </FilesMatch>
 

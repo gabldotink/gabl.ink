@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:4.0
+SOURCE:https://gabl.ink/index/en/meta/dictionaries/authors/gabl/vcard.vcf
+KIND:individual
+FN:Gabriel “gabldotink”
+N:;Gabriel;;;
+NICKNAME:gabl,gabldotink
+GENDER:M
+URL:https://gabl.ink/
+LANG:en-US,fr
+TZ:America/Denver
+END:VCARD
