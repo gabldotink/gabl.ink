@@ -1,0 +1,18 @@
+{
+  "id":"cc-by-4_0",
+  "external_id":{
+    "spdx":"CC-BY-4.0",
+    "wikimedia_commons":"Cc-by-4.0",
+    "wikidata":"Q20007257"
+  },
+  "name":"Creative Commons Attribution 4.0 International",
+  "short":"CC BY 4.0",
+  "creative_commons":{
+    "properties":[
+      "by"
+    ],
+    "version":"4.0",
+    "port":"",
+    "url_base":"licenses/by/4.0"
+  }
+}
