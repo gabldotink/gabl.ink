@@ -9,6 +9,7 @@ NICKNAME:gabl,gabldotink
 GENDER:M
 URL:https://gabl.ink/
 EMAIL:gabl@gabl.ink
-LANG:en-US,fr
+LANG;PREF=1:en
+LANG;PREF=2:fr
 TZ:America/Denver
 END:VCARD
