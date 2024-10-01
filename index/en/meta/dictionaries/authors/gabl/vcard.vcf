@@ -2,6 +2,7 @@ BEGIN:VCARD
 VERSION:4.0
 SOURCE:https://gabl.ink/index/en/meta/dictionaries/authors/gabl/vcard.vcf
 KIND:individual
+LANGUAGE:en-US
 FN:Gabriel “gabldotink”
 N:;Gabriel;;;
 NICKNAME:gabl,gabldotink
