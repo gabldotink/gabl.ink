@@ -2,13 +2,15 @@
 # ================= wrap lines at 72 printed characters ================
 
 # You can do whatever. Mirror the whole site, automate downloads,
-# whatever. Don’t DoS, obviously, but besides that, do whatever.
+# whatever. If possible, try to limit the load as reasonable for your
+# activities.
 User-agent: *
 Allow: /
 
 # These user agents should always be allowed to access all files; they
-# are likely fetching helpful information for people, archiving the
-# website, or similar activities, which I am happy to facilitate.
+# are likely fetching helpful information for people, downloading raw
+# files, archiving the website, or other activities which I am happy to
+# facilitate.
 User-agent: Amazonbot
 User-agent: Applebot
 User-agent: archive.org_bot
@@ -16,8 +18,11 @@ User-agent: ArchiveBot
 User-agent: ArchiveTeam
 User-agent: Arquivo-web-crawler
 User-agent: ChatGPT-User
+User-agent: Chrome-Lighthouse
 User-agent: curl
-User-agent: gabl.ink
+User-agent: dosage
+User-agent: gabl.ink_responsible_use
+Uaer-agent: gallery-dl
 User-agent: git
 User-agent: ia_archiver
 User-agent: ia_archiver-web.archive.org
@@ -33,6 +38,8 @@ User-agent: PerplexityBot
 User-agent: SiteSnagger
 User-agent: Teleport
 User-agent: TeleportPro
+User-agent: W3C_CSS_Validator
+User-agent: W3C_Validator
 User-agent: WebCopier
 User-agent: WebZIP
 User-agent: Wget
