@@ -2,6 +2,8 @@
 <!-- =============  wrap lines at 72 printed characters ============ -->
 # gabl.ink
 
+**Note:** Some of the below is outdated. Probably ignore it.
+
 This is the source repository for the new [gabl.ink](https://gabl.ink/)
 website.
 
