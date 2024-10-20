@@ -14,6 +14,7 @@
 *.vcf  text eol=crlf linguist-language=vCard
 *.yml  text eol=lf linguist-language=YAML
 
+*.clip binary
 #*.jpg binary
 *.png binary
 *.mp4 binary
