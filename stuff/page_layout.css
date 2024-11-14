@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* SPDX-License-Identifier: CC0-1.0 */
+/* =============== wrap lines at 72 printed characters ============== */
+
+  b {
+  font-weight:bold;
+}
+ cite {
+  font-style:inherit;
+}
+ em {
+  font-style:italic;
+}
+  i {
+  font-style:italic;
+}
+  q {
+  quotes:"“""”""‘""’";
+}
+ strong {
+  font-weight:bold;
+  text-decoration-line:inherit;
+}
+.bd {
+  font-weight:bold;
+}
+.bl {
+  list-style-type:disc;
+}
+.ca {
+  text-transform:capitalize;
+}
+.dg::before {
+  content:"« ";
+}
+.dg::after {
+  content:" »";
+}
+.dn {
+  display:none;
+}
+.dq::before {
+  content:"“";
+}
+.dq::after {
+  content:"”";
+}
+.it {
+  font-style:italic;
+}
+.lo {
+  text-transform:lowercase;
+}
+.ni {
+  font-style:normal;
+}
+.no {
+  font:inherit;
+  text-decoration:inherit;
+  text-transform:inherit;
+}
+.nw {
+  white-space:nowrap;
+}
+.ov {
+  text-decoration-line:overline;
+}
+.sc {
+  font-variant:small-caps;
+}
+.sg::before {
+  content:"‹ ";
+}
+.sg::after {
+  content:" ›";
+}
+.sq::before {
+  content:"‘";
+}
+.sq::after {
+  content:"’";
+}
+.st {
+  text-decoration-line:line-through;
+}
+.un {
+  text-decoration-line:underline;
+}
+.up {
+  text-transform:uppercase;
+}
