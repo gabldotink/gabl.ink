@@ -18,7 +18,7 @@
   font-weight:bold;
   text-decoration-line:inherit;
 }
-[lang|="en"],[xml:lang|="en"] {
+[lang|="en" i],[xml:lang|="en" i] {
   quotes:"“""”""‘""’";
 }
 .bold,.b {
