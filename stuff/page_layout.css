@@ -21,71 +21,71 @@
   font-weight:bold;
   text-decoration-line:inherit;
 }
-.bd {
+.bold {
   font-weight:bold;
 }
-.bl {
+.bulleted {
   list-style-type:disc;
 }
-.ca {
-  text-transform:capitalize;
-}
-.dg::before {
-  content:"« ";
-}
-.dg::after {
-  content:" »";
-}
-.dn {
+.display_none {
   display:none;
 }
-.dq::before {
+.double_guillermet::before {
+  content:"« ";
+}
+.double_guillermet::after {
+  content:" »";
+}
+.double_quote::before {
   content:"“";
 }
-.dq::after {
+.double_quote::after {
   content:"”";
 }
-.it {
+.italic {
   font-style:italic;
 }
-.lo {
+.lowsercase {
   text-transform:lowercase;
 }
-.ni {
-  font-style:normal;
-}
-.no {
+.none {
   font:inherit;
   text-decoration:inherit;
   text-transform:inherit;
 }
-.nw {
+.no_wrap {
   white-space:nowrap;
 }
-.ov {
+.overline {
   text-decoration-line:overline;
 }
-.sc {
+.roman {
+  font-style:normal;
+}
+.small_capitals {
   font-variant:small-caps;
 }
-.sg::before {
+.single_guillermet::before {
   content:"‹ ";
 }
-.sg::after {
+.single_guillermet::after {
   content:" ›";
 }
-.sq::before {
+.single_quote::before {
   content:"‘";
 }
-.sq::after {
+.single_quote::after {
   content:"’";
 }
-.st {
+.start_case {
+  text-transform:capitalize;
+}
+.strikethrough {
   text-decoration-line:line-through;
 }
-.un {
+.underline {
   text-decoration-line:underline;
 }
-.up {
+.uppercase {
   text-transform:uppercase;
 }
