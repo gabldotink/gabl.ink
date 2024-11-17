@@ -14,14 +14,14 @@
   i {
   font-style:italic;
 }
-  q {
-  quotes:"“""”""‘""’";
-}
  strong {
   font-weight:bold;
   text-decoration-line:inherit;
 }
-.bold {
+[lang|="en"],[xml:lang|="en"] {
+  quotes:"“""”""‘""’";
+}
+.bold,.b {
   font-weight:bold;
 }
 .bulleted {
@@ -42,7 +42,7 @@
 .double_quote::after {
   content:"”";
 }
-.italic {
+.italic,.i {
   font-style:italic;
 }
 .lowsercase {
@@ -83,7 +83,7 @@
 .strikethrough {
   text-decoration-line:line-through;
 }
-.underline {
+.underline,.u {
   text-decoration-line:underline;
 }
 .uppercase {
