@@ -31,12 +31,6 @@
 .display_none {
   display:none;
 }
-.double_guillermet::before {
-  content:"« ";
-}
-.double_guillermet::after {
-  content:" »";
-}
 .double_quote::before {
   content:"“";
 }
@@ -71,12 +65,6 @@
 }
 .small_capitals {
   font-variant:small-caps;
-}
-.single_guillermet::before {
-  content:"‹ ";
-}
-.single_guillermet::after {
-  content:" ›";
 }
 .single_quote::before {
   content:"‘";
