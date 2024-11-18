@@ -2,21 +2,29 @@
 /* SPDX-License-Identifier: CC0-1.0 */
 /* =============== wrap lines at 72 printed characters ============== */
 
+ abbr {
+  all:unset;
+}
   b {
-  font-weight:bold;
+  all:unset;
 }
  cite {
-  font-style:inherit;
+  all:unset;
 }
+ dfn {
+  all:unset;
+ }
  em {
-  font-style:italic;
+  all:unset;
 }
   i {
-  font-style:italic;
+  all:unset;
+}
+  q {
+  all:unset;
 }
  strong {
-  font-weight:bold;
-  text-decoration-line:inherit;
+  all:unset;
 }
 [lang|="en" i],[*|lang|="en" i] {
   quotes:"“""”""‘""’";
@@ -27,13 +35,13 @@
 .bulleted {
   list-style-type:disc;
 }
-.display_none {
+.display_none,.n {
   display:none;
 }
-.double_quote::before {
+.double_quote::before,.dq::before {
   content:"“";
 }
-.double_quote::after {
+.double_quote::after,.dq::after {
   content:"”";
 }
 .italic,.i {
@@ -42,10 +50,8 @@
 .lowsercase {
   text-transform:lowercase;
 }
-.none {
-  font:inherit;
-  text-decoration:inherit;
-  text-transform:inherit;
+.none,.n {
+  all:unset;
 }
 .no_wrap {
   white-space:nowrap;
@@ -53,10 +59,10 @@
 .overline {
   text-decoration-line:overline;
 }
-.quote::before {
+.quote::before,.q::before {
   content:open-quote;
 }
-.quote::after {
+.quote::after,.q::after {
   content:close-quote;
 }
 .roman {
@@ -65,10 +71,10 @@
 .small_capitals {
   font-variant:small-caps;
 }
-.single_quote::before {
+.single_quote::before,.sq::before {
   content:"‘";
 }
-.single_quote::after {
+.single_quote::after,.sq::after {
   content:"’";
 }
 .start_case {
