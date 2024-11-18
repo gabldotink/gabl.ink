@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* SPDX-License-Identifier: CC0-1.0 */
 /* =============== wrap lines at 72 printed characters ============== */
+@namespace xml "http://www.w3.org/1999/xhtml";
 
   b {
   font-weight:bold;
@@ -18,7 +19,7 @@
   font-weight:bold;
   text-decoration-line:inherit;
 }
-[lang|="en" i],[xml:lang|="en" i] {
+[lang|="en" i],[xml|lang|="en" i] {
   quotes:"“""”""‘""’";
 }
 .bold,.b {
@@ -58,6 +59,12 @@
 }
 .overline {
   text-decoration-line:overline;
+}
+.quote::before {
+  content:open-quote;
+}
+.quote::after {
+  content:close-quote;
 }
 .roman {
   font-style:normal;
