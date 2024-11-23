@@ -1,11 +1,11 @@
 @charset "UTF-8";
 /* SPDX-License-Identifier: CC0-1.0 */
-/* =============== wrap lines at 72 printed characters ============== */
+@namespace xml url(http://www.w3.org/1999/xhtml);
 
  abbr {
   all:unset;
 }
-  b {
+ b {
   all:unset;
 }
  cite {
@@ -17,16 +17,16 @@
  em {
   all:unset;
 }
-  i {
+ i {
   all:unset;
 }
-  q {
+ q {
   all:unset;
 }
  strong {
   all:unset;
 }
-[lang|="en" i],[*|lang|="en" i] {
+[lang|="en" i],[xml|lang|="en" i] {
   quotes:"“""”""‘""’";
 }
 .bold,.b {

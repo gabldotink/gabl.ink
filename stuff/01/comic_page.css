@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* SPDX-License-Identifier: CC0-1.0 */
+@namespace xml url(http://www.w3.org/1999/xhtml);
+
+#nav_bottom_list details summary {
+  white-space:nowrap;
+}
+#nav_bottom_list details ol {
+  list-style-type:none;
+}
+#nav_bottom_list details li {
+  white-space:nowrap;
+}
