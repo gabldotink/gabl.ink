@@ -23,7 +23,7 @@
  details#nav_bottom_list_volume summary cite::before {
   content:none;
 }
- details#nav_bottom_list_volume summary cite::before {
+ details#nav_bottom_list_volume summary cite::after {
   content:none;
 }
  details#nav_bottom_list_volume summary cite {
