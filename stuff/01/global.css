@@ -2,28 +2,7 @@
 /* SPDX-License-Identifier: CC0-1.0 */
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
- abbr {
-  all:unset;
-}
- b {
-  all:unset;
-}
  cite {
-  all:unset;
-}
- dfn {
-  all:unset;
- }
- em {
-  all:unset;
-}
- i {
-  all:unset;
-}
- q {
-  all:unset;
-}
- strong {
   all:unset;
 }
 [lang|="en" i],[xml|lang|="en" i] {
