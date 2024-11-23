@@ -16,10 +16,12 @@
           hreflang="en-US"/>
     <link rel="stylesheet"
           href="./global.css"
-          hreflang="en-US"/>
+          hreflang="en-US"
+          type="text/css"/>
     <link rel="stylesheet"
           href="./comic_page.css"
-          hreflang="en-US"/>
+          hreflang="en-US"
+          type="text/css"/>
     <meta property="og:type"
           content="article"/>
     <meta property="og:title"
@@ -38,28 +40,33 @@
   <body>
     <main>
       <div id="nav_top"></div>
+      <div id="comic_page_single_image">
+        <picture>
+          <img src="./image.png" alt="see transcript"/>
+        </picture>
+      </div>
       <div id="nav_bottom">
-      <div id="nav_buttom_list">
-        <details>
+      <div id="nav_bottom_list">
+        <details id="nav_bottom_list_root">
           <summary>
             <abbr title="volume 1 – “pilot”">vol. 1</abbr>, <abbr title="chapter 1 – “Thursday”">ch. 1</abbr>, page 1 – <cite class="quote"><cite class="quote">Thursday</cite> title page</cite>
           </summary>
-          <details style="text-indent:1em" open="">
-            <summary><a href="../../" hreflang="en-US" type="text/html">volume 1 – <cite class="italic">pilot</cite></a></summary>
-            <details style="text-indent:2em" open="">
-              <summary><a href="../" hreflang="en-US" type="text/html">chapter 1 – <cite class="quote">Thursday</cite></a></summary>
-              <ol>
-                <li><strong>page 1 – <cite class="quote"><cite class="quote">Thursday</cite> title page</cite></strong></li>
-                <li><a href="../02/" hreflang="en-US" type="text/html">page 2 – <cite class="quote">alarm clock</cite></a></li>
-                <li><a href="../03/" hreflang="en-US" type="text/html">page 3 – <cite class="quote">mirror</cite></a></li>
-                <li><a href="../04/" hreflang="en-US" type="text/html">page 4 – <cite class="quote">Magna Carta</cite></a></li>
-                <li><a href="../05/" hreflang="en-US" type="text/html">page 5 – <cite class="quote">Joseph’s mom</cite></a></li>
-                <li><a href="../06/" hreflang="en-US" type="text/html">page 6 – <cite class="quote">next year</cite></a></li>
-                <li><a href="../07/" hreflang="en-US" type="text/html">page 7 – <cite class="quote">establishing shot</cite></a></li>
-                <li><a href="../08/" hreflang="en-US" type="text/html">page 8 – <cite class="quote">T. T.</cite></a></li>
-                <li><a href="../09/" hreflang="en-US" type="text/html">page 9 – <cite class="quote">Harry</cite></a></li>
-                <li><a href="../10/" hreflang="en-US" type="text/html">page 10 – <cite class="quote">new kid</cite></a></li>
-                <li><a href="../11/" hreflang="en-US" type="text/html">page 11 – <cite class="quote">entrance</cite></a></li>
+          <details id="nav_bottom_list_volume" style="text-indent:1em" open="">
+            <summary><a href="../../" hreflang="en-US" type="text/html">volume 1 – <cite>pilot</cite></a></summary>
+            <details id="nav_bottom_list_chapter" style="text-indent:2em" open="">
+              <summary><a href="../" hreflang="en-US" type="text/html">chapter 1 – <cite>Thursday</cite></a></summary>
+              <ol id="nav_bottom_list_pages">
+                <li><strong><cite><cite>Thursday</cite> title page</cite></strong></li>
+                <li><a href="../02/" hreflang="en-US" type="text/html"><cite>alarm clock</cite></a></li>
+                <li><a href="../03/" hreflang="en-US" type="text/html"><cite>mirror</cite></a></li>
+                <li><a href="../04/" hreflang="en-US" type="text/html"><cite>Magna Carta</cite></a></li>
+                <li><a href="../05/" hreflang="en-US" type="text/html"><cite>Joseph’s mom</cite></a></li>
+                <li><a href="../06/" hreflang="en-US" type="text/html"><cite>next year</cite></a></li>
+                <li><a href="../07/" hreflang="en-US" type="text/html"><cite>establishing shot</cite></a></li>
+                <li><a href="../08/" hreflang="en-US" type="text/html"><cite>T. T.</cite></a></li>
+                <li><a href="../09/" hreflang="en-US" type="text/html"><cite>Harry</cite></a></li>
+                <li><a href="../10/" hreflang="en-US" type="text/html"><cite>new kid</cite></a></li>
+                <li><a href="../11/" hreflang="en-US" type="text/html"><cite>entrance</cite></a></li>
               </ol>
             </details>
           </details>

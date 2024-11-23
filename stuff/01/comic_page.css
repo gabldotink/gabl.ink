@@ -2,12 +2,38 @@
 /* SPDX-License-Identifier: CC0-1.0 */
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
-#nav_bottom_list details summary {
+ html {
+  counter-reset:nav_bottom_list_page;
+}
+ div#nav_bottom_list details {
   white-space:nowrap;
 }
-#nav_bottom_list details ol {
-  list-style-type:none;
+ details#nav_bottom_list_root summary cite::before {
+  content:open-quote;
 }
-#nav_bottom_list details li {
+ details#nav_bottom_list_root summary cite::after {
+  content:close-quote;
+}
+ details#nav_bottom_list_volume summary cite {
+  font-style:italic;
+}
+ details#nav_bottom_list_chapter summary cite::before {
+  content:open-quote;
+}
+ details#nav_bottom_list_chapter summary cite::after {
+  content:close-quote;
+}
+ ol#nav_bottom_list_pages {
+  list-style:none;
+}
+ ol#nav_bottom_list_pages li::before {
   white-space:nowrap;
+  counter-increment:nav_bottom_list_page;
+  content:"page " counter(nav_bottom_list_page) " – ";
+}
+ ol#nav_bottom_list_pages li cite::before {
+  content:open-quote;
+}
+ ol#nav_bottom_list_pages li cite::after {
+  content:close-quote;
 }
