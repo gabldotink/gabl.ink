@@ -8,6 +8,15 @@
  cite {
   all:unset;
 }
+ q {
+  all:unset;
+}
+ q::before {
+  all:unset;
+}
+ q::after {
+  all:unset;
+}
 [lang|="en" i],[xml|lang|="en" i] {
   quotes:"“""”""‘""’";
 }
@@ -35,7 +44,7 @@
 .none,.n {
   all:unset;
 }
-.no_wrap {
+.no_wrap,.nw {
   white-space:nowrap;
 }
 .overline {
