@@ -2,6 +2,9 @@
 /* SPDX-License-Identifier: CC0-1.0 */
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
+ abbr {
+  all:unset;
+}
  cite {
   all:unset;
 }
