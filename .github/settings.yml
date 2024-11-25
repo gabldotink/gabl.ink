@@ -18,7 +18,7 @@ repository:
   allow_squash_merge:  true
   default_branch: 'master'
   delete_branch_on_merge: false
-  description: 'assorted concepts and stuff for the upcoming gabl.ink website'
+  description: 'development for the upcoming gabl.ink website'
   enable_automated_security_fixes: false
   enable_vulnerability_alerts: true
   has_downloads: true
