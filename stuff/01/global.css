@@ -29,11 +29,17 @@
 .display_none,.n {
   display:none;
 }
-.double_quote::before,.dq::before {
+.double_quote::before,.dq::before,.double_quote_comma::before,.dqc::before,.double_quote_period::before,.dqp::before {
   content:"“";
 }
 .double_quote::after,.dq::after {
   content:"”";
+}
+.double_quote_comma::after,.dqc::after {
+  content:",”"
+}
+.double_quote_period::after,.dqp::after {
+  content:".”"
 }
 .italic,.i {
   font-style:italic;
@@ -50,11 +56,17 @@
 .overline {
   text-decoration-line:overline;
 }
-.quote::before,.q::before {
+.quote::before,.q::before,.quote_comma::before,.qc::before,.quote_period::before,.qp::before {
   content:open-quote;
 }
 .quote::after,.q::after {
   content:close-quote;
+}
+.quote_comma::after,.qc::after {
+  content:","close-quote;
+}
+.quote_period::after,.qp::after {
+  content:"."close-quote;
 }
 .roman {
   font-style:normal;
@@ -62,11 +74,17 @@
 .small_capitals {
   font-variant:small-caps;
 }
-.single_quote::before,.sq::before {
+.single_quote::before,.sq::before,.single_quote_comma::before,.sqc::before,.single_quote_period::before,.sqp::before {
   content:"‘";
 }
 .single_quote::after,.sq::after {
   content:"’";
+}
+.single_quote_comma::after,.sqc::after {
+  content:",’"
+}
+.single_quote_period::after,.sqp::after {
+  content:".’"
 }
 .start_case {
   text-transform:capitalize;
