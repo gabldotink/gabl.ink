@@ -55,3 +55,6 @@ ol#nav_bottom_list_pages li cite::after {
 div#transcript_text {
   margin-left:1em;
 }
+details#share_links ul {
+  list-style-type:none;
+}
