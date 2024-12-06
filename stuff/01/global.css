@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /* SPDX-License-Identifier: CC0-1.0 */
-@namespace xml url(http://www.w3.org/1999/xhtml);
 
  abbr {
   all:unset;
@@ -17,7 +16,7 @@
  q::after {
   all:unset;
 }
-[lang|="en" i],[xml|lang|="en" i] {
+[lang|="en" i] {
   quotes:"“""”""‘""’";
 }
 .bold,.b {
