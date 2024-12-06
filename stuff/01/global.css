@@ -25,9 +25,6 @@
 .bulleted {
   list-style-type:disc;
 }
-.not_displayed {
-  display:none;
-}
 .double_quoted::before,.dq::before,.double_quoted_comma::before,.dqc::before,.double_quoted_period::before,.dqp::before {
   content:"“";
 }
@@ -48,6 +45,9 @@
 }
 .unset,.n {
   all:unset;
+}
+.not_displayed,.nd {
+  display:none;
 }
 .not_wrapped,.nw {
   white-space:nowrap;
