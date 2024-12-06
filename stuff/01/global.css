@@ -25,19 +25,19 @@
 .bulleted {
   list-style-type:disc;
 }
-.display_none,.n {
+.not_displayed {
   display:none;
 }
-.double_quote::before,.dq::before,.double_quote_comma::before,.dqc::before,.double_quote_period::before,.dqp::before {
+.double_quoted::before,.dq::before,.double_quoted_comma::before,.dqc::before,.double_quoted_period::before,.dqp::before {
   content:"“";
 }
-.double_quote::after,.dq::after {
+.double_quoted::after,.dq::after {
   content:"”";
 }
-.double_quote_comma::after,.dqc::after {
+.double_quoted_comma::after,.dqc::after {
   content:",”"
 }
-.double_quote_period::after,.dqp::after {
+.double_quoted_period::after,.dqp::after {
   content:".”"
 }
 .italic,.i {
@@ -46,52 +46,52 @@
 .lowsercase {
   text-transform:lowercase;
 }
-.none,.n {
+.unset,.n {
   all:unset;
 }
-.no_wrap,.nw {
+.not_wrapped,.nw {
   white-space:nowrap;
 }
-.overline {
+.overlined {
   text-decoration-line:overline;
 }
-.quote::before,.q::before,.quote_comma::before,.qc::before,.quote_period::before,.qp::before {
+.quoted::before,.q::before,.quoted_comma::before,.qc::before,.quoted_period::before,.qp::before {
   content:open-quote;
 }
-.quote::after,.q::after {
+.quoted::after,.q::after {
   content:close-quote;
 }
-.quote_comma::after,.qc::after {
+.quoted_comma::after,.qc::after {
   content:","close-quote;
 }
-.quote_period::after,.qp::after {
+.quoted_period::after,.qp::after {
   content:"."close-quote;
 }
 .roman {
   font-style:normal;
 }
-.small_capitals {
+.small_capitalized {
   font-variant:small-caps;
 }
-.single_quote::before,.sq::before,.single_quote_comma::before,.sqc::before,.single_quote_period::before,.sqp::before {
+.single_quoted::before,.sq::before,.single_quoted_comma::before,.sqc::before,.single_quoted_period::before,.sqp::before {
   content:"‘";
 }
-.single_quote::after,.sq::after {
+.single_quoted::after,.sq::after {
   content:"’";
 }
-.single_quote_comma::after,.sqc::after {
+.single_quoted_comma::after,.sqc::after {
   content:",’"
 }
-.single_quote_period::after,.sqp::after {
+.single_quoted_period::after,.sqp::after {
   content:".’"
 }
 .start_case {
   text-transform:capitalize;
 }
-.strikethrough {
+.struckthrough {
   text-decoration-line:line-through;
 }
-.underline,.u {
+.underlined,.u {
   text-decoration-line:underline;
 }
 .uppercase {
