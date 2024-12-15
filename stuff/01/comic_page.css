@@ -5,32 +5,39 @@
 html {
   counter-reset:nav_bottom_list_page;
 }
+picture#gabldotink_logo {
+  top:0;
+  left:0;
+}
+picture#gabldotink_logo img {
+  width:20%;
+}
 picture.nav_buttons_off {
-  opacity:10%
+  opacity:10%;
 }
 div#nav_top_buttons_first {
-  width:10%
+  width:10%;
 }
 div#nav_top_buttons_previous {
-  width:10%
+  width:10%;
 }
 div#nav_top_buttons_next {
-  width:10%
+  width:10%;
 }
 div#nav_top_buttons_last {
-  width:10%
+  width:10%;
 }
 div#nav_bottom_buttons_first {
-  width:10%
+  width:10%;
 }
 div#nav_bottom_buttons_previous {
-  width:10%
+  width:10%;
 }
 div#nav_bottom_buttons_next {
-  width:10%
+  width:10%;
 }
 div#nav_bottom_buttons_last {
-  width:10%
+  width:10%;
 }
 div#nav_bottom_list details {
   white-space:nowrap;
