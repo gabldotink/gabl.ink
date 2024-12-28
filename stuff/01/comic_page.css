@@ -3,92 +3,135 @@
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
 html {
-  counter-reset:nav_bottom_list_page;
+  counter-reset: nav_bottom_list_page;
 }
+
 picture#gabldotink_logo {
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
+
 picture#gabldotink_logo img {
-  width:20%;
+  width: 20%;
 }
+
 picture.nav_buttons_off {
-  opacity:10%;
+  opacity: 10%;
 }
+
+div#nav_top_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+div#nav_top_title {
+  margin: 0;
+}
+
 div#nav_top_buttons_first {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_top_buttons_previous {
-  width:10%;
+  width: 10%;
 }
+
+div#nav_top_title {
+  text-align: center;
+}
+
 div#nav_top_buttons_next {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_top_buttons_last {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_bottom_buttons_first {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_bottom_buttons_previous {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_bottom_buttons_next {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_bottom_buttons_last {
-  width:10%;
+  width: 10%;
 }
+
 div#nav_bottom_list details {
-  white-space:nowrap;
+  white-space: nowrap;
 }
+
 div#nav_bottom_list details details {
-  text-indent:1em;
+  text-indent: 1em;
 }
+
 div#nav_bottom_list details details details {
-  text-indent:2em;
+  text-indent: 2em;
 }
+
 details#nav_bottom_list_root summary cite::before {
-  content:open-quote;
+  content: open-quote;
 }
+
 details#nav_bottom_list_root summary cite::after {
-  content:close-quote;
+  content: close-quote;
 }
+
 details#nav_bottom_list_volume summary cite::before {
-  content:none;
+  content: none;
 }
+
 details#nav_bottom_list_volume summary cite::after {
-  content:none;
+  content: none;
 }
+
 details#nav_bottom_list_volume summary cite {
-  font-style:italic;
+  font-style: italic;
 }
+
 details#nav_bottom_list_chapter summary cite {
-  font-style:unset;
+  font-style: unset;
 }
+
 details#nav_bottom_list_chapter summary cite::before {
-  content:open-quote;
+  content: open-quote;
 }
+
 details#nav_bottom_list_chapter summary cite::after {
-  content:close-quote;
+  content: close-quote;
 }
+
 ol#nav_bottom_list_pages {
-  list-style:none;
+  list-style: none;
 }
+
 ol#nav_bottom_list_pages li::before {
-  white-space:nowrap;
-  counter-increment:nav_bottom_list_page;
-  content:"page "counter(nav_bottom_list_page)" – ";
+  white-space: nowrap;
+  counter-increment: nav_bottom_list_page;
+  content: "page " counter(nav_bottom_list_page)" – ";
 }
+
 ol#nav_bottom_list_pages li cite::before {
-  content:open-quote;
+  content: open-quote;
 }
+
 ol#nav_bottom_list_pages li cite::after {
-  content:close-quote;
+  content: close-quote;
 }
+
 div#transcript_text {
-  margin-left:1em;
+  margin-left: 1em;
 }
+
 details#share_links ul {
-  list-style-type:none;
+  list-style-type: none;
 }
