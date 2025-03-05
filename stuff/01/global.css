@@ -67,11 +67,6 @@ q::after {
   text-transform: lowercase;
 }
 
-.unset,
-.n {
-  all: unset;
-}
-
 .not_displayed,
 .nd {
   display: none;
@@ -142,6 +137,10 @@ q::after {
   content: ".’"
 }
 
+.spaced_left {
+  padding-left: 0.1em
+}
+
 .start_case {
   text-transform: capitalize;
 }
@@ -153,6 +152,11 @@ q::after {
 .underlined,
 .u {
   text-decoration-line: underline;
+}
+
+.unset,
+.n {
+  all: unset;
 }
 
 .uppercase {
