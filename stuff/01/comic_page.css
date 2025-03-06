@@ -26,9 +26,11 @@ div#nav_top_buttons {
   gap: 10px;
 }
 
+/*
 div#nav_top_title {
   margin: 0;
 }
+*/
 
 div#nav_top_buttons_first {
   width: 10%;
@@ -48,6 +50,13 @@ div#nav_top_buttons_next {
 
 div#nav_top_buttons_last {
   width: 10%;
+}
+
+div#nav_bottom_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 div#nav_bottom_buttons_first {
