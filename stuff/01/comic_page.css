@@ -87,6 +87,7 @@ div#nav_bottom_list details details details {
   text-indent: 2em;
 }
 
+/*
 details#nav_bottom_list_root summary cite::before {
   content: open-quote;
 }
@@ -118,6 +119,7 @@ details#nav_bottom_list_chapter summary cite::before {
 details#nav_bottom_list_chapter summary cite::after {
   content: close-quote;
 }
+*/
 
 ol#nav_bottom_list_pages {
   list-style: none;
@@ -129,6 +131,7 @@ ol#nav_bottom_list_pages li::before {
   content: "page " counter(nav_bottom_list_page)" – ";
 }
 
+/*
 ol#nav_bottom_list_pages li cite::before {
   content: open-quote;
 }
@@ -136,6 +139,7 @@ ol#nav_bottom_list_pages li cite::before {
 ol#nav_bottom_list_pages li cite::after {
   content: close-quote;
 }
+*/
 
 div#transcript_text {
   margin-left: 1em;
