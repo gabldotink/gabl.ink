@@ -6,6 +6,10 @@ html {
   counter-reset: nav_bottom_list_page;
 }
 
+main {
+  margin: 0% 10% 0%;
+}
+
 picture#gabldotink_logo {
   top: 0;
   left: 0;
@@ -50,6 +54,10 @@ div#nav_top_buttons_next {
 
 div#nav_top_buttons_last {
   width: 10%;
+}
+
+div#comic_page_single_image {
+  width: 100%;
 }
 
 div#nav_bottom_buttons {
