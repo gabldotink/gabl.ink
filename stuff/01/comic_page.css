@@ -3,6 +3,10 @@
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
 html {
+  /*
+  counter-reset: nav_bottom_list_volume;
+  counter-reset: nav_bottom_list_chapter;
+  */
   counter-reset: nav_bottom_list_page;
 }
 
@@ -130,14 +134,37 @@ details#nav_bottom_list_chapter summary cite::after {
 }
 */
 
+/*
+ol#nav_bottom_list_volumes,
+ol#nav_bottom_list_chapters,
+ol#nav_bottom_list_pages {
+  list-style: none;
+  text-indent: 0em;
+}
+*/
+
 ol#nav_bottom_list_pages {
   list-style: none;
 }
 
+/*
+ol#nav_bottom_list_volumes li::before {
+  white-space: nowrap;
+  counter-increment: nav_bottom_list_volume;
+  content: "volume " counter(nav_bottom_list_volume) " ";
+}
+
+ol#nav_bottom_list_chapters li::before {
+  white-space: nowrap;
+  counter-increment: nav_bottom_list_chapter;
+  content: "chapter " counter(nav_bottom_list_chapter) " ";
+}
+*/
+
 ol#nav_bottom_list_pages li::before {
   white-space: nowrap;
   counter-increment: nav_bottom_list_page;
-  content: "page " counter(nav_bottom_list_page)" – ";
+  content: "page " counter(nav_bottom_list_page) " ";
 }
 
 /*
