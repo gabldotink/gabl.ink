@@ -56,7 +56,7 @@ div#nav_top_buttons_last {
   width: 10%;
 }
 
-div#comic_page_single_image {
+div#comic_page_single_image picture img {
   width: 100%;
   max-width: 100%;
 }
