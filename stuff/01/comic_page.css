@@ -27,13 +27,14 @@ picture.nav_buttons_off {
   opacity: 10%;
 }
 
+
 div#nav_top_buttons,
 div#nav_bottom_buttons {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  column-gap: 1rem;
+  gap: 1rem;
 }
 
 /*
@@ -43,8 +44,9 @@ div#nav_top_title {
 */
 
 img.nav_buttons {
-  width: 10%;
-  max-width: 10%;
+  width: 25%;
+  max-width: 25%;
+  display: block;
 }
 
 div#nav_top_title {
