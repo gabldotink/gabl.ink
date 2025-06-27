@@ -4,7 +4,7 @@
 
 html {
   /*
-  counter-reset: nav_bottom_list_volume;
+  counter-reset: nav_bottom_list_episode;
   counter-reset: nav_bottom_list_chapter;
   */
   counter-reset: nav_bottom_list_page;
@@ -78,15 +78,15 @@ details#nav_bottom_list_root summary cite::after {
   content: close-quote;
 }
 
-details#nav_bottom_list_volume summary cite::before {
+details#nav_bottom_list_episode summary cite::before {
   content: none;
 }
 
-details#nav_bottom_list_volume summary cite::after {
+details#nav_bottom_list_episode summary cite::after {
   content: none;
 }
 
-details#nav_bottom_list_volume summary cite {
+details#nav_bottom_list_episode summary cite {
   font-style: italic;
 }
 
@@ -104,7 +104,7 @@ details#nav_bottom_list_chapter summary cite::after {
 */
 
 /*
-ol#nav_bottom_list_volumes,
+ol#nav_bottom_list_episodes,
 ol#nav_bottom_list_chapters,
 ol#nav_bottom_list_pages {
   list-style: none;
@@ -117,10 +117,10 @@ ol#nav_bottom_list_pages {
 }
 
 /*
-ol#nav_bottom_list_volumes li::before {
+ol#nav_bottom_list_episodes li::before {
   white-space: nowrap;
-  counter-increment: nav_bottom_list_volume;
-  content: "volume " counter(nav_bottom_list_volume) " ";
+  counter-increment: nav_bottom_list_episode;
+  content: "episode " counter(nav_bottom_list_episode) " ";
 }
 
 ol#nav_bottom_list_chapters li::before {
