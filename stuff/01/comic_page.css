@@ -30,17 +30,22 @@ picture.nav_buttons_off {
 div#nav_top_buttons,
 div#nav_bottom_buttons {
   display: flex;
-  flex-flow: row nowrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 10rem;
 }
 
-/*
-div#nav_top_title {
-  margin: 0;
+div.nav_button {
+  width: 5rem;
+  aspect-ratio: 1;
 }
-*/
+
+div.nav_button picture img {
+  width: 100%;
+  max-width: 100%;
+}
 
 img.nav_buttons {
   width: 25%;
