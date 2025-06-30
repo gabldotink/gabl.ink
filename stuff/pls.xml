@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lexicon version="1.0"
+    xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd" alphabet="ipa" xml:lang="en-US">
+    <metadata>
+        <rdf:RDF
+       xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:dc  = "http://purl.org/dc/elements/1.1/">
+
+            <rdf:Description rdf:about="" dc:title="American English pronunciation lexicon for gabl.ink" dc:description="" dc:publisher="gabl.ink" dc:date="2025-06-29" dc:rights="© 2025 gabl.ink. License: CC0 1.0 Universal (public domain)" dc:format="application/pls+xml">
+                <dc:creator>gabl.ink</dc:creator>
+            </rdf:Description>
+        </rdf:RDF>
+    </metadata>
+    <lexeme>
+        <grapheme>gabl</grapheme>
+        <phoneme>ˈɡæbəl</phoneme>
+    </lexeme>
+    <lexeme>
+        <grapheme>gabl.ink</grapheme>
+        <grapheme>gabldotink</grapheme>
+        <phoneme>ˈɡæb.əl dɒt ɪŋk</phoneme>
+    </lexeme>
+    <lexeme>
+        <grapheme>JoeRunner</grapheme>
+        <phoneme>ˈd͡ʒoʊˈɹʌnɚ</phoneme>
+    </lexeme>
+    <lexeme>
+        <grapheme>Thomas</grapheme>
+        <phoneme>tɔ.mɑ</phoneme>
+    </lexeme>
+</lexicon>
