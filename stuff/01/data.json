@@ -1,0 +1,63 @@
+{
+  "id": "jrco_2022/01/01/01",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_2022",
+    "episode": {
+      "integer": 1,
+      "string": "01"
+    },
+    "chapter": {
+      "integer": 1,
+      "string": "01"
+    },
+    "page": {
+      "integer": 1,
+      "string": "01"
+    },
+    "previous": null,
+    "next": {
+      "integer": 2,
+      "string": "02"
+    }
+  },
+  "language": "en-us",
+  "title": {
+    "text": "“Thursday” title page",
+    "html": "“<cite>Thursday</cite>” title page"
+  },
+  "description": {
+    "text": "The title page for “Thursday.”",
+    "html": "The title page for “<cite>Thursday</cite>.”"
+  },
+  "hover_text": {
+    "text": "Thursday comes for us all.",
+    "html": "Thursday comes for us all."
+  },
+  "transcript": {
+    "text": "A logo reads: “JoeRunner and Co.” by gabl, episode 1 “Edulympiad,” chapter 1 “Thursday.” The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s 6:30 a.m. on May 27, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “beep, beep, beep.” Hover text: Thursday comes for us all.",
+    "html": "<p>A logo reads: <i><cite class=\"nw\">JoeRunner and Co.</cite></i> by <span translate=\"no\">gabl</span>, <span class=\"nw\">episode 1</span> <i><cite>Edulympiad</cite></i>, <span class=\"nw\">chapter 1</span> “<cite>Thursday</cite>.”</p><p>The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time class=\"nw\" datetime=\"2021-05-27T06:30-0600\">6:30 a.m. on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “<i>beep, beep, beep</i>.”</p><p>Hover text: Thursday comes for us all.</p>"
+  },
+  "first_published": "2022-04-01-0600",
+  "post": [
+    {
+      "date": "2022-04-01-0600",
+      "content": {
+        "text": "Hey there! Welcome to “JoeRunner and Co.”! My name’s Gabriel, a.k.a. gabl, and I can’t wait to share my passion-project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for… less years, but still multiple. Years. They’re… still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible. … I look forward to taking this journey with you! — gabl",
+        "html": "<p>Hey there! Welcome to <i class=\"nw\"><cite>JoeRunner and Co.</cite></i>!</p><p>My name’s Gabriel, <abbr title=\"also known as\">a.k.a.</abbr> <span translate=\"no\">gabl</span>, and I can’t wait to share my passion-project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for… less years, but still multiple. Years.</p><p>They’re… still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible.</p><p>… I look forward to taking this journey with you!</p><p><span class=\"nw\">— <span translate=\"no\">gabl</span></span></p>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc_by_4.0"
+    ]
+  },
+  "disclaimer": [
+    "olympics"
+  ]
+}
