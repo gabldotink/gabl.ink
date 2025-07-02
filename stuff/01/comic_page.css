@@ -57,7 +57,7 @@ div#nav_top_title {
   text-align: center;
 }
 
-div#comic_page_single_image picture img {
+div#comic_page_image picture img {
   width: 100%;
   max-width: 100%;
 }
