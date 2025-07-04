@@ -3,10 +3,6 @@
 @namespace xml url(http://www.w3.org/1999/xhtml);
 
 html {
-  /*
-  counter-reset: nav_bottom_list_episode;
-  counter-reset: nav_bottom_list_chapter;
-  */
   counter-reset: nav_bottom_list_page;
 }
 
@@ -66,90 +62,15 @@ div#nav_bottom_list details {
   white-space: nowrap;
 }
 
-div#nav_bottom_list details details {
-  text-indent: 1em;
-}
-
-div#nav_bottom_list details details details {
-  text-indent: 2em;
-}
-
-/*
-details#nav_bottom_list_root summary cite::before {
-  content: open-quote;
-}
-
-details#nav_bottom_list_root summary cite::after {
-  content: close-quote;
-}
-
-details#nav_bottom_list_episode summary cite::before {
-  content: none;
-}
-
-details#nav_bottom_list_episode summary cite::after {
-  content: none;
-}
-
-details#nav_bottom_list_episode summary cite {
-  font-style: italic;
-}
-
-details#nav_bottom_list_chapter summary cite {
-  font-style: unset;
-}
-
-details#nav_bottom_list_chapter summary cite::before {
-  content: open-quote;
-}
-
-details#nav_bottom_list_chapter summary cite::after {
-  content: close-quote;
-}
-*/
-
-/*
-ol#nav_bottom_list_episodes,
-ol#nav_bottom_list_chapters,
-ol#nav_bottom_list_pages {
-  list-style: none;
-  text-indent: 0em;
-}
-*/
-
 ol#nav_bottom_list_pages {
   list-style: none;
 }
-
-/*
-ol#nav_bottom_list_episodes li::before {
-  white-space: nowrap;
-  counter-increment: nav_bottom_list_episode;
-  content: "episode " counter(nav_bottom_list_episode) " ";
-}
-
-ol#nav_bottom_list_chapters li::before {
-  white-space: nowrap;
-  counter-increment: nav_bottom_list_chapter;
-  content: "chapter " counter(nav_bottom_list_chapter) " ";
-}
-*/
 
 ol#nav_bottom_list_pages li::before {
   white-space: nowrap;
   counter-increment: nav_bottom_list_page;
   content: "page " counter(nav_bottom_list_page) " ";
 }
-
-/*
-ol#nav_bottom_list_pages li cite::before {
-  content: open-quote;
-}
-
-ol#nav_bottom_list_pages li cite::after {
-  content: close-quote;
-}
-*/
 
 div#transcript_text {
   margin-left: 1em;
