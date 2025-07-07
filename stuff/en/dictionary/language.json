@@ -1,0 +1,16 @@
+{
+  "en-us": {
+    "default": "en",
+    "dir": "ltr",
+    "bcp_47": {
+      "primary_language": "en",
+      "region": "US",
+      "full": "en-US"
+    },
+    "ogp": {
+      "language": "en",
+      "territory": "US",
+      "full": "en_US"
+    }
+  }
+}
