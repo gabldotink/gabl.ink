@@ -1,16 +1,14 @@
 {
   "id": "en/jrco_2022",
   "type": "comic_series",
-  "location": {
-    "pages": {
-      "first": {
-        "integer": 1,
-        "string": "01"
-      },
-      "last": {
-        "integer": 11,
-        "string": "11"
-      }
+  "pages": {
+    "first": {
+      "integer": 1,
+      "string": "01"
+    },
+    "last": {
+      "integer": 11,
+      "string": "11"
     }
   },
   "language": "en-us",
@@ -29,7 +27,7 @@
       "last": 2025
     },
     "license": [
-      "cc_by_4.0"
+      "cc-by-4.0"
     ]
   }
 }
