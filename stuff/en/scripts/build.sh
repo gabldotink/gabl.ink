@@ -124,5 +124,163 @@ for i in $items;do
     printf '<meta property="og:locale" content="%s"/>' "$language_ogp_full"
 
     printf '</head>'
+
+    printf '<body>'
+    printf '<header>'
+    printf '<a href="https://gabl.ink/">'
+    printf '<picture id="gabldotink_logo">'
+    printf '<img src="./logo.svg" alt="gabl.ink logo"/>'
+    printf '</picture></a></header>'
+    printf '<main>'
+    printf '<div id="nav_top">'
+    printf '<h1 id="nav_top_title">'
+    printf '“<cite>'
+
+    # TODO: More comprehensive quotation mark conversion. Currently only replaces the first ““” and “””.
+    # TODO: Use CSS spaced_right.
+    if [ "$(printf '%s' "$title_text" | cut -c1-1 -)" = '“' ];then
+      title_text_starts_with_double_quote=1
+      title_text_single_quotes="$(printf '%s' "$title_text" | sed '0,/[“]/s//‘/; 0,/[”]/s//’/')"
+    fi
+
+    if [ -n "$title_text_single_quotes" ];then
+      printf '%s' "$title_text_single_quotes"
+    else
+      printf '%s' "$title_text"
+    fi
+
+    printf '</cite>”</h1>'
+
+    if   [ "$up_directories" = 4 ];then
+      nav_buttons_container=volume
+    elif [ "$up_directories" = 3 ];then
+      nav_buttons_container=chapter
+    elif [ "$up_directories" = 2 ];then
+      nav_buttons_container=series
+    fi
+
+    if [ "$first_page" != null ];then
+      first_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$first_page/data.json")"
+    fi
+
+    if [ "$previous_page" != null ];then
+      previous_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$previous_page/data.json")"
+    fi
+
+    if [ "$next_page" != null ];then
+      next_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$next_page/data.json")"
+    fi
+
+    if [ "$last_page" != null ];then
+      last_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$last_page/data.json")"
+    fi
+
+    # TODO: Reduce duplicate code.
+    # TODO: Handle multiple chapters.
+    # TODO: Handle quotation marks in other page titles.
+
+    make_nav_buttons() {
+      l="$1"
+
+      printf '<div id="nav_%s_buttons">' "$l"
+
+      printf '<div class="nav_button" id="nav_%s_buttons_first" ' "$l"
+
+      if [ "$first_page" = null ];then
+        printf 'title="First in %s (This is the first page!)">' "$nav_buttons_container"
+        printf '<picture class="nav_buttons_off">'
+      else
+        printf 'title="First in %s (“%s”)">' "$nav_buttons_container" "$first_page_title_text"
+        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$first_page"
+        printf '<picture>'
+      fi
+
+      printf '<img class="nav_buttons" src="./first.png" alt="first"/>'
+      printf '</picture>'
+
+      if [ "$first_page" != null ];then
+        printf '</a>'
+      fi
+
+      printf '</div>'
+
+      printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "$l"
+
+      if [ "$previous_page" = null ];then
+        printf 'title="Previous (This is the first page!)">'
+        printf '<picture class="nav_buttons_off">'
+      else
+        printf 'title="Previous (“%s”)">' "$previous_page_title_text"
+        printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "$previous_page"
+        printf '<picture>'
+      fi
+
+      printf '<img class="nav_buttons" src="./previous.png" alt="previous"/>'
+      printf '</picture>'
+
+      if [ "$previous_page" != null ];then
+        printf '</a>'
+      fi
+
+      printf '</div>'
+
+      printf '<div class="nav_button" id="nav_%s_buttons_next" ' "$l"
+
+      if [ "$next_page" = null ];then
+        printf 'title="Next (This is the last page!)">'
+        printf '<picture class="nav_buttons_off">'
+      else
+        printf 'title="Next (“%s”)">' "$next_page_title_text"
+        printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "$next_page"
+        printf '<picture>'
+      fi
+
+      printf '<img class="nav_buttons" src="./next.png" alt="next"/>'
+      printf '</picture>'
+
+      if [ "$next_page" != null ];then
+        printf '</a>'
+      fi
+
+      printf '</div>'
+
+      printf '<div class="nav_button" id="nav_%s_buttons_last" ' "$l"
+
+      if [ "$last_page" = null ];then
+        printf 'title="Last in %s (This is the last page!)">' "$nav_buttons_container"
+        printf '<picture class="nav_buttons_off">'
+      else
+        printf 'title="Last in %s (“%s”)">' "$nav_buttons_container" "$last_page_title_text"
+        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$last_page"
+        printf '<picture>'
+      fi
+
+      printf '<img class="nav_buttons" src="./last.png" alt="last"/>'
+      printf '</picture>'
+
+      if [ "$last_page" != null ];then
+        printf '</a>'
+      fi
+
+      printf '</div>'
+
+      printf '</div>'
+    }
+
+    make_nav_buttons top
+
+    printf '</div>'
+
+    printf '<div id="comic_page_image">'
+    printf '<picture>'
+    printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
+    printf '</picture>'
+    printf '</div>'
+
+    printf '<div id="nav_bottom">'
+
+    make_nav_buttons bottom
+
+    printf '</div>'
   fi
 done
