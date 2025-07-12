@@ -16,7 +16,11 @@
   "language": "en-us",
   "title": {
     "text": "“Thursday” title page",
-    "html": "“<cite>Thursday</cite>” title page"
+    "html": "“<cite>Thursday</cite>” title page",
+    "quotes_nested": {
+      "text": "‘Thursday’ title page",
+      "html": "<span class=\"spaced_right\">‘</span><cite>Thursday</cite>’ title page"
+    }
   },
   "description": {
     "text": "The title page for “JoeRunner and Co.” (2022–2024).",

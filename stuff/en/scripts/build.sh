@@ -136,17 +136,13 @@ for i in $items;do
     printf '<h1 id="nav_top_title">'
     printf '“<cite>'
 
-    # TODO: More comprehensive quotation mark conversion. Currently only replaces the first ““” and “””.
-    # TODO: Use CSS spaced_right.
-    if [ "$(printf '%s' "$title_text" | cut -c1-1 -)" = '“' ];then
-      title_text_starts_with_double_quote=1
-      title_text_single_quotes="$(printf '%s' "$title_text" | sed '0,/[“]/s//‘/; 0,/[”]/s//’/')"
-    fi
+    title_html="$(jq -Mr -- .title.html "$i")"
+    title_html_quotes_nested="$(jq -Mr -- .title.quotes_nested.html "$i")"
 
-    if [ -n "$title_text_single_quotes" ];then
-      printf '%s' "$title_text_single_quotes"
+    if [ "$title_html_quotes_nested" != null ];then
+      printf '%s' "$title_html_quotes_nested"
     else
-      printf '%s' "$title_text"
+      printf '%s' "$title_html"
     fi
 
     printf '</cite>”</h1>'
