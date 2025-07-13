@@ -1,6 +1,5 @@
 {
-  "en-us": {
-    "default": "en",
+  "en": {
     "dir": "ltr",
     "bcp_47": {
       "primary_language": "en",
