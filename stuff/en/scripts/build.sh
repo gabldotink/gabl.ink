@@ -277,6 +277,6 @@ for i in $items;do
 
     make_nav_buttons bottom
 
-    printf '</div>'
+    
   fi
 done
