@@ -13,8 +13,12 @@
   },
   "language": "en-us",
   "title": {
-    "text": "JoeRunner and Co. (2022–2024)",
-    "html": "JoeRunner and Co. (2022–2024)"
+    "text": "JoeRunner and Co.",
+    "html": "JoeRunner and Co.",
+    "disambiguation": {
+      "text": "(2022–2024)",
+      "html": "(<time>2022</time>–<time>2024</time>)"
+    }
   },
   "description": {
     "text": "The first “JoeRunner and Co.” webcomic series, which ran for 11 pages from 2022 to 2024.",
