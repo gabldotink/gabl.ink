@@ -33,5 +33,12 @@
     "license": [
       "cc-by-4.0"
     ]
+  },
+  "content_rating": {
+    "label": "general",
+    "notice": {
+      "text": "Brief description of fantasy violence. Very brief, mild language (“darn”).",
+      "html": "Brief description of fantasy violence. Very brief, mild language (<i>darn</i>)."
+    }
   }
 }

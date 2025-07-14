@@ -1,0 +1,22 @@
+{
+  "general": {
+    "name": {
+      "text": "general audiences",
+      "html": "general audiences"
+    },
+    "description": {
+      "text": "Suitable for all audiences. May contain brief fantasy violence and/or very mild language.",
+      "html": "Suitable for all audiences. May contain brief fantasy violence and/or very mild language."
+    }
+  },
+  "parental_guidance": {
+    "name": {
+      "text": "parental guidance",
+      "html": "parental guidance"
+    },
+    "description": {
+      "text": "May not be suitable for younger audiences. May contain fantasy violence and/or mild language. Parental guidance is recommended.",
+      "html": "May not be suitable for younger audiences. May contain fantasy violence and/or mild language. Parental guidance is recommended."
+    }
+  }
+}
