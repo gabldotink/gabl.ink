@@ -1,0 +1,56 @@
+{
+  "id": "en/jrco_2022/05",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_2022",
+    "page": {
+      "integer": 5,
+      "string": "05"
+    },
+    "previous": {
+      "integer": 4,
+      "string": "04"
+    },
+    "next": {
+      "integer": 6,
+      "string": "06"
+    }
+  },
+  "language": "en",
+  "title": {
+    "text": "Joseph’s mom",
+    "html": "Joseph’s mom"
+  },
+  "description": {
+    "text": "JoeRunner’s mom, Eden, enters.",
+    "html": "JoeRunner’s mom, Eden, enters."
+  },
+  "transcript": {
+    "html": "<p>[off-panel] <i>Joseph?</i></p><p>JoeRunner looks over the back of the chair.</p><p>[sound effects] <i>?</i></p><p>A tired-looking woman with long hair and glasses is there. She speaks in the same font as JoeRunner.</p><p>[woman] What are you doing up so early?</p><p>[character bio] <i>Eden Runner</i> / <i>heavy sleeper and mom</i></p><p>JoeRunner raises an eyebrow and smiles.</p><p>[JoeRunner] No, I’m pretty sure you just take a while to wake up.</p><p>[Eden] (<i>smiling</i>) <i>Heh.</i> Yeah, I know.</p>"
+  },
+  "first_published": "2022-06-27",
+  "post": [
+    {
+      "date": "2022-06-27",
+      "content": {
+        "html": "<p>Not much of a background because I still don’t really know what the Runners’ house looks like. Not much of a footer comment because I don’t really have anything to say.</p>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "content_rating": {
+    "label": "general",
+    "notice": {
+      "text": "Suddenly features a nose for the first time, which may surprise some readers.",
+      "html": "Suddenly features a nose for the first time, which may surprise some readers."
+    }
+  }
+}
