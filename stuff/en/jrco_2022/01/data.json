@@ -52,6 +52,9 @@
   ],
   "content_rating": {
     "label": "general",
-    "notice": null
+    "notice": {
+      "text": "Features an alarm clock, which may alarm some readers.",
+      "html": "Features an alarm clock, which may alarm some readers."
+    }
   }
 }
