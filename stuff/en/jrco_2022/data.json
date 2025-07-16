@@ -37,8 +37,8 @@
   "content_rating": {
     "label": "general",
     "notice": {
-      "text": "Brief description of fantasy violence. Very brief, mild language (“heck”).",
-      "html": "Brief description of fantasy violence. Very brief, mild language (<i>heck</i>)."
+      "text": "Brief description of fantasy violence. Very brief, mild language (“heck,” “darn”).",
+      "html": "Brief description of fantasy violence. Very brief, mild language (<i>heck</i>, <i>darn</i>)."
     }
   }
 }

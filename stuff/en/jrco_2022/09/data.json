@@ -49,8 +49,8 @@
   "content_rating": {
     "label": "general",
     "notice": {
-      "text": "Description of fantasy violence. Mild language (“heck”).",
-      "html": "Description of fantasy violence. Mild language (<i>heck</i>)."
+      "text": "Description of fantasy violence. Very mild language (“heck”).",
+      "html": "Description of fantasy violence. Very mild language (<i>heck</i>)."
     }
   }
 }
