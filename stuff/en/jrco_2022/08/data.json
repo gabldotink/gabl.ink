@@ -1,0 +1,56 @@
+{
+  "id": "en/jrco_2022/08",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_2022",
+    "page": {
+      "integer": 8,
+      "string": "08"
+    },
+    "previous": {
+      "integer": 7,
+      "string": "07"
+    },
+    "next": {
+      "integer": 9,
+      "string": "09"
+    }
+  },
+  "language": "en",
+  "title": {
+    "text": "T.T.",
+    "html": "T.T."
+  },
+  "description": {
+    "text": "JoeRunner meets his friend T.T. outside the school.",
+    "html": "JoeRunner meets his friend T.T. outside the school."
+  },
+  "transcript": {
+    "html": "<p>The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading “77” and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font.</p><p>[boy] Oh, finally.</p><p>JoeRunner walks up to the boy.</p><p>[boy] Hey, JoeRunner, you made it! And it only took, like, two decades!</p><p>[JoeRunner] Yeah, there was lots of traffic on North 1 today.</p><p>The boy starts walking to the door.</p><p>[character bio] <i>T.T.</i> / <i>one heck of a guy</i></p><p>[T.T.] Yeah, yeah, excuses, excuses. Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em></p>"
+  },
+  "first_published": "2023-02-24",
+  "post": [
+    {
+      "date": "2023-02-24",
+      "content": {
+        "html": "<details><summary><p>Irrelevant information</p></summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "content_rating": {
+    "label": "general",
+    "notice": {
+      "text": "Uses an all-lowercase font, which may be intolerable for some readers.",
+      "html": "Uses an all-lowercase font, which may be intolerable for some readers."
+    }
+  }
+}
