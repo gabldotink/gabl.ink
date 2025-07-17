@@ -1,0 +1,56 @@
+{
+  "id": "en/jrco_2022/10",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_2022",
+    "page": {
+      "integer": 10,
+      "string": "10"
+    },
+    "previous": {
+      "integer": 9,
+      "string": "09"
+    },
+    "next": {
+      "integer": 11,
+      "string": "11"
+    }
+  },
+  "language": "en",
+  "title": {
+    "text": "new kid",
+    "html": "new kid"
+  },
+  "description": {
+    "text": "Harry says a new kid is coming to JoeRunner and T.T.’s class.",
+    "html": "Harry says a new kid is coming to JoeRunner and T.T.’s class."
+  },
+  "transcript": {
+    "html": "<p>JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T.</p><p>[Harry] Oh, hey, I heard from my father that your class is getting a new kid.</p><p>[JoeRunner] From Mr. Mahan?</p><p>[T.T.] What’s his name?</p><p>[Harry] She’s a girl, actually. She just moved from France.</p><p>T.T. raises his eyebrows.</p><p>[T.T.] Wait… They have <em class=\"roman u\">girls</em> in <em class=\"roman u\">France</em>?</p><p>JoeRunner makes a weird face.</p><p>[JoeRunner] Yeah, they—<em class=\"i\">what</em>?</p>"
+  },
+  "first_published": "2023-05-04",
+  "post": [
+    {
+      "date": "2023-05-04",
+      "content": {
+        "html": "<details><summary><p>Irrelevant info</p></summary><p>JoeRunner gets to be in the thumbnail for his own comic again.</p></details><p>When I first wrote this, T.T. said that he didn’t know what a girl was; I changed it later, because I decided that that wasn’t very T.T.-like. Also, this is probably funnier anyway. I’ll have to post the original draft at some point, I guess. The drawing in this page is probably some of my worst. I hate my art so much, but I’m posting it on the internet forever anyway.</p><p>Remember when I said I was going to get a page a week done? Yeah. I’m a riot.</p>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2023,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "content_rating": {
+    "label": "general",
+    "notice": {
+      "text": "Contains a shocking revelation, which may be too much to handle for some readers.",
+      "html": "Contains a shocking revelation, which may be too much to handle for some readers."
+    }
+  }
+}
