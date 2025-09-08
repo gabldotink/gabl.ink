@@ -1,0 +1,56 @@
+{
+    "id": "en/jrco_2022/02",
+    "type": "comic_page",
+    "location": {
+        "series": "jrco_2022",
+        "page": {
+            "integer": 2,
+            "string": "02"
+        },
+        "previous": {
+            "integer": 1,
+            "string": "01"
+        },
+        "next": {
+            "integer": 3,
+            "string": "03"
+        }
+    },
+    "language": "en",
+    "title": {
+        "text": "alarm clock",
+        "html": "alarm clock"
+    },
+    "description": {
+        "text": "JoeRunner wakes up.",
+        "html": "JoeRunner wakes up."
+    },
+    "transcript": {
+        "html": "<p>There’s a view of the bed next to the desk now. As the alarm clock audibly beeps, a hand reaches out from a lump under the covers and smacks the alarm clock on its snooze button on its side, which causes it to slide off the desk. After it clatters, there are sounds of a car crash, a man screaming in pain (Wilhelm scream), and a cat shrieking. An exasperated young male voice speaks.</p><p>[boy] I really need to get a new snooze button.</p>"
+    },
+    "first_published": "2022-04-07",
+    "post": [
+        {
+            "date": "2022-04-07",
+            "content": {
+                "html": "<p>This one is laminated.<sup>[<i lang=\"la\">sic</i>]</sup></p><p>Obviously, I’m not much of an animator. Oh well. At least it gets the point across.</p><p>Aside from page 4, I don’t have another animated page written for at least the next 30-or-so pages, and there probably won’t be many (or any) more until the end of <i><cite>Edulympiad</cite></i>. This one and page 4 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t.</p>"
+            }
+        }
+    ],
+    "copyright": {
+        "year": {
+            "first": 2022,
+            "last": 2025
+        },
+        "license": [
+            "cc-by-4.0"
+        ]
+    },
+    "content_rating": {
+        "label": "general",
+        "notice": {
+            "text": "I’m going to remove these in the next commit",
+            "html": "yeah"
+        }
+    }
+}
