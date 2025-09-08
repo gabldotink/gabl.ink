@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Depicts a wide path which is not centered with the door it leads to, which may be annoying to some readers.",
-      "html": "Depicts a wide path which is not centered with the door it leads to, which may be annoying to some readers."
-    }
+    "label": "general"
   }
 }

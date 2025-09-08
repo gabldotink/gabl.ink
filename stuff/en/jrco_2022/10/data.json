@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Contains a shocking revelation, which may be too much to handle for some readers.",
-      "html": "Contains a shocking revelation, which may be too much to handle for some readers."
-    }
+    "label": "general"
   }
 }

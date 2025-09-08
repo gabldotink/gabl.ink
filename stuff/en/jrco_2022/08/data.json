@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Uses an all-lowercase font, which may be intolerable for some readers.",
-      "html": "Uses an all-lowercase font, which may be intolerable for some readers."
-    }
+    "label": "general"
   }
 }

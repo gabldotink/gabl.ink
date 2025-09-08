@@ -51,10 +51,6 @@
     "olympic"
   ],
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Features an alarm clock, which may alarm some readers.",
-      "html": "Features an alarm clock, which may alarm some readers."
-    }
+    "label": "general"
   }
 }

@@ -44,10 +44,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Contains onomatopoeia of a loud clock ringing, which may cause psychosomatic hearing damage in some readers.",
-      "html": "Contains onomatopoeia of a loud clock ringing, which may cause psychosomatic hearing damage in some readers."
-    }
+    "label": "general"
   }
 }

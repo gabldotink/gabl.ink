@@ -47,10 +47,6 @@
 		]
 	},
 	"content_rating": {
-		"label": "general",
-		"notice": {
-			"text": "Features a reflection in a mirror, which may be confusing for some readers.",
-			"html": "Features a reflection in a mirror, which may be confusing for some readers."
-		}
+		"label": "general"
 	}
 }

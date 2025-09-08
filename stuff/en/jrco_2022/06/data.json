@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Discusses the future, which may cause existensial dread in some readers.",
-      "html": "Discusses the future, which may cause existensial dread in some readers."
-    }
+    "label": "general"
   }
 }

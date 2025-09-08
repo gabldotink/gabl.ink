@@ -47,10 +47,6 @@
         ]
     },
     "content_rating": {
-        "label": "general",
-        "notice": {
-            "text": "I’m going to remove these in the next commit",
-            "html": "yeah"
-        }
+        "label": "general"
     }
 }

@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Mentions the United Kingdom, which may be upsetting for some readers.",
-      "html": "Mentions the United Kingdom, which may be upsetting for some readers."
-    }
+    "label": "general"
   }
 }

@@ -47,10 +47,6 @@
     ]
   },
   "content_rating": {
-    "label": "general",
-    "notice": {
-      "text": "Suddenly features a nose for the first time, which may surprise some readers.",
-      "html": "Suddenly features a nose for the first time, which may surprise some readers."
-    }
+    "label": "general"
   }
 }
