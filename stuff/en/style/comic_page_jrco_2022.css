@@ -79,3 +79,44 @@ div#transcript_text {
 details#share_links ul {
   list-style-type: none;
 }
+
+table#comic_transcript_table {
+  border: none;
+  margin-left: 1em;
+}
+
+table#comic_transcript_table thead {
+  display: none;
+}
+
+table#comic_transcript_table th {
+  text-align: left;
+  vertical-align: top;
+  padding-right: 1em;
+  font-weight: normal;
+}
+
+table#comic_transcript_table th::before {
+  content: "[";
+}
+
+table#comic_transcript_table th::after {
+  content: "]";
+}
+
+table#comic_transcript_table th:empty::before {
+  content: "—";
+}
+
+table#comic_transcript_table th:empty::after {
+  content: "";
+}
+
+table#comic_trascript_table td {
+  text-align: left;
+  vertical-align: top;
+}
+
+table#comic_transcript_table p {
+  margin-top: 0em;
+}
