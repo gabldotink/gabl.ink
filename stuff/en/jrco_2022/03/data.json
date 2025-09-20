@@ -1,52 +1,70 @@
 {
-	"id": "en/jrco_2022/02",
-	"type": "comic_page",
-	"location": {
-		"series": "jrco_2022",
-		"page": {
-			"integer": 2,
-			"string": "02"
-		},
-		"previous": {
-			"integer": 1,
-			"string": "01"
-		},
-		"next": {
-			"integer": 3,
-			"string": "03"
-		}
-	},
-	"language": "en",
-	"title": {
-		"text": "mirror",
-		"html": "mirror"
-	},
-	"description": {
-		"text": "JoeRunner finger-combs his hair and puts on his glasses.",
-		"html": "JoeRunner finger-combs his hair and puts on his glasses."
-	},
-	"transcript": {
-		"html": "<tr><th scope=\"row\"></th><td><p>The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross.</p></td></tr><tr><th scope=\"row\">boy</th><td><p>(<i>thinking</i>) <i>Ugh.</i></p></td></tr><tr><th scope=\"row\"></th><td><p>He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face.</p></td></tr><tr><th scope=\"row\">character bio</th><td><p>JoeRunner / master of mornings</p></td></tr>"
-	},
-	"first_published": "2022-05-22",
-	"post": [
-		{
-			"date": "2022-05-22",
-			"content": {
-				"html": "<p>If only it were really this easy.</p><p>“But Gabe!” you might be thinking, “JoeRunner doesn’t have a nose! How does he put on his glasses?” And you’re right. And you’re right. And I promise that the other characters have noses.</p><p>Some of them. Some of the other characters have noses.</p>"
-			}
-		}
-	],
-	"copyright": {
-		"year": {
-			"first": 2022,
-			"last": 2025
-		},
-		"license": [
-			"cc-by-4.0"
-		]
-	},
-	"content_rating": {
-		"label": "general"
-	}
+  "id": "en/jrco_2022/02",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_2022",
+    "page": {
+      "integer": 2,
+      "string": "02"
+    },
+    "previous": {
+      "integer": 1,
+      "string": "01"
+    },
+    "next": {
+      "integer": 3,
+      "string": "03"
+    }
+  },
+  "language": "en",
+  "title": {
+    "text": "mirror",
+    "html": "mirror"
+  },
+  "description": {
+    "text": "JoeRunner finger-combs his hair and puts on his glasses.",
+    "html": "JoeRunner finger-combs his hair and puts on his glasses."
+  },
+  "transcript": {
+    "lines": [
+      {
+        "h": null,
+        "d": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+      },
+      {
+        "h": "boy",
+        "d": "(<i>thinking</i>) Ugh."
+      },
+      {
+        "h": null,
+        "d": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+      },
+      {
+        "h": "character bio",
+        "d": "JoeRunner / master of mornings"
+      }
+    ],
+    "html": "<tr><th scope=\"row\"></th><td><p>The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross.</p></td></tr><tr><th scope=\"row\">boy</th><td><p>(<i>thinking</i>) Ugh.</p></td></tr><tr><th scope=\"row\"></th><td><p>He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face.</p></td></tr><tr><th scope=\"row\">character bio</th><td><p>JoeRunner / master of mornings</p></td></tr>"
+  },
+  "first_published": "2022-05-22",
+  "post": [
+    {
+      "date": "2022-05-22",
+      "content": {
+        "html": "<p>If only it were really this easy.</p><p>“But Gabe!” you might be thinking, “JoeRunner doesn’t have a nose! How does he put on his glasses?” And you’re right. And you’re right. And I promise that the other characters have noses.</p><p>Some of them. Some of the other characters have noses.</p>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "content_rating": {
+    "label": "general"
+  }
 }

@@ -27,6 +27,16 @@
     "html": "The title page for <i><cite>JoeRunner and Co.</cite></i> (2022–2023)."
   },
   "transcript": {
+    "lines": [
+      {
+        "h": "logo",
+        "d": "<i class=\"nw\"><cite>JoeRunner and Co.</cite></i></p><p>by <span translate=\"no\">gabl</span></p><p><span class=\"nw\">episode 1</span> <i><cite>Edulympiad</cite></i></p><p><span class=\"nw\">chapter 1</span> “<cite>Thursday</cite>”"
+      },
+      {
+        "h": null,
+        "d": "The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time class=\"nw\" datetime=\"2021-05-27T06:30-0600\">6:30 a.m. on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “beep, beep, beep.”"
+      }
+    ],
     "html": "<tr><th scope=\"row\">logo</th><td><p><i class=\"nw\"><cite>JoeRunner and Co.</cite></i></p><p>by <span translate=\"no\">gabl</span></p><p><span class=\"nw\">episode 1</span> <i><cite>Edulympiad</cite></i></p><p><span class=\"nw\">chapter 1</span>“<cite>Thursday</cite>”</p></td></tr><tr><th scope=\"row\"></th><td><p>The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time class=\"nw\" datetime=\"2021-05-27T06:30-0600\">6:30 a.m. on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “beep, beep, beep.”</p></td></tr>"
   },
   "first_published": "2022-04-01",
