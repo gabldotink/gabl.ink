@@ -1,25 +1,25 @@
 {
-  "id": "en/jrco_2022/03",
+  "id": "en/jrco_2022/04",
   "type": "comic_page",
   "location": {
     "series": "jrco_2022",
     "page": {
+      "integer": 4,
+      "string": "04"
+    },
+    "previous": {
       "integer": 3,
       "string": "03"
     },
-    "previous": {
-      "integer": 2,
-      "string": "02"
-    },
     "next": {
-      "integer": 4,
-      "string": "04"
+      "integer": 5,
+      "string": "05"
     }
   },
   "language": "en",
   "title": {
     "text": "Magna Carta",
-    "html": "Magna Carta"
+    "html": "<cite>Magna Carta</cite>"
   },
   "description": {
     "text": "JoeRunner finishes an essay.",
