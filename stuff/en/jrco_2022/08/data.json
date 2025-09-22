@@ -26,6 +26,40 @@
     "html": "JoeRunner meets his friend T.T. outside the school."
   },
   "transcript": {
+    "lines": [
+      {
+        "h": null,
+        "d": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading “77” and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font."
+      },
+      {
+        "h": "boy",
+        "d": "Oh, finally."
+      },
+      {
+        "h": null,
+        "d": "JoeRunner walks up to the boy."
+      },
+      {
+        "h": "boy",
+        "d": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+      },
+      {
+        "h": "JoeRunner",
+        "d": "Yeah, there was lots of traffic on North 1 today."
+      },
+      {
+        "h": null,
+        "d": "The boy starts walking to the door."
+      },
+      {
+        "h": "character bio",
+        "d": "T.T. / one heck of a guy"
+      },
+      {
+        "h": "T.T.",
+        "d": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em>"
+      }
+    ],
     "html": "<tr><th scope=\"row\"></th><td><p>The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading “77” and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font.</p></td></tr><tr><th scope=\"row\">boy</th><td><p>Oh, finally.</p></td></tr><tr><th scope=\"row\"></th><td><p>JoeRunner walks up to the boy.</p></td></tr><tr><th scope=\"row\">boy</th><td><p>Hey, JoeRunner, you made it! And it only took, like, two decades!</p></td></tr><tr><th scope=\"row\">JoeRunner</th><td><p>Yeah, there was lots of traffic on North 1 today.</p></td></tr><tr><th scope=\"row\"></th><td><p>The boy starts walking to the door.</p></td></tr><tr><th scope=\"row\">character bio</th><td><p>T.T. / one heck of a guy</p></td></tr><tr><th scope=\"row\">T.T.</th><td><p>Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em></p></td></tr>"
   },
   "first_published": "2023-02-24",
