@@ -26,7 +26,37 @@
     "html": "Harry says a new kid is coming to JoeRunner and T.T.’s class."
   },
   "transcript": {
-    "html": "<tr><th scope=\"row\"></th><td><p>JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T.</p></td></tr><tr><th scope=\"row\">Harry</th><td><p>Oh, hey, I heard from my father that your class is getting a new kid.</p></td></tr><tr><th scope=\"row\">JoeRunner</th><td><p>From Mr. Mahan?</p></td></tr><tr><th scope=\"row\">T.T.</th><td><p>What’s his name?</p></td></tr><tr><th scope=\"row\">Harry</th><td><p>She’s a girl, actually. She just moved from France.</p></td></tr><tr><th scope=\"row\"></th><td><p>T.T. raises his eyebrows.</p></td></tr><tr><th scope=\"row\">T.T.</th><td><p>Wait… They have <em class=\"roman u\">girls</em> in <em class=\"roman u\">France</em>?</p></td></tr><tr><th scope=\"row\"></th><td><p>JoeRunner makes a weird face.</p></td></tr><tr><th scope=\"row\">JoeRunner</th><td><p>Yeah, they—<em>what</em>?</p></td></tr>"
+    "lines": [
+      {
+        "h": null,
+        "d": "JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T."
+      },
+      {
+        "h": "Harry",
+        "d": "Oh, hey, I heard from my father that your class is getting a new kid."
+      },
+      {
+        "h": "JoeRunner",
+        "d": "From Mr. Mahan?"
+      },
+      {
+        "h": "T.T.",
+        "d": "What’s his name?"
+      },
+      {
+        "h": "Harry",
+        "d": "She’s a girl, actually. She just moved from France."
+      },
+      {
+        "h": "T.T.",
+        "d": "(<i>raising eyebrows</i>) Wait… They have <em class=\"roman u\">girls</em> in <em class=\"roman u\">France</em>?"
+      },
+      {
+        "h": "JoeRunner",
+        "d": "(<i>looking weird</i>) Yeah, they—<em>what</em>?"
+      }
+    ],
+    "html": "<tr><th scope=\"row\"></th><td><p>JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T.</p></td></tr><tr><th scope=\"row\">Harry</th><td><p>Oh, hey, I heard from my father that your class is getting a new kid.</p></td></tr><tr><th scope=\"row\">JoeRunner</th><td><p>From Mr. Mahan?</p></td></tr><tr><th scope=\"row\">T.T.</th><td><p>What’s his name?</p></td></tr><tr><th scope=\"row\">Harry</th><td><p>She’s a girl, actually. She just moved from France.</p></td></tr><tr><th scope=\"row\">T.T.</th><td><p>(<i>raising eyebrows</i>) Wait… They have <em class=\"roman u\">girls</em> in <em class=\"roman u\">France</em>?</p></td></tr><tr><th scope=\"row\">JoeRunner</th><td><p>(<i>looking weird</i>) Yeah, they—<em>what</em>?</p></td></tr>"
   },
   "first_published": "2023-05-04",
   "post": [
