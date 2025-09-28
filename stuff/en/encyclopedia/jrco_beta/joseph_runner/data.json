@@ -1,0 +1,41 @@
+{
+  "id": "en/encyclopedia/jrco_beta/joseph_runner",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "JoeRunner",
+    "given": "Joseph",
+    "sur": "Runner",
+    "nick": {
+      "name": "JoeRunner",
+      "decoration": "parentheses"
+    }
+  },
+  "sex": "m",
+  "birthdate": {
+    "year": 2011,
+    "month": 8,
+    "day": 2,
+    "hour": 21,
+    "minute": 58,
+    "tz": -6
+  },
+  "description": {
+    "html": "A fifth grader who likes his friends."
+  },
+  "bio": {
+    "html": "<p>During the last few weeks of school, JoeRunner and his friend T.T. met Margo Thomas.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2019,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}
