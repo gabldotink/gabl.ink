@@ -1,0 +1,32 @@
+{
+  "id": "en/encyclopedia/jrco_beta/harry_mahan",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "Harry",
+    "given": "Harry",
+    "sur": "Mahan"
+  },
+  "sex": "m",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A fourth grader who plays video games a lot."
+  },
+  "bio": {
+    "html": "<p>Harry is friends with JoeRunner and T.T. They play video games together.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2023,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

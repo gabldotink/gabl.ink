@@ -1,0 +1,32 @@
+{
+  "id": "en/encyclopedia/jrco_beta/eden_runner",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "Eden",
+    "given": "Eden",
+    "sur": "Runner"
+  },
+  "sex": "f",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A mother."
+  },
+  "bio": {
+    "html": "<p>Eden is JoeRunner’s mother.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

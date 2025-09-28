@@ -1,0 +1,30 @@
+{
+  "id": "en/encyclopedia/jrco_beta/mr._mahan",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "Mr. Mahan",
+    "sur": "Mahan"
+  },
+  "sex": "m",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A fifth grade teacher."
+  },
+  "bio": {
+    "html": "<p>Mr. Mahan is Harry Mahan’s father.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}
