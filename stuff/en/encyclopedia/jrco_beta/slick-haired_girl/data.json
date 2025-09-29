@@ -1,0 +1,30 @@
+{
+  "id": "en/encyclopedia/jrco_beta/slick-haired_girl",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "slick-haired girl"
+  },
+  "sex": "f",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A student."
+  },
+  "bio": {
+    "html": "<p>The slick-haired girl plays video games on a handheld console.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "en/encyclopedia/jrco_beta/short-haired_girl",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "short-haired girl"
+  },
+  "sex": "f",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A student."
+  },
+  "bio": {
+    "html": "<p>The short-haired girl is friends with the pigtailed girl.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

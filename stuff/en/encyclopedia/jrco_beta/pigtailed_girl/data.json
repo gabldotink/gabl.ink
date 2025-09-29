@@ -1,0 +1,30 @@
+{
+  "id": "en/encyclopedia/jrco_beta/pigtailed_girl",
+  "type": "character",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "pigtailed girl"
+  },
+  "sex": "f",
+  "birthdate": {
+
+  },
+  "description": {
+    "html": "A student."
+  },
+  "bio": {
+    "html": "<p>The pigtailed girl is friends with the short-haired girl.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}
