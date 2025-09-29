@@ -15,6 +15,9 @@
   "description": {
     "html": "A student."
   },
+  "relationships": {
+
+  },
   "bio": {
     "html": "<p>The short-haired girl is friends with the pigtailed girl.</p>"
   },

@@ -14,6 +14,9 @@
   "birthdate": {
 
   },
+  "relationships": {
+    "parent": "mr._mahan"
+  },
   "description": {
     "html": "A fourth grader who plays video games a lot."
   },

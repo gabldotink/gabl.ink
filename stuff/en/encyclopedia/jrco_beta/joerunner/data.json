@@ -1,5 +1,5 @@
 {
-  "id": "en/encyclopedia/jrco_beta/joseph_runner",
+  "id": "en/encyclopedia/jrco_beta/joerunner",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
@@ -22,6 +22,9 @@
     "hour": 21,
     "minute": 58,
     "tz": -6
+  },
+  "relationships": {
+    "parent": "eden_runner"
   },
   "description": {
     "html": "A fifth grader who likes his friends."

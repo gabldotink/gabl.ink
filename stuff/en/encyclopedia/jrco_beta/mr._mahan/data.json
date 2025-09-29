@@ -13,6 +13,9 @@
   "birthdate": {
 
   },
+  "relationships": {
+    "child": "harry_mahan"
+  },
   "description": {
     "html": "A fifth grade teacher."
   },
