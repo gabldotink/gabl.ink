@@ -1,0 +1,26 @@
+{
+  "id": "en/encyclopedia/jrco_beta/schulz_elementary_school",
+  "type": "place",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "name": {
+    "label": "Schulz Elementary School",
+    "official": "Schulz Elementary School"
+  },
+  "relationships": {
+    "greater_location": "city"
+  },
+  "description": "The school JoeRunner and co. attend.",
+  "bio": "Schulz Elementary School is an elementary school.",
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

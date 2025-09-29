@@ -1,0 +1,26 @@
+{
+  "id": "en/encyclopedia/jrco_beta/united_states_of_america",
+  "type": "place",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "name": {
+    "label": "United States of America",
+    "official": "United States of America"
+  },
+  "relationships": {
+
+  },
+  "description": "The third most populous country in the world.",
+  "bio": "The United States of America is on the continent of North America.",
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

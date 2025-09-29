@@ -1,0 +1,26 @@
+{
+  "id": "en/encyclopedia/jrco_beta/schulz_elementary_school_library",
+  "type": "place",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "name": {
+    "label": "Schulz Elementary School Library",
+    "official": "Schulz Elementary School Library"
+  },
+  "relationships": {
+    "greater_location": "schulz_elementary_school"
+  },
+  "description": "A school library.",
+  "bio": "The Schulz Elementary School Library features books, computers, and mid-to-low-speed internet.",
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2023,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

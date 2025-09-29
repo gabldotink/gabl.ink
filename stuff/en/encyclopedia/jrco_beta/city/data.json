@@ -1,0 +1,25 @@
+{
+  "id": "en/encyclopedia/jrco_beta/city",
+  "type": "place",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "name": {
+    "label": "city"
+  },
+  "relationships": {
+    "greater_location": "united_states_of_america"
+  },
+  "description": "The city where JoeRunner and co. live.",
+  "bio": "The city is inside a forest.",
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}
