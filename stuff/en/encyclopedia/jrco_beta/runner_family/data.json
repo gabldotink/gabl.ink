@@ -1,0 +1,26 @@
+{
+  "id": "en/encyclopedia/jrco_beta/runner_family",
+  "type": "character_group",
+  "location": {
+    "universe": "jrco_beta"
+  },
+  "language": "en",
+  "name": {
+    "label": "Runner family"
+  },
+  "description": {
+    "html": "A family."
+  },
+  "bio": {
+    "html": "<p>The Runner family includes JoeRunner and Eden.</p>"
+  },
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

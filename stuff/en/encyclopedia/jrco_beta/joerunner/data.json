@@ -24,6 +24,7 @@
     "tz": -6
   },
   "relationships": {
+    "family": "runner_family",
     "parent": "eden_runner"
   },
   "description": {

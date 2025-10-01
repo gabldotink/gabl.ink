@@ -15,6 +15,7 @@
 
   },
   "relationships": {
+    "family": "runner_family",
     "child": "joerunner"
   },
   "description": {
