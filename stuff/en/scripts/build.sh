@@ -87,6 +87,7 @@ for i in $items;do
       last_page="$(jq -Mr -- .pages.last.string "$index/$series/data.json")"
     fi
 
+    location_page_string="$(jq -Mr -- .location.page.string "$i")"
     previous_page="$(jq -Mr -- .location.previous.string "$i")"
     next_page="$(jq -Mr -- .location.next.string "$i")"
 
@@ -94,7 +95,7 @@ for i in $items;do
     if   [ "$previous_page" = null ];then
       # This is the first page, so no prefetches are needed.
       true
-    elif [ "$first_page" != "$(jq -Mr -- .location.page.string "$i")" ] ||
+    elif [ "$first_page" != "$location_page_string" ] ||
          [ "$first_page" != "$previous_page" ];then
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$first_page" "$language_bcp_47_full"
       printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$previous_page" "$language_bcp_47_full"
@@ -106,7 +107,7 @@ for i in $items;do
     if   [ "$next_page" = null ];then
       # This is the last page, so no prefetches are needed.
       true
-    elif [ "$last_page" != "$(jq -Mr -- .location.page.string "$i")" ] ||
+    elif [ "$last_page" != "$location_page_string" ] ||
          [ "$last_page" != "$next_page" ];then
       printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$next_page" "$language_bcp_47_full"
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$last_page" "$language_bcp_47_full"
@@ -286,7 +287,7 @@ for i in $items;do
 
     printf '<i><cite>'
 
-    # TODO: support higher containers
+    # TODO: Support higher containers (volumes and chapters).
 
     if [ "$container" = series ];then
       series_title_html="$(jq -Mr -- .title.html "$index/../$id/../data.json")"
@@ -316,6 +317,36 @@ for i in $items;do
 
     printf '<ol id="nav_bottom_list_pages">'
 
-    # bro how am I gonna do this part. I’m just coming up with a bunch of hacks what in the world am I supposed to do for this list
+    # TODO: Bold and don’t link current page.
+
+    find "$index/../$id/.." -type f -path "$index/../$id/../*/data.json" -exec sh -c '
+      d="$1"
+      p="$2"
+      s="$(jq -Mr -- .location.page.string "$d")"
+
+      printf "<li>“"
+
+      if [ "$s" = "$p" ];then
+        printf "<b><cite>"
+        if [ "$(jq -Mr .title.quotes_nested.html "$d")" != null ];then
+          printf "%s" "$(jq -Mr -- .title.quotes_nested.html "$d")"
+        else
+          printf "%s" "$(jq -Mr -- .title.html "$d")"
+        fi
+        printf "</cite></b>”</li>"
+      else
+        printf "<a href=\"../"
+        printf "%s" "$s"
+        printf "/\" hreflang=\"en-US\" type=\"text/html\"><cite>"
+        if [ "$(jq -Mr .title.quotes_nested.html "$d")" != null ];then
+          printf "%s" "$(jq -Mr -- .title.quotes_nested.html "$d")"
+        else
+          printf "%s" "$(jq -Mr -- .title.html "$d")"
+        fi
+        printf "</cite></a>”</li>"
+      fi
+    ' shell '{}' "$location_page_string" ';'
+
+    printf '</ol>'
   fi
 done
