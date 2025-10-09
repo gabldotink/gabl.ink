@@ -296,11 +296,11 @@ for i in $items;do
       printf '</i></cite>'
 
       if [ "$series_title_disambiguation_html" != null ];then
-        printf '%s ' "$series_title_disambiguation_html"
+        printf '%s' "$series_title_disambiguation_html"
       fi
     fi
 
-    printf ', page  %s ' "$(jq -Mr -- .location.page.string "$index/../$id/data.json")"
+    printf ', page %s ' "$(jq -Mr -- .location.page.integer "$index/../$id/data.json")"
 
     printf '“<cite>'
 
