@@ -7,7 +7,8 @@ script="$0"
 
 index="$(dirname -- "$script")/.."
 
-items="$(find "$index" -type f -name data.json)"
+#items="$(find "$index" -type f -name data.json)"
+items="$index/jrco_2022/01/data.json"
 
 for i in $items;do
   type="$(jq -Mr -- .type "$i")"
@@ -137,10 +138,10 @@ for i in $items;do
     printf '“<cite>'
 
     title_html="$(jq -Mr -- .title.html "$i")"
-    title_html_quotes_nested="$(jq -Mr -- .title.quotes_nested.html "$i")"
+    title_quotes_nested_html="$(jq -Mr -- .title.quotes_nested.html "$i")"
 
-    if [ "$title_html_quotes_nested" != null ];then
-      printf '%s' "$title_html_quotes_nested"
+    if [ "$title_quotes_nested_html" != null ];then
+      printf '%s' "$title_quotes_nested_html"
     else
       printf '%s' "$title_html"
     fi
@@ -148,27 +149,27 @@ for i in $items;do
     printf '</cite>”</h1>'
 
     if   [ "$up_directories" = 4 ];then
-      nav_buttons_container=volume
+      container=volume
     elif [ "$up_directories" = 3 ];then
-      nav_buttons_container=chapter
+      container=chapter
     elif [ "$up_directories" = 2 ];then
-      nav_buttons_container=series
+      container=series
     fi
 
     if [ "$first_page" != null ];then
-      first_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$first_page/data.json")"
+      first_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$first_page/data.json")"
     fi
 
     if [ "$previous_page" != null ];then
-      previous_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$previous_page/data.json")"
+      previous_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$previous_page/data.json")"
     fi
 
     if [ "$next_page" != null ];then
-      next_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$next_page/data.json")"
+      next_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$next_page/data.json")"
     fi
 
     if [ "$last_page" != null ];then
-      last_page_title_text="$(jq -Mr -- .title.text "$index/$id/../$last_page/data.json")"
+      last_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$last_page/data.json")"
     fi
 
     # TODO: Reduce duplicate code.
@@ -183,10 +184,10 @@ for i in $items;do
       printf '<div class="nav_button" id="nav_%s_buttons_first" ' "$l"
 
       if [ "$first_page" = null ];then
-        printf 'title="First in %s (This is the first page!)">' "$nav_buttons_container"
+        printf 'title="First in %s (This is the first page!)">' "$container"
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="First in %s (“%s”)">' "$nav_buttons_container" "$first_page_title_text"
+        printf 'title="First in %s (“%s”)">' "$container" "$first_page_title_text"
         printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$first_page"
         printf '<picture>'
       fi
@@ -243,10 +244,10 @@ for i in $items;do
       printf '<div class="nav_button" id="nav_%s_buttons_last" ' "$l"
 
       if [ "$last_page" = null ];then
-        printf 'title="Last in %s (This is the last page!)">' "$nav_buttons_container"
+        printf 'title="Last in %s (This is the last page!)">' "$container"
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="Last in %s (“%s”)">' "$nav_buttons_container" "$last_page_title_text"
+        printf 'title="Last in %s (“%s”)">' "$container" "$last_page_title_text"
         printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$last_page"
         printf '<picture>'
       fi
@@ -277,6 +278,44 @@ for i in $items;do
 
     make_nav_buttons bottom
 
+    printf '<div id="nav_bottom_list">'
+
+    printf '<details id="nav_bottom_list_root">'
+
+    printf '<summary>'
+
+    printf '<i><cite>'
+
+    # TODO: support higher containers
+
+    if [ "$container" = series ];then
+      series_title_html="$(jq -Mr -- .title.html "$index/../$id/../data.json")"
+      series_title_disambiguation_html="$(jq -Mr -- .title.disambiguation.html "$index/../$id/../data.json")"
+
+      printf '%s' "$series_title_html"
+      printf '</i></cite>'
+
+      if [ "$series_title_disambiguation_html" != null ];then
+        printf '%s ' "$series_title_disambiguation_html"
+      fi
+    fi
+
+    printf ', page  %s ' "$(jq -Mr -- .location.page.string "$index/../$id/data.json")"
+
+    printf '“<cite>'
+
+    if [ "$title_quotes_nested_html" != null ];then
+      printf '%s' "$title_quotes_nested_html"
+    else
+      printf '%s' "$title_html"
+    fi
     
+    printf '</cite>”'
+
+    printf '</summary>'
+
+    printf '<ol id="nav_bottom_list_pages">'
+
+    # bro how am I gonna do this part. I’m just coming up with a bunch of hacks what in the world am I supposed to do for this list
   fi
 done
