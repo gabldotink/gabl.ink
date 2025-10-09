@@ -368,9 +368,9 @@ for i in $items;do
     printf '</tr>'
     printf '</thead>'
 
-    for l in $(jq '.transcript.lines|to_entries|.[].key' "$i");do
-      h="$(jq -Mr -- .transcript.lines[$l].h "$i")"
-      d="$(jq -Mr -- .transcript.lines[$l].d "$i")"
+    for l in $(jq -Mr -- '.transcript.lines|to_entries|.[].key' "$i");do
+      h="$(jq -Mr -- ".transcript.lines[$l].h" "$i")"
+      d="$(jq -Mr -- ".transcript.lines[$l].d" "$i")"
       printf '<tr>'
       printf '<th scope="row">%s</th>' "$h"
       printf '<td><p>%s</p></td>' "$d"
@@ -379,10 +379,34 @@ for i in $items;do
     printf '</table>'
     printf '</details>'
 
-    first_published_iso="$(jq -Mr -- .first_published "$i")"
+    # TODO: Unnecessary: Handle years outside four digits?
+
+    first_published_y="$(jq -Mr -- .first_published.y "$i")"
+    first_published_m="$(jq -Mr -- .first_published.m "$i")"
+    first_published_d="$(jq -Mr -- .first_published.d "$i")"
 
     printf '<p id="first_published">First published '
+    printf '<time class="nw" date="'
 
-    # I have to parse dates now 😨😨😨
+    if [ "${#first_published_m}" = 1 ];then
+      first_published_m_pad=0
+    fi
+
+    if [ "${#first_published_d}" = 1 ];then
+      first_published_d_pad=0
+    fi
+
+    printf '%s-' "$first_published_y"
+    printf '%s-' "$first_published_m_pad""$first_published_m"
+    printf '%s' "$first_published_d_pad""$first_published_d"
+
+    printf '">'
+
+    printf '%s ' "$(jq -Mr -- ".months[$((first_published_m-1))]" "$index/dictionary/month_gregorian.json")"
+    printf '%s, ' "$first_published_d"
+    printf '%s' "$first_published_y"
+
+    printf '</time>'
+    printf '</p>'
   fi
 done

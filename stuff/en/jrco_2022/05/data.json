@@ -61,10 +61,18 @@
       }
     ]
   },
-  "first_published": "2022-06-27",
+  "first_published": {
+    "y": 2022,
+    "m": 6,
+    "d": 27
+  },
   "post": [
     {
-      "date": "2022-06-27",
+      "date": {
+        "y": 2022,
+        "m": 6,
+        "d": 27
+      },
       "content": {
         "html": "<p>Not much of a background because I still don’t really know what the Runners’ house looks like. Not much of a footer comment because I don’t really have anything to say.</p>"
       }

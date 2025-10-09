@@ -121,10 +121,18 @@
       }
     ]
   },
-  "first_published": "2023-03-30",
+  "first_published": {
+    "y": 2023,
+    "m": 3,
+    "d": 30
+  },
   "post": [
     {
-      "date": "2023-03-30",
+      "date": {
+        "y": 2023,
+        "m": 3,
+        "d": 30
+      },
       "content": {
         "html": "<p>Alas, poor <code>tomatotoe07</code>.</p><p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\"April 1</time>). This page especially took a lot of effort—the most yet—due to its length.</p><p>Only about 60% of the draft I wrote back on… <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May 25th, 2021</time></em>? I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft—I wrote them when I was around 14 years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p><p>I have 30 more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p><p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p><p><b><span class=\"nw\">— <span translate=\"no\">Gabriel / gabl</span></span></b></p>"
       }

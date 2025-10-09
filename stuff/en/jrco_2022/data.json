@@ -24,7 +24,11 @@
     "text": "The first “JoeRunner and Co.” webcomic series, which ran for 11 pages from 2022 to 2023.",
     "html": "The first <i><cite>JoeRunner and Co.</cite></i> webcomic series, which ran for 11 pages from 2022 to 2023."
   },
-  "first_published": "2022-04-01",
+  "first_published": {
+    "y": 2022,
+    "m": 4,
+    "d": 1
+  },
   "copyright": {
     "year": {
       "first": 2022,

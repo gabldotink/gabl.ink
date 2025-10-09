@@ -86,10 +86,18 @@
       }
     ]
   },
-  "first_published": "2023-07-28",
+  "first_published": {
+    "y": 2023,
+    "m": 7,
+    "d": 28
+  },
   "post": [
     {
-      "date": "2023-07-28",
+      "date": {
+        "y": 2023,
+        "m": 7,
+        "d": 28
+      },
       "content": {
         "html": "<p>Lucky number 11! People… people probably say that.</p><details><summary><p>Irrelevant info</p></summary><p>This page includes the full-size image, while previously they’ve been half-size. The HTML <code>&lt;picture></code> element should either automatically choose one to display, or simply skip it and use the full image, depending on your browser / user agent.</p><p>I was initially meaning to upload the full-size versions to Patreon, but I’ll probably just save that for the <code><abbr title=\"Clip Studio Paint\">.clip</abbr></code> work files. I don’t know when I’ll get the images out, but I will.</p></details><p>Of course, you can safely expect Patreon to be a pretty long ways away at this rate. If I can be real for a sec, one of the main reasons I started this comic was to feel like I was doing something with my life, and now it’s ended up as a huge source of anxiety for me because progress is so slow. I’m so excited to continue this, especially since I have a lot of other ideas to work on aside from <i><cite>JoeRunner and co.</cite></i>—both apart from and on top of it. I’m so sorry that I’m not getting that out sooner.</p><p>Um… on an unrelated note, color! I haven’t been using color so far because I had the notion that it would take too long, but I wanted that panel to be better-drawn anyway, so I went ahead and did it. And now I’m thinking maybe I should do that more often.</p><details><summary><p>Irrelevant info</p></summary><p>On a dumb, overthinking-related note (feel free to skip this), I’m trying to decide if I want to stick with <abbr title=\"Creative Commons Attribution-ShareAlike 4.0\">CC BY-SA 4.0</abbr>, or if I want to move it to <abbr title=\"Creative Commons Attribution\">CC BY</abbr>. At the start it was <abbr title=\"Attribution-NonCommercial-ShareAlike\">BY-NC-SA</abbr>. Both times the <abbr title=\"ShareAlike\">SA</abbr> was because I wanted to keep derivatives of actual, general utility free, like books and translations. I know that <i><a href=\"https://peppercarrot.com\" rel=\"external\" type=\"text/html\"><cite>Pepper&Carrot</cite></a></i> is thriving in those regards under <abbr>CC BY</abbr>, but that may or may not be different, considering that <i><cite>Pepper&Carrot</cite></i> isn’t one of the most egregious abominations known to man.</p><p>And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human-browsable and easily downloadable manner. I already tried that with files.gabl.ink <small>(link removed)</small>, but I ended up not liking how it turned out.</p>"
       }

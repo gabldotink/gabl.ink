@@ -61,10 +61,18 @@
       }
     ]
   },
-  "first_published": "2023-02-24",
+  "first_published": {
+    "y": 2023,
+    "m": 2,
+    "d": 24
+  },
   "post": [
     {
-      "date": "2023-02-24",
+      "date": {
+        "y": 2023,
+        "m": 2,
+        "d": 24
+      },
       "content": {
         "html": "<details><summary><p>Irrelevant information</p></summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
       }

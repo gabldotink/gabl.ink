@@ -61,10 +61,18 @@
       }
     ]
   },
-  "first_published": "2022-06-21",
+  "first_published": {
+    "y": 2022,
+    "m": 6,
+    "d": 21
+  },
   "post": [
     {
-      "date": "2022-06-21",
+      "date": {
+        "y": 2022,
+        "m": 6,
+        "d": 21
+      },
       "content": {
         "html": "<p>I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again.</p><p>Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing.</p>"
       }
