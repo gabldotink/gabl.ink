@@ -301,7 +301,9 @@ for i in $items;do
       fi
     fi
 
-    printf ', page %s ' "$(jq -Mr -- .location.page.integer "$index/../$id/data.json")"
+    location_page_integer="$(jq -Mr -- .location.page.integer "$i")"
+
+    printf ', page %s ' "$location_page_integer"
 
     printf '“<cite>'
 
@@ -348,5 +350,39 @@ for i in $items;do
     ' shell '{}' "$location_page_string" ';'
 
     printf '</ol>'
+
+    printf '</details>'
+    printf '</div>'
+    printf '</div>'
+
+    printf '<details id="comic_transcript" open="">'
+
+    printf '<summary>Comic transcript</summary>'
+
+    printf '<table id="comic_transcript_table">'
+
+    printf '<thead>'
+    printf '<tr>'
+    printf '<th scope="col">Speaker</th>'
+    printf '<th scope="col">Text</th>'
+    printf '</tr>'
+    printf '</thead>'
+
+    for l in $(jq '.transcript.lines|to_entries|.[].key' "$i");do
+      h="$(jq -Mr -- .transcript.lines[$l].h "$i")"
+      d="$(jq -Mr -- .transcript.lines[$l].d "$i")"
+      printf '<tr>'
+      printf '<th scope="row">%s</th>' "$h"
+      printf '<td><p>%s</p></td>' "$d"
+    done
+
+    printf '</table>'
+    printf '</details>'
+
+    first_published_iso="$(jq -Mr -- .first_published "$i")"
+
+    printf '<p id="first_published">First published '
+
+    # I have to parse dates now 😨😨😨
   fi
 done
