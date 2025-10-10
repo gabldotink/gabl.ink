@@ -408,5 +408,44 @@ for i in $items;do
 
     printf '</time>'
     printf '</p>'
+
+    for p in $(jq -Mr -- '.post|to_entries|.[].key' "$i");do
+      post_date_y="$(jq -Mr -- ".post[$p].date.y" "$i")"
+      post_date_m="$(jq -Mr -- ".post[$p].date.m" "$i")"
+      post_date_d="$(jq -Mr -- ".post[$p].date.d" "$i")"
+
+      printf '<article id="post_'
+
+      if [ "${#post_date_m}" = 1 ];then
+        post_date_m_pad=0
+      fi
+
+      if [ "${#post_date_d}" = 1 ];then
+        post_date_d_pad=0
+      fi
+
+      printf '%s-' "$post_date_y"
+      printf '%s-' "$post_date_m_pad""$post_date_m"
+      printf '%s' "$post_date_d_pad""$post_date_d"
+
+      printf '">'
+
+      printf '<h2 class="nw">'
+      printf '<time datetime="%s-%s-%s">' "$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
+
+      printf '%s ' "$(jq -Mr -- ".months[$((post_date_m-1))]" "$index/dictionary/month_gregorian.json")"
+      printf '%s, ' "$post_date_d"
+      printf '%s' "$post_date_y"
+
+      printf '</time></h2>'
+
+      post_content="$(jq -Mr -- ".post[$p].content")"
+
+      printf '%s' "$post_content"
+
+      printf '</article>'
+    done
+
+    printf '</main>'
   fi
 done
