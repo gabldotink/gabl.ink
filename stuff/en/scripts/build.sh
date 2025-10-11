@@ -387,7 +387,7 @@ for i in $items;do
     first_published_d="$(jq -Mr -- .first_published.d "$i")"
 
     printf '<p id="first_published">First published '
-    printf '<time class="nw" date="'
+    printf '<time class="nw" datetime="'
 
     if [ "${#first_published_m}" = 1 ];then
       first_published_m_pad=0
@@ -521,7 +521,7 @@ for i in $items;do
                    "https://gabl.ink/index/$id/" \
                    "gabldotink,$series_hashtag"
     
-    make_share_link reddit Reddit https://www.reddit.com/submit?type=LINK title url '' \
+    make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$series_title_text"
@@ -550,7 +550,127 @@ for i in $items;do
                       printf '#gabldotink #%s' "$series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
+    
+    make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
+                   "$(
+                      printf 'gabl.ink @gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf 'https://gabl.ink/index/%s/ ' "$id"
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )"
+    
+    make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
+                   "$(
+                      printf 'gabl.ink @gabldotink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf 'https://gabl.ink/index/%s/' "$id"
+                    )"
+    
+    make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
+                   "$(
+                      printf 'gabl.ink @gabldotink@mstdn.party: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )" \
+                   "https://gabl.ink/index/$id/"
+    
+    make_share_link threads Threads https://www.threads.com/intent/post text url '' \
+                   "$(
+                      printf 'gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )" \
+                   "https://gabl.ink/index/$id/"
+
+    make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
+                   "$(
+                      printf 'gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )" \
+                   "https://gabl.ink/index/$id/"
+
+    make_share_link gab Gab https://gab.com/compose text url '' \
+                   "$(
+                      printf 'gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )" \
+                   "https://gabl.ink/index/$id/"
 
     printf '</ul>'
+    printf '</details>'
+
+    copyright_year_first="$(jq -Mr -- .copyright.year.first "$i")"
+    copyright_year_last="$(jq -Mr -- .copyright.year.last "$i")"
+
+    printf '<footer>'
+    printf '<span class="nw">'
+    printf '<abbr title="Copyright">©</abbr> '
+    printf '<time>%s</time>' "$copyright_year_first"
+    if [ "$copyright_year_last" != null ];then
+      printf '–<time>%s</time>' "$copyright_year_last"
+    fi
+    printf '</span>'
+    printf '<span translate="no">gabl.ink</span><br/>'
+
+    copyright_license_url="$(jq -Mr -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
+    copyright_license_title="$(jq -Mr -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
+    copyright_license_abbr="$(jq -Mr -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
+
+    printf 'License: <a rel="external" href="%s" ' "$copyright_license_url"
+    printf 'hreflang="en" type="text/html">'
+    printf '%s' "$copyright_license_title"
+    if [ "$copyright_license_abbr" != null ];then
+      printf ' (<abbr>%s</abbr>)' "$copyright_license_abbr"
+    fi
+    printf '</a>'
+
+    disclaimer="$(jq -Mr -- .disclaimer[0] "$i")"
+    if [ "$disclaimer" != null ];then
+      disclaimer_html="$(jq -Mr -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
+      printf '<br/>Disclaimer: %s' "$disclaimer_html"
+    fi
+
+    printf '</footer>'
   fi
+
+  printf '</body>'
+  printf '</html>'
 done
