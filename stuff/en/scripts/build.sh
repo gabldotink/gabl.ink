@@ -473,14 +473,20 @@ for i in $items;do
       printf '<a rel="external" href="'
       printf '%s' "$make_share_link_base"
 
-      # ShellCheck warns this “?” is literal, but that’s intentional
-      # shellcheck disable=SC2125
-      make_share_link_start_param=?
+      if [ "$make_share_link_id" = reddit ];then
+        make_share_link_start_param='&amp;'
+      else
+        # ShellCheck warns this “?” is literal, but that’s intentional
+        # shellcheck disable=SC2125
+        make_share_link_start_param=?
+      fi
 
       if [ -n "$make_share_link_text_param" ];then
         printf '%s%s=' "$make_share_link_start_param" "$make_share_link_text_param"
         printf '%s' "$make_share_link_text"
-        make_share_link_start_param='&amp;'
+        if [ "$make_share_link_start_param" = '?' ];then
+          make_share_link_start_param='&amp;'
+        fi
       fi
 
       if [ -n "$make_share_link_url_param" ];then
@@ -514,6 +520,36 @@ for i in $items;do
                     )" \
                    "https://gabl.ink/index/$id/" \
                    "gabldotink,$series_hashtag"
+    
+    make_share_link reddit Reddit https://www.reddit.com/submit?type=LINK title url '' \
+                   "$(
+                      printf 'gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '”'
+                    )" \
+                   "https://gabl.ink/index/$id/"
+    
+    make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' '' \
+                   "https://gabl.ink/index/$id/"
+    
+    make_share_link telegram Telegram https://t.me/share text url '' \
+                   "$(
+                      printf 'gabl.ink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '” '
+                      printf '#gabldotink #%s' "$series_hashtag"
+                    )" \
+                   "https://gabl.ink/index/$id/"
 
     printf '</ul>'
   fi
