@@ -60,6 +60,7 @@ for i in $items;do
     fi
 
     up_directories_path="$(
+      # ShellCheck warns “n” is unused, but that’s intentional
       # shellcheck disable=SC2034
       for n in $(seq 1 "$up_directories");do
         printf ../
@@ -178,11 +179,11 @@ for i in $items;do
     # TODO: Handle quotation marks in other page titles.
 
     make_nav_buttons() {
-      l="$1"
+      make_nav_buttons_l="$1"
 
-      printf '<div id="nav_%s_buttons">' "$l"
+      printf '<div id="nav_%s_buttons">' "$make_nav_buttons_l"
 
-      printf '<div class="nav_button" id="nav_%s_buttons_first" ' "$l"
+      printf '<div class="nav_button" id="nav_%s_buttons_first" ' "$make_nav_buttons_l"
 
       if [ "$first_page" = null ];then
         printf 'title="First in %s (This is the first page!)">' "$container"
@@ -202,7 +203,7 @@ for i in $items;do
 
       printf '</div>'
 
-      printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "$l"
+      printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "$make_nav_buttons_l"
 
       if [ "$previous_page" = null ];then
         printf 'title="Previous (This is the first page!)">'
@@ -222,7 +223,7 @@ for i in $items;do
 
       printf '</div>'
 
-      printf '<div class="nav_button" id="nav_%s_buttons_next" ' "$l"
+      printf '<div class="nav_button" id="nav_%s_buttons_next" ' "$make_nav_buttons_l"
 
       if [ "$next_page" = null ];then
         printf 'title="Next (This is the last page!)">'
@@ -242,7 +243,7 @@ for i in $items;do
 
       printf '</div>'
 
-      printf '<div class="nav_button" id="nav_%s_buttons_last" ' "$l"
+      printf '<div class="nav_button" id="nav_%s_buttons_last" ' "$make_nav_buttons_l"
 
       if [ "$last_page" = null ];then
         printf 'title="Last in %s (This is the last page!)">' "$container"
@@ -439,7 +440,7 @@ for i in $items;do
 
       printf '</time></h2>'
 
-      post_content="$(jq -Mr -- ".post[$p].content")"
+      post_content="$(jq -Mr -- ".post[$p].content" "$i")"
 
       printf '%s' "$post_content"
 
@@ -447,5 +448,73 @@ for i in $items;do
     done
 
     printf '</main>'
+
+    series_title_text="$(jq -Mr -- .title.text "$index/../$id/../data.json")"
+    title_quotes_nested_text="$(jq -Mr -- .title.quotes_nested.text "$i")"
+    series_hashtag="$(jq -Mr -- .hashtag "$index/../$id/../data.json")"
+
+    printf '<details id="share_links">'
+    printf '<summary>Share this page</summary>'
+    printf '<ul>'
+
+    # usage: make_share_link <HTML id> <platform name> <base share URL> <parameter for text> <parameter for URL> <parameter for hashtag(s)> <text> <URL> <hashtag(s)>
+    make_share_link() {
+      make_share_link_id="$1"
+      make_share_link_platform="$2"
+      make_share_link_base="$3"
+      make_share_link_text_param="$4"
+      make_share_link_url_param="$5"
+      make_share_link_hashtag_param="$6"
+      make_share_link_text="$(printf '%s' "$7"|jq -MRr -- @uri)"
+      make_share_link_url="$(printf '%s' "$8"|jq -MRr -- @uri)"
+      make_share_link_hashtag="$(printf '%s' "$9"|jq -MRr -- @uri)"
+
+      printf '<li id="share_links_%s">' "$make_share_link_id"
+      printf '<a rel="external" href="'
+      printf '%s' "$make_share_link_base"
+
+      # ShellCheck warns this “?” is literal, but that’s intentional
+      # shellcheck disable=SC2125
+      make_share_link_start_param=?
+
+      if [ -n "$make_share_link_text_param" ];then
+        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_text_param"
+        printf '%s' "$make_share_link_text"
+        make_share_link_start_param='&amp;'
+      fi
+
+      if [ -n "$make_share_link_url_param" ];then
+        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_url_param"
+        printf '%s' "$make_share_link_url"
+        if [ "$make_share_link_start_param" = '?' ];then
+          make_share_link_start_param='&amp;'
+        fi
+      fi
+
+      if [ -n "$make_share_link_hashtag_param" ];then
+        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_hashtag_param"
+        printf '%s' "$make_share_link_hashtag"
+      fi
+
+      printf '">'
+      printf 'Share with %s' "$make_share_link_platform"
+      printf '</a></li>'
+    }
+
+    make_share_link x X https://x.com/intent/tweet text url hashtags \
+                   "$(
+                      printf 'gabl.ink @gabldotink: '
+                      printf '“%s”: “' "$series_title_text"
+                      if [ "$title_quotes_nested_text" != null ];then
+                        printf '%s' "$title_quotes_nested_text"
+                      else
+                        printf '%s' "$title_text"
+                      fi
+                      printf '”'
+                    )" \
+                   "https://gabl.ink/index/$id/" \
+                   "gabldotink,$series_hashtag"
+
+    printf '</ul>'
   fi
 done
