@@ -295,10 +295,10 @@ for i in $items;do
       series_title_disambiguation_html="$(jq -Mr -- .title.disambiguation.html "$index/../$id/../data.json")"
 
       printf '%s' "$series_title_html"
-      printf '</i></cite>'
+      printf '</cite></i>'
 
       if [ "$series_title_disambiguation_html" != null ];then
-        printf '%s' "$series_title_disambiguation_html"
+        printf ' %s' "$series_title_disambiguation_html"
       fi
     fi
 
@@ -440,7 +440,7 @@ for i in $items;do
 
       printf '</time></h2>'
 
-      post_content="$(jq -Mr -- ".post[$p].content" "$i")"
+      post_content="$(jq -Mr -- ".post[$p].content.html" "$i")"
 
       printf '%s' "$post_content"
 
@@ -647,7 +647,7 @@ for i in $items;do
     if [ "$copyright_year_last" != null ];then
       printf '–<time>%s</time>' "$copyright_year_last"
     fi
-    printf '</span>'
+    printf '</span> '
     printf '<span translate="no">gabl.ink</span><br/>'
 
     copyright_license_url="$(jq -Mr -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
