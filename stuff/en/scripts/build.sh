@@ -21,6 +21,7 @@ for i in $items;do
 
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
+  copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
   copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
   description_text="$(jq -r -- .description.text "$i")"
   id="$(jq -r -- .id "$i")"
@@ -65,25 +66,27 @@ for i in $items;do
       done
     )"
 
-    series="$(jq -r -- .location.series "$i")"
+    location_series="$(jq -r -- .location.series "$i")"
 
     printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"
-    printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$series"
+    printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
     printf '<link rel="stylesheet" href="%sstyle/global.css" hreflang="en-US" type="text/css"/>' "$up_directories_path"
-    printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$series"
+    printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
+
+    printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
 
     if [ "$up_directories" = 4 ];then
-      volume="$(jq -r -- .location.volume "$i")"
-      chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/$series/$volume/$chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$series/$volume/$chapter/data.json")"
+      location_volume="$(jq -r -- .location.volume "$i")"
+      location_chapter="$(jq -r -- .location.chapter "$i")"
+      first_page="$(jq -r -- .pages.first.string "$index/$location_series/$location_volume/$location_chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$location_series/$location_volume/$location_chapter/data.json")"
     elif [ "$up_directories" = 3 ];then
       chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/$series/$chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$series/$chapter/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/$location_series/$chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$location_series/$chapter/data.json")"
     elif [ "$up_directories" = 2 ];then
-      first_page="$(jq -r -- .pages.first.string "$index/$series/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$series/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/$location_series/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$location_series/data.json")"
     fi
 
     location_page_string="$(jq -r -- .location.page.string "$i")"
@@ -296,14 +299,14 @@ for i in $items;do
     # TODO: Support higher containers (volumes and chapters).
 
     if [ "$container" = series ];then
-      series_title_html="$(jq -r -- .title.html "$index/../$id/../data.json")"
-      series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/../$id/../data.json")"
+      location_series_title_html="$(jq -r -- .title.html "$index/../$id/../data.json")"
+      location_series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/../$id/../data.json")"
 
-      printf '%s' "$series_title_html"
+      printf '%s' "$location_series_title_html"
       printf '</cite></i>'
 
-      if [ "$series_title_disambiguation_html" != null ];then
-        printf ' %s' "$series_title_disambiguation_html"
+      if [ "$location_series_title_disambiguation_html" != null ];then
+        printf ' %s' "$location_series_title_disambiguation_html"
       fi
     fi
 
@@ -452,9 +455,9 @@ for i in $items;do
 
     printf '</main>'
 
-    series_title_text="$(jq -r -- .title.text "$index/../$id/../data.json")"
+    location_series_title_text="$(jq -r -- .title.text "$index/../$id/../data.json")"
     title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "$i")"
-    series_hashtag="$(jq -r -- .hashtag "$index/../$id/../data.json")"
+    location_series_hashtag="$(jq -r -- .hashtag "$index/../$id/../data.json")"
 
     printf '<details id="share_links">'
     printf '<summary>Share this page</summary>'
@@ -513,7 +516,7 @@ for i in $items;do
     make_share_link x X https://x.com/intent/tweet text url hashtags \
                    "$(
                       printf 'gabl.ink @gabldotink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -522,12 +525,12 @@ for i in $items;do
                       printf '”'
                     )" \
                    "https://gabl.ink/index/$id/" \
-                   "gabldotink,$series_hashtag"
+                   "gabldotink,$location_series_hashtag"
     
     make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                    "$(
                       printf 'gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -543,21 +546,21 @@ for i in $items;do
     make_share_link telegram Telegram https://t.me/share text url '' \
                    "$(
                       printf 'gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
     
     make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                    "$(
                       printf 'gabl.ink @gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -565,13 +568,13 @@ for i in $items;do
                       fi
                       printf '” '
                       printf 'https://gabl.ink/index/%s/ ' "$id"
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )"
     
     make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                    "$(
                       printf 'gabl.ink @gabldotink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -584,56 +587,56 @@ for i in $items;do
     make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
                    "$(
                       printf 'gabl.ink @gabldotink@mstdn.party: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
     
     make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                    "$(
                       printf 'gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
 
     make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                    "$(
                       printf 'gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
 
     make_share_link gab Gab https://gab.com/compose text url '' \
                    "$(
                       printf 'gabl.ink: '
-                      printf '“%s”: “' "$series_title_text"
+                      printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_text" != null ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf '#gabldotink #%s' "$series_hashtag"
+                      printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
                    "https://gabl.ink/index/$id/"
 
@@ -653,11 +656,10 @@ for i in $items;do
     printf '</span> '
     printf '<span translate="no">gabl.ink</span><br/>'
 
-    copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
     copyright_license_title="$(jq -r -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
     copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
 
-    printf 'License: <a rel="external" href="%s" ' "$copyright_license_url"
+    printf 'License: <a rel="external license" href="%s" ' "$copyright_license_url"
     printf 'hreflang="en" type="text/html">'
     printf '%s' "$copyright_license_title"
     if [ "$copyright_license_abbr" != null ];then
