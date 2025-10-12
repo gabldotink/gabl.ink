@@ -5,10 +5,10 @@
 
 script="$0"
 
-index="$(dirname -- "$script")/.."
+index="$(dirname -- "$script")/../.."
 
 #items="$(find "$index" -type f -name data.json)"
-items="$index/jrco_beta/01/data.json"
+items="$index/en/jrco_beta/01/data.json"
 
 for i in $items;do
   type="$(jq -r -- .type "$i")"
@@ -17,7 +17,7 @@ for i in $items;do
     continue
   fi
 
-  dict="$index/dictionary"
+  dict="$index/en/dictionary"
 
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
@@ -78,15 +78,15 @@ for i in $items;do
     if [ "$up_directories" = 4 ];then
       location_volume="$(jq -r -- .location.volume "$i")"
       location_chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/$location_series/$location_volume/$location_chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$location_series/$location_volume/$location_chapter/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
     elif [ "$up_directories" = 3 ];then
       chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/$location_series/$chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$location_series/$chapter/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/$chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/$chapter/data.json")"
     elif [ "$up_directories" = 2 ];then
-      first_page="$(jq -r -- .pages.first.string "$index/$location_series/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/$location_series/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     fi
 
     location_page_string="$(jq -r -- .location.page.string "$i")"
@@ -167,19 +167,19 @@ for i in $items;do
     fi
 
     if [ "$first_page" != null ];then
-      first_page_title_text="$(jq -r -- .title.text "$index/../$id/../$first_page/data.json")"
+      first_page_title_text="$(jq -r -- .title.text "$index/$id/../$first_page/data.json")"
     fi
 
     if [ "$previous_page" != null ];then
-      previous_page_title_text="$(jq -r -- .title.text "$index/../$id/../$previous_page/data.json")"
+      previous_page_title_text="$(jq -r -- .title.text "$index/$id/../$previous_page/data.json")"
     fi
 
     if [ "$next_page" != null ];then
-      next_page_title_text="$(jq -r -- .title.text "$index/../$id/../$next_page/data.json")"
+      next_page_title_text="$(jq -r -- .title.text "$index/$id/../$next_page/data.json")"
     fi
 
     if [ "$last_page" != null ];then
-      last_page_title_text="$(jq -r -- .title.text "$index/../$id/../$last_page/data.json")"
+      last_page_title_text="$(jq -r -- .title.text "$index/$id/../$last_page/data.json")"
     fi
 
     # TODO: Reduce duplicate code.
@@ -299,8 +299,8 @@ for i in $items;do
     # TODO: Support higher containers (volumes and chapters).
 
     if [ "$container" = series ];then
-      location_series_title_html="$(jq -r -- .title.html "$index/../$id/../data.json")"
-      location_series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/../$id/../data.json")"
+      location_series_title_html="$(jq -r -- .title.html "$index/$id/../data.json")"
+      location_series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/$id/../data.json")"
 
       printf '%s' "$location_series_title_html"
       printf '</cite></i>'
@@ -328,7 +328,7 @@ for i in $items;do
 
     printf '<ol id="nav_bottom_list_pages">'
 
-    find "$index/../$id/.." -type f -path "$index/../$id/../*/data.json" -exec sh -c '
+    find "$index/$id/.." -type f -path "$index/$id/../*/data.json" -exec sh -c '
       d="$1"
       p="$2"
       s="$(jq -r -- .location.page.string "$d")"
@@ -455,9 +455,9 @@ for i in $items;do
 
     printf '</main>'
 
-    location_series_title_text="$(jq -r -- .title.text "$index/../$id/../data.json")"
+    location_series_title_text="$(jq -r -- .title.text "$index/$id/../data.json")"
     title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "$i")"
-    location_series_hashtag="$(jq -r -- .hashtag "$index/../$id/../data.json")"
+    location_series_hashtag="$(jq -r -- .hashtag "$index/$id/../data.json")"
 
     printf '<details id="share_links">'
     printf '<summary>Share this page</summary>'
