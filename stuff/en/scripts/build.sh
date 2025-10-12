@@ -403,7 +403,7 @@ for i in $items;do
 
     printf '">'
 
-    printf '%s ' "$(jq -Mr -- ".months[$((first_published_m-1))]" "$index/dictionary/month_gregorian.json")"
+    printf '%s ' "$(jq -Mr -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
     printf '%s, ' "$first_published_d"
     printf '%s' "$first_published_y"
 
@@ -434,7 +434,7 @@ for i in $items;do
       printf '<h2 class="nw">'
       printf '<time datetime="%s-%s-%s">' "$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
-      printf '%s ' "$(jq -Mr -- ".months[$((post_date_m-1))]" "$index/dictionary/month_gregorian.json")"
+      printf '%s ' "$(jq -Mr -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
       printf '%s, ' "$post_date_d"
       printf '%s' "$post_date_y"
 
