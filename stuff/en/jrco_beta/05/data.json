@@ -1,8 +1,8 @@
 {
-  "id": "en/jrco_2022/05",
+  "id": "en/jrco_beta/05",
   "type": "comic_page",
   "location": {
-    "series": "jrco_2022",
+    "series": "jrco_beta",
     "page": {
       "integer": 5,
       "string": "05"

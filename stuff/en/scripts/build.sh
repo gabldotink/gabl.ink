@@ -8,7 +8,7 @@ script="$0"
 index="$(dirname -- "$script")/.."
 
 #items="$(find "$index" -type f -name data.json)"
-items="$index/jrco_2022/01/data.json"
+items="$index/jrco_beta/01/data.json"
 
 for i in $items;do
   type="$(jq -Mr -- .type "$i")"

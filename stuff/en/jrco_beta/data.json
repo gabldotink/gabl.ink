@@ -1,5 +1,5 @@
 {
-  "id": "en/jrco_2022",
+  "id": "en/jrco_beta",
   "type": "comic_series",
   "pages": {
     "first": {
@@ -13,11 +13,11 @@
   },
   "language": "en",
   "title": {
-    "text": "JoeRunner and Co.",
-    "html": "JoeRunner and Co.",
+    "text": "JoeRunner and Co. Beta",
+    "html": "JoeRunner and Co. Beta",
     "disambiguation": {
-      "text": "(2022–2023)",
-      "html": "(<time>2022</time>–<time>2023</time>)"
+      "text": null,
+      "html": null
     }
   },
   "hashtag": "JoeRunnerAndCoBeta",
