@@ -132,7 +132,6 @@ for i in $items;do
       last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     fi
 
-    # TODO: Warn if previous_page is null but this is not first_page.
     if   [ "$previous_page" = null ];then
       # This is the first page, so no prefetches are needed.
       true
@@ -144,7 +143,6 @@ for i in $items;do
       printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$previous_page" "$language_bcp_47_full"
     fi
 
-    # TODO: Warn if next_page is null but this is not last_page.
     if   [ "$next_page" = null ];then
       # This is the last page, so no prefetches are needed.
       true
