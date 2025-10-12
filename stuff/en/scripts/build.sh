@@ -17,20 +17,21 @@ for i in $items;do
     continue
   fi
 
-  printf '<!DOCTYPE html>'
-
-  id="$(jq -Mr -- .id "$i")"
-  language="$(jq -Mr -- .language "$i")"
-  copyright_license="$(jq -Mr -- .copyright.license[0] "$i")"
   dict="$index/dictionary"
 
-  # Quotation marks escape hyphens and periods in key names.
+  copyright_license="$(jq -Mr -- .copyright.license[0] "$i")"
+  # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
+  copyright_license_spdx="$(jq -Mr -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
+  description_text="$(jq -Mr -- .description.text "$i")"
+  id="$(jq -Mr -- .id "$i")"
+  language="$(jq -Mr -- .language "$i")"
   language_bcp_47_full="$(jq -Mr -- ".\"$language\".bcp_47.full" "$dict/language.json")"
   language_dir="$(jq -Mr -- ".\"$language\".dir" "$dict/language.json")"
+  title_text="$(jq -Mr -- .title.text "$i")"
+
+  printf '<!DOCTYPE html>'
 
   printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' "$language_bcp_47_full" "$language_dir" "$language_bcp_47_full"
-
-  copyright_license_spdx="$(jq -Mr -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
 
   printf '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
 
@@ -38,24 +39,21 @@ for i in $items;do
   printf '<meta charset="utf-8">'
   printf '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
 
-  title_text="$(jq -Mr -- .title.text "$i")"
-
   printf '<title>gabl.ink – %s</title>' "$title_text"
-
-  description_text="$(jq -Mr -- .description.text "$i")"
 
   printf '<meta name="description" content="%s"/>' "$description_text"
   printf '<meta name="robots" content="index,follow"/>'
   printf '<link rel="canonical" href="https://gabl.ink/index/%s/" hreflang="en-US" type="text/html"/>' "$id"
 
   if [ "$type" = comic_page ];then
+    # Determine how many directories deep from the series the page is
     up_directories=4
 
-    if [ -n "$(jq -Mr -- .location.volume "$i")" ];then
+    if [ "$(jq -Mr -- .location.volume "$i")" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
-    if [ -n "$(jq -Mr -- .location.chapter "$i")" ];then
+    if [ "$(jq -Mr -- .location.chapter "$i")" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
@@ -118,13 +116,20 @@ for i in $items;do
 
     language_ogp_full="$(jq -Mr -- ".\"$language\".ogp.full" "$dict/language.json")"
 
-    printf '<meta property="og:type" content="article"/>'
-    printf '<meta property="og:title" content="%s"/>' "$title_text"
-    printf '<meta property="og:description" content="%s"/>' "$description_text"
-    printf '<meta property="og:site_name" content="gabl.ink"/>'
-    printf '<meta property="og:url" content="https://gabl.ink/index/%s"/>' "$id"
-    printf '<meta property="og:image" content="https://gabl.ink/index/%s/image.png"/>' "$id"
-    printf '<meta property="og:locale" content="%s"/>' "$language_ogp_full"
+    make_og() {
+      make_og_property="$1"
+      make_og_content="$2"
+
+      printf '<meta property="og:%s" content="%s"/>' "$make_og_property" "$make_og_content"
+    }
+
+    make_og type article
+    make_og title "$title_text"
+    make_og description "$description_text"
+    make_og site_name gabl.ink
+    make_og url "https://gabl.ink/index/$id"
+    make_og image "https://gabl.ink/index/$id/image.png"
+    make_og locale "$language_ogp_full"
 
     printf '</head>'
 
