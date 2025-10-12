@@ -71,16 +71,16 @@ for i in $items;do
     fi
     language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
     location_chapter="$(jq -r -- .location.chapter "$i")"
+    location_next_string="$(jq -r -- .location.next.string "$i")"
     location_page_integer="$(jq -r -- .location.page.integer "$i")"
     location_page_string="$(jq -r -- .location.page.string "$i")"
+    location_previous_string="$(jq -r -- .location.previous.string "$i")"
     location_series="$(jq -r -- .location.series "$i")"
     location_series_hashtag="$(jq -r -- .hashtag "$index/$id/../data.json")"
     location_series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/$id/../data.json")"
     location_series_title_html="$(jq -r -- .title.html "$index/$id/../data.json")"
     location_series_title_text="$(jq -r -- .title.text "$index/$id/../data.json")"
     location_volume="$(jq -r -- .location.volume "$i")"
-    next_page="$(jq -r -- .location.next.string "$i")"
-    previous_page="$(jq -r -- .location.previous.string "$i")"
     title_html="$(jq -r -- .title.html "$i")"
     title_quotes_nested_html="$(jq -r -- .title.quotes_nested.html "$i")"
     title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "$i")"
@@ -122,37 +122,37 @@ for i in $items;do
     if [ "$up_directories" = 4 ];then
       location_volume="$(jq -r -- .location.volume "$i")"
       location_chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
     elif [ "$up_directories" = 3 ];then
       chapter="$(jq -r -- .location.chapter "$i")"
-      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/$chapter/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/$chapter/data.json")"
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$chapter/data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$chapter/data.json")"
     elif [ "$up_directories" = 2 ];then
-      first_page="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
-      last_page="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     fi
 
-    if   [ "$previous_page" = null ];then
+    if   [ "$location_previous_string" = null ];then
       # This is the first page, so no prefetches are needed.
       true
-    elif [ "$first_page" != "$location_page_string" ] ||
-         [ "$first_page" != "$previous_page" ];then
-      printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$first_page" "$language_bcp_47_full"
-      printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$previous_page" "$language_bcp_47_full"
-    elif [ "$first_page"  = "$previous_page" ];then
-      printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$previous_page" "$language_bcp_47_full"
+    elif [ "$container_pages_first_string" != "$location_page_string" ] ||
+         [ "$container_pages_first_string" != "$location_previous_string" ];then
+      printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_first_string" "$language_bcp_47_full"
+      printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
+    elif [ "$container_pages_first_string"  = "$location_previous_string" ];then
+      printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
     fi
 
-    if   [ "$next_page" = null ];then
+    if   [ "$location_next_string" = null ];then
       # This is the last page, so no prefetches are needed.
       true
-    elif [ "$last_page" != "$location_page_string" ] ||
-         [ "$last_page" != "$next_page" ];then
-      printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$next_page" "$language_bcp_47_full"
-      printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$last_page" "$language_bcp_47_full"
-    elif [ "$last_page"  = "$next_page" ];then
-      printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$next_page" "$language_bcp_47_full"
+    elif [ "$container_pages_last_string" != "$location_page_string" ] ||
+         [ "$container_pages_last_string" != "$location_next_string" ];then
+      printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
+      printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_last_string" "$language_bcp_47_full"
+    elif [ "$container_pages_last_string"  = "$location_next_string" ];then
+      printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
     fi
 
     make_og() {
@@ -191,20 +191,20 @@ for i in $items;do
 
     printf '</cite>”</h1>'
 
-    if [ "$first_page" != null ];then
-      first_page_title_text="$(jq -r -- .title.text "$index/$id/../$first_page/data.json")"
+    if [ "$container_pages_first_string" != null ];then
+      container_pages_first_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_first_string/data.json")"
     fi
 
-    if [ "$previous_page" != null ];then
-      previous_page_title_text="$(jq -r -- .title.text "$index/$id/../$previous_page/data.json")"
+    if [ "$location_previous_string" != null ];then
+      location_previous_string_title_text="$(jq -r -- .title.text "$index/$id/../$location_previous_string/data.json")"
     fi
 
-    if [ "$next_page" != null ];then
-      next_page_title_text="$(jq -r -- .title.text "$index/$id/../$next_page/data.json")"
+    if [ "$location_next_string" != null ];then
+      location_next_title_text="$(jq -r -- .title.text "$index/$id/../$location_next_string/data.json")"
     fi
 
-    if [ "$last_page" != null ];then
-      last_page_title_text="$(jq -r -- .title.text "$index/$id/../$last_page/data.json")"
+    if [ "$container_pages_last_string" != null ];then
+      container_pages_last_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_last_string/data.json")"
     fi
 
     # TODO: Reduce duplicate code.
@@ -218,19 +218,19 @@ for i in $items;do
 
       printf '<div class="nav_button" id="nav_%s_buttons_first" ' "$make_nav_buttons_l"
 
-      if [ "$first_page" = null ];then
+      if [ "$container_pages_first_string" = null ];then
         printf 'title="First in %s (This is the first page!)">' "$container"
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="First in %s (“%s”)">' "$container" "$first_page_title_text"
-        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$first_page"
+        printf 'title="First in %s (“%s”)">' "$container" "$container_pages_first_string_title_text"
+        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$container_pages_first_string"
         printf '<picture>'
       fi
 
       printf '<img class="nav_buttons" src="./first.png" alt="first"/>'
       printf '</picture>'
 
-      if [ "$first_page" != null ];then
+      if [ "$container_pages_first_string" != null ];then
         printf '</a>'
       fi
 
@@ -238,19 +238,19 @@ for i in $items;do
 
       printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "$make_nav_buttons_l"
 
-      if [ "$previous_page" = null ];then
+      if [ "$location_previous_string" = null ];then
         printf 'title="Previous (This is the first page!)">'
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="Previous (“%s”)">' "$previous_page_title_text"
-        printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "$previous_page"
+        printf 'title="Previous (“%s”)">' "$location_previous_string_title_text"
+        printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "$location_previous_string"
         printf '<picture>'
       fi
 
       printf '<img class="nav_buttons" src="./previous.png" alt="previous"/>'
       printf '</picture>'
 
-      if [ "$previous_page" != null ];then
+      if [ "$location_previous_string" != null ];then
         printf '</a>'
       fi
 
@@ -258,19 +258,19 @@ for i in $items;do
 
       printf '<div class="nav_button" id="nav_%s_buttons_next" ' "$make_nav_buttons_l"
 
-      if [ "$next_page" = null ];then
+      if [ "$location_next_string" = null ];then
         printf 'title="Next (This is the last page!)">'
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="Next (“%s”)">' "$next_page_title_text"
-        printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "$next_page"
+        printf 'title="Next (“%s”)">' "$location_next_title_text"
+        printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "$location_next_string"
         printf '<picture>'
       fi
 
       printf '<img class="nav_buttons" src="./next.png" alt="next"/>'
       printf '</picture>'
 
-      if [ "$next_page" != null ];then
+      if [ "$location_next_string" != null ];then
         printf '</a>'
       fi
 
@@ -278,19 +278,19 @@ for i in $items;do
 
       printf '<div class="nav_button" id="nav_%s_buttons_last" ' "$make_nav_buttons_l"
 
-      if [ "$last_page" = null ];then
+      if [ "$container_pages_last_string" = null ];then
         printf 'title="Last in %s (This is the last page!)">' "$container"
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="Last in %s (“%s”)">' "$container" "$last_page_title_text"
-        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$last_page"
+        printf 'title="Last in %s (“%s”)">' "$container" "$container_pages_last_string_title_text"
+        printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$container_pages_last_string"
         printf '<picture>'
       fi
 
       printf '<img class="nav_buttons" src="./last.png" alt="last"/>'
       printf '</picture>'
 
-      if [ "$last_page" != null ];then
+      if [ "$container_pages_last_string" != null ];then
         printf '</a>'
       fi
 
