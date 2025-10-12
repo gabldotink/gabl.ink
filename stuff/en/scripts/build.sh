@@ -11,7 +11,7 @@ index="$(dirname -- "$script")/.."
 items="$index/jrco_beta/01/data.json"
 
 for i in $items;do
-  type="$(jq -Mr -- .type "$i")"
+  type="$(jq -r -- .type "$i")"
 
   if [ "$type" = comic_series ];then
     continue
@@ -19,15 +19,15 @@ for i in $items;do
 
   dict="$index/dictionary"
 
-  copyright_license="$(jq -Mr -- .copyright.license[0] "$i")"
+  copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-  copyright_license_spdx="$(jq -Mr -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
-  description_text="$(jq -Mr -- .description.text "$i")"
-  id="$(jq -Mr -- .id "$i")"
-  language="$(jq -Mr -- .language "$i")"
-  language_bcp_47_full="$(jq -Mr -- ".\"$language\".bcp_47.full" "$dict/language.json")"
-  language_dir="$(jq -Mr -- ".\"$language\".dir" "$dict/language.json")"
-  title_text="$(jq -Mr -- .title.text "$i")"
+  copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
+  description_text="$(jq -r -- .description.text "$i")"
+  id="$(jq -r -- .id "$i")"
+  language="$(jq -r -- .language "$i")"
+  language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
+  language_dir="$(jq -r -- ".\"$language\".dir" "$dict/language.json")"
+  title_text="$(jq -r -- .title.text "$i")"
 
   printf '<!DOCTYPE html>'
 
@@ -49,11 +49,11 @@ for i in $items;do
     # Determine how many directories deep from the series the page is
     up_directories=4
 
-    if [ "$(jq -Mr -- .location.volume "$i")" = null ];then
+    if [ "$(jq -r -- .location.volume "$i")" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
-    if [ "$(jq -Mr -- .location.chapter "$i")" = null ];then
+    if [ "$(jq -r -- .location.chapter "$i")" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
@@ -65,7 +65,7 @@ for i in $items;do
       done
     )"
 
-    series="$(jq -Mr -- .location.series "$i")"
+    series="$(jq -r -- .location.series "$i")"
 
     printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"
     printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$series"
@@ -73,22 +73,22 @@ for i in $items;do
     printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$series"
 
     if [ "$up_directories" = 4 ];then
-      volume="$(jq -Mr -- .location.volume "$i")"
-      chapter="$(jq -Mr -- .location.chapter "$i")"
-      first_page="$(jq -Mr -- .pages.first.string "$index/$series/$volume/$chapter/data.json")"
-      last_page="$(jq -Mr -- .pages.last.string "$index/$series/$volume/$chapter/data.json")"
+      volume="$(jq -r -- .location.volume "$i")"
+      chapter="$(jq -r -- .location.chapter "$i")"
+      first_page="$(jq -r -- .pages.first.string "$index/$series/$volume/$chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$series/$volume/$chapter/data.json")"
     elif [ "$up_directories" = 3 ];then
-      chapter="$(jq -Mr -- .location.chapter "$i")"
-      first_page="$(jq -Mr -- .pages.first.string "$index/$series/$chapter/data.json")"
-      last_page="$(jq -Mr -- .pages.last.string "$index/$series/$chapter/data.json")"
+      chapter="$(jq -r -- .location.chapter "$i")"
+      first_page="$(jq -r -- .pages.first.string "$index/$series/$chapter/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$series/$chapter/data.json")"
     elif [ "$up_directories" = 2 ];then
-      first_page="$(jq -Mr -- .pages.first.string "$index/$series/data.json")"
-      last_page="$(jq -Mr -- .pages.last.string "$index/$series/data.json")"
+      first_page="$(jq -r -- .pages.first.string "$index/$series/data.json")"
+      last_page="$(jq -r -- .pages.last.string "$index/$series/data.json")"
     fi
 
-    location_page_string="$(jq -Mr -- .location.page.string "$i")"
-    previous_page="$(jq -Mr -- .location.previous.string "$i")"
-    next_page="$(jq -Mr -- .location.next.string "$i")"
+    location_page_string="$(jq -r -- .location.page.string "$i")"
+    previous_page="$(jq -r -- .location.previous.string "$i")"
+    next_page="$(jq -r -- .location.next.string "$i")"
 
     # TODO: Warn if previous_page is null but this is not first_page.
     if   [ "$previous_page" = null ];then
@@ -114,7 +114,7 @@ for i in $items;do
       printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$next_page" "$language_bcp_47_full"
     fi
 
-    language_ogp_full="$(jq -Mr -- ".\"$language\".ogp.full" "$dict/language.json")"
+    language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
 
     make_og() {
       make_og_property="$1"
@@ -144,8 +144,8 @@ for i in $items;do
     printf '<h1 id="nav_top_title">'
     printf '“<cite>'
 
-    title_html="$(jq -Mr -- .title.html "$i")"
-    title_quotes_nested_html="$(jq -Mr -- .title.quotes_nested.html "$i")"
+    title_html="$(jq -r -- .title.html "$i")"
+    title_quotes_nested_html="$(jq -r -- .title.quotes_nested.html "$i")"
 
     if [ "$title_quotes_nested_html" != null ];then
       printf '%s' "$title_quotes_nested_html"
@@ -164,19 +164,19 @@ for i in $items;do
     fi
 
     if [ "$first_page" != null ];then
-      first_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$first_page/data.json")"
+      first_page_title_text="$(jq -r -- .title.text "$index/../$id/../$first_page/data.json")"
     fi
 
     if [ "$previous_page" != null ];then
-      previous_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$previous_page/data.json")"
+      previous_page_title_text="$(jq -r -- .title.text "$index/../$id/../$previous_page/data.json")"
     fi
 
     if [ "$next_page" != null ];then
-      next_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$next_page/data.json")"
+      next_page_title_text="$(jq -r -- .title.text "$index/../$id/../$next_page/data.json")"
     fi
 
     if [ "$last_page" != null ];then
-      last_page_title_text="$(jq -Mr -- .title.text "$index/../$id/../$last_page/data.json")"
+      last_page_title_text="$(jq -r -- .title.text "$index/../$id/../$last_page/data.json")"
     fi
 
     # TODO: Reduce duplicate code.
@@ -296,8 +296,8 @@ for i in $items;do
     # TODO: Support higher containers (volumes and chapters).
 
     if [ "$container" = series ];then
-      series_title_html="$(jq -Mr -- .title.html "$index/../$id/../data.json")"
-      series_title_disambiguation_html="$(jq -Mr -- .title.disambiguation.html "$index/../$id/../data.json")"
+      series_title_html="$(jq -r -- .title.html "$index/../$id/../data.json")"
+      series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "$index/../$id/../data.json")"
 
       printf '%s' "$series_title_html"
       printf '</cite></i>'
@@ -307,7 +307,7 @@ for i in $items;do
       fi
     fi
 
-    location_page_integer="$(jq -Mr -- .location.page.integer "$i")"
+    location_page_integer="$(jq -r -- .location.page.integer "$i")"
 
     printf ', page %s ' "$location_page_integer"
 
@@ -328,26 +328,26 @@ for i in $items;do
     find "$index/../$id/.." -type f -path "$index/../$id/../*/data.json" -exec sh -c '
       d="$1"
       p="$2"
-      s="$(jq -Mr -- .location.page.string "$d")"
+      s="$(jq -r -- .location.page.string "$d")"
 
       printf "<li>“"
 
       if [ "$s" = "$p" ];then
         printf "<b><cite>"
-        if [ "$(jq -Mr .title.quotes_nested.html "$d")" != null ];then
-          printf "%s" "$(jq -Mr -- .title.quotes_nested.html "$d")"
+        if [ "$(jq -r .title.quotes_nested.html "$d")" != null ];then
+          printf "%s" "$(jq -r -- .title.quotes_nested.html "$d")"
         else
-          printf "%s" "$(jq -Mr -- .title.html "$d")"
+          printf "%s" "$(jq -r -- .title.html "$d")"
         fi
         printf "</cite></b>”</li>"
       else
         printf "<a href=\"../"
         printf "%s" "$s"
         printf "/\" hreflang=\"en-US\" type=\"text/html\"><cite>"
-        if [ "$(jq -Mr .title.quotes_nested.html "$d")" != null ];then
-          printf "%s" "$(jq -Mr -- .title.quotes_nested.html "$d")"
+        if [ "$(jq -r .title.quotes_nested.html "$d")" != null ];then
+          printf "%s" "$(jq -r -- .title.quotes_nested.html "$d")"
         else
-          printf "%s" "$(jq -Mr -- .title.html "$d")"
+          printf "%s" "$(jq -r -- .title.html "$d")"
         fi
         printf "</cite></a>”</li>"
       fi
@@ -372,9 +372,9 @@ for i in $items;do
     printf '</tr>'
     printf '</thead>'
 
-    for l in $(jq -Mr -- '.transcript.lines|to_entries|.[].key' "$i");do
-      h="$(jq -Mr -- ".transcript.lines[$l].h" "$i")"
-      d="$(jq -Mr -- ".transcript.lines[$l].d" "$i")"
+    for l in $(jq -r -- '.transcript.lines|to_entries|.[].key' "$i");do
+      h="$(jq -r -- ".transcript.lines[$l].h" "$i")"
+      d="$(jq -r -- ".transcript.lines[$l].d" "$i")"
       printf '<tr>'
       printf '<th scope="row">%s</th>' "$h"
       printf '<td><p>%s</p></td>' "$d"
@@ -385,9 +385,9 @@ for i in $items;do
 
     # TODO: Unnecessary: Handle years outside four digits?
 
-    first_published_y="$(jq -Mr -- .first_published.y "$i")"
-    first_published_m="$(jq -Mr -- .first_published.m "$i")"
-    first_published_d="$(jq -Mr -- .first_published.d "$i")"
+    first_published_y="$(jq -r -- .first_published.y "$i")"
+    first_published_m="$(jq -r -- .first_published.m "$i")"
+    first_published_d="$(jq -r -- .first_published.d "$i")"
 
     printf '<p id="first_published">First published '
     printf '<time class="nw" datetime="'
@@ -406,17 +406,17 @@ for i in $items;do
 
     printf '">'
 
-    printf '%s ' "$(jq -Mr -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
+    printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
     printf '%s, ' "$first_published_d"
     printf '%s' "$first_published_y"
 
     printf '</time>'
     printf '</p>'
 
-    for p in $(jq -Mr -- '.post|to_entries|.[].key' "$i");do
-      post_date_y="$(jq -Mr -- ".post[$p].date.y" "$i")"
-      post_date_m="$(jq -Mr -- ".post[$p].date.m" "$i")"
-      post_date_d="$(jq -Mr -- ".post[$p].date.d" "$i")"
+    for p in $(jq -r -- '.post|to_entries|.[].key' "$i");do
+      post_date_y="$(jq -r -- ".post[$p].date.y" "$i")"
+      post_date_m="$(jq -r -- ".post[$p].date.m" "$i")"
+      post_date_d="$(jq -r -- ".post[$p].date.d" "$i")"
 
       printf '<article id="post_'
 
@@ -437,13 +437,13 @@ for i in $items;do
       printf '<h2 class="nw">'
       printf '<time datetime="%s-%s-%s">' "$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
-      printf '%s ' "$(jq -Mr -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
+      printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
       printf '%s, ' "$post_date_d"
       printf '%s' "$post_date_y"
 
       printf '</time></h2>'
 
-      post_content="$(jq -Mr -- ".post[$p].content.html" "$i")"
+      post_content="$(jq -r -- ".post[$p].content.html" "$i")"
 
       printf '%s' "$post_content"
 
@@ -452,9 +452,9 @@ for i in $items;do
 
     printf '</main>'
 
-    series_title_text="$(jq -Mr -- .title.text "$index/../$id/../data.json")"
-    title_quotes_nested_text="$(jq -Mr -- .title.quotes_nested.text "$i")"
-    series_hashtag="$(jq -Mr -- .hashtag "$index/../$id/../data.json")"
+    series_title_text="$(jq -r -- .title.text "$index/../$id/../data.json")"
+    title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "$i")"
+    series_hashtag="$(jq -r -- .hashtag "$index/../$id/../data.json")"
 
     printf '<details id="share_links">'
     printf '<summary>Share this page</summary>'
@@ -468,9 +468,9 @@ for i in $items;do
       make_share_link_text_param="$4"
       make_share_link_url_param="$5"
       make_share_link_hashtag_param="$6"
-      make_share_link_text="$(printf '%s' "$7"|jq -MRr -- @uri)"
-      make_share_link_url="$(printf '%s' "$8"|jq -MRr -- @uri)"
-      make_share_link_hashtag="$(printf '%s' "$9"|jq -MRr -- @uri)"
+      make_share_link_text="$(printf '%s' "$7"|jq -Rr -- @uri)"
+      make_share_link_url="$(printf '%s' "$8"|jq -Rr -- @uri)"
+      make_share_link_hashtag="$(printf '%s' "$9"|jq -Rr -- @uri)"
 
       printf '<li id="share_links_%s">' "$make_share_link_id"
       printf '<a rel="external" href="'
@@ -640,8 +640,8 @@ for i in $items;do
     printf '</ul>'
     printf '</details>'
 
-    copyright_year_first="$(jq -Mr -- .copyright.year.first "$i")"
-    copyright_year_last="$(jq -Mr -- .copyright.year.last "$i")"
+    copyright_year_first="$(jq -r -- .copyright.year.first "$i")"
+    copyright_year_last="$(jq -r -- .copyright.year.last "$i")"
 
     printf '<footer>'
     printf '<span class="nw">'
@@ -653,9 +653,9 @@ for i in $items;do
     printf '</span> '
     printf '<span translate="no">gabl.ink</span><br/>'
 
-    copyright_license_url="$(jq -Mr -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
-    copyright_license_title="$(jq -Mr -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
-    copyright_license_abbr="$(jq -Mr -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
+    copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
+    copyright_license_title="$(jq -r -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
+    copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
 
     printf 'License: <a rel="external" href="%s" ' "$copyright_license_url"
     printf 'hreflang="en" type="text/html">'
@@ -665,9 +665,9 @@ for i in $items;do
     fi
     printf '</a>'
 
-    disclaimer="$(jq -Mr -- .disclaimer[0] "$i")"
+    disclaimer="$(jq -r -- .disclaimer[0] "$i")"
     if [ "$disclaimer" != null ];then
-      disclaimer_html="$(jq -Mr -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
+      disclaimer_html="$(jq -r -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
       printf '<br/>Disclaimer: %s' "$disclaimer_html"
     fi
 
