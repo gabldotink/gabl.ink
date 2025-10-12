@@ -88,11 +88,11 @@ for i in $items;do
     # Determine how many directories deep from the series the page is
     up_directories=4
 
-    if [ "$(jq -r -- .location.volume "$i")" = null ];then
+    if [ "$location_volume" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
-    if [ "$(jq -r -- .location.chapter "$i")" = null ];then
+    if [ "$location_chapter" = null ];then
       up_directories="$((up_directories-1))"
     fi
 
