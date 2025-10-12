@@ -325,8 +325,6 @@ for i in $items;do
 
     printf '<ol id="nav_bottom_list_pages">'
 
-    # TODO: Bold and don’t link current page.
-
     find "$index/../$id/.." -type f -path "$index/../$id/../*/data.json" -exec sh -c '
       d="$1"
       p="$2"
