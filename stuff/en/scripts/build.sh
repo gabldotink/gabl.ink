@@ -20,6 +20,7 @@ for i in $items;do
   fi
 
   # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
+  canonical="https://gabl.ink/index/$id/"
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
   copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
@@ -84,6 +85,10 @@ for i in $items;do
     title_html="$(jq -r -- .title.html "$i")"
     title_quotes_nested_html="$(jq -r -- .title.quotes_nested.html "$i")"
     title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "$i")"
+
+    if [ "$title_quotes_nested_text" != null ];then
+      title_quotes_nested_exists=true
+    fi
 
     # Determine how many directories deep from the series the page is
     up_directories=4
@@ -183,7 +188,7 @@ for i in $items;do
     printf '<h1 id="nav_top_title">'
     printf '“<cite>'
 
-    if [ "$title_quotes_nested_html" != null ];then
+    if [ "$title_quotes_nested_exists" = true ];then
       printf '%s' "$title_quotes_nested_html"
     else
       printf '%s' "$title_html"
@@ -294,20 +299,16 @@ for i in $items;do
         printf '</a>'
       fi
 
-      printf '</div>'
-
-      printf '</div>'
+      printf '</div></div>'
     }
 
     make_nav_buttons top
 
     printf '</div>'
 
-    printf '<div id="comic_page_image">'
-    printf '<picture>'
+    printf '<div id="comic_page_image"><picture>'
     printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
-    printf '</picture>'
-    printf '</div>'
+    printf '</picture></div>'
 
     printf '<div id="nav_bottom">'
 
@@ -336,7 +337,7 @@ for i in $items;do
 
     printf '“<cite>'
 
-    if [ "$title_quotes_nested_html" != null ];then
+    if [ "$title_quotes_nested_exists" = true ];then
       printf '%s' "$title_quotes_nested_html"
     else
       printf '%s' "$title_html"
@@ -379,8 +380,7 @@ for i in $items;do
     printf '</ol>'
 
     printf '</details>'
-    printf '</div>'
-    printf '</div>'
+    printf '</div></div>'
 
     printf '<details id="comic_transcript" open="">'
 
@@ -403,21 +403,17 @@ for i in $items;do
       printf '<td><p>%s</p></td>' "$d"
     done
 
-    printf '</table>'
-    printf '</details>'
+    printf '</table></details>'
 
     printf '<p id="first_published">First published '
     printf '<time class="nw" datetime="'
 
-    printf '%s-' "$first_published_y_pad""$first_published_y"
-    printf '%s-' "$first_published_m_pad""$first_published_m"
-    printf '%s' "$first_published_d_pad""$first_published_d"
+    printf '%s-%s-%s' "$first_published_y_pad""$first_published_y" "$first_published_m_pad""$first_published_m" "$first_published_d_pad""$first_published_d"
 
     printf '">'
 
     printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
-    printf '%s, ' "$first_published_d"
-    printf '%s' "$first_published_y"
+    printf '%s, %s' "$first_published_d" "$first_published_y"
 
     printf '</time>'
     printf '</p>'
@@ -443,9 +439,7 @@ for i in $items;do
       
       printf '<article id="post_'
 
-      printf '%s-' "$post_date_y_pad""$post_date_y"
-      printf '%s-' "$post_date_m_pad""$post_date_m"
-      printf '%s' "$post_date_d_pad""$post_date_d"
+      printf '%s-%s-%s' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
       printf '">'
 
@@ -453,8 +447,7 @@ for i in $items;do
       printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
       printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
-      printf '%s, ' "$post_date_d"
-      printf '%s' "$post_date_y"
+      printf '%s, %s' "$post_date_d" "$post_date_y"
 
       printf '</time></h2>'
 
@@ -482,8 +475,7 @@ for i in $items;do
       make_share_link_hashtag="$(printf '%s' "$9"|jq -Rr -- @uri)"
 
       printf '<li id="share_links_%s">' "$make_share_link_id"
-      printf '<a rel="external" href="'
-      printf '%s' "$make_share_link_base"
+      printf '<a rel="external" href="%s' "$make_share_link_base"
 
       if [ "$make_share_link_id" = reddit ];then
         make_share_link_start_param='&amp;'
@@ -523,7 +515,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink @gabldotink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -537,7 +529,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -553,7 +545,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -567,7 +559,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink @gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -581,7 +573,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink @gabldotink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -594,7 +586,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink @gabldotink@mstdn.party: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -608,7 +600,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -622,7 +614,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -636,7 +628,7 @@ for i in $items;do
                    "$(
                       printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
-                      if [ "$title_quotes_nested_text" != null ];then
+                      if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
@@ -646,8 +638,7 @@ for i in $items;do
                     )" \
                    "https://gabl.ink/index/$id/"
 
-    printf '</ul>'
-    printf '</details>'
+    printf '</ul></details>'
 
     printf '<footer>'
     printf '<span class="nw">'
@@ -675,6 +666,5 @@ for i in $items;do
     printf '</footer>'
   fi
 
-  printf '</body>'
-  printf '</html>'
+  printf '</body></html>'
 done
