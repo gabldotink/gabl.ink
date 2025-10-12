@@ -7,6 +7,8 @@ script="$0"
 
 index="$(dirname -- "$script")/../.."
 
+dict="$index/en/dictionary"
+
 #items="$(find "$index" -type f -name data.json)"
 items="$index/en/jrco_beta/01/data.json"
 
@@ -17,8 +19,7 @@ for i in $items;do
     continue
   fi
 
-  dict="$index/en/dictionary"
-
+  # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
   copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
