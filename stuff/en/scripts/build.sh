@@ -438,10 +438,7 @@ for i in $items;do
       fi
     ' shell '{}' "$location_page_string" ';'
 
-    printf '</ol>'
-
-    printf '</details>'
-    printf '</div></div>'
+    printf '</ol></details></div></div>'
 
     printf '<details id="comic_transcript" open="">'
 
@@ -449,12 +446,10 @@ for i in $items;do
 
     printf '<table id="comic_transcript_table">'
 
-    printf '<thead>'
-    printf '<tr>'
+    printf '<thead><tr>'
     printf '<th scope="col">Speaker</th>'
     printf '<th scope="col">Text</th>'
-    printf '</tr>'
-    printf '</thead>'
+    printf '</tr></thead>'
 
     for l in $(jq -r -- '.transcript.lines|to_entries|.[].key' "$i");do
       h="$(jq -r -- ".transcript.lines[$l].h" "$i")"
@@ -591,8 +586,7 @@ for i in $items;do
 
     make_share_link x X https://x.com/intent/tweet text url hashtags \
                    "$(
-                      printf 'gabl.ink @gabldotink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink @gabldotink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -605,8 +599,7 @@ for i in $items;do
     
     make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -621,8 +614,7 @@ for i in $items;do
     
     make_share_link telegram Telegram https://t.me/share text url '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -635,8 +627,7 @@ for i in $items;do
     
     make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                    "$(
-                      printf 'gabl.ink @gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink @gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -649,8 +640,7 @@ for i in $items;do
     
     make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -661,8 +651,7 @@ for i in $items;do
     
     make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
                    "$(
-                      printf 'gabl.ink @gabldotink@mstdn.party: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -675,8 +664,7 @@ for i in $items;do
     
     make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -689,8 +677,7 @@ for i in $items;do
 
     make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
@@ -703,8 +690,7 @@ for i in $items;do
 
     make_share_link gab Gab https://gab.com/compose text url '' \
                    "$(
-                      printf 'gabl.ink: '
-                      printf '“%s”: “' "$location_series_title_text"
+                      printf 'gabl.ink: “%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
