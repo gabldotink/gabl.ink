@@ -713,29 +713,31 @@ for i in $items;do
 
     printf '</ul></details>'
 
-    printf '<footer><span class="nw">'
+    printf '<footer><p><span class="nw">'
     printf '<abbr title="Copyright">©</abbr> '
     printf '<time>%s</time>' "$copyright_year_first"
     if [ "$copyright_year_last" != null ];then
       printf '–<time>%s</time>' "$copyright_year_last"
     fi
-    printf '</span> '
-    printf '<span translate="no">gabl.ink</span><br/>'
+    printf '</span> <span translate="no">gabl.ink</span></p>'
 
-    printf 'License: <a rel="external license" href="%s" ' "$copyright_license_url"
+    printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
     printf 'hreflang="en" type="text/html">'
     printf '%s' "$copyright_license_title"
     if [ "$copyright_license_abbr" != null ];then
       printf ' (<abbr>%s</abbr>)' "$copyright_license_abbr"
     fi
-    printf '</a>'
+    printf '</a></p>'
 
     if [ "$disclaimer" != null ];then
       disclaimer_html="$(jq -r -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
-      printf '<br/>Disclaimer: %s' "$disclaimer_html"
+      printf '<p>Disclaimer: %s</p>' "$disclaimer_html"
+    else
+      unset disclaimer_html &
     fi
 
-    printf '</footer>'
+    printf '</footer>' &
+    wait
   fi
 
   printf '</body></html>'
