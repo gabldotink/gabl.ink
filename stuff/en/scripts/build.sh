@@ -445,7 +445,8 @@ for i in $items;do
 
     printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
     printf '%s, ' "$first_published_d"
-    if [ "${#first_published_y}" -lt 4 ];then
+    if [ "${#first_published_y}" -lt 4 ] &&
+       [ "$first_published_y" -ne 0 ];then
       printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
     elif [ "$first_published_y" -eq 0 ];then
       printf '1 <abbr title="before Christ">BC</abbr>'
@@ -486,7 +487,8 @@ for i in $items;do
 
       printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
       printf '%s, ' "$post_date_d"
-      if [ "${#post_date_y}" -lt 4 ];then
+      if [ "${#post_date_y}" -lt 4 ] &&
+         [ "$post_date_y" -ne 0 ];then
         printf '<abbr title="anno Domini">AD</abbr> %s' "$post_date_y"
       elif [ "$post_date_y" -eq 0 ];then
         printf '1 <abbr title="before Christ">BC</abbr>'
