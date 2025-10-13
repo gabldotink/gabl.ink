@@ -63,10 +63,14 @@ for i in $items;do
     first_published_d="$(jq -r -- .first_published.d "$i")"
     if [ "${#first_published_d}" -eq 1 ];then
       first_published_d_pad=0
+    else
+      unset first_published_d_pad
     fi
     first_published_m="$(jq -r -- .first_published.m "$i")"
     if [ "${#first_published_m}" -eq 1 ];then
       first_published_m_pad=0
+    else
+      unset first_published_m_pad
     fi
     first_published_y="$(jq -r -- .first_published.y "$i")"
     if   [ "${#first_published_y}" -eq 3 ];then
@@ -75,6 +79,8 @@ for i in $items;do
       first_published_y_pad=00
     elif [ "${#first_published_y}" -eq 1 ];then
       first_published_y_pad=000
+    else
+      unset first_published_y_pad
     fi
     language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
     location_chapter="$(jq -r -- .location.chapter "$i")"
@@ -94,11 +100,15 @@ for i in $items;do
 
     if [ "$title_quotes_nested_text" != null ];then
       title_quotes_nested_exists=true
+    else
+      unset title_quotes_nested_exists
     fi
 
     # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version. WebM should be preferred, due to being free (libre), and MP4 should be provided as a fallback for compatibility. In case of a video, image.png act as a thumbnail.
     if [ -f "$index/$id/video.webm" ];then
       video_exists=true
+    else
+      unset video_exists
     fi
 
     # Determine how many directories deep from the series the page is
@@ -126,6 +136,9 @@ for i in $items;do
       container=chapter
     elif [ "$up_directories" -eq 4 ];then
       container=volume
+    else
+      printf '[error] up_directories is not 2, 3, or 4'
+      exit 1
     fi
 
     printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"
@@ -135,18 +148,20 @@ for i in $items;do
 
     printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
 
-    if [ "$up_directories" -eq 4 ];then
+    if   [ "$up_directories" -eq 2 ];then
+      unset location_volume location_chapter
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
+    elif [ "$up_directories" -eq 3 ];then
+      unset location_volume
+      location_chapter="$(jq -r -- .location.chapter "$i")"
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_chapter/data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_chapter/data.json")"
+    elif [ "$up_directories" -eq 4 ];then
       location_volume="$(jq -r -- .location.volume "$i")"
       location_chapter="$(jq -r -- .location.chapter "$i")"
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
-    elif [ "$up_directories" -eq 3 ];then
-      chapter="$(jq -r -- .location.chapter "$i")"
-      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$chapter/data.json")"
-      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$chapter/data.json")"
-    elif [ "$up_directories" -eq 2 ];then
-      container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
-      container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     fi
 
     if   [ "$location_previous_string" = null ];then
@@ -213,18 +228,26 @@ for i in $items;do
 
     if [ "$container_pages_first_string" != null ];then
       container_pages_first_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_first_string/data.json")"
+    else
+      unset container_pages_first_string_title_text
     fi
 
     if [ "$location_previous_string" != null ];then
       location_previous_string_title_text="$(jq -r -- .title.text "$index/$id/../$location_previous_string/data.json")"
+    else
+      unset location_previous_string_title_text
     fi
 
     if [ "$location_next_string" != null ];then
-      location_next_title_text="$(jq -r -- .title.text "$index/$id/../$location_next_string/data.json")"
+      location_next_string_title_text="$(jq -r -- .title.text "$index/$id/../$location_next_string/data.json")"
+    else
+      unset location_next_string_title_text
     fi
 
     if [ "$container_pages_last_string" != null ];then
       container_pages_last_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_last_string/data.json")"
+    else
+      unset container_pages_last_string_title_text
     fi
 
     # TODO: Reduce duplicate code.
@@ -282,7 +305,7 @@ for i in $items;do
         printf 'title="Next (This is the last page!)">'
         printf '<picture class="nav_buttons_off">'
       else
-        printf 'title="Next (“%s”)">' "$location_next_title_text"
+        printf 'title="Next (“%s”)">' "$location_next_string_title_text"
         printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "$location_next_string"
         printf '<picture>'
       fi
@@ -462,10 +485,14 @@ for i in $items;do
       post_date_d="$(jq -r -- ".post[$p].date.d" "$i")"
       if [ "${#post_date_d}" -eq 1 ];then
         post_date_d_pad=0
+      else
+        unset post_date_d_pad
       fi
       post_date_m="$(jq -r -- ".post[$p].date.m" "$i")"
       if [ "${#post_date_m}" -eq 1 ];then
         post_date_m_pad=0
+      else
+        unset post_date_m_pad
       fi
       post_date_y="$(jq -r -- ".post[$p].date.y" "$i")"
       if   [ "${#post_date_y}" -eq 3 ];then
@@ -474,6 +501,8 @@ for i in $items;do
         post_date_y_pad=00
       elif [ "${#post_date_y}" -eq 1 ];then
         post_date_y_pad=000
+      else
+        unset post_date_y_pad
       fi
       
       printf '<article id="post_'
