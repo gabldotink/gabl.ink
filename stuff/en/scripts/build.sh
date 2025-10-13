@@ -465,6 +465,7 @@ for i in $items;do
       printf '<tr>'
       printf '<th scope="row">%s</th>' "$h"
       printf '<td><p>%s</p></td>' "$d"
+      printf '</tr>'
     done
 
     printf '</table></details>'
