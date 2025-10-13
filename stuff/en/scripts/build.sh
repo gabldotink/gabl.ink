@@ -1,7 +1,12 @@
 #!/bin/sh
 # SPDX-License-Identifier: CC-BY-4.0
 
-# This script requires jq to be installed in your PATH.
+export POSIXLY_CORRECT
+
+if ! command -v jq >/dev/null 2>&1;then
+  printf '[error] jq must be installed in your PATH to run this script.\n'
+  exit 1
+fi
 
 script="$0"
 
