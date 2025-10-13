@@ -3,9 +3,18 @@
 
 export POSIXLY_CORRECT
 
-if ! command -v jq >/dev/null 2>&1;then
-  printf '[error] jq must be installed in your PATH to run this script.\n'
+error() {
+  error_msg="$1"
+  printf '[error] '
+  if [ -n "$id" ];then
+    printf '(%s) ' "$id"
+  fi
+  printf '%s\n' "$error_msg"
   exit 1
+}
+
+if ! command -v jq >/dev/null 2>&1;then
+  error 'jq is not installed in PATH'
 fi
 
 script="$0"
@@ -73,14 +82,16 @@ for i in $items;do
       unset first_published_m_pad &
     fi
     first_published_y="$(jq -r -- .first_published.y "$i")"
-    if   [ "${#first_published_y}" -eq 3 ];then
+    if   [ "${#first_published_y}" -eq 4 ];then
+      unset first_published_y_pad &
+    elif [ "${#first_published_y}" -eq 3 ];then
       first_published_y_pad=0
     elif [ "${#first_published_y}" -eq 2 ];then
       first_published_y_pad=00
     elif [ "${#first_published_y}" -eq 1 ];then
       first_published_y_pad=000
     else
-      unset first_published_y_pad &
+      error 'first_published_y is not 1–4 digits long'
     fi
     language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
     location_chapter="$(jq -r -- .location.chapter "$i")"
@@ -137,8 +148,7 @@ for i in $items;do
     elif [ "$up_directories" -eq 4 ];then
       container=volume
     else
-      printf '[error] up_directories is not 2, 3, or 4'
-      exit 1
+      error 'up_directories is not 2, 3, or 4'
     fi
 
     wait
@@ -499,14 +509,16 @@ for i in $items;do
         unset post_date_m_pad &
       fi
       post_date_y="$(jq -r -- ".post[$p].date.y" "$i")"
-      if   [ "${#post_date_y}" -eq 3 ];then
+      if   [ "${#post_date_y}" -eq 4 ];then
+        unset post_date_y_pad &
+      elif [ "${#post_date_y}" -eq 3 ];then
         post_date_y_pad=0
       elif [ "${#post_date_y}" -eq 2 ];then
         post_date_y_pad=00
       elif [ "${#post_date_y}" -eq 1 ];then
         post_date_y_pad=000
       else
-        unset post_date_y_pad &
+        error 'post_date_y is not 1–4 digits long'
       fi
 
       wait
