@@ -91,6 +91,11 @@ for i in $items;do
       title_quotes_nested_exists=true
     fi
 
+    # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version. WebM should be preferred, due to being free (libre), and MP4 should be provided as a fallback for compatibility. In case of a video, image.png act as a thumbnail.
+    if [ -f "$index/$id/video.webm" ];then
+      video_exists=true
+    fi
+
     # Determine how many directories deep from the series the page is
     up_directories=4
 
@@ -174,6 +179,10 @@ for i in $items;do
     make_og site_name gabl.ink
     make_og url "$canonical"
     make_og image "$canonical"image.png
+    if [ "$video_exists" = true ];then
+      make_og video "$canonical"video.webm
+      make_og video "$canonical"video.mp4
+    fi
     make_og locale "$language_ogp_full"
 
     printf '</head>'
@@ -307,9 +316,26 @@ for i in $items;do
 
     printf '</div>'
 
-    printf '<div id="comic_page_image"><picture>'
-    printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
-    printf '</picture></div>'
+    printf '<div id="comic_page_'
+
+    # TODO: Edge case: one format exists, other doesn’t
+    # TODO: Edge case: no captions
+    # TODO: Browsers fix “id” for filesystems, but we should get better filenames, in addition to easy download links
+    if [ "$video_exists" = true ];then
+      printf 'video"><video controls="" poster="./image.png" preload="metadata">'
+      printf '<source src="./video.webm" type="video/webm"/>'
+      printf '<source src="./video.mp4" type="video/mp4"/>'
+      printf '<track default="" kind="captions" '
+      printf 'label="English (United States) (CC)" '
+      printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
+      # TODO: Figure out why ShellCheck warns about the apostrophe without double quotes
+      printf '<p>It looks like your web browser doesn'"’"'t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "$id" "$id"
+      printf '</video></div>'
+    else
+      printf 'image"><picture>'
+      printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
+      printf '</picture></div>'
+    fi
 
     printf '<div id="nav_bottom">'
 

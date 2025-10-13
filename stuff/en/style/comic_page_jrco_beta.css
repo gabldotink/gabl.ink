@@ -53,6 +53,7 @@ h1#nav_top_title {
   text-align: center;
 }
 
+div#comic_page_video video,
 div#comic_page_image picture img {
   width: 100%;
   max-width: 100%;
