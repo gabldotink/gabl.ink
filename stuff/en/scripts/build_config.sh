@@ -6,8 +6,10 @@
 # It is ignored by Git, so changes will not be merged to the repository.
 # To force add, “git add --force [path]/build_config.sh” will usually work.
 
+# If this is set to true, non-fatal warnings will make the script exit like an erorr.
 # shellcheck disable=SC2034
 config_exit_on_warning=false
 
+# If this is set to true, CE (Common Era) and BCE (Before the Common Era) will be used for years instead of AD (anno Domini) and BC (before Christ).
 # shellcheck disable=SC2034
 config_use_ce=false
