@@ -1,7 +1,9 @@
 #!/bin/sh
-# SPDX-License-Identifier: CC-BY-4.0
+# SPDX-License-Identifier: CC0-1.0
 
 export POSIXLY_CORRECT
+
+# TODO: Ignore all ShellCheck SC2154 warnings
 
 error() {
   error_msg="$1"
@@ -12,12 +14,31 @@ error() {
   exit 1
 }
 
+warning() {
+  warning_msg="$1"
+  printf '[warning] '
+  [ -n "$id" ] &&
+    printf '(%s) ' "$id"
+  printf '%s\n' "$warning_msg"
+  [ "$config_exit_on_warning" = true ] &&
+    exit 2
+}
+
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
 script="$0"
 
-index="$(dirname -- "$script")/../.."
+script_dir="$(dirname -- "$script")"
+
+# TODO: Create .shellcheckrc to allow following sourced files
+# We must use an if statement here to use a ShellCheck directive
+if [ -f "$script_dir/build_config.sh" ];then
+  # shellcheck source=./build_config.sh
+  . "$script_dir/build_config.sh"
+fi
+
+index="$script_dir/../.."
 
 dict="$index/en/dictionary"
 
@@ -473,11 +494,19 @@ for i in $items;do
 
     printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
     printf '%s, ' "$first_published_d"
-    if [ "${#first_published_y}" -lt 4 ] &&
-       [ "$first_published_y" -ne 0 ];then
-      printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+    if   [ "${#first_published_y}" -lt 4 ] &&
+         [ "$first_published_y" -ne 0 ];then
+      if [ "$config_use_ce" = true ];then
+        printf '%s <abbr title="Common Era">CE</abbr>' "$first_published_y"
+      else
+        printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+      fi
     elif [ "$first_published_y" -eq 0 ];then
-      printf '1 <abbr title="before Christ">BC</abbr>'
+      if [ "$config_use_ce" = true ];then
+        printf '1 <abbr title="Before the Common Era">BCE</abbr>'
+      else
+        printf '1 <abbr title="before Christ">BC</abbr>'
+      fi
     else
       printf '%s' "$first_published_y"
     fi
@@ -520,13 +549,21 @@ for i in $items;do
 
       printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
       printf '%s, ' "$post_date_d"
-      if [ "${#post_date_y}" -lt 4 ] &&
-         [ "$post_date_y" -ne 0 ];then
-        printf '<abbr title="anno Domini">AD</abbr> %s' "$post_date_y"
+      if   [ "${#post_date_y}" -lt 4 ] &&
+           [ "$post_date_y" -ne 0 ];then
+        if [ "$config_use_ce" = true ];then
+          printf '%s <abbr title="Common Era">CE</abbr>' "$first_published_y"
+        else
+          printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+        fi
       elif [ "$post_date_y" -eq 0 ];then
-        printf '1 <abbr title="before Christ">BC</abbr>'
+        if [ "$config_use_ce" = true ];then
+          printf '1 <abbr title="Before the Common Era">BCE</abbr>'
+        else
+          printf '1 <abbr title="before Christ">BC</abbr>'
+        fi
       else
-        printf '%s' "$post_date_y"
+        printf '%s' "$first_published_y"
       fi
 
       printf '</time></h2>'

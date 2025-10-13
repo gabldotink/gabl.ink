@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: CC0-1.0
-# ================= wrap lines at 72 printed characters ================
 
 #*.bat text eol=crlf linguist-language=Batchfile
 *.css  text eol=lf linguist-language=CSS
 *.gitattributes text eol=lf linguist-language=Git-Attributes
 *.gitconfig text eol=lf linguist-language=Git-Config
+*.gitignore text eol=lf linguist-language=Ignore-List
 *.htaccess text eol=lf linguist-language=ApacheConf
 *.html text eol=lf linguist-language=HTML
 *.json text eol=lf linguist-language=JSON
@@ -19,3 +19,4 @@
 *.png binary
 *.mp4 binary
 #*.webm binary
+#*.webp binary
