@@ -20,7 +20,6 @@ for i in $items;do
   fi
 
   # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
-  canonical="https://gabl.ink/index/$id/"
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
   copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
@@ -31,6 +30,8 @@ for i in $items;do
   language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
   language_dir="$(jq -r -- ".\"$language\".dir" "$dict/language.json")"
   title_text="$(jq -r -- .title.text "$i")"
+
+  canonical="https://gabl.ink/index/$id/"
 
   printf '<!DOCTYPE html>'
 
@@ -46,7 +47,7 @@ for i in $items;do
 
   printf '<meta name="description" content="%s"/>' "$description_text"
   printf '<meta name="robots" content="index,follow"/>'
-  printf '<link rel="canonical" href="https://gabl.ink/index/%s/" hreflang="en-US" type="text/html"/>' "$id"
+  printf '<link rel="canonical" href="%s" hreflang="en-US" type="text/html"/>' "$canonical"
 
   if [ "$type" = comic_page ];then
     copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
@@ -171,8 +172,8 @@ for i in $items;do
     make_og title "$title_text"
     make_og description "$description_text"
     make_og site_name gabl.ink
-    make_og url "https://gabl.ink/index/$id"
-    make_og image "https://gabl.ink/index/$id/image.png"
+    make_og url "$canonical"
+    make_og image "$canonical"image.png
     make_og locale "$language_ogp_full"
 
     printf '</head>'
@@ -522,7 +523,7 @@ for i in $items;do
                       fi
                       printf '”'
                     )" \
-                   "https://gabl.ink/index/$id/" \
+                   "$canonical" \
                    "gabldotink,$location_series_hashtag"
     
     make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
@@ -536,10 +537,10 @@ for i in $items;do
                       fi
                       printf '”'
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
     
     make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' '' \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
     
     make_share_link telegram Telegram https://t.me/share text url '' \
                    "$(
@@ -553,7 +554,7 @@ for i in $items;do
                       printf '” '
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
     
     make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                    "$(
@@ -565,21 +566,20 @@ for i in $items;do
                         printf '%s' "$title_text"
                       fi
                       printf '” '
-                      printf 'https://gabl.ink/index/%s/ ' "$id"
+                      printf '%s ' "$canonical"
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )"
     
     make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                    "$(
-                      printf 'gabl.ink @gabldotink: '
+                      printf 'gabl.ink: '
                       printf '“%s”: “' "$location_series_title_text"
                       if [ "$title_quotes_nested_exists" = true ];then
                         printf '%s' "$title_quotes_nested_text"
                       else
                         printf '%s' "$title_text"
                       fi
-                      printf '” '
-                      printf 'https://gabl.ink/index/%s/' "$id"
+                      printf '” %s' "$canonical"
                     )"
     
     make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
@@ -594,7 +594,7 @@ for i in $items;do
                       printf '” '
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
     
     make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                    "$(
@@ -608,7 +608,7 @@ for i in $items;do
                       printf '” '
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
 
     make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                    "$(
@@ -622,7 +622,7 @@ for i in $items;do
                       printf '” '
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
 
     make_share_link gab Gab https://gab.com/compose text url '' \
                    "$(
@@ -636,7 +636,7 @@ for i in $items;do
                       printf '” '
                       printf '#gabldotink #%s' "$location_series_hashtag"
                     )" \
-                   "https://gabl.ink/index/$id/"
+                   "$canonical"
 
     printf '</ul></details>'
 
