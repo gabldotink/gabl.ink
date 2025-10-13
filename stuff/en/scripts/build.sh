@@ -459,6 +459,9 @@ for i in $items;do
     for l in $(jq -r -- '.transcript.lines|to_entries|.[].key' "$i");do
       h="$(jq -r -- ".transcript.lines[$l].h" "$i")"
       d="$(jq -r -- ".transcript.lines[$l].d" "$i")"
+      if [ "$h" = null ];then
+        unset h
+      fi
       printf '<tr>'
       printf '<th scope="row">%s</th>' "$h"
       printf '<td><p>%s</p></td>' "$d"
