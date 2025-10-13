@@ -56,20 +56,20 @@ for i in $items;do
     copyright_year_last="$(jq -r -- .copyright.year.last "$i")"
     disclaimer="$(jq -r -- .disclaimer[0] "$i")"
     first_published_d="$(jq -r -- .first_published.d "$i")"
-    if [ "${#first_published_d}" = 1 ];then
+    if [ "${#first_published_d}" -eq 1 ];then
       first_published_d_pad=0
     fi
     first_published_m="$(jq -r -- .first_published.m "$i")"
-    if [ "${#first_published_m}" = 1 ];then
+    if [ "${#first_published_m}" -eq 1 ];then
       first_published_m_pad=0
     fi
     first_published_y="$(jq -r -- .first_published.y "$i")"
-    if   [ "${#first_published_y}" = 3 ];then
-      first_published_y_pad=1
-    elif [ "${#first_published_y}" = 2 ];then
-      first_published_y_pad=2
-    elif [ "${#first_published_y}" = 1 ];then
-      first_published_y_pad=3
+    if   [ "${#first_published_y}" -eq 3 ];then
+      first_published_y_pad=0
+    elif [ "${#first_published_y}" -eq 2 ];then
+      first_published_y_pad=00
+    elif [ "${#first_published_y}" -eq 1 ];then
+      first_published_y_pad=000
     fi
     language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
     location_chapter="$(jq -r -- .location.chapter "$i")"
@@ -115,11 +115,11 @@ for i in $items;do
       done
     )"
 
-    if   [ "$up_directories" = 2 ];then
+    if   [ "$up_directories" -eq 2 ];then
       container=series
-    elif [ "$up_directories" = 3 ];then
+    elif [ "$up_directories" -eq 3 ];then
       container=chapter
-    elif [ "$up_directories" = 4 ];then
+    elif [ "$up_directories" -eq 4 ];then
       container=volume
     fi
 
@@ -130,16 +130,16 @@ for i in $items;do
 
     printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
 
-    if [ "$up_directories" = 4 ];then
+    if [ "$up_directories" -eq 4 ];then
       location_volume="$(jq -r -- .location.volume "$i")"
       location_chapter="$(jq -r -- .location.chapter "$i")"
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
-    elif [ "$up_directories" = 3 ];then
+    elif [ "$up_directories" -eq 3 ];then
       chapter="$(jq -r -- .location.chapter "$i")"
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$chapter/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$chapter/data.json")"
-    elif [ "$up_directories" = 2 ];then
+    elif [ "$up_directories" -eq 2 ];then
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     fi
@@ -432,15 +432,21 @@ for i in $items;do
 
     printf '</table></details>'
 
-    printf '<p id="first_published">First published '
-    printf '<time class="nw" datetime="'
+    printf '<p id="first_published">First published <time class="nw" datetime="'
 
     printf '%s-%s-%s' "$first_published_y_pad""$first_published_y" "$first_published_m_pad""$first_published_m" "$first_published_d_pad""$first_published_d"
 
     printf '">'
 
     printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
-    printf '%s, %s' "$first_published_d" "$first_published_y"
+    printf '%s, ' "$first_published_d"
+    if [ "${#first_published_y}" -lt 4 ];then
+      printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+    elif [ "$first_published_y" -eq 0 ];then
+      printf '1 <abbr title="before Christ">BC</abbr>'
+    else
+      printf '%s' "$first_published_y"
+    fi
 
     printf '</time>'
     printf '</p>'
@@ -448,20 +454,20 @@ for i in $items;do
     for p in $(jq -r -- '.post|to_entries|.[].key' "$i");do
       post_content="$(jq -r -- ".post[$p].content.html" "$i")"
       post_date_d="$(jq -r -- ".post[$p].date.d" "$i")"
-      if [ "${#post_date_d}" = 1 ];then
+      if [ "${#post_date_d}" -eq 1 ];then
         post_date_d_pad=0
       fi
       post_date_m="$(jq -r -- ".post[$p].date.m" "$i")"
-      if [ "${#post_date_m}" = 1 ];then
+      if [ "${#post_date_m}" -eq 1 ];then
         post_date_m_pad=0
       fi
       post_date_y="$(jq -r -- ".post[$p].date.y" "$i")"
-      if   [ "${#post_date_y}" = 3 ];then
-        post_date_y_pad=1
-      elif [ "${#post_date_y}" = 2 ];then
-        post_date_y_pad=2
-      elif [ "${#post_date_y}" = 1 ];then
-        post_date_y_pad=3
+      if   [ "${#post_date_y}" -eq 3 ];then
+        post_date_y_pad=0
+      elif [ "${#post_date_y}" -eq 2 ];then
+        post_date_y_pad=00
+      elif [ "${#post_date_y}" -eq 1 ];then
+        post_date_y_pad=000
       fi
       
       printf '<article id="post_'
@@ -474,7 +480,14 @@ for i in $items;do
       printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
       printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
-      printf '%s, %s' "$post_date_d" "$post_date_y"
+      printf '%s, ' "$post_date_d"
+      if [ "${#post_date_y}" -lt 4 ];then
+        printf '<abbr title="anno Domini">AD</abbr> %s' "$post_date_y"
+      elif [ "$post_date_y" -eq 0 ];then
+        printf '1 <abbr title="before Christ">BC</abbr>'
+      else
+        printf '%s' "$post_date_y"
+      fi
 
       printf '</time></h2>'
 
