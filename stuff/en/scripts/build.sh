@@ -6,16 +6,14 @@ export POSIXLY_CORRECT
 error() {
   error_msg="$1"
   printf '[error] '
-  if [ -n "$id" ];then
+  [ -n "$id" ] &&
     printf '(%s) ' "$id"
-  fi
   printf '%s\n' "$error_msg"
   exit 1
 }
 
-if ! command -v jq >/dev/null 2>&1;then
+command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
-fi
 
 script="$0"
 
@@ -29,9 +27,8 @@ items="$index/en/jrco_beta/01/data.json"
 for i in $items;do
   type="$(jq -r -- .type "$i")"
 
-  if [ "$type" = comic_series ];then
+  [ "$type" = comic_series ] &&
     continue
-  fi
 
   # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
@@ -125,13 +122,11 @@ for i in $items;do
     # Determine how many directories deep from the series the page is
     up_directories=4
 
-    if [ "$location_volume" = null ];then
+    [ "$location_volume" = null ] &&
       up_directories="$((up_directories-1))"
-    fi
 
-    if [ "$location_chapter" = null ];then
+    [ "$location_chapter" = null ] &&
       up_directories="$((up_directories-1))"
-    fi
 
     up_directories_path="$(
       # ShellCheck warns “n” is unused, but that’s intentional
@@ -181,7 +176,7 @@ for i in $items;do
     if   [ "$location_previous_string" = null ];then
       # This is the first page, so no prefetches are needed.
       true &
-    elif [ "$container_pages_first_string" != "$location_page_string" ]||
+    elif [ "$container_pages_first_string" != "$location_page_string" ] ||
          [ "$container_pages_first_string" != "$location_previous_string" ];then
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_first_string" "$language_bcp_47_full"
       printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
@@ -192,7 +187,7 @@ for i in $items;do
     if   [ "$location_next_string" = null ];then
       # This is the last page, so no prefetches are needed.
       true &
-    elif [ "$container_pages_last_string" != "$location_page_string" ]||
+    elif [ "$container_pages_last_string" != "$location_page_string" ] ||
          [ "$container_pages_last_string" != "$location_next_string" ];then
       printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_last_string" "$language_bcp_47_full"
@@ -287,9 +282,8 @@ for i in $items;do
       printf '<img class="nav_buttons" src="./first.png" alt="first"/>'
       printf '</picture>'
 
-      if [ "$container_pages_first_string" != null ];then
+      [ "$container_pages_first_string" != null ] &&
         printf '</a>'
-      fi
 
       printf '</div>'
 
@@ -307,9 +301,8 @@ for i in $items;do
       printf '<img class="nav_buttons" src="./previous.png" alt="previous"/>'
       printf '</picture>'
 
-      if [ "$location_previous_string" != null ];then
+      [ "$location_previous_string" != null ] &&
         printf '</a>'
-      fi
 
       printf '</div>'
 
@@ -327,9 +320,8 @@ for i in $items;do
       printf '<img class="nav_buttons" src="./next.png" alt="next"/>'
       printf '</picture>'
 
-      if [ "$location_next_string" != null ];then
+      [ "$location_next_string" != null ] &&
         printf '</a>'
-      fi
 
       printf '</div>'
 
@@ -347,9 +339,8 @@ for i in $items;do
       printf '<img class="nav_buttons" src="./last.png" alt="last"/>'
       printf '</picture>'
 
-      if [ "$container_pages_last_string" != null ];then
+      [ "$container_pages_last_string" != null ] &&
         printf '</a>'
-      fi
 
       printf '</div></div>'
     }
@@ -399,9 +390,8 @@ for i in $items;do
       printf '%s' "$location_series_title_html"
       printf '</cite></i>'
 
-      if [ "$location_series_title_disambiguation_html" != null ];then
+      [ "$location_series_title_disambiguation_html" != null ] &&
         printf ' %s' "$location_series_title_disambiguation_html"
-      fi
     fi
 
     printf ', page %s ' "$location_page_integer"
@@ -577,21 +567,18 @@ for i in $items;do
 
       if [ -n "$make_share_link_text_param" ];then
         printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_text_param" "$make_share_link_text"
-        if [ "$make_share_link_start_param" = '?' ];then
+        [ "$make_share_link_start_param" = '?' ] &&
           make_share_link_start_param='&amp;'
-        fi
       fi
 
       if [ -n "$make_share_link_url_param" ];then
         printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_url_param" "$make_share_link_url"
-        if [ "$make_share_link_start_param" = '?' ];then
+        [ "$make_share_link_start_param" = '?' ] &&
           make_share_link_start_param='&amp;'
-        fi
       fi
 
-      if [ -n "$make_share_link_hashtag_param" ];then
+      [ -n "$make_share_link_hashtag_param" ] &&
         printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_hashtag_param" "$make_share_link_hashtag"
-      fi
 
       printf '">Share with %s</a></li>' "$make_share_link_platform"
     }
@@ -718,17 +705,15 @@ for i in $items;do
     printf '<footer><p><span class="nw">'
     printf '<abbr title="Copyright">©</abbr> '
     printf '<time>%s</time>' "$copyright_year_first"
-    if [ "$copyright_year_last" != null ];then
+    [ "$copyright_year_last" != null ] &&
       printf '–<time>%s</time>' "$copyright_year_last"
-    fi
     printf '</span> <span translate="no">gabl.ink</span></p>'
 
     printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
     printf 'hreflang="en" type="text/html">'
     printf '%s' "$copyright_license_title"
-    if [ "$copyright_license_abbr" != null ];then
+    [ "$copyright_license_abbr" != null ] &&
       printf ' (<abbr>%s</abbr>)' "$copyright_license_abbr"
-    fi
     printf '</a></p>'
 
     if [ "$disclaimer" != null ];then
