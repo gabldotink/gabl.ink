@@ -52,7 +52,7 @@ for i in $items;do
 
   printf '<meta name="description" content="%s"/>' "$description_text"
   printf '<meta name="robots" content="index,follow"/>'
-  printf '<link rel="canonical" href="%s" hreflang="en-US" type="text/html"/>' "$canonical"
+  printf '<link rel="canonical" href="%s" hreflang="en-US" type="text/html"/>' "$canonical" &
 
   if [ "$type" = comic_page ];then
     copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
@@ -64,13 +64,13 @@ for i in $items;do
     if [ "${#first_published_d}" -eq 1 ];then
       first_published_d_pad=0
     else
-      unset first_published_d_pad
+      unset first_published_d_pad &
     fi
     first_published_m="$(jq -r -- .first_published.m "$i")"
     if [ "${#first_published_m}" -eq 1 ];then
       first_published_m_pad=0
     else
-      unset first_published_m_pad
+      unset first_published_m_pad &
     fi
     first_published_y="$(jq -r -- .first_published.y "$i")"
     if   [ "${#first_published_y}" -eq 3 ];then
@@ -80,7 +80,7 @@ for i in $items;do
     elif [ "${#first_published_y}" -eq 1 ];then
       first_published_y_pad=000
     else
-      unset first_published_y_pad
+      unset first_published_y_pad &
     fi
     language_ogp_full="$(jq -r -- ".\"$language\".ogp.full" "$dict/language.json")"
     location_chapter="$(jq -r -- .location.chapter "$i")"
@@ -101,14 +101,14 @@ for i in $items;do
     if [ "$title_quotes_nested_text" != null ];then
       title_quotes_nested_exists=true
     else
-      unset title_quotes_nested_exists
+      unset title_quotes_nested_exists &
     fi
 
     # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version. WebM should be preferred, due to being free (libre), and MP4 should be provided as a fallback for compatibility. In case of a video, image.png act as a thumbnail.
     if [ -f "$index/$id/video.webm" ];then
       video_exists=true
     else
-      unset video_exists
+      unset video_exists &
     fi
 
     # Determine how many directories deep from the series the page is
@@ -126,7 +126,7 @@ for i in $items;do
       # ShellCheck warns “n” is unused, but that’s intentional
       # shellcheck disable=SC2034
       for n in $(seq 1 "$up_directories");do
-        printf ../
+        printf ../ &
       done
     )"
 
@@ -141,19 +141,21 @@ for i in $items;do
       exit 1
     fi
 
+    wait
+
     printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"
     printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
     printf '<link rel="stylesheet" href="%sstyle/global.css" hreflang="en-US" type="text/css"/>' "$up_directories_path"
     printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
 
-    printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
+    printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url" &
 
     if   [ "$up_directories" -eq 2 ];then
-      unset location_volume location_chapter
+      unset location_volume location_chapter &
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
     elif [ "$up_directories" -eq 3 ];then
-      unset location_volume
+      unset location_volume &
       location_chapter="$(jq -r -- .location.chapter "$i")"
       container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_chapter/data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_chapter/data.json")"
@@ -164,10 +166,12 @@ for i in $items;do
       container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
     fi
 
+    wait
+
     if   [ "$location_previous_string" = null ];then
       # This is the first page, so no prefetches are needed.
-      true
-    elif [ "$container_pages_first_string" != "$location_page_string" ] ||
+      true &
+    elif [ "$container_pages_first_string" != "$location_page_string" ]||
          [ "$container_pages_first_string" != "$location_previous_string" ];then
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_first_string" "$language_bcp_47_full"
       printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
@@ -177,8 +181,8 @@ for i in $items;do
 
     if   [ "$location_next_string" = null ];then
       # This is the last page, so no prefetches are needed.
-      true
-    elif [ "$container_pages_last_string" != "$location_page_string" ] ||
+      true &
+    elif [ "$container_pages_last_string" != "$location_page_string" ]||
          [ "$container_pages_last_string" != "$location_next_string" ];then
       printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
       printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_last_string" "$language_bcp_47_full"
@@ -229,25 +233,25 @@ for i in $items;do
     if [ "$container_pages_first_string" != null ];then
       container_pages_first_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_first_string/data.json")"
     else
-      unset container_pages_first_string_title_text
+      unset container_pages_first_string_title_text &
     fi
 
     if [ "$location_previous_string" != null ];then
       location_previous_string_title_text="$(jq -r -- .title.text "$index/$id/../$location_previous_string/data.json")"
     else
-      unset location_previous_string_title_text
+      unset location_previous_string_title_text &
     fi
 
     if [ "$location_next_string" != null ];then
       location_next_string_title_text="$(jq -r -- .title.text "$index/$id/../$location_next_string/data.json")"
     else
-      unset location_next_string_title_text
+      unset location_next_string_title_text &
     fi
 
     if [ "$container_pages_last_string" != null ];then
       container_pages_last_string_title_text="$(jq -r -- .title.text "$index/$id/../$container_pages_last_string/data.json")"
     else
-      unset container_pages_last_string_title_text
+      unset container_pages_last_string_title_text &
     fi
 
     # TODO: Reduce duplicate code.
@@ -339,6 +343,8 @@ for i in $items;do
 
       printf '</div></div>'
     }
+
+    wait
 
     make_nav_buttons top
 
@@ -477,8 +483,7 @@ for i in $items;do
       printf '%s' "$first_published_y"
     fi
 
-    printf '</time>'
-    printf '</p>'
+    printf '</time></p><article id="post_' &
 
     for p in $(jq -r -- '.post|to_entries|.[].key' "$i");do
       post_content="$(jq -r -- ".post[$p].content.html" "$i")"
@@ -486,13 +491,13 @@ for i in $items;do
       if [ "${#post_date_d}" -eq 1 ];then
         post_date_d_pad=0
       else
-        unset post_date_d_pad
+        unset post_date_d_pad &
       fi
       post_date_m="$(jq -r -- ".post[$p].date.m" "$i")"
       if [ "${#post_date_m}" -eq 1 ];then
         post_date_m_pad=0
       else
-        unset post_date_m_pad
+        unset post_date_m_pad &
       fi
       post_date_y="$(jq -r -- ".post[$p].date.y" "$i")"
       if   [ "${#post_date_y}" -eq 3 ];then
@@ -502,14 +507,12 @@ for i in $items;do
       elif [ "${#post_date_y}" -eq 1 ];then
         post_date_y_pad=000
       else
-        unset post_date_y_pad
+        unset post_date_y_pad &
       fi
-      
-      printf '<article id="post_'
 
-      printf '%s-%s-%s' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
+      wait
 
-      printf '">'
+      printf '%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
 
       printf '<h2 class="nw">'
       printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
@@ -562,29 +565,24 @@ for i in $items;do
       fi
 
       if [ -n "$make_share_link_text_param" ];then
-        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_text_param"
-        printf '%s' "$make_share_link_text"
+        printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_text_param" "$make_share_link_text"
         if [ "$make_share_link_start_param" = '?' ];then
           make_share_link_start_param='&amp;'
         fi
       fi
 
       if [ -n "$make_share_link_url_param" ];then
-        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_url_param"
-        printf '%s' "$make_share_link_url"
+        printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_url_param" "$make_share_link_url"
         if [ "$make_share_link_start_param" = '?' ];then
           make_share_link_start_param='&amp;'
         fi
       fi
 
       if [ -n "$make_share_link_hashtag_param" ];then
-        printf '%s%s=' "$make_share_link_start_param" "$make_share_link_hashtag_param"
-        printf '%s' "$make_share_link_hashtag"
+        printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_hashtag_param" "$make_share_link_hashtag"
       fi
 
-      printf '">'
-      printf 'Share with %s' "$make_share_link_platform"
-      printf '</a></li>'
+      printf '">Share with %s</a></li>' "$make_share_link_platform"
     }
 
     make_share_link x X https://x.com/intent/tweet text url hashtags \
@@ -715,8 +713,7 @@ for i in $items;do
 
     printf '</ul></details>'
 
-    printf '<footer>'
-    printf '<span class="nw">'
+    printf '<footer><span class="nw">'
     printf '<abbr title="Copyright">©</abbr> '
     printf '<time>%s</time>' "$copyright_year_first"
     if [ "$copyright_year_last" != null ];then
