@@ -7,21 +7,32 @@ export POSIXLY_CORRECT
 
 error() {
   error_msg="$1"
+  error_exit_code="$2"
   printf '[error] '
   [ -n "$id" ] &&
     printf '(%s) ' "$id"
   printf '%s\n' "$error_msg"
-  exit 1
+  if [ -n "$error_exit_code" ];then
+    exit "$error_exit_code"
+  else
+    exit 1
+  fi
 }
 
 warning() {
   warning_msg="$1"
+  warning_exit_code="$2"
   printf '[warning] '
   [ -n "$id" ] &&
     printf '(%s) ' "$id"
   printf '%s\n' "$warning_msg"
+  warning_warned=true
   [ "$config_exit_on_warning" = true ] &&
-    exit 2
+    if [ -n "$warning_exit_code" ];then
+      exit "$warning_exit_code"
+    else
+      exit 1
+    fi
 }
 
 command -v jq >/dev/null 2>&1 ||
@@ -766,3 +777,10 @@ for i in $items;do
 
   printf '</body></html>'
 done
+
+if [ "$warning_warned" = true ] &&
+   [ "$config_exit_nonzero_with_warnings" = true ];then
+  exit 2
+fi
+
+# exit 0
