@@ -498,22 +498,22 @@ for i in $items;do
       printf '">'
   
       printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
-      printf '%s, ' "$first_published_d"
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$first_published_d"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "$first_published_y" -ne 0 ];then
         if [ "$config_use_ce" = true ];then
-          printf '%s <abbr title="Common Era">CE</abbr>' "$first_published_y"
+          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span> <abbr title="Common Era">CE</abbr>' "$first_published_y"
         else
-          printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+          printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$first_published_y"
         fi
       elif [ "$first_published_y" -eq 0 ];then
         if [ "$config_use_ce" = true ];then
-          printf '1 <abbr title="Before the Common Era">BCE</abbr>'
+          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="Before the Common Era">BCE</abbr>'
         else
-          printf '1 <abbr title="before Christ">BC</abbr>'
+          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
         fi
       else
-        printf '%s' "$first_published_y"
+        printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$first_published_y"
       fi
   
       printf '</time></p><article id="post_'
@@ -551,22 +551,22 @@ for i in $items;do
         printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
   
         printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
-        printf '%s, ' "$post_date_d"
+        printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$post_date_d"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "$post_date_y" -ne 0 ];then
           if [ "$config_use_ce" = true ];then
-            printf '%s <abbr title="Common Era">CE</abbr>' "$first_published_y"
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span> <abbr title="Common Era">CE</abbr>' "$first_published_y"
           else
-            printf '<abbr title="anno Domini">AD</abbr> %s' "$first_published_y"
+            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$first_published_y"
           fi
         elif [ "$post_date_y" -eq 0 ];then
           if [ "$config_use_ce" = true ];then
-            printf '1 <abbr title="Before the Common Era">BCE</abbr>'
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="Before the Common Era">BCE</abbr>'
           else
-            printf '1 <abbr title="before Christ">BC</abbr>'
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
           fi
         else
-          printf '%s' "$first_published_y"
+          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$first_published_y"
         fi
   
         printf '</time></h2>'
@@ -741,9 +741,9 @@ for i in $items;do
   
       printf '<footer><p><span class="nw">'
       printf '<abbr title="Copyright">©</abbr> '
-      printf '<time>%s</time>' "$copyright_year_first"
+      printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
       [ "$copyright_year_last" != null ] &&
-        printf '–<time>%s</time>' "$copyright_year_last"
+        printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
       printf '</span> <span translate="no">gabl.ink</span></p>'
   
       printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
