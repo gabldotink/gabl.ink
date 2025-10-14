@@ -599,9 +599,7 @@ for i in $items;do
         if [ "$make_share_link_id" = reddit ];then
           make_share_link_start_param='&amp;'
         else
-          # ShellCheck warns this “?” is literal, but that’s intentional
-          # shellcheck disable=SC2125
-          make_share_link_start_param=?
+          make_share_link_start_param='?'
         fi
   
         if [ -n "$make_share_link_text_param" ];then
