@@ -78,7 +78,7 @@ for i in $items;do
   {
     printf '<!DOCTYPE html>'
   
-    printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' "$language_bcp_47_full" "$language_dir"   "$language_bcp_47_full"
+    printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' "$language_bcp_47_full" "$language_dir" "$language_bcp_47_full"
   
     printf '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
   
@@ -144,7 +144,7 @@ for i in $items;do
         unset title_quotes_nested_exists
       fi
   
-      # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version. WebM should be preferred, due to being   free (libre), and MP4 should be provided as a fallback for compatibility. In case of a video, image.png act as a thumbnail.
+      # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version. WebM should be preferred, due to being free (libre), and MP4 should be provided as a fallback for compatibility. In case of a video, image.png act as a thumbnail.
       if [ -f "$index/$id/video.webm" ];then
         video_exists=true
       else
@@ -179,9 +179,9 @@ for i in $items;do
       fi
   
       printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"
-      printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path"   "$location_series"
+      printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
       printf '<link rel="stylesheet" href="%sstyle/global.css" hreflang="en-US" type="text/css"/>' "$up_directories_path"
-      printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path"   "$location_series"
+      printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' "$up_directories_path" "$location_series"
   
       printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
   
@@ -207,9 +207,9 @@ for i in $items;do
       elif [ "$container_pages_first_string" != "$location_page_string" ] ||
            [ "$container_pages_first_string" != "$location_previous_string" ];then
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_first_string" "$language_bcp_47_full"
-        printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string"   "$language_bcp_47_full"
-      elif [ "$container_pages_first_string"  = "$location_previous_string" ];then
-        printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string"   "$language_bcp_47_full"
+        printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
+      elif [ "$container_pages_first_string" = "$location_previous_string" ];then
+        printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_previous_string" "$language_bcp_47_full"
       fi
   
       if   [ "$location_next_string" = null ];then
@@ -219,7 +219,7 @@ for i in $items;do
            [ "$container_pages_last_string" != "$location_next_string" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$container_pages_last_string" "$language_bcp_47_full"
-      elif [ "$container_pages_last_string"  = "$location_next_string" ];then
+      elif [ "$container_pages_last_string" = "$location_next_string" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' "$location_next_string" "$language_bcp_47_full"
       fi
   
@@ -390,7 +390,7 @@ for i in $items;do
         printf 'label="English (United States) (CC)" '
         printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
         # TODO: Figure out why ShellCheck warns about the apostrophe without double quotes
-        printf '<p>It looks like your web browser doesn'"’"'t support the <code>video</code> element. You can download the video as a <a   href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US"   type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the   video at “Comic transcript” below.</p>' "$id" "$id"
+        printf '<p>It looks like your web browser doesn'"’"'t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "$id" "$id"
         printf '</video></div>'
       else
         printf 'image"><picture>'
@@ -493,7 +493,7 @@ for i in $items;do
   
       printf '<p id="first_published">First published <time class="nw" datetime="'
   
-      printf '%s-%s-%s' "$first_published_y_pad""$first_published_y" "$first_published_m_pad""$first_published_m"   "$first_published_d_pad""$first_published_d"
+      printf '%s-%s-%s' "$first_published_y_pad""$first_published_y" "$first_published_m_pad""$first_published_m" "$first_published_d_pad""$first_published_d"
   
       printf '">'
   
@@ -548,7 +548,7 @@ for i in $items;do
         printf '%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
   
         printf '<h2 class="nw">'
-        printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m"   "$post_date_d_pad""$post_date_d"
+        printf '<time datetime="%s-%s-%s">' "$post_date_y_pad""$post_date_y" "$post_date_m_pad""$post_date_m" "$post_date_d_pad""$post_date_d"
   
         printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
         printf '%s, ' "$post_date_d"
