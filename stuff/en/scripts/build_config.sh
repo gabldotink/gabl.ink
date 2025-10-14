@@ -1,5 +1,4 @@
-# ShellCheck warns we don’t have a shebang, but that’s intentional
-# shellcheck disable=SC2148
+#shellcheck shell=sh
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ./build.sh only.
 # This is the configuration file for ./build.sh.

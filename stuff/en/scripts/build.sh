@@ -3,8 +3,6 @@
 
 export POSIXLY_CORRECT
 
-# TODO: Ignore all ShellCheck SC2154 warnings
-
 error() {
   error_msg="$1"
   error_exit_code="$2"
@@ -42,7 +40,6 @@ script="$0"
 
 script_dir="$(dirname -- "$script")"
 
-# TODO: Create .shellcheckrc to allow following sourced files
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "$script_dir/build_config.sh" ];then
   # shellcheck source=./build_config.sh
