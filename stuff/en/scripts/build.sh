@@ -197,8 +197,8 @@ for i in $items;do
       elif [ "$up_directories" -eq 4 ];then
         location_volume="$(jq -r -- .location.volume "$i")"
         location_chapter="$(jq -r -- .location.chapter "$i")"
-        container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.  json")"
-        container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.  json")"
+        container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
+        container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
       fi
   
       if   [ "$location_previous_string" = null ];then
