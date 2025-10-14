@@ -57,26 +57,26 @@ dict="$index/en/dictionary"
 items="$index/en/jrco_beta/01/data.json"
 
 for i in $items;do
+  type="$(jq -r -- .type "$i")"
+  
+  [ "$type" = comic_series ] &&
+    continue
+  
+  # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
+  copyright_license="$(jq -r -- .copyright.license[0] "$i")"
+  # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
+  copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
+  copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
+  description_text="$(jq -r -- .description.text "$i")"
+  id="$(jq -r -- .id "$i")"
+  language="$(jq -r -- .language "$i")"
+  language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
+  language_dir="$(jq -r -- ".\"$language\".dir" "$dict/language.json")"
+  title_text="$(jq -r -- .title.text "$i")"
+  
+  canonical="https://gabl.ink/index/$id/"
+
   {
-    type="$(jq -r -- .type "$i")"
-  
-    [ "$type" = comic_series ] &&
-      continue
-  
-    # Do not try to use named pipes (FIFOs) to run jq in parallel. It doesn’t help much, and is actually slower on Cygwin.
-    copyright_license="$(jq -r -- .copyright.license[0] "$i")"
-    # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-    copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
-    copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
-    description_text="$(jq -r -- .description.text "$i")"
-    id="$(jq -r -- .id "$i")"
-    language="$(jq -r -- .language "$i")"
-    language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
-    language_dir="$(jq -r -- ".\"$language\".dir" "$dict/language.json")"
-    title_text="$(jq -r -- .title.text "$i")"
-  
-    canonical="https://gabl.ink/index/$id/"
-  
     printf '<!DOCTYPE html>'
   
     printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' "$language_bcp_47_full" "$language_dir"   "$language_bcp_47_full"
@@ -583,7 +583,6 @@ for i in $items;do
       printf '<summary>Share this page</summary>'
       printf '<ul>'
   
-      # usage: make_share_link <HTML id> <platform name> <base share URL> <parameter for text> <parameter for URL> <parameter for hashtag(s)  > <text> <URL> <hashtag(s)>
       make_share_link() {
         make_share_link_id="$1"
         make_share_link_platform="$2"
@@ -768,7 +767,7 @@ for i in $items;do
     fi
   
     printf '</body></html>'
-  } > "$(dirname -- "$i")/index.html"
+  } > "$index/$id/index.html"
 done
 
 if [ "$warning_warned" = true ] &&
