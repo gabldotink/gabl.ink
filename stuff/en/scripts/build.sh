@@ -744,7 +744,7 @@ for i in $items;do
       printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
       [ "$copyright_year_last" != null ] &&
         printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
-      printf '</span> <span translate="no">gabl.ink</span></p>'
+      printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
   
       printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
       printf 'hreflang="en" type="text/html">'
