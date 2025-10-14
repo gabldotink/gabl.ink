@@ -10,6 +10,7 @@
 *.json text eol=lf linguist-language=JSON
 *.md   text eol=lf linguist-language=Markdown
 *.sh   text eol=lf linguist-language=Shell
+*.shellcheckrc text eol=lf linguist-language=ShellCheck-Config
 *.txt  text eol=lf linguist-language=Text
 *.vcf  text eol=crlf linguist-language=vCard
 *.yml  text eol=lf linguist-language=YAML
