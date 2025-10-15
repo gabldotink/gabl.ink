@@ -61,9 +61,14 @@ for i in $items;do
   
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
+  copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
   copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
   copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
+  copyright_license_title="$(jq -r -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
+  copyright_year_first="$(jq -r -- .copyright.year.first "$i")"
+  copyright_year_last="$(jq -r -- .copyright.year.last "$i")"
   description_text="$(jq -r -- .description.text "$i")"
+  disclaimer="$(jq -r -- .disclaimer[0] "$i")"
   id="$(jq -r -- .id "$i")"
   language="$(jq -r -- .language "$i")"
   language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
@@ -97,11 +102,6 @@ for i in $items;do
     printf '<link rel="canonical" href="%s" hreflang="en-US" type="text/html"/>' "$canonical"
   
     if [ "$type" = comic_page ];then
-      copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
-      copyright_license_title="$(jq -r -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
-      copyright_year_first="$(jq -r -- .copyright.year.first "$i")"
-      copyright_year_last="$(jq -r -- .copyright.year.last "$i")"
-      disclaimer="$(jq -r -- .disclaimer[0] "$i")"
       first_published_d="$(jq -r -- .first_published.d "$i")"
       if [ "${#first_published_d}" -eq 1 ];then
         first_published_d_pad=0
@@ -765,30 +765,30 @@ for i in $items;do
                      "$canonical"
   
       printf '</ul></details>'
-  
-      printf '<footer><p><span class="nw">'
-      printf '<abbr title="Copyright">©</abbr> '
-      printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
-      [ "$copyright_year_last" != null ] &&
-        printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
-      printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
-  
-      printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
-      printf 'hreflang="en" type="text/html">'
-      printf '%s' "$copyright_license_title"
-      [ "$copyright_license_abbr" != null ] &&
-        printf ' (<abbr>%s</abbr>)' "$copyright_license_abbr"
-      printf '</a></p>'
-  
-      if [ "$disclaimer" != null ];then
-        disclaimer_html="$(jq -r -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
-        printf '<p>Disclaimer: %s</p>' "$disclaimer_html"
-      else
-        unset disclaimer_html
-      fi
-  
-      printf '</footer>'
     fi
+  
+    printf '<footer><p><span class="nw">'
+    printf '<abbr title="Copyright">©</abbr> '
+    printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
+    [ "$copyright_year_last" != null ] &&
+      printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
+    printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
+
+    printf '<p>License: <a rel="external license" href="%s" ' "$copyright_license_url"
+    printf 'hreflang="en" type="text/html">'
+    printf '%s' "$copyright_license_title"
+    [ "$copyright_license_abbr" != null ] &&
+      printf ' (<abbr>%s</abbr>)' "$copyright_license_abbr"
+    printf '</a></p>'
+
+    if [ "$disclaimer" != null ];then
+      disclaimer_html="$(jq -r -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
+      printf '<p>Disclaimer: %s</p>' "$disclaimer_html"
+    else
+      unset disclaimer_html
+    fi
+
+    printf '</footer>'
   
     printf '</body></html>\n'
   } > "$index/$id/index.html"
