@@ -92,7 +92,7 @@ for i in $items;do
     printf '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
   
     printf '<head>'
-    printf '<meta charset="utf-8">'
+    printf '<meta charset="utf-8"/>'
     printf '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
   
     printf '<title>gabl.ink – %s</title>' "$title_text"
