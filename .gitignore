@@ -1,4 +1,2 @@
 # SPDX-License-Identifier: CC0-1.0
-
-/stuff/en/scripts/build_config.sh
-#/index/en/scripts/build_config.sh
+/cms/scripts/build_config.sh

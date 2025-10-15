@@ -38,17 +38,16 @@ command -v jq >/dev/null 2>&1 ||
 
 script="$0"
 
-script_dir="$(dirname -- "$script")"
+scripts="$(dirname -- "$script")"
+cms="$scripts/.."
+dict="$cms/dictionaries"
+index="$cms/../index"
 
 # We must use an if statement here to use a ShellCheck directive
-if [ -f "$script_dir/build_config.sh" ];then
+if [ -f "$scripts/build_config.sh" ];then
   # shellcheck source=./build_config.sh
-  . "$script_dir/build_config.sh"
+  . "$scripts/build_config.sh"
 fi
-
-index="$script_dir/../.."
-
-dict="$index/en/dictionary"
 
 #items="$(find "$index" -type f -name data.json)"
 items="$index/en/jrco_beta/01/data.json"
@@ -166,12 +165,13 @@ for i in $items;do
       [ "$location_chapter" = null ] &&
         up_directories="$((up_directories-1))"
   
-      up_directories_path="$(
+      styles="$(
         # ShellCheck warns “n” is unused, but that’s intentional
         # shellcheck disable=SC2034
         for n in $(seq 1 "$up_directories");do
           printf ../
         done
+        printf ../../cms/styles
       )"
   
       if   [ "$up_directories" -eq 2 ];then
@@ -184,14 +184,14 @@ for i in $items;do
         error 'up_directories is not 2, 3, or 4'
       fi
   
-      printf '<link rel="preload" href="%sstyle/global.css" as="style" hreflang="en-US" type="text/css"/>' \
-             "$up_directories_path"
-      printf '<link rel="preload" href="%sstyle/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' \
-             "$up_directories_path" "$location_series"
-      printf '<link rel="stylesheet" href="%sstyle/global.css" hreflang="en-US" type="text/css"/>' \
-             "$up_directories_path"
-      printf '<link rel="stylesheet" href="%sstyle/comic_page_%s.css" hreflang="en-US" type="text/css"/>' \
-             "$up_directories_path" "$location_series"
+      printf '<link rel="preload" href="%s/global.css" as="style" hreflang="en-US" type="text/css"/>' \
+             "$styles"
+      printf '<link rel="preload" href="%s/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' \
+             "$styles" "$location_series"
+      printf '<link rel="stylesheet" href="%s/global.css" hreflang="en-US" type="text/css"/>' \
+             "$styles"
+      printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="en-US" type="text/css"/>' \
+             "$styles" "$location_series"
   
       printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
   
