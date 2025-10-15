@@ -606,11 +606,10 @@ for i in $items;do
   
       make_share_link() {
         make_share_link_id="$1"
-        if [ -n "$config_share_blacklist" ];then
-          if printf ' %s ' "$config_share_blacklist" | grep -Fqe " $make_share_link_id ";then
+        [ -n "$config_share_skip" ] &&
+          if printf ' %s ' "$config_share_skip" | grep -Fqe " $make_share_link_id ";then
             return 0
           fi
-        fi
         make_share_link_platform="$2"
         make_share_link_base="$3"
         make_share_link_text_param="$4"
@@ -765,7 +764,38 @@ for i in $items;do
                      "$canonical"
   
       printf '</ul></details>'
+
+      printf '<details id="validate_links">'
+      printf '<summary>Validate this page</summary>'
+      printf '<ul>'
+
+      make_validate_link() {
+        make_validate_link_id="$1"
+        [ -n "$config_validate_skip" ] &&
+          if printf ' %s ' "$config_validate_skip" | grep -Fqe " $make_validate_link_id ";then
+            return 0
+          fi
+        make_validate_link_platform="$2"
+        make_validate_link_base="$3"
+        make_validate_link_format="$4"
+        make_validate_link_url="$(printf '%s' "$canonical"|jq -Rr -- @uri)"
+  
+        printf '<li id="validate_links_%s">' "$make_validate_link_id"
+        printf '<a rel="external" href="%s' "$make_validate_link_base""$make_validate_link_url"
+  
+        printf '">Validate with %s' "$make_validate_link_platform"
+        if [ -n "$make_validate_link_format" ];then
+          printf ' as %s</a></li>' "$make_validate_link_format"
+        else
+          printf '</a></li>'
+        fi
+      }
+
+      make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \
+                             'https://validator.w3.org/nu/?doc=' HTML5
     fi
+
+    printf '</ul></details>'
   
     printf '<footer><p><span class="nw">'
     printf '<abbr title="Copyright">©</abbr> '
