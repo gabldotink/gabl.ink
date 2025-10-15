@@ -72,6 +72,12 @@ for i in $items;do
   
   canonical="https://gabl.ink/index/$id/"
 
+  if [ "$config_use_twitter" = true ];then
+    x_or_twitter=Twitter
+  else
+    x_or_twitter=X
+  fi
+
   {
     printf '<!DOCTYPE html>'
   
@@ -617,7 +623,7 @@ for i in $items;do
         printf '">Share with %s</a></li>' "$make_share_link_platform"
       }
   
-      make_share_link x X https://x.com/intent/tweet text url hashtags \
+      make_share_link x "$x_or_twitter" https://x.com/intent/tweet text url hashtags \
                      "$(
                         printf 'gabl.ink @gabldotink: “%s”: “' "$location_series_title_text"
                         if [ "$title_quotes_nested_exists" = true ];then
