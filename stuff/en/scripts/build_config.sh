@@ -5,11 +5,11 @@
 # It is ignored by Git, so changes will not be merged to the repository.
 # To force add, “git add --force [path]/build_config.sh” will usually work.
 
-# If this is set to true, non-fatal warnings will make the script exit with a non-zero exit code like errors. Default is false.
+# If this is set to true, nonfatal warnings will make the script exit with a nonzero exit code like errors. Default is false.
 # shellcheck disable=SC2034
 config_exit_on_warning=false
 
-# If this is set to true, the script will exit with a non-zero exit code if non-fatal warnings were triggered, even if the script was executed fully. If config_exit_on_warning is set to true, non-fatal warnings will always make the script exit with a non-zero exit code. Default is true for testing purposes.
+# If this is set to true, the script will exit with a nonzero exit code if nonfatal warnings were triggered, even if the script was executed fully. If config_exit_on_warning is set to true, nonfatal warnings will always make the script exit with a nonzero exit code. Default is true for testing purposes.
 # shellcheck disable=SC2034
 config_exit_nonzero_with_warnings=true
 
