@@ -790,7 +790,7 @@ for i in $items;do
       printf '</footer>'
     fi
   
-    printf '</body></html>'
+    printf '</body></html>\n'
   } > "$index/$id/index.html"
 done
 
