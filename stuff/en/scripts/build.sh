@@ -587,6 +587,11 @@ for i in $items;do
   
       make_share_link() {
         make_share_link_id="$1"
+        if [ -n "$config_share_blacklist" ];then
+          if printf ' %s ' "$config_share_blacklist" | grep -Fqe " $make_share_link_id ";then
+            return 0
+          fi
+        fi
         make_share_link_platform="$2"
         make_share_link_base="$3"
         make_share_link_text_param="$4"

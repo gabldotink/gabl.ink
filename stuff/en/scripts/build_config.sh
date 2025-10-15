@@ -17,5 +17,8 @@ config_exit_nonzero_with_warnings=true
 # shellcheck disable=SC2034
 config_use_ce=false
 
-# If this is set to true, mentions of the social media platform X will instead refer to Twitter. The HTML ID will still be “x”, and URLs will still point to x.com. Default is false.
+# If this is set to true, mentions of the social media platform X will instead refer to Twitter. The ID will still be “x”, and URLs will still point to x.com. Default is false.
 config_use_twitter=false
+
+# If this is set to any valid ID for a share link, that link will not be generated. You can specify multiple blocked links by separating the IDs with spaces (e.g. “'x bluesky threads'”; remember to use quotes around the value). Default is blank.
+config_share_blacklist=''
