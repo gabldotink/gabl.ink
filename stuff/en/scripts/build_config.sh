@@ -1,4 +1,4 @@
-#shellcheck shell=sh
+# shellcheck shell=sh
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ./build.sh only.
 # This is the configuration file for ./build.sh.
