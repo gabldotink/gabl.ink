@@ -3,10 +3,21 @@
 
 export POSIXLY_CORRECT
 
+script="$0"
+
+scripts="$(dirname -- "$script")"
+cms="$scripts/.."
+dict="$cms/dictionaries"
+index="$cms/../index"
+
+export TEXTDOMAIN TEXTDOMAINDIR
+TEXTDOMAIN=build
+TEXTDOMAINDIR="$scripts/l10n"
+
 error() {
   error_msg="$1"
   error_exit_code="$2"
-  printf '[error] '
+  gettext '[error] '
   [ -n "$id" ] &&
     printf '(%s) ' "$id"
   printf '%s\n' "$error_msg"
@@ -20,7 +31,7 @@ error() {
 warning() {
   warning_msg="$1"
   warning_exit_code="$2"
-  printf '[warning] '
+  gettext '[warning] '
   [ -n "$id" ] &&
     printf '(%s) ' "$id"
   printf '%s\n' "$warning_msg"
@@ -35,13 +46,6 @@ warning() {
 
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
-
-script="$0"
-
-scripts="$(dirname -- "$script")"
-cms="$scripts/.."
-dict="$cms/dictionaries"
-index="$cms/../index"
 
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "$scripts/build_config.sh" ];then
