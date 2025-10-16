@@ -1,8 +1,17 @@
 {
   "cc-by-4.0": {
     "spdx": "CC-BY-4.0",
-    "url": "https://creativecommons.org/licenses/by/4.0/deed.en",
-    "title": "Creative Commons Attribution 4.0 International License",
-    "abbr": "CC BY 4.0"
+    "title": {
+      "en": "Creative Commons Attribution 4.0 International Public License",
+      "fr": "Publique licence Creative Commons Attribution 4.0 International"
+    },
+    "abbr": {
+      "mul": "CC BY 4.0"
+    },
+    "url": {
+      "en": "https://creativecommons.org/licenses/by/4.0/deed.en",
+      "fr": "https://creativecommons.org/licenses/by/4.0/deed.fr",
+      "mul": "https://creativecommons.org/licenses/by/4.0/deed"
+    }
   }
 }

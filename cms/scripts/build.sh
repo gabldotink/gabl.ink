@@ -17,9 +17,9 @@ TEXTDOMAINDIR="$scripts/l10n"
 error() {
   error_msg="$1"
   error_exit_code="$2"
-  gettext '[error] '
+  gettext 'error: '
   [ -n "$id" ] &&
-    printf '(%s) ' "$id"
+    printf '%s: ' "$id"
   printf '%s\n' "$error_msg"
   if [ -n "$error_exit_code" ];then
     exit "$error_exit_code"
@@ -31,9 +31,9 @@ error() {
 warning() {
   warning_msg="$1"
   warning_exit_code="$2"
-  gettext '[warning] '
+  gettext 'warning: '
   [ -n "$id" ] &&
-    printf '(%s) ' "$id"
+    printf '%s: ' "$id"
   printf '%s\n' "$warning_msg"
   warning_warned=true
   [ "$config_exit_on_warning" = true ] &&
@@ -53,6 +53,12 @@ if [ -f "$scripts/build_config.sh" ];then
   . "$scripts/build_config.sh"
 fi
 
+if [ "$config_language_default" != en ];then
+  language_default="$config_language_default"
+else
+  language_default=en
+fi
+
 #items="$(find "$index" -type f -name data.json)"
 items="$index/en/jrco_beta/01/data.json"
 
@@ -61,19 +67,26 @@ for i in $items;do
   
   [ "$type" = comic_series ] &&
     continue
+
+  language="$(jq -r -- .language "$i")"
   
   copyright_license="$(jq -r -- .copyright.license[0] "$i")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-  copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr" "$dict/copyright_license.json")"
-  copyright_license_url="$(jq -r -- ".\"$copyright_license\".url" "$dict/copyright_license.json")"
+  copyright_license_abbr="$(jq -r -- ".\"$copyright_license\".abbr.\"$language\"" "$dict/copyright_license.json")"
+  copyright_license_abbr_default="$(jq -r -- ".\"$copyright_license\".abbr.\"$language_default\"" "$dict/copyright_license.json")"
+  copyright_license_abbr_mul="$(jq -r -- ".\"$copyright_license\".abbr.mul" "$dict/copyright_license.json")"
+  copyright_license_url="$(jq -r -- ".\"$copyright_license\".url.\"$language\"" "$dict/copyright_license.json")"
+  copyright_license_url_default="$(jq -r -- ".\"$copyright_license\".url.\"$language_default\"" "$dict/copyright_license.json")"
+  copyright_license_url_mul="$(jq -r -- ".\"$copyright_license\".url.mul" "$dict/copyright_license.json")"
   copyright_license_spdx="$(jq -r -- ".\"$copyright_license\".spdx" "$dict/copyright_license.json")"
-  copyright_license_title="$(jq -r -- ".\"$copyright_license\".title" "$dict/copyright_license.json")"
+  copyright_license_title="$(jq -r -- ".\"$copyright_license\".title.\"$language\"" "$dict/copyright_license.json")"
+  copyright_license_title_default="$(jq -r -- ".\"$copyright_license\".title.\"$language_default\"" "$dict/copyright_license.json")"
+  copyright_license_title_mul="$(jq -r -- ".\"$copyright_license\".title.mul" "$dict/copyright_license.json")"
   copyright_year_first="$(jq -r -- .copyright.year.first "$i")"
   copyright_year_last="$(jq -r -- .copyright.year.last "$i")"
   description_text="$(jq -r -- .description.text "$i")"
   disclaimer="$(jq -r -- .disclaimer[0] "$i")"
   id="$(jq -r -- .id "$i")"
-  language="$(jq -r -- .language "$i")"
   language_bcp_47_full="$(jq -r -- ".\"$language\".bcp_47.full" "$dict/language.json")"
   language_dir="$(jq -r -- ".\"$language\".dir" "$dict/language.json")"
   title_text="$(jq -r -- .title.text "$i")"
@@ -102,7 +115,7 @@ for i in $items;do
   
     printf '<meta name="description" content="%s"/>' "$description_text"
     printf '<meta name="robots" content="index,follow"/>'
-    printf '<link rel="canonical" href="%s" hreflang="en-US" type="text/html"/>' "$canonical"
+    printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$language_bcp_47_full"
   
     if [ "$type" = comic_page ];then
       first_published_d="$(jq -r -- .first_published.d "$i")"
@@ -188,13 +201,13 @@ for i in $items;do
         error 'up_directories is not 2, 3, or 4'
       fi
   
-      printf '<link rel="preload" href="%s/global.css" as="style" hreflang="en-US" type="text/css"/>' \
+      printf '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
              "$styles"
-      printf '<link rel="preload" href="%s/comic_page_%s.css" as="style" hreflang="en-US" type="text/css"/>' \
+      printf '<link rel="preload" href="%s/comic_page_%s.css" as="style" hreflang="zxx" type="text/css"/>' \
              "$styles" "$location_series"
-      printf '<link rel="stylesheet" href="%s/global.css" hreflang="en-US" type="text/css"/>' \
+      printf '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
              "$styles"
-      printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="en-US" type="text/css"/>' \
+      printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="zxx" type="text/css"/>' \
              "$styles" "$location_series"
   
       printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url"
@@ -268,7 +281,7 @@ for i in $items;do
       printf '<header>'
       printf '<a href="https://gabl.ink/">'
       printf '<picture id="gabldotink_logo">'
-      printf '<img src="./logo.svg" alt="gabl.ink logo"/>'
+      printf '<img src="./logo.svg" alt="%s"/>' 'gabl.ink logo'
       printf '</picture></a></header>'
       printf '<main>'
       printf '<div id="nav_top">'
@@ -407,6 +420,7 @@ for i in $items;do
         printf '<source src="./video.webm" type="video/webm"/>'
         printf '<source src="./video.mp4" type="video/mp4"/>'
         printf '<track default="" kind="captions" '
+
         printf 'label="English (United States) (CC)" '
         printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
         # TODO: Figure out why ShellCheck warns about the apostrophe without double quotes

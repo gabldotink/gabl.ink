@@ -1,0 +1,12 @@
+{
+  "us": {
+    "iso_3166-1": {
+      "a-2": "US",
+      "a-3": "USA"
+    },
+    "names": {
+      "en": "United States",
+      "fr": "États-Unis"
+    }
+  }
+}
