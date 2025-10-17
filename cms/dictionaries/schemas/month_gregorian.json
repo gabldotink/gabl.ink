@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gabl.ink/cms/dictionaries/schemas/month_gregorian.json",
+  "title": "Months of the Gregorian calendar",
+  "description": "Months of the Gregorian calendar",
+  "type": "object",
+  "properties": {
+    "months": {
+      "type": "object",
+      "description": "List of month names",
+      "patternProperties": {
+        "^[a-z]{2,3}$": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^.*$"
+          }
+        }
+      }
+    }
+  }
+}
