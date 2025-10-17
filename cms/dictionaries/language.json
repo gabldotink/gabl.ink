@@ -12,8 +12,25 @@
       "full": "en_US"
     },
     "names": {
-      "en": "English",
-      "fr": "anglais"
+      "en": "English (United States)",
+      "fr": "anglais (États-Unis)"
+    }
+  },
+  "fr": {
+    "dir": "ltr",
+    "bcp_47": {
+      "primary_language": "fr",
+      "region": "fr",
+      "full": "fr-FR"
+    },
+    "ogp": {
+      "language": "fr",
+      "territory": "FR",
+      "full": "fr-FR"
+    },
+    "names": {
+      "en": "French (France)",
+      "fr": "français (France)"
     }
   }
 }

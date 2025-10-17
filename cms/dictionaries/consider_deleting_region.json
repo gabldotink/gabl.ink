@@ -8,5 +8,15 @@
       "en": "United States",
       "fr": "États-Unis"
     }
+  },
+  "fr": {
+    "iso_3166-1": {
+      "a-2": "FR",
+      "a-3": "FRA"
+    },
+    "names": {
+      "en": "France",
+      "fr": "France"
+    }
   }
 }

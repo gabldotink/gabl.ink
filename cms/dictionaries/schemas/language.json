@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gabl.ink/cms/dictionaries/schemas/language.json",
+  "title": "Natural languages",
+  "description": "Natural languages",
+  "type": "object",
+  "patternProperties": {
+    "^[a-z]{2}|mul$": {
+      "type": "object",
+      "description": "ID",
+      "properties": {
+        "dir": {
+          "type": "string",
+          "description": "Text direction (HTML attribute)",
+          "pattern": "ltr|rtl|auto"
+        },
+        "bcp_47": {
+          "type": "object",
+          "description": "IETF BCP 47 language tag",
+          "properties": {
+            "primary_language": {
+              "type": "string",
+              "description": "Primary language",
+              "pattern": "^[a-z]{2,3}$"
+            },
+            "region": {
+              "type": "string",
+              "description": "Region",
+              "pattern": "^[A-Z]{2,3}$"
+            },
+            "full": {
+              "type": "string",
+              "description": "Full tag",
+              "pattern": "^[a-z]{2,3}-[A-Z]{2,3}$"
+            }
+          }
+        },
+        "ogp": {
+          "type": "object",
+          "description": "OpenGraph Protocol locale",
+          "properties": {
+            "language": {
+              "type": "string",
+              "description": "Language",
+              "pattern": "^[a-z]{2,3}$"
+            },
+            "territory": {
+              "type": "string",
+              "description": "Territory",
+              "pattern": "^[A-Z]{2,3}$"
+            },
+            "full": {
+              "type": "string",
+              "description": "Full locale",
+              "pattern": "^[a-z]{2,3}_[A-Z]{2,3}$"
+            }
+          }
+        },
+        "names": {
+          "type": "object",
+          "description": "Language names",
+          "patternProperties": {
+            "^[a-z]{2,3}$": {
+              "type": "string",
+              "pattern": "^.*$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

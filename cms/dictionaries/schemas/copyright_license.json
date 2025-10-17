@@ -2,12 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://gabl.ink/cms/dictionaries/schemas/copyright_license.json",
   "title": "Copyright licenses",
-  "description": "Copyright licenses.",
+  "description": "Copyright licenses",
   "type": "object",
   "patternProperties": {
     "^[a-z0-9\\._-]+$": {
       "type": "object",
-      "description": "License ID",
+      "description": "ID",
       "properties": {
         "spdx": {
           "type": "string",
@@ -15,24 +15,29 @@
         },
         "title": {
           "type": "object",
+          "description": "Title",
           "patternProperties": {
-            "^[a-z]{2}|mul": {
+            "^[a-z]{2,3}$": {
               "type": "string"
             }
           }
         },
         "abbr": {
+          "type": "object",
+          "description": "Abbreviation",
           "patternProperties": {
-            "^[a-z]{2}|mul": {
+            "^[a-z]{2,3}$": {
               "type": "string"
             }
           }
         },
         "url": {
+          "type": "object",
+          "description": "Uniform Resource Locator (URL)",
           "patternProperties": {
-            "^[a-z]{2}|mul": {
+            "^[a-z]{2,3}$": {
               "type": "string",
-              "pattern": ".+://[a-z0-9.-]+/.*"
+              "pattern": "^.+://[a-z0-9.-]+/.*$"
             }
           }
         }
