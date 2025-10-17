@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gabl.ink/cms/dictionaries/schemas/copyright_license.json",
+  "title": "Copyright licenses",
+  "description": "Copyright licenses.",
+  "type": "object",
+  "patternProperties": {
+    "^[a-z0-9\\._-]+$": {
+      "type": "object",
+      "description": "License ID",
+      "properties": {
+        "spdx": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9.+-]+$"
+        },
+        "title": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]{2}|mul": {
+              "type": "string"
+            }
+          }
+        },
+        "abbr": {
+          "patternProperties": {
+            "^[a-z]{2}|mul": {
+              "type": "string"
+            }
+          }
+        },
+        "url": {
+          "patternProperties": {
+            "^[a-z]{2}|mul": {
+              "type": "string",
+              "pattern": ".+://[a-z0-9.-]+/.*"
+            }
+          }
+        }
+      }
+    }
+  }
+}
