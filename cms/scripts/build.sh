@@ -530,7 +530,7 @@ for i in $items;do
   
       printf '">'
   
-      printf '%s ' "$(jq -r -- ".months.\"$language\".[$((first_published_m-1))]" "$dict/month_gregorian.json")"
+      printf '%s ' "$(jq -r -- ".months.\"$language\"[$((first_published_m-1))]" "$dict/month_gregorian.json")"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$first_published_d"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "$first_published_y" -ne 0 ];then
@@ -587,7 +587,7 @@ for i in $items;do
                                             "$post_date_m_pad""$post_date_m" \
                                             "$post_date_d_pad""$post_date_d"
   
-        printf '%s ' "$(jq -r -- ".months.\"language\".[$((post_date_m-1))]" "$dict/month_gregorian.json")"
+        printf '%s ' "$(jq -r -- ".months.\"$language\"[$((post_date_m-1))]" "$dict/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$post_date_d"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "$post_date_y" -ne 0 ];then
@@ -787,9 +787,8 @@ for i in $items;do
       make_validate_link() {
         make_validate_link_id="$1"
         [ -n "$config_validate_skip" ] &&
-          if printf ' %s ' "$config_validate_skip" | grep -Fqe " $make_validate_link_id ";then
+          printf ' %s ' "$config_validate_skip" | grep -Fqe " $make_validate_link_id " &&
             return 0
-          fi
         make_validate_link_platform="$2"
         make_validate_link_base="$3"
         make_validate_link_format="$4"
@@ -807,7 +806,7 @@ for i in $items;do
       }
 
       make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \
-                             'https://validator.w3.org/nu/?doc=' HTML5
+                             'https://validator.w3.org/nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
     fi
 
     printf '</ul></details>'
@@ -827,7 +826,7 @@ for i in $items;do
     printf '</a></p>'
 
     if [ "$disclaimer" != null ];then
-      disclaimer_html="$(jq -r -- ".\"$disclaimer\".html" "$dict/disclaimer.json")"
+      disclaimer_html="$(jq -r -- ".\"$disclaimer\".\"$language\"" "$dict/disclaimer.json")"
       printf '<p>Disclaimer: %s</p>' "$disclaimer_html"
     else
       unset disclaimer_html
@@ -839,9 +838,8 @@ for i in $items;do
   } > "$index/$id/index.html"
 done
 
-if [ "$warning_warned" = true ] &&
-   [ "$config_exit_nonzero_with_warnings" = true ];then
-  exit 2
-fi
+[ "$warning_warned" = true ] &&
+  [ "$config_exit_nonzero_with_warnings" = true ] &&
+    exit 2
 
 # exit 0
