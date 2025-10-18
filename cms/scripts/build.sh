@@ -214,19 +214,16 @@ for i in $items;do
   
       if   [ "$up_directories" -eq 2 ];then
         unset location_volume location_chapter
-        container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/data.json")"
-        container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/data.json")"
       elif [ "$up_directories" -eq 3 ];then
         unset location_volume
         location_chapter="$(jq -r -- .location.chapter "$i")"
-        container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_chapter/data.json")"
-        container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_chapter/data.json")"
       elif [ "$up_directories" -eq 4 ];then
         location_volume="$(jq -r -- .location.volume "$i")"
         location_chapter="$(jq -r -- .location.chapter "$i")"
-        container_pages_first_string="$(jq -r -- .pages.first.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
-        container_pages_last_string="$(jq -r -- .pages.last.string "$index/en/$location_series/$location_volume/$location_chapter/data.json")"
       fi
+
+      container_pages_first_string="$(jq -r -- .pages.first.string "$index/$id/../data.json")"
+      container_pages_last_string="$(jq -r -- .pages.last.string "$index/$id/../data.json")"
   
       if   [ "$location_previous_string" = null ];then
         # This is the first page, so no prefetches are needed.
@@ -533,7 +530,7 @@ for i in $items;do
   
       printf '">'
   
-      printf '%s ' "$(jq -r -- ".months[$((first_published_m-1))]" "$dict/month_gregorian.json")"
+      printf '%s ' "$(jq -r -- ".months.\"$language\".[$((first_published_m-1))]" "$dict/month_gregorian.json")"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$first_published_d"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "$first_published_y" -ne 0 ];then
@@ -590,7 +587,7 @@ for i in $items;do
                                             "$post_date_m_pad""$post_date_m" \
                                             "$post_date_d_pad""$post_date_d"
   
-        printf '%s ' "$(jq -r -- ".months[$((post_date_m-1))]" "$dict/month_gregorian.json")"
+        printf '%s ' "$(jq -r -- ".months.\"language\".[$((post_date_m-1))]" "$dict/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$post_date_d"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "$post_date_y" -ne 0 ];then
