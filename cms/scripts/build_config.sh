@@ -13,7 +13,7 @@ config_exit_on_warning=false
 config_exit_nonzero_with_warnings=true
 
 # If this is set to a language ID in the language dictionary, it will be used as the default language if requested values are undefined for the running language and there is no multilingual value. Default is en.
-config_language_default=en
+config_lang_default=en
 
 # If this is set to true, CE (Common Era) and BCE (Before the Common Era) will be used for years instead of AD (anno Domini) and BC (before Christ). Default is false.
 config_use_ce=false

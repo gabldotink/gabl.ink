@@ -53,10 +53,10 @@ if [ -f "${scripts}/build_config.sh" ];then
   . "${scripts}/build_config.sh"
 fi
 
-if [ "${config_language_default}" != en ];then
-  language_default="${config_language_default}"
+if [ "${config_lang_default}" != en ];then
+  lang_default="${config_lang_default}"
 else
-  language_default=en
+  lang_default=en
 fi
 
 #items="$(find "${index}" -type f -name data.json)"
@@ -68,27 +68,27 @@ for i in ${items};do
   [ "${type}" = comic_series ] &&
     continue
 
-  language="$(jq -r -- .language "${i}")"
+  lang="$(jq -r -- .language "${i}")"
   
   copyright_license="$(jq -r -- .copyright.license[0] "${i}")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-  copyright_license_abbr="$(jq -r -- ".\"${copyright_license}\".abbr.\"${language}\"" "${dict}/copyright_license.json")"
-  copyright_license_abbr_default="$(jq -r -- ".\"${copyright_license}\".abbr.\"${language_default}\"" "${dict}/copyright_license.json")"
+  copyright_license_abbr="$(jq -r -- ".\"${copyright_license}\".abbr.\"${lang}\"" "${dict}/copyright_license.json")"
+  copyright_license_abbr_default="$(jq -r -- ".\"${copyright_license}\".abbr.\"${lang_default}\"" "${dict}/copyright_license.json")"
   copyright_license_abbr_mul="$(jq -r -- ".\"${copyright_license}\".abbr.mul" "${dict}/copyright_license.json")"
-  copyright_license_url="$(jq -r -- ".\"${copyright_license}\".url.\"${language}\"" "${dict}/copyright_license.json")"
-  copyright_license_url_default="$(jq -r -- ".\"${copyright_license}\".url.\"${language_default}\"" "${dict}/copyright_license.json")"
+  copyright_license_url="$(jq -r -- ".\"${copyright_license}\".url.\"${lang}\"" "${dict}/copyright_license.json")"
+  copyright_license_url_default="$(jq -r -- ".\"${copyright_license}\".url.\"${lang_default}\"" "${dict}/copyright_license.json")"
   copyright_license_url_mul="$(jq -r -- ".\"${copyright_license}\".url.mul" "${dict}/copyright_license.json")"
   copyright_license_spdx="$(jq -r -- ".\"${copyright_license}\".spdx" "${dict}/copyright_license.json")"
-  copyright_license_title="$(jq -r -- ".\"${copyright_license}\".title.\"${language}\"" "${dict}/copyright_license.json")"
-  copyright_license_title_default="$(jq -r -- ".\"${copyright_license}\".title.\"${language_default}\"" "${dict}/copyright_license.json")"
+  copyright_license_title="$(jq -r -- ".\"${copyright_license}\".title.\"${lang}\"" "${dict}/copyright_license.json")"
+  copyright_license_title_default="$(jq -r -- ".\"${copyright_license}\".title.\"${lang_default}\"" "${dict}/copyright_license.json")"
   copyright_license_title_mul="$(jq -r -- ".\"${copyright_license}\".title.mul" "${dict}/copyright_license.json")"
   copyright_year_first="$(jq -r -- .copyright.year.first "${i}")"
   copyright_year_last="$(jq -r -- .copyright.year.last "${i}")"
   description_text="$(jq -r -- .description.text "${i}")"
   disclaimer="$(jq -r -- .disclaimer[0] "${i}")"
   id="$(jq -r -- .id "${i}")"
-  language_bcp_47_full="$(jq -r -- ".\"${language}\".bcp_47.full" "${dict}/language.json")"
-  language_dir="$(jq -r -- ".\"${language}\".dir" "${dict}/language.json")"
+  lang_bcp_47_full="$(jq -r -- ".\"${lang}\".bcp_47.full" "${dict}/language.json")"
+  lang_dir="$(jq -r -- ".\"${lang}\".dir" "${dict}/language.json")"
   title_nested_text="$(jq -r -- .title.nested.text "${i}")"
   title_html="$(jq -r -- .title.html "${i}")"
   title_text="$(jq -r -- .title.text "${i}")"
@@ -101,7 +101,7 @@ for i in ${items};do
   fi
   
   # This is dumb
-  #if [ "${language}" = en ];then
+  #if [ "${lang}" = en ];then
   #  if printf '%s' "${title_text}" | grep -Fqe '“' -e '”';then
   #    if printf '%s' "${title_text}" | grep -Fqe "‘";then
   #      # Only convert ’ to ” if followed by a space or newline
@@ -125,7 +125,7 @@ for i in ${items};do
     printf '<!DOCTYPE html>'
   
     printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' \
-           "${language_bcp_47_full}" "${language_dir}" "${language_bcp_47_full}"
+           "${lang_bcp_47_full}" "${lang_dir}" "${lang_bcp_47_full}"
   
     printf '<!-- SPDX-License-Identifier: %s -->\n' "${copyright_license_spdx}"
   
@@ -137,7 +137,7 @@ for i in ${items};do
   
     printf '<meta name="description" content="%s"/>' "${description_text}"
     printf '<meta name="robots" content="index,follow"/>'
-    printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "${canonical}" "${language_bcp_47_full}"
+    printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "${canonical}" "${lang_bcp_47_full}"
   
     if [ "${type}" = comic_page ];then
       first_published_d="$(jq -r -- .first_published.d "${i}")"
@@ -164,7 +164,7 @@ for i in ${items};do
       else
         error 'first_published_y is not 1–4 digits long'
       fi
-      language_ogp_full="$(jq -r -- ".\"${language}\".ogp.full" "${dict}/language.json")"
+      lang_ogp_full="$(jq -r -- ".\"${lang}\".ogp.full" "${dict}/language.json")"
       location_chapter="$(jq -r -- .location.chapter "${i}")"
       location_next_string="$(jq -r -- .location.next.string "${i}")"
       location_page_integer="$(jq -r -- .location.page.integer "${i}")"
@@ -245,12 +245,12 @@ for i in ${items};do
       elif [ "${container_pages_first_string}" != "${location_page_string}" ] ||
            [ "${container_pages_first_string}" != "${location_previous_string}" ];then
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${container_pages_first_string}" "${language_bcp_47_full}"
+               "${container_pages_first_string}" "${lang_bcp_47_full}"
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_previous_string}" "${language_bcp_47_full}"
+               "${location_previous_string}" "${lang_bcp_47_full}"
       elif [ "${container_pages_first_string}" = "${location_previous_string}" ];then
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_previous_string}" "${language_bcp_47_full}"
+               "${location_previous_string}" "${lang_bcp_47_full}"
       fi
   
       if   [ "${location_next_string}" = null ];then
@@ -259,12 +259,12 @@ for i in ${items};do
       elif [ "${container_pages_last_string}" != "${location_page_string}" ] ||
            [ "${container_pages_last_string}" != "${location_next_string}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_next_string}" "${language_bcp_47_full}"
+               "${location_next_string}" "${lang_bcp_47_full}"
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${container_pages_last_string}" "${language_bcp_47_full}"
+               "${container_pages_last_string}" "${lang_bcp_47_full}"
       elif [ "${container_pages_last_string}" = "${location_next_string}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_next_string}" "${language_bcp_47_full}"
+               "${location_next_string}" "${lang_bcp_47_full}"
       fi
   
       make_og() {
@@ -284,7 +284,7 @@ for i in ${items};do
         make_og video "${canonical}video.webm"
         make_og video "${canonical}video.mp4"
       fi
-      make_og locale "${language_ogp_full}"
+      make_og locale "${lang_ogp_full}"
   
       printf '</head>'
   
@@ -525,7 +525,7 @@ for i in ${items};do
   
       printf '">'
   
-      printf '%s ' "$(jq -r -- ".months.\"${language}\"[$((first_published_m-1))]" "${dict}/month_gregorian.json")"
+      printf '%s ' "$(jq -r -- ".months.\"${lang}\"[$((first_published_m-1))]" "${dict}/month_gregorian.json")"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "${first_published_y}" -ne 0 ];then
@@ -582,7 +582,7 @@ for i in ${items};do
                                             "${post_date_m_pad}${post_date_m}" \
                                             "${post_date_d_pad}${post_date_d}"
   
-        printf '%s ' "$(jq -r -- ".months.\"${language}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
+        printf '%s ' "$(jq -r -- ".months.\"${lang}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "${post_date_y}" -ne 0 ];then
@@ -768,7 +768,7 @@ for i in ${items};do
     printf '</a></p>'
 
     if [ "${disclaimer}" != null ];then
-      disclaimer_html="$(jq -r -- ".\"${disclaimer}\".\"${language}\"" "${dict}/disclaimer.json")"
+      disclaimer_html="$(jq -r -- ".\"${disclaimer}\".\"${lang}\"" "${dict}/disclaimer.json")"
       printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
     else
       unset disclaimer_html
