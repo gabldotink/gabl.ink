@@ -89,8 +89,30 @@ for i in ${items};do
   id="$(jq -r -- .id "${i}")"
   language_bcp_47_full="$(jq -r -- ".\"${language}\".bcp_47.full" "${dict}/language.json")"
   language_dir="$(jq -r -- ".\"${language}\".dir" "${dict}/language.json")"
+  title_nested_text="$(jq -r -- .title.nested.text "${i}")"
+  title_html="$(jq -r -- .title.html "${i}")"
   title_text="$(jq -r -- .title.text "${i}")"
+
+  if [ "${title_nested_text}" != null ];then
+    title_nested_html="$(jq -r -- .title.nested.html "${i}")"
+  else
+    title_nested_text="${title_text}"
+    title_nested_html="${title_html}"
+  fi
   
+  # This is dumb
+  #if [ "${language}" = en ];then
+  #  if printf '%s' "${title_text}" | grep -Fqe '“' -e '”';then
+  #    if printf '%s' "${title_text}" | grep -Fqe "‘";then
+  #      # Only convert ’ to ” if followed by a space or newline
+  #      printf '%s' "${title_text}" | sed -e 's/“/'"‘/g" -e 's/”/'"’/g" -e "s/‘"'/“/g' \
+  #                                        -e "s/’"'$/”/' -e "s/’"'\([^[:alnum:]_[:space:]]\)/”\1/g'
+  #    else
+  #      
+  #    fi
+  #  fi
+  #fi
+
   canonical="https://gabl.ink/index/${id}/"
 
   if [ "${config_use_twitter}" = true ];then
@@ -154,15 +176,6 @@ for i in ${items};do
       location_series_title_html="$(jq -r -- .title.html "${index}/${id}/../data.json")"
       location_series_title_text="$(jq -r -- .title.text "${index}/${id}/../data.json")"
       location_volume="$(jq -r -- .location.volume "${i}")"
-      title_html="$(jq -r -- .title.html "${i}")"
-      title_quotes_nested_html="$(jq -r -- .title.quotes_nested.html "${i}")"
-      title_quotes_nested_text="$(jq -r -- .title.quotes_nested.text "${i}")"
-  
-      if [ "${title_quotes_nested_text}" != null ];then
-        title_quotes_nested_exists=true
-      else
-        unset title_quotes_nested_exists
-      fi
   
       # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
       # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
@@ -222,6 +235,7 @@ for i in ${items};do
         location_chapter="$(jq -r -- .location.chapter "${i}")"
       fi
 
+      # TODO: Work with quotation mark nesting
       container_pages_first_string="$(jq -r -- .pages.first.string "${index}/${id}/../data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "${index}/${id}/../data.json")"
   
@@ -283,15 +297,7 @@ for i in ${items};do
       printf '<main>'
       printf '<div id="nav_top">'
       printf '<h1 id="nav_top_title">'
-      printf '“<cite>'
-  
-      if [ "${title_quotes_nested_exists}" = true ];then
-        printf '%s' "${title_quotes_nested_html}"
-      else
-        printf '%s' "${title_html}"
-      fi
-  
-      printf '</cite>”</h1>'
+      printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
   
       if [ "${container_pages_first_string}" != null ];then
         container_pages_first_string_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_first_string}/data.json")"
@@ -420,7 +426,6 @@ for i in ${items};do
 
         printf 'label="English (United States) (CC)" '
         printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
-        # TODO: Figure out why ShellCheck warns about the apostrophe without double quotes
         printf '<p>It looks like your web browser doesn'"’"'t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${id}" "${id}"
         printf '</video></div>'
       else
@@ -453,44 +458,34 @@ for i in ${items};do
   
       printf ', page %s ' "${location_page_integer}"
   
-      printf '“<cite>'
-  
-      if [ "${title_quotes_nested_exists}" = true ];then
-        printf '%s' "${title_quotes_nested_html}"
-      else
-        printf '%s' "${title_html}"
-      fi
-      
-      printf '</cite>”'
+      printf '“<cite>%s</cite>”' "${title_nested_html}"
   
       printf '</summary>'
   
       printf '<ol id="nav_bottom_list_pages">'
   
-      find "${index}/${id}/.." -type f -path "${index}/${id}/../*/data.json" -exec sh -c '
+      find "${index}/${id}/.." -type f -path "${index}/${id}"'/../*/data.json' -exec sh -c '
         d="$1"
         p="$2"
         s="$(jq -r -- .location.page.string "${d}")"
-  
+
+        if [ "$(jq -r .title.nested.html "${d}")" != null ];then
+            title_nested_html="$(jq -r -- .title.nested.html "${d}")"
+        else
+            title_nested_html="$(jq -r -- .title.html "${d}")"
+        fi
+
         printf "<li>“"
   
         if [ "${s}" = "${p}" ];then
           printf "<b><cite>"
-          if [ "$(jq -r .title.quotes_nested.html "${d}")" != null ];then
-            printf "%s" "$(jq -r -- .title.quotes_nested.html "${d}")"
-          else
-            printf "%s" "$(jq -r -- .title.html "${d}")"
-          fi
+          printf "%s" "${title_nested_html}"
           printf "</cite></b>”</li>"
         else
           printf "<a href=\"../"
           printf "%s" "${s}"
           printf "/\" hreflang=\"en-US\" type=\"text/html\"><cite>"
-          if [ "$(jq -r .title.quotes_nested.html "${d}")" != null ];then
-            printf "%s" "$(jq -r -- .title.quotes_nested.html "${d}")"
-          else
-            printf "%s" "$(jq -r -- .title.html "${d}")"
-          fi
+          printf "%s" "${title_nested_html}"
           printf "</cite></a>”</li>"
         fi
       ' shell '{}' "${location_page_string}" ';'
@@ -663,24 +658,14 @@ for i in ${items};do
       make_share_link x "${x_or_twitter}" https://x.com/intent/tweet text url hashtags \
                      "$(
                         printf 'gabl.ink @gabldotink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '”'
+                        printf '%s”' "${title_nested_text}"
                       )" \
                      "gabldotink,${location_series_hashtag}"
       
       make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '”'
+                        printf '%s”' "${title_nested_text}"
                       )"
       
       make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' ''
@@ -688,24 +673,14 @@ for i in ${items};do
       make_share_link telegram Telegram https://t.me/share text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
       
       make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                      "$(
                         printf 'gabl.ink @gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '%s ' "${canonical}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
@@ -713,59 +688,35 @@ for i in ${items};do
       make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” %s' "${canonical}"
+                        printf '%s” ' "${title_nested_text}"
+                        printf '%s' "${canonical}"
                       )"
       
       make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
                      "$(
                         printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
       
       make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
   
       make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
   
       make_share_link gab Gab https://gab.com/compose text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
-                        if [ "${title_quotes_nested_exists}" = true ];then
-                          printf '%s' "${title_quotes_nested_text}"
-                        else
-                          printf '%s' "${title_text}"
-                        fi
-                        printf '” '
+                        printf '%s” ' "${title_nested_text}"
                         printf '#gabldotink #%s' "${location_series_hashtag}"
                       )"
   

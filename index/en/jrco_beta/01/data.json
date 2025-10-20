@@ -17,7 +17,7 @@
   "title": {
     "text": "“Thursday” title page",
     "html": "“<cite>Thursday</cite>” title page",
-    "quotes_nested": {
+    "nested": {
       "text": "‘Thursday’ title page",
       "html": "<span class=\"spaced_right\">‘</span><cite>Thursday</cite>’ title page"
     }
