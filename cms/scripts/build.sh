@@ -165,17 +165,17 @@ for i in ${items};do
         error 'first_published_y is not 1–4 digits long'
       fi
       lang_ogp_full="$(jq -r -- ".\"${lang}\".ogp.full" "${dict}/language.json")"
-      location_chapter="$(jq -r -- .location.chapter "${i}")"
-      location_next_string="$(jq -r -- .location.next.string "${i}")"
-      location_page_integer="$(jq -r -- .location.page.integer "${i}")"
-      location_page_string="$(jq -r -- .location.page.string "${i}")"
-      location_previous_string="$(jq -r -- .location.previous.string "${i}")"
-      location_series="$(jq -r -- .location.series "${i}")"
-      location_series_hashtag="$(jq -r -- .hashtag "${index}/${id}/../data.json")"
-      location_series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "${index}/${id}/../data.json")"
-      location_series_title_html="$(jq -r -- .title.html "${index}/${id}/../data.json")"
-      location_series_title_text="$(jq -r -- .title.text "${index}/${id}/../data.json")"
-      location_volume="$(jq -r -- .location.volume "${i}")"
+      chapter="$(jq -r -- .location.chapter "${i}")"
+      next_string="$(jq -r -- .location.next.string "${i}")"
+      page_integer="$(jq -r -- .location.page.integer "${i}")"
+      page_string="$(jq -r -- .location.page.string "${i}")"
+      previous_string="$(jq -r -- .location.previous.string "${i}")"
+      series="$(jq -r -- .location.series "${i}")"
+      series_hashtag="$(jq -r -- .hashtag "${index}/${id}/../data.json")"
+      series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "${index}/${id}/../data.json")"
+      series_title_html="$(jq -r -- .title.html "${index}/${id}/../data.json")"
+      series_title_text="$(jq -r -- .title.text "${index}/${id}/../data.json")"
+      volume="$(jq -r -- .location.volume "${i}")"
   
       # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
       # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
@@ -189,10 +189,10 @@ for i in ${items};do
       # Determine how many directories deep from the series the page is
       up_directories=4
   
-      [ "${location_volume}" = null ] &&
+      [ "${volume}" = null ] &&
         up_directories="$((up_directories-1))"
   
-      [ "${location_chapter}" = null ] &&
+      [ "${chapter}" = null ] &&
         up_directories="$((up_directories-1))"
   
       styles="$(
@@ -217,54 +217,54 @@ for i in ${items};do
       printf '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
              "${styles}"
       printf '<link rel="preload" href="%s/comic_page_%s.css" as="style" hreflang="zxx" type="text/css"/>' \
-             "${styles}" "${location_series}"
+             "${styles}" "${series}"
       printf '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
              "${styles}"
       printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="zxx" type="text/css"/>' \
-             "${styles}" "${location_series}"
+             "${styles}" "${series}"
   
       printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url}"
   
       if   [ "${up_directories}" -eq 2 ];then
-        unset location_volume location_chapter
+        unset volume chapter
       elif [ "${up_directories}" -eq 3 ];then
-        unset location_volume
-        location_chapter="$(jq -r -- .location.chapter "${i}")"
+        unset volume
+        chapter="$(jq -r -- .location.chapter "${i}")"
       elif [ "${up_directories}" -eq 4 ];then
-        location_volume="$(jq -r -- .location.volume "${i}")"
-        location_chapter="$(jq -r -- .location.chapter "${i}")"
+        volume="$(jq -r -- .location.volume "${i}")"
+        chapter="$(jq -r -- .location.chapter "${i}")"
       fi
 
       # TODO: Work with quotation mark nesting
       container_pages_first_string="$(jq -r -- .pages.first.string "${index}/${id}/../data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "${index}/${id}/../data.json")"
   
-      if   [ "${location_previous_string}" = null ];then
+      if   [ "${previous_string}" = null ];then
         # This is the first page, so no prefetches are needed.
         true
-      elif [ "${container_pages_first_string}" != "${location_page_string}" ] ||
-           [ "${container_pages_first_string}" != "${location_previous_string}" ];then
+      elif [ "${container_pages_first_string}" != "${page_string}" ] ||
+           [ "${container_pages_first_string}" != "${previous_string}" ];then
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${container_pages_first_string}" "${lang_bcp_47_full}"
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_previous_string}" "${lang_bcp_47_full}"
-      elif [ "${container_pages_first_string}" = "${location_previous_string}" ];then
+               "${previous_string}" "${lang_bcp_47_full}"
+      elif [ "${container_pages_first_string}" = "${previous_string}" ];then
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_previous_string}" "${lang_bcp_47_full}"
+               "${previous_string}" "${lang_bcp_47_full}"
       fi
   
-      if   [ "${location_next_string}" = null ];then
+      if   [ "${next_string}" = null ];then
         # This is the last page, so no prefetches are needed.
         true
-      elif [ "${container_pages_last_string}" != "${location_page_string}" ] ||
-           [ "${container_pages_last_string}" != "${location_next_string}" ];then
+      elif [ "${container_pages_last_string}" != "${page_string}" ] ||
+           [ "${container_pages_last_string}" != "${next_string}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_next_string}" "${lang_bcp_47_full}"
+               "${next_string}" "${lang_bcp_47_full}"
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${container_pages_last_string}" "${lang_bcp_47_full}"
-      elif [ "${container_pages_last_string}" = "${location_next_string}" ];then
+      elif [ "${container_pages_last_string}" = "${next_string}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${location_next_string}" "${lang_bcp_47_full}"
+               "${next_string}" "${lang_bcp_47_full}"
       fi
   
       make_og() {
@@ -300,27 +300,27 @@ for i in ${items};do
       printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
   
       if [ "${container_pages_first_string}" != null ];then
-        container_pages_first_string_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_first_string}/data.json")"
+        container_pages_first_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_first_string}/data.json")"
       else
-        unset container_pages_first_string_title_text
+        unset container_pages_first_title_text
       fi
   
-      if [ "${location_previous_string}" != null ];then
-        location_previous_string_title_text="$(jq -r -- .title.text "${index}/${id}/../${location_previous_string}/data.json")"
+      if [ "${previous_string}" != null ];then
+        previous_title_text="$(jq -r -- .title.text "${index}/${id}/../${previous_string}/data.json")"
       else
-        unset location_previous_string_title_text
+        unset previous_title_text
       fi
   
-      if [ "${location_next_string}" != null ];then
-        location_next_string_title_text="$(jq -r -- .title.text "${index}/${id}/../${location_next_string}/data.json")"
+      if [ "${next_string}" != null ];then
+        next_title_text="$(jq -r -- .title.text "${index}/${id}/../${next_string}/data.json")"
       else
-        unset location_next_string_title_text
+        unset next_title_text
       fi
   
       if [ "${container_pages_last_string}" != null ];then
-        container_pages_last_string_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_last_string}/data.json")"
+        container_pages_last_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_last_string}/data.json")"
       else
-        unset container_pages_last_string_title_text
+        unset container_pages_last_title_text
       fi
   
       # TODO: Reduce duplicate code.
@@ -338,7 +338,7 @@ for i in ${items};do
           printf 'title="First in %s (This is the first page!)">' "${container}"
           printf '<picture class="nav_buttons_off">'
         else
-          printf 'title="First in %s (“%s”)">' "${container}" "${container_pages_first_string_title_text}"
+          printf 'title="First in %s (“%s”)">' "${container}" "${container_pages_first_title_text}"
           printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_first_string}"
           printf '<picture>'
         fi
@@ -353,38 +353,38 @@ for i in ${items};do
   
         printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "${make_nav_buttons_l}"
   
-        if [ "${location_previous_string}" = null ];then
+        if [ "${previous_string}" = null ];then
           printf 'title="Previous (This is the first page!)">'
           printf '<picture class="nav_buttons_off">'
         else
-          printf 'title="Previous (“%s”)">' "${location_previous_string_title_text}"
-          printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "${location_previous_string}"
+          printf 'title="Previous (“%s”)">' "${previous_title_text}"
+          printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "${previous_string}"
           printf '<picture>'
         fi
   
         printf '<img class="nav_buttons" src="./previous.png" alt="previous"/>'
         printf '</picture>'
   
-        [ "${location_previous_string}" != null ] &&
+        [ "${previous_string}" != null ] &&
           printf '</a>'
   
         printf '</div>'
   
         printf '<div class="nav_button" id="nav_%s_buttons_next" ' "${make_nav_buttons_l}"
   
-        if [ "${location_next_string}" = null ];then
+        if [ "${next_string}" = null ];then
           printf 'title="Next (This is the last page!)">'
           printf '<picture class="nav_buttons_off">'
         else
-          printf 'title="Next (“%s”)">' "${location_next_string_title_text}"
-          printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "${location_next_string}"
+          printf 'title="Next (“%s”)">' "${next_title_text}"
+          printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "${next_string}"
           printf '<picture>'
         fi
   
         printf '<img class="nav_buttons" src="./next.png" alt="next"/>'
         printf '</picture>'
   
-        [ "${location_next_string}" != null ] &&
+        [ "${next_string}" != null ] &&
           printf '</a>'
   
         printf '</div>'
@@ -395,7 +395,7 @@ for i in ${items};do
           printf 'title="Last in %s (This is the last page!)">' "${container}"
           printf '<picture class="nav_buttons_off">'
         else
-          printf 'title="Last in %s (“%s”)">' "${container}" "${container_pages_last_string_title_text}"
+          printf 'title="Last in %s (“%s”)">' "${container}" "${container_pages_last_title_text}"
           printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_last_string}"
           printf '<picture>'
         fi
@@ -449,14 +449,14 @@ for i in ${items};do
       # TODO: Support higher containers (volumes and chapters).
   
       if [ "${container}" = series ];then
-        printf '%s' "${location_series_title_html}"
+        printf '%s' "${series_title_html}"
         printf '</cite></i>'
   
-        [ "${location_series_title_disambiguation_html}" != null ] &&
-          printf ' %s' "${location_series_title_disambiguation_html}"
+        [ "${series_title_disambiguation_html}" != null ] &&
+          printf ' %s' "${series_title_disambiguation_html}"
       fi
   
-      printf ', page %s ' "${location_page_integer}"
+      printf ', page %s ' "${page_integer}"
   
       printf '“<cite>%s</cite>”' "${title_nested_html}"
   
@@ -488,7 +488,7 @@ for i in ${items};do
           printf "%s" "${title_nested_html}"
           printf "</cite></a>”</li>"
         fi
-      ' shell '{}' "${location_page_string}" ';'
+      ' shell '{}' "${page_string}" ';'
   
       printf '</ol></details></div></div>'
   
@@ -657,14 +657,14 @@ for i in ${items};do
   
       make_share_link x "${x_or_twitter}" https://x.com/intent/tweet text url hashtags \
                      "$(
-                        printf 'gabl.ink @gabldotink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink @gabldotink: “%s”: “' "${series_title_text}"
                         printf '%s”' "${title_nested_text}"
                       )" \
-                     "gabldotink,${location_series_hashtag}"
+                     "gabldotink,${series_hashtag}"
       
       make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s”' "${title_nested_text}"
                       )"
       
@@ -672,52 +672,52 @@ for i in ${items};do
       
       make_share_link telegram Telegram https://t.me/share text url '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
       
       make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                      "$(
-                        printf 'gabl.ink @gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink @gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
                         printf '%s ' "${canonical}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
       
       make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
                         printf '%s' "${canonical}"
                       )"
       
       make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
                      "$(
-                        printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
       
       make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
   
       make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
   
       make_share_link gab Gab https://gab.com/compose text url '' \
                      "$(
-                        printf 'gabl.ink: “%s”: “' "${location_series_title_text}"
+                        printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
-                        printf '#gabldotink #%s' "${location_series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag}"
                       )"
   
       printf '</ul></details>'
