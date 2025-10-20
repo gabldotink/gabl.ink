@@ -631,8 +631,7 @@ for i in ${items};do
         make_share_link_url_param="$5"
         make_share_link_hashtag_param="$6"
         make_share_link_text="$(printf '%s' "$7"|jq -Rr -- @uri)"
-        make_share_link_url="$(printf '%s' "$8"|jq -Rr -- @uri)"
-        make_share_link_hashtag="$(printf '%s' "$9"|jq -Rr -- @uri)"
+        make_share_link_hashtag="$(printf '%s' "$8"|jq -Rr -- @uri)"
   
         printf '<li id="share_links_%s">' "${make_share_link_id}"
         printf '<a rel="external" href="%s' "${make_share_link_base}"
@@ -650,7 +649,7 @@ for i in ${items};do
         fi
   
         if [ -n "${make_share_link_url_param}" ];then
-          printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_url_param}" "${make_share_link_url}"
+          printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_url_param}" "$(printf '%s' "${canonical}"|jq -Rr -- @uri)"
           [ "${make_share_link_start_param}" = '?' ] &&
             make_share_link_start_param='&amp;'
         fi
@@ -671,7 +670,6 @@ for i in ${items};do
                         fi
                         printf '”'
                       )" \
-                     "${canonical}" \
                      "gabldotink,${location_series_hashtag}"
       
       make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
@@ -683,11 +681,9 @@ for i in ${items};do
                           printf '%s' "${title_text}"
                         fi
                         printf '”'
-                      )" \
-                     "${canonical}"
+                      )"
       
-      make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' '' \
-                     "${canonical}"
+      make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' ''
       
       make_share_link telegram Telegram https://t.me/share text url '' \
                      "$(
@@ -699,8 +695,7 @@ for i in ${items};do
                         fi
                         printf '” '
                         printf '#gabldotink #%s' "${location_series_hashtag}"
-                      )" \
-                     "${canonical}"
+                      )"
       
       make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                      "$(
@@ -736,8 +731,7 @@ for i in ${items};do
                         fi
                         printf '” '
                         printf '#gabldotink #%s' "${location_series_hashtag}"
-                      )" \
-                     "${canonical}"
+                      )"
       
       make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                      "$(
@@ -749,8 +743,7 @@ for i in ${items};do
                         fi
                         printf '” '
                         printf '#gabldotink #%s' "${location_series_hashtag}"
-                      )" \
-                     "${canonical}"
+                      )"
   
       make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
                      "$(
@@ -762,8 +755,7 @@ for i in ${items};do
                         fi
                         printf '” '
                         printf '#gabldotink #%s' "${location_series_hashtag}"
-                      )" \
-                     "${canonical}"
+                      )"
   
       make_share_link gab Gab https://gab.com/compose text url '' \
                      "$(
@@ -775,8 +767,7 @@ for i in ${items};do
                         fi
                         printf '” '
                         printf '#gabldotink #%s' "${location_series_hashtag}"
-                      )" \
-                     "${canonical}"
+                      )"
   
       printf '</ul></details>'
 
