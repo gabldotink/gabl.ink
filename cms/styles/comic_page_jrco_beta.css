@@ -19,7 +19,7 @@ picture#gabldotink_logo img {
   width: 20%;
 }
 
-picture.nav_buttons_off {
+.nav_buttons_off {
   opacity: 10%;
 }
 
@@ -34,16 +34,38 @@ div#nav_bottom_buttons {
 }
 
 div.nav_button {
-  width: 5rem;
-  aspect-ratio: 1;
+  text-align: center;
+  font-size: xx-large;
 }
 
+div.nav_button p {
+  color: gray;
+}
+
+div.nav_button a {
+  text-decoration-line: none;
+}
+
+div.nav_button a p {
+  color: inherit;
+}
+
+/*
 div.nav_button picture img {
   width: 100%;
   max-width: 100%;
 }
+*/
 
-img.nav_buttons {
+div.nav_button p {
+  text-align: center;
+}
+
+a .nav_button_arrow {
+  text-decoration-line: none;
+}
+
+p.nav_buttons {
   width: 25%;
   max-width: 25%;
   display: block;

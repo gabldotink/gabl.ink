@@ -336,15 +336,12 @@ for i in ${items};do
   
         if [ "${container_pages_first_string}" = null ];then
           printf 'title="First in %s (This is the first page!)">' "${container}"
-          printf '<picture class="nav_buttons_off">'
         else
           printf 'title="First in %s (“%s”)">' "${container}" "${container_pages_first_title_text}"
           printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_first_string}"
-          printf '<picture>'
         fi
-  
-        printf '<img class="nav_buttons" src="./first.png" alt="first"/>'
-        printf '</picture>'
+        
+        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">⇦</span><br/>First</p>'
   
         [ "${container_pages_first_string}" != null ] &&
           printf '</a>'
@@ -355,15 +352,12 @@ for i in ${items};do
   
         if [ "${previous_string}" = null ];then
           printf 'title="Previous (This is the first page!)">'
-          printf '<picture class="nav_buttons_off">'
         else
           printf 'title="Previous (“%s”)">' "${previous_title_text}"
           printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "${previous_string}"
-          printf '<picture>'
         fi
   
-        printf '<img class="nav_buttons" src="./previous.png" alt="previous"/>'
-        printf '</picture>'
+        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">←</span><br/>Previous</p>'
   
         [ "${previous_string}" != null ] &&
           printf '</a>'
@@ -374,15 +368,12 @@ for i in ${items};do
   
         if [ "${next_string}" = null ];then
           printf 'title="Next (This is the last page!)">'
-          printf '<picture class="nav_buttons_off">'
         else
           printf 'title="Next (“%s”)">' "${next_title_text}"
           printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "${next_string}"
-          printf '<picture>'
         fi
   
-        printf '<img class="nav_buttons" src="./next.png" alt="next"/>'
-        printf '</picture>'
+        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">→</span><br/>Next</p>'
   
         [ "${next_string}" != null ] &&
           printf '</a>'
@@ -393,15 +384,12 @@ for i in ${items};do
   
         if [ "${container_pages_last_string}" = null ];then
           printf 'title="Last in %s (This is the last page!)">' "${container}"
-          printf '<picture class="nav_buttons_off">'
         else
           printf 'title="Last in %s (“%s”)">' "${container}" "${container_pages_last_title_text}"
           printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_last_string}"
-          printf '<picture>'
         fi
   
-        printf '<img class="nav_buttons" src="./last.png" alt="last"/>'
-        printf '</picture>'
+        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">⇨</span><br/>Last</p>'
   
         [ "${container_pages_last_string}" != null ] &&
           printf '</a>'
