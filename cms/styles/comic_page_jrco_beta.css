@@ -36,6 +36,7 @@ div#nav_bottom_buttons {
 div.nav_button {
   text-align: center;
   font-size: xx-large;
+  width: 5em;
 }
 
 div.nav_button p {
