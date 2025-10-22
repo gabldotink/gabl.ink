@@ -11,12 +11,11 @@ Allow: /
 # are likely fetching helpful information for people, downloading raw
 # files, archiving the website, or other activities which I am happy to
 # facilitate.
-User-agent: Amazonbot
-User-agent: Applebot
 User-agent: archive.org_bot
 User-agent: ArchiveBot
 User-agent: ArchiveTeam
 User-agent: Arquivo-web-crawler
+User-agent: ChatGPT Agent
 User-agent: ChatGPT-User
 User-agent: Chrome-Lighthouse
 User-agent: curl
@@ -31,6 +30,7 @@ User-agent: HTTrack
 User-agent: HTTrack Website Copier
 User-agent: larbin
 User-agent: Meta-ExternalFetcher
+User-agent: mirrorweb
 User-agent: MSIECrawler
 User-agent: Nicecrawler
 User-agent: Offline Explorer
@@ -38,6 +38,7 @@ User-agent: PerplexityBot
 User-agent: SiteSnagger
 User-agent: Teleport
 User-agent: TeleportPro
+User-agent: Validator.nu/LV
 User-agent: W3C_CSS_Validator
 User-agent: W3C_Validator
 User-agent: WebCopier
@@ -46,3 +47,14 @@ User-agent: Wget
 User-agent: wget2
 User-agent: YouBot
 Allow: /
+
+# As opposed to artificial intelligences (AI) simply accessing the site, these are trainers. I do not consent to my content being used for AI training, regardless of whether your user agent is included below, unless otherwise stated. If you comply with relevant copyright licenses when you output my copyrighted content, you may train your AI on my content. I am fully aware that such a thing is unlikely.
+User-agent: Bytespider
+User-agent: Claudebot
+User-agent: cohere-training-data-crawler
+User-agent: FacebookBot
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: meta-externalagent
+User-agent: PanguBot
+Disallow: /

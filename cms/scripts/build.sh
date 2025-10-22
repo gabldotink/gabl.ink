@@ -735,6 +735,7 @@ for i in ${items};do
         fi
       }
 
+      make_validate_link vnu 'the Nu Html Checker' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
       make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \
                              'https://validator.w3.org/nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
     fi
