@@ -6,8 +6,13 @@
   "type": "object",
   "patternProperties": {
     "^.*$": {
-      "type": "string",
-      "pattern": "^.*$"
+      "type": "object",
+      "patternProperties": {
+        "^[a-z]{2,3}(-([A-Z]{2}|[0-9]{3}))?$": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
     }
   }
 }
