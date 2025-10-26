@@ -47,3 +47,7 @@ In Markdown, we only use `i` and `cite` for italicized titles, since Markdown do
 ## <i><cite>The Chicago Manual of Style</cite></i>
 
 gabl.ink mostly defers to <i><cite>The Chicago Manual of Style</cite></i> (<i><cite><abbr>CMOS</abbr></cite></i>) as its default style guide. This includes using American English conventions. There may be some exceptions to <i><cite>CMOS</cite></i>.
+
+## Why program in shell? Not even a reasonable one, the standard <abbr title="Portable Operating System Interface">POSIX</abbr> shell?
+
+im dumb
