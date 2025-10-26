@@ -48,9 +48,9 @@ command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
 # We must use an if statement here to use a ShellCheck directive
-if [ -f "${scripts}/build_config.sh" ];then
-  # shellcheck source=./build_config.sh
-  . "${scripts}/build_config.sh"
+if [ -f "${scripts}/config/build.sh" ];then
+  # shellcheck source=./config/build.sh
+  . "${scripts}/config/build.sh"
 fi
 
 if [ "${config_lang_default}" != en ];then
