@@ -44,6 +44,14 @@ warning() {
     fi
 }
 
+load_lib() {
+  load_lib_file="$1.sh"
+  # shellcheck source=/dev/null
+  . "${scripts}/lib/${load_lib_file}"
+  # || error '%s/lib/%s could not be loaded' "$scripts" "$load_lib_file"
+  # The shell gives its own error
+}
+
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
@@ -267,12 +275,7 @@ for i in ${items};do
                "${next_string}" "${lang_bcp_47_full}"
       fi
   
-      make_og() {
-        make_og_property="$1"
-        make_og_content="$2"
-  
-        printf '<meta property="og:%s" content="%s"/>' "${make_og_property}" "${make_og_content}"
-      }
+      load_lib make_og
   
       make_og type article
       make_og title "${title_text}"
@@ -300,102 +303,34 @@ for i in ${items};do
       printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
   
       if [ "${container_pages_first_string}" != null ];then
+        # shellcheck disable=SC2034
         container_pages_first_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_first_string}/data.json")"
       else
         unset container_pages_first_title_text
       fi
   
       if [ "${previous_string}" != null ];then
+        # shellcheck disable=SC2034
         previous_title_text="$(jq -r -- .title.text "${index}/${id}/../${previous_string}/data.json")"
       else
         unset previous_title_text
       fi
   
       if [ "${next_string}" != null ];then
+        # shellcheck disable=SC2034
         next_title_text="$(jq -r -- .title.text "${index}/${id}/../${next_string}/data.json")"
       else
         unset next_title_text
       fi
   
       if [ "${container_pages_last_string}" != null ];then
+        # shellcheck disable=SC2034
         container_pages_last_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_last_string}/data.json")"
       else
         unset container_pages_last_title_text
       fi
-  
-      # TODO: Reduce duplicate code.
-      # TODO: Handle multiple chapters.
-      # TODO: Handle quotation marks in other page titles.
-  
-      make_nav_buttons() {
-        make_nav_buttons_l="$1"
-  
-        printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
-  
-        printf '<div class="nav_button" id="nav_%s_buttons_first" ' "${make_nav_buttons_l}"
-  
-        if [ "${container_pages_first_string}" = null ];then
-          printf 'title="First in %s (This is the first page!)">' "${container}"
-        else
-          printf 'title="First in %s (“%s”)">' "${container}" "${container_pages_first_title_text}"
-          printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_first_string}"
-        fi
-        
-        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">⇦</span><br/>First</p>'
-  
-        [ "${container_pages_first_string}" != null ] &&
-          printf '</a>'
-  
-        printf '</div>'
-  
-        printf '<div class="nav_button" id="nav_%s_buttons_previous" ' "${make_nav_buttons_l}"
-  
-        if [ "${previous_string}" = null ];then
-          printf 'title="Previous (This is the first page!)">'
-        else
-          printf 'title="Previous (“%s”)">' "${previous_title_text}"
-          printf '<a href="../%s/" rel="prev" hreflang="en-US" type="text/html">' "${previous_string}"
-        fi
-  
-        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">←</span><br/>Previous</p>'
-  
-        [ "${previous_string}" != null ] &&
-          printf '</a>'
-  
-        printf '</div>'
-  
-        printf '<div class="nav_button" id="nav_%s_buttons_next" ' "${make_nav_buttons_l}"
-  
-        if [ "${next_string}" = null ];then
-          printf 'title="Next (This is the last page!)">'
-        else
-          printf 'title="Next (“%s”)">' "${next_title_text}"
-          printf '<a href="../%s/" rel="next" hreflang="en-US" type="text/html">' "${next_string}"
-        fi
-  
-        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">→</span><br/>Next</p>'
-  
-        [ "${next_string}" != null ] &&
-          printf '</a>'
-  
-        printf '</div>'
-  
-        printf '<div class="nav_button" id="nav_%s_buttons_last" ' "${make_nav_buttons_l}"
-  
-        if [ "${container_pages_last_string}" = null ];then
-          printf 'title="Last in %s (This is the last page!)">' "${container}"
-        else
-          printf 'title="Last in %s (“%s”)">' "${container}" "${container_pages_last_title_text}"
-          printf '<a href="../%s/" hreflang="en-US" type="text/html">' "${container_pages_last_string}"
-        fi
-  
-        printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">⇨</span><br/>Last</p>'
-  
-        [ "${container_pages_last_string}" != null ] &&
-          printf '</a>'
-  
-        printf '</div></div>'
-      }
+
+      load_lib make_nav_buttons
   
       make_nav_buttons top
   
@@ -601,47 +536,8 @@ for i in ${items};do
       printf '<details id="share_links">'
       printf '<summary>Share this page</summary>'
       printf '<ul>'
-  
-      make_share_link() {
-        make_share_link_id="$1"
-        [ -n "${config_share_skip}" ] &&
-          if printf ' %s ' "${config_share_skip}" | grep -Fqe " ${make_share_link_id} ";then
-            return 0
-          fi
-        make_share_link_platform="$2"
-        make_share_link_base="$3"
-        make_share_link_text_param="$4"
-        make_share_link_url_param="$5"
-        make_share_link_hashtag_param="$6"
-        make_share_link_text="$(printf '%s' "$7"|jq -Rr -- @uri)"
-        make_share_link_hashtag="$(printf '%s' "$8"|jq -Rr -- @uri)"
-  
-        printf '<li id="share_links_%s">' "${make_share_link_id}"
-        printf '<a rel="external" href="%s' "${make_share_link_base}"
-  
-        if [ "${make_share_link_id}" = reddit ];then
-          make_share_link_start_param='&amp;'
-        else
-          make_share_link_start_param='?'
-        fi
-  
-        if [ -n "${make_share_link_text_param}" ];then
-          printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_text_param}" "${make_share_link_text}"
-          [ "${make_share_link_start_param}" = '?' ] &&
-            make_share_link_start_param='&amp;'
-        fi
-  
-        if [ -n "${make_share_link_url_param}" ];then
-          printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_url_param}" "$(printf '%s' "${canonical}"|jq -Rr -- @uri)"
-          [ "${make_share_link_start_param}" = '?' ] &&
-            make_share_link_start_param='&amp;'
-        fi
-  
-        [ -n "${make_share_link_hashtag_param}" ] &&
-          printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_hashtag_param}" "${make_share_link_hashtag}"
-  
-        printf '">Share with %s</a></li>' "${make_share_link_platform}"
-      }
+
+      load_lib make_share_link
   
       make_share_link x "${x_or_twitter}" https://x.com/intent/tweet text url hashtags \
                      "$(
@@ -714,26 +610,7 @@ for i in ${items};do
       printf '<summary>Validate this page</summary>'
       printf '<ul>'
 
-      make_validate_link() {
-        make_validate_link_id="$1"
-        [ -n "${config_validate_skip}" ] &&
-          printf ' %s ' "${config_validate_skip}" | grep -Fqe " ${make_validate_link_id} " &&
-            return 0
-        make_validate_link_platform="$2"
-        make_validate_link_base="$3"
-        make_validate_link_format="$4"
-        make_validate_link_url="$(printf '%s' "${canonical}"|jq -Rr -- @uri)"
-  
-        printf '<li id="validate_links_%s">' "${make_validate_link_id}"
-        printf '<a rel="external" href="%s' "${make_validate_link_base}${make_validate_link_url}"
-  
-        printf '">Validate with %s' "${make_validate_link_platform}"
-        if [ -n "${make_validate_link_format}" ];then
-          printf ' as %s</a></li>' "${make_validate_link_format}"
-        else
-          printf '</a></li>'
-        fi
-      }
+      load_lib make_validate_link
 
       make_validate_link vnu 'the Nu Html Checker' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
       make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \
