@@ -55,6 +55,11 @@ load_lib() {
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
+load_lib make_og
+load_lib make_nav_buttons
+load_lib make_share_link
+load_lib make_validate_link
+
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "${scripts}/config/build.sh" ];then
   # shellcheck source=./config/build.sh
@@ -275,8 +280,6 @@ for i in ${items};do
                "${next_string}" "${lang_bcp_47_full}"
       fi
   
-      load_lib make_og
-  
       make_og type article
       make_og title "${title_text}"
       make_og description "${description_text}"
@@ -329,8 +332,6 @@ for i in ${items};do
       else
         unset container_pages_last_title_text
       fi
-
-      load_lib make_nav_buttons
   
       make_nav_buttons top
   
@@ -536,8 +537,6 @@ for i in ${items};do
       printf '<details id="share_links">'
       printf '<summary>Share this page</summary>'
       printf '<ul>'
-
-      load_lib make_share_link
   
       make_share_link x "${x_or_twitter}" https://x.com/intent/tweet text url hashtags \
                      "$(
@@ -609,8 +608,6 @@ for i in ${items};do
       printf '<details id="validate_links">'
       printf '<summary>Validate this page</summary>'
       printf '<ul>'
-
-      load_lib make_validate_link
 
       make_validate_link vnu 'the Nu Html Checker' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
       make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \

@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://gabl.ink/cms/dictionaries/schemas/month_gregorian.json",
+  "$comment": "SPDX-License-Identifier: CC0-1.0",
   "title": "Months of the Gregorian calendar",
   "description": "Months of the Gregorian calendar",
   "type": "object",
