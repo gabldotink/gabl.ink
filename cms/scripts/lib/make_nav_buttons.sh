@@ -29,7 +29,7 @@ make_nav_buttons_first_last() {
   if [ "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_string}"')" = null ];then
     printf 'title="%s in %s (This is the %s page!)">' "${make_nav_buttons_first_last_u}" "${container}" "${make_nav_buttons_first_last_l}"
   else
-    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_first_last_u}" "${container}" "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_title_text}"')"
+    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_first_last_u}" "${container}" "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_title_nested_text}"')"
     printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_string}"')"
   fi
 
@@ -47,12 +47,15 @@ make_nav_buttons_prev_next() {
   if   [ "${make_nav_buttons_prev_next_d}" = '<' ];then
     make_nav_buttons_prev_next_a=←
     make_nav_buttons_prev_next_i=prev
+    # We don’t use this variable, but I’m keeping it in case other languages need it.
+    # shellcheck disable=SC2034
     make_nav_buttons_prev_next_l=previous
     make_nav_buttons_prev_next_u=Previous
     make_nav_buttons_prev_next_z=first
   elif [ "${make_nav_buttons_prev_next_d}" = '>' ];then
     make_nav_buttons_prev_next_a=→
     make_nav_buttons_prev_next_i=next
+    # shellcheck disable=SC2034
     make_nav_buttons_prev_next_l=next
     make_nav_buttons_prev_next_u=Next
     make_nav_buttons_prev_next_z=last
@@ -65,7 +68,7 @@ make_nav_buttons_prev_next() {
   if [ "$(eval 'printf "%s" "${'"${make_nav_buttons_prev_next_i}"'_string}"')" = null ];then
     printf 'title="%s (This is the %s page!)">' "${make_nav_buttons_prev_next_u}" "${make_nav_buttons_prev_next_z}"
   else
-    printf 'title="%s (“%s”)">' "${make_nav_buttons_prev_next_u}" "$(eval 'printf "%s" "${'"${make_nav_buttons_prev_next_i}"'_title_text}"')"
+    printf 'title="%s (“%s”)">' "${make_nav_buttons_prev_next_u}" "$(eval 'printf "%s" "${'"${make_nav_buttons_prev_next_i}"'_title_nested_text}"')"
     printf '<a href="../%s/" rel="%s" hreflang="en-US" type="text/html">' "$(eval 'printf "%s" "${'"${make_nav_buttons_prev_next_i}"'_string}"')" "${make_nav_buttons_prev_next_i}"
   fi
 

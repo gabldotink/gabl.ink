@@ -248,7 +248,6 @@ for i in ${items};do
         chapter="$(jq -r -- .location.chapter "${i}")"
       fi
 
-      # TODO: Work with quotation mark nesting
       container_pages_first_string="$(jq -r -- .pages.first.string "${index}/${id}/../data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "${index}/${id}/../data.json")"
   
@@ -306,31 +305,39 @@ for i in ${items};do
       printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
   
       if [ "${container_pages_first_string}" != null ];then
-        # shellcheck disable=SC2034
         container_pages_first_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_first_string}/data.json")"
+        container_pages_first_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${container_pages_first_string}/data.json")"
+        [ "${container_pages_first_title_nested_text}" = null ] &&
+          container_pages_first_title_nested_text="${container_pages_first_title_text}"
       else
-        unset container_pages_first_title_text
+        unset container_pages_first_title_text container_pages_first_title_nested_text
       fi
   
       if [ "${prev_string}" != null ];then
-        # shellcheck disable=SC2034
         prev_title_text="$(jq -r -- .title.text "${index}/${id}/../${prev_string}/data.json")"
+        prev_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${prev_string}/data.json")"
+        [ "${prev_title_nested_text}" = null ] &&
+          prev_title_nested_text="${prev_title_text}"
       else
-        unset prev_title_text
+        unset prev_title_text prev_title_nested_text
       fi
   
       if [ "${next_string}" != null ];then
-        # shellcheck disable=SC2034
         next_title_text="$(jq -r -- .title.text "${index}/${id}/../${next_string}/data.json")"
+        next_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${next_string}/data.json")"
+        [ "${next_title_nested_text}" = null ] &&
+          next_title_nested_text="${next_title_text}"
       else
-        unset next_title_text
+        unset next_title_text next_title_nested_text
       fi
   
       if [ "${container_pages_last_string}" != null ];then
-        # shellcheck disable=SC2034
         container_pages_last_title_text="$(jq -r -- .title.text "${index}/${id}/../${container_pages_last_string}/data.json")"
+        container_pages_last_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${container_pages_last_string}/data.json")"
+        [ "${container_pages_last_title_nested_text}" = null ] &&
+          container_pages_last_title_nested_text="${container_pages_last_title_text}"
       else
-        unset container_pages_last_title_text
+        unset container_pages_last_title_text container_pages_last_title_nested_text
       fi
   
       make_nav_buttons top
