@@ -632,9 +632,9 @@ for i in ${items};do
 
     printf '<p>License: <a rel="external license" href="%s" ' "${copyright_license_url}"
     printf 'hreflang="en" type="text/html">'
-    printf '%s' "${copyright_license_title}"
+    printf '<cite>%s</cite>' "${copyright_license_title}"
     [ "${copyright_license_abbr}" != null ] &&
-      printf ' (<abbr>%s</abbr>)' "${copyright_license_abbr}"
+      printf ' (<cite><abbr>%s</abbr></cite>)' "${copyright_license_abbr}"
     printf '</a></p>'
 
     if [ "${disclaimer}" != null ];then
