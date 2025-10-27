@@ -616,8 +616,8 @@ for i in ${items};do
       printf '<summary>Validate this page</summary>'
       printf '<ul>'
 
-      make_validate_link vnu 'the Nu Html Checker' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
-      make_validate_link w3c 'the <abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service' \
+      make_validate_link vnu 'the <cite>Nu Html Checker</cite>' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
+      make_validate_link w3c 'the <cite><abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service</cite>' \
                              'https://validator.w3.org/nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
     fi
 
