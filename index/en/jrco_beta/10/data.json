@@ -3,18 +3,9 @@
   "type": "comic_page",
   "location": {
     "series": "jrco_beta",
-    "page": {
-      "integer": 10,
-      "string": "10"
-    },
-    "previous": {
-      "integer": 9,
-      "string": "09"
-    },
-    "next": {
-      "integer": 11,
-      "string": "11"
-    }
+    "page": 10,
+    "previous": 9,
+    "next": 11
   },
   "language": "en",
   "title": {

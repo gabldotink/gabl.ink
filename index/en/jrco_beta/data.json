@@ -2,14 +2,8 @@
   "id": "en/jrco_beta",
   "type": "comic_series",
   "pages": {
-    "first": {
-      "integer": 1,
-      "string": "01"
-    },
-    "last": {
-      "integer": 11,
-      "string": "11"
-    }
+    "first": 1,
+    "last": 11
   },
   "language": "en",
   "title": {
