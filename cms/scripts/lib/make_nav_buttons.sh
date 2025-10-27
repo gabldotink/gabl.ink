@@ -10,12 +10,12 @@
 make_nav_buttons_first_last() {
   make_nav_buttons_first_last_d="$1"
 
-  if   [ "${make_nav_buttons_first_last_d}" = f ];then
+  if   [ "${make_nav_buttons_first_last_d}" = '<' ];then
     make_nav_buttons_first_last_a=⇦
     make_nav_buttons_first_last_i=first
     make_nav_buttons_first_last_l=first
     make_nav_buttons_first_last_u=First
-  elif [ "${make_nav_buttons_first_last_d}" = l ];then
+  elif [ "${make_nav_buttons_first_last_d}" = '>' ];then
     make_nav_buttons_first_last_a=⇨
     make_nav_buttons_first_last_i=last
     make_nav_buttons_first_last_l=last
@@ -44,13 +44,13 @@ make_nav_buttons_first_last() {
 make_nav_buttons_prev_next() {
   make_nav_buttons_prev_next_d="$1"
 
-  if   [ "${make_nav_buttons_prev_next_d}" = p ];then
+  if   [ "${make_nav_buttons_prev_next_d}" = '<' ];then
     make_nav_buttons_prev_next_a=←
     make_nav_buttons_prev_next_i=prev
     make_nav_buttons_prev_next_l=previous
     make_nav_buttons_prev_next_u=Previous
     make_nav_buttons_prev_next_z=first
-  elif [ "${make_nav_buttons_prev_next_d}" = n ];then
+  elif [ "${make_nav_buttons_prev_next_d}" = '>' ];then
     make_nav_buttons_prev_next_a=→
     make_nav_buttons_prev_next_i=next
     make_nav_buttons_prev_next_l=next
@@ -82,13 +82,13 @@ make_nav_buttons() {
   
   printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
   
-  make_nav_buttons_first_last f
+  make_nav_buttons_first_last '<'
   
-  make_nav_buttons_prev_next p
+  make_nav_buttons_prev_next '<'
   
-  make_nav_buttons_prev_next n
+  make_nav_buttons_prev_next '>'
 
-  make_nav_buttons_first_last l
+  make_nav_buttons_first_last '>'
 
   printf '</div>'
 }
