@@ -182,7 +182,7 @@ for i in ${items};do
       next_string="$(jq -r -- .location.next.string "${i}")"
       page_integer="$(jq -r -- .location.page.integer "${i}")"
       page_string="$(jq -r -- .location.page.string "${i}")"
-      previous_string="$(jq -r -- .location.previous.string "${i}")"
+      prev_string="$(jq -r -- .location.previous.string "${i}")"
       series="$(jq -r -- .location.series "${i}")"
       series_hashtag="$(jq -r -- .hashtag "${index}/${id}/../data.json")"
       series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "${index}/${id}/../data.json")"
@@ -252,18 +252,18 @@ for i in ${items};do
       container_pages_first_string="$(jq -r -- .pages.first.string "${index}/${id}/../data.json")"
       container_pages_last_string="$(jq -r -- .pages.last.string "${index}/${id}/../data.json")"
   
-      if   [ "${previous_string}" = null ];then
+      if   [ "${prev_string}" = null ];then
         # This is the first page, so no prefetches are needed.
         true
       elif [ "${container_pages_first_string}" != "${page_string}" ] ||
-           [ "${container_pages_first_string}" != "${previous_string}" ];then
+           [ "${container_pages_first_string}" != "${prev_string}" ];then
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${container_pages_first_string}" "${lang_bcp_47_full}"
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${previous_string}" "${lang_bcp_47_full}"
-      elif [ "${container_pages_first_string}" = "${previous_string}" ];then
+               "${prev_string}" "${lang_bcp_47_full}"
+      elif [ "${container_pages_first_string}" = "${prev_string}" ];then
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${previous_string}" "${lang_bcp_47_full}"
+               "${prev_string}" "${lang_bcp_47_full}"
       fi
   
       if   [ "${next_string}" = null ];then
@@ -312,11 +312,11 @@ for i in ${items};do
         unset container_pages_first_title_text
       fi
   
-      if [ "${previous_string}" != null ];then
+      if [ "${prev_string}" != null ];then
         # shellcheck disable=SC2034
-        previous_title_text="$(jq -r -- .title.text "${index}/${id}/../${previous_string}/data.json")"
+        prev_title_text="$(jq -r -- .title.text "${index}/${id}/../${prev_string}/data.json")"
       else
-        unset previous_title_text
+        unset prev_title_text
       fi
   
       if [ "${next_string}" != null ];then
