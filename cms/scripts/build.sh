@@ -167,7 +167,6 @@ for i in ${items};do
       prev="$(jq -r -- .location.previous "${i}")"
       series="$(jq -r -- .location.series "${i}")"
       series_hashtag="$(jq -r -- .hashtag "${index}/${id}/../data.json")"
-      series_title_disambiguation_html="$(jq -r -- .title.disambiguation.html "${index}/${id}/../data.json")"
       series_title_html="$(jq -r -- .title.html "${index}/${id}/../data.json")"
       series_title_text="$(jq -r -- .title.text "${index}/${id}/../data.json")"
       volume="$(jq -r -- .location.volume "${i}")"
@@ -372,9 +371,6 @@ for i in ${items};do
       if [ "${container}" = series ];then
         printf '%s' "${series_title_html}"
         printf '</cite></i>'
-  
-        [ "${series_title_disambiguation_html}" != null ] &&
-          printf ' %s' "${series_title_disambiguation_html}"
       fi
   
       printf ', page %s ' "${page}"
