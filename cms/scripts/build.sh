@@ -229,11 +229,11 @@ for i in ${items};do
         chapter="$(jq -r -- .location.chapter "${i}")"
       fi
 
-      container_pages_first="$(jq -r -- .pages.first "${index}/${id}/../data.json")"
-      container_pages_last="$(jq -r -- .pages.last "${index}/${id}/../data.json")"
+      container_first="$(jq -r -- .pages.first "${index}/${id}/../data.json")"
+      container_last="$(jq -r -- .pages.last "${index}/${id}/../data.json")"
 
-      zero_pad_2_container_pages_first="$(zero_pad 2 "${container_pages_first}")"
-      zero_pad_2_container_pages_last="$(zero_pad 2 "${container_pages_last}")"
+      zero_pad_2_container_first="$(zero_pad 2 "${container_first}")"
+      zero_pad_2_container_last="$(zero_pad 2 "${container_last}")"
       [ "${prev}" != null ] &&
         zero_pad_2_prev="$(zero_pad 2 "${prev}")"
       [ "${next}" != null ] &&
@@ -243,13 +243,13 @@ for i in ${items};do
       if   [ "${prev}" = null ];then
         # This is the first page, so no prefetches are needed.
         true
-      elif [ "${container_pages_first}" != "${page}" ] ||
-           [ "${container_pages_first}" != "${prev}" ];then
+      elif [ "${container_first}" != "${page}" ] ||
+           [ "${container_first}" != "${prev}" ];then
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${zero_pad_2_container_pages_first}" "${lang_bcp_47_full}"
+               "${zero_pad_2_container_first}" "${lang_bcp_47_full}"
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${zero_pad_2_prev}" "${lang_bcp_47_full}"
-      elif [ "${container_pages_first}" = "${prev}" ];then
+      elif [ "${container_first}" = "${prev}" ];then
         printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${zero_pad_2_prev}" "${lang_bcp_47_full}"
       fi
@@ -257,13 +257,13 @@ for i in ${items};do
       if   [ "${next}" = null ];then
         # This is the last page, so no prefetches are needed.
         true
-      elif [ "${container_pages_last}" != "${page}" ] ||
-           [ "${container_pages_last}" != "${next}" ];then
+      elif [ "${container_last}" != "${page}" ] ||
+           [ "${container_last}" != "${next}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${zero_pad_2_next}" "${lang_bcp_47_full}"
         printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-               "${zero_pad_2_container_pages_last}" "${lang_bcp_47_full}"
-      elif [ "${container_pages_last}" = "${next}" ];then
+               "${zero_pad_2_container_last}" "${lang_bcp_47_full}"
+      elif [ "${container_last}" = "${next}" ];then
         printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
                "${zero_pad_2_next}" "${lang_bcp_47_full}"
       fi
@@ -293,13 +293,13 @@ for i in ${items};do
       printf '<h1 id="nav_top_title">'
       printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
   
-      if [ "${container_pages_first}" != null ];then
-        container_pages_first_title_text="$(jq -r -- .title.text "${index}/${id}/../${zero_pad_2_container_pages_first}/data.json")"
-        container_pages_first_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${zero_pad_2_container_pages_first}/data.json")"
-        [ "${container_pages_first_title_nested_text}" = null ] &&
-          container_pages_first_title_nested_text="${container_pages_first_title_text}"
+      if [ "${container_first}" != null ];then
+        container_first_title_text="$(jq -r -- .title.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
+        container_first_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
+        [ "${container_first_title_nested_text}" = null ] &&
+          container_first_title_nested_text="${container_first_title_text}"
       else
-        unset container_pages_first_title_text container_pages_first_title_nested_text
+        unset container_first_title_text container_first_title_nested_text
       fi
   
       if [ "${prev}" != null ];then
@@ -320,13 +320,13 @@ for i in ${items};do
         unset next_title_text next_title_nested_text
       fi
   
-      if [ "${container_pages_last}" != null ];then
-        container_pages_last_title_text="$(jq -r -- .title.text "${index}/${id}/../${zero_pad_2_container_pages_last}/data.json")"
-        container_pages_last_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${zero_pad_2_container_pages_last}/data.json")"
-        [ "${container_pages_last_title_nested_text}" = null ] &&
-          container_pages_last_title_nested_text="${container_pages_last_title_text}"
+      if [ "${container_last}" != null ];then
+        container_last_title_text="$(jq -r -- .title.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
+        container_last_title_nested_text="$(jq -r -- .title.nested.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
+        [ "${container_last_title_nested_text}" = null ] &&
+          container_last_title_nested_text="${container_last_title_text}"
       else
-        unset container_pages_last_title_text container_pages_last_title_nested_text
+        unset container_last_title_text container_last_title_nested_text
       fi
   
       make_nav_buttons top

@@ -31,13 +31,13 @@ make_nav_buttons_first_last() {
   if [ "$(eval 'printf "%s" "${'"${make_nav_buttons_first_last_z}"'}"')" = null ];then
     printf 'title="%s in %s (This is the %s page!)">' "${make_nav_buttons_first_last_u}" "${container}" "${make_nav_buttons_first_last_l}"
   else
-    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_first_last_u}" "${container}" "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_title_nested_text}"')"
-    printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$(zero_pad 2 "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'}"')")"
+    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_first_last_u}" "${container}" "$(eval 'printf "%s" "${container_'"${make_nav_buttons_first_last_i}"'_title_nested_text}"')"
+    printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$(zero_pad 2 "$(eval 'printf "%s" "${container_'"${make_nav_buttons_first_last_i}"'}"')")"
   fi
 
   printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_first_last_a}" "${make_nav_buttons_first_last_u}"
 
-  [ "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'}"')" != null ] &&
+  [ "$(eval 'printf "%s" "${container_'"${make_nav_buttons_first_last_i}"'}"')" != null ] &&
     printf '</a>'
   
   printf '</div>'
