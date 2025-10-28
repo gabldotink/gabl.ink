@@ -155,29 +155,11 @@ for i in ${items};do
   
     if [ "${type}" = comic_page ];then
       first_published_d="$(jq -r -- .first_published.d "${i}")"
-      if [ "${#first_published_d}" -eq 1 ];then
-        first_published_d_pad=0
-      else
-        unset first_published_d_pad
-      fi
+      zero_pad_2_first_published_d="$(zero_pad 2 "${first_published_d}")"
       first_published_m="$(jq -r -- .first_published.m "${i}")"
-      if [ "${#first_published_m}" -eq 1 ];then
-        first_published_m_pad=0
-      else
-        unset first_published_m_pad
-      fi
+      zero_pad_2_first_published_m="$(zero_pad 2 "${first_published_m}")"
       first_published_y="$(jq -r -- .first_published.y "${i}")"
-      if   [ "${#first_published_y}" -eq 4 ];then
-        unset first_published_y_pad
-      elif [ "${#first_published_y}" -eq 3 ];then
-        first_published_y_pad=0
-      elif [ "${#first_published_y}" -eq 2 ];then
-        first_published_y_pad=00
-      elif [ "${#first_published_y}" -eq 1 ];then
-        first_published_y_pad=000
-      else
-        error 'first_published_y is not 1–4 digits long'
-      fi
+      zero_pad_4_first_published_y="$(zero_pad 4 "${first_published_y}")"
       lang_ogp_full="$(jq -r -- ".\"${lang}\".ogp.full" "${dict}/language.json")"
       chapter="$(jq -r -- .location.chapter "${i}")"
       next="$(jq -r -- .location.next "${i}")"
@@ -458,9 +440,9 @@ for i in ${items};do
   
       printf '<p id="first_published">First published <time class="nw" datetime="'
   
-      printf '%s-%s-%s' "${first_published_y_pad}${first_published_y}" \
-                        "${first_published_m_pad}${first_published_m}" \
-                        "${first_published_d_pad}${first_published_d}"
+      printf '%s-%s-%s' "${zero_pad_4_first_published_y}" \
+                        "${zero_pad_2_first_published_m}" \
+                        "${zero_pad_2_first_published_d}"
   
       printf '">'
   
@@ -488,38 +470,20 @@ for i in ${items};do
       for p in $(jq -r -- '.post|to_entries|.[].key' "${i}");do
         post_content="$(jq -r -- ".post[${p}].content.html" "${i}")"
         post_date_d="$(jq -r -- ".post[${p}].date.d" "${i}")"
-        if [ "${#post_date_d}" -eq 1 ];then
-          post_date_d_pad=0
-        else
-          unset post_date_d_pad
-        fi
+        zero_pad_2_post_date_d="$(zero_pad 2 "${post_date_d}")"
         post_date_m="$(jq -r -- ".post[${p}].date.m" "${i}")"
-        if [ "${#post_date_m}" -eq 1 ];then
-          post_date_m_pad=0
-        else
-          unset post_date_m_pad
-        fi
+        zero_pad_2_post_date_m="$(zero_pad 2 "${post_date_m}")"
         post_date_y="$(jq -r -- ".post[${p}].date.y" "${i}")"
-        if   [ "${#post_date_y}" -eq 4 ];then
-          unset post_date_y_pad
-        elif [ "${#post_date_y}" -eq 3 ];then
-          post_date_y_pad=0
-        elif [ "${#post_date_y}" -eq 2 ];then
-          post_date_y_pad=00
-        elif [ "${#post_date_y}" -eq 1 ];then
-          post_date_y_pad=000
-        else
-          error 'post_date_y is not 1–4 digits long'
-        fi
+        zero_pad_4_post_date_y="$(zero_pad 4 "${post_date_y}")"
   
-        printf '%s-%s-%s">' "${post_date_y_pad}${post_date_y}" \
-                            "${post_date_m_pad}${post_date_m}" \
-                            "${post_date_d_pad}${post_date_d}"
+        printf '%s-%s-%s">' "${zero_pad_4_post_date_y}" \
+                            "${zero_pad_2_post_date_m}" \
+                            "${zero_pad_2_post_date_d}"
   
         printf '<h2 class="nw">'
-        printf '<time datetime="%s-%s-%s">' "${post_date_y_pad}${post_date_y}" \
-                                            "${post_date_m_pad}${post_date_m}" \
-                                            "${post_date_d_pad}${post_date_d}"
+        printf '<time datetime="%s-%s-%s">' "${zero_pad_4_post_date_y}" \
+                                            "${zero_pad_2_post_date_m}" \
+                                            "${zero_pad_2_post_date_d}"
   
         printf '%s ' "$(jq -r -- ".months.\"${lang}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
