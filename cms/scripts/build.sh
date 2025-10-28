@@ -59,6 +59,7 @@ load_lib make_og
 load_lib make_nav_buttons
 load_lib make_share_link
 load_lib make_validate_link
+load_lib set_var_mul
 load_lib zero_pad
 
 # We must use an if statement here to use a ShellCheck directive
@@ -86,16 +87,13 @@ for i in ${items};do
   
   copyright_license="$(jq -r -- .copyright.license[0] "${i}")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-  copyright_license_abbr="$(jq -r -- ".\"${copyright_license}\".abbr.\"${lang}\"" "${dict}/copyright_license.json")"
-  copyright_license_abbr_default="$(jq -r -- ".\"${copyright_license}\".abbr.\"${lang_default}\"" "${dict}/copyright_license.json")"
-  copyright_license_abbr_mul="$(jq -r -- ".\"${copyright_license}\".abbr.mul" "${dict}/copyright_license.json")"
-  copyright_license_url="$(jq -r -- ".\"${copyright_license}\".url.\"${lang}\"" "${dict}/copyright_license.json")"
-  copyright_license_url_default="$(jq -r -- ".\"${copyright_license}\".url.\"${lang_default}\"" "${dict}/copyright_license.json")"
-  copyright_license_url_mul="$(jq -r -- ".\"${copyright_license}\".url.mul" "${dict}/copyright_license.json")"
+  # shellcheck disable=SC2016
+  set_var_mul copyright_license_abbr '\"${copyright_license}\".abbr' '"${dict}/copyright_license.json"'
+  # shellcheck disable=SC2016
+  set_var_mul copyright_license_url '\"${copyright_license}\".url' '"${dict}/copyright_license.json"'
   copyright_license_spdx="$(jq -r -- ".\"${copyright_license}\".spdx" "${dict}/copyright_license.json")"
-  copyright_license_title="$(jq -r -- ".\"${copyright_license}\".title.\"${lang}\"" "${dict}/copyright_license.json")"
-  copyright_license_title_default="$(jq -r -- ".\"${copyright_license}\".title.\"${lang_default}\"" "${dict}/copyright_license.json")"
-  copyright_license_title_mul="$(jq -r -- ".\"${copyright_license}\".title.mul" "${dict}/copyright_license.json")"
+  # shellcheck disable=SC2016
+  set_var_mul copyright_license_title '\"${copyright_license}\".title' '"${dict}/copyright_license.json"'
   copyright_year_first="$(jq -r -- .copyright.year.first "${i}")"
   copyright_year_last="$(jq -r -- .copyright.year.last "${i}")"
   description_text="$(jq -r -- .description.text "${i}")"
