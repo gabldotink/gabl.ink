@@ -15,18 +15,20 @@ make_nav_buttons_first_last() {
     make_nav_buttons_first_last_i=first
     make_nav_buttons_first_last_l=first
     make_nav_buttons_first_last_u=First
+    make_nav_buttons_first_last_z=prev
   elif [ "${make_nav_buttons_first_last_d}" = '>' ];then
     make_nav_buttons_first_last_a=⇨
     make_nav_buttons_first_last_i=last
     make_nav_buttons_first_last_l=last
     make_nav_buttons_first_last_u=Last
+    make_nav_buttons_first_last_z=next
   else
     error 'make_nav_buttons_first_last direction is not f or l'
   fi
 
   printf '<div class="nav_button" id="nav_%s_buttons_%s" ' "${make_nav_buttons_l}" "${make_nav_buttons_first_last_i}"
 
-  if [ "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'}"')" = null ];then
+  if [ "$(eval 'printf "%s" "${'"${make_nav_buttons_first_last_z}"'}"')" = null ];then
     printf 'title="%s in %s (This is the %s page!)">' "${make_nav_buttons_first_last_u}" "${container}" "${make_nav_buttons_first_last_l}"
   else
     printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_first_last_u}" "${container}" "$(eval 'printf "%s" "${container_pages_'"${make_nav_buttons_first_last_i}"'_title_nested_text}"')"
