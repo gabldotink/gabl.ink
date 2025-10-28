@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
-make_validate_link() {
+make_validate_link(){
   make_validate_link_id="$1"
   [ -n "${config_validate_skip}" ] &&
     printf ' %s ' "${config_validate_skip}" | grep -Fqe " ${make_validate_link_id} " &&

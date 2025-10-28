@@ -14,7 +14,7 @@ export TEXTDOMAIN TEXTDOMAINDIR
 TEXTDOMAIN=build
 TEXTDOMAINDIR="${scripts}/l10n"
 
-error() {
+error(){
   error_msg="$1"
   error_exit_code="$2"
   gettext 'error: '
@@ -28,7 +28,7 @@ error() {
   fi
 }
 
-warning() {
+warning(){
   warning_msg="$1"
   warning_exit_code="$2"
   gettext 'warning: '
@@ -44,7 +44,7 @@ warning() {
     fi
 }
 
-load_lib() {
+load_lib(){
   load_lib_file="$1.sh"
   # shellcheck source=/dev/null
   . "${scripts}/lib/${load_lib_file}"
@@ -52,7 +52,7 @@ load_lib() {
   # The shell gives its own error
 }
 
-jqr() {
+jqr(){
   jq -r -- "$@"
 }
 

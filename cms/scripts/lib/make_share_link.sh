@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
-make_share_link() {
+make_share_link(){
   make_share_link_id="$1"
   [ -n "${config_share_skip}" ] &&
     if printf ' %s ' "${config_share_skip}" | grep -Fqe " ${make_share_link_id} ";then

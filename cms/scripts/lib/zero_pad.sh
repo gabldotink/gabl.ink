@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
-zero_pad() {
+zero_pad(){
   zero_pad_depth="$1"
   zero_pad_integer="$2"
 

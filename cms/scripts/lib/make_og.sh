@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
-make_og() {
+make_og(){
   make_og_property="$1"
   make_og_content="$2"
   

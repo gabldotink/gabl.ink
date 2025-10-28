@@ -7,7 +7,7 @@
 # TODO: Handle multiple chapters.
 # TODO: Handle quotation marks in other page titles.
 
-make_nav_buttons_f_l() {
+make_nav_buttons_f_l(){
   make_nav_buttons_f_l_d="$1"
 
   if   [ "${make_nav_buttons_f_l_d}" = '<' ];then
@@ -43,7 +43,7 @@ make_nav_buttons_f_l() {
   printf '</div>'
 }
 
-make_nav_buttons_p_n() {
+make_nav_buttons_p_n(){
   make_nav_buttons_p_n_d="$1"
 
   if   [ "${make_nav_buttons_p_n_d}" = '<' ];then
@@ -82,7 +82,7 @@ make_nav_buttons_p_n() {
   printf '</div>'
 }
   
-make_nav_buttons() {
+make_nav_buttons(){
   make_nav_buttons_l="$1"
   
   printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
