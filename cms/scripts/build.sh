@@ -17,7 +17,7 @@ TEXTDOMAINDIR="${scripts}/l10n"
 error(){
   error_msg="$1"
   error_exit_code="$2"
-  gettext 'error: '
+  printf 'error: '
   [ -n "${id}" ] &&
     printf '%s: ' "${id}"
   printf '%s\n' "${error_msg}"
@@ -31,7 +31,7 @@ error(){
 warning(){
   warning_msg="$1"
   warning_exit_code="$2"
-  gettext 'warning: '
+  printf 'warning: '
   [ -n "${id}" ] &&
     printf '%s: ' "${id}"
   printf '%s\n' "${warning_msg}"
