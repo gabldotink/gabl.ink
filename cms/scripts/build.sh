@@ -348,7 +348,8 @@ for i in ${items};do
 
         printf 'label="English (United States) (CC)" '
         printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
-        printf '<p>It looks like your web browser doesn'"’"'t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${id}" "${id}"
+        # shellcheck disable=SC1112
+        printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${id}" "${id}"
         printf '</video></div>'
       else
         printf 'image"><picture>'
