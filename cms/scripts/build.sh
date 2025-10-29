@@ -567,7 +567,7 @@ for i in ${items};do
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
-      make_share_link truthsocial 'Truth Social' https://truthsocial.com/share text url '' \
+      make_share_link truth_social 'Truth Social' https://truthsocial.com/share text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_nested_text}"
