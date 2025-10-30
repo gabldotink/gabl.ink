@@ -52,7 +52,7 @@ load_lib(){
   # The shell gives its own error
 }
 
-jqr(){
+jq_r(){
   jq -r -- "$@"
 }
 
@@ -82,35 +82,35 @@ fi
 items="${index}/en/jrco_beta/01/data.json"
 
 for i in ${items};do
-  type="$(jqr .type "${i}")"
+  type="$(jq_r .type "${i}")"
 
   [ "${type}" = comic_series ] &&
     continue
 
-  lang="$(jqr .language "${i}")"
+  lang="$(jq_r .language "${i}")"
 
-  copyright_license="$(jqr .copyright.license[0] "${i}")"
+  copyright_license="$(jq_r .copyright.license[0] "${i}")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
   # shellcheck disable=SC2016
   set_var_mul copyright_license_abbr '\"${copyright_license}\".abbr' '"${dict}/copyright_license.json"'
   # shellcheck disable=SC2016
   set_var_mul copyright_license_url '\"${copyright_license}\".url' '"${dict}/copyright_license.json"'
-  copyright_license_spdx="$(jqr ".\"${copyright_license}\".spdx" "${dict}/copyright_license.json")"
+  copyright_license_spdx="$(jq_r ".\"${copyright_license}\".spdx" "${dict}/copyright_license.json")"
   # shellcheck disable=SC2016
   set_var_mul copyright_license_title '\"${copyright_license}\".title' '"${dict}/copyright_license.json"'
-  copyright_year_first="$(jqr .copyright.year.first "${i}")"
-  copyright_year_last="$(jqr .copyright.year.last "${i}")"
-  description_text="$(jqr .description.text "${i}")"
-  disclaimer="$(jqr .disclaimer[0] "${i}")"
-  id="$(jqr .id "${i}")"
-  lang_bcp_47_full="$(jqr ".\"${lang}\".bcp_47.full" "${dict}/language.json")"
-  lang_dir="$(jqr ".\"${lang}\".dir" "${dict}/language.json")"
-  title_nested_text="$(jqr .title.nested.text "${i}")"
-  title_html="$(jqr .title.html "${i}")"
-  title_text="$(jqr .title.text "${i}")"
+  copyright_year_first="$(jq_r .copyright.year.first "${i}")"
+  copyright_year_last="$(jq_r .copyright.year.last "${i}")"
+  description_text="$(jq_r .description.text "${i}")"
+  disclaimer="$(jq_r .disclaimer[0] "${i}")"
+  id="$(jq_r .id "${i}")"
+  lang_bcp_47_full="$(jq_r ".\"${lang}\".bcp_47.full" "${dict}/language.json")"
+  lang_dir="$(jq_r ".\"${lang}\".dir" "${dict}/language.json")"
+  title_nested_text="$(jq_r .title.nested.text "${i}")"
+  title_html="$(jq_r .title.html "${i}")"
+  title_text="$(jq_r .title.text "${i}")"
 
   if [ "${title_nested_text}" != null ];then
-    title_nested_html="$(jqr .title.nested.html "${i}")"
+    title_nested_html="$(jq_r .title.nested.html "${i}")"
   else
     title_nested_text="${title_text}"
     title_nested_html="${title_html}"
@@ -156,22 +156,22 @@ for i in ${items};do
     printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "${canonical}" "${lang_bcp_47_full}"
 
     if [ "${type}" = comic_page ];then
-      first_published_d="$(jqr .first_published.d "${i}")"
+      first_published_d="$(jq_r .first_published.d "${i}")"
       zero_pad_2_first_published_d="$(zero_pad 2 "${first_published_d}")"
-      first_published_m="$(jqr .first_published.m "${i}")"
+      first_published_m="$(jq_r .first_published.m "${i}")"
       zero_pad_2_first_published_m="$(zero_pad 2 "${first_published_m}")"
-      first_published_y="$(jqr .first_published.y "${i}")"
+      first_published_y="$(jq_r .first_published.y "${i}")"
       zero_pad_4_first_published_y="$(zero_pad 4 "${first_published_y}")"
-      lang_ogp_full="$(jqr ".\"${lang}\".ogp.full" "${dict}/language.json")"
-      chapter="$(jqr .location.chapter "${i}")"
-      next="$(jqr .location.next "${i}")"
-      page="$(jqr .location.page "${i}")"
-      prev="$(jqr .location.previous "${i}")"
-      series="$(jqr .location.series "${i}")"
-      series_hashtag="$(jqr .hashtag "${index}/${id}/../data.json")"
-      series_title_html="$(jqr .title.html "${index}/${id}/../data.json")"
-      series_title_text="$(jqr .title.text "${index}/${id}/../data.json")"
-      volume="$(jqr .location.volume "${i}")"
+      lang_ogp_full="$(jq_r ".\"${lang}\".ogp.full" "${dict}/language.json")"
+      chapter="$(jq_r .location.chapter "${i}")"
+      next="$(jq_r .location.next "${i}")"
+      page="$(jq_r .location.page "${i}")"
+      prev="$(jq_r .location.previous "${i}")"
+      series="$(jq_r .location.series "${i}")"
+      series_hashtag="$(jq_r .hashtag "${index}/${id}/../data.json")"
+      series_title_html="$(jq_r .title.html "${index}/${id}/../data.json")"
+      series_title_text="$(jq_r .title.text "${index}/${id}/../data.json")"
+      volume="$(jq_r .location.volume "${i}")"
 
       # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
       # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
@@ -225,14 +225,14 @@ for i in ${items};do
         unset volume chapter
       elif [ "${up_directories}" -eq 3 ];then
         unset volume
-        chapter="$(jqr .location.chapter "${i}")"
+        chapter="$(jq_r .location.chapter "${i}")"
       elif [ "${up_directories}" -eq 4 ];then
-        volume="$(jqr .location.volume "${i}")"
-        chapter="$(jqr .location.chapter "${i}")"
+        volume="$(jq_r .location.volume "${i}")"
+        chapter="$(jq_r .location.chapter "${i}")"
       fi
 
-      container_first="$(jqr .pages.first "${index}/${id}/../data.json")"
-      container_last="$(jqr .pages.last "${index}/${id}/../data.json")"
+      container_first="$(jq_r .pages.first "${index}/${id}/../data.json")"
+      container_last="$(jq_r .pages.last "${index}/${id}/../data.json")"
 
       zero_pad_2_container_first="$(zero_pad 2 "${container_first}")"
       zero_pad_2_container_last="$(zero_pad 2 "${container_last}")"
@@ -296,8 +296,8 @@ for i in ${items};do
       printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
 
       if [ "${container_first}" != null ];then
-        container_first_title_text="$(jqr .title.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
-        container_first_title_nested_text="$(jqr .title.nested.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
+        container_first_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
+        container_first_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
         [ "${container_first_title_nested_text}" = null ] &&
           container_first_title_nested_text="${container_first_title_text}"
       else
@@ -305,8 +305,8 @@ for i in ${items};do
       fi
 
       if [ "${prev}" != null ];then
-        prev_title_text="$(jqr .title.text "${index}/${id}/../${zero_pad_2_prev})/data.json")"
-        prev_title_nested_text="$(jqr .title.nested.text "${index}/${id}/../${zero_pad_2_prev}/data.json")"
+        prev_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_prev})/data.json")"
+        prev_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_prev}/data.json")"
         [ "${prev_title_nested_text}" = null ] &&
           prev_title_nested_text="${prev_title_text}"
       else
@@ -314,8 +314,8 @@ for i in ${items};do
       fi
 
       if [ "${next}" != null ];then
-        next_title_text="$(jqr .title.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
-        next_title_nested_text="$(jqr .title.nested.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
+        next_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
+        next_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
         [ "${next_title_nested_text}" = null ] &&
           next_title_nested_text="${next_title_text}"
       else
@@ -323,8 +323,8 @@ for i in ${items};do
       fi
 
       if [ "${container_last}" != null ];then
-        container_last_title_text="$(jqr .title.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
-        container_last_title_nested_text="$(jqr .title.nested.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
+        container_last_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
+        container_last_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
         [ "${container_last_title_nested_text}" = null ] &&
           container_last_title_nested_text="${container_last_title_text}"
       else
@@ -423,9 +423,9 @@ for i in ${items};do
       printf '<th scope="col">Text</th>'
       printf '</tr></thead>'
 
-      for l in $(jqr '.transcript.lines|to_entries|.[].key' "${i}");do
-        h="$(jqr ".transcript.lines[${l}].h" "${i}")"
-        d="$(jqr ".transcript.lines[${l}].d" "${i}")"
+      for l in $(jq_r '.transcript.lines|to_entries|.[].key' "${i}");do
+        h="$(jq_r ".transcript.lines[${l}].h" "${i}")"
+        d="$(jq_r ".transcript.lines[${l}].d" "${i}")"
         if [ "${h}" = null ];then
           unset h
         fi
@@ -445,7 +445,7 @@ for i in ${items};do
 
       printf '">'
 
-      printf '%s ' "$(jqr ".months.\"${lang}\"[$((first_published_m-1))]" "${dict}/month_gregorian.json")"
+      printf '%s ' "$(jq_r ".months.\"${lang}\"[$((first_published_m-1))]" "${dict}/month_gregorian.json")"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "${first_published_y}" -ne 0 ];then
@@ -466,13 +466,13 @@ for i in ${items};do
 
       printf '</time></p><article id="post_'
 
-      for p in $(jqr '.post|to_entries|.[].key' "${i}");do
-        post_content="$(jqr ".post[${p}].content.html" "${i}")"
-        post_date_d="$(jqr ".post[${p}].date.d" "${i}")"
+      for p in $(jq_r '.post|to_entries|.[].key' "${i}");do
+        post_content="$(jq_r ".post[${p}].content.html" "${i}")"
+        post_date_d="$(jq_r ".post[${p}].date.d" "${i}")"
         zero_pad_2_post_date_d="$(zero_pad 2 "${post_date_d}")"
-        post_date_m="$(jqr ".post[${p}].date.m" "${i}")"
+        post_date_m="$(jq_r ".post[${p}].date.m" "${i}")"
         zero_pad_2_post_date_m="$(zero_pad 2 "${post_date_m}")"
-        post_date_y="$(jqr ".post[${p}].date.y" "${i}")"
+        post_date_y="$(jq_r ".post[${p}].date.y" "${i}")"
         zero_pad_4_post_date_y="$(zero_pad 4 "${post_date_y}")"
 
         printf '%s-%s-%s">' "${zero_pad_4_post_date_y}" \
@@ -484,7 +484,7 @@ for i in ${items};do
                                             "${zero_pad_2_post_date_m}" \
                                             "${zero_pad_2_post_date_d}"
 
-        printf '%s ' "$(jqr ".months.\"${lang}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
+        printf '%s ' "$(jq_r ".months.\"${lang}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "${post_date_y}" -ne 0 ];then
@@ -609,7 +609,7 @@ for i in ${items};do
     printf '</a></p>'
 
     if [ "${disclaimer}" != null ];then
-      disclaimer_html="$(jqr ".\"${disclaimer}\".\"${lang}\"" "${dict}/disclaimer.json")"
+      disclaimer_html="$(jq_r ".\"${disclaimer}\".\"${lang}\"" "${dict}/disclaimer.json")"
       printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
     else
       unset disclaimer_html
