@@ -41,5 +41,13 @@ make_share_link(){
   [ -n "${make_share_link_hashtag_param}" ] &&
     printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_hashtag_param}" "${make_share_link_hashtag}"
 
-  printf '">Share with %s</a></li>' "${make_share_link_platform}"
+  printf '">Share with '  
+
+  if printf '%s' "${make_share_link_platform}" | grep -qve '<cite>.*</cite>';then
+    printf '<cite>%s</cite>' "${make_share_link_platform}"
+  else
+    printf '%s' "${make_share_link_platform}"
+  fi
+
+  printf '</a></li>'
 }
