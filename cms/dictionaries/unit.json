@@ -23,20 +23,6 @@
           "fr": "pied"
         },
         "to_standard": 0.3048
-      },
-      "yd": {
-        "name": {
-          "en": "yard",
-          "fr": "verge"
-        },
-        "to_standard": 0.9144
-      },
-      "mi": {
-        "name": {
-          "en": "mile",
-          "fr": "mille"
-        },
-        "to_standard": 1609.344
       }
     }
   }
