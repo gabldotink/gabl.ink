@@ -142,7 +142,7 @@ table#comic_trascript_table td {
 }
 
 table#comic_transcript_table p {
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 @media (max-width: 992px) {
