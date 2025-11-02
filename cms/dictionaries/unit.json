@@ -10,6 +10,14 @@
         },
         "to_standard": "* 1"
       },
+      "cm": {
+        "name": {
+          "en": "centimetre",
+          "en-US": "centimeter",
+          "fr": "centimètre"
+        },
+        "to_standard": "/ 100"
+      },
       "in": {
         "name": {
           "en": "inch",
