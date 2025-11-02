@@ -2,7 +2,42 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://gabl.ink/cms/dictionaries/schemas/unit.json",
   "$comment": "SPDX-License-Identifier: CC0-1.0",
-  "title": "Units",
-  "description": "Units",
-  "type": "object"
+  "title": "Units of measurement",
+  "description": "Units of measurement",
+  "type": "object",
+  "properties": {
+    "length": {
+      "type": "object",
+      "description": "Units of length",
+      "properties": {
+        "standard": {
+          "type": "string",
+          "description": "Standard unit; used for conversions"
+        },
+        "units": {
+          "type": "object",
+          "patternProperties": {
+            "^.+$": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of unit",
+                  "patternProperties": {
+                    "^[a-z]{2,3}(-([A-Z]{2}|[0-9]{3}))?$": {
+                      "pattern": "^.*$"
+                    }
+                  }
+                },
+                "to_standard": {
+                  "type": "string",
+                  "description": "Formula for converting to “standard” in bc"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
