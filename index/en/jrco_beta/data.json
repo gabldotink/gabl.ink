@@ -12,8 +12,8 @@
   },
   "hashtag": "JoeRunnerAndCoBeta",
   "description": {
-    "text": "The first “JoeRunner and Co.” webcomic series, which ran for 11 pages from 2022 to 2023.",
-    "html": "The first <i><cite>JoeRunner and Co.</cite></i> webcomic series, which ran for 11 pages from 2022 to 2023."
+    "text": "The first “JoeRunner and Co.” webcomic series, which ran for eleven pages from 2022 to 2023.",
+    "html": "The first <i><cite>JoeRunner and Co.</cite></i> webcomic series, which ran for eleven pages from <time>2022</time> to <time>2023</time>."
   },
   "first_published": {
     "y": 2022,

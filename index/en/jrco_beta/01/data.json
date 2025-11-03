@@ -20,6 +20,10 @@
     "text": "The title page for “JoeRunner and Co. Beta,” originally “JoeRunner and Co.”",
     "html": "The title page for <i><cite>JoeRunner and Co. Beta</cite></i>, originally <i><cite>JoeRunner and Co.</cite></i>"
   },
+  "tooltip": {
+    "text": "pro tip for 5th graders: DO NOT wake up at 6:30 a.m.",
+    "html": "pro tip for 5th graders: <em class=\"roman\">DO NOT</em> wake up at <time class=\"nw\" datetime=\"06:30\">6:30 <abbr title=\"ante meridiem\">a.m.</abbr></time>"
+  },
   "transcript": {
     "lines": [
       {
@@ -28,7 +32,11 @@
       },
       {
         "h": null,
-        "d": "The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time class=\"nw\" datetime=\"2021-05-27T06:30-0600\">6:30 a.m. on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “beep, beep, beep.”"
+        "d": "The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time class=\"nw\" datetime=\"2021-05-27T06:30-0600\">6:30 <abbr title=\"ante meridiem\">a.m.</abbr> on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off: “beep, beep, beep.”"
+      },
+      {
+        "h": "tooltip",
+        "d": "pro tip for 5th graders: <em class=\"roman\">DO NOT</em> wake up at <time class=\"nw\" datetime=\"06:30\">6:30 <abbr>a.m.</abbr></time>"
       }
     ]
   },

@@ -165,6 +165,8 @@ for i in ${items};do
       series_hashtag="$(jq_r .hashtag "${index}/${id}/../data.json")"
       series_title_html="$(jq_r .title.html "${index}/${id}/../data.json")"
       series_title_text="$(jq_r .title.text "${index}/${id}/../data.json")"
+      tooltip_text="$(jq_r .tooltip.text "${i}")"
+      tooltip_html="$(jq_r .tooltip.html "${i}")"
       volume="$(jq_r .location.volume "${i}")"
 
       # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
@@ -174,6 +176,12 @@ for i in ${items};do
         video_exists=true
       else
         unset video_exists
+      fi
+
+      if [ "${tooltip_text}" != null ];then
+        tooltip_exists=true
+      else
+        unset tooltip_exists
       fi
 
       # Determine how many directories deep from the series the page is
@@ -346,7 +354,10 @@ for i in ${items};do
         printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${id}" "${id}"
         printf '</video></div>'
       else
-        printf 'image"><picture>'
+        printf 'image"><picture'
+        [ "${tooltip_exists}" = true ] &&
+          printf ' title="%s"' "${tooltip_text}"
+        printf '>'
         printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
         printf '</picture></div>'
       fi

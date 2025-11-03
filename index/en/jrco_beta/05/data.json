@@ -16,6 +16,10 @@
     "text": "Enter Eden, JoeRunner’s mom.",
     "html": "Enter Eden, JoeRunner’s mom."
   },
+  "tooltip": {
+    "text": "JoeRunner inherited having no nose from his dad",
+    "html": "JoeRunner inherited having no nose from his dad"
+  },
   "transcript": {
     "lines": [
       {
@@ -49,6 +53,10 @@
       {
         "h": "Eden",
         "d": "(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
+      },
+      {
+        "h": "tooltip",
+        "d": "JoeRunner inherited having no nose from his dad"
       }
     ]
   },

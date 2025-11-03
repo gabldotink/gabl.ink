@@ -16,11 +16,19 @@
     "text": "A boy stands by the door of Schulz Elementary School.",
     "html": "A boy stands by the door of Schulz Elementary School."
   },
+  "tooltip": {
+    "text": "featuring: several background characters in a white void",
+    "html": "featuring: several background characters in a white void"
+  },
   "transcript": {
     "lines": [
       {
         "h": null,
         "d": "A one-story building has a sign which reads “Schulz Elementary School.” The school and yard are surrounded by trees. Two girls talk in the yard, while another plays on a portable video game console. A boy with black hair stands by the door, looking a bit annoyed."
+      },
+      {
+        "h": "tooltip",
+        "d": "featuring: several background characters in a white void"
       }
     ]
   },

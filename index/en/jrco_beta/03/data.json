@@ -16,6 +16,10 @@
     "text": "JoeRunner finger-combs his hair and puts on his glasses.",
     "html": "JoeRunner finger-combs his hair and puts on his glasses."
   },
+  "tooltip": {
+    "text": "first panel is based on the experience of looking at my drawings",
+    "html": "first panel is based on the experience of looking at my drawings"
+  },
   "transcript": {
     "lines": [
       {
@@ -33,6 +37,10 @@
       {
         "h": "character bio",
         "d": "JoeRunner / master of mornings"
+      },
+      {
+        "h": "tooltip",
+        "d": "first panel is based on the experience of looking at my drawings"
       }
     ]
   },
