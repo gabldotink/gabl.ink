@@ -64,7 +64,7 @@
       },
       {
         "h": null,
-        "d": "A clock shows it’s 8:30."
+        "d": "A clock shows it’s <time datetime=\"2021-05-27T08:30-0600\">8:30</time>."
       },
       {
         "h": "sound effects",
