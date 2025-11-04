@@ -429,8 +429,10 @@ for i in ${items};do
       printf '</tr></thead>'
 
       for l in $(jq_r '.transcript.lines|to_entries|.[].key' "${i}");do
-        h="$(jq_r ".transcript.lines[${l}].h" "${i}")"
-        d="$(jq_r ".transcript.lines[${l}].d" "${i}")"
+        # shellcheck disable=SC2016
+        h="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].h' "${i}")"
+        # shellcheck disable=SC2016
+        d="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].d' "${i}")"
         if [ "${h}" = null ];then
           unset h
         fi
