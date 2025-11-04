@@ -95,7 +95,7 @@ for i in ${items};do
   set_var_mul copyright_license_abbr '\"${copyright_license}\".abbr' '"${dict}/copyright_license.json"'
   # shellcheck disable=SC2016
   set_var_mul copyright_license_url '\"${copyright_license}\".url' '"${dict}/copyright_license.json"'
-  copyright_license_spdx="$(jq_r ".\"${copyright_license}\".spdx" "${dict}/copyright_license.json")"
+  copyright_license_spdx="$(jq -r --arg l "${copyright_license}" -- '.[$l].spdx' "${dict}/copyright_license.json")"
   # shellcheck disable=SC2016
   set_var_mul copyright_license_title '\"${copyright_license}\".title' '"${dict}/copyright_license.json"'
   copyright_year_first="$(jq_r .copyright.year.first "${i}")"
@@ -103,8 +103,8 @@ for i in ${items};do
   description_text="$(jq_r .description.text "${i}")"
   disclaimer="$(jq_r .disclaimer[0] "${i}")"
   id="$(jq_r .id "${i}")"
-  lang_bcp_47_full="$(jq_r ".\"${lang}\".bcp_47.full" "${dict}/language.json")"
-  lang_dir="$(jq_r ".\"${lang}\".dir" "${dict}/language.json")"
+  lang_bcp_47_full="$(jq -r --arg l "${lang}" -- '.[$l].bcp_47.full' "${dict}/language.json")"
+  lang_dir="$(jq -r --arg l "${lang}" -- '.[$l].dir' "${dict}/language.json")"
   title_nested_text="$(jq_r .title.nested.text "${i}")"
   title_html="$(jq_r .title.html "${i}")"
   title_text="$(jq_r .title.text "${i}")"
@@ -156,7 +156,7 @@ for i in ${items};do
       zero_pad_2_first_published_m="$(zero_pad 2 "${first_published_m}")"
       first_published_y="$(jq_r .first_published.y "${i}")"
       zero_pad_4_first_published_y="$(zero_pad 4 "${first_published_y}")"
-      lang_ogp_full="$(jq_r ".\"${lang}\".ogp.full" "${dict}/language.json")"
+      lang_ogp_full="$(jq -r --arg l "${lang}" '.[$l].ogp.full' "${dict}/language.json")"
       chapter="$(jq_r .location.chapter "${i}")"
       next="$(jq_r .location.next "${i}")"
       page="$(jq_r .location.page "${i}")"
@@ -452,7 +452,7 @@ for i in ${items};do
 
       printf '">'
 
-      printf '%s ' "$(jq_r ".months.\"${lang}\"[$((first_published_m-1))]" "${dict}/month_gregorian.json")"
+      printf '%s ' "$(jq -r --arg l "${lang}" --argjson m "$((first_published_m-1))" -- '.months[$l][$m]' "${dict}/month_gregorian.json")"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "${first_published_y}" -ne 0 ];then
@@ -474,12 +474,12 @@ for i in ${items};do
       printf '</time></p><article id="post_'
 
       for p in $(jq_r '.post|to_entries|.[].key' "${i}");do
-        post_content="$(jq_r ".post[${p}].content.html" "${i}")"
-        post_date_d="$(jq_r ".post[${p}].date.d" "${i}")"
+        post_content="$(jq -r --argjson p "${p}" -- '.post[$p].content.html' "${i}")"
+        post_date_d="$(jq -r --argjson p "${p}" -- '.post[$p].date.d' "${i}")"
         zero_pad_2_post_date_d="$(zero_pad 2 "${post_date_d}")"
-        post_date_m="$(jq_r ".post[${p}].date.m" "${i}")"
+        post_date_m="$(jq -r --argjson p "${p}" -- '.post[$p].date.m' "${i}")"
         zero_pad_2_post_date_m="$(zero_pad 2 "${post_date_m}")"
-        post_date_y="$(jq_r ".post[${p}].date.y" "${i}")"
+        post_date_y="$(jq -r --argjson p "${p}" -- '.post[$p].date.y' "${i}")"
         zero_pad_4_post_date_y="$(zero_pad 4 "${post_date_y}")"
 
         printf '%s-%s-%s">' "${zero_pad_4_post_date_y}" \
@@ -491,7 +491,7 @@ for i in ${items};do
                                             "${zero_pad_2_post_date_m}" \
                                             "${zero_pad_2_post_date_d}"
 
-        printf '%s ' "$(jq_r ".months.\"${lang}\"[$((post_date_m-1))]" "${dict}/month_gregorian.json")"
+        printf '%s ' "$(jq -r --arg l "${lang}" --argjson m "$((post_date_m-1))" -- '.months[$l][$m]' "${dict}/month_gregorian.json")"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "${post_date_y}" -ne 0 ];then
@@ -616,7 +616,7 @@ for i in ${items};do
     printf '</a></p>'
 
     if [ "${disclaimer}" != null ];then
-      disclaimer_html="$(jq_r ".\"${disclaimer}\".\"${lang}\"" "${dict}/disclaimer.json")"
+      disclaimer_html="$(jq -r --arg d "${disclaimer}" --arg l "${lang}" -- '.[$d][$l]' "${dict}/disclaimer.json")"
       printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
     else
       unset disclaimer_html
