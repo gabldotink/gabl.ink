@@ -1,0 +1,130 @@
+{
+  "x": {
+    "name": {
+      "en": {
+        "text": "X"
+      },
+      "fr": {
+        "text": "X"
+      }
+    },
+    "base": "https://x.com/intent/tweet",
+    "text": "text",
+    "url": "url",
+    "hashtag": "hashtags"
+  },
+  "reddit": {
+    "name": {
+      "en": {
+        "text": "Reddit"
+      },
+      "fr": {
+        "text": "Reddit"
+      }
+    },
+    "base": "https://www.reddit.com/submit?type=LINK",
+    "text": "title",
+    "url": "url"
+  },
+  "facebook": {
+    "name": {
+      "en": {
+        "text": "Facebook"
+      },
+      "fr": {
+        "text": "Facebook"
+      }
+    },
+    "base": "https://www.facebook.com/sharer/sharer.php",
+    "url": "u"
+  },
+  "telegram": {
+    "name": {
+      "en": {
+        "text": "Telegram"
+      },
+      "fr": {
+        "text": "Telegram"
+      }
+    },
+    "base": "https://t.me/share",
+    "text": "text",
+    "url": "url"
+  },
+  "bluesky": {
+    "name": {
+      "en": {
+        "text": "Bluesky"
+      },
+      "fr": {
+        "text": "Bluesky"
+      }
+    },
+    "base": "https://bsky.app/intent/compose",
+    "text": "text"
+  },
+  "whatsapp": {
+    "name": {
+      "en": {
+        "text": "WhatsApp"
+      },
+      "fr": {
+        "text": "WhatsApp"
+      }
+    },
+    "base": "https://wa.me/",
+    "text": "text"
+  },
+  "mastodon": {
+    "name": {
+      "en": {
+        "text": "Mastodon"
+      },
+      "fr": {
+        "text": "Mastodon"
+      }
+    },
+    "base": "https://mastodonshare.com/",
+    "text": "text",
+    "url": "url"
+  },
+  "threads": {
+    "name": {
+      "en": {
+        "text": "Threads"
+      },
+      "fr": {
+        "text": "Threads"
+      }
+    },
+    "base": "https://www.threads.com/intent/post",
+    "text": "text",
+    "url": "url"
+  },
+  "truth_social": {
+    "name": {
+      "en": {
+        "text": "Truth Social"
+      },
+      "fr": {
+        "text": "Truth Social"
+      }
+    },
+    "base": "https://truthsocial.com/share",
+    "text": "text",
+    "url": "url"
+  },
+  "gab": {
+    "name": {
+      "en": {
+        "text": "Gab"
+      },
+      "fr": {
+        "text": "Gab"
+      }
+    },
+    "base": "https://gab.com/compose",
+    "text": "text",
+    "url": "url"
+  }
+}

@@ -8,13 +8,13 @@ make_share_link(){
   [ -n "${config_share_skip}" ] &&
     printf ' %s ' "${config_share_skip}" | grep -Fqe " ${make_share_link_id} " &&
       return 0
-  make_share_link_platform="$2"
-  make_share_link_base="$3"
-  make_share_link_text_param="$4"
-  make_share_link_url_param="$5"
-  make_share_link_hashtag_param="$6"
-  make_share_link_text="$(jq -rn --arg t "$7" -- '$t|@uri')"
-  make_share_link_hashtag="$(jq -rn --arg h "$8" -- '$h|@uri')"
+  set_var_l10n make_share_link_name "\"${make_share_link_id}\".name" "${dict}/share_link.json"
+  make_share_link_base="$(jq_r "\"${make_share_link_id}\".base" "${dict}/share_link.json")"
+  make_share_link_text_param="$(jq_r "\"${make_share_link_id}\".text" "${dict}/share_link.json")"
+  make_share_link_url_param="$(jq_r "\"${make_share_link_id}\".url" "${dict}/share_link.json")"
+  make_share_link_hashtag_param="$(jq_r "\"${make_share_link_id}\".hashtag" "${dict}/share_link.json")"
+  make_share_link_text="$(jq -rn --arg t "$2" -- '$t|@uri')"
+  make_share_link_hashtag="$(jq -rn --arg h "$3" -- '$h|@uri')"
 
   printf '<li id="share_links_%s">' "${make_share_link_id}"
   printf '<a rel="external" href="%s' "${make_share_link_base}"
@@ -25,27 +25,27 @@ make_share_link(){
     make_share_link_start_param='?'
   fi
 
-  if [ -n "${make_share_link_text_param}" ];then
+  if ! test_null make_share_link_text_param;then
     printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_text_param}" "${make_share_link_text}"
     [ "${make_share_link_start_param}" = '?' ] &&
       make_share_link_start_param='&amp;'
   fi
 
-  if [ -n "${make_share_link_url_param}" ];then
+  if ! test_null make_share_link_url_param;then
     printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_url_param}" "$(printf '%s' "${canonical}"|jq -Rr -- @uri)"
     [ "${make_share_link_start_param}" = '?' ] &&
       make_share_link_start_param='&amp;'
   fi
 
-  [ -n "${make_share_link_hashtag_param}" ] &&
+  ! test_null make_share_link_hashtag_param &&
     printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_hashtag_param}" "${make_share_link_hashtag}"
 
   printf '">Share with '
 
-  if printf '%s' "${make_share_link_platform}" | grep -qve '<cite>.*</cite>';then
-    printf '<cite>%s</cite>' "${make_share_link_platform}"
+  if printf '%s' "${make_share_link_name_html}" | grep -qve '<cite>.*</cite>';then
+    printf '<cite>%s</cite>' "${make_share_link_name_html}"
   else
-    printf '%s' "${make_share_link_platform}"
+    printf '%s' "${make_share_link_name_html}"
   fi
 
   printf '</a></li>'

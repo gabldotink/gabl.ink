@@ -469,69 +469,69 @@ for i in ${items};do
       printf '<summary>Share this page</summary>'
       printf '<ul>'
 
-      make_share_link x X https://x.com/intent/tweet text url hashtags \
+      make_share_link x \
                      "$(
                         printf 'gabl.ink @gabldotink: “%s”: “' "${series_title_text}"
                         printf '%s”' "${title_text}"
                       )" \
-                     "gabldotink,${series_hashtag}"
+                     "gabldotink,${series_hashtag_id}"
 
-      make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
+      make_share_link reddit \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s”' "${title_text}"
                       )"
 
-      make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u
+      make_share_link facebook
 
-      make_share_link telegram Telegram https://t.me/share text url '' \
+      make_share_link telegram \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
+      make_share_link bluesky \
                      "$(
                         printf 'gabl.ink @gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '%s ' "${canonical}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
+      make_share_link whatsapp \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '%s' "${canonical}"
                       )"
 
-      make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
+      make_share_link mastodon \
                      "$(
                         printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link threads Threads https://www.threads.com/intent/post text url '' \
+      make_share_link threads \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link truth_social 'Truth Social' https://truthsocial.com/share text url '' \
+      make_share_link truth_social \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link gab Gab https://gab.com/compose text url '' \
+      make_share_link gab \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf '#gabldotink #%s' "${series_hashtag}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
       printf '</ul></details>'
@@ -540,9 +540,8 @@ for i in ${items};do
       printf '<summary>Validate this page</summary>'
       printf '<ul>'
 
-      make_validate_link vnu 'the <cite>Nu Html Checker</cite>' 'https://validator.nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
-      make_validate_link w3c 'the <cite><abbr title="World Wide Web Consortium">W3C</abbr> Markup Validation Service</cite>' \
-                             'https://validator.w3.org/nu/?doc=' '<abbr title="Hypertext Markup Language 5">HTML5</abbr>'
+      make_validate_link vnu
+      make_validate_link w3c
     fi
 
     printf '</ul></details>'
