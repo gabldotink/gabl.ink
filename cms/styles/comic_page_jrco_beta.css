@@ -6,7 +6,7 @@ html {
   counter-reset: nav_bottom_list_page;
 }
 
-main {
+div#panels {
   margin: 0% 15%;
 }
 
@@ -149,7 +149,7 @@ table#comic_transcript_table p {
 }
 
 @media (max-width: 992px) {
-  main {
+  div#panels {
     margin: 0%
   }
 }

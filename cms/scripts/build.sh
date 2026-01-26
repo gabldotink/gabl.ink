@@ -248,6 +248,7 @@ for i in ${items};do
       printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
       printf 'gabl.ink'
       printf '</a></header>'
+      printf '<div id="panels">'
       printf '<div id="nav_top">'
       printf '<h1 id="nav_top_title">'
       printf '“<cite>%s</cite>”</h1>' "${title_html}"
@@ -568,6 +569,8 @@ for i in ${items};do
     fi
 
     printf '</footer>'
+
+    printf '</div>'
 
     printf '</body></html>\n'
   } > "${fifos}/.build_output.html"
