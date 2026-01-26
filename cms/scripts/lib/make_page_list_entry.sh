@@ -5,7 +5,7 @@
 
 make_page_list_entry(){
   make_page_list_entry_d="$1"
-  make_page_list_entry_s="$(zero_pad 2 "$(jq_r location.page "${make_page_list_entry_d}")")"
+  make_page_list_entry_s="$(printf '%02d' "$(jq_r location.page "${make_page_list_entry_d}")")"
 
   set_var_l10n title title "${make_page_list_entry_d}"
 
