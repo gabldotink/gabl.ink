@@ -1,0 +1,85 @@
+{
+  "id": "en/jrco_beta/08",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_beta",
+    "page": 8,
+    "previous": 7,
+    "next": 9
+  },
+  "language": "en",
+  "title": {
+    "en": {
+      "text": "T.T."
+    },
+    "fr": {
+      "text": "T.T."
+    }
+  },
+  "description": {
+    "text": "JoeRunner meets his friend T.T. outside the school.",
+    "html": "JoeRunner meets his friend T.T. outside the school."
+  },
+  "transcript": {
+    "lines": [
+      {
+        "h": null,
+        "d": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading “77” and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font."
+      },
+      {
+        "h": "boy",
+        "d": "Oh, finally."
+      },
+      {
+        "h": null,
+        "d": "JoeRunner walks up to the boy."
+      },
+      {
+        "h": "boy",
+        "d": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+      },
+      {
+        "h": "JoeRunner",
+        "d": "Yeah, there was lots of traffic on North 1 today."
+      },
+      {
+        "h": null,
+        "d": "The boy starts walking to the door."
+      },
+      {
+        "h": "character bio",
+        "d": "T.T. / one heck of a guy"
+      },
+      {
+        "h": "T.T.",
+        "d": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em>"
+      }
+    ]
+  },
+  "first_published": {
+    "y": 2023,
+    "m": 2,
+    "d": 24
+  },
+  "post": [
+    {
+      "date": {
+        "y": 2023,
+        "m": 2,
+        "d": 24
+      },
+      "content": {
+        "html": "<details><summary><p>Irrelevant information</p></summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2023,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

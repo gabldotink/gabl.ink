@@ -1,0 +1,49 @@
+{
+  "id": "jrco_beta",
+  "type": "comic_series",
+  "pages": {
+    "first": 1,
+    "last": 11
+  },
+  "language": "en",
+  "title": {
+    "en": {
+      "text": "JoeRunner and Co. Beta"
+    },
+    "fr": {
+      "text": "JoeRunner et cie Bêta"
+    }
+  },
+  "hashtag": {
+    "en": {
+      "text": "JoeRunnerAndCoBeta"
+    },
+    "fr": {
+      "text": "JoeRunnerEtCieBêta"
+    },
+    "description": {
+      "en": {
+        "text": "The first _JoeRunner and Co._ webcomic series, which ran for eleven pages from 2022 to 2023.",
+        "html": "The first <cite class=\"i\">JoeRunner and Co.</cite> webcomic series, which ran for eleven pages from <time>2022</time> to <time>2023</time>."
+      },
+      "fr": {
+        "text": "La première série de webcomics « JoeRunner et cie », qui a compté onze pages de 2022 à 2023 en anglais.",
+        "html": "La première série de webcomics <cite class=\"i\">JoeRunner et cie</cite>, qui a compté onze pages de <time>2022</time> à <time>2023</time> en anglais."
+      }
+    },
+    "first_published": {
+      "y": 2022,
+      "m": 4,
+      "d": 1
+    },
+    "copyright": {
+      "year": {
+        "first": 2022,
+        "last": 2025
+      },
+      "license": [
+        "cc-by-4.0"
+      ]
+    }
+  }
+}

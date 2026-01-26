@@ -3,9 +3,8 @@
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
-zero_pad(){
-  zero_pad_depth="$1"
-  zero_pad_integer="$2"
-
-  printf '%0'"${zero_pad_depth}"'d\n' "${zero_pad_integer}"
+jq_r(){
+  jq_r_k="$1"
+  jq_r_f="$2"
+  jq -r -- ".${jq_r_k}" "${jq_r_f}"
 }

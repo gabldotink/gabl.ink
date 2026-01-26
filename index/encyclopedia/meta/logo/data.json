@@ -1,0 +1,31 @@
+{
+  "id": "en/encyclopedia/meta/logo",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "text": "logo"
+      },
+      "fr": {
+        "text": "logo"
+      }
+    }
+  },
+  "description": {
+    "en-US": {
+      "text": "Text in an image which presents a work’s title(s) to the reader."
+    },
+    "fr": {
+      "text": "Texte dans une image qui présent le(s) titre(s) d’une œuvre au lecteur."
+    }
+  },
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2025
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

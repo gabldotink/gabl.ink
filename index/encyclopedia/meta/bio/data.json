@@ -1,0 +1,31 @@
+{
+  "id": "en/encyclopedia/meta/bio",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "text": "bio"
+      },
+      "fr": {
+        "text": "bio"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "text": "Text that introduces a subject to the reader."
+    },
+    "fr": {
+      "text": "Texte qui présente un sujet au lecteur."
+    }
+  },
+  "language": "en",
+  "copyright": {
+    "year": {
+      "first": 2025
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

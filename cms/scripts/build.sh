@@ -9,62 +9,17 @@ scripts="$(dirname -- "${script}")"
 cms="${scripts}/.."
 dict="${cms}/dictionaries"
 index="${cms}/../index"
-
-export TEXTDOMAIN TEXTDOMAINDIR
-TEXTDOMAIN=build
-TEXTDOMAINDIR="${scripts}/l10n"
-
-error(){
-  error_msg="$1"
-  error_exit_code="$2"
-  printf 'error: '
-  [ -n "${id}" ] &&
-    printf '%s: ' "${id}"
-  printf '%s\n' "${error_msg}"
-  if [ -n "${error_exit_code}" ];then
-    exit "${error_exit_code}"
-  else
-    exit 1
-  fi
-}
-
-warning(){
-  warning_msg="$1"
-  warning_exit_code="$2"
-  printf 'warning: '
-  [ -n "${id}" ] &&
-    printf '%s: ' "${id}"
-  printf '%s\n' "${warning_msg}"
-  warning_warned=true
-  [ "${config_exit_on_warning}" = true ] &&
-    if [ -n "${warning_exit_code}" ];then
-      exit "${warning_exit_code}"
-    else
-      exit 1
-    fi
-}
-
-load_lib(){
-  load_lib_file="$1.sh"
-  # shellcheck source=/dev/null
-  . "${scripts}/lib/${load_lib_file}"
-  # || error '%s/lib/%s could not be loaded' "$scripts" "$load_lib_file"
-  # The shell gives its own error
-}
-
-jq_r(){
-  jq -r -- "$@"
-}
+encyclopedia="${index}/encyclopedia"
+fifos="${scripts}/fifos"
+lib="${scripts}/lib"
 
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
-load_lib make_og
-load_lib make_nav_buttons
-load_lib make_share_link
-load_lib make_validate_link
-load_lib set_var_mul
-load_lib zero_pad
+# shellcheck source=/dev/null
+for f in "${lib}/"*.sh;do
+  . "${f}"
+done
 
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "${scripts}/config/build.sh" ];then
@@ -72,49 +27,41 @@ if [ -f "${scripts}/config/build.sh" ];then
   . "${scripts}/config/build.sh"
 fi
 
-if [ "${config_lang_default}" != en ];then
+if [ "${config_lang_default}" != en-US ];then
   lang_default="${config_lang_default}"
 else
-  lang_default=en
+  lang_default=en-US
 fi
 
 #items="$(find "${index}" -type f -name data.json)"
-items="${index}/en/jrco_beta/01/data.json"
+items="${index}/jrco_beta/01/data.json"
 
 for i in ${items};do
-  type="$(jq_r .type "${i}")"
+  type="$(jq_r type "${i}")"
 
   [ "${type}" = comic_series ] &&
     continue
 
-  lang="$(jq_r .language "${i}")"
+  #lang="$(jq_r language "${i}")"
+  lang=en-US
 
-  copyright_license="$(jq_r .copyright.license[0] "${i}")"
+  parse_lang
+
+  copyright_license="$(jq_r copyright.license[0] "${i}")"
   # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
-  # shellcheck disable=SC2016
-  set_var_mul copyright_license_abbr '\"${copyright_license}\".abbr' '"${dict}/copyright_license.json"'
-  # shellcheck disable=SC2016
-  set_var_mul copyright_license_url '\"${copyright_license}\".url' '"${dict}/copyright_license.json"'
+  # shellcheck disable=2016
+  set_var_l10n copyright_license_abbr "\"${copyright_license}\".abbr" "${dict}/copyright_license.json"
+  # shellcheck disable=2016
+  set_var_l10n copyright_license_url "\"${copyright_license}\".url" "${dict}/copyright_license.json"
   copyright_license_spdx="$(jq -r --arg l "${copyright_license}" -- '.[$l].spdx' "${dict}/copyright_license.json")"
-  # shellcheck disable=SC2016
-  set_var_mul copyright_license_title '\"${copyright_license}\".title' '"${dict}/copyright_license.json"'
-  copyright_year_first="$(jq_r .copyright.year.first "${i}")"
-  copyright_year_last="$(jq_r .copyright.year.last "${i}")"
-  description_text="$(jq_r .description.text "${i}")"
-  disclaimer="$(jq_r .disclaimer[0] "${i}")"
-  id="$(jq_r .id "${i}")"
-  lang_bcp_47_full="$(jq -r --arg l "${lang}" -- '.[$l].bcp_47.full' "${dict}/language.json")"
-  lang_dir="$(jq -r --arg l "${lang}" -- '.[$l].dir' "${dict}/language.json")"
-  title_nested_text="$(jq_r .title.nested.text "${i}")"
-  title_html="$(jq_r .title.html "${i}")"
-  title_text="$(jq_r .title.text "${i}")"
-
-  if [ "${title_nested_text}" != null ];then
-    title_nested_html="$(jq_r .title.nested.html "${i}")"
-  else
-    title_nested_text="${title_text}"
-    title_nested_html="${title_html}"
-  fi
+  # shellcheck disable=2016
+  set_var_l10n copyright_license_title "\"${copyright_license}\".title" "${dict}/copyright_license.json"
+  copyright_year_first="$(jq_r copyright.year.first "${i}")"
+  copyright_year_last="$(jq_r copyright.year.last "${i}")"
+  set_var_l10n description description "${i}"
+  disclaimer="$(jq_r 'disclaimer[0]' "${i}")"
+  id="$(jq_r id "${i}")"
+  set_var_l10n title title "${i}"
 
   # This is dumb
   #if [ "${lang}" = en ];then
@@ -129,13 +76,20 @@ for i in ${items};do
   #  fi
   #fi
 
-  canonical="https://gabl.ink/index/${id}/"
+  canonical="https://gabl.ink/index/${id}/${lang}/"
+
+  # Covers two cases:
+  # • If a named pipe (FIFO) cannot be created, a regular file will be created
+  # • If the FIFO/file already exists, it will be truncated
+  mkfifo "${fifos}/.build_output.html" >/dev/null 2>&1 ||
+    true > "${fifos}/.build_output.html"
 
   {
     printf '<!DOCTYPE html>'
 
+    # shellcheck disable=2154
     printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' \
-           "${lang_bcp_47_full}" "${lang_dir}" "${lang_bcp_47_full}"
+           "${lang}" "${lang_d}" "${lang}"
 
     printf '<!-- SPDX-License-Identifier: %s -->\n' "${copyright_license_spdx}"
 
@@ -143,31 +97,28 @@ for i in ${items};do
     printf '<meta charset="utf-8"/>'
     printf '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
 
-    printf '<title>gabl.ink – %s</title>' "${title_text}"
+    printf '<title>gabl.ink – “%s”</title>' "${title_text}"
 
     printf '<meta name="description" content="%s"/>' "${description_text}"
     printf '<meta name="robots" content="index,follow"/>'
     printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "${canonical}" "${lang_bcp_47_full}"
 
     if [ "${type}" = comic_page ];then
-      first_published_d="$(jq_r .first_published.d "${i}")"
+      first_published_d="$(jq_r first_published.d "${i}")"
       zero_pad_2_first_published_d="$(zero_pad 2 "${first_published_d}")"
-      first_published_m="$(jq_r .first_published.m "${i}")"
+      first_published_m="$(jq_r first_published.m "${i}")"
       zero_pad_2_first_published_m="$(zero_pad 2 "${first_published_m}")"
-      first_published_y="$(jq_r .first_published.y "${i}")"
+      first_published_y="$(jq_r first_published.y "${i}")"
       zero_pad_4_first_published_y="$(zero_pad 4 "${first_published_y}")"
-      lang_ogp_full="$(jq -r --arg l "${lang}" '.[$l].ogp.full' "${dict}/language.json")"
-      chapter="$(jq_r .location.chapter "${i}")"
-      next="$(jq_r .location.next "${i}")"
-      page="$(jq_r .location.page "${i}")"
-      prev="$(jq_r .location.previous "${i}")"
-      series="$(jq_r .location.series "${i}")"
-      series_hashtag="$(jq_r .hashtag "${index}/${id}/../data.json")"
-      series_title_html="$(jq_r .title.html "${index}/${id}/../data.json")"
-      series_title_text="$(jq_r .title.text "${index}/${id}/../data.json")"
-      tooltip_text="$(jq_r .tooltip.text "${i}")"
-      tooltip_html="$(jq_r .tooltip.html "${i}")"
-      volume="$(jq_r .location.volume "${i}")"
+      chapter="$(jq_r location.chapter "${i}")"
+      next="$(jq_r location.next "${i}")"
+      page="$(jq_r location.page "${i}")"
+      prev="$(jq_r location.previous "${i}")"
+      series="$(jq_r location.series "${i}")"
+      set_var_l10n series_hashtag hashtag "${index}/${id}/../data.json"
+      set_var_l10n series_title title "${index}/${id}/../data.json"
+      set_var_l10n tooltip tooltip "${i}"
+      volume="$(jq_r location.volume "${i}")"
 
       # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
       # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
@@ -178,7 +129,7 @@ for i in ${items};do
         unset video_exists
       fi
 
-      if [ "${tooltip_text}" != null ];then
+      if ! test_null tooltip_text;then
         tooltip_exists=true
       else
         unset tooltip_exists
@@ -187,15 +138,15 @@ for i in ${items};do
       # Determine how many directories deep from the series the page is
       up_directories=4
 
-      [ "${volume}" = null ] &&
+      test_null volume &&
         up_directories="$((up_directories-1))"
 
-      [ "${chapter}" = null ] &&
+      test_null chapter &&
         up_directories="$((up_directories-1))"
 
       styles="$(
         # ShellCheck warns “n” is unused, but that’s intentional
-        # shellcheck disable=SC2034
+        # shellcheck disable=2034
         for n in $(seq 1 "${up_directories}");do
           printf ../
         done
@@ -227,24 +178,30 @@ for i in ${items};do
         unset volume chapter
       elif [ "${up_directories}" -eq 3 ];then
         unset volume
-        chapter="$(jq_r .location.chapter "${i}")"
+        chapter="$(jq_r location.chapter "${i}")"
       elif [ "${up_directories}" -eq 4 ];then
-        volume="$(jq_r .location.volume "${i}")"
-        chapter="$(jq_r .location.chapter "${i}")"
+        volume="$(jq_r location.volume "${i}")"
+        chapter="$(jq_r location.chapter "${i}")"
       fi
 
-      container_first="$(jq_r .pages.first "${index}/${id}/../data.json")"
-      container_last="$(jq_r .pages.last "${index}/${id}/../data.json")"
+      container_first="$(jq_r pages.first "${index}/${id}/../data.json")"
+      container_last="$(jq_r pages.last "${index}/${id}/../data.json")"
 
       zero_pad_2_container_first="$(zero_pad 2 "${container_first}")"
       zero_pad_2_container_last="$(zero_pad 2 "${container_last}")"
-      [ "${prev}" != null ] &&
+      if ! test_null prev;then
         zero_pad_2_prev="$(zero_pad 2 "${prev}")"
-      [ "${next}" != null ] &&
+      else
+        unset zero_pad_2_prev
+      fi
+      if ! test_null next;then
         zero_pad_2_next="$(zero_pad 2 "${next}")"
+      else
+        unset zero_pad_2_next
+      fi
       zero_pad_2_page="$(zero_pad 2 "${page}")"
 
-      if   [ "${prev}" = null ];then
+      if test_null prev;then
         # This is the first page, so no prefetches are needed.
         true
       elif [ "${container_first}" != "${page}" ] ||
@@ -258,7 +215,7 @@ for i in ${items};do
                "${zero_pad_2_prev}" "${lang_bcp_47_full}"
       fi
 
-      if   [ "${next}" = null ];then
+      if test_null next;then
         # This is the last page, so no prefetches are needed.
         true
       elif [ "${container_last}" != "${page}" ] ||
@@ -282,55 +239,42 @@ for i in ${items};do
         make_og video "${canonical}video.webm"
         make_og video "${canonical}video.mp4"
       fi
-      make_og locale "${lang_ogp_full}"
+      make_og locale "${lang_l}_${lang_r}"
 
       printf '</head>'
 
       printf '<body>'
       printf '<header>'
-      printf '<a href="https://gabl.ink/">'
-      printf '<picture id="gabldotink_logo">'
-      printf '<img src="./logo.svg" alt="%s"/>' 'gabl.ink logo'
-      printf '</picture></a></header>'
+      printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
+      printf 'gabl.ink'
+      printf '</a></header>'
       printf '<main>'
       printf '<div id="nav_top">'
       printf '<h1 id="nav_top_title">'
-      printf '“<cite>%s</cite>”</h1>' "${title_nested_html}"
+      printf '“<cite>%s</cite>”</h1>' "${title_html}"
 
-      if [ "${container_first}" != null ];then
-        container_first_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
-        container_first_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_container_first}/data.json")"
-        [ "${container_first_title_nested_text}" = null ] &&
-          container_first_title_nested_text="${container_first_title_text}"
+      if ! test_null container_first;then
+        set_var_l10n container_first_title title "${index}/${id}/../${zero_pad_2_container_first}/data.json"
       else
-        unset container_first_title_text container_first_title_nested_text
+        unset container_first_title_text
       fi
 
-      if [ "${prev}" != null ];then
-        prev_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_prev})/data.json")"
-        prev_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_prev}/data.json")"
-        [ "${prev_title_nested_text}" = null ] &&
-          prev_title_nested_text="${prev_title_text}"
+      if ! test_null prev;then
+        set_var_l10n prev_title title "${index}/${id}/../${zero_pad_2_prev}/data.json"
       else
-        unset prev_title_text prev_title_nested_text
+        unset prev_title_text
       fi
 
-      if [ "${next}" != null ];then
-        next_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
-        next_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_next}/data.json")"
-        [ "${next_title_nested_text}" = null ] &&
-          next_title_nested_text="${next_title_text}"
+      if ! test_null next;then
+        set_var_l10n next_title title "${index}/${id}/../${zero_pad_2_next}/data.json"
       else
-        unset next_title_text next_title_nested_text
+        unset next_title_text
       fi
 
-      if [ "${container_last}" != null ];then
-        container_last_title_text="$(jq_r .title.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
-        container_last_title_nested_text="$(jq_r .title.nested.text "${index}/${id}/../${zero_pad_2_container_last}/data.json")"
-        [ "${container_last_title_nested_text}" = null ] &&
-          container_last_title_nested_text="${container_last_title_text}"
+      if ! test_null container_last;then
+        set_var_l10n container_last_title title "${index}/${id}/../${zero_pad_2_container_last}/data.json"
       else
-        unset container_last_title_text container_last_title_nested_text
+        unset container_last_title_text
       fi
 
       make_nav_buttons top
@@ -350,7 +294,7 @@ for i in ${items};do
 
         printf 'label="English (United States) (CC)" '
         printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
-        # shellcheck disable=SC1112
+        # shellcheck disable=1112
         printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US" type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${id}" "${id}"
         printf '</video></div>'
       else
@@ -372,48 +316,40 @@ for i in ${items};do
 
       printf '<summary>'
 
-      printf '<i><cite>'
+      printf '<cite class="i">'
 
       # TODO: Support higher containers (volumes and chapters).
 
       if [ "${container}" = series ];then
         printf '%s' "${series_title_html}"
-        printf '</cite></i>'
+        printf '</cite>'
       fi
 
       printf ', page %s ' "${page}"
 
-      printf '“<cite>%s</cite>”' "${title_nested_html}"
+      printf '“<cite>%s</cite>”' "${title_html}"
 
       printf '</summary>'
 
       printf '<ol id="nav_bottom_list_pages">'
 
       find "${index}/${id}/.." -type f -path "${index}/${id}"'/../*/data.json' -exec sh -c '
-        d="$1"
-        p="$2"
-        s="$(printf "%02d" "$(jq -r -- .location.page "${d}")")"
+        [ -n "$1" ] &&
+          set -x
+        
+        zero_pad_2_page="$2"
+        lib="$3"
+        lang="$4"
+        lang_l="$5"
+        lang_default="$6"
 
-        if [ "$(jq -r .title.nested.html "${d}")" != null ];then
-            title_nested_html="$(jq -r -- .title.nested.html "${d}")"
-        else
-            title_nested_html="$(jq -r -- .title.html "${d}")"
-        fi
-
-        printf "<li>“"
-
-        if [ "${s}" = "${p}" ];then
-          printf "<b><cite>"
-          printf "%s" "${title_nested_html}"
-          printf "</cite></b>”</li>"
-        else
-          printf "<a href=\"../"
-          printf "%s" "${s}"
-          printf "/\" hreflang=\"en-US\" type=\"text/html\"><cite>"
-          printf "%s" "${title_nested_html}"
-          printf "</cite></a>”</li>"
-        fi
-      ' shell '{}' "${zero_pad_2_page}" ';'
+        for f in "${lib}/"*.sh;do
+          . "${f}"
+        done
+        
+        make_page_list_entry "$7"' \
+        sh "$(printf '%s' "$-"|grep -F -- x)" "${zero_pad_2_page}" "${lib}" \
+           "${lang}" "${lang_l}" "${lang_default}" '{}' ';'
 
       printf '</ol></details></div></div>'
 
@@ -428,17 +364,25 @@ for i in ${items};do
       printf '<th scope="col">Text</th>'
       printf '</tr></thead>'
 
-      for l in $(jq_r '.transcript.lines|to_entries|.[].key' "${i}");do
-        # shellcheck disable=SC2016
-        h="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].h' "${i}")"
-        # shellcheck disable=SC2016
-        d="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].d' "${i}")"
-        if [ "${h}" = null ];then
-          unset h
+      for l in $(jq_r 'transcript.lines|to_entries|.[].key' "${i}");do
+        # shellcheck disable=2016
+        l_h="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].h' "${i}")"
+        set_var_l10n l_d "transcript.lines[${l}].d" "${i}"
+
+        l_h_type="$(jq_r type "${encyclopedia}/${l_h}/data.json")"
+        [ "${l_h_type}" = character ] ||
+          [ "${l_h_type}" = meta_character ] ||
+            error 'l_h_type is not character or meta_character'
+        set_var_l10n l_h_label name.label "${encyclopedia}/${l_h}/data.json"
+        if test_null l_h_label;then
+          set_var_l10n l_h_label name.given "${encyclopedia}/${l_h}/data.json"
         fi
+
         printf '<tr>'
-        printf '<th scope="row">%s</th>' "${h}"
-        printf '<td><p>%s</p></td>' "${d}"
+        # shellcheck disable=2154
+        printf '<th scope="row">%s</th>' "${l_h_label_html}"
+        # shellcheck disable=2154
+        printf '<td><p>%s</p></td>' "${l_d_html}"
         printf '</tr>'
       done
 
@@ -452,7 +396,9 @@ for i in ${items};do
 
       printf '">'
 
-      printf '%s ' "$(jq -r --arg l "${lang}" --argjson m "$((first_published_m-1))" -- '.months[$l][$m]' "${dict}/month_gregorian.json")"
+      set_var_l10n first_published_m 'months['"$((first_published_m-1))]" "${dict}/month_gregorian.json"
+
+      printf '%s ' "${first_published_m_html}"
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "${first_published_y}" -ne 0 ];then
@@ -473,8 +419,8 @@ for i in ${items};do
 
       printf '</time></p><article id="post_'
 
-      for p in $(jq_r '.post|to_entries|.[].key' "${i}");do
-        post_content="$(jq -r --argjson p "${p}" -- '.post[$p].content.html' "${i}")"
+      for p in $(jq_r 'post|to_entries|.[].key' "${i}");do
+        set_var_l10n post_content 'post.['"${p}].content" "${i}"
         post_date_d="$(jq -r --argjson p "${p}" -- '.post[$p].date.d' "${i}")"
         zero_pad_2_post_date_d="$(zero_pad 2 "${post_date_d}")"
         post_date_m="$(jq -r --argjson p "${p}" -- '.post[$p].date.m' "${i}")"
@@ -491,7 +437,9 @@ for i in ${items};do
                                             "${zero_pad_2_post_date_m}" \
                                             "${zero_pad_2_post_date_d}"
 
-        printf '%s ' "$(jq -r --arg l "${lang}" --argjson m "$((post_date_m-1))" -- '.months[$l][$m]' "${dict}/month_gregorian.json")"
+        set_var_l10n post_date_m 'months['"$((post_date_m-1))]" "${dict}/month_gregorian.json"
+
+        printf '%s ' "${post_date_m_html}"
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
         if   [ "${#post_date_y}" -lt 4 ] &&
              [ "${post_date_y}" -ne 0 ];then
@@ -512,7 +460,7 @@ for i in ${items};do
 
         printf '</time></h2>'
 
-        printf '%s' "${post_content}"
+        printf '%s' "${post_content_html}"
 
         printf '</article>'
       done
@@ -526,29 +474,29 @@ for i in ${items};do
       make_share_link x X https://x.com/intent/tweet text url hashtags \
                      "$(
                         printf 'gabl.ink @gabldotink: “%s”: “' "${series_title_text}"
-                        printf '%s”' "${title_nested_text}"
+                        printf '%s”' "${title_text}"
                       )" \
                      "gabldotink,${series_hashtag}"
 
       make_share_link reddit Reddit 'https://www.reddit.com/submit?type=LINK' title url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s”' "${title_nested_text}"
+                        printf '%s”' "${title_text}"
                       )"
 
-      make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u '' ''
+      make_share_link facebook Facebook https://www.facebook.com/sharer/sharer.php '' u
 
       make_share_link telegram Telegram https://t.me/share text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
       make_share_link bluesky Bluesky https://bsky.app/intent/compose text '' '' \
                      "$(
                         printf 'gabl.ink @gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '%s ' "${canonical}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
@@ -556,35 +504,35 @@ for i in ${items};do
       make_share_link whatsapp WhatsApp https://wa.me/ text '' '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '%s' "${canonical}"
                       )"
 
       make_share_link mastodon Mastodon https://mastodonshare.com/ text url '' \
                      "$(
                         printf 'gabl.ink @gabldotink@mstdn.party: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
       make_share_link threads Threads https://www.threads.com/intent/post text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
       make_share_link truth_social 'Truth Social' https://truthsocial.com/share text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
       make_share_link gab Gab https://gab.com/compose text url '' \
                      "$(
                         printf 'gabl.ink: “%s”: “' "${series_title_text}"
-                        printf '%s” ' "${title_nested_text}"
+                        printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag}"
                       )"
 
@@ -604,18 +552,18 @@ for i in ${items};do
     printf '<footer><p><span class="nw">'
     printf '<abbr title="Copyright">©</abbr> '
     printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_first}"
-    [ "${copyright_year_last}" != null ] &&
+    ! test_null copyright_year_last &&
       printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_last}"
     printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
     printf '<p>License: <a rel="external license" href="%s" ' "${copyright_license_url}"
     printf 'hreflang="en" type="text/html">'
     printf '<cite>%s</cite>' "${copyright_license_title}"
-    [ "${copyright_license_abbr}" != null ] &&
-      printf ' (<cite><abbr>%s</abbr></cite>)' "${copyright_license_abbr}"
+    ! test_null copyright_license_abbr &&
+      printf ' (<cite class="nw"><abbr>%s</abbr></cite>)' "${copyright_license_abbr}"
     printf '</a></p>'
 
-    if [ "${disclaimer}" != null ];then
+    if test_null disclaimer;then
       disclaimer_html="$(jq -r --arg d "${disclaimer}" --arg l "${lang}" -- '.[$d][$l]' "${dict}/disclaimer.json")"
       printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
     else
@@ -625,8 +573,11 @@ for i in ${items};do
     printf '</footer>'
 
     printf '</body></html>\n'
-  } > "${index}/${id}/index.html"
+  } > "${fifos}/.build_output.html"
 done
+
+cat "${fifos}/.build_output.html" > "${index}/${id}/${lang}/index.html"
+rm "${fifos}/.build_output.html"
 
 [ "${warning_warned}" = true ] &&
   [ "${config_exit_nonzero_with_warnings}" = true ] &&

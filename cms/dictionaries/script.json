@@ -1,0 +1,16 @@
+{
+  "Latn": {
+    "dir": "ltr",
+    "names": {
+      "en": {
+        "text": "Latin"
+      },
+      "fr": {
+        "text": "latine"
+      },
+      "es": {
+        "text": "latina"
+      }
+    }
+  }
+}

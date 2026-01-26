@@ -2,16 +2,121 @@
   "cc-by-4.0": {
     "spdx": "CC-BY-4.0",
     "title": {
-      "en": "Creative Commons Attribution 4.0 International Public License",
-      "fr": "Publique licence Creative Commons Attribution 4.0 International"
+      "en-US": {
+        "text": "Creative Commons Attribution 4.0 International Public License"
+      },
+      "fr": {
+        "text": "Publique licence Creative Commons Attribution 4.0 International"
+      }
     },
     "abbr": {
-      "mul": "CC BY 4.0"
+      "mul": {
+        "text": "CC BY 4.0"
+      }
     },
     "url": {
-      "en": "https://creativecommons.org/licenses/by/4.0/deed.en",
-      "fr": "https://creativecommons.org/licenses/by/4.0/deed.fr",
-      "mul": "https://creativecommons.org/licenses/by/4.0/deed"
+      "en-US": {
+        "id": "https://creativecommons.org/licenses/by/4.0/deed.en"
+      },
+      "fr": {
+        "id": "https://creativecommons.org/licenses/by/4.0/deed.fr"
+      },
+      "mul": {
+        "id": "https://creativecommons.org/licenses/by/4.0/deed"
+      }
+    },
+    "redundant": [
+      "cc-by-sa-4.0",
+      "cc-by-nc-sa-4.0"
+    ]
+  },
+  "cc-by-sa-4.0": {
+    "spdx": "CC-BY-SA-4.0",
+    "title": {
+      "en-US": {
+        "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "fr": {
+        "text": "Publique licence Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International"
+      }
+    },
+    "abbr": {
+      "mul": {
+        "text": "CC BY‑SA 4.0"
+      }
+    },
+    "url": {
+      "en-US": {
+        "id": "https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+      },
+      "fr": {
+        "id": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr"
+      },
+      "mul": {
+        "id": "https://creativecommons.org/licenses/by-sa/4.0/deed"
+      }
+    },
+    "redundant": [
+      "cc-by-nc-sa-4.0"
+    ]
+  },
+  "cc-by-nc-sa-4.0": {
+    "spdx": "CC-BY-NC-SA-4.0",
+    "title": {
+      "en-US": {
+        "text": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License"
+      },
+      "fr": {
+        "text": "Publique licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International"
+      }
+    },
+    "abbr": {
+      "mul": {
+        "text": "CC BY‑NC‑SA 4.0"
+      }
+    },
+    "url": {
+      "en-US": {
+        "id": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en"
+      },
+      "fr": {
+        "id": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"
+      },
+      "mul": {
+        "id": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed"
+      }
     }
+  },
+  "cc0-1.0": {
+    "spdx": "CC0-1.0",
+    "title": {
+      "en-US": {
+        "text": "CC0 1.0 Universal"
+      },
+      "fr": {
+        "text": "CC0 1.0 Universal"
+      }
+    },
+    "abbr": {
+      "mul": {
+        "text": "CC0 1.0"
+      }
+    },
+    "url": {
+      "en-US": {
+        "id": "https://creativecommons.org/publicdomain/zero/1.0/deed.en"
+      },
+      "fr": {
+        "id": "https://creativecommons.org/publicdomain/zero/1.0/deed.fr"
+      },
+      "mul": {
+        "id": "https://creativecommons.org/publicdomain/zero/1.0/deed"
+      }
+    },
+    "redundant": [
+      "cc-by-4.0",
+      "cc-by-sa-4.0",
+      "cc-by-nc-sa-4.0"
+    ]
   }
 }

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gabl.ink/cms/dictionaries/schemas/language.json",
+  "$comment": "SPDX-License-Identifier: CC0-1.0",
+  "title": "Natural languages",
+  "description": "Natural languages",
+  "type": "object",
+  "patternProperties": {
+    "^[a-z]{2,3}(-([A-Z]{2}|[0-9]{3}))?$": {
+      "type": "object",
+      "description": "ID",
+      "properties": {
+        "dir": {
+          "type": "string",
+          "description": "Text direction (HTML attribute)",
+          "pattern": "ltr|rtl|auto"
+        },
+        "names": {
+          "type": "object",
+          "description": "Language names",
+          "patternProperties": {
+            "^[a-z]{2,3}(-([A-Z]{2}|[0-9]{3}))?$": {
+              "type": "string",
+              "pattern": "^.*$"
+            }
+          }
+        }
+      },
+      "required": [
+        "dir"
+      ]
+    }
+  }
+}

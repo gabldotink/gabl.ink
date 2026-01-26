@@ -13,6 +13,10 @@ cite {
   quotes: "“" "”" "‘" "’";
 }
 
+[lang|="fr" i] {
+  quotes: "« " " »" "“" "”" "‹ " " ›"
+}
+
 .bold,
 .b {
   font-weight: bold;
@@ -45,7 +49,8 @@ cite {
   text-decoration-line: overline;
 }
 
-.roman {
+.roman,
+.r {
   font-style: normal;
 }
 

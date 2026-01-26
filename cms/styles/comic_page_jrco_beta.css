@@ -100,7 +100,8 @@ div#transcript_text {
   margin-left: 1em;
 }
 
-details#share_links ul {
+details#share_links ul,
+details#validate_links ul {
   list-style-type: none;
 }
 
@@ -116,7 +117,9 @@ table#comic_transcript_table thead {
 table#comic_transcript_table th {
   text-align: left;
   vertical-align: top;
-  padding-right: 1em;
+  padding-right: .3em;
+  padding-left: .5em;
+  text-indent: -.5em;
   font-weight: normal;
 }
 
@@ -148,8 +151,5 @@ table#comic_transcript_table p {
 @media (max-width: 992px) {
   main {
     margin: 0%
-  }
-  picture#gabldotink_logo img {
-    width: 30%;
   }
 }

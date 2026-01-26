@@ -1,0 +1,65 @@
+{
+  "id": "en/jrco_beta/02",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_beta",
+    "page": 2,
+    "previous": 1,
+    "next": 3
+  },
+  "language": "en",
+  "title": {
+    "en": {
+      "text": "alarm clock"
+    },
+    "fr": {
+      "text": "réveil"
+    }
+  },
+  "description": {
+    "en": {
+      "text": "JoeRunner wakes up."
+    },
+    "fr": {
+      "text": "JoeRunner se reveille."
+    }
+  },
+  "transcript": {
+    "lines": [
+      {
+        "h": null,
+        "d": "There’s a view of the bed next to the desk now. As the alarm clock audibly beeps, a hand reaches out from a lump under the covers and smacks the alarm clock on its snooze button on its side, which causes it to slide off the desk. After it clatters, there are sounds of a car crash, a man screaming in pain (Wilhelm scream), and a cat shrieking. An exasperated young male voice speaks."
+      },
+      {
+        "h": "boy",
+        "d": "I really need to get a new snooze button."
+      }
+    ]
+  },
+  "first_published": {
+    "y": 2022,
+    "m": 4,
+    "d": 7
+  },
+  "post": [
+    {
+      "date": {
+        "y": 2022,
+        "m": 4,
+        "d": 7
+      },
+      "content": {
+        "html": "<p>This one is laminated. [<i lang=\"la\">sic</i>]</p><p>Obviously, I’m not much of an animator. Oh well. At least it gets the point across.</p><p>Aside from page 4, I don’t have another animated page written for at least the next thirty-or-so pages, and there probably won’t be many (or any) more until the end of <i><cite>Edulympiad</cite></i>. This one and page 4 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t.</p>"
+      }
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  }
+}

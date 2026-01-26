@@ -1,0 +1,54 @@
+{
+  "US": {
+    "names": {
+      "en": {
+        "text": "United States"
+      },
+      "fr": {
+        "text": "États-Unis"
+      },
+      "es": {
+        "text": "Estados Unidos"
+      }
+    }
+  },
+  "FR": {
+    "names": {
+      "en": {
+        "text": "France"
+      },
+      "fr": {
+        "text": "France"
+      },
+      "es": {
+        "text": "Francia"
+      }
+    }
+  },
+  "GB": {
+    "names": {
+      "en": {
+        "text": "United Kingdom"
+      },
+      "fr": {
+        "text": "Royaume-Uni"
+      },
+      "es": {
+        "text": "Reino Unido"
+      }
+    }
+  },
+  "CA": {
+    "names": {
+      "en": {
+        "text": "Canada"
+      },
+      "fr": {
+        "text": "Canada"
+      },
+      "es": {
+        "text": "Canadá"
+      }
+    }
+  }
+}

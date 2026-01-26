@@ -1,5 +1,5 @@
 # shellcheck shell=sh
-# shellcheck disable=SC2154
+# shellcheck disable=2154
 # SPDX-License-Identifier: CC0-1.0
 # Do not run or source this file! It is meant to be sourced by ../build.sh only.
 
@@ -23,7 +23,7 @@ make_nav_buttons_f_l(){
     make_nav_buttons_f_l_u=Last
     make_nav_buttons_f_l_z=next
   else
-    error 'make_nav_buttons_f_l direction is not f or l'
+    error 'make_nav_buttons_f_l direction is not < or >'
   fi
 
   printf '<div class="nav_button" id="nav_%s_buttons_%s" ' "${make_nav_buttons_l}" "${make_nav_buttons_f_l_i}"
@@ -31,15 +31,15 @@ make_nav_buttons_f_l(){
   if [ "$(eval 'printf "%s" "${'"${make_nav_buttons_f_l_z}"'}"')" = null ];then
     printf 'title="%s in %s (This is the %s page!)">' "${make_nav_buttons_f_l_u}" "${container}" "${make_nav_buttons_f_l_l}"
   else
-    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_f_l_u}" "${container}" "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'_title_nested_text}"')"
+    printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_f_l_u}" "${container}" "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'_title_text}"')"
     printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$(zero_pad 2 "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'}"')")"
   fi
 
-  printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_f_l_a}" "${make_nav_buttons_f_l_u}"
+  printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_f_l_a}" "${make_nav_buttons_f_l_u}"
 
   [ "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'}"')" != null ] &&
     printf '</a>'
-  
+
   printf '</div>'
 }
 
@@ -50,19 +50,19 @@ make_nav_buttons_p_n(){
     make_nav_buttons_p_n_a=←
     make_nav_buttons_p_n_i=prev
     # We don’t use this variable, but I’m keeping it in case other languages need it.
-    # shellcheck disable=SC2034
+    # shellcheck disable=2034
     make_nav_buttons_p_n_l=previous
     make_nav_buttons_p_n_u=Previous
     make_nav_buttons_p_n_z=first
   elif [ "${make_nav_buttons_p_n_d}" = '>' ];then
     make_nav_buttons_p_n_a=→
     make_nav_buttons_p_n_i=next
-    # shellcheck disable=SC2034
+    # shellcheck disable=2034
     make_nav_buttons_p_n_l=next
     make_nav_buttons_p_n_u=Next
     make_nav_buttons_p_n_z=last
   else
-    error 'make_nav_buttons_p_n direction is not p or n'
+    error 'make_nav_buttons_p_n direction is not < or >'
   fi
 
   printf '<div class="nav_button" id="nav_%s_buttons_%s" ' "${make_nav_buttons_l}" "${make_nav_buttons_p_n_i}"
@@ -70,29 +70,26 @@ make_nav_buttons_p_n(){
   if [ "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'}"')" = null ];then
     printf 'title="%s (This is the %s page!)">' "${make_nav_buttons_p_n_u}" "${make_nav_buttons_p_n_z}"
   else
-    printf 'title="%s (“%s”)">' "${make_nav_buttons_p_n_u}" "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'_title_nested_text}"')"
+    printf 'title="%s (“%s”)">' "${make_nav_buttons_p_n_u}" "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'_title_text}"')"
     printf '<a href="../%s/" rel="%s" hreflang="en-US" type="text/html">' "$(zero_pad 2 "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'}"')")" "${make_nav_buttons_p_n_i}"
   fi
 
-  printf '<p><span class="nav_button_arrow" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_p_n_a}" "${make_nav_buttons_p_n_u}"
+  printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_p_n_a}" "${make_nav_buttons_p_n_u}"
 
   [ "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'}"')" != null ] &&
     printf '</a>'
-  
+
   printf '</div>'
 }
-  
+
 make_nav_buttons(){
   make_nav_buttons_l="$1"
-  
-  printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
-  
-  make_nav_buttons_f_l '<'
-  
-  make_nav_buttons_p_n '<'
-  
-  make_nav_buttons_p_n '>'
 
+  printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
+
+  make_nav_buttons_f_l '<'
+  make_nav_buttons_p_n '<'
+  make_nav_buttons_p_n '>'
   make_nav_buttons_f_l '>'
 
   printf '</div>'

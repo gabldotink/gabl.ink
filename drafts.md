@@ -2,11 +2,14 @@
 <!-- markdownlint-disable MD033 -->
 # Drafts (e.g. for documentation)
 
-## The `i`, `em`, and `cite` elements
+## The `i`, `em`, and `cite` Elements
 
-The `i`, `em`, and `cite` elements in <abbr title="Hypertext Markup Language">HTML</abbr> are all usually rendered by browsers in italics by default. However, they all have different semantic meanings, which should be used correctly. gabl.ink’s default <abbr title="Cascading Style Sheets">CSS</abbr> stylesheets remove italics from `cite` by default.
+The `i`, `em`, and `cite` elements in HTML are all usually rendered by browsers in italics by default. However, they all have different semantic meanings, which should be used correctly. gabl.ink’s default CSS stylesheets remove italics from `cite` by default.
 
-## The `cite` element
+## The `cite` Element
+
+<!-- markdownlint-disable-next-line MD036 -->
+**ignore this actually**
 
 The `cite` element in HTML semantically represents the title of a work. Most browsers display the element’s contents in italics by default.
 
@@ -28,7 +31,7 @@ For works with quotation marks, we place the `cite` element inside the marks:
 “<cite>Thursday</cite>”
 ```
 
-We could insert the quotation marks using CSS, but they wouldn’t appear in the <abbr title="Document Object Model">DOM</abbr>, nor would they work with copy and paste.
+We could insert the quotation marks using CSS, but they wouldn’t appear in the DOM, nor would they work with copy and paste.
 
 For titles with no styling, we just use the element by itself, because we removed the default styling earlier:
 
@@ -44,10 +47,40 @@ Embedding `cite` elements is also allowed:
 
 In Markdown, we only use `i` and `cite` for italicized titles, since Markdown doesn’t usually support CSS and `_underscores_` usually create the `em` element.
 
-## <i><cite>The Chicago Manual of Style</cite></i>
+## _The Chicago Manual of Style_ (_CMOS_)
 
-gabl.ink mostly defers to <i><cite>The Chicago Manual of Style</cite></i> (<i><cite><abbr>CMOS</abbr></cite></i>) as its default style guide. This includes using American English conventions. There may be some exceptions to <i><cite>CMOS</cite></i>.
+gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default style guide. This includes using American English conventions. Already-written text, including quotations, generally does not need to be changed aside from minor typographical formatting.
 
-## Why program in shell? Not even a reasonable one, the standard <abbr title="Portable Operating System Interface">POSIX</abbr> shell?
+### Exceptions to _CMOS_
+
+* TBA
+
+## Why program in shell? Not even a reasonable one, the standard POSIX shell?
 
 im dumb
+
+## CSS-Generated Quotation Marks
+
+### The `q` Element
+
+<!-- markdownlint-disable-next-line MD036 -->
+_Note: Somewhat outdated_
+
+The `q` element represents an inline quotation. Most browsers insert quotation marks before and after its content. However, the marks do not appear in the DOM. The HTML spec says it is incorrect to use both quotation marks in HTML and `q`, but it _is_ correct to not use `q` at all and instead use the marks.
+
+Since this is considered “okay,” I initially wanted to do this with the `cite` element for titles that use quotation marks, but there are a few problems:
+
+* The types of quotation marks can be defined using the `quote` property in CSS, and it even handles nesting; a value of `"“" "”" "‘" "’"` will use the first two marks first and the last two inside those. However, while a third nested quote _should_ go back to the double marks, it instead stays on the single.
+* In American English, periods and commas are usually put inside quotation marks when they end, e.g. `My favorite episode is “Pilot.”` However, it would not be semantically correct to write `<cite>Pilot.</cite>`, since the period is not part of the actual title. We also can’t add the period with CSS, since it is definitely semantically important, unlike the quotation marks which are considered styling. We could do something awkward like move the CSS quotation marks to the right and move the HTML period to the left, but this is inconsistent between fonts. We could insert a period and ending mark with CSS, and then add a period with a font size of zero after it, but at that point we’re just being silly.
+
+For these reasons, we don’t use the `q` element at all, and we put the `cite` element inside HTML quotation marks but before the period, e.g. `My favorite episode is “<cite>Pilot</cite>.”` Since we do this with quotation marks, we also consider titles being italicized to be semantically important, and use both `i` and `cite`. While just using CSS would have pros if it worked better for this use case, putting them in the HTML also has many pros.
+
+## Pronounciations
+
+### French
+
+_gabl.ink_: /ˈɡabœl dɔt ink/
+
+## `text` and `html`
+
+A localized JSON value must have at least one of the `text`, `html`, or `id` values. If there is no `html` value, the script’s `html` value will be set to the JSON `text` value. If there is no `text` value, the `text` value simply cannot be used in the script. An `id` value is localized, but does not contain linguistic content (e.g. a URL). If `id` exists, `text` and `html` should not.

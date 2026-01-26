@@ -1,2 +1,3 @@
 # SPDX-License-Identifier: CC0-1.0
-/cms/scripts/build_config.sh
+/cms/scripts/config/*.sh
+/cms/scripts/fifos/.*

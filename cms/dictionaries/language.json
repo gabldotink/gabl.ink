@@ -1,36 +1,50 @@
 {
   "en": {
-    "dir": "ltr",
-    "bcp_47": {
-      "primary_language": "en",
-      "region": "US",
-      "full": "en-US"
-    },
-    "ogp": {
-      "language": "en",
-      "territory": "US",
-      "full": "en_US"
-    },
     "names": {
-      "en": "English (United States)",
-      "fr": "anglais (États-Unis)"
+      "en": {
+        "text": "English"
+      },
+      "fr": {
+        "text": "anglais"
+      },
+      "es": {
+        "text": "inglés"
+      }
+    },
+    "implicit": {
+      "script": "Latn"
     }
   },
   "fr": {
-    "dir": "ltr",
-    "bcp_47": {
-      "primary_language": "fr",
-      "region": "fr",
-      "full": "fr-FR"
-    },
-    "ogp": {
-      "language": "fr",
-      "territory": "FR",
-      "full": "fr-FR"
-    },
     "names": {
-      "en": "French (France)",
-      "fr": "français (France)"
+      "en": {
+        "text": "French"
+      },
+      "fr": {
+        "text": "français"
+      },
+      "es": {
+        "text": "francés"
+      }
+    },
+    "implicit": {
+      "script": "Latn"
+    }
+  },
+  "es": {
+    "names": {
+      "en": {
+        "text": "Spanish"
+      },
+      "fr": {
+        "text": "espagnol"
+      },
+      "es": {
+        "text": "español"
+      }
+    },
+    "implicit": {
+      "script": "Latn"
     }
   }
 }
