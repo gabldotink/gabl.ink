@@ -5,7 +5,7 @@
 
 zero_pad(){
   zero_pad_depth="$1"
-  zero_pad_integer="$2"
+  zero_pad_var="$2"
 
-  printf '%0'"${zero_pad_depth}"'d\n' "${zero_pad_integer}"
+  eval "zero_pad_${zero_pad_depth}_${zero_pad_var}"'="$(printf "%0${zero_pad_depth}d" "${'"${zero_pad_var}"'}")"'
 }

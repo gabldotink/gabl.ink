@@ -105,11 +105,11 @@ for i in ${items};do
 
     if [ "${type}" = comic_page ];then
       first_published_d="$(jq_r first_published.d "${i}")"
-      zero_pad_2_first_published_d="$(zero_pad 2 "${first_published_d}")"
+      zero_pad 2 first_published_d
       first_published_m="$(jq_r first_published.m "${i}")"
-      zero_pad_2_first_published_m="$(zero_pad 2 "${first_published_m}")"
+      zero_pad 2 first_published_m
       first_published_y="$(jq_r first_published.y "${i}")"
-      zero_pad_4_first_published_y="$(zero_pad 4 "${first_published_y}")"
+      zero_pad 4 first_published_y
       chapter="$(jq_r location.chapter "${i}")"
       next="$(jq_r location.next "${i}")"
       page="$(jq_r location.page "${i}")"
@@ -187,19 +187,19 @@ for i in ${items};do
       container_first="$(jq_r pages.first "${index}/${id}/../data.json")"
       container_last="$(jq_r pages.last "${index}/${id}/../data.json")"
 
-      zero_pad_2_container_first="$(zero_pad 2 "${container_first}")"
-      zero_pad_2_container_last="$(zero_pad 2 "${container_last}")"
+      zero_pad 2 container_first
+      zero_pad 2 container_last
       if ! test_null prev;then
-        zero_pad_2_prev="$(zero_pad 2 "${prev}")"
+        zero_pad 2 prev
       else
         unset zero_pad_2_prev
       fi
       if ! test_null next;then
-        zero_pad_2_next="$(zero_pad 2 "${next}")"
+        zero_pad 2 next
       else
         unset zero_pad_2_next
       fi
-      zero_pad_2_page="$(zero_pad 2 "${page}")"
+      zero_pad 2 page
 
       if test_null prev;then
         # This is the first page, so no prefetches are needed.
@@ -422,11 +422,11 @@ for i in ${items};do
       for p in $(jq_r 'post|to_entries|.[].key' "${i}");do
         set_var_l10n post_content 'post.['"${p}].content" "${i}"
         post_date_d="$(jq -r --argjson p "${p}" -- '.post[$p].date.d' "${i}")"
-        zero_pad_2_post_date_d="$(zero_pad 2 "${post_date_d}")"
+        zero_pad 2 post_date_d
         post_date_m="$(jq -r --argjson p "${p}" -- '.post[$p].date.m' "${i}")"
-        zero_pad_2_post_date_m="$(zero_pad 2 "${post_date_m}")"
+        zero_pad 2 post_date_m
         post_date_y="$(jq -r --argjson p "${p}" -- '.post[$p].date.y' "${i}")"
-        zero_pad_4_post_date_y="$(zero_pad 4 "${post_date_y}")"
+        zero_pad 4 post_date_y
 
         printf '%s-%s-%s">' "${zero_pad_4_post_date_y}" \
                             "${zero_pad_2_post_date_m}" \
