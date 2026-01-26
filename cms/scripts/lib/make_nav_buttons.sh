@@ -85,12 +85,12 @@ make_nav_buttons_p_n(){
 make_nav_buttons(){
   make_nav_buttons_l="$1"
 
-  printf '<div id="nav_%s_buttons">' "${make_nav_buttons_l}"
+  printf '<nav id="nav_%s_buttons">' "${make_nav_buttons_l}"
 
   make_nav_buttons_f_l '<'
   make_nav_buttons_p_n '<'
   make_nav_buttons_p_n '>'
   make_nav_buttons_f_l '>'
 
-  printf '</div>'
+  printf '</nav>'
 }

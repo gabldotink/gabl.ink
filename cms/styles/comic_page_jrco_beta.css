@@ -23,8 +23,8 @@ picture#gabldotink_logo img {
   opacity: 10%;
 }
 
-div#nav_top_buttons,
-div#nav_bottom_buttons {
+nav#nav_top_buttons,
+nav#nav_bottom_buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -82,7 +82,7 @@ div#comic_page_image picture img {
   max-width: 100%;
 }
 
-div#nav_bottom_list details {
+nav#nav_bottom_list details {
   white-space: nowrap;
 }
 

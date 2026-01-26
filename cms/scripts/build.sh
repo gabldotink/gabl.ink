@@ -310,7 +310,7 @@ for i in ${items};do
 
       make_nav_buttons bottom
 
-      printf '<div id="nav_bottom_list">'
+      printf '<nav id="nav_bottom_list">'
 
       printf '<details id="nav_bottom_list_root">'
 
@@ -351,7 +351,7 @@ for i in ${items};do
         sh "$(printf '%s' "$-"|grep -F -- x)" "${zero_pad_2_page}" "${lib}" \
            "${lang}" "${lang_l}" "${lang_default}" '{}' ';'
 
-      printf '</ol></details></div></div>'
+      printf '</ol></details></nav></div>'
 
       printf '<details id="comic_transcript" open="">'
 
