@@ -556,11 +556,11 @@ for i in ${items};do
       printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_last}"
     printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
-    printf '<p>License: <a rel="external license" href="%s" ' "${copyright_license_url}"
+    printf '<p>License: <a rel="external license" href="%s" ' "${copyright_license_url_id}"
     printf 'hreflang="en" type="text/html">'
-    printf '<cite>%s</cite>' "${copyright_license_title}"
+    printf '<cite>%s</cite>' "${copyright_license_title_html}"
     ! test_null copyright_license_abbr &&
-      printf ' (<cite class="nw"><abbr>%s</abbr></cite>)' "${copyright_license_abbr}"
+      printf ' (<cite class="nw"><abbr>%s</abbr></cite>)' "${copyright_license_abbr_html}"
     printf '</a></p>'
 
     if test_null disclaimer;then
