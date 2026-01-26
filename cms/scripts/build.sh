@@ -561,8 +561,8 @@ for i in ${items};do
       printf ' (<cite class="nw"><abbr>%s</abbr></cite>)' "${copyright_license_abbr_html}"
     printf '</a></p>'
 
-    if test_null disclaimer;then
-      disclaimer_html="$(jq -r --arg d "${disclaimer}" --arg l "${lang}" -- '.[$d][$l]' "${dict}/disclaimer.json")"
+    if ! test_null disclaimer;then
+      set_var_l10n disclaimer "\"${disclaimer}\"" "${dict}/disclaimer.json"
       printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
     else
       unset disclaimer_html
