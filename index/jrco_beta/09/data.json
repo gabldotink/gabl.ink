@@ -24,7 +24,7 @@
     "lines": [
       {
         "h": null,
-        "d": "A computer screen shows a video game, <i><cite>Hyper Galactic Battle Ducks III</cite></i>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+        "d": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
       },
       {
         "h": "chat",
@@ -60,7 +60,7 @@
       },
       {
         "h": "JoeRunner",
-        "d": "(<i>off-panel, loudly</i>) <em class=\"roman\">Shoot!</em>"
+        "d": "(<i>off-panel, loudly</i>) <em class=\"r\">Shoot!</em>"
       },
       {
         "h": "T.T.",
@@ -96,15 +96,15 @@
       },
       {
         "h": "JoeRunner",
-        "d": "(<i>surprised</i>) Harry, <em class=\"roman u\">you’ve</em> been <code>ottohammr</code> this whole time?"
+        "d": "(<i>surprised</i>) Harry, <em class=\"r u\">you’ve</em> been <code>ottohammr</code> this whole time?"
       },
       {
         "h": "Harry",
-        "d": "The last four years, anyway. And now you are approximately <span class=\"nw\">1.39729 × 10<sup>12</sup></span> molecules of space debris."
+        "d": "The last four years, anyway. And now you are approximately 1.39729 × 10<sup>12</sup> molecules of space debris."
       },
       {
         "h": null,
-        "d": "T.T. and Harry grab each other’s hands in the air."
+        "d": "T.T. and Harry dap each other up."
       },
       {
         "h": "Harry",

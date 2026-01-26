@@ -34,11 +34,11 @@
   "description": {
     "en-US": {
       "text": "The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._",
-      "html": "The title page for <cite class=\"i nw\">JoeRunner and Co. Beta</cite>, originally <cite class=\"i nw\">JoeRunner and Co.</cite>"
+      "html": "The title page for <cite class=\"i\">JoeRunner and Co. Beta</cite>, originally <cite class=\"i\">JoeRunner and Co.</cite>"
     },
     "fr": {
       "text": "La page de titre de « JoeRunner et cie Bêta », intitulée originalement « JoeRunner et cie ».",
-      "html": "La page de titre de <cite class=\"i nw\">JoeRunner et cie Bêta</cite>, intitulée originalement <cite class=\"i\">JoeRunner et cie</cite>."
+      "html": "La page de titre de <cite class=\"i\">JoeRunner et cie Bêta</cite>, intitulée originalement <cite class=\"i\">JoeRunner et cie</cite>."
     }
   },
   "tooltip": {

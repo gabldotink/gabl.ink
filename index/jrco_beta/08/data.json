@@ -24,7 +24,7 @@
     "lines": [
       {
         "h": null,
-        "d": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading “77” and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font."
+        "d": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T-shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all-lowercase sans-serif font."
       },
       {
         "h": "boy",
@@ -52,7 +52,7 @@
       },
       {
         "h": "T.T.",
-        "d": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em>"
+        "d": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em>"
       }
     ]
   },

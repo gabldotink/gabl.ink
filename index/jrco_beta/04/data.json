@@ -24,7 +24,7 @@
   },
   "tooltip": {
     "text": "May 27. I have spent every waking moment for the last four weeks only experiencing the Magna Carta. My soul is the Magna Carta. My mind is the Magna Carta. My dreams are the Magna Carta. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace.",
-    "html": "<time class=\"nw\" datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
+    "html": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
   },
   "transcript": {
     "lines": [
@@ -46,7 +46,7 @@
       },
       {
         "h": null,
-        "d": "The cursor selects the <i>Submit</i> button."
+        "d": "The cursor selects the Submit button."
       },
       {
         "h": "sound effects",
@@ -62,7 +62,7 @@
       },
       {
         "h": "tooltip",
-        "d": "<time class=\"nw\" datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
+        "d": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
       }
     ]
   },
