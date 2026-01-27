@@ -63,19 +63,6 @@ for i in ${items};do
   id="$(jq_r id "${i}")"
   set_var_l10n title title "${i}"
 
-  # This is dumb
-  #if [ "${lang}" = en ];then
-  #  if printf '%s' "${title_text}" | grep -Fqe '“' -e '”';then
-  #    if printf '%s' "${title_text}" | grep -Fqe "‘";then
-  #      # Only convert ’ to ” if followed by a space or newline
-  #      printf '%s' "${title_text}" | sed -e 's/“/'"‘/g" -e 's/”/'"’/g" -e "s/‘"'/“/g' \
-  #                                        -e "s/’"'$/”/' -e "s/’"'\([^[:alnum:]_[:space:]]\)/”\1/g'
-  #    else
-  #
-  #    fi
-  #  fi
-  #fi
-
   canonical="https://gabl.ink/index/${id}/${lang}/"
 
   # Covers two cases:
