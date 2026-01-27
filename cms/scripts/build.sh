@@ -85,13 +85,12 @@ for i in ${items};do
     true > "${fifos}/.build_output.html"
 
   {
-    printf '<!DOCTYPE html>'
+    printf '<!DOCTYPE html>\n'
+    printf '<!-- SPDX-License-Identifier: %s -->\n' "${copyright_license_spdx}"
 
     # shellcheck disable=2154
-    printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">\n' \
+    printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
            "${lang}" "${lang_d}" "${lang}"
-
-    printf '<!-- SPDX-License-Identifier: %s -->\n' "${copyright_license_spdx}"
 
     printf '<head>'
     printf '<meta charset="utf-8"/>'
