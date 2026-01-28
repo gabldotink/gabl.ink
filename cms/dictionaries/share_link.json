@@ -1,4 +1,17 @@
 {
+  "email": {
+    "name": {
+      "en": {
+        "text": "email"
+      },
+      "fr": {
+        "text": "email"
+      }
+    },
+    "base": "mailto:",
+    "title": "subject",
+    "text": "body"
+  },
   "x": {
     "name": {
       "en": {
@@ -23,7 +36,7 @@
       }
     },
     "base": "https://www.reddit.com/submit?type=LINK",
-    "text": "title",
+    "title": "title",
     "url": "url"
   },
   "facebook": {

@@ -455,7 +455,16 @@ for i in ${items};do
       printf '<summary>Share this page</summary>'
       printf '<ul>'
 
-      make_share_link x \
+      make_share_link email \
+                     "$(
+                        printf 'gabl.ink: _%s_: “' "${series_title_text}"
+                        printf '%s”' "${title_text}"
+                      )" \
+                     "$(
+                        printf 'From https://gabl.ink/ : %s' "${canonical}"
+                      )"
+
+      make_share_link x '' \
                      "$(
                         printf 'gabl.ink @gabldotink: _%s_: “' "${series_title_text}"
                         printf '%s”' "${title_text}"
@@ -470,14 +479,14 @@ for i in ${items};do
 
       make_share_link facebook
 
-      make_share_link telegram \
+      make_share_link telegram '' \
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link bluesky \
+      make_share_link bluesky '' \
                      "$(
                         printf 'gabl.ink @gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
@@ -485,35 +494,35 @@ for i in ${items};do
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link whatsapp \
+      make_share_link whatsapp '' \
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '%s' "${canonical}"
                       )"
 
-      make_share_link mastodon \
+      make_share_link mastodon '' \
                      "$(
                         printf 'gabl.ink @gabldotink@mstdn.party: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link threads \
+      make_share_link threads '' \
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link truth_social \
+      make_share_link truth_social '' \
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
 
-      make_share_link gab \
+      make_share_link gab '' \
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
