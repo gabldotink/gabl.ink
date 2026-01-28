@@ -461,7 +461,7 @@ for i in ${items};do
                         printf '%s”' "${title_text}"
                       )" \
                      "$(
-                        printf 'From https://gabl.ink/ : %s' "${canonical}"
+                        printf 'From https://gabl.ink/ : %s' "${canonical}"
                       )"
 
       make_share_link x '' \
