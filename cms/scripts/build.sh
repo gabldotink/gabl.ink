@@ -528,6 +528,16 @@ for i in ${items};do
                         printf '%s” ' "${title_text}"
                         printf '#gabldotink #%s' "${series_hashtag_id}"
                       )"
+      
+      make_share_link vk \
+                     "$(
+                        printf 'gabl.ink: _%s_: “' "${series_title_text}"
+                        printf '%s” ' "${title_text}"
+                        )" \
+                     "$(
+                        printf 'From https://gabl.ink/ : %s ' "${canonical}"
+                        printf '#gabldotink #%s' "${series_hashtag_id}"
+                        )"
 
       printf '</ul></details>'
 

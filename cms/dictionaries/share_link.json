@@ -139,5 +139,22 @@
     "base": "https://gab.com/compose",
     "text": "text",
     "url": "url"
+  },
+  "vk": {
+    "name": {
+      "en": {
+        "text": "VK"
+      },
+      "fr": {
+        "text": "VK"
+      },
+      "ru": {
+        "text": "ВКонтакте"
+      }
+    },
+    "base": "https://vk.com/share.php",
+    "title": "title",
+    "text": "comment",
+    "url": "url"
   }
 }
