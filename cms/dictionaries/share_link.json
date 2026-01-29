@@ -4,12 +4,27 @@
       "en": {
         "text": "email"
       },
-      "fr": {
+      "fr-FR": {
         "text": "email"
+      },
+      "fr-CA": {
+        "text": "courriel"
       }
     },
     "base": "mailto:",
     "title": "subject",
+    "text": "body"
+  },
+  "sms": {
+    "name": {
+      "en": {
+        "text": "text messaging"
+      },
+      "fr": {
+        "text": "messagerie texto"
+      }
+    },
+    "base": "sms:",
     "text": "body"
   },
   "x": {

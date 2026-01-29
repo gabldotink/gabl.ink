@@ -463,6 +463,13 @@ for i in ${items};do
                      "$(
                         printf 'From https://gabl.ink/ : %s' "${canonical}"
                       )"
+      
+      make_share_link sms '' \
+                     "$(
+                        printf 'gabl.ink: _%s_: “' "${series_title_text}"
+                        printf '%s” ' "${title_text}"
+                        printf "${canonical}"
+                        )"
 
       make_share_link x '' \
                      "$(
