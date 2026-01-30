@@ -17,34 +17,77 @@
     }
   },
   "description": {
-    "text": "JoeRunner finger-combs his hair and puts on his glasses.",
-    "html": "JoeRunner finger-combs his hair and puts on his glasses."
+    "en": {
+      "text": "JoeRunner brushes his hair with his hand and puts on his glasses."
+    },
+    "fr": {
+      "text": "JoeRunner se brosse les cheveux avec son main et mette ses lunettes."
+    }
   },
   "tooltip": {
-    "text": "first panel is based on the experience of looking at my drawings",
-    "html": "first panel is based on the experience of looking at my drawings"
+    "en": {
+      "text": "first panel is based on the experience of looking at my drawings"
+    },
+    "fr": {
+      "text": "la première case est adapté en l’expérience de regarder mes dessins"
+    }
   },
   "transcript": {
     "lines": [
       {
         "h": null,
-        "d": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+        "d": {
+          "en": {
+            "text": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+          },
+          "fr": {
+            "text": "Le garçon regarde le miroir de salle de bain dans son pyjama, avec des cheveux ébouriffé et ses lunettes sur la comptoir. Il semble un peu dégoûtant."
+          }
+        }
       },
       {
         "h": "boy",
-        "d": "(<i>thinking</i>) Ugh."
+        "d": {
+          "en": {
+            "html": "(<i>thinking</i>) Ugh."
+          },
+          "fr": {
+            "html": "(<i>pensée</i>) Euh."
+          }
+        }
       },
       {
         "h": null,
-        "d": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+        "d": {
+          "en": {
+            "text": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+          },
+          "fr": {
+            "text": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
+          }
+        }
       },
       {
         "h": "character bio",
-        "d": "JoeRunner / master of mornings"
+        "d": {
+          "en": {
+            "text": "JoeRunner / master of mornings"
+          },
+          "fr": {
+            "text": "JoeRunner / maître des matins"
+          }
+        }
       },
       {
         "h": "tooltip",
-        "d": "first panel is based on the experience of looking at my drawings"
+        "d": {
+          "en": {
+            "text": "first panel is based on the experience of looking at my drawings"
+          },
+          "fr": {
+            "text": "la première case est adapté en l’expérience de regarder mes dessins"
+          }
+        }
       }
     ]
   },
@@ -61,14 +104,19 @@
         "d": 22
       },
       "content": {
-        "html": "<p>If only it were really this easy.</p><p>“But Gabe!” you might be thinking, “JoeRunner doesn’t have a nose! How does he put on his glasses?” And you’re right. And I promise that the other characters have noses.</p><p>Some of them. Some of the other characters have noses.</p>"
+        "en": {
+          "html": "<p>If only it were really this easy.</p><p>“But Gabe!” you might be thinking, “JoeRunner doesn’t have a nose! How does he put on his glasses?” And you’re right. And I promise that the other characters have noses.</p><p>Some of them. Some of the other characters have noses.</p>"
+        },
+        "fr": {
+          "html": "<p>Si seulement il était si facile.</p><p>« Mais Gabe ! » peut-être que vous pensez, « JoeRunner n’a pas un nez ! Comment il mette ses lunettes ? » Et vous avez raison. Et je promets que les autres personnages avent les nez.</p><p>Quelques. Quelques des autres personnages avent les nez.</p>"
+        }
       }
     }
   ],
   "copyright": {
     "year": {
       "first": 2022,
-      "last": 2025
+      "last": 2026
     },
     "license": [
       "cc-by-4.0"
