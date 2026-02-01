@@ -3,6 +3,11 @@
 
 export POSIXLY_CORRECT
 
+trap '
+  printf "Exiting. No changes were made."
+  exit 1' \
+  INT EXIT
+
 script="$0"
 
 scripts="$(dirname -- "${script}")"
@@ -41,9 +46,13 @@ for i in ${items};do
 
   [ "${type}" = comic_series ] &&
     continue
+  
+  id="$(jq_r id "${i}")"
 
   #lang="$(jq_r language "${i}")"
   lang=en-US
+
+  printf '[start] %s/%s\n' "${id}" "${lang}" >&2
 
   parse_lang
 
@@ -60,7 +69,6 @@ for i in ${items};do
   copyright_year_last="$(jq_r copyright.year.last "${i}")"
   set_var_l10n description description "${i}"
   disclaimer="$(jq_r 'disclaimer[0]' "${i}")"
-  id="$(jq_r id "${i}")"
   set_var_l10n title title "${i}"
 
   canonical="https://gabl.ink/index/${id}/${lang}/"
@@ -70,6 +78,12 @@ for i in ${items};do
   # • If the FIFO/file already exists, it will be truncated
   mkfifo "${fifos}/.build_output.html" >/dev/null 2>&1 ||
     true > "${fifos}/.build_output.html"
+  
+  trap '
+  rm "${fifos}/.build_output.html" >/dev/null 2>&1
+  printf "Exiting. No permanent changes were made.\n" >&2
+  exit 1' \
+  INT EXIT
 
   {
     printf '<!DOCTYPE html>\n'
@@ -585,13 +599,24 @@ for i in ${items};do
 
     printf '</body></html>\n'
   } > "${fifos}/.build_output.html"
-done
 
-cat "${fifos}/.build_output.html" > "${index}/${id}/${lang}/index.html"
-rm "${fifos}/.build_output.html"
+  cat "${fifos}/.build_output.html" > "${index}/${id}/${lang}/index.html"
+
+  trap '
+  rm "${fifos}/.build_output.html" >/dev/null 2>&1
+  printf "Exiting. Permanent changes were made.\n" >&2
+  exit 1' \
+  INT EXIT
+
+  rm "${fifos}/.build_output.html"
+
+  printf '[done] %s/%s\n' "${id}" "${lang}" >&2
+done
 
 [ "${warning_warned}" = true ] &&
   [ "${config_exit_nonzero_with_warnings}" = true ] &&
     exit 2
+
+trap - INT EXIT
 
 # exit 0
