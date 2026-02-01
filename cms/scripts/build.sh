@@ -172,7 +172,7 @@ for i in ${items};do
       printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="zxx" type="text/css"/>' \
              "${styles}" "${series}"
 
-      printf '<link rel="license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url}"
+      printf '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url_id}"
 
       if   [ "${up_directories}" -eq 2 ];then
         unset volume chapter

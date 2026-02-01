@@ -21,7 +21,7 @@ make_page_list_entry(){
     if [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ];then
       printf '<b><cite>'
       printf '%s' "${title_html}"
-      printf '</cite></b>”</li>'
+      printf '</cite></b>”'
     else
       printf '<a href="../'
       printf '%s' "${make_page_list_entry_s}"
