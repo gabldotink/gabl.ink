@@ -19,7 +19,7 @@ if [ "$#" -gt 0 ];then
   printf 'This script generates the gabl.ink website.\n'
   printf 'It does not accept arguments.\n\n'
 
-  printf '© 2024–2026 gabl.ink.\n'
+  printf '© 2024–2026 gabl.ink\n'
   printf 'License: CC0 1.0 Universal (CC0 1.0)\n'
   printf 'https://creativecommons.org/publicdomain/zero/1.0/deed.en\n'
 
