@@ -482,7 +482,7 @@ for i in ${items};do
                      "$(
                         printf 'gabl.ink: _%s_: “' "${series_title_text}"
                         printf '%s” ' "${title_text}"
-                        printf "${canonical}"
+                        printf '%s' "${canonical}"
                         )"
 
       make_share_link x '' \
