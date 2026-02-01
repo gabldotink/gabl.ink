@@ -10,18 +10,56 @@ trap '
 
 script="$0"
 
+for c in cut find grep jq mkfifo rm tput sh;do
+  if command -v "${c}" >/dev/null 2>&1;then
+    commands_v="${commands_v} ${c}"
+  fi
+done
+
+for r in cut find grep jq rm sh;do
+  case "${commands_v} " in
+    *" ${r} "*)
+      true ;;
+    *)
+      printf '[error] This script requires the following commands to be installed in PATH: cut find grep jq rm sh\n' >&2
+      printf '        The following commands are also optional: mkfifo tput\n' >&2
+      printf '        You have the following commands installed:%s\n' "${commands_v}" >&2
+      printf '        Please install missing commands.\n' >&2
+      exit 1
+  esac
+done
+
+case " ${commands_v} " in
+  *' tput '*)
+    tput_colors="$(tput colors)"
+    tput_reset="$(tput sgr0)" 
+    if   [ "${tput_colors}" -ge 256 ];then
+      tput_link="$(tput setaf 21)$(tput smul)"
+    elif [ "${tput_colors}" -ge 16 ];then
+      tput_link="$(tput setaf 12)$(tput smul)"
+    else
+      tput_link="$(tput setaf 4)$(tput smul)"
+    fi ;;
+  *)
+    unset tput_colors tput_reset tput_link
+esac
+
 # Display help if any arguments are passed
 if [ "$#" -gt 0 ];then
   trap - INT EXIT
 
-  printf 'Usage: %s\n\n' "${script}"
+  printf 'Usage: %s\n\n' "${script}" >&2
 
-  printf 'This script generates the gabl.ink website.\n'
-  printf 'It does not accept arguments.\n\n'
+  printf 'This script generates the gabl.ink website.\n' >&2
+  printf 'It does not accept arguments.\n\n' >&2
 
-  printf '© 2024–2026 gabl.ink\n'
-  printf 'License: CC0 1.0 Universal (CC0 1.0)\n'
-  printf 'https://creativecommons.org/publicdomain/zero/1.0/deed.en\n'
+  printf 'This script requires the following commands to be installed in PATH: cut find grep jq rm sh\n' >&2
+  printf 'The following commands are also optional: mkfifo tput\n' >&2
+  printf 'You have the following commands installed:%s\n\n' "${commands_v}" >&2
+
+  printf '© 2024–2026 gabl.ink\n' >&2
+  printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
+  printf '%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s\n' "${tput_link}" "${tput_reset}" >&2
 
   exit 1
 fi
@@ -89,11 +127,16 @@ for i in ${items};do
 
   canonical="https://gabl.ink/index/${id}/${lang}/"
 
-  # Covers two cases:
-  # • If a named pipe (FIFO) cannot be created, a regular file will be created
-  # • If the FIFO/file already exists, it will be truncated
-  mkfifo "${fifos}/.build_output.html" >/dev/null 2>&1 ||
-    true > "${fifos}/.build_output.html"
+  case "${command_v} " in
+    *' mkfifo '*)
+      # Covers two cases:
+      # • If a named pipe (FIFO) cannot be created, a regular file will be created
+      # • If the FIFO/file already exists, it will be truncated
+      mkfifo "${fifos}/.build_output.html" >/dev/null 2>&1 ||
+        true > "${fifos}/.build_output.html" ;;
+    *)
+      true > "${fifos}/.build_output.html"
+  esac
   
   trap '
   rm "${fifos}/.build_output.html" >/dev/null 2>&1
