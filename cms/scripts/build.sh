@@ -10,6 +10,22 @@ trap '
 
 script="$0"
 
+# Display help if any arguments are passed
+if [ "$#" -gt 0 ];then
+  trap - INT EXIT
+
+  printf 'Usage: %s\n\n' "${script}"
+
+  printf 'This script generates the gabl.ink website.\n'
+  printf 'It does not accept arguments.\n\n'
+
+  printf '© 2024–2026 gabl.ink.\n'
+  printf 'License: CC0 1.0 Universal (CC0 1.0)\n'
+  printf 'https://creativecommons.org/publicdomain/zero/1.0/deed.en\n'
+
+  exit 1
+fi
+
 scripts="$(dirname -- "${script}")"
 cms="${scripts}/.."
 dict="${cms}/dictionaries"
