@@ -21,7 +21,7 @@ lib="${scripts}/lib"
 command -v jq >/dev/null 2>&1 ||
   error 'jq is not installed in PATH'
 
-# shellcheck source=/dev/null
+# shellcheck source-path=./lib
 for f in "${lib}/"*.sh;do
   . "${f}"
 done
