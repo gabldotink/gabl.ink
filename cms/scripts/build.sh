@@ -33,7 +33,7 @@ case " ${commands_v} " in
   *' tput '*)
     tput_colors="$(tput colors)"
     tput_reset="$(tput sgr0)" 
-    if   [ "${tput_colors}" -ge 256 ];then
+    if [ "${tput_colors}" -ge 256 ];then
       tput_link="$(tput setaf 21)$(tput smul)"
     else
       tput_link="$(tput setaf 4)$(tput smul)"
