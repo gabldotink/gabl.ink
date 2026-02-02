@@ -35,8 +35,6 @@ case " ${commands_v} " in
     tput_reset="$(tput sgr0)" 
     if   [ "${tput_colors}" -ge 256 ];then
       tput_link="$(tput setaf 21)$(tput smul)"
-    elif [ "${tput_colors}" -ge 16 ];then
-      tput_link="$(tput setaf 12)$(tput smul)"
     else
       tput_link="$(tput setaf 4)$(tput smul)"
     fi ;;
