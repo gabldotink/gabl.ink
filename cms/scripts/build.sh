@@ -122,7 +122,7 @@ for i in ${items};do
 
   canonical="https://gabl.ink/index/${id}/${lang}/"
 
-  case "${command_v} " in
+  case "${commands_v} " in
     *' mkfifo '*)
       # Covers two cases:
       # • If a named pipe (FIFO) cannot be created, a regular file will be created
