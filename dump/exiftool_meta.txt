@@ -1,0 +1,20 @@
+-PNG:Artist=gabldotink
+-PNG:Title=“Thursday” title page
+-PNG:Description=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-PNG:Copyright=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+
+-XMP:Artist=gabldotink
+-XMP:Title-x-default=“Thursday” title page
+-XMP:Title-en=“Thursday” title page
+-XMP:Title-en-US=“Thursday” title page
+-XMP:Title-fr=page de titre de « jeudi »
+-XMP:Description-x-default=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-XMP:Description-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-XMP:Description-fr=La page de titre de « JoeRunner et cie Bêta », intitulée originalement « JoeRunner et cie ».
+-XMP:Copyright-x-default=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-XMP:Copyright-en=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-XMP:Copyright-en-US=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-XMP:Creator=gabldotink
+
+-EXIF:Artist=gabldotink
+-EXIF:Copyright=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
