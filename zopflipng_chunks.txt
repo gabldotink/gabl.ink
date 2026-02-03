@@ -1,0 +1,1 @@
+acTL,bKGD,cHRM,cICP,caBX,cplp,dSIG,eXIf,fRAc,gAMA,gIFg,gIFt,gIFx,gdAT,hIST,iCCP,iCCP,iDOT,IHDR,iTXt,meTa,oFFs,pCAL,pHYs,PLTE,sBIT,sCAL,sPLT,sRGB,sTER,saAl,tEXt,tIME,tRNS,tXMP,vpAg,zTXt,zxIf
