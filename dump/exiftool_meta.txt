@@ -1,25 +1,26 @@
--PNG:Artist=gabldotink
--PNG:Artist-en=gabldotink
--PNG:Title=“Thursday” title page
--PNG:Title-en-US=“Thursday” title page
--PNG:Description=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
--PNG:Description-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
--PNG:Copyright=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
--PNG:Copyright-en-US=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
--PNG:Software=Celsys Studio Tool
--PNG:Disclaimer=gabl.ink is not affiliated with, endorsed by, or sponsored by the International Olympic Committee or any other Olympic organization. _OLYMPIAD_ and related marks are trademarks of their respective owners.
--PNG:Collection=JoeRunner and Co. Beta
-
--XMP:Artist=gabldotink
--XMP:Title-x-default=“Thursday” title page
--XMP:Title-en-US=“Thursday” title page
--XMP:Description-x-default=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
--XMP:Description-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
--XMP:Copyright-x-default=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
--XMP:Copyright-en-US=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
--XMP:Creator=gabldotink
-
 -EXIF:Artist=gabldotink
 -EXIF:Copyright=Copyright (c) 2022-2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
 -EXIF:ImageDescription=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
 -EXIF:Software=Celsys Studio Tool
+
+-PNG:Artist=gabldotink
+-PNG:Artist-en=gabldotink
+-PNG:Collection=JoeRunner and Co. Beta
+-PNG:Copyright=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-PNG:Copyright-en-US=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-PNG:Description=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-PNG:Description-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-PNG:Disclaimer=gabl.ink is not affiliated with, endorsed by, or sponsored by the International Olympic Committee or any other Olympic organization. _OLYMPIAD_ and related marks are trademarks of their respective owners.
+-PNG:Disclaimer-en-US=gabl.ink is not affiliated with, endorsed by, or sponsored by the International Olympic Committee or any other Olympic organization. _OLYMPIAD_ and related marks are trademarks of their respective owners.
+-PNG:Title=“Thursday” title page
+-PNG:Title-en-US=“Thursday” title page
+-PNG:Software=Celsys Studio Tool
+
+-XMP:Artist=gabldotink
+-XMP:Copyright-x-default=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-XMP:Copyright-en-US=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
+-XMP:Creator=gabldotink
+-XMP:Description-x-default=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-XMP:Description-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-XMP:Title-x-default=“Thursday” title page
+-XMP:Title-en-US=“Thursday” title page
