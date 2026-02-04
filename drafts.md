@@ -81,6 +81,6 @@ For these reasons, we don’t use the `q` element at all, and we put the `cite` 
 
 _gabl.ink_: /ˈɡabœl dɔt ink/
 
-## `text` and `html`
+## Localization data types
 
-A localized JSON value must have at least one of the `text`, `html`, or `id` values. If there is no `html` value, the script’s `html` value will be set to the JSON `text` value. If there is no `text` value, the `text` value simply cannot be used in the script. An `id` value is localized, but does not contain linguistic content (e.g. a URL). If `id` exists, `text` and `html` should not.
+A localized JSON value must have at least one of the `ascii`, `text`, `html`, or `id` values. If there is no `html` value, the script’s `html` value will be set to the JSON `text` value. If there is no `text` value, the `text` value will be set to the JSON `ascii` value. An `id` value is localized, but does not contain linguistic content (e.g. a URL or hashtag). If `id` exists, others should not.

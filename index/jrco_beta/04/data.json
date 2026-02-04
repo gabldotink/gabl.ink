@@ -10,11 +10,11 @@
   "language": "en",
   "title": {
     "en": {
-      "text": "Magna Carta",
+      "ascii": "Magna Carta",
       "html": "<cite>Magna Carta</cite>"
     },
     "fr": {
-      "text": "Magna Carta",
+      "ascii": "Magna Carta",
       "html": "<cite>Magna Carta</cite>"
     }
   },

@@ -16,36 +16,33 @@ set_var_l10n(){
       break
     fi
 
-    for t in text html id; do
+    for t in ascii html id text; do
       eval "${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
     done
 
-    # This language has an id value; unset other values and end the loop
     if ! test_null "${set_var_l10n_name}_id";then
-      unset "${set_var_l10n_name}_text" "${set_var_l10n_name}_html"
+      unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
       break
     fi
 
-    # This language has no id value; unset it
     unset "${set_var_l10n_name}_id"
 
-    # This language has an html value
-    if ! test_null "${set_var_l10n_name}_html";then
-      # This language has no text value; unset it
-      test_null "${set_var_l10n_name}_text" &&
-        unset "${set_var_l10n_name}_text"
-      # End the loop
-      break
+    if test_null "${set_var_l10n_name}_text";then
+      if ! test_null "${set_var_l10n_name}_ascii";then
+        eval "${set_var_l10n_name}"'_text="${'"${set_var_l10n_name}"'_ascii}"'
+      else
+        unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
+      fi
     fi
+
+    ! test_null "${set_var_l10n_name}_html" &&
+      break
     
-    # This language only has a text value
-    if ! test_null "${set_var_l10n_name}_text";then
-      # Set the html value to it, and end the loop
+    if [ -n "$(eval 'printf "%s" "${'"${set_var_l10n_name}"'_text}"')" ];then
       eval "${set_var_l10n_name}"'_html="${'"${set_var_l10n_name}"'_text}"'
       break
     fi
 
-    # This language has no value; unset text and html and continue to the next
-    unset "${set_var_l10n_name}_text" "${set_var_l10n_name}_html"
+    unset "${set_var_l10n_name}_ascii"
   done
 }

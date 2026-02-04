@@ -2,134 +2,134 @@
   "months": [
     {
       "en": {
-        "text": "January"
+        "ascii": "January"
       },
       "fr": {
-        "text": "janvier"
+        "ascii": "janvier"
       },
       "es": {
-        "text": "enero"
+        "ascii": "enero"
       }
     },
     {
       "en": {
-        "text": "February"
+        "ascii": "February"
       },
       "fr": {
         "text": "février"
       },
       "es": {
-        "text": "febrero"
+        "ascii": "febrero"
       }
     },
     {
       "en": {
-        "text": "March"
+        "ascii": "March"
       },
       "fr": {
-        "text": "mars"
+        "ascii": "mars"
       },
       "es": {
-        "text": "marzo"
+        "ascii": "marzo"
       }
     },
     {
       "en": {
-        "text": "April"
+        "ascii": "April"
       },
       "fr": {
-        "text": "avril"
+        "ascii": "avril"
       },
       "es": {
-        "text": "abril"
+        "ascii": "abril"
       }
     },
     {
       "en": {
-        "text": "May"
+        "ascii": "May"
       },
       "fr": {
-        "text": "mai"
+        "ascii": "mai"
       },
       "es": {
-        "text": "mayo"
+        "ascii": "mayo"
       }
     },
     {
       "en": {
-        "text": "June"
+        "ascii": "June"
       },
       "fr": {
-        "text": "juin"
+        "ascii": "juin"
       },
       "es": {
-        "text": "junio"
+        "ascii": "junio"
       }
     },
     {
       "en": {
-        "text": "July"
+        "ascii": "July"
       },
       "fr": {
-        "text": "juillet"
+        "ascii": "juillet"
       },
       "es": {
-        "text": "julio"
+        "ascii": "julio"
       }
     },
     {
       "en": {
-        "text": "August"
+        "ascii": "August"
       },
       "fr": {
         "text": "août"
       },
       "es": {
-        "text": "agosto"
+        "ascii": "agosto"
       }
     },
     {
       "en": {
-        "text": "September"
+        "ascii": "September"
       },
       "fr": {
-        "text": "septembre"
+        "ascii": "septembre"
       },
       "es": {
-        "text": "septiembre"
+        "ascii": "septiembre"
       }
     },
     {
       "en": {
-        "text": "October"
+        "ascii": "October"
       },
       "fr": {
-        "text": "octobre"
+        "ascii": "octobre"
       },
       "es": {
-        "text": "octubre"
+        "ascii": "octubre"
       }
     },
     {
       "en": {
-        "text": "November"
+        "ascii": "November"
       },
       "fr": {
-        "text": "novembre"
+        "ascii": "novembre"
       },
       "es": {
-        "text": "noviembre"
+        "ascii": "noviembre"
       }
     },
     {
       "en": {
-        "text": "December"
+        "ascii": "December"
       },
       "fr": {
         "text": "décembre"
       },
       "es": {
-        "text": "diciembre"
+        "ascii": "diciembre"
       }
     }
   ]

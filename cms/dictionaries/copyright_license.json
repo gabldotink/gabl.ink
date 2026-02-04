@@ -3,14 +3,17 @@
     "spdx": "CC-BY-4.0",
     "title": {
       "en-US": {
+        "ascii": "Creative Commons Attribution 4.0 International Public License",
         "text": "Creative Commons Attribution 4.0 International Public License"
       },
       "fr": {
+        "ascii": "Publique licence Creative Commons Attribution 4.0 International",
         "text": "Publique licence Creative Commons Attribution 4.0 International"
       }
     },
     "abbr": {
       "mul": {
+        "ascii": "CC BY 4.0",
         "text": "CC BY 4.0"
       }
     },
@@ -34,14 +37,17 @@
     "spdx": "CC-BY-SA-4.0",
     "title": {
       "en-US": {
+        "ascii": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
         "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
       },
       "fr": {
+        "ascii": "Publique licence Creative Commons Attribution - Partage dans les memes conditions 4.0 International",
         "text": "Publique licence Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International"
       }
     },
     "abbr": {
       "mul": {
+        "ascii": "CC BY-SA 4.0",
         "text": "CC BY‑SA 4.0"
       }
     },
@@ -64,14 +70,17 @@
     "spdx": "CC-BY-NC-SA-4.0",
     "title": {
       "en-US": {
+        "ascii": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License",
         "text": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License"
       },
       "fr": {
+        "ascii": "Publique licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les memes conditions 4.0 International",
         "text": "Publique licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International"
       }
     },
     "abbr": {
       "mul": {
+        "ascii": "CC BY-NC-SA 4.0",
         "text": "CC BY‑NC‑SA 4.0"
       }
     },
@@ -91,14 +100,17 @@
     "spdx": "CC0-1.0",
     "title": {
       "en-US": {
+        "ascii": "CC0 1.0 Universal",
         "text": "CC0 1.0 Universal"
       },
       "fr": {
+        "ascii": "CC0 1.0 Universal",
         "text": "CC0 1.0 Universal"
       }
     },
     "abbr": {
       "mul": {
+        "ascii": "CC0 1.0",
         "text": "CC0 1.0"
       }
     },

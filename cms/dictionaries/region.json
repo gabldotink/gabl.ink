@@ -2,49 +2,49 @@
   "US": {
     "names": {
       "en": {
-        "text": "United States"
+        "ascii": "United States"
       },
       "fr": {
         "text": "États-Unis"
       },
       "es": {
-        "text": "Estados Unidos"
+        "ascii": "Estados Unidos"
       }
     }
   },
   "FR": {
     "names": {
       "en": {
-        "text": "France"
+        "ascii": "France"
       },
       "fr": {
-        "text": "France"
+        "ascii": "France"
       },
       "es": {
-        "text": "Francia"
+        "ascii": "Francia"
       }
     }
   },
   "GB": {
     "names": {
       "en": {
-        "text": "United Kingdom"
+        "ascii": "United Kingdom"
       },
       "fr": {
-        "text": "Royaume-Uni"
+        "ascii": "Royaume-Uni"
       },
       "es": {
-        "text": "Reino Unido"
+        "ascii": "Reino Unido"
       }
     }
   },
   "CA": {
     "names": {
       "en": {
-        "text": "Canada"
+        "ascii": "Canada"
       },
       "fr": {
-        "text": "Canada"
+        "ascii": "Canada"
       },
       "es": {
         "text": "Canadá"

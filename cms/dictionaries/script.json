@@ -3,13 +3,13 @@
     "dir": "ltr",
     "names": {
       "en": {
-        "text": "Latin"
+        "ascii": "Latin"
       },
       "fr": {
-        "text": "latine"
+        "ascii": "latine"
       },
       "es": {
-        "text": "latina"
+        "ascii": "latina"
       }
     }
   }

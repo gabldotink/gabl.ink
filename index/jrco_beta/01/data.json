@@ -13,19 +13,23 @@
   },
   "title": {
     "en-US": {
+      "ascii": "'Thursday' title page",
       "text": "‘Thursday’ title page",
       "html": "<span class=\"spaced_right\">‘</span><cite>Thursday</cite>’ title page"
     },
     "fr": {
+      "ascii": "page de titre de \"jeudi\"",
       "text": "page de titre de “jeudi”",
       "html": "page de titre de <cite class=\"r\">jeudi</cite>"
     },
     "unnested": {
       "en-US": {
+        "ascii": "\"Thursday\" title page",
         "text": "“Thursday” title page",
         "html": "“<cite>Thursday</cite>” title page"
       },
       "fr": {
+        "ascii": "pade de titre de \"jeudi\"",
         "text": "page de titre de « jeudi »",
         "html": "page de titre de <cite class=\"i\">jeudi</cite>"
       }
@@ -33,7 +37,7 @@
   },
   "description": {
     "en-US": {
-      "text": "The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._",
+      "ascii": "The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._",
       "html": "The title page for <cite class=\"i\">JoeRunner and Co. Beta</cite>, originally <cite class=\"i\">JoeRunner and Co.</cite>"
     },
     "fr": {
@@ -79,10 +83,10 @@
         "h": "meta/sound_effect",
         "d": {
           "en": {
-            "text": "Beep, beep, beep"
+            "ascii": "Beep, beep, beep"
           },
           "fr": {
-            "text": "Bip, bip, bip"
+            "ascii": "Bip, bip, bip"
           }
         }
       },

@@ -2,13 +2,13 @@
   "email": {
     "name": {
       "en": {
-        "text": "email"
+        "ascii": "email"
       },
       "fr-FR": {
-        "text": "email"
+        "ascii": "email"
       },
       "fr-CA": {
-        "text": "courriel"
+        "ascii": "courriel"
       }
     },
     "base": "mailto:",
@@ -18,10 +18,10 @@
   "sms": {
     "name": {
       "en": {
-        "text": "text messaging"
+        "ascii": "text messaging"
       },
       "fr": {
-        "text": "messagerie texto"
+        "ascii": "messagerie texto"
       }
     },
     "base": "sms:",
@@ -30,10 +30,10 @@
   "x": {
     "name": {
       "en": {
-        "text": "X"
+        "ascii": "X"
       },
       "fr": {
-        "text": "X"
+        "ascii": "X"
       }
     },
     "base": "https://x.com/intent/tweet",
@@ -44,10 +44,10 @@
   "reddit": {
     "name": {
       "en": {
-        "text": "Reddit"
+        "ascii": "Reddit"
       },
       "fr": {
-        "text": "Reddit"
+        "ascii": "Reddit"
       }
     },
     "base": "https://www.reddit.com/submit?type=LINK",
@@ -57,10 +57,10 @@
   "facebook": {
     "name": {
       "en": {
-        "text": "Facebook"
+        "ascii": "Facebook"
       },
       "fr": {
-        "text": "Facebook"
+        "ascii": "Facebook"
       }
     },
     "base": "https://www.facebook.com/sharer/sharer.php",
@@ -69,10 +69,10 @@
   "telegram": {
     "name": {
       "en": {
-        "text": "Telegram"
+        "ascii": "Telegram"
       },
       "fr": {
-        "text": "Telegram"
+        "ascii": "Telegram"
       }
     },
     "base": "https://t.me/share",
@@ -82,10 +82,10 @@
   "bluesky": {
     "name": {
       "en": {
-        "text": "Bluesky"
+        "ascii": "Bluesky"
       },
       "fr": {
-        "text": "Bluesky"
+        "ascii": "Bluesky"
       }
     },
     "base": "https://bsky.app/intent/compose",
@@ -94,10 +94,10 @@
   "whatsapp": {
     "name": {
       "en": {
-        "text": "WhatsApp"
+        "ascii": "WhatsApp"
       },
       "fr": {
-        "text": "WhatsApp"
+        "ascii": "WhatsApp"
       }
     },
     "base": "https://wa.me/",
@@ -106,10 +106,10 @@
   "mastodon": {
     "name": {
       "en": {
-        "text": "Mastodon"
+        "ascii": "Mastodon"
       },
       "fr": {
-        "text": "Mastodon"
+        "ascii": "Mastodon"
       }
     },
     "base": "https://mastodonshare.com/",
@@ -119,10 +119,10 @@
   "threads": {
     "name": {
       "en": {
-        "text": "Threads"
+        "ascii": "Threads"
       },
       "fr": {
-        "text": "Threads"
+        "ascii": "Threads"
       }
     },
     "base": "https://www.threads.com/intent/post",
@@ -132,10 +132,10 @@
   "truth_social": {
     "name": {
       "en": {
-        "text": "Truth Social"
+        "ascii": "Truth Social"
       },
       "fr": {
-        "text": "Truth Social"
+        "ascii": "Truth Social"
       }
     },
     "base": "https://truthsocial.com/share",
@@ -145,10 +145,10 @@
   "gab": {
     "name": {
       "en": {
-        "text": "Gab"
+        "ascii": "Gab"
       },
       "fr": {
-        "text": "Gab"
+        "ascii": "Gab"
       }
     },
     "base": "https://gab.com/compose",
@@ -158,10 +158,10 @@
   "vk": {
     "name": {
       "en": {
-        "text": "VK"
+        "ascii": "VK"
       },
       "fr": {
-        "text": "VK"
+        "ascii": "VK"
       },
       "ru": {
         "text": "ВКонтакте"

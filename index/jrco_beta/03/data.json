@@ -10,23 +10,23 @@
   "language": "en",
   "title": {
     "en": {
-      "text": "mirror"
+      "ascii": "mirror"
     },
     "fr": {
-      "text": "miroir"
+      "ascii": "miroir"
     }
   },
   "description": {
     "en": {
-      "text": "JoeRunner brushes his hair with his hand and puts on his glasses."
+      "ascii": "JoeRunner brushes his hair with his hand and puts on his glasses."
     },
     "fr": {
-      "text": "JoeRunner se brosse les cheveux avec son main et mette ses lunettes."
+      "ascii": "JoeRunner se brosse les cheveux avec son main et mette ses lunettes."
     }
   },
   "tooltip": {
     "en": {
-      "text": "first panel is based on the experience of looking at my drawings"
+      "ascii": "first panel is based on the experience of looking at my drawings"
     },
     "fr": {
       "text": "la première case est adapté en l’expérience de regarder mes dessins"
@@ -38,7 +38,7 @@
         "h": null,
         "d": {
           "en": {
-            "text": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+            "ascii": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
           },
           "fr": {
             "text": "Le garçon regarde le miroir de salle de bain dans son pyjama, avec des cheveux ébouriffé et ses lunettes sur la comptoir. Il semble un peu dégoûtant."
@@ -60,10 +60,10 @@
         "h": null,
         "d": {
           "en": {
-            "text": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+            "ascii": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
           },
           "fr": {
-            "text": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
+            "ascii": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
           }
         }
       },
@@ -82,7 +82,7 @@
         "h": "tooltip",
         "d": {
           "en": {
-            "text": "first panel is based on the experience of looking at my drawings"
+            "ascii": "first panel is based on the experience of looking at my drawings"
           },
           "fr": {
             "text": "la première case est adapté en l’expérience de regarder mes dessins"

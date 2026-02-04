@@ -10,7 +10,7 @@
   "language": "en",
   "title": {
     "en": {
-      "text": "alarm clock"
+      "ascii": "alarm clock"
     },
     "fr": {
       "text": "réveil"
@@ -18,10 +18,10 @@
   },
   "description": {
     "en": {
-      "text": "JoeRunner wakes up."
+      "ascii": "JoeRunner wakes up."
     },
     "fr": {
-      "text": "JoeRunner se reveille."
+      "ascii": "JoeRunner se reveille."
     }
   },
   "transcript": {
@@ -41,7 +41,7 @@
         "h": "boy",
         "d": {
           "en": {
-            "text": "I really need to get a new snooze button."
+            "ascii": "I really need to get a new snooze button."
           },
           "fr": {
             "text": "J’ai vraiment besoin d’un nouveau bouton de répétition."
