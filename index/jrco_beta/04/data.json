@@ -23,8 +23,8 @@
     "html": "JoeRunner finishes an essay."
   },
   "tooltip": {
-    "text": "May 27. I have spent every waking moment for the last four weeks only experiencing the Magna Carta. My soul is the Magna Carta. My mind is the Magna Carta. My dreams are the Magna Carta. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace.",
-    "html": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
+    "text": "May 27. I have spent every waking moment for the last four weeks only experiencing the Magna Carta. My soul is the Magna Carta. My mind is the Magna Carta. My dreams are the Magna Carta. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace.",
+    "html": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace."
   },
   "transcript": {
     "lines": [
@@ -58,11 +58,11 @@
       },
       {
         "h": "JoeRunner",
-        "d": "(<i>relaxed</i>) Ahh… (<i>closes eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
+        "d": "(<i>relaxed</i>) Ahh . . . (<i>closes eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
       },
       {
         "h": "tooltip",
-        "d": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like… before. But now it is done. With the click of a mouse, I have finally found inner peace."
+        "d": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace."
       }
     ]
   },
