@@ -16,15 +16,15 @@ for c in cut find grep jq mkfifo rm tput sh;do
   fi
 done
 
-for r in cut find grep jq rm sh;do
+for r in cksum cut exiftool find grep jq rm sh;do
   case "${commands_v} " in
     *" ${r} "*)
       true ;;
     *)
-      printf '[error] This script requires the following commands to be installed in PATH: cut find grep jq rm sh\n' >&2
-      printf '        The following commands are also optional: mkfifo tput\n' >&2
-      printf '        You have the following commands installed:%s\n' "${commands_v}" >&2
-      printf '        Please install missing commands.\n' >&2
+      printf '[error] This script requires the following programs to be installed in PATH: cksum cut exiftool find grep jq rm sh\n' >&2
+      printf '        The following programs are also optional: mkfifo tput\n' >&2
+      printf '        You have the following programs installed:%s\n' "${commands_v}" >&2
+      printf '        Please install missing programs.\n' >&2
       exit 1
   esac
 done
@@ -51,9 +51,9 @@ if [ "$#" -gt 0 ];then
   printf 'This script generates the gabl.ink website.\n' >&2
   printf 'It does not accept arguments.\n\n' >&2
 
-  printf 'This script requires the following commands to be installed in PATH: cut find grep jq rm sh\n' >&2
-  printf 'The following commands are also optional: mkfifo tput\n' >&2
-  printf 'You have the following commands installed:%s\n\n' "${commands_v}" >&2
+  printf 'This script requires the following programs to be installed in PATH: cksum cut exiftool find grep jq rm sh\n' >&2
+  printf 'The following programs are also optional: mkfifo tput\n' >&2
+  printf 'You have the following programs installed:%s\n\n' "${commands_v}" >&2
 
   printf '© 2024–2026 gabl.ink\n' >&2
   printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
