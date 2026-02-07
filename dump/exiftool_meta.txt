@@ -1,3 +1,5 @@
+-OriginalImageHashType=SHA256
+
 -EXIF:Artist=gabldotink
 -EXIF:Copyright=Copyright (c) 2022-2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
 -EXIF:ImageDescription=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
@@ -25,7 +27,7 @@
 -XMP:Title-en-US=“Thursday” title page
 -XMP:Title-x-default=“Thursday” title page
 
--XMP-cc:AttributionName=gabldotink
+-XMP-cc:AttributionName=gabl.ink
 -XMP-cc:AttributionURL=https://gabl.ink/
 -XMP-cc:LegalCode=https://creativecommons.org/licenses/by/4.0/legalcode.en
 -XMP-cc:License=https://creativecommons.org/licenses/by/4.0/deed.en
@@ -48,3 +50,9 @@
 -XMP-dc:Title-x-default=“Thursday” title page
 -XMP-dc:Type=Image
 -XMP-dc:Type=StillImage
+
+-XMP-et:OriginalImageHash<ImageDataHash
+
+-XMP-xmpRights:Marked=True
+-XMP-xmpRights:Owner=gabldotink
+-XMP-xmpRights:UsageTerms=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
