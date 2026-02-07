@@ -14,8 +14,8 @@
   "title": {
     "en-US": {
       "ascii": "'Thursday' title page",
-      "text": "‘Thursday’ title page",
-      "html": "<span class=\"spaced_right\">‘</span><cite>Thursday</cite>’ title page"
+      "text": " ‘Thursday’ title page",
+      "html": " ‘<cite>Thursday</cite>’ title page"
     },
     "fr": {
       "ascii": "page de titre de \"jeudi\"",
