@@ -456,17 +456,9 @@ for i in ${items};do
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
       if   [ "${#first_published_y}" -lt 4 ] &&
            [ "${first_published_y}" -ne 0 ];then
-        if [ "${config_use_ce}" = true ];then
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span> <abbr title="Common Era">CE</abbr>' "${first_published_y}"
-        else
-          printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-        fi
+        printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
       elif [ "${first_published_y}" -eq 0 ];then
-        if [ "${config_use_ce}" = true ];then
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="Before the Common Era">BCE</abbr>'
-        else
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
-        fi
+        printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
       else
         printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
       fi
