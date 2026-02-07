@@ -84,3 +84,7 @@ _gabl.ink_: /ˈɡabœl dɔt ink/
 ## Localization data types
 
 A localized JSON value must have at least one of the `ascii`, `text`, `html`, or `id` values. If there is no `html` value, the script’s `html` value will be set to the JSON `text` value. If there is no `text` value, the `text` value will be set to the JSON `ascii` value. An `id` value is localized, but does not contain linguistic content (e.g. a URL or hashtag). If `id` exists, others should not.
+
+### Text to ASCII
+
+* English text uses the following style for ellipses: `word[ ].[ ].[ ]. word` (where `[ ]` is a non-breaking space), as recommended by _CMOS_. ASCII text should instead use `word... word` to prevent bad line breaks.
