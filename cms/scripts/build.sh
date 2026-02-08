@@ -104,9 +104,6 @@ for i in ${items};do
   
   tmpfile="$(mktemp)"
 
-  printf '%s\n' "${tmpfile}"
-  tail -f "${tmpfile}" &
-
   parse_lang
 
   copyright_license="$(jq_r copyright.license[0] "${i}")"
