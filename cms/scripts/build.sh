@@ -124,7 +124,7 @@ for i in ${items};do
   canonical="https://gabl.ink/index/${id}/${lang}/"
   
   trap '
-  rm "${tmpfile}" >/dev/null 2>&1
+  rm -f -- "${tmpfile}" >/dev/null 2>&1
   printf "Exiting. No permanent changes were made.\n" >&2
   exit 1' \
   INT EXIT
@@ -639,12 +639,12 @@ for i in ${items};do
   cat "${tmpfile}" > "${index}/${id}/${lang}/index.html"
 
   trap '
-  rm "${tmpfile}" >/dev/null 2>&1
+  rm -f -- "${tmpfile}" >/dev/null 2>&1
   printf "Exiting. Permanent changes were made.\n" >&2
   exit 1' \
   INT EXIT
 
-  rm -- "${tmpfile}"
+  rm -f -- "${tmpfile}"
 
   printf '[done] %s/%s\n' "${id}" "${lang}" >&2
 done
