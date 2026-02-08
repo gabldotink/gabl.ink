@@ -16,12 +16,12 @@ for c in cut find grep jq mkfifo rm tput sh;do
   fi
 done
 
-for r in cksum cut exiftool find grep jq rm sh;do
+for r in cut exiftool find grep jq rm sh sha256sum;do
   case "${commands_v} " in
     *" ${r} "*)
       true ;;
     *)
-      printf '[error] This script requires the following programs to be installed in PATH: cksum cut exiftool find grep jq rm sh\n' >&2
+      printf '[error] This script requires the following programs to be installed in PATH: cut exiftool find grep jq rm sh sha256sum\n' >&2
       printf '        The following programs are also optional: mkfifo tput\n' >&2
       printf '        You have the following programs installed:%s\n' "${commands_v}" >&2
       printf '        Please install missing programs.\n' >&2
@@ -51,7 +51,7 @@ if [ "$#" -gt 0 ];then
   printf 'This script generates the gabl.ink website.\n' >&2
   printf 'It does not accept arguments.\n\n' >&2
 
-  printf 'This script requires the following programs to be installed in PATH: cksum cut exiftool find grep jq rm sh\n' >&2
+  printf 'This script requires the following programs to be installed in PATH: cut exiftool find grep jq rm sh sha256sum\n' >&2
   printf 'The following programs are also optional: mkfifo tput\n' >&2
   printf 'You have the following programs installed:%s\n\n' "${commands_v}" >&2
 
@@ -127,7 +127,7 @@ for i in ${items};do
       # Covers two cases:
       # • If a named pipe (FIFO) cannot be created, a regular file will be created
       # • If the FIFO/file already exists, it will be truncated
-      mkfifo "${fifos}/.build_output.html" >/dev/null 2>&1 ||
+      mkfifo -- "${fifos}/.build_output.html" >/dev/null 2>&1 ||
         true > "${fifos}/.build_output.html" ;;
     *)
       true > "${fifos}/.build_output.html"
@@ -654,7 +654,7 @@ for i in ${items};do
   exit 1' \
   INT EXIT
 
-  rm "${fifos}/.build_output.html"
+  rm -- "${fifos}/.build_output.html"
 
   printf '[done] %s/%s\n' "${id}" "${lang}" >&2
 done
