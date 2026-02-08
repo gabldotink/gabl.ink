@@ -10,7 +10,7 @@ trap '
 
 script="$0"
 
-for c in cut find grep jq mkfifo rm tput sh;do
+for c in cut exiftool find grep jq mktemp rm tput sh sha256sum;do
   if command -v "${c}" >/dev/null 2>&1;then
     commands_v="${commands_v} ${c}"
   fi
@@ -21,8 +21,8 @@ for r in cut exiftool find grep jq rm sh sha256sum;do
     *" ${r} "*)
       true ;;
     *)
-      printf '[error] This script requires the following programs to be installed in PATH: cut exiftool find grep jq rm sh sha256sum\n' >&2
-      printf '        The following programs are also optional: mkfifo tput\n' >&2
+      printf '[error] This script requires the following programs to be installed in PATH: cut exiftool find grep jq mktemp rm sh sha256sum\n' >&2
+      printf '        The following programs are also optional: tput\n' >&2
       printf '        You have the following programs installed:%s\n' "${commands_v}" >&2
       printf '        Please install missing programs.\n' >&2
       exit 1
@@ -51,8 +51,8 @@ if [ "$#" -gt 0 ];then
   printf 'This script generates the gabl.ink website.\n' >&2
   printf 'It does not accept arguments.\n\n' >&2
 
-  printf 'This script requires the following programs to be installed in PATH: cut exiftool find grep jq rm sh sha256sum\n' >&2
-  printf 'The following programs are also optional: mkfifo tput\n' >&2
+  printf 'This script requires the following programs to be installed in PATH: cut exiftool find grep jq mktemp rm sh sha256sum\n' >&2
+  printf 'The following programs are also optional: tput\n' >&2
   printf 'You have the following programs installed:%s\n\n' "${commands_v}" >&2
 
   printf '© 2024–2026 gabl.ink\n' >&2
@@ -67,7 +67,6 @@ cms="${scripts}/.."
 dict="${cms}/dictionaries"
 index="${cms}/../index"
 encyclopedia="${index}/encyclopedia"
-fifos="${scripts}/fifos"
 lib="${scripts}/lib"
 
 # shellcheck source-path=./lib
@@ -92,16 +91,21 @@ items="${index}/jrco_beta/01/data.json"
 
 for i in ${items};do
   type="$(jq_r type "${i}")"
-
-  [ "${type}" = comic_series ] &&
-    continue
-  
   id="$(jq_r id "${i}")"
-
   #lang="$(jq_r language "${i}")"
   lang=en-US
 
+  if [ "${type}" = comic_series ];then
+    printf '[skip] %s/%s\n' "${id}" "${lang}"
+    continue
+  fi
+
   printf '[start] %s/%s\n' "${id}" "${lang}" >&2
+  
+  tmpfile="$(mktemp)"
+
+  printf '%s\n' "${tmpfile}"
+  tail -f "${tmpfile}" &
 
   parse_lang
 
@@ -121,20 +125,9 @@ for i in ${items};do
   set_var_l10n title title "${i}"
 
   canonical="https://gabl.ink/index/${id}/${lang}/"
-
-  case "${commands_v} " in
-    *' mkfifo '*)
-      # Covers two cases:
-      # • If a named pipe (FIFO) cannot be created, a regular file will be created
-      # • If the FIFO/file already exists, it will be truncated
-      mkfifo -- "${fifos}/.build_output.html" >/dev/null 2>&1 ||
-        true > "${fifos}/.build_output.html" ;;
-    *)
-      true > "${fifos}/.build_output.html"
-  esac
   
   trap '
-  rm "${fifos}/.build_output.html" >/dev/null 2>&1
+  rm "${tmpfile}" >/dev/null 2>&1
   printf "Exiting. No permanent changes were made.\n" >&2
   exit 1' \
   INT EXIT
@@ -644,17 +637,17 @@ for i in ${items};do
     printf '</div>'
 
     printf '</body></html>\n'
-  } > "${fifos}/.build_output.html"
+  } > "${tmpfile}"
 
-  cat "${fifos}/.build_output.html" > "${index}/${id}/${lang}/index.html"
+  cat "${tmpfile}" > "${index}/${id}/${lang}/index.html"
 
   trap '
-  rm "${fifos}/.build_output.html" >/dev/null 2>&1
+  rm "${tmpfile}" >/dev/null 2>&1
   printf "Exiting. Permanent changes were made.\n" >&2
   exit 1' \
   INT EXIT
 
-  rm -- "${fifos}/.build_output.html"
+  rm -- "${tmpfile}"
 
   printf '[done] %s/%s\n' "${id}" "${lang}" >&2
 done
