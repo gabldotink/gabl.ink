@@ -10,37 +10,33 @@ trap '
 
 script="$0"
 
-for c in cut exiftool find grep jq mktemp rm tput sh sha256sum;do
+dependencies='cat cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
+
+for c in ${dependencies};do
   if command -v "${c}" >/dev/null 2>&1;then
     commands_v="${commands_v} ${c}"
   fi
 done
 
-for r in cut exiftool find grep jq rm sh sha256sum;do
+for r in ${dependencies};do
   case "${commands_v} " in
     *" ${r} "*)
       true ;;
     *)
-      printf '[error] This script requires the following programs to be installed in PATH: cut exiftool find grep jq mktemp rm sh sha256sum\n' >&2
-      printf '        The following programs are also optional: tput\n' >&2
+      printf '[error] This script requires the following programs to be installed in PATH: %s\n' "${dependencies}" >&2
       printf '        You have the following programs installed:%s\n' "${commands_v}" >&2
       printf '        Please install missing programs.\n' >&2
       exit 1
   esac
 done
 
-case " ${commands_v} " in
-  *' tput '*)
-    tput_colors="$(tput colors)"
-    tput_reset="$(tput sgr0)" 
-    if [ "${tput_colors}" -ge 256 ];then
-      tput_link="$(tput setaf 21)$(tput smul)"
-    else
-      tput_link="$(tput setaf 4)$(tput smul)"
-    fi ;;
-  *)
-    unset tput_colors tput_reset tput_link
-esac
+tput_colors="$(tput -- colors 2>/dev/null||true)"
+tput_reset="$(tput -- sgr0 2>/dev/null||true)" 
+if [ "${tput_colors}" -ge 256 ];then
+  tput_link="$(tput -- setaf 21 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
+else
+  tput_link="$(tput -- setaf 4 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
+fi
 
 # Display help if any arguments are passed
 if [ "$#" -gt 0 ];then
@@ -51,9 +47,9 @@ if [ "$#" -gt 0 ];then
   printf 'This script generates the gabl.ink website.\n' >&2
   printf 'It does not accept arguments.\n\n' >&2
 
-  printf 'This script requires the following programs to be installed in PATH: cut exiftool find grep jq mktemp rm sh sha256sum\n' >&2
-  printf 'The following programs are also optional: tput\n' >&2
-  printf 'You have the following programs installed:%s\n\n' "${commands_v}" >&2
+  printf 'This script requires the following programs to be installed in PATH:\n' >&2
+  printf '  %s\n' "${dependencies}" >&2
+  printf 'You have all of these installed already.\n\n' >&2
 
   printf '© 2024–2026 gabl.ink\n' >&2
   printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
@@ -377,7 +373,7 @@ for i in ${items};do
 
       printf '<ol id="nav_bottom_list_pages">'
 
-      find "${index}/${id}/.." -type f -path "${index}/${id}"'/../*/data.json' -exec sh -c '
+      find "${index}/${id}/.." -type f -path "${index}/${id}"'/../*/data.json' -exec sh -c -- '
         [ -n "$1" ] &&
           set -x
         
@@ -636,7 +632,7 @@ for i in ${items};do
     printf '</body></html>\n'
   } > "${tmpfile}"
 
-  cat "${tmpfile}" > "${index}/${id}/${lang}/index.html"
+  cat -- "${tmpfile}" > "${index}/${id}/${lang}/index.html"
 
   trap '
   rm -f -- "${tmpfile}" >/dev/null 2>&1
@@ -644,7 +640,7 @@ for i in ${items};do
   exit 1' \
   INT EXIT
 
-  rm -f -- "${tmpfile}"
+  rm -f -- "${tmpfile}" >/dev/null 2>&1
 
   printf '[done] %s/%s\n' "${id}" "${lang}" >&2
 done
