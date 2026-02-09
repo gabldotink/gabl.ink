@@ -53,6 +53,15 @@
 
 -XMP-et:OriginalImageHash<ImageDataHash
 
+-XMP-plus:AdultContentWarning=Not Required
+-XMP-plus:CopyrightStatus=Protected
+-XMP-plus:ImageFileFormatAsDelivered=Portable Network Graphics (PNG)
+-XMP-plus:LicensorCountry=USA
+-XMP-plus:LicensorEmail=gabl@gabl.ink
+-XMP-plus:LicensorName=gabl.ink
+-XMP-plus:LicensorURL=https://gabl.ink/
+-XMP-plus:PLUSVersion=2.0.1
+
 -XMP-xmpRights:Marked=True
 -XMP-xmpRights:Owner=gabldotink
 -XMP-xmpRights:UsageTerms=Copyright © 2022–2026 gabl.ink. License: Creative Commons Attribution 4.0 International Public License (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/deed.en
