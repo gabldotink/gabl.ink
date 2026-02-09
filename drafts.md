@@ -53,7 +53,8 @@ gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default 
 
 ### Exceptions to _CMOS_
 
-* TBA
+* T.T.’s name is an initialism of his full name, so it would normally be written _TT_. However, I don’t like how that looks, so this is an exception. That’s basically the only reason.
+  * When I restart _JoeRunner & Co._, I’ll make his name t.t., where _CMOS_ would allow the periods, although it would surely still make copyeditors groan for obvious reasons. Too bad, there’ll be an in-universe reason for it so they can’t do anything about it. Also, I’m the copyeditor myself anyway.
 
 ## Why program in shell? Not even a reasonable one, the standard POSIX shell?
 
