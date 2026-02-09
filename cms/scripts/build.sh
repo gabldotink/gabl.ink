@@ -164,6 +164,7 @@ for i in ${items};do
         set_var_l10n tooltip tooltip "${i}"
         volume="$(jq_r location.volume "${i}")"
 
+        # For now, the below is to add later.
         # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
         # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
         # In case of a video, image.png should act as a thumbnail.
@@ -281,7 +282,6 @@ for i in ${items};do
         make_og image "${canonical}image.png"
         if [ "${video_exists}" = true ];then
           make_og video "${canonical}video.webm"
-          make_og video "${canonical}video.mp4"
         fi
         make_og locale "${lang_l}_${lang_r}"
 
@@ -327,19 +327,16 @@ for i in ${items};do
 
         printf '<div id="comic_page_'
 
-        # TODO: Edge case: one format exists, other doesn’t
         # TODO: Edge case: no captions
-        # TODO: Browsers fix “id” for filesystems, but we should get better filenames, in addition to easy download links
         if [ "${video_exists}" = true ];then
           printf 'video"><video controls="" poster="./image.png" preload="metadata">'
           printf '<source src="./video.webm" type="video/webm"/>'
-          printf '<source src="./video.mp4" type="video/mp4"/>'
           printf '<track default="" kind="captions" '
 
           printf 'label="English (United States) (CC)" '
           printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
           # shellcheck disable=1112
-          printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a   href="./video.webm" hreflang="en-US" type="video/webm" download="%s.webm">WebM</a> or <a href="./video.mp4" hreflang="en-US"   type="video/mp4" download="%s.mp4">MP4</a> file to watch with your preferred video player. You can also view the transcript for   the video at “Comic transcript” below.</p>' "${id}" "${id}"
+          printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s_-_%s.webm">WebM</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${series_title_filename}" "${title_filename}"
           printf '</video></div>'
         else
           printf 'image"><picture'

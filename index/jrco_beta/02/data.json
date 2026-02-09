@@ -10,9 +10,11 @@
   "language": "en",
   "title": {
     "en": {
-      "ascii": "alarm clock"
+      "ascii": "alarm clock",
+      "filename": "alarm_clock"
     },
     "fr": {
+      "filename": "reveil",
       "text": "réveil"
     }
   },

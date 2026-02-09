@@ -8,9 +8,11 @@
   "language": "en",
   "title": {
     "en": {
+      "filename": "JoeRunner_and_Co_Beta",
       "text": "JoeRunner and Co. Beta"
     },
     "fr": {
+      "filename": "JoeRunner_et_cie_Beta",
       "text": "JoeRunner et cie Bêta"
     }
   },

@@ -14,22 +14,26 @@
   "title": {
     "en-US": {
       "ascii": "'Thursday' title page",
+      "filename": "Thursday_title_page",
       "text": " ‘Thursday’ title page",
       "html": " ‘<cite>Thursday</cite>’ title page"
     },
     "fr": {
       "ascii": "page de titre de \"jeudi\"",
+      "filename": "page_de_titre_de_jeudi",
       "text": "page de titre de “jeudi”",
       "html": "page de titre de <cite class=\"r\">jeudi</cite>"
     },
     "unnested": {
       "en-US": {
         "ascii": "\"Thursday\" title page",
+        "filename": "Thursday_title_page",
         "text": "“Thursday” title page",
         "html": "“<cite>Thursday</cite>” title page"
       },
       "fr": {
-        "ascii": "pade de titre de \"jeudi\"",
+        "ascii": "page de titre de \"jeudi\"",
+        "filename": "page_de_titre_de_jeudi",
         "text": "page de titre de « jeudi »",
         "html": "page de titre de <cite class=\"i\">jeudi</cite>"
       }

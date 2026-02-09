@@ -16,12 +16,17 @@ set_var_l10n(){
       break
     fi
 
-    for t in ascii html id text; do
+    for t in ascii filename html id text; do
       eval "${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
     done
 
+    # TODO: Allow filename to populate ascii if applicable
+    if test_null "${set_var_l10n_name}_filename";then
+      unset "${set_var_l10n_name}_filename"
+    fi
+
     if ! test_null "${set_var_l10n_name}_id";then
-      unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
+      unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
       break
     fi
 
