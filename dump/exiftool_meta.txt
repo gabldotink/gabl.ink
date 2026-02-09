@@ -51,6 +51,12 @@
 -XMP-dc:Type=Image
 -XMP-dc:Type=StillImage
 
+-XMP-dex:LicenseType=Open Source
+-XMP-dex:OS=0
+-XMP-dex:Rating=General
+-XMP-dex:ShortDescription-en=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+-XMP-dex:ShortDescription-x-default=The title page for _JoeRunner and Co. Beta_, originally _JoeRunner and Co._
+
 -XMP-et:OriginalImageHash<ImageDataHash
 
 -XMP-plus:AdultContentWarning=Not Required
