@@ -1,0 +1,10 @@
+{
+  "id": {
+    "comment": "key_format is one of a set of types. key is [a-z0-9._-]+",
+    "key_format": "key",
+    "content": {
+      "comment": "localized is an object, with subobjects for languages, and strings in those subobjects for types",
+      "format": "localized"
+    }
+  }
+}

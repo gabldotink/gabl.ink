@@ -10,7 +10,7 @@ trap '
 
 script="$0"
 
-dependencies='cat cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
+dependencies='basename cat cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
 
 for c in ${dependencies};do
   if command -v "${c}" >/dev/null 2>&1;then
@@ -82,10 +82,109 @@ else
   lang_default=en-US
 fi
 
-#items="$(find "${index}" -type f -name data.json)"
+# This would be easier if I didn’t insist on POSIX compliance
+#dicts="$(find "${dict}" -path "${dict}" -o -type d -prune -o -type f -exec basename '{}' ';')"
+dicts=disclaimer.json
+
+printf '[section start] dictionaries\n' >&2
+
+for id in ${dicts};do
+  (
+    # shellcheck disable=2030
+    tmpfile="$(mktemp)"
+
+    trap '
+    rm -f -- "${tmpfile}" >/dev/null 2>&1' \
+    INT EXIT
+
+    {
+      printf '{'
+    
+      # shellcheck disable=2016
+      printf '"$schema":"https://json-schema.org/draft/2020-12/schema",'
+      # shellcheck disable=2016
+      printf '"$id":"https://gabl.ink/cms/dictionaries/schemas/%s",' "${id}"
+      # shellcheck disable=2016
+      printf '"$comment":"SPDX-License-Identifier: CC0-1.0",'
+      printf '"type":"object",'
+
+      if [ "$(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_to_generate/${id}")" != null ];then
+        printf '"patternProperties":{'
+
+        for k in $(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_to_generate/${id}");do
+          if [ "$(jq -r --arg k "${k}" '.[$k].key_format' "${dict}/schemas_to_generate/${id}")" = key ];then
+            printf '"[A-Za-z0-9._-]":{'
+          else
+            error 'key_format is not key'
+          fi
+
+          if [ "$(jq -r --arg k "${k}" '.[$k].content.format' "${dict}/schemas_to_generate/${id}")" = localized ];then
+            printf '"type":"object",'
+
+            printf '"patternProperties":{'
+
+            printf '"^[a-z]{2,3}(-([A-Z]{2}|[0-9]{3}))?$":{'
+
+            printf '"type":"object",'
+            printf '"properties":{'
+
+            printf '"ascii":{'
+              printf '"type":"string",'
+              printf '"pattern":"^[ -~]+$"'
+            printf '},'
+
+            printf '"filename":{'
+              printf '"type":"string",'
+              printf '"pattern":"^[A-Za-z0-9_-]{250}$"'
+            printf '},'
+
+            printf '"html":{'
+              printf '"type":"string",'
+              printf '"pattern":"^.+$"'
+            printf '},'
+
+            printf '"id":{'
+              printf '"type":"string",'
+              printf '"pattern":"^.+$"'
+            printf '},'
+
+            printf '"text":{'
+              printf '"type":"string",'
+              printf '"pattern":"^.+$"'
+            printf '}'
+
+            printf '}'
+
+            printf '}'
+
+            printf '}'
+          fi
+
+          printf '}'
+        done
+
+        printf '}'
+      fi
+
+      printf '}\n'
+    } > "${tmpfile}"
+
+    cat -- "${tmpfile}" > "${dict}/schemas/${id}"
+
+    rm -f -- "${tmpfile}" >/dev/null 2>&1
+  ) &
+done
+
+wait
+
+printf '[section done] dictionaries\n' >&2
+
+#items="$(find "${index}" -type f -name data.json -print)"
 items="${index}/jrco_beta/01/data.json"
 
 trap - INT EXIT
+
+printf '[section start] items\n' >&2
 
 for i in ${items};do
   (
@@ -642,6 +741,8 @@ for i in ${items};do
 done
 
 wait
+
+printf '[section done] items\n' >&2
 
 trap - INT EXIT
 
