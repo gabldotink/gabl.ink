@@ -202,12 +202,12 @@ for i in ${items};do
 
     printf '[start] %s/%s\n' "${id}" "${lang}" >&2
 
+    tmpfile="$(mktemp)"
+
     trap '
     rm -f -- "${tmpfile}" >/dev/null 2>&1
     exit 1' \
     INT EXIT
-
-    tmpfile="$(mktemp)"
 
     parse_lang
 
