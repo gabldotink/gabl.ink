@@ -10,10 +10,10 @@
   "language": "en",
   "title": {
     "en": {
-      "ascii": "mirror"
+      "filename": "mirror"
     },
     "fr": {
-      "ascii": "miroir"
+      "filename": "miroir"
     }
   },
   "description": {

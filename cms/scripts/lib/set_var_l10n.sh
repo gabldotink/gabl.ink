@@ -20,17 +20,20 @@ set_var_l10n(){
       eval "${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
     done
 
-    # TODO: Allow filename to populate ascii if applicable
-    if test_null "${set_var_l10n_name}_filename";then
-      unset "${set_var_l10n_name}_filename"
-    fi
-
     if ! test_null "${set_var_l10n_name}_id";then
       unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
       break
     fi
 
     unset "${set_var_l10n_name}_id"
+
+    if test_null "${set_var_l10n_name}_ascii";then
+      if ! test_null "${set_var_l10n_name}_filename";then
+        eval "${set_var_l10n_name}"'_ascii="${'"${set_var_l10n_name}"'_filename}"'
+      else
+        unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
+      fi
+    fi
 
     if test_null "${set_var_l10n_name}_text";then
       if ! test_null "${set_var_l10n_name}_ascii";then

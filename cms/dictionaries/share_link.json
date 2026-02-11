@@ -2,13 +2,13 @@
   "email": {
     "name": {
       "en": {
-        "ascii": "email"
+        "filename": "email"
       },
       "fr-FR": {
-        "ascii": "email"
+        "filename": "email"
       },
       "fr-CA": {
-        "ascii": "courriel"
+        "filename": "courriel"
       }
     },
     "base": "mailto:",
@@ -30,10 +30,10 @@
   "x": {
     "name": {
       "en": {
-        "ascii": "X"
+        "filename": "X"
       },
       "fr": {
-        "ascii": "X"
+        "filename": "X"
       }
     },
     "base": "https://x.com/intent/tweet",
@@ -44,10 +44,10 @@
   "reddit": {
     "name": {
       "en": {
-        "ascii": "Reddit"
+        "filename": "Reddit"
       },
       "fr": {
-        "ascii": "Reddit"
+        "filename": "Reddit"
       }
     },
     "base": "https://www.reddit.com/submit?type=LINK",
@@ -57,10 +57,10 @@
   "facebook": {
     "name": {
       "en": {
-        "ascii": "Facebook"
+        "filename": "Facebook"
       },
       "fr": {
-        "ascii": "Facebook"
+        "filename": "Facebook"
       }
     },
     "base": "https://www.facebook.com/sharer/sharer.php",
@@ -69,10 +69,10 @@
   "telegram": {
     "name": {
       "en": {
-        "ascii": "Telegram"
+        "filename": "Telegram"
       },
       "fr": {
-        "ascii": "Telegram"
+        "filename": "Telegram"
       }
     },
     "base": "https://t.me/share",
@@ -82,10 +82,10 @@
   "bluesky": {
     "name": {
       "en": {
-        "ascii": "Bluesky"
+        "filename": "Bluesky"
       },
       "fr": {
-        "ascii": "Bluesky"
+        "filename": "Bluesky"
       }
     },
     "base": "https://bsky.app/intent/compose",
@@ -94,10 +94,10 @@
   "whatsapp": {
     "name": {
       "en": {
-        "ascii": "WhatsApp"
+        "filename": "WhatsApp"
       },
       "fr": {
-        "ascii": "WhatsApp"
+        "filename": "WhatsApp"
       }
     },
     "base": "https://wa.me/",
@@ -106,10 +106,10 @@
   "mastodon": {
     "name": {
       "en": {
-        "ascii": "Mastodon"
+        "filename": "Mastodon"
       },
       "fr": {
-        "ascii": "Mastodon"
+        "filename": "Mastodon"
       }
     },
     "base": "https://mastodonshare.com/",
@@ -119,10 +119,10 @@
   "threads": {
     "name": {
       "en": {
-        "ascii": "Threads"
+        "filename": "Threads"
       },
       "fr": {
-        "ascii": "Threads"
+        "filename": "Threads"
       }
     },
     "base": "https://www.threads.com/intent/post",
@@ -145,10 +145,10 @@
   "gab": {
     "name": {
       "en": {
-        "ascii": "Gab"
+        "filename": "Gab"
       },
       "fr": {
-        "ascii": "Gab"
+        "filename": "Gab"
       }
     },
     "base": "https://gab.com/compose",
@@ -158,10 +158,10 @@
   "vk": {
     "name": {
       "en": {
-        "ascii": "VK"
+        "filename": "VK"
       },
       "fr": {
-        "ascii": "VK"
+        "filename": "VK"
       },
       "ru": {
         "text": "ВКонтакте"

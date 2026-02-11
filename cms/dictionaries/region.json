@@ -15,13 +15,13 @@
   "FR": {
     "names": {
       "en": {
-        "ascii": "France"
+        "filename": "France"
       },
       "fr": {
-        "ascii": "France"
+        "filename": "France"
       },
       "es": {
-        "ascii": "Francia"
+        "filename": "Francia"
       }
     }
   },
@@ -31,7 +31,7 @@
         "ascii": "United Kingdom"
       },
       "fr": {
-        "ascii": "Royaume-Uni"
+        "filename": "Royaume-Uni"
       },
       "es": {
         "ascii": "Reino Unido"
@@ -41,10 +41,10 @@
   "CA": {
     "names": {
       "en": {
-        "ascii": "Canada"
+        "filename": "Canada"
       },
       "fr": {
-        "ascii": "Canada"
+        "filename": "Canada"
       },
       "es": {
         "text": "Canadá"
