@@ -1,19 +1,20 @@
 # SPDX-License-Identifier: CC0-1.0
 
 #*.bat text eol=crlf linguist-language=Batchfile
-*.css  text eol=lf linguist-language=CSS
-*.gitattributes text eol=lf linguist-language=Git-Attributes
-*.gitconfig text eol=lf linguist-language=Git-Config
-*.gitignore text eol=lf linguist-language=Ignore-List
-*.htaccess text eol=lf linguist-language=ApacheConf
+*.css text eol=lf linguist-language=CSS
+.gitattributes text eol=lf linguist-language=Git-Attributes
+.gitconfig text eol=lf linguist-language=Git-Config
+.gitignore text eol=lf linguist-language=Ignore-List
+.htaccess text eol=lf linguist-language=ApacheConf
 *.html text eol=lf linguist-language=HTML
 *.json text eol=lf linguist-language=JSON
-*.md   text eol=lf linguist-language=Markdown
-*.sh   text eol=lf linguist-language=Shell
-*.shellcheckrc text eol=lf linguist-language=ShellCheck-Config
-*.txt  text eol=lf linguist-language=Text
-*.vcf  text eol=crlf linguist-language=vCard
-*.yml  text eol=lf linguist-language=YAML
+*.md text eol=lf linguist-language=Markdown
+*.sh text eol=lf linguist-language=Shell
+.shellcheckrc text eol=lf linguist-language=ShellCheck-Config
+*.svg text eol=lf linguist-language=SVG
+*.txt text eol=lf linguist-language=Text
+*.vcf text eol=crlf linguist-language=vCard
+*.yml text eol=lf linguist-language=YAML
 
 *.clip binary
 #*.jpg binary
