@@ -3,8 +3,8 @@
 
 export POSIXLY_CORRECT
 
-trap '
-  printf "Exiting. No changes were made."
+trap \
+ 'printf "Exiting. No changes were made.\n"
   exit 1' \
   INT EXIT
 
@@ -36,6 +36,11 @@ if [ "${tput_colors}" -ge 256 ];then
   tput_link="$(tput -- setaf 21 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
 else
   tput_link="$(tput -- setaf 4 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
+fi
+
+# Prevent sh -x from having link styling
+if printf '%s' "$-" | grep -qF -- x;then
+  printf '%s' "${tput_reset}"
 fi
 
 # Display help if any arguments are passed
@@ -90,11 +95,13 @@ printf '[section start] dictionaries\n' >&2
 
 for id in ${dicts};do
   (
+    printf '[start] %s\n' "${id}" >&2
+
     # shellcheck disable=2030
     tmpfile="$(mktemp)"
 
-    trap '
-    rm -f -- "${tmpfile}" >/dev/null 2>&1' \
+    trap \
+      'rm -f -- "${tmpfile}" >/dev/null 2>&1' \
     INT EXIT
 
     {
@@ -113,7 +120,7 @@ for id in ${dicts};do
 
         for k in $(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_templates/${id}");do
           if [ "$(jq -r --arg k "${k}" '.[$k].key_format' "${dict}/schemas_templates/${id}")" = key ];then
-            printf '"[A-Za-z0-9._-]":{'
+            printf '"^[A-Za-z0-9._-]$":{'
           else
             error 'key_format is not key'
           fi
@@ -169,9 +176,13 @@ for id in ${dicts};do
       printf '}\n'
     } > "${tmpfile}"
 
-    cat -- "${tmpfile}" > "${dict}/schemas/${id}"
+    if [ "$(jq -Sc -- . "${tmpfile}")" != "$(cat -- "${dict}/schemas/${id}")" ];then
+      jq -Sc -- . "${tmpfile}" > "${dict}/schemas/${id}"
+    fi
 
     rm -f -- "${tmpfile}" >/dev/null 2>&1
+
+    printf '[done] %s\n' "${id}" >&2
   ) &
 done
 
@@ -204,9 +215,9 @@ for i in ${items};do
 
     tmpfile="$(mktemp)"
 
-    trap '
-    rm -f -- "${tmpfile}" >/dev/null 2>&1
-    exit 1' \
+    trap \
+     'rm -f -- "${tmpfile}" >/dev/null 2>&1
+      exit 1' \
     INT EXIT
 
     parse_lang
@@ -751,4 +762,4 @@ trap - INT EXIT
   [ "${config_exit_nonzero_with_warnings}" = true ] &&
     exit 2
 
-# exit 0
+exit 0
