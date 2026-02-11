@@ -108,17 +108,17 @@ for id in ${dicts};do
       printf '"$comment":"SPDX-License-Identifier: CC0-1.0",'
       printf '"type":"object",'
 
-      if [ "$(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_to_generate/${id}")" != null ];then
+      if [ "$(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_templates/${id}")" != null ];then
         printf '"patternProperties":{'
 
-        for k in $(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_to_generate/${id}");do
-          if [ "$(jq -r --arg k "${k}" '.[$k].key_format' "${dict}/schemas_to_generate/${id}")" = key ];then
+        for k in $(jq -r -- 'to_entries[]|select(.value|has("key_format"))|.key' "${dict}/schemas_templates/${id}");do
+          if [ "$(jq -r --arg k "${k}" '.[$k].key_format' "${dict}/schemas_templates/${id}")" = key ];then
             printf '"[A-Za-z0-9._-]":{'
           else
             error 'key_format is not key'
           fi
 
-          if [ "$(jq -r --arg k "${k}" '.[$k].content.format' "${dict}/schemas_to_generate/${id}")" = localized ];then
+          if [ "$(jq -r --arg k "${k}" '.[$k].content.format' "${dict}/schemas_templates/${id}")" = localized ];then
             printf '"type":"object",'
 
             printf '"patternProperties":{'
