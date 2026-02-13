@@ -14,11 +14,12 @@
 *.svg text eol=lf linguist-language=SVG
 *.txt text eol=lf linguist-language=Text
 *.vcf text eol=crlf linguist-language=vCard
+*.vtt text eol=lf linguist-language=WebVTT
 *.yml text eol=lf linguist-language=YAML
 
 *.clip binary
 #*.jpg binary
 *.png binary
 *.mp4 binary
-#*.webm binary
+*.webm binary
 #*.webp binary

@@ -1,6 +1,5 @@
 %YAML 1.2
-# SPDX-License-Identifier: CC0-1.0 OR CC-BY-4.0
-# ================= wrap lines at 72 printed characters ================
+# SPDX-License-Identifier: CC0-1.0
 ---
 
 branches:
@@ -14,20 +13,20 @@ branches:
 
 repository:
   allow_merge_commit: false
-  allow_rebase_merge:  true
-  allow_squash_merge:  true
+  allow_rebase_merge: true
+  allow_squash_merge: true
   default_branch: 'master'
   delete_branch_on_merge: false
   description: 'development for the upcoming gabl.ink website'
   enable_automated_security_fixes: false
   enable_vulnerability_alerts: true
   has_downloads: true
-  has_issues:    true
+  has_issues: true
   has_projects: false
-  has_wiki:     false
+  has_wiki: false
   homepage: 'https://gabl.ink'
   name: 'gabl.ink'
   private: false
-  topics: 'gabl.ink,comic,webcomic'
+  topics: 'comic,gabl.ink,html,shell,static-site,webcomic'
 
 ...
