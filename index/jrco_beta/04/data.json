@@ -23,8 +23,8 @@
     "html": "JoeRunner finishes an essay."
   },
   "tooltip": {
-    "text": "May 27. I have spent every waking moment for the last four weeks only experiencing the Magna Carta. My soul is the Magna Carta. My mind is the Magna Carta. My dreams are the Magna Carta. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace.",
-    "html": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace."
+    "text": "May\u00a027. I have spent every waking moment for the last four weeks only experiencing the Magna Carta. My soul is the Magna Carta. My mind is the Magna Carta. My dreams are the Magna Carta. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace.",
+    "html": "<time datetime=\"2021-05-27\">May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace."
   },
   "transcript": {
     "lines": [
@@ -34,7 +34,7 @@
       },
       {
         "h": "screen",
-        "d": "first version in 1215. Even 800 years after its original issuance, the Magna Carta continues to be relevant today as a symbol and foundation for democracy and liberty, an influence of the United States constitution, and a lasting presence in the United Kingdom. (<i>page break</i>) WORKS CITED"
+        "d": "first version in 1215. Even 800\u00a0years after its original issuance, the Magna Carta continues to be relevant today as a symbol and foundation for democracy and liberty, an influence of the United States constitution, and a lasting presence in the United Kingdom. (<i>page break</i>) WORKS CITED"
       },
       {
         "h": null,
@@ -42,7 +42,7 @@
       },
       {
         "h": "screen",
-        "d": "Are you sure you want to turn in 📄︎ <cite>Joseph Runner – Magna Carta</cite><span class=\"spaced_right\">?</span> (<i>buttons</i>) Submit / Cancel"
+        "d": "Are you sure you want to turn in 📄︎\u00a0<cite>Joseph Runner\u00a0– Magna Carta</cite><span class=\"spaced_right\">?</span> (<i>buttons</i>) Submit\u00a0/ Cancel"
       },
       {
         "h": null,
@@ -58,11 +58,11 @@
       },
       {
         "h": "JoeRunner",
-        "d": "(<i>relaxed</i>) Ahh . . . (<i>closes eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
+        "d": "(<i>relaxed</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>closes eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
       },
       {
         "h": "tooltip",
-        "d": "<time datetime=\"2021-05-27\">May 27</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like . . . before. But now it is done. With the click of a mouse, I have finally found inner peace."
+        "d": "<time datetime=\"2021-05-27\">May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace."
       }
     ]
   },

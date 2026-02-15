@@ -88,4 +88,44 @@ A localized JSON value must have at least one of the `ascii`, `filename`, `text`
 
 ### Text to ASCII
 
-* English text uses the following style for ellipses: `word[ ].[ ].[ ]. word` (where `[ ]` is a non-breaking space), as recommended by _CMOS_. ASCII text should instead use `word... word` to prevent bad line breaks.
+* English text uses the following style for ellipses: <code>word[&nbsp;].[&nbsp;].[&nbsp;]. word</code> (where <code>[&nbsp;]</code> is a non-breaking space), as recommended by _CMOS_. ASCII text should instead use `word... word` to prevent bad line breaks.
+
+## Characters to use entities or escape sequences for
+
+Several Unicode characters are invisible or easily confusable with other characters. Many languages allow the use of character entities or escape sequences to make these more obvious, or to allow data transfer in ASCII. We’re more concerned about the former.
+
+The following (printable) characters should always be escaped if possible:
+
+* (<code>&nbsp;</code>) U+00A0 NO-BREAK SPACE `&nbsp;` `\u00a0`
+* (<code>&thinsp;</code>) U+2009 THIN SPACE `&thinsp;` `\u2009`
+* (<code>&#x2011;</code>) U+2011 NON-BREAKING HYPHEN `&#x2011;` `\u2011`
+* (<code>&hairsp;</code>) U+200A HAIR SPACE `&hairsp;` `\u200a`
+* (<code>&#x202f;</code>) U+202F NARROW NO-BREAK SPACE `&#x202f;` `\u202f`
+* (<code>&NoBreak;</code>) U+2060 WORD JOINER `&NoBreak;` `\u2060`
+
+### HTML/XML
+
+All HTML in gabl.ink should also be valid XML (XHTML). Character entities (e.g. `&nbsp;` or `&#x00a0;` [<code>&nbsp;</code>]) cannot be used in XML, aside from `&amp;` (<code>&</code>), `&apos;` (`'`), `&gt;` (`>`), `&lt;` (`<`), and `&quot;` (`"`), which are included to guarantee printing all characters is possible. These should be used sparingly, however:
+
+* `&amp;` is only necessary if the content after it could be interpreted as a character reference (i.e. followed by `[A-Za-z#]`).
+* `&apos;` is only necessary inside single quotes wrapping an attribute.
+* `&gt;` is only necessary if a literal `<` precedes it outside an attribute value.
+* `&lt;` is only necessary outside an attribute value.
+
+Some of those aren’t even fully true. Whatever. Point is, if it displays correctly and validates as HTML and XML, it’s fine.
+
+### CSS
+
+Example: for U+00A0 NO-BREAK SPACE, use `\00a0`. If the escape is followed by `[A-Za-z0-9]`, use <code>\u00a0 </code>. The space will be interpreted as part of the escape.
+
+### JSON
+
+Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this and print the actual character, so you can (and should) use these for generating HTML. They still may not be used in `ascii` or `filename`, of course.
+
+### Markdown
+
+You may use character entities from the HTML5 Living Standard. Prefer terminating with semicolons, even if they are optional. If an entity is not predefined, use a hexadecimal entity (e.g. `&#x00a0`).
+
+### Shell
+
+POSIX does not define escape sequences for special characters without extensions, so they may not be used in shell scripts. Use the literal character instead.

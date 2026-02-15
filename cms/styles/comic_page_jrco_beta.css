@@ -93,7 +93,7 @@ ol#nav_bottom_list_pages {
 ol#nav_bottom_list_pages li::before {
   white-space: nowrap;
   counter-increment: nav_bottom_list_page;
-  content: "page " counter(nav_bottom_list_page) " ";
+  content: "page\00a0" counter(nav_bottom_list_page) " ";
 }
 
 div#transcript_text {

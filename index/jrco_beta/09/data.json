@@ -24,7 +24,7 @@
     "lines": [
       {
         "h": null,
-        "d": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+        "d": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
       },
       {
         "h": "chat",
@@ -36,7 +36,7 @@
       },
       {
         "h": "JoeRunner",
-        "d": "(<i>off-panel</i>) Perhaps . . ."
+        "d": "(<i>off-panel</i>) Perhaps\u00a0.\u00a0.\u00a0."
       },
       {
         "h": null,
@@ -44,7 +44,7 @@
       },
       {
         "h": "JoeRunner",
-        "d": ". . . but that got me enough reputation to access the Pan-Galactic Gargle Blaster from the Retnia shop!"
+        "d": ".\u00a0.\u00a0.\u00a0but that got me enough reputation to access the Pan-Galactic Gargle Blaster from the Retnia shop!"
       },
       {
         "h": null,
@@ -76,7 +76,7 @@
       },
       {
         "h": "JoeRunner",
-        "d": "Every day there are what, like 300 players and he keeps finding <em class=\"roman u\">us</em>?"
+        "d": "Every day there are what, like 300\u00a0players and he keeps finding <em class=\"roman u\">us</em>?"
       },
       {
         "h": null,
@@ -92,7 +92,7 @@
       },
       {
         "h": "character bio",
-        "d": "Harry / gamer of the highest order"
+        "d": "Harry\u00a0/ gamer of the highest order"
       },
       {
         "h": "JoeRunner",
@@ -100,7 +100,7 @@
       },
       {
         "h": "Harry",
-        "d": "The last four years, anyway. And now you are approximately 1.39729 × 10<sup>12</sup> molecules of space debris."
+        "d": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010<sup>12</sup> molecules of space debris."
       },
       {
         "h": null,
@@ -129,7 +129,7 @@
         "d": 30
       },
       "content": {
-        "html": "<p>Alas, poor <code>tomatotoe07</code>.</p><p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April 1</time>). This page especially took a lot of effort—the most yet—due to its length.</p><p>Only about 60% of the draft I wrote back on . . . <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May 25, 2021</time></em>? I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft—I wrote them when I was around 14 years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p><p>I have 30 more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p><p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p><p><b><span class=\"nw\">— Gabriel / <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></span></b></p>"
+        "html": "<p>Alas, poor <code>tomatotoe07</code>.</p><p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort—the most yet—due to its length.</p><p>Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time></em>? I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p><p>I have 30\u00a0more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p><p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p><p><b>—\u2060\u200a\u2060Gabriel\u00a0/ <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></b></p>"
       }
     }
   ],

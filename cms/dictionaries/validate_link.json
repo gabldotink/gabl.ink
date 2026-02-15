@@ -29,10 +29,10 @@
 		},
 		"format": {
 			"en": {
-				"html": "<abbr title=\"Hypertext Markup Language 5\">HTML5</abbr>"
+				"html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
 			},
 			"fr": {
-				"html": "<abbr title=\"Hypertext Markup Language 5\">HTML5</abbr>"
+				"html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
 			}
 		},
 		"base": "https://validator.w3.org/nu/?doc="

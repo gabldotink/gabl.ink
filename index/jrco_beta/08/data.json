@@ -40,7 +40,7 @@
       },
       {
         "h": "JoeRunner",
-        "d": "Yeah, there was lots of traffic on North 1 today."
+        "d": "Yeah, there was lots of traffic on North\u00a01 today."
       },
       {
         "h": null,
@@ -48,7 +48,7 @@
       },
       {
         "h": "character bio",
-        "d": "T.T. / one heck of a guy"
+        "d": "T.T.\u00a0/ one heck of a guy"
       },
       {
         "h": "T.T.",

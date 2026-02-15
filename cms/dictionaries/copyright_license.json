@@ -3,18 +3,18 @@
     "spdx": "CC-BY-4.0",
     "title": {
       "en-US": {
-        "ascii": "Creative Commons Attribution 4.0 International Public License",
-        "text": "Creative Commons Attribution 4.0 International Public License"
+        "ascii": "Creative Commons Attribution 4.0 International Public License",
+        "text": "Creative Commons Attribution\u00a04.0 International Public License"
       },
       "fr": {
         "ascii": "Publique licence Creative Commons Attribution 4.0 International",
-        "text": "Publique licence Creative Commons Attribution 4.0 International"
+        "text": "Publique licence Creative Commons Attribution\u00a04.0 International"
       }
     },
     "abbr": {
       "mul": {
         "ascii": "CC BY 4.0",
-        "text": "CC BY 4.0"
+        "text": "CC\u00a0BY\u00a04.0"
       }
     },
     "url": {
@@ -38,17 +38,17 @@
     "title": {
       "en-US": {
         "ascii": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
-        "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+        "text": "Creative Commons Attribution-ShareAlike\u00a04.0 International Public License"
       },
       "fr": {
         "ascii": "Publique licence Creative Commons Attribution - Partage dans les memes conditions 4.0 International",
-        "text": "Publique licence Creative Commons Attribution - Partage dans les mêmes conditions 4.0 International"
+        "text": "Publique licence Creative Commons Attribution\u00a0- Partage dans les mêmes conditions\u00a04.0 International"
       }
     },
     "abbr": {
       "mul": {
         "ascii": "CC BY-SA 4.0",
-        "text": "CC BY‑SA 4.0"
+        "text": "CC\u00a0BY\u2011SA\u00a04.0"
       }
     },
     "url": {
@@ -71,17 +71,17 @@
     "title": {
       "en-US": {
         "ascii": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License",
-        "text": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License"
+        "text": "Creative Commons Attribution-NonCommercial-ShareAlike\u00a04.0 International Public License"
       },
       "fr": {
         "ascii": "Publique licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les memes conditions 4.0 International",
-        "text": "Publique licence Creative Commons Attribution - Utilisation non commerciale - Partage dans les mêmes conditions 4.0 International"
+        "text": "Publique licence Creative Commons Attribution\u00a0- Utilisation non commerciale\u00a0- Partage dans les mêmes conditions\u00a04.0 International"
       }
     },
     "abbr": {
       "mul": {
         "ascii": "CC BY-NC-SA 4.0",
-        "text": "CC BY‑NC‑SA 4.0"
+        "text": "CC\u00a0BY\u2011NC\u2011SA\u00a04.0"
       }
     },
     "url": {
@@ -101,17 +101,17 @@
     "title": {
       "en-US": {
         "ascii": "CC0 1.0 Universal",
-        "text": "CC0 1.0 Universal"
+        "text": "CC0\u00a01.0 Universal"
       },
       "fr": {
         "ascii": "CC0 1.0 Universal",
-        "text": "CC0 1.0 Universal"
+        "text": "CC0\u00a01.0 Universal"
       }
     },
     "abbr": {
       "mul": {
         "ascii": "CC0 1.0",
-        "text": "CC0 1.0"
+        "text": "CC0\u00a01.0"
       }
     },
     "url": {

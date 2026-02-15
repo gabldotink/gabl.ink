@@ -71,10 +71,10 @@
         "h": "character bio",
         "d": {
           "en": {
-            "text": "JoeRunner / master of mornings"
+            "text": "JoeRunner\u00a0/ master of mornings"
           },
           "fr": {
-            "text": "JoeRunner / maître des matins"
+            "text": "JoeRunner\u00a0/ maître des matins"
           }
         }
       },

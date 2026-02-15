@@ -66,10 +66,10 @@
       },
       "content": {
         "en": {
-          "html": "<p>This one is laminated. [<i>sic</i>]</p><p>Obviously, I’m not much of an animator. Oh well. At least it gets the point across.</p><p>Aside from page 4, I don’t have another animated page written for at least the next thirty-or-so pages, and there probably won’t be many (or any) more until the end of <cite class=\"i\">Edulympiad</cite>. This one and page 4 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t.</p>"
+          "html": "<p>This one is laminated.\u00a0[<i>sic</i>]</p><p>Obviously, I’m not much of an animator. Oh well. At least it gets the point across.</p><p>Aside from page\u00a04, I don’t have another animated page written for at least the next thirty-or-so pages, and there probably won’t be many (or any) more until the end of <cite class=\"i\">Edulympiad</cite>. This one and page\u00a04 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t.</p>"
         },
         "fr": {
-          "html": "<p>Cette vidéo est aimée. [<i>sic</i>]</p><p>Clairement, je ne suis pas vraiment un animateur. Tant pis. Du moins, il fais passer le message.</p><p>Excepter page 4, je n’ai pas une autre page animée écrit depuis au moins de les troixante pages prochaines, et il n’y a pas principalement beaucoup (ou du tout) des plus avant la fin d’<cite class=\"i\">Edulympiade</cite>. Celui-ci et page 4 sont animées primarement passer les gags mieux, et parce que je suis incroyablement paresseux, si je ne dois pas les animate pour ce objectif, je ne fais pas probalement.</p>"
+          "html": "<p>Cette vidéo est aimée.\u00a0[<i>sic</i>]</p><p>Clairement, je ne suis pas vraiment un animateur. Tant pis. Du moins, il fais passer le message.</p><p>Excepter page\u00a04, je n’ai pas une autre page animée écrit depuis au moins de les troixante pages prochaines, et il n’y a pas principalement beaucoup (ou du tout) des plus avant la fin d’<cite class=\"i\">Edulympiade</cite>. Celui-ci et page\u00a04 sont animées primarement passer les gags mieux, et parce que je suis incroyablement paresseux, si je ne dois pas les animate pour ce objectif, je ne fais pas probalement.</p>"
         }
       }
     }

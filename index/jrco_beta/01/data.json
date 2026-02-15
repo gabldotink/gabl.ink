@@ -15,8 +15,8 @@
     "en-US": {
       "ascii": "'Thursday' title page",
       "filename": "Thursday_title_page",
-      "text": " ‘Thursday’ title page",
-      "html": " ‘<cite>Thursday</cite>’ title page"
+      "text": "\u00a0‘Thursday’ title page",
+      "html": "\u00a0‘<cite>Thursday</cite>’ title page"
     },
     "fr": {
       "ascii": "page de titre de \"jeudi\"",
@@ -34,7 +34,7 @@
       "fr": {
         "ascii": "page de titre de \"jeudi\"",
         "filename": "page_de_titre_de_jeudi",
-        "text": "page de titre de « jeudi »",
+        "text": "page de titre de «\u202fjeudi\u202f»",
         "html": "page de titre de <cite class=\"i\">jeudi</cite>"
       }
     }
@@ -45,18 +45,18 @@
       "html": "The title page for <cite class=\"i\">JoeRunner and Co. Beta</cite>, originally <cite class=\"i\">JoeRunner and Co.</cite>"
     },
     "fr": {
-      "text": "La page de titre de « JoeRunner et cie Bêta », intitulée originalement « JoeRunner et cie ».",
+      "text": "La page de titre de «\u202fJoeRunner et cie Bêta\u202f», intitulée originalement «\u202fJoeRunner et cie\u202f».",
       "html": "La page de titre de <cite class=\"i\">JoeRunner et cie Bêta</cite>, intitulée originalement <cite class=\"i\">JoeRunner et cie</cite>."
     }
   },
   "tooltip": {
     "en-US": {
-      "text": "pro tip for 5th graders: DO NOT wake up at 6:30 a.m.",
-      "html": "pro tip for 5th graders: <em class=\"r\">DO NOT</em> wake up at <time datetime=\"06:30\">6:30 <abbr title=\"ante meridiem\">a.m.</abbr></time>"
+      "text": "pro tip for 5th graders: DO NOT wake up at 6:30\u00a0a.m.",
+      "html": "pro tip for 5th graders: <em class=\"r\">DO NOT</em> wake up at <time datetime=\"06:30\">6:30\u00a0<abbr title=\"ante meridiem\">a.m.</abbr></time>"
     },
     "fr": {
-      "text": "Un conseil de pro pour les élèves de cinquième : ne vous réveillez pas à 6h30",
-      "html": "Un conseil de pro pour les élèves de cinquième : ne vous réveillez pas à <time datetime=\"06:30\">6h30</time>"
+      "text": "Un conseil de pro pour les élèves de cinquième\u202f: ne vous réveillez pas à 6h30",
+      "html": "Un conseil de pro pour les élèves de cinquième\u202f: ne vous réveillez pas à <time datetime=\"06:30\">6h30</time>"
     }
   },
   "transcript": {
@@ -65,10 +65,10 @@
         "h": "meta/logo",
         "d": {
           "en-US": {
-            "html": "<cite class=\"i\">JoeRunner and Co.</cite></p><p>by <span translate=\"no\">gabl</span></p><p>episode 1 <cite class=\"i\">Edulympiad</cite></p><p>chapter 1 “<cite>Thursday</cite>”"
+            "html": "<cite class=\"i\">JoeRunner and Co.</cite></p><p>by <span translate=\"no\">gabl</span></p><p>episode\u00a01 <cite class=\"i\">Edulympiad</cite></p><p>chapter\u00a01 “<cite>Thursday</cite>”"
           },
           "fr": {
-            "html": "<cite class=\"i\">JoeRunner et cie</cite></p><p>par <span translate=\"no\">gabl</span></p><p>épisode 1 <cite class=\"i\">Edulympiade</cite></p><p>chapitre 1 <cite class=\"i\">jeudi</cite>"
+            "html": "<cite class=\"i\">JoeRunner et cie</cite></p><p>par <span translate=\"no\">gabl</span></p><p>épisode\u00a01 <cite class=\"i\">Edulympiade</cite></p><p>chapitre\u00a01 <cite class=\"i\">jeudi</cite>"
           }
         }
       },
@@ -76,10 +76,10 @@
         "h": "meta/none",
         "d": {
           "en-US": {
-            "html": "The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time datetime=\"2021-05-27T06:30-0600\">6:30 <abbr title=\"ante meridiem\">a.m.</abbr> on May 27</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off."
+            "html": "The setting is a bedroom. On the desk next to the bed are some notebooks and an alarm clock. It’s <time datetime=\"2021-05-27T06:30-0600\">6:30\u00a0<abbr title=\"ante meridiem\">a.m.</abbr> on May\u00a027</time>, a Thursday. There is a button labeled “snooze” on the side of the alarm clock. The alarm is going off."
           },
           "fr": {
-            "html": "La scène se passe dans une chambre. Sur le bureau à côté du lit, il y a des cahiers et un réveil. Il est <time datetime=\"2021-05-27T06:30-0600\">6h30 le 27 mai</time>, un jeudi. Il y a un bouton étiqueté « snooze » sur le côté du réveil. L’alarme sonne."
+            "html": "La scène se passe dans une chambre. Sur le bureau à côté du lit, il y a des cahiers et un réveil. Il est <time datetime=\"2021-05-27T06:30-0600\">6h30 le 27\u00a0mai</time>, un jeudi. Il y a un bouton étiqueté «\u202fsnooze\u202f» sur le côté du réveil. L’alarme sonne."
           }
         }
       },
@@ -98,10 +98,10 @@
         "h": "meta/tooltip",
         "d": {
           "en-US": {
-            "html": "pro tip for 5th graders: <em class=\"r\">DO NOT</em> wake up at <time datetime=\"06:30\">6:30 <abbr>a.m.</abbr></time>"
+            "html": "pro tip for 5th graders: <em class=\"r\">DO NOT</em> wake up at <time datetime=\"06:30\">6:30\u00a0<abbr>a.m.</abbr></time>"
           },
           "fr": {
-            "html": "Un conseil de pro pour les élèves de cinquième : ne vous réveillez pas à <time datetime=\"06:30\">6h30</time>"
+            "html": "Un conseil de pro pour les élèves de cinquième\u202f: ne vous réveillez pas à <time datetime=\"06:30\">6h30</time>"
           }
         }
       }
@@ -121,10 +121,10 @@
       },
       "content": {
         "en-US": {
-          "html": "<p>Hey there! Welcome to <cite class=\"i nw\">JoeRunner and Co.</cite>!</p><p>My name’s Gabriel, <abbr title=\"also known as\">a.k.a.</abbr> <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span>, and I can’t wait to share my passion-project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for . . . less years, but still multiple. Years.</p><p>They’re . . . still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible.</p><p>. . . I look forward to taking this journey with you!</p><p>— <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></p>"
+          "html": "<p>Hey there! Welcome to <cite class=\"i nw\">JoeRunner and Co.</cite>!</p><p>My name’s Gabriel, <abbr title=\"also known as\">a.k.a.</abbr> <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span>, and I can’t wait to share my passion-project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for\u00a0.\u00a0.\u00a0. less years, but still multiple. Years.</p><p>They’re\u00a0.\u00a0.\u00a0. still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible.</p><p>.\u00a0.\u00a0.\u00a0I look forward to taking this journey with you!</p><p>—\u2060\u200a\u2060<span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></p>"
         },
         "fr": {
-          "html": "<p>Salut ! Bienvenue dans <cite class=\"i nw\">JoeRunner et cie</cite> !</p><p>Je m’appelle Gabriel, alias <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡabœl\">gabl</span>, et j’ai hâte de partager mes bandes dessinées, mes projets de passion, avec vous. Je dessine ces personnages depuis plusieurs années, et je veux faire un webcomic depuis… moins longtemps, mais encore plusieurs années.</p><p>Ils sont encore… un peu bruts. Je dessine les cartoons pour la moitié de ma vie, mais je n’ai pas été bon en défier moi-même. Avec un peu de chance, cette BD m’aidera à améliorer mes compétences en dessin. Avec un peu de chance, je peux faire rire les gens. Peut-être que je peux trouver une copine. J’sais pas. C’est possible.</p><p>… J’ai hâte de faire ce voyage avec vous !</p><p>— <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡabœl\">gabl</span></p>"
+          "html": "<p>Salut\u202f! Bienvenue dans <cite class=\"i nw\">JoeRunner et cie</cite>\u202f!</p><p>Je m’appelle Gabriel, alias <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡabœl\">gabl</span>, et j’ai hâte de partager mes bandes dessinées, mes projets de passion, avec vous. Je dessine ces personnages depuis plusieurs années, et je veux faire un webcomic depuis… moins longtemps, mais encore plusieurs années.</p><p>Ils sont encore… un peu bruts. Je dessine les cartoons pour la moitié de ma vie, mais je n’ai pas été bon en défier moi-même. Avec un peu de chance, cette BD m’aidera à améliorer mes compétences en dessin. Avec un peu de chance, je peux faire rire les gens. Peut-être que je peux trouver une copine. J’sais pas. C’est possible.</p><p>…\u00a0J’ai hâte de faire ce voyage avec vous\u202f!</p><p>—\u2060\u200a\u2060<span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡabœl\">gabl</span></p>"
         }
       }
     }
