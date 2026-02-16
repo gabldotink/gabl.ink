@@ -94,14 +94,27 @@ A localized JSON value must have at least one of the `ascii`, `filename`, `text`
 
 Several Unicode characters are invisible or easily confusable with other characters. Many languages allow the use of character entities or escape sequences to make these more obvious, or to allow data transfer in ASCII. We’re more concerned about the former.
 
-The following (printable) characters should always be escaped if possible:
+The following characters should always be escaped if possible (not all are expected to ever be used in this way):
 
-* (<code>&nbsp;</code>) U+00A0 NO-BREAK SPACE `&nbsp;` `\u00a0`
-* (<code>&thinsp;</code>) U+2009 THIN SPACE `&thinsp;` `\u2009`
-* (<code>&#x2011;</code>) U+2011 NON-BREAKING HYPHEN `&#x2011;` `\u2011`
-* (<code>&hairsp;</code>) U+200A HAIR SPACE `&hairsp;` `\u200a`
-* (<code>&#x202f;</code>) U+202F NARROW NO-BREAK SPACE `&#x202f;` `\u202f`
-* (<code>&NoBreak;</code>) U+2060 WORD JOINER `&NoBreak;` `\u2060`
+| Character                       | Codepoint | Name                  | HTML               | CSS     | JSON     | Control |
+|---------------------------------|-----------|-----------------------|--------------------|---------|----------|---------|
+| (<code>&#8;</code>)             | U+0008    | BACKSPACE             | `&#8;`             | `\8`    | `\u0008` | `\b`    |
+| (<code>&Tab;</code>)            | U+0009    | CHARACTER TABULATION  | `&Tab;`            | `\9`    | `\u0009` | `\t`    |
+| (<code>&NewLine;</code>)        | U+000A    | LINE FEED             | `&NewLine;`        | `\a`    | `\u000a` | `\n`    |
+| (<code>&#12;</code>)            | U+000C    | FORM FEED             | `&#12;`            | `\c`    | `\u000c` | `\f`    |
+| (<code>&#13;</code>)            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\u000d` | `\r`    |
+| (<code>&nbsp;</code>)           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |         |
+| (<code>&shy;</code>)            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |         |
+| (<code>&thinsp;</code>)         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |         |
+| (<code>&hairsp;</code>)         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |         |
+| (<code>&ZeroWidthSpace;</code>) | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |         |
+| (<code>&zwnj;</code>)           | U+200C    | ZERO WIDTH NON-JOINER | `&zwnj;`           | `\200c` | `\u200c` |         |
+| (<code>&zwj;</code>)            | U+200D    | ZERO WIDTH JOINER     | `&zwj;`            | `\200d` | `\u200d` |         |
+| (<code>&#8206;</code>)          | U+200E    | LEFT-TO-RIGHT MARK    | `&#8206;`          | `\200e` | `\u200e` |         |
+| _Omitted_                       | U+200F    | RIGHT-TO-LEFT MARK    | `&#8207;`          | `\200f` | `\u200f` |         |
+| (<code>&#8209;</code>)          | U+2011    | NON-BREAKING HYPHEN   | `&#8209;`          | `\2011` | `\u2011` |         |
+| (<code>&#8239;</code>)          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |         |
+| (<code>&NoBreak;</code>)        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |         |
 
 ### HTML/XML
 
@@ -116,16 +129,16 @@ Some of those aren’t even fully true. Whatever. Point is, if it displays corre
 
 ### CSS
 
-Example: for U+00A0 NO-BREAK SPACE, use `\00a0`. If the escape is followed by `[A-Za-z0-9]`, use <code>\u00a0 </code>. The space will be interpreted as part of the escape.
+Example: for U+00A0 NO-BREAK SPACE, use `\a0` or `\00a0`. If the escape is followed by `[A-Za-z0-9]`, use <code>\a0 </code>. The space will be interpreted as part of the escape. There’s no real reason to use the alternate syntax `\0000a0`, which never requires a space but is always longer. Escapes like `\n` are not supported.
 
 ### JSON
 
-Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this and print the actual character, so you can (and should) use these for generating HTML. They still may not be used in `ascii` or `filename`, of course.
+Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this and print the actual character, so you can (and should) use these for generating HTML. They still may not be used in `ascii` or `filename`, of course. Escapes like `\n` are supported.
 
 ### Markdown
 
-You may use character entities from the HTML5 Living Standard. Prefer terminating with semicolons, even if they are optional. If an entity is not predefined, use a hexadecimal entity (e.g. `&#x00a0`).
+You may use character entities from the HTML5 Living Standard. Prefer terminating with semicolons, even if they are optional. If an entity is not predefined, use a decimal entity (e.g. `&#160;`).
 
 ### Shell
 
-POSIX does not define escape sequences for special characters without extensions, so they may not be used in shell scripts. Use the literal character instead.
+POSIX does not define escape sequences for special characters without extensions, so they may not be used in shell scripts. Use the literal character instead. Escapes like `\n` are supported.
