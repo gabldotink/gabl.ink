@@ -1,19 +1,19 @@
 {
-  "id": "en/encyclopedia/meta/sound_effect",
+  "id": "encyclopedia/meta/sound_effect",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "text": "sound effect"
+        "ascii": "sound effect"
       },
       "fr": {
-        "text": "effet sonore"
+        "ascii": "effet sonore"
       }
     }
   },
   "description": {
     "en": {
-      "text": "Text that represents a sound."
+      "ascii": "Text that represents a sound."
     },
     "fr": {
       "text": "Texte qui représente un son."

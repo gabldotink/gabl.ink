@@ -1,14 +1,9 @@
 {
-  "id": "en/encyclopedia/meta/none",
+  "id": "encyclopedia/meta/none",
   "type": "meta_character",
-  "name": {
-    "label": {
-      "mul": "—"
-    }
-  },
   "description": {
     "en": {
-      "text": "Text that describes an image to the reader, appearing only in the transcript."
+      "ascii": "Text that describes an image to the reader, appearing only in the transcript."
     },
     "fr": {
       "text": "Texte qui décrit une image au lecteur, apparaissant seulement dans la transcription."

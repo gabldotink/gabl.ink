@@ -1,5 +1,6 @@
 {
   "id": "jrco_beta/01",
+  "lang_original": "en-US",
   "langs": [
     "en-US",
     "fr-FR"
@@ -23,20 +24,20 @@
       "filename": "page_de_titre_de_jeudi",
       "text": "page de titre de “jeudi”",
       "html": "page de titre de <cite class=\"r\">jeudi</cite>"
+    }
+  },
+  "title_unnested": {
+    "en-US": {
+      "ascii": "\"Thursday\" title page",
+      "filename": "Thursday_title_page",
+      "text": "“Thursday” title page",
+      "html": "“<cite>Thursday</cite>” title page"
     },
-    "unnested": {
-      "en-US": {
-        "ascii": "\"Thursday\" title page",
-        "filename": "Thursday_title_page",
-        "text": "“Thursday” title page",
-        "html": "“<cite>Thursday</cite>” title page"
-      },
-      "fr": {
-        "ascii": "page de titre de \"jeudi\"",
-        "filename": "page_de_titre_de_jeudi",
-        "text": "page de titre de «\u202fjeudi\u202f»",
-        "html": "page de titre de <cite class=\"i\">jeudi</cite>"
-      }
+    "fr": {
+      "ascii": "page de titre de \"jeudi\"",
+      "filename": "page_de_titre_de_jeudi",
+      "text": "page de titre de «\u202fjeudi\u202f»",
+      "html": "page de titre de <cite class=\"i\">jeudi</cite>"
     }
   },
   "description": {

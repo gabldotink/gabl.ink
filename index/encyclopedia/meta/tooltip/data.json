@@ -1,19 +1,19 @@
 {
-  "id": "en/encyclopedia/meta/tooltip",
+  "id": "encyclopedia/meta/tooltip",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "text": "tooltip"
+        "filename": "tooltip"
       },
       "fr": {
-        "text": "infobulle"
+        "filename": "infobulle"
       }
     }
   },
   "description": {
     "en": {
-      "text": "An extra piece of text that appears when hovering over an image (on a personal computer)."
+      "ascii": "An extra piece of text that appears when hovering over an image (on a personal computer)."
     },
     "fr": {
       "text": "Un texte supplémentaire qui apparaît lorsqu’on place la curseur au-dessus d’une image (sur un ordinateur personnel)."

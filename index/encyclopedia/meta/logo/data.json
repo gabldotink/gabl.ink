@@ -1,13 +1,13 @@
 {
-  "id": "en/encyclopedia/meta/logo",
+  "id": "encyclopedia/meta/logo",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "text": "logo"
+        "filename": "logo"
       },
       "fr": {
-        "text": "logo"
+        "filename": "logo"
       }
     }
   },

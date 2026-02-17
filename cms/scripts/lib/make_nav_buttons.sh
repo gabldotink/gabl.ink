@@ -31,7 +31,7 @@ make_nav_buttons_f_l(){
     printf 'title="%s in %s (This is the %s page!)">' "${make_nav_buttons_f_l_u}" "${container}" "${make_nav_buttons_f_l_l}"
   else
     printf 'title="%s in %s (“%s”)">' "${make_nav_buttons_f_l_u}" "${container}" "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'_title_text}"')"
-    printf '<a href="../%s/" hreflang="en-US" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'}"')")"
+    printf '<a href="../../%s/%s/" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "${container_'"${make_nav_buttons_f_l_i}"'}"')")" "${lang}" "${lang}"
   fi
 
   printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_f_l_a}" "${make_nav_buttons_f_l_u}"
@@ -70,7 +70,7 @@ make_nav_buttons_p_n(){
     printf 'title="%s (This is the %s page!)">' "${make_nav_buttons_p_n_u}" "${make_nav_buttons_p_n_z}"
   else
     printf 'title="%s (“%s”)">' "${make_nav_buttons_p_n_u}" "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'_title_text}"')"
-    printf '<a href="../%s/" rel="%s" hreflang="en-US" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'}"')")" "${make_nav_buttons_p_n_i}"
+    printf '<a href="../../%s/%s/" rel="%s" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "${'"${make_nav_buttons_p_n_i}"'}"')")" "${lang}" "${make_nav_buttons_p_n_i}" "${lang}"
   fi
 
   printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "${make_nav_buttons_p_n_a}" "${make_nav_buttons_p_n_u}"

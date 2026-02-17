@@ -40,7 +40,7 @@ fi
 
 # Prevent sh -x from having link styling
 if printf '%s' "$-" | grep -qF -- x;then
-  printf '%s' "${tput_reset}"
+  printf '%s' "${tput_reset}" >&2
 fi
 
 # Display help if any arguments are passed
@@ -88,7 +88,7 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json"
+items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json"
 
 trap - INT EXIT
 
@@ -98,10 +98,12 @@ for i in ${items};do
   (
     type="$(jq_r type "${i}")"
     id="$(jq_r id "${i}")"
+    # below is outdated
     #lang="$(jq_r language "${i}")"
     lang=en-US
+    lang_original="$(jq_r lang_original "${i}")"
 
-    # This only exits this subshell, but that’s fine, since the subshell is the whole loop
+    # This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
     if [ "${type}" = comic_series ];then
       printf '[skip] %s/%s\n' "${id}" "${lang}"
       # shellcheck disable=2106
@@ -136,6 +138,28 @@ for i in ${items};do
 
     canonical="https://gabl.ink/index/${id}/${lang}/"
 
+    # For now, the below is to add later.
+    # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
+    # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
+    # In case of a video, image.png should act as a thumbnail.
+    if [ -f "${index}/${id}/${lang}/video.webm" ];then
+      video_exists=true
+    else
+      unset video_exists
+    fi
+
+    if [ -f "${index}/${id}/${lang}/cc.vtt" ];then
+      captions_exists=true
+    else
+      unset captions_exists
+    fi
+
+    if [ "$(jq_r tooltip "${i}")" != null ];then
+      tooltip_exists=true
+    else
+      unset tooltip_exists
+    fi
+
     {
       printf '<!DOCTYPE html>\n'
       printf '<!-- SPDX-License-Identifier: %s -->\n' "${copyright_license_spdx}"
@@ -168,24 +192,10 @@ for i in ${items};do
         series="$(jq_r location.series "${i}")"
         set_var_l10n series_hashtag hashtag "${index}/${id}/../data.json"
         set_var_l10n series_title title "${index}/${id}/../data.json"
-        set_var_l10n tooltip tooltip "${i}"
+        if [ "${tooltip_exists}" = true ];then
+          set_var_l10n tooltip tooltip "${i}"
+        fi
         volume="$(jq_r location.volume "${i}")"
-
-        # For now, the below is to add later.
-        # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
-        # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
-        # In case of a video, image.png should act as a thumbnail.
-        if [ -f "${index}/${id}/video.webm" ];then
-          video_exists=true
-        else
-          unset video_exists
-        fi
-
-        if ! test_null tooltip_text;then
-          tooltip_exists=true
-        else
-          unset tooltip_exists
-        fi
 
         # Determine how many directories deep from the series the page is
         up_directories=4
@@ -336,12 +346,18 @@ for i in ${items};do
 
         # TODO: Edge case: no captions
         if [ "${video_exists}" = true ];then
-          printf 'video"><video controls="" poster="./image.png" preload="metadata">'
+          printf 'video"><video controls="" poster="./image.png" preload="metadata"'
+          if [ "${tooltip_exists}" = true ];then
+            printf ' title="%s"' "${tooltip_text}"
+          fi
+          printf '>'
           printf '<source src="./video.webm" type="video/webm"/>'
-          printf '<track default="" kind="captions" '
+          if [ "${captions_exists}" = true ];then
+            printf '<track default="" kind="captions" '
 
-          printf 'label="English (United States) (CC)" '
-          printf 'src="./track_en-us_cc.vtt" srclang="en-US"/>'
+            printf 'label="%s (%s) (CC)" ' "${lang_l_name_local_text}" "${lang_r_name_local_text}"
+            printf 'src="./cc.vtt" srclang="%s"/>' "${lang}"
+          fi
           # shellcheck disable=1112
           printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s_-_%s.webm">WebM</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${series_title_filename}" "${title_filename}"
           printf '</video></div>'
@@ -421,9 +437,12 @@ for i in ${items};do
           [ "${l_h_type}" = character ] ||
             [ "${l_h_type}" = meta_character ] ||
               error 'l_h_type is not character or meta_character'
-          set_var_l10n l_h_label name.label "${encyclopedia}/${l_h}/data.json"
-          if test_null l_h_label;then
-            set_var_l10n l_h_label name.given "${encyclopedia}/${l_h}/data.json"
+          if [ "$(jq_r name "${encyclopedia}/${l_h}/data.json")" = null ];then
+            unset l_h_label
+          else
+            set_var_l10n l_h_label name.label "${encyclopedia}/${l_h}/data.json"
+            test_null l_h_label &&
+              set_var_l10n l_h_label name.given "${encyclopedia}/${l_h}/data.json"
           fi
 
           printf '<tr>'

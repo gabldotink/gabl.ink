@@ -1,19 +1,19 @@
 {
-  "id": "en/encyclopedia/meta/bio",
+  "id": "encyclopedia/meta/bio",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "text": "bio"
+        "filename": "bio"
       },
       "fr": {
-        "text": "bio"
+        "filename": "bio"
       }
     }
   },
   "description": {
     "en": {
-      "text": "Text that introduces a subject to the reader."
+      "ascii": "Text that introduces a subject to the reader."
     },
     "fr": {
       "text": "Texte qui présente un sujet au lecteur."

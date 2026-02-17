@@ -6,7 +6,11 @@
   },
   "language": "en",
   "name": {
-    "label": "JoeRunner",
+    "label": {
+      "en": {
+        "filename": "JoeRunner"
+      }
+    },
     "given": "Joseph",
     "sur": "Runner",
     "nick": {

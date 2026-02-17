@@ -1,19 +1,19 @@
 {
-  "id": "en/encyclopedia/meta/narration",
+  "id": "encyclopedia/meta/narration",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "text": "narration"
+        "filename": "narration"
       },
       "fr": {
-        "text": "narration"
+        "filename": "narration"
       }
     }
   },
   "description": {
     "en": {
-      "text": "Miscellaneous text that appears as a message to the reader."
+      "ascii": "Miscellaneous text that appears as a message to the reader."
     },
     "fr": {
       "text": "Texte diverse qui apparaît comme un message au lecteur."

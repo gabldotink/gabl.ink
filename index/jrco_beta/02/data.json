@@ -1,5 +1,5 @@
 {
-  "id": "en/jrco_beta/02",
+  "id": "jrco_beta/02",
   "type": "comic_page",
   "location": {
     "series": "jrco_beta",
@@ -7,7 +7,11 @@
     "previous": 1,
     "next": 3
   },
-  "language": "en",
+  "lang_original": "en-US",
+  "langs": [
+    "en-US",
+    "fr-FR"
+  ],
   "title": {
     "en": {
       "ascii": "alarm clock",
@@ -29,7 +33,7 @@
   "transcript": {
     "lines": [
       {
-        "h": null,
+        "h": "meta/none",
         "d": {
           "en": {
             "text": "There’s a view of the bed next to the desk now. As the alarm clock audibly beeps, a hand reaches out from a lump under the covers and smacks the alarm clock on the snooze button on its side, which causes it to slide off the desk. After it clatters, there are sounds of a car crash, a man screaming in pain (the Wilhelm scream), and a cat shrieking. An exasperated young male voice speaks."
@@ -40,7 +44,7 @@
         }
       },
       {
-        "h": "boy",
+        "h": "jrco_beta/joerunner",
         "d": {
           "en": {
             "ascii": "I really need to get a new snooze button."
@@ -73,6 +77,9 @@
         }
       }
     }
+  ],
+  "disclaimer": [
+    "olympic"
   ],
   "copyright": {
     "year": {
