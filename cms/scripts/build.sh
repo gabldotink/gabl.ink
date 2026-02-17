@@ -94,22 +94,20 @@ trap - INT EXIT
 
 printf '[section start] items\n' >&2
 
-for i in ${items};do
-  (
-    type="$(jq_r type "${i}")"
-    id="$(jq_r id "${i}")"
-    # below is outdated
-    #lang="$(jq_r language "${i}")"
-    lang=en-US
-    lang_original="$(jq_r lang_original "${i}")"
+for i in ${items};do (
+  type="$(jq_r type "${i}")"
+  id="$(jq_r id "${i}")"
 
-    # This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
-    if [ "${type}" = comic_series ];then
-      printf '[skip] %s/%s\n' "${id}" "${lang}"
-      # shellcheck disable=2106
-      continue
-    fi
+  # This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
+  if [ "${type}" = comic_series ];then
+    printf '[skip] %s/%s\n' "${id}" "${lang}"
+    # shellcheck disable=2106
+    continue
+  fi
 
+  lang_original="$(jq_r lang_original "${i}")"
+
+  for lang in $(jq_r 'langs[]' "${index}/${id}/data.json");do (
     printf '[start] %s/%s\n' "${id}" "${lang}" >&2
 
     tmpfile="$(mktemp)"
@@ -656,6 +654,8 @@ for i in ${items};do
     rm -f -- "${tmpfile}" >/dev/null 2>&1
 
     printf '[done] %s/%s\n' "${id}" "${lang}" >&2
+    )
+  done
   ) &
 done
 

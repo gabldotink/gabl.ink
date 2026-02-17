@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/margo",
+  "id": "encyclopedia/jrco_beta/margo",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "given": "Margo"
   },

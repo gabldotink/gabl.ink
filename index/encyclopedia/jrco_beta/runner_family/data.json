@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/runner_family",
+  "id": "encyclopedia/jrco_beta/runner_family",
   "type": "character_group",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": "Runner family"
   },

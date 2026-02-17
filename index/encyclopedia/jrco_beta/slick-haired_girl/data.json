@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/slick-haired_girl",
+  "id": "encyclopedia/jrco_beta/slick-haired_girl",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": "slick-haired girl"
   },

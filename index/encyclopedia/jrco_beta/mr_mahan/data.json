@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/mr_mahan",
+  "id": "encyclopedia/jrco_beta/mr_mahan",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": "Mr. Mahan",
     "sur": "Mahan"

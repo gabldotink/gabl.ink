@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/pigtailed_girl",
+  "id": "encyclopedia/jrco_beta/pigtailed_girl",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": "pigtailed girl"
   },

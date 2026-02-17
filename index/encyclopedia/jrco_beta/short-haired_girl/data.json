@@ -1,10 +1,9 @@
 {
-  "id": "en/encyclopedia/jrco_beta/short-haired_girl",
+  "id": "encyclopedia/jrco_beta/short-haired_girl",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": "short-haired girl"
   },

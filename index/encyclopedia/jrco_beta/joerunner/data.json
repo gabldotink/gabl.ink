@@ -1,13 +1,15 @@
 {
-  "id": "en/encyclopedia/jrco_beta/joerunner",
+  "id": "encyclopedia/jrco_beta/joerunner",
   "type": "character",
   "location": {
     "universe": "jrco_beta"
   },
-  "language": "en",
   "name": {
     "label": {
       "en": {
+        "filename": "JoeRunner"
+      },
+      "fr": {
         "filename": "JoeRunner"
       }
     },

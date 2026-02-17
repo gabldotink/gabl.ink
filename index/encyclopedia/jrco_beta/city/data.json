@@ -1,5 +1,5 @@
 {
-  "id": "en/encyclopedia/jrco_beta/city",
+  "id": "encyclopedia/jrco_beta/city",
   "type": "place",
   "location": {
     "universe": "jrco_beta"
@@ -12,7 +12,6 @@
   },
   "description": "The city where JoeRunner and co. live.",
   "bio": "The city is inside a forest.",
-  "language": "en",
   "copyright": {
     "year": {
       "first": 2022,
