@@ -76,9 +76,9 @@ for f in "${lib}/"*.sh;do
 done
 
 # We must use an if statement here to use a ShellCheck directive
-if [ -f "${scripts}/config/build.sh" ];then
-  # shellcheck source=./config/build.sh
-  . "${scripts}/config/build.sh"
+if [ -f "${scripts}/config.sh" ];then
+  # shellcheck source=./config.sh
+  . "${scripts}/config.sh"
 fi
 
 if [ "${config_lang_default}" != en-US ];then
