@@ -344,7 +344,7 @@ for i in ${items};do (
 
         # TODO: Edge case: no captions
         if [ "${video_exists}" = true ];then
-          printf 'video"><video controls="" poster="./image.png" preload="metadata"'
+          printf 'video"><video controls="" poster="./image.png" preload="auto"'
           if [ "${tooltip_exists}" = true ];then
             printf ' title="%s"' "${tooltip_text}"
           fi
