@@ -105,6 +105,8 @@ The following characters should always be escaped if possible (not all are expec
 | (<code>&#13;</code>)            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\u000d` | `\r`    |
 | (<code>&nbsp;</code>)           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |         |
 | (<code>&shy;</code>)            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |         |
+| (<code>&ensp;</code>)           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |         |
+| (<code>&emsp;</code>)           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |         |
 | (<code>&thinsp;</code>)         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |         |
 | (<code>&hairsp;</code>)         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |         |
 | (<code>&ZeroWidthSpace;</code>) | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |         |
@@ -118,7 +120,7 @@ The following characters should always be escaped if possible (not all are expec
 
 ### HTML/XML
 
-All HTML in gabl.ink should also be valid XML (XHTML). Character entities (e.g. `&nbsp;` or `&#x00a0;` [<code>&nbsp;</code>]) cannot be used in XML, aside from `&amp;` (<code>&</code>), `&apos;` (`'`), `&gt;` (`>`), `&lt;` (`<`), and `&quot;` (`"`), which are included to guarantee printing all characters is possible. These should be used sparingly, however:
+All HTML in gabl.ink should also be valid XML (XHTML). Character entities (e.g. `&nbsp;` or `&#160;` [<code>&nbsp;</code>]) cannot be used in XML, aside from `&amp;` (<code>&</code>), `&apos;` (`'`), `&gt;` (`>`), `&lt;` (`<`), and `&quot;` (`"`), which are included to guarantee printing all characters is possible. These should be used sparingly, however:
 
 * `&amp;` is only necessary if the content after it could be interpreted as a character reference (i.e. followed by `[A-Za-z#]`).
 * `&apos;` is only necessary inside single quotes wrapping an attribute.
@@ -142,3 +144,7 @@ You may use character entities from the HTML5 Living Standard. Prefer terminatin
 ### Shell
 
 POSIX does not define escape sequences for special characters without extensions, so they may not be used in shell scripts. Use the literal character instead. Escapes like `\n` are supported.
+
+### WebVTT
+
+WebVTT supports six HTML character entites in cues: `&amp;`, `&lt;`, `&gt;`, `&lrm;`, `&rlm;`, and `&nbsp;`. Note that `&lrm;` and `&rlm;` (left-to-right and right-to-left marks) are not defined in HTML5.

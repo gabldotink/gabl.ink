@@ -152,6 +152,12 @@ for i in ${items};do (
       unset captions_exists
     fi
 
+    if [ -f "${index}/${id}/${lang}/subs.vtt" ];then
+      subs_exists=true
+    else
+      unset subs_exists
+    fi
+
     if [ "$(jq_r tooltip "${i}")" != null ];then
       tooltip_exists=true
     else
@@ -351,10 +357,14 @@ for i in ${items};do (
           printf '>'
           printf '<source src="./video.webm" type="video/webm"/>'
           if [ "${captions_exists}" = true ];then
-            printf '<track default="" kind="captions" '
-
+            printf '<track kind="captions" '
             printf 'label="%s (%s) (CC)" ' "${lang_l_name_local_text}" "${lang_r_name_local_text}"
             printf 'src="./cc.vtt" srclang="%s"/>' "${lang}"
+          fi
+          if [ "${subs_exists}" = true ];then
+            printf '<track default="" kind="subtitles" '
+            printf 'label="%s (%s)" ' "${lang_l_name_local_text}" "${lang_r_name_local_text}"
+            printf 'src="./subs.vtt" srclang="%s"/>' "${lang}"
           fi
           # shellcheck disable=1112
           printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s_-_%s.webm">WebM</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${series_title_filename}" "${title_filename}"
