@@ -93,6 +93,10 @@ ol#nav_bottom_list_pages {
 ol#nav_bottom_list_pages li::before {
   white-space: nowrap;
   counter-increment: nav_bottom_list_page;
+}
+
+ol#nav_bottom_list_pages li:lang(en)::before,
+ol#nav_bottom_list_pages li:lang(fr)::before {
   content: "page\a0" counter(nav_bottom_list_page) " ";
 }
 

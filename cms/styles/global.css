@@ -9,11 +9,11 @@ cite {
   all: unset;
 }
 
-[lang|="en" i] {
+:lang(en) {
   quotes: "“" "”" "‘" "’";
 }
 
-[lang|="fr" i] {
+:lang(fr) {
   quotes: "«\202f" "\202f»" "“" "”" "‹\202f" "\202f›"
 }
 

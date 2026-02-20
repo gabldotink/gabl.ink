@@ -225,12 +225,12 @@ for i in ${items};do (
 
         printf '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
                "${styles}"
-        printf '<link rel="preload" href="%s/comic_page_%s.css" as="style" hreflang="zxx" type="text/css"/>' \
-               "${styles}" "${series}"
+        printf '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css"/>' \
+               "${styles}"
         printf '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
                "${styles}"
-        printf '<link rel="stylesheet" href="%s/comic_page_%s.css" hreflang="zxx" type="text/css"/>' \
-               "${styles}" "${series}"
+        printf '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
+               "${styles}"
 
         printf '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url_id}"
 
