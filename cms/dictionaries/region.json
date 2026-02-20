@@ -5,7 +5,7 @@
         "ascii": "United States"
       },
       "fr": {
-        "text": "États-Unis"
+        "text": "États‐Unis"
       },
       "es": {
         "ascii": "Estados Unidos"
@@ -31,7 +31,8 @@
         "ascii": "United Kingdom"
       },
       "fr": {
-        "filename": "Royaume-Uni"
+        "filename": "Royaume-Uni",
+        "text": "Royaume\u2010Uni"
       },
       "es": {
         "ascii": "Reino Unido"

@@ -15,7 +15,7 @@ The `cite` element in HTML semantically represents the title of a work. Most bro
 
 However, we don’t always want italics there. The standard for standalone or otherwise “major” works is italicization, but for parts or otherwise “minor” works the standard is wrapping the title in quotation marks. For websites and some other things, no formatting at all is used.
 
-gabl.ink’s default CSS stylesheets remove all browser-default styling, so we don’t need to worry about that.
+gabl.ink’s default CSS stylesheets remove all browser&dash;default styling from `cite`, so we don’t need to worry about that.
 
 For italicized works, we explicitly place the `cite` element inside the `i` element:
 
@@ -49,18 +49,18 @@ In Markdown, we only use `i` and `cite` for italicized titles, since Markdown do
 
 ## _The Chicago Manual of Style_ (_CMOS_)
 
-gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default style guide. This includes using American English conventions. Already-written text, including quotations, generally does not need to be changed aside from minor typographical formatting.
+gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default style guide. This includes using American English conventions. Already&dash;written text, including quotations, generally does not need to be changed aside from minor typographical formatting.
 
 ### Exceptions to _CMOS_
 
 * T.T.’s name is an initialism of his full name, so it would normally be written _TT_. However, I don’t like how that looks, so this is an exception. That’s basically the only reason.
-  * When I restart _JoeRunner & Co._, I’ll make his name t.t., where _CMOS_ would allow the periods, although it would surely still make copyeditors groan for obvious reasons. Too bad, there’ll be an in-universe reason for it so they can’t do anything about it. Also, I’m the copyeditor myself anyway.
+  * When I restart _JoeRunner & Co._, I’ll make his name t.t., where _CMOS_ would allow the periods, although it would surely still make copyeditors groan for obvious reasons. Too bad, there’ll be an in&dash;universe reason for it so they can’t do anything about it. Also, I’m the copyeditor myself anyway.
 
 ## Why program in shell? Not even a reasonable one, the standard POSIX shell?
 
 im dumb
 
-## CSS-Generated Quotation Marks
+## CSS&dash;Generated Quotation Marks
 
 ### The `q` Element
 
@@ -96,27 +96,35 @@ Several Unicode characters are invisible or easily confusable with other charact
 
 The following characters should always be escaped if possible (not all are expected to ever be used in this way):
 
-| Character                       | Codepoint | Name                  | HTML               | CSS     | JSON     | Control |
-|---------------------------------|-----------|-----------------------|--------------------|---------|----------|---------|
-| (<code>&#8;</code>)             | U+0008    | BACKSPACE             | `&#8;`             | `\8`    | `\u0008` | `\b`    |
-| (<code>&Tab;</code>)            | U+0009    | CHARACTER TABULATION  | `&Tab;`            | `\9`    | `\u0009` | `\t`    |
-| (<code>&NewLine;</code>)        | U+000A    | LINE FEED             | `&NewLine;`        | `\a`    | `\u000a` | `\n`    |
-| (<code>&#12;</code>)            | U+000C    | FORM FEED             | `&#12;`            | `\c`    | `\u000c` | `\f`    |
-| (<code>&#13;</code>)            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\u000d` | `\r`    |
-| (<code>&nbsp;</code>)           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |         |
-| (<code>&shy;</code>)            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |         |
-| (<code>&ensp;</code>)           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |         |
-| (<code>&emsp;</code>)           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |         |
-| (<code>&thinsp;</code>)         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |         |
-| (<code>&hairsp;</code>)         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |         |
-| (<code>&ZeroWidthSpace;</code>) | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |         |
-| (<code>&zwnj;</code>)           | U+200C    | ZERO WIDTH NON-JOINER | `&zwnj;`           | `\200c` | `\u200c` |         |
-| (<code>&zwj;</code>)            | U+200D    | ZERO WIDTH JOINER     | `&zwj;`            | `\200d` | `\u200d` |         |
-| (<code>&#8206;</code>)          | U+200E    | LEFT-TO-RIGHT MARK    | `&#8206;`          | `\200e` | `\u200e` |         |
-| _Omitted_                       | U+200F    | RIGHT-TO-LEFT MARK    | `&#8207;`          | `\200f` | `\u200f` |         |
-| (<code>&#8209;</code>)          | U+2011    | NON-BREAKING HYPHEN   | `&#8209;`          | `\2011` | `\u2011` |         |
-| (<code>&#8239;</code>)          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |         |
-| (<code>&NoBreak;</code>)        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |         |
+| Character          | Codepoint | Name                  | HTML               | CSS     | JSON     | Control |
+|--------------------|-----------|-----------------------|--------------------|---------|----------|---------|
+| ]&#8;[             | U+0008    | BACKSPACE             | `&#8;`             | `\8`    | `\u0008` | `\b`    |
+| ]&Tab;[            | U+0009    | CHARACTER TABULATION  | `&Tab;`            | `\9`    | `\u0009` | `\t`    |
+| ]&NewLine;[        | U+000A    | LINE FEED             | `&NewLine;`        | `\a`    | `\u000a` | `\n`    |
+| ]&#12;[            | U+000C    | FORM FEED             | `&#12;`            | `\c`    | `\u000c` | `\f`    |
+| ]&#13;[            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\u000d` | `\r`    |
+| ]&nbsp;[           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |         |
+| ]&shy;[            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |         |
+| ]&#8192;[          | U+2000    | EN QUAD               | `&#8192;`          | `\2000` | `\u2000` |         |
+| ]&#8193;[          | U+2000    | EM QUAD               | `&#8193;`          | `\2001` | `\u2001` |         |
+| ]&ensp;[           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |         |
+| ]&emsp;[           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |         |
+| ]&emsp13;[         | U+2004    | THREE-PER-EM SPACE    | `&emsp13;`         | `\2004` | `\u2004` |         |
+| ]&emsp14;[         | U+2005    | FOUR-PER-EM SPACE     | `&emsp14;`         | `\2005` | `\u2005` |         |
+| ]&8198;[           | U+2006    | SIX-PER-EM SPACE      | `&#8198;`          | `\2006` | `\u2006` |         |
+| ]&numsp;[          | U+2007    | FIGURE SPACE          | `&numsp;`          | `\2007` | `\u2007` |         |
+| ]&puncsp;[         | U+2008    | PUNCTUATION SPACE     | `&puncsp;`         | `\2008` | `\u2008` |         |
+| ]&thinsp;[         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |         |
+| ]&dash;[           | U+2010    | HYPHEN                | `&dash;`           | `\2010` | `\u2010` |         |
+| ]&hairsp;[         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |         |
+| ]&ZeroWidthSpace;[ | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |         |
+| ]&zwnj;[           | U+200C    | ZERO WIDTH NON-JOINER | `&zwnj;`           | `\200c` | `\u200c` |         |
+| ]&zwj;[            | U+200D    | ZERO WIDTH JOINER     | `&zwj;`            | `\200d` | `\u200d` |         |
+| ]&lrm;[            | U+200E    | LEFT-TO-RIGHT MARK    | `&lrm;`            | `\200e` | `\u200e` |         |
+| ]&rlm;[            | U+200F    | RIGHT-TO-LEFT MARK    | `&rlm;`            | `\200f` | `\u200f` |         |
+| ]&#8209;[          | U+2011    | NON-BREAKING HYPHEN   | `&#8209;`          | `\2011` | `\u2011` |         |
+| ]&#8239;[          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |         |
+| ]&NoBreak;[        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |         |
 
 ### HTML/XML
 
@@ -147,4 +155,4 @@ POSIX does not define escape sequences for special characters without extensions
 
 ### WebVTT
 
-WebVTT supports six HTML character entites in cues: `&amp;`, `&lt;`, `&gt;`, `&lrm;`, `&rlm;`, and `&nbsp;`. Note that `&lrm;` and `&rlm;` (left-to-right and right-to-left marks) are not defined in HTML5.
+WebVTT supports HTML5 character entities in cues.
