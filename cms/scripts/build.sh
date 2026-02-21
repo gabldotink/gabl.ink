@@ -662,11 +662,11 @@ for i in ${items};do (
     flush_from_tmp "${tmpfile}" "${index}/${id}/${lang}/index.html"
 
     printf '[done] %s/%s\n' "${id}" "${lang}" >&2
-    )
+    ) &
   done
+  wait
   ) &
 done
-
 wait
 
 printf '[section done] items\n' >&2
