@@ -10,7 +10,7 @@ trap \
 
 script="$0"
 
-dependencies='basename cat cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
+dependencies='basename cat cmp cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
 
 for c in ${dependencies};do
   if command -v "${c}" >/dev/null 2>&1;then
@@ -659,9 +659,7 @@ for i in ${items};do (
       printf '</body></html>\n'
     } > "${tmpfile}"
 
-    cat -- "${tmpfile}" > "${index}/${id}/${lang}/index.html"
-
-    rm -f -- "${tmpfile}" >/dev/null 2>&1
+    flush_from_tmp "${tmpfile}" "${index}/${id}/${lang}/index.html"
 
     printf '[done] %s/%s\n' "${id}" "${lang}" >&2
     )
