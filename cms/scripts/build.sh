@@ -176,7 +176,9 @@ for i in ${items};do (
       printf '<meta charset="utf-8"/>'
       printf '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
 
-      printf '<title>gabl.ink – “%s”</title>' "${title_text}"
+      printf '<title>'
+      printf_l10n html_title "${title_text}"
+      printf '</title>'
 
       printf '<meta name="description" content="%s"/>' "${description_text}"
       printf '<meta name="robots" content="index,follow"/>'

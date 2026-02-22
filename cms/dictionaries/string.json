@@ -1,0 +1,10 @@
+{
+  "html_title": {
+    "en": {
+      "printf": "gabl.ink: “%s”"
+    },
+    "fr": {
+      "printf": "gabl.ink: « %s »"
+    }
+  }
+}
