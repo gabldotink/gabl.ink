@@ -512,7 +512,7 @@ for i in ${items};do (
           printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
           if   [ "${#post_date_y}" -lt 4 ] &&
                [ "${post_date_y}" -ne 0 ];then
-            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$  {first_published_y}"
+            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
           elif [ "${post_date_y}" -eq 0 ];then
             printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
           else
