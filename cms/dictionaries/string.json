@@ -6,5 +6,21 @@
     "fr": {
       "printf": "gabl.ink: « %s »"
     }
+  },
+  "gabldotink_logo": {
+    "en": {
+      "printf": "gabl.ink"
+    },
+    "fr": {
+      "printf": "gabl.ink"
+    }
+  },
+  "video_not_supported": {
+    "en-US": {
+      "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
+    },
+    "fr": {
+      "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à « Transcription » au-dessous."
+    }
   }
 }

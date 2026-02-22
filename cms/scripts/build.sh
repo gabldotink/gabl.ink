@@ -313,7 +313,7 @@ for i in ${items};do (
         printf '<body>'
         printf '<header>'
         printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
-        printf 'gabl.ink'
+        printf_l10n gabldotink_logo
         printf '</a></header>'
         printf '<div id="panels">'
         printf '<div id="nav_top">'
@@ -368,15 +368,16 @@ for i in ${items};do (
             printf 'label="%s (%s)" ' "${lang_l_name_local_text}" "${lang_r_name_local_text}"
             printf 'src="./subs.vtt" srclang="%s"/>' "${lang}"
           fi
-          # shellcheck disable=1112
-          printf '<p>It looks like your web browser doesn’t support the <code>video</code> element. You can download the video as a <a href="./video.webm" hreflang="en-US" type="video/webm" download="%s_-_%s.webm">WebM</a> file to watch with your preferred video player. You can also view the transcript for the video at “Comic transcript” below.</p>' "${series_title_filename}" "${title_filename}"
+          printf '<p>'
+          printf_l10n video_not_supported "${lang}" "${series_title_filename}" "${title_filename}"
+          printf '</p>'
           printf '</video></div>'
         else
           printf 'image"><picture'
           [ "${tooltip_exists}" = true ] &&
             printf ' title="%s"' "${tooltip_text}"
           printf '>'
-          printf '<img src="./image.png" alt="See “Comic transcript” below"/>'
+          printf '<img src="./image.png" alt="See “Transcript” below"/>'
           printf '</picture></div>'
         fi
 
@@ -429,7 +430,7 @@ for i in ${items};do (
 
         printf '<details id="comic_transcript" open="">'
 
-        printf '<summary>Comic transcript</summary>'
+        printf '<summary>Transcript</summary>'
 
         printf '<table id="comic_transcript_table">'
 
