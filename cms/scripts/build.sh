@@ -448,7 +448,7 @@ for i in ${items};do (
             [ "${l_h_type}" = meta_character ] ||
               error 'l_h_type is not character or meta_character'
           if [ "$(jq_r name "${encyclopedia}/${l_h}/data.json")" = null ];then
-            unset l_h_label
+            unset_var_l10n l_h_label
           else
             set_var_l10n l_h_label name.label "${encyclopedia}/${l_h}/data.json"
             test_null l_h_label &&
