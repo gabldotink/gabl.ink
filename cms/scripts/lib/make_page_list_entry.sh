@@ -13,7 +13,7 @@ make_page_list_entry(){
   if [ -z "${title_html}" ];then
     [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ] &&
       printf '<b>'
-    printf '<i>no title</i>'
+    printf_l10n no_title
     [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ] &&
       printf '</b>'
   else

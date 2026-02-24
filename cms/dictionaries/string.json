@@ -22,5 +22,77 @@
     "fr": {
       "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à « Transcription » au-dessous."
     }
+  },
+  "see_transcript": {
+    "en-US": {
+      "printf": "See “Transcript” below"
+    },
+    "fr": {
+      "printf": "Voir « Transcription » au-dessous"
+    }
+  },
+  "series_title_html": {
+    "en": {
+      "printf": "<cite class=\"i\">%s</cite>"
+    },
+    "fr": {
+      "printf": "<cite class=\"i\">%s</cite>"
+    }
+  },
+  "comma_page": {
+    "en": {
+      "printf": ", page %s "
+    },
+    "fr": {
+      "printf": ", page %s "
+    }
+  },
+  "page_title_html": {
+    "en": {
+      "printf": "“<cite>%s</cite>”"
+    },
+    "fr": {
+      "printf": "<cite class=\"i\">%s</cite>"
+    }
+  },
+  "no_title": {
+    "en": {
+      "printf": "<i>no title</i>"
+    },
+    "fr": {
+      "printf": "<i>sans titre</i>"
+    }
+  },
+  "transcript_name": {
+    "en": {
+      "printf": "Transcript"
+    },
+    "fr": {
+      "printf": "Transcription"
+    }
+  },
+  "transcript_speaker": {
+    "en": {
+      "printf": "Speaker"
+    },
+    "fr": {
+      "printf": "Parleur/parleuse"
+    }
+  },
+  "transcript_text": {
+    "en": {
+      "printf": "Text"
+    },
+    "fr": {
+      "printf": "Texte"
+    }
+  },
+  "first_published": {
+    "en": {
+      "printf": "First published "
+    },
+    "fr": {
+      "printf": "Première publication : "
+    }
   }
 }

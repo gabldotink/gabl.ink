@@ -318,7 +318,8 @@ for i in ${items};do (
         printf '<div id="panels">'
         printf '<div id="nav_top">'
         printf '<h1 id="nav_top_title">'
-        printf '“<cite>%s</cite>”</h1>' "${title_html}"
+        printf_l10n page_title_html "${title_html}"
+        printf '</h1>'
 
         if ! test_null container_first;then
           set_var_l10n container_first_title title "${index}/${id}/../${zero_pad_2_container_first}/data.json"
@@ -377,7 +378,9 @@ for i in ${items};do (
           [ "${tooltip_exists}" = true ] &&
             printf ' title="%s"' "${tooltip_text}"
           printf '>'
-          printf '<img src="./image.png" alt="See “Transcript” below"/>'
+          printf '<img src="./image.png" alt="'
+          printf_l10n see_transcript
+          printf '"/>'
           printf '</picture></div>'
         fi
 
@@ -391,18 +394,15 @@ for i in ${items};do (
 
         printf '<summary>'
 
-        printf '<cite class="i">'
-
-        # TODO: Support higher containers (volumes and chapters).
+        # TODO: Support lower containers (volumes and chapters).
 
         if [ "${container}" = series ];then
-          printf '%s' "${series_title_html}"
-          printf '</cite>'
+          printf_l10n series_title_html "${series_title_html}"
         fi
 
-        printf ', page %s ' "${page}"
+        printf_l10n comma_page "${page}"
 
-        printf '“<cite>%s</cite>”' "${title_html}"
+        printf_l10n page_title_html "${title_html}"
 
         printf '</summary>'
 
@@ -430,13 +430,13 @@ for i in ${items};do (
 
         printf '<details id="comic_transcript" open="">'
 
-        printf '<summary>Transcript</summary>'
+        printf_l10n transcript_name
 
         printf '<table id="comic_transcript_table">'
 
         printf '<thead><tr>'
-        printf '<th scope="col">Speaker</th>'
-        printf '<th scope="col">Text</th>'
+        printf '<th scope="col">%s</th>' "$(printf_l10n transcript_speaker)"
+        printf '<th scope="col">%s</th>' "$(printf_l10n transcript_text)"
         printf '</tr></thead>'
 
         for l in $(jq_r 'transcript.lines|to_entries|.[].key' "${i}");do
@@ -466,7 +466,7 @@ for i in ${items};do (
 
         printf '</table></details>'
 
-        printf '<p id="first_published">First published <time class="nw" datetime="'
+        printf '<p id="first_published">%s<time class="nw" datetime="' "$(printf_l10n first_published)"
 
         printf '%s-%s-%s' "${zero_pad_4_first_published_y}" \
                           "${zero_pad_2_first_published_m}" \
@@ -476,15 +476,31 @@ for i in ${items};do (
 
         set_var_l10n first_published_m 'months['"$((first_published_m-1))]" "${dict}/month_gregorian.json"
 
-        printf '%s ' "${first_published_m_html}"
-        printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
-        if   [ "${#first_published_y}" -lt 4 ] &&
-             [ "${first_published_y}" -ne 0 ];then
-          printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$  {first_published_y}"
-        elif [ "${first_published_y}" -eq 0 ];then
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
-        else
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
+        if [ "${lang_l}" = en ];then
+          printf '%s ' "${first_published_m_html}"
+          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
+          if   [ "${#first_published_y}" -lt 4 ] &&
+               [ "${first_published_y}" -ne 0 ];then
+            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
+          elif [ "${first_published_y}" -eq 0 ];then
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
+          else
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
+          fi
+        fi
+
+        if [ "${lang_l}" = fr ];then
+          if [ "${first_published_d}" -eq 1 ];then
+            printf 1er
+          else
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>' "${first_published_d}"
+          fi
+          printf ' %s ' "${first_published_m_html}"
+          if [ "${first_published_y}" -eq 0 ];then
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="avant Jésus‐Christ">av. J.‐C.</abbr>'
+          else
+            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
+          fi
         fi
 
         printf '</time></p><article id="post_'
