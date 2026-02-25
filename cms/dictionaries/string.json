@@ -94,5 +94,85 @@
     "fr": {
       "printf": "Première publication : "
     }
+  },
+  "nav_button_first": {
+    "en": {
+      "printf": "First"
+    },
+    "fr": {
+      "printf": "Première"
+    }
+  },
+  "nav_button_prev": {
+    "en": {
+      "printf": "Previous"
+    },
+    "fr": {
+      "printf": "Précédente"
+    }
+  },
+  "nav_button_next": {
+    "en": {
+      "printf": "Next"
+    },
+    "fr": {
+      "printf": "Prochaine"
+    }
+  },
+  "nav_button_last": {
+    "en": {
+      "printf": "Last"
+    },
+    "fr": {
+      "printf": "Dernière"
+    }
+  },
+  "nav_button_first_inline": {
+    "en": {
+      "printf": "first"
+    },
+    "fr": {
+      "printf": "première"
+    }
+  },
+  "nav_button_next_inline": {
+    "en": {
+      "printf": "next"
+    },
+    "fr": {
+      "printf": "prochaine"
+    }
+  },
+  "nav_button_prev_inline": {
+    "en": {
+      "printf": "previous"
+    },
+    "fr": {
+      "printf": "précédente"
+    }
+  },
+  "nav_button_last_inline": {
+    "en": {
+      "printf": "last"
+    },
+    "fr": {
+      "printf": "dernière"
+    }
+  },
+  "this_is_x_page": {
+    "en": {
+      "printf": "This is the %s page!"
+    },
+    "fr": {
+      "printf": "C’est la %s page !"
+    }
+  },
+  "nav_button_page_title": {
+    "en": {
+      "printf": "“%s”"
+    },
+    "fr": {
+      "printf": "« %s »"
+    }
   }
 }
