@@ -96,35 +96,47 @@ Several Unicode characters are invisible or easily confusable with other charact
 
 The following characters should always be escaped if possible (not all are expected to ever be used in this way):
 
-| Character          | Codepoint | Name                  | HTML               | CSS     | JSON     | Control |
-|--------------------|-----------|-----------------------|--------------------|---------|----------|---------|
-| ]&#8;[             | U+0008    | BACKSPACE             | `&#8;`             | `\8`    | `\u0008` | `\b`    |
-| ]&Tab;[            | U+0009    | CHARACTER TABULATION  | `&Tab;`            | `\9`    | `\u0009` | `\t`    |
-| ]&NewLine;[        | U+000A    | LINE FEED             | `&NewLine;`        | `\a`    | `\u000a` | `\n`    |
-| ]&#12;[            | U+000C    | FORM FEED             | `&#12;`            | `\c`    | `\u000c` | `\f`    |
-| ]&#13;[            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\u000d` | `\r`    |
-| ]&nbsp;[           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |         |
-| ]&shy;[            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |         |
-| ]&#8192;[          | U+2000    | EN QUAD               | `&#8192;`          | `\2000` | `\u2000` |         |
-| ]&#8193;[          | U+2000    | EM QUAD               | `&#8193;`          | `\2001` | `\u2001` |         |
-| ]&ensp;[           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |         |
-| ]&emsp;[           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |         |
-| ]&emsp13;[         | U+2004    | THREE-PER-EM SPACE    | `&emsp13;`         | `\2004` | `\u2004` |         |
-| ]&emsp14;[         | U+2005    | FOUR-PER-EM SPACE     | `&emsp14;`         | `\2005` | `\u2005` |         |
-| ]&8198;[           | U+2006    | SIX-PER-EM SPACE      | `&#8198;`          | `\2006` | `\u2006` |         |
-| ]&numsp;[          | U+2007    | FIGURE SPACE          | `&numsp;`          | `\2007` | `\u2007` |         |
-| ]&puncsp;[         | U+2008    | PUNCTUATION SPACE     | `&puncsp;`         | `\2008` | `\u2008` |         |
-| ]&thinsp;[         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |         |
-| ]&dash;[           | U+2010    | HYPHEN                | `&dash;`           | `\2010` | `\u2010` |         |
-| ]&hairsp;[         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |         |
-| ]&ZeroWidthSpace;[ | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |         |
-| ]&zwnj;[           | U+200C    | ZERO WIDTH NON-JOINER | `&zwnj;`           | `\200c` | `\u200c` |         |
-| ]&zwj;[            | U+200D    | ZERO WIDTH JOINER     | `&zwj;`            | `\200d` | `\u200d` |         |
-| ]&lrm;[            | U+200E    | LEFT-TO-RIGHT MARK    | `&lrm;`            | `\200e` | `\u200e` |         |
-| ]&rlm;[            | U+200F    | RIGHT-TO-LEFT MARK    | `&rlm;`            | `\200f` | `\u200f` |         |
-| ]&#8209;[          | U+2011    | NON-BREAKING HYPHEN   | `&#8209;`          | `\2011` | `\u2011` |         |
-| ]&#8239;[          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |         |
-| ]&NoBreak;[        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |         |
+| Character          | Codepoint | Name                  | HTML               | CSS     | JSON     |
+|--------------------|-----------|-----------------------|--------------------|---------|----------|
+| ]&#8;[             | U+0008    | BACKSPACE             | `&#8;`             | `\8`    | `\b`     |
+| ]&Tab;[            | U+0009    | CHARACTER TABULATION  | `&Tab;`            | `\9`    | `\t`     |
+| ]&NewLine;[        | U+000A    | LINE FEED             | `&NewLine;`        | `\a`    | `\n`     |
+| ]&#12;[            | U+000C    | FORM FEED             | `&#12;`            | `\c`    | `\f`     |
+| ]&#13;[            | U+000D    | CARRIAGE RETURN       | `&#13;`            | `\d`    | `\r`     |
+| ]&nbsp;[           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |
+| ]&shy;[            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |
+| ]&#8192;[          | U+2000    | EN QUAD               | `&#8192;`          | `\2000` | `\u2000` |
+| ]&#8193;[          | U+2000    | EM QUAD               | `&#8193;`          | `\2001` | `\u2001` |
+| ]&ensp;[           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |
+| ]&emsp;[           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |
+| ]&emsp13;[         | U+2004    | THREE-PER-EM SPACE    | `&emsp13;`         | `\2004` | `\u2004` |
+| ]&emsp14;[         | U+2005    | FOUR-PER-EM SPACE     | `&emsp14;`         | `\2005` | `\u2005` |
+| ]&#8198;[          | U+2006    | SIX-PER-EM SPACE      | `&#8198;`          | `\2006` | `\u2006` |
+| ]&numsp;[          | U+2007    | FIGURE SPACE          | `&numsp;`          | `\2007` | `\u2007` |
+| ]&puncsp;[         | U+2008    | PUNCTUATION SPACE     | `&puncsp;`         | `\2008` | `\u2008` |
+| ]&thinsp;[         | U+2009    | THIN SPACE            | `&thinsp;`         | `\2009` | `\u2009` |
+| ]&dash;[           | U+2010    | HYPHEN                | `&dash;`           | `\2010` | `\u2010` |
+| ]&hairsp;[         | U+200A    | HAIR SPACE            | `&hairsp;`         | `\200a` | `\u200a` |
+| ]&ZeroWidthSpace;[ | U+200B    | ZERO WIDTH SPACE      | `&ZeroWidthSpace;` | `\200b` | `\u200b` |
+| ]&zwnj;[           | U+200C    | ZERO WIDTH NON-JOINER | `&zwnj;`           | `\200c` | `\u200c` |
+| ]&zwj;[            | U+200D    | ZERO WIDTH JOINER     | `&zwj;`            | `\200d` | `\u200d` |
+| ]&lrm;[            | U+200E    | LEFT-TO-RIGHT MARK    | `&lrm;`            | `\200e` | `\u200e` |
+| ]&rlm;[            | U+200F    | RIGHT-TO-LEFT MARK    | `&rlm;`            | `\200f` | `\u200f` |
+| ]&#8209;[          | U+2011    | NON-BREAKING HYPHEN   | `&#8209;`          | `\2011` | `\u2011` |
+| ]&#8210;[          | U+2012    | FIGURE DASH           | `&#8210;`          | `\2012` | `\u2012` |
+| ]&#8239;[          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |
+| ]&NoBreak;[        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |
+| ]&minus;[          | U+2212    | MINUS SIGN            | `&minus;`          | `\2212` | `\u2212` |
+
+The following ASCII characters may need to be escaped, depending on context (_N/A_ means the character never has to be escaped):
+
+| Character | Codepoint | Name              | HTML     | CSS  | JSON |
+|-----------|-----------|-------------------|----------|------|------|
+| "         | U+0022    | QUOTATION MARK    | `&quot;` | `\"` | `\"` |
+| &         | U+0026    | AMPERSAND         | `&amp;`  | `\&` | N/A  |
+| '         | U+0027    | APOSTROPHE        | `&apos;` | `\'` | N/A  |
+| <         | U+003C    | LESS-THAN SIGN    | `&lt;`   | `\<` | N/A  |
+| >         | U+003E    | GREATER-THAN SIGN | `&gt;`   | `\>` | N/A  |
 
 ### HTML/XML
 
