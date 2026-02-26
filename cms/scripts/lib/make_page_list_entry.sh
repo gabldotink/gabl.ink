@@ -11,21 +11,21 @@ make_page_list_entry(){
   printf '<li>'
 
   if [ -z "${title_html}" ];then
-    [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ] &&
+    [ "${make_page_list_entry_s}" = "$(zero_pad 2 page)" ] &&
       printf '<b>'
     printf_l10n no_title
-    [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ] &&
+    [ "${make_page_list_entry_s}" = "$(zero_pad 2 page)" ] &&
       printf '</b>'
   else
     printf '“'
-    if [ "${make_page_list_entry_s}" = "${zero_pad_2_page}" ];then
+    if [ "${make_page_list_entry_s}" = "$(zero_pad 2 page)" ];then
       printf '<b><cite>'
       printf '%s' "${title_html}"
       printf '</cite></b>”'
     else
-      printf '<a href="../'
+      printf '<a href="../../'
       printf '%s' "${make_page_list_entry_s}"
-      printf '/" hreflang="en-US" type="text/html"><cite>'
+      printf '/%s/" hreflang="%s" type="text/html"><cite>' "${lang}" "${lang}"
       printf '%s' "${title_html}"
       printf '</cite></a>”'
     fi

@@ -186,11 +186,8 @@ for i in ${items};do (
 
       if [ "${type}" = comic_page ];then
         first_published_d="$(jq_r first_published.d "${i}")"
-        zero_pad 2 first_published_d
         first_published_m="$(jq_r first_published.m "${i}")"
-        zero_pad 2 first_published_m
         first_published_y="$(jq_r first_published.y "${i}")"
-        zero_pad 4 first_published_y
         chapter="$(jq_r location.chapter "${i}")"
         next="$(jq_r location.next "${i}")"
         page="$(jq_r location.page "${i}")"
@@ -255,32 +252,18 @@ for i in ${items};do (
         container_first="$(jq_r pages.first "${index}/${id}/../data.json")"
         container_last="$(jq_r pages.last "${index}/${id}/../data.json")"
 
-        zero_pad 2 container_first
-        zero_pad 2 container_last
-        if ! test_null prev;then
-          zero_pad 2 prev
-        else
-          unset zero_pad_2_prev
-        fi
-        if ! test_null next;then
-          zero_pad 2 next
-        else
-          unset zero_pad_2_next
-        fi
-        zero_pad 2 page
-
         if test_null prev;then
           # This is the first page, so no prefetches are needed.
           true
         elif [ "${container_first}" != "${page}" ] ||
              [ "${container_first}" != "${prev}" ];then
           printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_container_first}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 container_first)" "${lang_bcp_47_full}"
           printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_prev}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 prev)" "${lang_bcp_47_full}"
         elif [ "${container_first}" = "${prev}" ];then
           printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_prev}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 prev)" "${lang_bcp_47_full}"
         fi
 
         if test_null next;then
@@ -289,12 +272,12 @@ for i in ${items};do (
         elif [ "${container_last}" != "${page}" ] ||
              [ "${container_last}" != "${next}" ];then
           printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_next}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 next)" "${lang_bcp_47_full}"
           printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_container_last}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 container_last)" "${lang_bcp_47_full}"
         elif [ "${container_last}" = "${next}" ];then
           printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
-                 "${zero_pad_2_next}" "${lang_bcp_47_full}"
+                 "$(zero_pad 2 next)" "${lang_bcp_47_full}"
         fi
 
         make_og type article
@@ -322,25 +305,25 @@ for i in ${items};do (
         printf '</h1>'
 
         if ! test_null container_first;then
-          set_var_l10n container_first_title title "${index}/${id}/../${zero_pad_2_container_first}/data.json"
+          set_var_l10n container_first_title title "${index}/${id}/../$(zero_pad 2 container_first)/data.json"
         else
           unset container_first_title_text
         fi
 
         if ! test_null prev;then
-          set_var_l10n prev_title title "${index}/${id}/../${zero_pad_2_prev}/data.json"
+          set_var_l10n prev_title title "${index}/${id}/../$(zero_pad 2 prev)/data.json"
         else
           unset prev_title_text
         fi
 
         if ! test_null next;then
-          set_var_l10n next_title title "${index}/${id}/../${zero_pad_2_next}/data.json"
+          set_var_l10n next_title title "${index}/${id}/../$(zero_pad 2 next)/data.json"
         else
           unset next_title_text
         fi
 
         if ! test_null container_last;then
-          set_var_l10n container_last_title title "${index}/${id}/../${zero_pad_2_container_last}/data.json"
+          set_var_l10n container_last_title title "${index}/${id}/../$(zero_pad 2 container_last)/data.json"
         else
           unset container_last_title_text
         fi
@@ -412,7 +395,7 @@ for i in ${items};do (
           [ -n "$1" ] &&
             set -x
 
-          zero_pad_2_page="$2"
+          page="$2"
           lib="$3"
           lang="$4"
           lang_l="$5"
@@ -423,14 +406,14 @@ for i in ${items};do (
           done
 
           make_page_list_entry "$7"' \
-          sh "$(printf '%s' "$-"|grep -F -- x)" "${zero_pad_2_page}" "${lib}" \
+          sh "$(printf '%s' "$-"|grep -F -- x)" "${page}" "${lib}" \
              "${lang}" "${lang_l}" "${lang_default}" '{}' ';'
 
         printf '</ol></details></nav></div>'
 
         printf '<details id="comic_transcript" open="">'
 
-        printf_l10n transcript_name
+        printf '<summary>%s</summary>' "$(printf_l10n transcript_name)"
 
         printf '<table id="comic_transcript_table">'
 
@@ -466,11 +449,13 @@ for i in ${items};do (
 
         printf '</table></details>'
 
-        printf '<p id="first_published">%s<time class="nw" datetime="' "$(printf_l10n first_published)"
+        printf '<p id="first_published">%s' "$(printf_l10n first_published)"
+        
+        printf '<time datetime="'
 
-        printf '%s-%s-%s' "${zero_pad_4_first_published_y}" \
-                          "${zero_pad_2_first_published_m}" \
-                          "${zero_pad_2_first_published_d}"
+        printf '%s-%s-%s' "$(zero_pad 4 first_published_y)" \
+                          "$(zero_pad 2 first_published_m)" \
+                          "$(zero_pad 2 first_published_d)"
 
         printf '">'
 
@@ -508,20 +493,17 @@ for i in ${items};do (
         for p in $(jq_r 'post|to_entries|.[].key' "${i}");do
           set_var_l10n post_content 'post.['"${p}].content" "${i}"
           post_date_d="$(jq -r --argjson p "${p}" -- '.post[$p].date.d' "${i}")"
-          zero_pad 2 post_date_d
           post_date_m="$(jq -r --argjson p "${p}" -- '.post[$p].date.m' "${i}")"
-          zero_pad 2 post_date_m
           post_date_y="$(jq -r --argjson p "${p}" -- '.post[$p].date.y' "${i}")"
-          zero_pad 4 post_date_y
 
-          printf '%s-%s-%s">' "${zero_pad_4_post_date_y}" \
-                              "${zero_pad_2_post_date_m}" \
-                              "${zero_pad_2_post_date_d}"
+          printf '%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
+                              "$(zero_pad 2 post_date_m)" \
+                              "$(zero_pad 2 post_date_d)"
 
           printf '<h2 class="nw">'
-          printf '<time datetime="%s-%s-%s">' "${zero_pad_4_post_date_y}" \
-                                              "${zero_pad_2_post_date_m}" \
-                                              "${zero_pad_2_post_date_d}"
+          printf '<time datetime="%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
+                                              "$(zero_pad 2 post_date_m)" \
+                                              "$(zero_pad 2 post_date_d)"
 
           set_var_l10n post_date_m 'months['"$((post_date_m-1))]" "${dict}/month_gregorian.json"
 
