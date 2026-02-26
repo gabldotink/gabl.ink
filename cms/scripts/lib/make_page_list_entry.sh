@@ -17,17 +17,32 @@ make_page_list_entry(){
     [ "${make_page_list_entry_s}" = "$(zero_pad 2 page)" ] &&
       printf '</b>'
   else
-    printf '“'
     if [ "${make_page_list_entry_s}" = "$(zero_pad 2 page)" ];then
-      printf '<b><cite>'
+      if [ "${lang_l}-${lang_r}" = en-US ];then
+        printf '“<b><cite>'
+      elif [ "${lang_l}" = fr ];then
+        printf '<b><cite class="i">'
+      fi
       printf '%s' "${title_html}"
-      printf '</cite></b>”'
+      if [ "${lang_l}-${lang_r}" = en-US ];then
+        printf '</cite></b>”'
+      elif [ "${lang_l}" = fr ];then
+        printf '</cite></b>'
+      fi
     else
-      printf '<a href="../../'
-      printf '%s' "${make_page_list_entry_s}"
-      printf '/%s/" hreflang="%s" type="text/html"><cite>' "${lang}" "${lang}"
-      printf '%s' "${title_html}"
-      printf '</cite></a>”'
+      if [ "${lang_l}" = en ];then
+        printf '“<a href="../../'
+        printf '%s' "${make_page_list_entry_s}"
+        printf '/%s/" hreflang="%s" type="text/html"><cite>' "${lang}" "${lang}"
+        printf '%s' "${title_html}"
+        printf '</cite></a>”'
+      elif [ "${lang_l}" = fr ];then
+        printf '<a href="../../'
+        printf '%s' "${make_page_list_entry_s}"
+        printf '/%s/" hreflang="%s" type="text/html"><cite class="i">' "${lang}" "${lang}"
+        printf '%s' "${title_html}"
+        printf '</cite></a>'
+      fi
     fi
   fi
 

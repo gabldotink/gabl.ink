@@ -477,7 +477,7 @@ for i in ${items};do (
         done
 
         printf '<details id="share_links">'
-        printf '<summary>Share this page</summary>'
+        printf '<summary>%s</summary>' "$(printf_l10n share_this_page)"
         printf '<ul>'
 
         make_share_link email \
@@ -574,7 +574,7 @@ for i in ${items};do (
         printf '</ul></details>'
 
         printf '<details id="validate_links">'
-        printf '<summary>Validate this page</summary>'
+        printf '<summary>%s</summary>' "$(printf_l10n validate_this_page)"
         printf '<ul>'
 
         make_validate_link vnu
@@ -584,13 +584,13 @@ for i in ${items};do (
       printf '</ul></details>'
 
       printf '<footer><p><span class="nw">'
-      printf '<abbr title="Copyright">©</abbr> '
+      printf '<abbr title="%s">©</abbr> ' "$(printf_l10n copyright)"
       printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_first}"
       ! test_null copyright_year_last &&
         printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_last}"
       printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
-      printf '<p>License: <a rel="external license" href="%s" ' "${copyright_license_url_id}"
+      printf '<p>%s<a rel="external license" href="%s" ' "$(printf_l10n license)" "${copyright_license_url_id}"
       printf 'hreflang="en" type="text/html">'
       printf '<cite>%s</cite>' "${copyright_license_title_html}"
       ! test_null copyright_license_abbr &&
@@ -599,7 +599,7 @@ for i in ${items};do (
 
       if ! test_null disclaimer;then
         set_var_l10n disclaimer "\"${disclaimer}\"" "${dict}/disclaimer.json"
-        printf '<p>Disclaimer: %s</p>' "${disclaimer_html}"
+        printf '<p>%s%s</p>' "$(printf_l10n disclaimer)" "${disclaimer_html}"
       else
         unset disclaimer_html
       fi

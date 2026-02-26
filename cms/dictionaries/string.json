@@ -174,5 +174,72 @@
     "fr": {
       "printf": "« %s »"
     }
+  },
+  "share_this_page": {
+    "en": {
+      "printf": "Share this page"
+    },
+    "fr": {
+      "printf": "Partagez ce page"
+    }
+  },
+  "validate_this_page": {
+    "en": {
+      "printf": "Validate this page"
+    },
+    "fr": {
+      "printf": "Validez ce page"
+    }
+  },
+  "copyright": {
+    "en": {
+      "printf": "Copyright"
+    },
+    "fr": {
+      "printf": "Droit d’auteur"
+    }
+  },
+  "license": {
+    "en-US": {
+      "printf": "License: "
+    },
+    "en-GB": {
+      "printf": "Licence: "
+    },
+    "fr": {
+      "printf": "Licence : "
+    }
+  },
+  "disclaimer": {
+    "en": {
+      "printf": "Disclaimer: "
+    },
+    "fr": {
+      "printf": "Disclaimer : "
+    }
+  },
+  "share_with": {
+    "en": {
+      "printf": "Share with "
+    },
+    "fr": {
+      "printf": "Partagez avec "
+    }
+  },
+  "validate_with": {
+    "en": {
+      "printf": "Validate with "
+    },
+    "fr": {
+      "printf": "Validez avec "
+    }
+  },
+  "validate_as": {
+    "en": {
+      "printf": " as "
+    },
+    "fr": {
+      "printf": " en tant que "
+    }
   }
 }

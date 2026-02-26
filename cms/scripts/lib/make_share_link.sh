@@ -51,7 +51,7 @@ make_share_link(){
     printf '%s%s=%s' "${make_share_link_start_param}" "${make_share_link_hashtag_param}" "${make_share_link_hashtag}"
   fi
 
-  printf '">Share with '
+  printf '">%s' "$(printf_l10n share_with)"
 
   printf '%s' "${make_share_link_name_html}"
 

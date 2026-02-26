@@ -15,10 +15,10 @@ make_validate_link(){
   printf '<li id="validate_links_%s">' "${make_validate_link_id}"
   printf '<a rel="external" href="%s' "${make_validate_link_base}${make_validate_link_url}"
 
-  printf '">Validate with '
+  printf '">%s' "$(printf_l10n validate_with)"
   printf '%s' "${make_validate_link_name_html}"
   if [ -n "${make_validate_link_format_html}" ];then
-    printf ' as %s</a></li>' "${make_validate_link_format_html}"
+    printf '%s%s</a></li>' "$(printf_l10n validate_as)" "${make_validate_link_format_html}"
   else
     printf '</a></li>'
   fi

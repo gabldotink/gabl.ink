@@ -26,9 +26,7 @@ say_date(){
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${say_date_y}"
     fi
-  fi
-
-  if [ "${lang_l}" = fr ];then
+  elif [ "${lang_l}" = fr ];then
     if [ "${say_date_d}" -eq 1 ];then
       printf 1er
     else
