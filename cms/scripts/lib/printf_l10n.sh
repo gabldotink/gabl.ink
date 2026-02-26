@@ -3,8 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 printf_l10n(){
-  printf_l10n_id="$1"
-  set_var_l10n printf_l10n_msg "\"${printf_l10n_id}\"" "${dict}/string.json"
+  set_var_l10n printf_l10n_msg "\"$1\"" "${dict}/string.json"
   shift
   # We want to have formatting in this string
   # shellcheck disable=2059

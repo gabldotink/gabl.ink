@@ -3,10 +3,5 @@
 # SPDX-License-Identifier: CC0-1.0
 
 make_og(){
-  make_og_property="$1"
-  make_og_content="$2"
-
-  printf '<meta property="og:%s" content="%s"/>' "${make_og_property}" "${make_og_content}"
-
-  unset make_og_property make_og_content
+  printf '<meta property="og:%s" content="%s"/>' "$1" "$2"
 }

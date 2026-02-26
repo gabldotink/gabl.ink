@@ -3,7 +3,5 @@
 # SPDX-License-Identifier: CC0-1.0
 
 test_null(){
-  # shellcheck disable=2034
-  test_null_var="$1"
-  eval '[ "${'"${test_null_var}"'}" = null ]'
+  eval '[ "${'"$1"'}" = null ]'
 }

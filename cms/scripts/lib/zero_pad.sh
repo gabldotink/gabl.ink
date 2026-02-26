@@ -3,8 +3,5 @@
 # SPDX-License-Identifier: CC0-1.0
 
 zero_pad(){
-  zero_pad_depth="$1"
-  zero_pad_var="$2"
-
-  eval "zero_pad_${zero_pad_depth}_${zero_pad_var}"'="$(printf "%0${zero_pad_depth}d" "${'"${zero_pad_var}"'}")"'
+  eval "zero_pad_${1}_${2}"'="$(printf "%0${1}d" "${'"$2"'}")"'
 }
