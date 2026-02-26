@@ -92,7 +92,7 @@ items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json"
 
 trap - INT EXIT
 
-printf '[section start] items\n' >&2
+section start items
 
 for i in ${items};do (
   type="$(jq_r type "${i}")"
@@ -688,7 +688,7 @@ for i in ${items};do (
 done
 wait
 
-printf '[section done] items\n' >&2
+section done items
 
 trap - INT EXIT
 
