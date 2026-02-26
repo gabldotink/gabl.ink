@@ -451,44 +451,9 @@ for i in ${items};do (
 
         printf '<p id="first_published">%s' "$(printf_l10n first_published)"
         
-        printf '<time datetime="'
+        say_date first_published
 
-        printf '%s-%s-%s' "$(zero_pad 4 first_published_y)" \
-                          "$(zero_pad 2 first_published_m)" \
-                          "$(zero_pad 2 first_published_d)"
-
-        printf '">'
-
-        set_var_l10n first_published_m 'months['"$((first_published_m-1))]" "${dict}/month_gregorian.json"
-
-        if [ "${lang_l}" = en ];then
-          printf '%s ' "${first_published_m_html}"
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${first_published_d}"
-          if   [ "${#first_published_y}" -lt 4 ] &&
-               [ "${first_published_y}" -ne 0 ];then
-            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-          elif [ "${first_published_y}" -eq 0 ];then
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
-          else
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-          fi
-        fi
-
-        if [ "${lang_l}" = fr ];then
-          if [ "${first_published_d}" -eq 1 ];then
-            printf 1er
-          else
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>' "${first_published_d}"
-          fi
-          printf ' %s ' "${first_published_m_html}"
-          if [ "${first_published_y}" -eq 0 ];then
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="avant Jésus‐Christ">av. J.‐C.</abbr>'
-          else
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-          fi
-        fi
-
-        printf '</time></p><article id="post_'
+        printf '</p><article id="post_'
 
         for p in $(jq_r 'post|to_entries|.[].key' "${i}");do
           set_var_l10n post_content 'post.['"${p}].content" "${i}"
@@ -500,25 +465,11 @@ for i in ${items};do (
                               "$(zero_pad 2 post_date_m)" \
                               "$(zero_pad 2 post_date_d)"
 
-          printf '<h2 class="nw">'
-          printf '<time datetime="%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
-                                              "$(zero_pad 2 post_date_m)" \
-                                              "$(zero_pad 2 post_date_d)"
+          printf '<h2>'
+          
+          say_date post_date
 
-          set_var_l10n post_date_m 'months['"$((post_date_m-1))]" "${dict}/month_gregorian.json"
-
-          printf '%s ' "${post_date_m_html}"
-          printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "${post_date_d}"
-          if   [ "${#post_date_y}" -lt 4 ] &&
-               [ "${post_date_y}" -ne 0 ];then
-            printf '<abbr title="anno Domini">AD</abbr> <span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-          elif [ "${post_date_y}" -eq 0 ];then
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span> <abbr title="before Christ">BC</abbr>'
-          else
-            printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "${first_published_y}"
-          fi
-
-          printf '</time></h2>'
+          printf '</h2>'
 
           printf '%s' "${post_content_html}"
 
