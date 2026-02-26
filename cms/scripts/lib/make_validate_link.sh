@@ -16,11 +16,7 @@ make_validate_link(){
   printf '<a rel="external" href="%s' "${make_validate_link_base}${make_validate_link_url}"
 
   printf '">Validate with '
-  if printf '%s' "${make_validate_link_name_html}" | grep -qve '<cite>.*</cite>';then
-    printf '<cite>%s</cite>' "${make_validate_link_name_html}"
-  else
-    printf '%s' "${make_validate_link_name_html}"
-  fi
+  printf '%s' "${make_validate_link_name_html}"
   if [ -n "${make_validate_link_format_html}" ];then
     printf ' as %s</a></li>' "${make_validate_link_format_html}"
   else

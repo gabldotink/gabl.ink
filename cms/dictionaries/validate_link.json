@@ -1,40 +1,40 @@
 {
-	"vnu": {
-		"name": {
-			"en": {
-				"html": "the <cite>Nu Html Checker</cite>"
-			},
-			"fr": {
-				"html": "le <cite>Nu Html Checker</cite>"
-			}
-		},
-		"format": {
-			"en": {
-				"html": "<abbr title=\"Hypertext Markup Language 5\">HTML5</abbr>"
-			},
-			"fr": {
-				"html": "<abbr title=\"Hypertext Markup Language 5\">HTML5</abbr>"
-			}
-		},
-		"base": "https://validator.nu/?doc="
-	},
-	"w3c": {
-		"name": {
-			"en": {
-				"html": "the <cite><abbr title=\"World Wide Web Consortium\">W3C</abbr> Markup Validation Service</cite>"
-			},
-			"fr": {
-				"html": "le <cite><abbr title=\"World Wide Web Consortium\">W3C</abbr> Markup Validation Service</cite>"
-			}
-		},
-		"format": {
-			"en": {
-				"html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
-			},
-			"fr": {
-				"html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
-			}
-		},
-		"base": "https://validator.w3.org/nu/?doc="
-	}
+  "vnu": {
+    "name": {
+      "en": {
+        "html": "the <cite>Nu Html Checker</cite>"
+      },
+      "fr": {
+        "html": "le <cite>Nu Html Checker</cite>"
+      }
+    },
+    "format": {
+      "en": {
+        "html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
+      },
+      "fr": {
+        "html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
+      }
+    },
+    "base": "https://validator.nu/?doc="
+  },
+  "w3c": {
+    "name": {
+      "en": {
+        "html": "the <cite><abbr title=\"World Wide Web Consortium\">W3C</abbr> Markup Validation Service</cite>"
+      },
+      "fr": {
+        "html": "le <cite><abbr title=\"World Wide Web Consortium\">W3C</abbr> Markup Validation Service</cite>"
+      }
+    },
+    "format": {
+      "en": {
+        "html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
+      },
+      "fr": {
+        "html": "<abbr title=\"Hypertext Markup Language\u00a05\">HTML5</abbr>"
+      }
+    },
+    "base": "https://validator.w3.org/nu/?doc="
+  }
 }

@@ -53,11 +53,7 @@ make_share_link(){
 
   printf '">Share with '
 
-  if printf '%s' "${make_share_link_name_html}" | grep -qve '<cite>.*</cite>';then
-    printf '<cite>%s</cite>' "${make_share_link_name_html}"
-  else
-    printf '%s' "${make_share_link_name_html}"
-  fi
+  printf '%s' "${make_share_link_name_html}"
 
   printf '</a></li>'
 }

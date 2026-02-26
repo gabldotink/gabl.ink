@@ -30,10 +30,12 @@
   "x": {
     "name": {
       "en": {
-        "filename": "X"
+        "filename": "X",
+        "html": "<cite>X</cite>"
       },
       "fr": {
-        "filename": "X"
+        "filename": "X",
+        "html": "<cite>X</cite>"
       }
     },
     "base": "https://x.com/intent/tweet",
@@ -44,10 +46,12 @@
   "reddit": {
     "name": {
       "en": {
-        "filename": "Reddit"
+        "filename": "Reddit",
+        "html": "<cite>Reddit</cite>"
       },
       "fr": {
-        "filename": "Reddit"
+        "filename": "Reddit",
+        "html": "<cite>Reddit</cite>"
       }
     },
     "base": "https://www.reddit.com/submit?type=LINK",
@@ -57,10 +61,12 @@
   "facebook": {
     "name": {
       "en": {
-        "filename": "Facebook"
+        "filename": "Facebook",
+        "html": "<cite>Facebook</cite>"
       },
       "fr": {
-        "filename": "Facebook"
+        "filename": "Facebook",
+        "html": "<cite>Facebook</cite>"
       }
     },
     "base": "https://www.facebook.com/sharer/sharer.php",
@@ -69,10 +75,12 @@
   "telegram": {
     "name": {
       "en": {
-        "filename": "Telegram"
+        "filename": "Telegram",
+        "html": "<cite>Telegram</cite>"
       },
       "fr": {
-        "filename": "Telegram"
+        "filename": "Telegram",
+        "html": "<cite>Telegram</cite>"
       }
     },
     "base": "https://t.me/share",
@@ -82,10 +90,12 @@
   "bluesky": {
     "name": {
       "en": {
-        "filename": "Bluesky"
+        "filename": "Bluesky",
+        "html": "<cite>Bluesky</cite>"
       },
       "fr": {
-        "filename": "Bluesky"
+        "filename": "Bluesky",
+        "html": "<cite>Bluesky</cite>"
       }
     },
     "base": "https://bsky.app/intent/compose",
@@ -94,10 +104,12 @@
   "whatsapp": {
     "name": {
       "en": {
-        "filename": "WhatsApp"
+        "filename": "WhatsApp",
+        "html": "<cite>WhatsApp</cite>"
       },
       "fr": {
-        "filename": "WhatsApp"
+        "filename": "WhatsApp",
+        "html": "<cite>WhatsApp</cite>"
       }
     },
     "base": "https://wa.me/",
@@ -106,10 +118,12 @@
   "mastodon": {
     "name": {
       "en": {
-        "filename": "Mastodon"
+        "filename": "Mastodon",
+        "html": "<cite>Mastodon</cite>"
       },
       "fr": {
-        "filename": "Mastodon"
+        "filename": "Mastodon",
+        "html": "<cite>Mastodon</cite>"
       }
     },
     "base": "https://mastodonshare.com/",
@@ -119,10 +133,12 @@
   "threads": {
     "name": {
       "en": {
-        "filename": "Threads"
+        "filename": "Threads",
+        "html": "<cite>Threads</cite>"
       },
       "fr": {
-        "filename": "Threads"
+        "filename": "Threads",
+        "html": "<cite>Threads</cite>"
       }
     },
     "base": "https://www.threads.com/intent/post",
@@ -132,10 +148,12 @@
   "truth_social": {
     "name": {
       "en": {
-        "ascii": "Truth Social"
+        "ascii": "Truth Social",
+        "html": "<cite>Truth Social</cite>"
       },
       "fr": {
-        "ascii": "Truth Social"
+        "ascii": "Truth Social",
+        "html": "<cite>Truth Social</cite>"
       }
     },
     "base": "https://truthsocial.com/share",
@@ -145,10 +163,12 @@
   "gab": {
     "name": {
       "en": {
-        "filename": "Gab"
+        "filename": "Gab",
+        "html": "<cite>Gab</cite>"
       },
       "fr": {
-        "filename": "Gab"
+        "filename": "Gab",
+        "html": "<cite>Gab</cite>"
       }
     },
     "base": "https://gab.com/compose",
@@ -158,13 +178,16 @@
   "vk": {
     "name": {
       "en": {
-        "filename": "VK"
+        "filename": "VK",
+        "html": "<cite>VK</cite>"
       },
       "fr": {
-        "filename": "VK"
+        "filename": "VK",
+        "html": "<cite>VK</cite>"
       },
       "ru": {
-        "text": "ВКонтакте"
+        "text": "ВКонтакте",
+        "html": "<cite>ВКонтакте</cite>"
       }
     },
     "base": "https://vk.com/share.php",
