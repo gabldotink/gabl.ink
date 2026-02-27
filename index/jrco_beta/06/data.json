@@ -7,7 +7,10 @@
     "previous": 5,
     "next": 7
   },
-  "language": "en",
+  "lang_original": "en-US",
+  "langs": [
+    "en-US"
+  ],
   "title": {
     "en": {
       "text": "next year"

@@ -5,7 +5,11 @@
     "first": 1,
     "last": 11
   },
-  "language": "en",
+  "lang_original": "en-US",
+  "langs": [
+    "en-US",
+    "fr-FR"
+  ],
   "title": {
     "en": {
       "filename": "JoeRunner_and_Co_Beta",

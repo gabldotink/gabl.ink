@@ -7,7 +7,10 @@
     "previous": 10,
     "next": null
   },
-  "language": "en",
+  "lang_original": "en-US",
+  "langs": [
+    "en-US"
+  ],
   "title": {
     "en": {
       "text": "entrance"
