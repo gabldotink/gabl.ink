@@ -5,6 +5,14 @@
     "universe": "jrco_beta"
   },
   "name": {
+    "label": {
+      "en": {
+        "ascii": "Schulz Elementary School"
+      },
+      "fr": {
+        "ascii": "École primaire Schulz"
+      }
+    },
     "official": "Schulz Elementary School"
   },
   "relationships": {

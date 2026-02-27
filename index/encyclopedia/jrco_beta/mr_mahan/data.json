@@ -5,13 +5,18 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "Mr. Mahan",
+    "label": {
+      "en": {
+        "text": "Mr. Mahan"
+      },
+      "fr": {
+        "text": "M. Mahan"
+      }
+    },
     "sur": "Mahan"
   },
   "sex": "m",
-  "birthdate": {
-
-  },
+  "birthdate": {},
   "relationships": {
     "child": "harry_mahan"
   },

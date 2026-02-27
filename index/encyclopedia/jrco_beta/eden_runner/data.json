@@ -5,14 +5,33 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "Eden",
-    "given": "Eden",
-    "sur": "Runner"
+    "label": {
+      "en": {
+        "filename": "Eden"
+      },
+      "fr": {
+        "filename": "Eden"
+      }
+    },
+    "given": {
+      "en": {
+        "filename": "Eden"
+      },
+      "fr": {
+        "filename": "Eden"
+      }
+    },
+    "sur": {
+      "en": {
+        "filename": "Runner"
+      },
+      "fr": {
+        "filename": "Runner"
+      }
+    }
   },
   "sex": "f",
-  "birthdate": {
-
-  },
+  "birthdate": {},
   "relationships": {
     "family": "runner_family",
     "child": "joerunner"

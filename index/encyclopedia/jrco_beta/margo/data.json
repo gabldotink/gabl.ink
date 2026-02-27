@@ -5,15 +5,18 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "given": "Margo"
+    "given": {
+      "en": {
+        "filename": "Margo"
+      },
+      "fr": {
+        "filename": "Margo"
+      }
+    }
   },
   "sex": "f",
-  "birthdate": {
-
-  },
-  "relationships": {
-
-  },
+  "birthdate": {},
+  "relationships": {},
   "description": {
     "html": "A fifth grader from France."
   },

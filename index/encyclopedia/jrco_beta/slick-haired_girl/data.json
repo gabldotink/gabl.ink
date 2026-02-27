@@ -5,20 +5,23 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "slick-haired girl"
+    "label": {
+      "en": {
+        "text": "slick\u2010haired girl"
+      },
+      "fr": {
+        "text": "fille avec des cheveux gominés"
+      }
+    }
   },
   "sex": "f",
-  "birthdate": {
-
-  },
+  "birthdate": {},
   "description": {
     "html": "A student."
   },
-  "relationships": {
-
-  },
+  "relationships": {},
   "bio": {
-    "html": "<p>The slick-haired girl plays video games on a handheld console.</p>"
+    "html": "<p>The slick\u2010haired girl plays video games on a handheld console.</p>"
   },
   "copyright": {
     "year": {

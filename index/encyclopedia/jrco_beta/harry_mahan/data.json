@@ -5,14 +5,33 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "Harry",
-    "given": "Harry",
-    "sur": "Mahan"
+    "label": {
+      "en": {
+        "filename": "Harry"
+      },
+      "fr": {
+        "filename": "Harry"
+      }
+    },
+    "given": {
+      "en": {
+        "filename": "Harry"
+      },
+      "fr": {
+        "filename": "Harry"
+      }
+    },
+    "sur": {
+      "en": {
+        "filename": "Mahan"
+      },
+      "fr": {
+        "filename": "Mahan"
+      }
+    }
   },
   "sex": "m",
-  "birthdate": {
-
-  },
+  "birthdate": {},
   "relationships": {
     "parent": "mr._mahan"
   },

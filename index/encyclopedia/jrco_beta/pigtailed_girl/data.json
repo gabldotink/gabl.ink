@@ -5,12 +5,17 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "pigtailed girl"
+    "label": {
+      "en": {
+        "ascii": "pigtailed girl"
+      },
+      "fr": {
+        "ascii": "fille avec des couettes"
+      }
+    }
   },
   "sex": "f",
-  "birthdate": {
-
-  },
+  "birthdate": {},
   "description": {
     "html": "A student."
   },

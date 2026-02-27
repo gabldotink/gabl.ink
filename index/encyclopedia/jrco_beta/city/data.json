@@ -5,10 +5,17 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "city"
+    "label": {
+      "en": {
+        "filename": "city"
+      },
+      "fr": {
+        "filename": "ville"
+      }
+    }
   },
   "relationships": {
-    "greater_location": "united_states_of_america"
+    "greater_location": "united_states"
   },
   "description": "The city where JoeRunner and co. live.",
   "bio": "The city is inside a forest.",

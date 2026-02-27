@@ -5,7 +5,14 @@
     "universe": "jrco_beta"
   },
   "name": {
-    "label": "Runner family"
+    "label": {
+      "en": {
+        "ascii": "Runner family"
+      },
+      "fr": {
+        "ascii": "famille Runner"
+      }
+    }
   },
   "description": {
     "html": "A family."

@@ -5,15 +5,19 @@
     "universe": "jrco_beta"
   },
   "name": {
+    "label": {
+      "en": {
+        "ascii": "T.T."
+      },
+      "fr": {
+        "ascii": "T.T."
+      }
+    },
     "given": "T.T."
   },
   "sex": "m",
-  "birthdate": {
-
-  },
-  "relationships": {
-
-  },
+  "birthdate": {},
+  "relationships": {},
   "description": {
     "html": "A fifth grader with a laid-back attitude."
   },
