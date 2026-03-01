@@ -88,7 +88,7 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json"
+items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json"
 
 trap - INT EXIT
 
@@ -257,12 +257,12 @@ for i in ${items};do (
           true
         elif [ "${container_first}" != "${page}" ] ||
              [ "${container_first}" != "${prev}" ];then
-          printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 container_first)" "${lang_bcp_47_full}"
-          printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 prev)" "${lang_bcp_47_full}"
         elif [ "${container_first}" = "${prev}" ];then
-          printf '<link rel="prev prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 prev)" "${lang_bcp_47_full}"
         fi
 
@@ -271,12 +271,12 @@ for i in ${items};do (
           true
         elif [ "${container_last}" != "${page}" ] ||
              [ "${container_last}" != "${next}" ];then
-          printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 next)" "${lang_bcp_47_full}"
-          printf '<link rel="prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 container_last)" "${lang_bcp_47_full}"
         elif [ "${container_last}" = "${next}" ];then
-          printf '<link rel="next prefetch" href="../%s/" hreflang="%s" type="text/html"/>' \
+          printf '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 next)" "${lang_bcp_47_full}"
         fi
 
@@ -399,15 +399,16 @@ for i in ${items};do (
           lib="$3"
           lang="$4"
           lang_l="$5"
-          lang_default="$6"
+          lang_r="$6"
+          lang_default="$7"
 
           for f in "${lib}/"*.sh;do
             . "${f}"
           done
 
-          make_page_list_entry "$7"' \
+          make_page_list_entry "$8"' \
           sh "$(printf '%s' "$-"|grep -F -- x)" "${page}" "${lib}" \
-             "${lang}" "${lang_l}" "${lang_default}" '{}' ';'
+             "${lang}" "${lang_l}" "${lang_r}" "${lang_default}" '{}' ';'
 
         printf '</ol></details></nav></div>'
 
