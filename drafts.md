@@ -106,7 +106,7 @@ The following characters should always be escaped if possible (not all are expec
 | ]&nbsp;[           | U+00A0    | NO-BREAK SPACE        | `&nbsp;`           | `\a0`   | `\u00a0` |
 | ]&shy;[            | U+00AD    | SOFT HYPHEN           | `&shy;`            | `\ad`   | `\u00ad` |
 | ]&#8192;[          | U+2000    | EN QUAD               | `&#8192;`          | `\2000` | `\u2000` |
-| ]&#8193;[          | U+2000    | EM QUAD               | `&#8193;`          | `\2001` | `\u2001` |
+| ]&#8193;[          | U+2001    | EM QUAD               | `&#8193;`          | `\2001` | `\u2001` |
 | ]&ensp;[           | U+2002    | EN SPACE              | `&ensp;`           | `\2002` | `\u2002` |
 | ]&emsp;[           | U+2003    | EM SPACE              | `&emsp;`           | `\2003` | `\u2003` |
 | ]&emsp13;[         | U+2004    | THREE-PER-EM SPACE    | `&emsp13;`         | `\2004` | `\u2004` |
@@ -127,6 +127,22 @@ The following characters should always be escaped if possible (not all are expec
 | ]&#8239;[          | U+202F    | NARROW NO-BREAK SPACE | `&#8239;`          | `\202f` | `\u202f` |
 | ]&NoBreak;[        | U+2060    | WORD JOINER           | `&NoBreak;`        | `\2060` | `\u2060` |
 | ]&minus;[          | U+2212    | MINUS SIGN            | `&minus;`          | `\2212` | `\u2212` |
+| ]&#65024;[         | U+FE00    | VARIATION SELECTOR-1  | `&#65024;`         | `\fe00` | `\ufe00` |
+| ]&#65025;[         | U+FE01    | VARIATION SELECTOR-2  | `&#65025;`         | `\fe01` | `\ufe01` |
+| ]&#65026;[         | U+FE02    | VARIATION SELECTOR-3  | `&#65026;`         | `\fe02` | `\ufe02` |
+| ]&#65027;[         | U+FE03    | VARIATION SELECTOR-4  | `&#65027;`         | `\fe03` | `\ufe03` |
+| ]&#65028;[         | U+FE04    | VARIATION SELECTOR-5  | `&#65028;`         | `\fe04` | `\ufe04` |
+| ]&#65029;[         | U+FE05    | VARIATION SELECTOR-6  | `&#65029;`         | `\fe05` | `\ufe05` |
+| ]&#65030;[         | U+FE06    | VARIATION SELECTOR-7  | `&#65030;`         | `\fe06` | `\ufe06` |
+| ]&#65031;[         | U+FE07    | VARIATION SELECTOR-8  | `&#65031;`         | `\fe07` | `\ufe07` |
+| ]&#65032;[         | U+FE08    | VARIATION SELECTOR-9  | `&#65032;`         | `\fe08` | `\ufe08` |
+| ]&#65033;[         | U+FE09    | VARIATION SELECTOR-10 | `&#65033;`         | `\fe09` | `\ufe09` |
+| ]&#65034;[         | U+FE0A    | VARIATION SELECTOR-11 | `&#65034;`         | `\fe0a` | `\ufe0a` |
+| ]&#65035;[         | U+FE0B    | VARIATION SELECTOR-12 | `&#65035;`         | `\fe0b` | `\ufe0b` |
+| ]&#65036;[         | U+FE0C    | VARIATION SELECTOR-13 | `&#65036;`         | `\fe0c` | `\ufe0c` |
+| ]&#65037;[         | U+FE0D    | VARIATION SELECTOR-14 | `&#65037;`         | `\fe0d` | `\ufe0d` |
+| ]&#65038;[         | U+FE0E    | VARIATION SELECTOR-15 | `&#65038;`         | `\fe0e` | `\ufe0e` |
+| ]&#65039;[         | U+FE0F    | VARIATION SELECTOR-16 | `&#65039;`         | `\fe0f` | `\ufe0f` |
 
 The following ASCII characters may need to be escaped, depending on context (_N/A_ means the character never has to be escaped):
 
