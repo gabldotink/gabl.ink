@@ -88,7 +88,7 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json"
+items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json ${index}/jrco_beta/07/data.json"
 
 trap - INT EXIT
 
@@ -98,12 +98,16 @@ for i in ${items};do (
   type="$(jq_r type "${i}")"
   id="$(jq_r id "${i}")"
 
-  # This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
-  if [ "${type}" = comic_series ];then
-    printf '[skip] %s/%s\n' "${id}" "${lang}"
-    # shellcheck disable=2106
-    continue
+  if [ "${type}" != comic_page ];then
+    printf '[skip] %s/%s\n' "${id}" "${lang}" >&2
   fi
+
+  ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
+  #if [ "${type}" = comic_series ];then
+  #  printf '[skip] %s/%s\n' "${id}" "${lang}" >&2
+  #  # shellcheck disable=2106
+  #  continue
+  #fi
 
   lang_original="$(jq_r lang_original "${i}")"
 
