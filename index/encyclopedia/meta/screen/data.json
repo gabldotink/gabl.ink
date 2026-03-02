@@ -1,0 +1,30 @@
+{
+  "id": "encyclopedia/meta/screen",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "filename": "screen"
+      },
+      "fr": {
+        "text": "écran"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "ascii": "Text emitted on a screen."
+    },
+    "fr": {
+      "text": "Texte émis sur un écran."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

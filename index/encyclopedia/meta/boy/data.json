@@ -1,0 +1,30 @@
+{
+  "id": "encyclopedia/meta/boy",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "filename": "boy"
+      },
+      "fr": {
+        "text": "garçon"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "ascii": "Words from a boy."
+    },
+    "fr": {
+      "text": "Mots d’un garçon."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}
