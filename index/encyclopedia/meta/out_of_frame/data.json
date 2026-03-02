@@ -1,0 +1,30 @@
+{
+  "id": "encyclopedia/meta/out_of_frame",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "ascii": "out of frame"
+      },
+      "fr": {
+        "text": "hors de cadre"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "ascii": "Words whose speakers are not visible in the frame."
+    },
+    "fr": {
+      "ascii": "Mots dont les locuteurs ne sont pas visibles dans le cadre."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

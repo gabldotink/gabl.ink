@@ -88,7 +88,7 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json"
+items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json"
 
 trap - INT EXIT
 

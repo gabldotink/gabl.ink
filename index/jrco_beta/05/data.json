@@ -20,50 +20,91 @@
     }
   },
   "description": {
-    "text": "Enter Eden, JoeRunner’s mom.",
-    "html": "Enter Eden, JoeRunner’s mom."
+    "en-US": {
+      "text": "Enter Eden, JoeRunner’s mom."
+    },
+    "fr": {
+      "text": "Entre Eden, la mère de JoeRunner."
+    }
   },
   "tooltip": {
-    "text": "JoeRunner inherited having no nose from his dad",
-    "html": "JoeRunner inherited having no nose from his dad"
+    "en": {
+      "ascii": "JoeRunner inherited having no nose from his dad"
+    }
   },
   "transcript": {
     "lines": [
       {
-        "h": "off-panel",
-        "d": "Joseph?"
+        "h": "meta/out_of_frame",
+        "d": {
+          "en": {
+            "ascii": "Joseph?"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "JoeRunner looks over the back of the chair."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner looks over the back of the chair."
+          }
+        }
       },
       {
-        "h": "sound effects",
-        "d": "?"
+        "h": "meta/sound_effect",
+        "d": {
+          "en": {
+            "ascii": "?"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "A tired\u2010looking woman with long hair and glasses is there. She speaks in the same font as JoeRunner."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "text": "A tired\u2010looking woman with long hair and glasses is there. She speaks in the same font as JoeRunner."
+          }
+        } 
       },
       {
-        "h": "woman",
-        "d": "What are you doing up so early?"
+        "h": "meta/woman",
+        "d": {
+          "en": {
+            "ascii": "What are you doing up so early?"
+          }
+        }
       },
       {
-        "h": "character bio",
-        "d": "Eden Runner\u00a0/ heavy sleeper and mom"
+        "h": "meta/bio",
+        "d": {
+          "en": {
+            "text": "Eden Runner\u00a0/ heavy sleeper and mom"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "No, I’m pretty sure you just take a while to wake up."
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "text": "No, I’m pretty sure you just take a while to wake up."
+          }
+        }
       },
       {
-        "h": "Eden",
-        "d": "(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
+        "h": "jrco_beta/eden_runner",
+        "d": {
+          "en": {
+            "html": "(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
+          }
+        }
       },
       {
-        "h": "tooltip",
-        "d": "JoeRunner inherited having no nose from his dad"
+        "h": "meta/tooltip",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner inherited having no nose from his dad"
+          }
+        }
       }
     ]
   },
@@ -80,7 +121,9 @@
         "d": 27
       },
       "content": {
-        "html": "<p>Not much of a background because I still don’t really know what the Runners’ house looks like. Not much of a footer comment because I don’t really have anything to say.</p>"
+        "en": {
+          "html": "<p>Not much of a background because I still don’t really know what the Runners’ house looks like. Not much of a footer comment because I don’t really have anything to say.</p>"
+        }
       }
     }
   ],

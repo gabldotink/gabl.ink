@@ -1,0 +1,30 @@
+{
+  "id": "encyclopedia/meta/woman",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "filename": "woman"
+      },
+      "fr": {
+        "filename": "femme"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "ascii": "Words from a woman."
+    },
+    "fr": {
+      "text": "Mots d’une femme."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}
