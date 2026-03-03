@@ -13,9 +13,11 @@
   ],
   "title": {
     "en": {
+      "filename": "establishing_shot",
       "text": "establishing shot"
     },
     "fr": {
+      "filename": "plan_d-ensemble",
       "text": "plan d’ensemble"
     }
   },

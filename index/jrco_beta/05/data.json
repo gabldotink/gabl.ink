@@ -13,9 +13,13 @@
   ],
   "title": {
     "en-US": {
+      "filename": "Joseph-s_mom",
+      "ascii": "Joseph's mom",
       "text": "Joseph’s mom"
     },
     "fr": {
+      "filename": "la_mere_de_Joseph",
+      "ascii": "la mere de Joseph",
       "text": "la mère de Joseph"
     }
   },
