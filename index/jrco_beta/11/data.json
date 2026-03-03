@@ -21,8 +21,9 @@
     }
   },
   "description": {
-    "text": "JoeRunner and T.T. see the new kid in class.",
-    "html": "JoeRunner and T.T. see the new kid in class."
+    "en": {
+      "ascii": "JoeRunner and T.T. see the new kid in class."
+    }
   },
   "transcript": {
     "lines": [

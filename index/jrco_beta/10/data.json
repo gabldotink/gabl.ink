@@ -22,8 +22,10 @@
     }
   },
   "description": {
-    "text": "Harry says a new kid is coming to JoeRunner and T.T.’s class.",
-    "html": "Harry says a new kid is coming to JoeRunner and T.T.’s class."
+    "en": {
+      "ascii": "Harry says a new kid is coming to JoeRunner and T.T.'s class.",
+      "text": "Harry says a new kid is coming to JoeRunner and T.T.’s class."
+    }
   },
   "transcript": {
     "lines": [

@@ -13,10 +13,11 @@
   "title": {
     "en": {
       "filename": "JoeRunner_and_Co_Beta",
-      "text": "JoeRunner and Co. Beta"
+      "ascii": "JoeRunner and Co. Beta"
     },
     "fr": {
       "filename": "JoeRunner_et_cie_Beta",
+      "ascii": "JoeRunner et cie Beta",
       "text": "JoeRunner et cie Bêta"
     }
   },
@@ -30,10 +31,11 @@
   },
   "description": {
     "en": {
-      "text": "The first _JoeRunner and Co._ webcomic series, which ran for eleven pages from 2022 to 2023.",
+      "ascii": "The first _JoeRunner and Co._ webcomic series, which ran for eleven pages from 2022 to 2023.",
       "html": "The first <cite class=\"i\">JoeRunner and Co.</cite> webcomic series, which ran for eleven pages from <time>2022</time> to <time>2023</time>."
     },
     "fr": {
+      "ascii": "La premiere serie de webcomics \"JoeRunner et cie\", qui a compte onze page de 2022 a 2023 en anglais.",
       "text": "La première série de webcomics « JoeRunner et cie », qui a compté onze pages de 2022 à 2023 en anglais.",
       "html": "La première série de webcomics <cite class=\"i\">JoeRunner et cie</cite>, qui a compté onze pages de <time>2022</time> à <time>2023</time> en anglais."
     }

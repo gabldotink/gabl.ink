@@ -14,16 +14,17 @@
   "title": {
     "en": {
       "filename": "T_T",
-      "text": "T.T."
+      "ascii": "T.T."
     },
     "fr": {
       "filename": "T_T",
-      "text": "T.T."
+      "ascii": "T.T."
     }
   },
   "description": {
-    "text": "JoeRunner meets his friend T.T. outside the school.",
-    "html": "JoeRunner meets his friend T.T. outside the school."
+    "en": {
+      "ascii": "JoeRunner meets his friend T.T. outside the school."
+    }
   },
   "transcript": {
     "lines": [

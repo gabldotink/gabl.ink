@@ -18,11 +18,13 @@
     },
     "fr": {
       "filename": "l-annee_prochaine",
+      "ascii": "l'annee prochaine",
       "text": "l’année prochaine"
     }
   },
   "description": {
     "en": {
+      "ascii": "JoeRunner isn't ecstatic about starting middle school next year.",
       "text": "JoeRunner isn’t ecstatic about starting middle school next year."
     }
   },

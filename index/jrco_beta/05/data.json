@@ -25,9 +25,11 @@
   },
   "description": {
     "en-US": {
+      "ascii": "Enter Eden, JoeRunner's mom.",
       "text": "Enter Eden, JoeRunner’s mom."
     },
     "fr": {
+      "ascii": "Entre Eden, la mere de JoeRunner.",
       "text": "Entre Eden, la mère de JoeRunner."
     }
   },

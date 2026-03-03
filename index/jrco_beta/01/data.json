@@ -16,8 +16,8 @@
     "en-US": {
       "ascii": "'Thursday' title page",
       "filename": "Thursday_title_page",
-      "text": "\u00a0‘Thursday’ title page",
-      "html": "\u00a0‘<cite>Thursday</cite>’ title page"
+      "text": "‘Thursday’ title page",
+      "html": "‘<cite>Thursday</cite>’ title page"
     },
     "fr": {
       "ascii": "page de titre de \"jeudi\"",
@@ -46,6 +46,7 @@
       "html": "The title page for <cite class=\"i\">JoeRunner and Co. Beta</cite>, originally <cite class=\"i\">JoeRunner and Co.</cite>"
     },
     "fr": {
+      "ascii": "La page de titre de \"JoeRunner et cie Beta\", intitulee originalement \"JoeRunner et cie\".",
       "text": "La page de titre de «\u202fJoeRunner et cie Bêta\u202f», intitulée originalement «\u202fJoeRunner et cie\u202f».",
       "html": "La page de titre de <cite class=\"i\">JoeRunner et cie Bêta</cite>, intitulée originalement <cite class=\"i\">JoeRunner et cie</cite>."
     }

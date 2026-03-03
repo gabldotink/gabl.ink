@@ -20,8 +20,9 @@
     }
   },
   "description": {
-    "text": "JoeRunner, T.T., and Harry play an online game.",
-    "html": "JoeRunner, T.T., and Harry play an online game."
+    "en": {
+      "ascii": "JoeRunner, T.T., and Harry play an online game."
+    }
   },
   "transcript": {
     "lines": [
