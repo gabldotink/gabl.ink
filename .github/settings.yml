@@ -25,7 +25,7 @@ repository:
   has_projects: false
   has_wiki: false
   homepage: 'https://gabl.ink'
-  name: 'gabl.ink'
+  name: 'gabl.ink_dev'
   private: false
   topics: 'comic,gabl.ink,html,shell,static-site,webcomic'
 
