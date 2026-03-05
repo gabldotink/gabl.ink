@@ -45,22 +45,28 @@ fi
 
 # Display help if any arguments are passed
 if [ "$#" -gt 0 ];then
-  trap - INT EXIT
+  if [ "$#" -eq 1 ] &&
+     [ "$1" = -- ];then
+    true
+  else
+    trap - INT EXIT
 
-  printf 'Usage: %s\n\n' "${script}" >&2
+    printf 'Usage: %s\n\n' "${script}" >&2
 
-  printf 'This script generates the gabl.ink website.\n' >&2
-  printf 'It does not accept arguments.\n\n' >&2
+    printf 'This script generates the gabl.ink website.\n\n' >&2
 
-  printf 'This script requires the following programs to be installed in PATH:\n' >&2
-  printf '  %s\n' "${dependencies}" >&2
-  printf 'You have all of these installed already.\n\n' >&2
+    printf 'If the only argument is “--”, the script will run as normal. This follows POSIX Utility Syntax Guideline 10. Other arguments will cause the script to display this help message and exit unsuccessfully.\n\n' >&2
 
-  printf '© 2024–2026 gabl.ink\n' >&2
-  printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
-  printf '%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s\n' "${tput_link}" "${tput_reset}" >&2
+    printf 'This script requires the following programs to be installed in PATH:\n' >&2
+    printf '  %s\n' "${dependencies}" >&2
+    printf 'You have all of these installed already.\n\n' >&2
 
-  exit 1
+    printf '© 2024–2026 gabl.ink\n' >&2
+    printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
+    printf '%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s\n' "${tput_link}" "${tput_reset}" >&2
+
+    exit 1
+  fi
 fi
 
 scripts="$(dirname -- "${script}")"
