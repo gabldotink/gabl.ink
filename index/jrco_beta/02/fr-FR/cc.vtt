@@ -4,15 +4,15 @@ WEBVTT
 [réveil bipe]
 
 00:00:03.159 --> 00:00:04.820
--&nbsp;[frappe]
--&nbsp;[réveil glisse et tombe]
+&dash;&nbsp;[frappe]
+&dash;&nbsp;[réveil glisse et tombe]
 
 00:00:04.845 --> 00:00:07.435
--&nbsp;[voiture crashe]
--&nbsp;[chat et homme crient]
+&dash;&nbsp;[voiture crashe]
+&dash;&nbsp;[chat et homme crient]
 
 00:00:07.460 --> 00:00:08.993
--&nbsp;[alarme de voiture sonne]
+&dash;&nbsp;[alarme de voiture sonne]
 
 00:00:09.018 --> 00:00:13.488 line:1%
 <i>JoeRunner et cie</i>
@@ -24,5 +24,5 @@ WEBVTT
 par gabl
 
 00:00:09.018 --> 00:00:11.367
-[voix masculine] J’ai vraiment besoin d’un
-nouveau bouton de répetition.
+[voix masculine] <i>J’ai vraiment besoin d’un
+nouveau bouton de répetition.</i>
