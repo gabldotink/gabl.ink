@@ -29,36 +29,68 @@
   "transcript": {
     "lines": [
       {
-        "h": null,
-        "d": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T\u2010shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all\u2010lowercase sans\u2010serif font."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "html": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T\u2010shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all\u2010lowercase sans\u2010serif font."
+          }
+        }
       },
       {
-        "h": "boy",
-        "d": "Oh, finally."
+        "h": "meta/boy",
+        "d": {
+          "en": {
+            "ascii": "Oh, finally."
+          }
+        }
       },
       {
-        "h": null,
-        "d": "JoeRunner walks up to the boy."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner walks up to the boy."
+          }
+        }
       },
       {
-        "h": "boy",
-        "d": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+        "h": "meta/boy",
+        "d": {
+          "en": {
+            "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "Yeah, there was lots of traffic on North\u00a01 today."
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "text": "Yeah, there was lots of traffic on North\u00a01 today."
+          }
+        }
       },
       {
-        "h": null,
-        "d": "The boy starts walking to the door."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "The boy starts walking to the door."
+          }
+        }
       },
       {
-        "h": "character bio",
-        "d": "T.T.\u00a0/ one heck of a guy"
+        "h": "meta/bio",
+        "d": {
+          "en": {
+            "text": "T.T.\u00a0/ one heck of a guy"
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <i><cite>Hyper Galactic Battle Ducks III</cite></i>! <em class=\"i\">Six!</em>"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>! <em class=\"i\">Six!</em>"
+          }
+        }
       }
     ]
   },
@@ -75,7 +107,9 @@
         "d": 24
       },
       "content": {
-        "html": "<details><summary><p>Irrelevant information</p></summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+        "en": {
+          "html": "<details><summary><p>Irrelevant information</p></summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+        }
       }
     }
   ],
