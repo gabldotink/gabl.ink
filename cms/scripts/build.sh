@@ -10,7 +10,7 @@ trap \
 
 script="$0"
 
-dependencies='basename cat cmp cut dirname exiftool find grep jq mktemp rm sh sha256sum tput'
+dependencies='basename cat cmp cut dirname exiftool find grep jq mktemp rm sh sha256sum sort tput xargs'
 
 for c in ${dependencies};do
   if command -v "${c}" >/dev/null 2>&1;then
@@ -395,7 +395,7 @@ for i in ${items};do (
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "${index}/${id}/.." -type f -path "${index}/${id}"'/../*/data.json' -exec sh -c -- '
+        find "${index}/${id}/.." -type f -path "${index}/${id}/../*/data.json" -print | sort -n | xargs -I {} -- sh -c -- '
           [ -n "$1" ] &&
             set -x
 
@@ -412,7 +412,7 @@ for i in ${items};do (
 
           make_page_list_entry "$8"' \
           sh "$(printf '%s' "$-"|grep -F -- x)" "${page}" "${lib}" \
-             "${lang}" "${lang_l}" "${lang_r}" "${lang_default}" '{}' ';'
+             "${lang}" "${lang_l}" "${lang_r}" "${lang_default}" {}
 
         printf '</ol></details></nav></div>'
 
