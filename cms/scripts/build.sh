@@ -182,13 +182,9 @@ for i in ${items};do (
       printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
              "${lang}" "${lang_d}" "${lang}"
 
-      printf '<head>'
-      printf '<meta charset="utf-8"/>'
-      printf '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
+      printf '<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>'
 
-      printf '<title>'
-      printf_l10n html_title "${title_text}"
-      printf '</title>'
+      printf '<title>%s</title>' "$(printf_l10n html_title "${title_text}")"
 
       printf '<meta name="description" content="%s"/>' "${description_text}"
       printf '<meta name="robots" content="index,follow"/>'
@@ -373,8 +369,7 @@ for i in ${items};do (
           printf '>'
           printf '<img src="./image.png" alt="'
           printf_l10n see_transcript
-          printf '"/>'
-          printf '</picture></div>'
+          printf '"/></picture></div>'
         fi
 
         printf '<div id="nav_bottom">'
@@ -615,11 +610,7 @@ for i in ${items};do (
         unset disclaimer_html
       fi
 
-      printf '</footer>'
-
-      printf '</div>'
-
-      printf '</body></html>\n'
+      printf '</footer></div></body></html>\n'
     } > "${tmpfile}"
 
     flush_from_tmp "${tmpfile}" "${index}/${id}/${lang}/index.html"
