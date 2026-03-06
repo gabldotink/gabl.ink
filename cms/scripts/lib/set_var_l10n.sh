@@ -21,14 +21,14 @@ set_var_l10n(){
     done
 
     if ! test_null "${set_var_l10n_name}_id";then
-      unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_printf" "${set_var_l10n_name}_text"
+      unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_printf" "${set_var_l10n_name}_text"
       break
     fi
 
     unset "${set_var_l10n_name}_id"
 
     if ! test_null "${set_var_l10n_name}_printf";then
-      unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
+      unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
       break
     fi
 
@@ -38,7 +38,7 @@ set_var_l10n(){
       if ! test_null "${set_var_l10n_name}_filename";then
         eval "${set_var_l10n_name}"'_ascii="${'"${set_var_l10n_name}"'_filename}"'
       else
-        unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
+        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
       fi
     fi
 
@@ -46,7 +46,7 @@ set_var_l10n(){
       if ! test_null "${set_var_l10n_name}_ascii";then
         eval "${set_var_l10n_name}"'_text="${'"${set_var_l10n_name}"'_ascii}"'
       else
-        unset "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
+        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
       fi
     fi
 
@@ -58,6 +58,6 @@ set_var_l10n(){
       break
     fi
 
-    unset "${set_var_l10n_name}_ascii"
+    unset -- "${set_var_l10n_name}_ascii"
   done
 }

@@ -27,96 +27,190 @@
   "transcript": {
     "lines": [
       {
-        "h": null,
-        "d": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "html": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+          }
+        }
       },
       {
-        "h": "chat",
-        "d": "<code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I’m using tilt controls!"
+        "h": "meta/chat",
+        "d": {
+          "en": {
+            "html": "<code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I’m using tilt controls!"
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "(<i>off-panel</i>) Ha! I berzork’d your rear energy shields!"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "html": "(<i>off-panel</i>) Ha! I berzork’d your rear energy shields!"
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "(<i>off-panel</i>) Perhaps\u00a0.\u00a0.\u00a0."
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "(<i>off-panel</i>) Perhaps\u00a0.\u00a0.\u00a0."
+          }
+        }
       },
       {
-        "h": null,
-        "d": "JoeRunner and T.T. are sitting next to each other at computers. JoeRunner looks very confident."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner and T.T. are sitting next to each other at computers. JoeRunner looks very confident."
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": ".\u00a0.\u00a0.\u00a0but that got me enough reputation to access the Pan\u2010Galactic Gargle Blaster from the Retnia shop!"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "text": ".\u00a0.\u00a0.\u00a0but that got me enough reputation to access the Pan\u2010Galactic Gargle Blaster from the Retnia shop!"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "JoeRunner is imagining his ship blowing up another, while his duck avatar gives a thumbs up."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner is imagining his ship blowing up another, while his duck avatar gives a thumbs up."
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "Say your last\u2060—"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "text": "Say your last\u2060—"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "JoeRunner raises his eyebrows, and a burst symbol appears above his head. It turns into a loading wheel with the text “Processing\u00a0.\u00a0.\u00a0.” as JoeRunner stares blankly at the screen."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "text": "JoeRunner raises his eyebrows, and a burst symbol appears above his head. It turns into a loading wheel with the text “Processing\u00a0.\u00a0.\u00a0.” as JoeRunner stares blankly at the screen."
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "(<i>off\u2010panel, loudly</i>) <em class=\"r\">Shoot!</em>"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "(<i>off\u2010panel, loudly</i>) <em class=\"r\">Shoot!</em>"
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "(<i>looking over, raising eyebrow</i>) What, what is it?"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "html": "(<i>looking over, raising eyebrow</i>) What, what is it?"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "T.T. raises his hand and gets an annoyed look."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "T.T. raises his hand and gets an annoyed look."
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "Oh, heck, me too! <code>ottohammr</code> again?"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "html": "Oh, heck, me too! <code>ottohammr</code> again?"
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "Every day there are what, like 300\u00a0players and he keeps finding <em class=\"roman u\">us</em>?"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "Every day there are what, like 300\u00a0players and he keeps finding <em class=\"roman u\">us</em>?"
+          }
+        }
       },
       {
-        "h": null,
-        "d": "I swear he’s just trolling us at this point."
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "text": "I swear he’s just trolling us at this point."
+          }
+        }
       },
       {
-        "h": null,
-        "d": "A boy on another computer with long black hair and an unbuttoned polo shirt has a smug look on his face. He speaks in a textured font."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "A boy on another computer with long black hair and an unbuttoned polo shirt has a smug look on his face. He speaks in a textured font."
+          }
+        }
       },
       {
-        "h": "boy",
-        "d": "Ah, guilty as charged. It is just so funny when you guys rage."
+        "h": "meta/boy",
+        "d": {
+          "en": {
+            "ascii": "Ah, guilty as charged. It is just so funny when you guys rage."
+          }
+        }
       },
       {
-        "h": "character bio",
-        "d": "Harry\u00a0/ gamer of the highest order"
+        "h": "meta/bio",
+        "d": {
+          "en": {
+            "text": "Harry\u00a0/ gamer of the highest order"
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "(<i>surprised</i>) Harry, <em class=\"r u\">you’ve</em> been <code>ottohammr</code> this whole time?"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "(<i>surprised</i>) Harry, <em class=\"r u\">you’ve</em> been <code>ottohammr</code> this whole time?"
+          }
+        }
       },
       {
-        "h": "Harry",
-        "d": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010<sup>12</sup> molecules of space debris."
+        "h": "jrco_beta/harry_mahan",
+        "d": {
+          "en": {
+            "ascii": "The last four years, anyway. And now you are approximately 1.39729 * 10^12 molecules of space debris.",
+            "text": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010¹² molecules of space debris.",
+            "html": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010<sup>12</sup> molecules of space debris."
+          }
+        }
       },
       {
-        "h": null,
-        "d": "T.T. and Harry dap each other up."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "T.T. and Harry dap each other up."
+          }
+        }
       },
       {
-        "h": "Harry",
-        "d": "But, my friends, it was quite an honorable battle."
+        "h": "jrco_beta/harry_mahan",
+        "d": {
+          "en": {
+            "ascii": "But, my friends, it was quite an honorable battle."
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "(<i>saluting</i>) Farewell, Captain <code>tomatotoe07</code>. Farewell."
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "(<i>saluting</i>) Farewell, Captain <code>tomatotoe07</code>. Farewell."
+          }
+        }
       }
     ]
   },
@@ -133,7 +227,9 @@
         "d": 30
       },
       "content": {
-        "html": "<p>Alas, poor <code>tomatotoe07</code>.</p><p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length.</p><p>Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time></em>? I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p><p>I have 30\u00a0more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p><p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p><p><b>—\u2060\u200a\u2060Gabriel\u00a0/ <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></b></p>"
+        "en": {
+          "html": "<p>Alas, poor <code>tomatotoe07</code>.</p><p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length.</p><p>Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time></em>? I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p><p>I have 30\u00a0more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p><p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p><p><b>—\u2060\u200a\u2060Gabriel\u00a0/ <span translate=\"no\" data-ssml-phoneme-alphabet=\"ipa\" data-ssml-phoneme-ph=\"ˈɡæbəl\">gabl</span></b></p>"
+        }
       }
     }
   ],

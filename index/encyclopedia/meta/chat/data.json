@@ -1,0 +1,30 @@
+{
+  "id": "encyclopedia/meta/chat",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "filename": "chat"
+      },
+      "fr": {
+        "filename": "chat en ligne"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "ascii": "Words in an online chat."
+    },
+    "fr": {
+      "text": "Mots d’un chat en ligne."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

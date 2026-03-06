@@ -39,7 +39,7 @@ else
 fi
 
 # Prevent sh -x from having link styling
-if printf '%s' "$-" | grep -qF -- x;then
+if printf '%s' "$-" | grep -Fqe x;then
   printf '%s' "${tput_reset}" >&2
 fi
 
@@ -94,7 +94,7 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json ${index}/jrco_beta/07/data.json ${index}/jrco_beta/08/data.json"
+items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json ${index}/jrco_beta/07/data.json ${index}/jrco_beta/08/data.json ${index}/jrco_beta/09/data.json"
 
 trap - INT EXIT
 
@@ -153,25 +153,25 @@ for i in ${items};do (
     if [ -f "${index}/${id}/${lang}/video.webm" ];then
       video_exists=true
     else
-      unset video_exists
+      unset -- video_exists
     fi
 
     if [ -f "${index}/${id}/${lang}/cc.vtt" ];then
       captions_exists=true
     else
-      unset captions_exists
+      unset -- captions_exists
     fi
 
     if [ -f "${index}/${id}/${lang}/subs.vtt" ];then
       subs_exists=true
     else
-      unset subs_exists
+      unset -- subs_exists
     fi
 
     if [ "$(jq_r tooltip "${i}")" != null ];then
       tooltip_exists=true
     else
-      unset tooltip_exists
+      unset -- tooltip_exists
     fi
 
     {
@@ -246,7 +246,7 @@ for i in ${items};do (
         printf '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url_id}"
 
         if   [ "${up_directories}" -eq 2 ];then
-          unset volume chapter
+          unset -- volume chapter
         elif [ "${up_directories}" -eq 3 ];then
           unset volume
           chapter="$(jq_r location.chapter "${i}")"
@@ -313,25 +313,25 @@ for i in ${items};do (
         if ! test_null container_first;then
           set_var_l10n container_first_title title "${index}/${id}/../$(zero_pad 2 container_first)/data.json"
         else
-          unset container_first_title_text
+          unset -- container_first_title_text
         fi
 
         if ! test_null prev;then
           set_var_l10n prev_title title "${index}/${id}/../$(zero_pad 2 prev)/data.json"
         else
-          unset prev_title_text
+          unset -- prev_title_text
         fi
 
         if ! test_null next;then
           set_var_l10n next_title title "${index}/${id}/../$(zero_pad 2 next)/data.json"
         else
-          unset next_title_text
+          unset -- next_title_text
         fi
 
         if ! test_null container_last;then
           set_var_l10n container_last_title title "${index}/${id}/../$(zero_pad 2 container_last)/data.json"
         else
-          unset container_last_title_text
+          unset -- container_last_title_text
         fi
 
         make_nav_buttons top
@@ -412,7 +412,7 @@ for i in ${items};do (
           done
 
           make_page_list_entry "$8"' \
-          sh "$(printf '%s' "$-"|grep -F -- x)" "${page}" "${lib}" \
+          sh "$(printf '%s' "$-"|grep -Fe x)" "${page}" "${lib}" \
              "${lang}" "${lang_l}" "${lang_r}" "${lang_default}" {}
 
         printf '</ol></details></nav></div>'
@@ -607,7 +607,7 @@ for i in ${items};do (
         set_var_l10n disclaimer "\"${disclaimer}\"" "${dict}/disclaimer.json"
         printf '<p>%s%s</p>' "$(printf_l10n disclaimer)" "${disclaimer_html}"
       else
-        unset disclaimer_html
+        unset -- disclaimer_html
       fi
 
       printf '</footer></div></body></html>\n'
