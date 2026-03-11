@@ -408,7 +408,7 @@ for i in ${items};do (
           lang_default="$7"
 
           for f in "${lib}/"*.sh;do
-            .  "${f}"
+            . -- "${f}"
           done
 
           make_page_list_entry "$8"' \
