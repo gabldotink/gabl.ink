@@ -3,7 +3,7 @@
 
 export POSIXLY_CORRECT
 
-trap \
+trap -- \
  'printf "Exiting. No changes were made.\n"
   exit 1' \
   INT EXIT
@@ -49,7 +49,7 @@ if [ "$#" -gt 0 ];then
      [ "$1" = -- ];then
     true
   else
-    trap - INT EXIT
+    trap -- - INT EXIT
 
     printf 'Usage: %s\n\n' "${script}" >&2
 
@@ -78,13 +78,13 @@ lib="${scripts}/lib"
 
 # shellcheck source-path=./lib
 for f in "${lib}/"*.sh;do
-  . "${f}"
+  . -- "${f}"
 done
 
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "${scripts}/config.sh" ];then
   # shellcheck source=./config.sh
-  . "${scripts}/config.sh"
+  . -- "${scripts}/config.sh"
 fi
 
 if [ "${config_lang_default}" != en-US ];then
@@ -96,7 +96,7 @@ fi
 #items="$(find "${index}" -type f -name data.json -print)"
 items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json ${index}/jrco_beta/07/data.json ${index}/jrco_beta/08/data.json ${index}/jrco_beta/09/data.json"
 
-trap - INT EXIT
+trap -- - INT EXIT
 
 section start items
 
@@ -122,7 +122,7 @@ for i in ${items};do (
 
     tmpfile="$(mktemp)"
 
-    trap \
+    trap -- \
      'rm -f -- "${tmpfile}" >/dev/null 2>&1
       exit 1' \
     INT EXIT
@@ -408,7 +408,7 @@ for i in ${items};do (
           lang_default="$7"
 
           for f in "${lib}/"*.sh;do
-            . "${f}"
+            .  "${f}"
           done
 
           make_page_list_entry "$8"' \
@@ -625,7 +625,7 @@ wait
 
 section done items
 
-trap - INT EXIT
+trap -- - INT EXIT
 
 # TODO: Doesn’t work with subshells
 [ "${warning_warned}" = true ] &&

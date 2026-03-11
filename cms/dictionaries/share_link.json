@@ -186,7 +186,7 @@
         "html": "<cite>VK</cite>"
       },
       "ru": {
-        "ascii": "VKontakte",
+        "filename": "VKontakte",
         "text": "ВКонтакте",
         "html": "<cite>ВКонтакте</cite>"
       }
