@@ -3,14 +3,14 @@
 
 export POSIXLY_CORRECT
 
-trap -- \
+trap \
  'printf "Exiting. No changes were made.\n"
   exit 1' \
   INT EXIT
 
 script="$0"
 
-dependencies='basename cat cmp cut dirname exiftool find grep jq mktemp rm sh sha256sum sort tput xargs'
+dependencies='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
 
 for c in ${dependencies};do
   if command -v "${c}" >/dev/null 2>&1;then
@@ -30,16 +30,16 @@ for r in ${dependencies};do
   esac
 done
 
-tput_colors="$(tput -- colors 2>/dev/null||true)"
-tput_reset="$(tput -- sgr0 2>/dev/null||true)" 
+tput_colors="$(tput colors 2>/dev/null||true)"
+tput_reset="$(tput sgr0 2>/dev/null||true)" 
 if [ "${tput_colors}" -ge 256 ];then
-  tput_link="$(tput -- setaf 21 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
+  tput_link="$(tput setaf 21 2>/dev/null||true)$(tput smul 2>/dev/null||true)"
 else
-  tput_link="$(tput -- setaf 4 2>/dev/null||true)$(tput -- smul 2>/dev/null||true)"
+  tput_link="$(tput setaf 4 2>/dev/null||true)$(tput smul 2>/dev/null||true)"
 fi
 
 # Prevent sh -x from having link styling
-if printf '%s' "$-" | grep -Fqe x;then
+if printf '%s' "$-" | grep -Fqex;then
   printf '%s' "${tput_reset}" >&2
 fi
 
@@ -49,7 +49,7 @@ if [ "$#" -gt 0 ];then
      [ "$1" = -- ];then
     true
   else
-    trap -- - INT EXIT
+    trap - INT EXIT
 
     printf 'Usage: %s\n\n' "${script}" >&2
 
@@ -70,6 +70,15 @@ if [ "$#" -gt 0 ];then
 fi
 
 scripts="$(dirname -- "${script}")"
+
+# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
+case "${scripts}" in
+  /*|./*|../*)
+    true ;;
+  *)
+    scripts="./${scripts}"
+esac
+
 cms="${scripts}/.."
 dict="${cms}/dictionaries"
 index="${cms}/../index"
@@ -78,13 +87,13 @@ lib="${scripts}/lib"
 
 # shellcheck source-path=./lib
 for f in "${lib}/"*.sh;do
-  . -- "${f}"
+  . "${f}"
 done
 
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "${scripts}/config.sh" ];then
   # shellcheck source=./config.sh
-  . -- "${scripts}/config.sh"
+  . "${scripts}/config.sh"
 fi
 
 if [ "${config_lang_default}" != en-US ];then
@@ -94,9 +103,9 @@ else
 fi
 
 #items="$(find "${index}" -type f -name data.json -print)"
-items="${index}/jrco_beta/01/data.json ${index}/jrco_beta/02/data.json ${index}/jrco_beta/03/data.json ${index}/jrco_beta/04/data.json ${index}/jrco_beta/05/data.json ${index}/jrco_beta/06/data.json ${index}/jrco_beta/07/data.json ${index}/jrco_beta/08/data.json ${index}/jrco_beta/09/data.json"
+items="$(find "${index}" -type f -path "${index}/jrco_beta/*/data.json" -print)"
 
-trap -- - INT EXIT
+trap - INT EXIT
 
 section start items
 
@@ -122,7 +131,7 @@ for i in ${items};do (
 
     tmpfile="$(mktemp)"
 
-    trap -- \
+    trap \
      'rm -f -- "${tmpfile}" >/dev/null 2>&1
       exit 1' \
     INT EXIT
@@ -135,7 +144,7 @@ for i in ${items};do (
     set_var_l10n copyright_license_abbr "\"${copyright_license}\".abbr" "${dict}/copyright_license.json"
     # shellcheck disable=2016
     set_var_l10n copyright_license_url "\"${copyright_license}\".url" "${dict}/copyright_license.json"
-    copyright_license_spdx="$(jq -r --arg l "${copyright_license}" -- '.[$l].spdx' "${dict}/copyright_license.json")"
+    copyright_license_spdx="$(jq -r --arg l "${copyright_license}" '.[$l].spdx' "${dict}/copyright_license.json")"
     # shellcheck disable=2016
     set_var_l10n copyright_license_title "\"${copyright_license}\".title" "${dict}/copyright_license.json"
     copyright_year_first="$(jq_r copyright.year.first "${i}")"
@@ -153,25 +162,25 @@ for i in ${items};do (
     if [ -f "${index}/${id}/${lang}/video.webm" ];then
       video_exists=true
     else
-      unset -- video_exists
+      unset video_exists
     fi
 
     if [ -f "${index}/${id}/${lang}/cc.vtt" ];then
       captions_exists=true
     else
-      unset -- captions_exists
+      unset captions_exists
     fi
 
     if [ -f "${index}/${id}/${lang}/subs.vtt" ];then
       subs_exists=true
     else
-      unset -- subs_exists
+      unset subs_exists
     fi
 
     if [ "$(jq_r tooltip "${i}")" != null ];then
       tooltip_exists=true
     else
-      unset -- tooltip_exists
+      unset tooltip_exists
     fi
 
     {
@@ -246,7 +255,7 @@ for i in ${items};do (
         printf '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "${copyright_license_url_id}"
 
         if   [ "${up_directories}" -eq 2 ];then
-          unset -- volume chapter
+          unset volume chapter
         elif [ "${up_directories}" -eq 3 ];then
           unset volume
           chapter="$(jq_r location.chapter "${i}")"
@@ -313,25 +322,25 @@ for i in ${items};do (
         if ! test_null container_first;then
           set_var_l10n container_first_title title "${index}/${id}/../$(zero_pad 2 container_first)/data.json"
         else
-          unset -- container_first_title_text
+          unset container_first_title_text
         fi
 
         if ! test_null prev;then
           set_var_l10n prev_title title "${index}/${id}/../$(zero_pad 2 prev)/data.json"
         else
-          unset -- prev_title_text
+          unset prev_title_text
         fi
 
         if ! test_null next;then
           set_var_l10n next_title title "${index}/${id}/../$(zero_pad 2 next)/data.json"
         else
-          unset -- next_title_text
+          unset next_title_text
         fi
 
         if ! test_null container_last;then
           set_var_l10n container_last_title title "${index}/${id}/../$(zero_pad 2 container_last)/data.json"
         else
-          unset -- container_last_title_text
+          unset container_last_title_text
         fi
 
         make_nav_buttons top
@@ -396,23 +405,18 @@ for i in ${items};do (
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "${index}/${id}/.." -type f -path "${index}/${id}/../*/data.json" -print | sort -n | xargs -I {} -- sh -c -- '
-          [ -n "$1" ] &&
-            set -x
-
-          page="$2"
-          lib="$3"
-          lang="$4"
-          lang_l="$5"
-          lang_r="$6"
-          lang_default="$7"
-
-          for f in "${lib}/"*.sh;do
-            . -- "${f}"
-          done
-
-          make_page_list_entry "$8"' \
-          sh "$(printf '%s' "$-"|grep -Fe x)" "${page}" "${lib}" \
+        find "${index}/${id}/.." -type f -path "${index}/${id}/../*/data.json" -print | sort -n | xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
+page="$2"
+lib="$3"
+lang="$4"
+lang_l="$5"
+lang_r="$6"
+lang_default="$7"
+for f in "${lib}/"*.sh
+do . "${f}"
+done
+make_page_list_entry "$8"' \
+          sh "$(printf '%s' "$-"|grep -Fex)" "${page}" "${lib}" \
              "${lang}" "${lang_l}" "${lang_r}" "${lang_default}" {}
 
         printf '</ol></details></nav></div>'
@@ -430,7 +434,7 @@ for i in ${items};do (
 
         for l in $(jq_r 'transcript.lines|to_entries|.[].key' "${i}");do
           # shellcheck disable=2016
-          l_h="$(jq -r --argjson l "${l}" -- '.transcript.lines[$l].h' "${i}")"
+          l_h="$(jq -r --argjson l "${l}" '.transcript.lines[$l].h' "${i}")"
           set_var_l10n l_d "transcript.lines[${l}].d" "${i}"
 
           l_h_type="$(jq_r type "${encyclopedia}/${l_h}/data.json")"
@@ -463,9 +467,9 @@ for i in ${items};do (
 
         for p in $(jq_r 'post|to_entries|.[].key' "${i}");do
           set_var_l10n post_content 'post.['"${p}].content" "${i}"
-          post_date_d="$(jq -r --argjson p "${p}" -- '.post[$p].date.d' "${i}")"
-          post_date_m="$(jq -r --argjson p "${p}" -- '.post[$p].date.m' "${i}")"
-          post_date_y="$(jq -r --argjson p "${p}" -- '.post[$p].date.y' "${i}")"
+          post_date_d="$(jq -r --argjson p "${p}" '.post[$p].date.d' "${i}")"
+          post_date_m="$(jq -r --argjson p "${p}" '.post[$p].date.m' "${i}")"
+          post_date_y="$(jq -r --argjson p "${p}" '.post[$p].date.y' "${i}")"
 
           printf '%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
                               "$(zero_pad 2 post_date_m)" \
@@ -590,7 +594,7 @@ for i in ${items};do (
       printf '</ul></details>'
 
       printf '<footer><p><span class="nw">'
-      printf '<abbr title="%s">©</abbr> ' "$(printf_l10n copyright)"
+      printf '<abbr title="%s">©</abbr>&#160;' "$(printf_l10n copyright)"
       printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_first}"
       ! test_null copyright_year_last &&
         printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "${copyright_year_last}"
@@ -607,7 +611,7 @@ for i in ${items};do (
         set_var_l10n disclaimer "\"${disclaimer}\"" "${dict}/disclaimer.json"
         printf '<p>%s%s</p>' "$(printf_l10n disclaimer)" "${disclaimer_html}"
       else
-        unset -- disclaimer_html
+        unset disclaimer_html
       fi
 
       printf '</footer></div></body></html>\n'
@@ -625,7 +629,7 @@ wait
 
 section done items
 
-trap -- - INT EXIT
+trap - INT EXIT
 
 # TODO: Doesn’t work with subshells
 [ "${warning_warned}" = true ] &&

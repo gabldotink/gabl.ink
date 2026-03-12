@@ -3,5 +3,5 @@
 # SPDX-License-Identifier: CC0-1.0
 
 jq_r(){
-  jq -r -- ".$1" "$2"
+  jq -r ".$1" "$2"
 }

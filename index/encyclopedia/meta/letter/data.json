@@ -1,22 +1,22 @@
 {
-  "id": "encyclopedia/meta/chat",
+  "id": "encyclopedia/meta/letter",
   "type": "meta_character",
   "name": {
     "label": {
       "en": {
-        "filename": "chat"
+        "filename": "letter"
       },
       "fr": {
-        "filename": "chat"
+        "filename": "lettre"
       }
     }
   },
   "description": {
     "en": {
-      "ascii": "Words in an online chat."
+      "ascii": "Words in a written letter."
     },
     "fr": {
-      "text": "Mots d’un chat en ligne."
+      "text": "Mots d’un lettre écrite."
     }
   },
   "copyright": {

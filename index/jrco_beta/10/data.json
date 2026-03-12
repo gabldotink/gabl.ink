@@ -30,32 +30,62 @@
   "transcript": {
     "lines": [
       {
-        "h": null,
-        "d": "JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T."
+        "h": "meta/none",
+        "d": {
+          "en": {
+            "ascii": "JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T."
+          }
+        }
       },
       {
-        "h": "Harry",
-        "d": "Oh, hey, I heard from my father that your class is getting a new kid."
+        "h": "jrco_beta/harry_mahan",
+        "d": {
+          "en": {
+            "ascii": "Oh, hey, I heard from my father that your class is getting a new kid."
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "From Mr.\u00a0Mahan?"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "ascii": "From Mr. Mahan?",
+            "text": "From Mr.\u00a0Mahan?",
+            "html": "From Mr.&#160;Mahan?"
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "What’s his name?"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "text": "What’s his name?"
+          }
+        }
       },
       {
-        "h": "Harry",
-        "d": "She’s a girl, actually. She just moved from France."
+        "h": "jrco_beta/harry_mahan",
+        "d": {
+          "en": {
+            "text": "She’s a girl, actually. She just moved from France."
+          }
+        }
       },
       {
-        "h": "T.T.",
-        "d": "(<i>raising eyebrows</i>) Wait\u00a0.\u00a0.\u00a0. They have <em class=\"r u\">girls</em> in <em class=\"roman u\">France</em>?"
+        "h": "jrco_beta/t_t",
+        "d": {
+          "en": {
+            "html": "(<i>raising eyebrows</i>) Wait&#160;.&#160;.&#160;. They have <em class=\"r u\">girls</em> in <em class=\"roman u\">France</em>?"
+          }
+        }
       },
       {
-        "h": "JoeRunner",
-        "d": "(<i>looking weird</i>) Yeah, they\u2060—<em>what</em>?"
+        "h": "jrco_beta/joerunner",
+        "d": {
+          "en": {
+            "html": "(<i>weirded out</i>) Yeah, they&#8288;—<em>what</em>?"
+          }
+        }
       }
     ]
   },
@@ -72,7 +102,9 @@
         "d": 4
       },
       "content": {
-        "html": "<details><summary><p>Irrelevant info</p></summary><p>JoeRunner gets to be in the thumbnail for his own comic again.</p></details><p>When I first wrote this, T.T. said that he didn’t know what a girl was; I changed it later, because I decided that that wasn’t very T.T.\u2010like. Also, this is probably funnier anyway. I’ll have to post the original draft at some point, I guess. The drawing in this page is probably some of my worst. I hate my art so much, but I’m posting it on the internet forever anyway.</p><p>Remember when I said I was going to get a page a week done? Yeah. I’m a riot.</p>"
+        "en": {
+          "html": "<details><summary>Irrelevant info</summary><p>JoeRunner gets to be in the thumbnail for his own comic again.</p></details><p>When I first wrote this, T.T. said that he didn’t know what a girl was; I changed it later, because I decided that that wasn’t very T.T.‐like. Also, this is probably funnier anyway. I’ll have to post the original draft at some point, I guess. The drawing in this page is probably some of my worst. I hate my art so much, but I’m posting it on the internet forever anyway.</p><p>Remember when I said I was going to get a page a week done? Yeah. I’m a riot.</p>"
+        }
       }
     }
   ],

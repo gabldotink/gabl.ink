@@ -17,7 +17,7 @@ set_var_l10n(){
     fi
 
     for t in ascii filename html id printf text; do
-      eval "${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
+      eval " ${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
     done
 
     if ! test_null "${set_var_l10n_name}_id";then
@@ -36,7 +36,7 @@ set_var_l10n(){
 
     if test_null "${set_var_l10n_name}_ascii";then
       if ! test_null "${set_var_l10n_name}_filename";then
-        eval "${set_var_l10n_name}"'_ascii="${'"${set_var_l10n_name}"'_filename}"'
+        eval " ${set_var_l10n_name}"'_ascii="${'"${set_var_l10n_name}"'_filename}"'
       else
         unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
       fi
@@ -44,7 +44,7 @@ set_var_l10n(){
 
     if test_null "${set_var_l10n_name}_text";then
       if ! test_null "${set_var_l10n_name}_ascii";then
-        eval "${set_var_l10n_name}"'_text="${'"${set_var_l10n_name}"'_ascii}"'
+        eval " ${set_var_l10n_name}"'_text="${'"${set_var_l10n_name}"'_ascii}"'
       else
         unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
       fi
@@ -54,7 +54,7 @@ set_var_l10n(){
       break
     
     if [ -n "$(eval 'printf "%s" "${'"${set_var_l10n_name}"'_text}"')" ];then
-      eval "${set_var_l10n_name}"'_html="${'"${set_var_l10n_name}"'_text}"'
+      eval " ${set_var_l10n_name}"'_html="${'"${set_var_l10n_name}"'_text}"'
       break
     fi
 

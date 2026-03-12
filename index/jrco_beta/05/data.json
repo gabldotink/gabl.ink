@@ -68,7 +68,7 @@
         "h": "meta/none",
         "d": {
           "en": {
-            "text": "A tired\u2010looking woman with long hair and glasses is there. She speaks in the same font as JoeRunner."
+            "text": "A tired‐looking woman with long hair and glasses is there. She speaks in the same font as JoeRunner."
           }
         } 
       },
@@ -84,7 +84,8 @@
         "h": "meta/bio",
         "d": {
           "en": {
-            "text": "Eden Runner\u00a0/ heavy sleeper and mom"
+            "text": "Eden Runner\u00a0/ heavy sleeper and mom",
+            "html": "Eden Runner&#160;/ heavy sleeper and mom"
           }
         }
       },
