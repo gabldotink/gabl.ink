@@ -10,14 +10,14 @@ set_var_l10n(){
   set_var_l10n_source="$3"
 
   # TODO: Allow using values from other regions (e.g. en-GB for en-US)
-  for o in "${lang}" "${lang_l}" mul "${lang_default}" e;do
-    if [ "${o}" = e ];then
+  for o in "$lang" "$lang_l" mul "$lang_default" e;do
+    if [ "$o" = e ];then
       error 'There is no suitable value for a variable'
       break
     fi
 
     for t in ascii filename html id printf text; do
-      eval " ${set_var_l10n_name}_${t}"'="$(jq -r --arg o "${o}" --arg t "${t}" -- ".${set_var_l10n_property}"'"'"'.[$o].[$t]'"'"' "${set_var_l10n_source}")"' >/dev/null 2>&1
+      eval " ${set_var_l10n_name}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$set_var_l10n_property"'"'"'.[$o].[$t]'"'"' "$set_var_l10n_source")"' >/dev/null 2>&1
     done
 
     if ! test_null "${set_var_l10n_name}_id";then
@@ -36,7 +36,7 @@ set_var_l10n(){
 
     if test_null "${set_var_l10n_name}_ascii";then
       if ! test_null "${set_var_l10n_name}_filename";then
-        eval " ${set_var_l10n_name}"'_ascii="${'"${set_var_l10n_name}"'_filename}"'
+        eval " $set_var_l10n_name"'_ascii="$'"$set_var_l10n_name"'_filename"'
       else
         unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
       fi
@@ -44,7 +44,7 @@ set_var_l10n(){
 
     if test_null "${set_var_l10n_name}_text";then
       if ! test_null "${set_var_l10n_name}_ascii";then
-        eval " ${set_var_l10n_name}"'_text="${'"${set_var_l10n_name}"'_ascii}"'
+        eval " $set_var_l10n_name"'_text="$'"$set_var_l10n_name"'_ascii"'
       else
         unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
       fi
@@ -53,8 +53,8 @@ set_var_l10n(){
     ! test_null "${set_var_l10n_name}_html" &&
       break
     
-    if [ -n "$(eval 'printf "%s" "${'"${set_var_l10n_name}"'_text}"')" ];then
-      eval " ${set_var_l10n_name}"'_html="${'"${set_var_l10n_name}"'_text}"'
+    if [ -n "$(eval 'printf "%s" "$'"$set_var_l10n_name"'_text"')" ];then
+      eval " $set_var_l10n_name"'_html="$'"$set_var_l10n_name"'_text"'
       break
     fi
 
