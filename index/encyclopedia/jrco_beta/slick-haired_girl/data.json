@@ -17,11 +17,11 @@
   "sex": "f",
   "birthdate": {},
   "description": {
-    "html": "A student."
+    "ascii": "A student."
   },
   "relationships": {},
   "bio": {
-    "html": "<p>The slick‐haired girl plays video games on a handheld console.</p>"
+    "html": "The slick‐haired girl plays video games on a handheld console."
   },
   "copyright": {
     "year": {

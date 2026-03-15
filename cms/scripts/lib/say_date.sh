@@ -41,7 +41,7 @@ say_date(){
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
-  elif [ "$lang_l" = es ]
+  elif [ "$lang_l" = es ];then
     printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>&#160;de&#160;' "$say_date_d"
     printf '%s de ' "$say_date_m_html"
     if   [ "${#say_date_y}" -lt 4 ] &&

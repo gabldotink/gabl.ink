@@ -15,10 +15,10 @@
     }
   },
   "description": {
-    "html": "A family."
+    "ascii": "A family."
   },
   "bio": {
-    "html": "<p>The Runner family includes JoeRunner and Eden.</p>"
+    "html": "The Runner family includes JoeRunner and Eden."
   },
   "copyright": {
     "year": {
