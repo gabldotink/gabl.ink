@@ -33,11 +33,27 @@ say_date(){
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>' "$say_date_d"
     fi
     printf '&#160;%s ' "$say_date_m_html"
-    if [ "$say_date_y" -eq 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="avant Jésus‐Christ">av.&#160;J.‐C.</abbr>'
+    if   [ "${#say_date_y}" -lt 4 ] &&
+         [ "$say_date_y" -ne 0 ];then
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>&#160;<abbr title="après Jésus‐Christ">ap.&#160;J.‑C.</abbr>' "$say_date_y"
+    elif [ "$say_date_y" -eq 0 ];then
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="avant Jésus‐Christ">av.&#160;J.‑C.</abbr>'
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
+  elif [ "$lang_l" = es ]
+    printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>&#160;de&#160;' "$say_date_d"
+    printf '%s de ' "$say_date_m_html"
+    if   [ "${#say_date_y}" -lt 4 ] &&
+         [ "$say_date_y" -ne 0 ];then
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>&#160;<abbr title="después de Cristo">d.&#160;C.</abbr>' "$say_date_y"
+    elif [ "$say_date_y" -eq 0 ];then
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="antes de Cristo">a.&#160;C.</abbr>'
+    else
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
+    fi
+  else
+    error 'unsupported language for say_date'
   fi
 
   printf '</time>'
