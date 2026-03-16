@@ -8,20 +8,20 @@ exit 1' INT EXIT
 
 script="$0"
 
-dependencies='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
+deps='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
 
-for c in $dependencies;do
-  if command -v "$c" >/dev/null 2>&1;then
+for c in $deps;do
+  if command -v -- "$c" >/dev/null 2>&1;then
     commands_v="$commands_v $c"
   fi
 done
 
-for r in $dependencies;do
+for r in $deps;do
   case "$commands_v " in
     *" $r "*)
       true ;;
     *)
-      printf '[error] This script requires the following programs to be installed in PATH: %s\n' "$dependencies" >&2
+      printf '[error] This script requires the following programs to be installed in PATH: %s\n' "$deps" >&2
       printf '        You have the following programs installed:%s\n' "$commands_v" >&2
       printf '        Please install missing programs.\n' >&2
       exit 1
@@ -29,7 +29,9 @@ for r in $dependencies;do
 done
 
 tput_colors="$(tput colors 2>/dev/null||true)"
-tput_reset="$(tput sgr0 2>/dev/null||true)" 
+tput_reset="$(tput sgr0 2>/dev/null||true)"
+tput_error="$(tput setaf 1 2>/dev/null||true)"
+tput_warning="$(tput setaf 3 2>/dev/null||true)"
 if [ "$tput_colors" -ge 256 ];then
   tput_link="$(tput setaf 21 2>/dev/null||true)$(tput smul 2>/dev/null||true)"
 else
@@ -37,8 +39,8 @@ else
 fi
 
 # Prevent sh -x from having link styling
-if printf '%s' "$-" | grep -Fqex;then
-  printf '%s' "$tput_reset" >&2
+if printf -- '%s' "$-" | grep -Fqex;then
+  printf -- '%s' "$tput_reset" >&2
 fi
 
 # Display help if any arguments are passed
@@ -49,34 +51,27 @@ if [ "$#" -gt 0 ];then
   else
     trap - INT EXIT
 
-    printf 'Usage: %s\n\n' "$script" >&2
+    printf -- \
+'Usage: %s
 
-    printf 'This script generates the gabl.ink website.\n\n' >&2
+This script generates the gabl.ink website.
 
-    printf 'If the only argument is “--”, the script will run as normal. This follows POSIX Utility Syntax Guideline 10. Other arguments will cause the script to display this help message and exit unsuccessfully.\n\n' >&2
+If the only argument is “--”, the script will run as normal. This follows POSIX Utility Syntax Guideline 10. Other arguments will cause the script to display this help message and exit unsuccessfully.
 
-    printf 'This script requires the following programs to be installed in PATH:\n' >&2
-    printf '  %s\n' "$dependencies" >&2
-    printf 'You have all of these installed already.\n\n' >&2
+This script requires the following programs to be installed in PATH:
+  %s
+You have all of these installed already.
 
-    printf '© 2024–2026 gabl.ink\n' >&2
-    printf 'License: CC0 1.0 Universal (CC0 1.0)\n' >&2
-    printf '%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s\n' "$tput_link" "$tput_reset" >&2
+© 2024–2026 gabl.ink
+License: CC0 1.0 Universal (CC0 1.0)
+%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
+    "$script" "$deps" "$tput_link" "$tput_reset" >&2
 
     exit 1
   fi
 fi
 
 scripts="$(dirname -- "$script")"
-
-# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
-case "$scripts" in
-  /*|./*|../*)
-    true ;;
-  *)
-    scripts="./$scripts"
-esac
-
 cms="$scripts/.."
 dict="$cms/dictionaries"
 index="$cms/../index"
@@ -85,8 +80,16 @@ lib="$scripts/lib"
 
 # shellcheck source-path=./lib
 for f in "$lib/"*.sh;do
-  . "$f"
+  . -- "$f"
 done
+
+# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
+case "$scripts" in
+  /*|./*|../*)
+    true ;;
+  *)
+    scripts="./$scripts"
+esac
 
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "$scripts/config.sh" ];then
@@ -100,12 +103,12 @@ else
   lang_default=en-US
 fi
 
-#items="$(find "$index" -type f -name data.json -print)"
-items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json" -print)"
+#items="$(find "$index" -type f -name data.json)"
+items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
 
 trap - INT EXIT
 
-section start items
+err 'section start' items
 
 for i in $items;do (
   type="$(jq_r type "$i")"
@@ -125,7 +128,7 @@ for i in $items;do (
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r 'langs[]' "$index/$id/data.json");do (
-    printf '[start] %s/%s\n' "$id" "$lang" >&2
+    err 'item start' "$id/$lang"
 
     tmpfile="$(mktemp)"
 
@@ -181,19 +184,19 @@ exit 1' INT EXIT
 
     {
       printf '<!DOCTYPE html>\n'
-      printf '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
+      printf -- '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
 
       # shellcheck disable=2154
-      printf '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
+      printf -- '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
              "$lang" "$lang_d" "$lang"
 
       printf '<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>'
 
-      printf '<title>%s</title>' "$(printf_l10n html_title "$title_text")"
+      printf -- '<title>%s</title>' "$(printf_l10n html_title "$title_text")"
 
-      printf '<meta name="description" content="%s"/>' "$description_text"
+      printf -- '<meta name="description" content="%s"/>' "$description_text"
       printf '<meta name="robots" content="index,follow"/>'
-      printf '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang_bcp_47_full"
+      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang_bcp_47_full"
 
       if [ "$type" = comic_page ];then
         first_published_d="$(jq_r first_published.d "$i")"
@@ -236,19 +239,19 @@ exit 1' INT EXIT
         elif [ "$up_directories" -eq 4 ];then
           container=volume
         else
-          error 'up_directories is not 2, 3, or 4'
+          err error 'up_directories is not 2, 3, or 4'
         fi
 
-        printf '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
                "$styles"
-        printf '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css"/>' \
                "$styles"
-        printf '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
                "$styles"
-        printf '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
                "$styles"
 
-        printf '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url_id"
+        printf -- '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url_id"
 
         if   [ "$up_directories" -eq 2 ];then
           unset volume chapter
@@ -268,12 +271,12 @@ exit 1' INT EXIT
           true
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
-          printf '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 container_first)" "$lang_bcp_47_full"
-          printf '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 prev)" "$lang_bcp_47_full"
         elif [ "$container_first" = "$prev" ];then
-          printf '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 prev)" "$lang_bcp_47_full"
         fi
 
@@ -282,12 +285,12 @@ exit 1' INT EXIT
           true
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
-          printf '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 next)" "$lang_bcp_47_full"
-          printf '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 container_last)" "$lang_bcp_47_full"
         elif [ "$container_last" = "$next" ];then
-          printf '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
                  "$(zero_pad 2 next)" "$lang_bcp_47_full"
         fi
 
@@ -349,19 +352,19 @@ exit 1' INT EXIT
         if [ "$video_exists" = true ];then
           printf 'video"><video controls="" poster="./image.png" preload="auto"'
           if [ "$tooltip_exists" = true ];then
-            printf ' title="%s"' "$tooltip_text"
+            printf -- ' title="%s"' "$tooltip_text"
           fi
           printf '>'
           printf '<source src="./video.webm" type="video/webm"/>'
           if [ "$captions_exists" = true ];then
             printf '<track kind="captions" '
-            printf 'label="%s (%s) (CC)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
-            printf 'src="./cc.vtt" srclang="%s"/>' "$lang"
+            printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
+            printf -- 'src="./cc.vtt" srclang="%s"/>' "$lang"
           fi
           if [ "$subs_exists" = true ];then
             printf '<track default="" kind="subtitles" '
-            printf 'label="%s (%s)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
-            printf 'src="./subs.vtt" srclang="%s"/>' "$lang"
+            printf -- 'label="%s (%s)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
+            printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
           fi
           printf '<p>'
           printf_l10n video_not_supported "$lang" "$series_title_filename" "$title_filename"
@@ -370,7 +373,7 @@ exit 1' INT EXIT
         else
           printf 'image"><picture'
           [ "$tooltip_exists" = true ] &&
-            printf ' title="%s"' "$tooltip_text"
+            printf -- ' title="%s"' "$tooltip_text"
           printf '>'
           printf '<img src="./image.png" alt="'
           printf_l10n see_transcript
@@ -401,7 +404,7 @@ exit 1' INT EXIT
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "$index/$id/.." -type f -path "$index/$id/../*/data.json" -print | sort -n | xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
+        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
 page="$2"
 lib="$3"
 lang="$4"
@@ -409,7 +412,7 @@ lang_l="$5"
 lang_r="$6"
 lang_default="$7"
 for f in "$lib/"*.sh
-do . "$f"
+do . -- "$f"
 done
 make_page_list_entry "$8"' \
           sh "$(printf '%s' "$-"|grep -Fex)" "$page" "$lib" \
@@ -419,13 +422,13 @@ make_page_list_entry "$8"' \
 
         printf '<details id="comic_transcript" open="">'
 
-        printf '<summary>%s</summary>' "$(printf_l10n transcript_name)"
+        printf -- '<summary>%s</summary>' "$(printf_l10n transcript_name)"
 
         printf '<table id="comic_transcript_table">'
 
         printf '<thead><tr>'
-        printf '<th scope="col">%s</th>' "$(printf_l10n transcript_speaker)"
-        printf '<th scope="col">%s</th>' "$(printf_l10n transcript_text)"
+        printf -- '<th scope="col">%s</th>' "$(printf_l10n transcript_speaker)"
+        printf -- '<th scope="col">%s</th>' "$(printf_l10n transcript_text)"
         printf '</tr></thead>'
 
         for l in $(jq_r 'transcript.lines|to_entries|.[].key' "$i");do
@@ -436,7 +439,7 @@ make_page_list_entry "$8"' \
           l_h_type="$(jq_r type "$encyclopedia/$l_h/data.json")"
           [ "$l_h_type" = character ] ||
             [ "$l_h_type" = meta_character ] ||
-              error 'l_h_type is not character or meta_character'
+              err error 'l_h_type is not character or meta_character'
           if [ "$(jq_r name "$encyclopedia/$l_h/data.json")" = null ];then
             unset_var_l10n l_h_label
           else
@@ -455,7 +458,7 @@ make_page_list_entry "$8"' \
 
         printf '</table></details>'
 
-        printf '<p id="first_published">%s' "$(printf_l10n first_published)"
+        printf -- '<p id="first_published">%s' "$(printf_l10n first_published)"
         
         say_date first_published
 
@@ -467,9 +470,9 @@ make_page_list_entry "$8"' \
           post_date_m="$(jq -r --argjson p "$p" '.post[$p].date.m' "$i")"
           post_date_y="$(jq -r --argjson p "$p" '.post[$p].date.y' "$i")"
 
-          printf '%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
-                              "$(zero_pad 2 post_date_m)" \
-                              "$(zero_pad 2 post_date_d)"
+          printf -- '%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
+                                 "$(zero_pad 2 post_date_m)" \
+                                 "$(zero_pad 2 post_date_d)"
 
           printf '<h2>'
           
@@ -477,7 +480,7 @@ make_page_list_entry "$8"' \
 
           printf '</h2>'
 
-          printf '%s' "$post_content_html"
+          printf -- '%s' "$post_content_html"
 
           printf '</article>'
         done
@@ -488,99 +491,99 @@ make_page_list_entry "$8"' \
 
         make_share_link email \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s”' "$title_text"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s”' "$title_text"
                         )" \
                        "$(
-                          printf 'From https://gabl.ink/ : %s' "$canonical"
+                          printf -- 'From https://gabl.ink/ : %s' "$canonical"
                         )"
 
         make_share_link sms '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '%s' "$canonical"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '%s' "$canonical"
                           )"
 
         make_share_link x '' \
                        "$(
-                          printf 'gabl.ink @gabldotink: _%s_: “' "$series_title_text"
-                          printf '%s”' "$title_text"
+                          printf -- 'gabl.ink @gabldotink: _%s_: “' "$series_title_text"
+                          printf -- '%s”' "$title_text"
                         )" \
                        "gabldotink,$series_hashtag_id"
 
         make_share_link reddit \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s”' "$title_text"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s”' "$title_text"
                         )"
 
         make_share_link facebook
 
         make_share_link telegram '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link bluesky '' \
                        "$(
-                          printf 'gabl.ink @gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '%s ' "$canonical"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink @gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '%s ' "$canonical"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link whatsapp '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '%s' "$canonical"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '%s' "$canonical"
                         )"
 
         make_share_link mastodon '' \
                        "$(
-                          printf 'gabl.ink @gabldotink@mstdn.party: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink @gabldotink@mstdn.party: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link threads '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link truth_social '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link gab '' \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link vk \
                        "$(
-                          printf 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf '%s” ' "$title_text"
+                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
+                          printf -- '%s” ' "$title_text"
                           )" \
                        "$(
-                          printf 'From https://gabl.ink/ : %s ' "$canonical"
-                          printf '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'From https://gabl.ink/ : %s ' "$canonical"
+                          printf -- '#gabldotink #%s' "$series_hashtag_id"
                           )"
 
         printf '</ul></details>'
 
         printf '<details id="validate_links">'
-        printf '<summary>%s</summary>' "$(printf_l10n validate_this_page)"
+        printf -- '<summary>%s</summary>' "$(printf_l10n validate_this_page)"
         printf '<ul>'
 
         make_validate_link vnu
@@ -590,22 +593,22 @@ make_page_list_entry "$8"' \
       printf '</ul></details>'
 
       printf '<footer><p><span class="nw">'
-      printf '<abbr title="%s">©</abbr>&#160;' "$(printf_l10n copyright)"
-      printf '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
+      printf -- '<abbr title="%s">©</abbr>&#160;' "$(printf_l10n copyright)"
+      printf -- '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
       ! test_null copyright_year_last &&
-        printf '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
+        printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
       printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
-      printf '<p>%s<a rel="external license" href="%s" ' "$(printf_l10n license)" "$copyright_license_url_id"
+      printf -- '<p>%s<a rel="external license" href="%s" ' "$(printf_l10n license)" "$copyright_license_url_id"
       printf 'hreflang="en" type="text/html">'
-      printf '<cite>%s</cite>' "$copyright_license_title_html"
+      printf -- '<cite>%s</cite>' "$copyright_license_title_html"
       ! test_null copyright_license_abbr &&
-        printf ' (<cite class="nw"><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
+        printf -- ' (<cite class="nw"><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
       printf '</a></p>'
 
       if ! test_null disclaimer;then
         set_var_l10n disclaimer "\"$disclaimer\"" "$dict/disclaimer.json"
-        printf '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
+        printf -- '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
       else
         unset disclaimer_html
       fi
@@ -615,7 +618,7 @@ make_page_list_entry "$8"' \
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
-    printf '[done] %s/%s\n' "$id" "$lang" >&2
+    err 'item done' "$id/$lang"
     ) &
   done
   wait
@@ -623,7 +626,7 @@ make_page_list_entry "$8"' \
 done
 wait
 
-section done items
+err 'section done' items
 
 trap - INT EXIT
 

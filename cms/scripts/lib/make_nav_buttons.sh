@@ -22,19 +22,19 @@ make_nav_buttons_f_l(){
     make_nav_buttons_f_l_u="$(printf_l10n nav_button_last)"
     make_nav_buttons_f_l_z=next
   else
-    error 'make_nav_buttons_f_l direction is not < or >'
+    err error 'make_nav_buttons_f_l direction is not < or >'
   fi
 
-  printf '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_f_l_i"
+  printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_f_l_i"
 
   if [ "$(eval 'printf "%s" "$'"$make_nav_buttons_f_l_z"'"')" = null ];then
-    printf 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_f_l_l}_inline")")"
+    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_f_l_l}_inline")")"
   else
-    printf 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'_title_text"')")"
-    printf '<a href="../../%s/%s/" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'"')")" "$lang" "$lang"
+    printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'_title_text"')")"
+    printf -- '<a href="../../%s/%s/" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'"')")" "$lang" "$lang"
   fi
 
-  printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_f_l_a" "$make_nav_buttons_f_l_u"
+  printf -- '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_f_l_a" "$make_nav_buttons_f_l_u"
 
   [ "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'"')" != null ] &&
     printf '</a>'
@@ -61,19 +61,19 @@ make_nav_buttons_p_n(){
     make_nav_buttons_p_n_u="$(printf_l10n nav_button_next)"
     make_nav_buttons_p_n_z=last
   else
-    error 'make_nav_buttons_p_n direction is not < or >'
+    err error 'make_nav_buttons_p_n direction is not < or >'
   fi
 
-  printf '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_p_n_i"
+  printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_p_n_i"
 
   if [ "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')" = null ];then
-    printf 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_p_n_z}_inline")")"
+    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_p_n_z}_inline")")"
   else
-    printf 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'_title_text"')")"
-    printf '<a href="../../%s/%s/" rel="%s" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')")" "$lang" "$make_nav_buttons_p_n_i" "$lang"
+    printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'_title_text"')")"
+    printf -- '<a href="../../%s/%s/" rel="%s" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')")" "$lang" "$make_nav_buttons_p_n_i" "$lang"
   fi
 
-  printf '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_p_n_a" "$make_nav_buttons_p_n_u"
+  printf -- '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_p_n_a" "$make_nav_buttons_p_n_u"
 
   [ "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')" != null ] &&
     printf '</a>'
@@ -84,7 +84,7 @@ make_nav_buttons_p_n(){
 make_nav_buttons(){
   make_nav_buttons_l="$1"
 
-  printf '<nav id="nav_%s_buttons">' "$make_nav_buttons_l"
+  printf -- '<nav id="nav_%s_buttons">' "$make_nav_buttons_l"
 
   make_nav_buttons_f_l '<'
   make_nav_buttons_p_n '<'

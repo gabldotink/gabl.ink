@@ -12,7 +12,7 @@ set_var_l10n(){
   # TODO: Allow using values from other regions (e.g. en-GB for en-US)
   for o in "$lang" "$lang_l" mul "$lang_default" e;do
     if [ "$o" = e ];then
-      error 'There is no suitable value for a variable'
+      err error 'There is no suitable value for a variable'
       break
     fi
 

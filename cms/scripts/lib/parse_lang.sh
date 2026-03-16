@@ -16,14 +16,14 @@ parse_lang(){
     # shellcheck disable=2034
     lang_l="$parse_lang_1"
   else
-    error 'primary language subtag is not valid'
+    err error 'Primary language subtag is not valid'
   fi
 
   if printf '%s' "$parse_lang_2" | grep '-qe^[A-Z]\{2\}$';then
     # shellcheck disable=2034
     lang_r="$parse_lang_2"
   else
-    error 'region subtag is not valid'
+    err error 'Region subtag is not valid'
   fi
 
   lang_s="$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")"
