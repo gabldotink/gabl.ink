@@ -222,4 +222,4 @@ _All_ filenames must:
 The maximum length is defined as 255&nbsp;bytes, although it could and probably should be lower. 255 is the maximum for most Unix-like systems. The limit on Windows is 260. Some old versions of `tar` limit lengths inside tarballs to 99. POSIX says portable filenames should be 14&nbsp;bytes or less. That limit is probably achievable for repository files. For `filename` values (used for downloads), a higher limit is probably fine.
 
 Must match regex (BRE): `^[A-Za-z0-9._-]\{1,14\}$`\
-Must not match regex: `^(-.*)|(.*\.)|(([Aa][Uu][Xx]|[Cc][Oo][Nn]|[Nn][Uu][Ll]|[Pp][Rr][Nn]|[Cc][Oo][Mm][0-9]|[Ll][Pp][Tt][0-9])\.\{0,1\}.*)$`
+Must not match regex: `^\(-.*\)|\(.*\.\)|\(\([Aa][Uu][Xx]|[Cc][Oo][Nn]|[Nn][Uu][Ll]|[Pp][Rr][Nn]|[Cc][Oo][Mm][0-9]|[Ll][Pp][Tt][0-9]\)\.\{0,1\}.*\)$`
