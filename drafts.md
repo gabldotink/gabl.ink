@@ -206,3 +206,20 @@ POSIX does not define escape sequences for special characters without extensions
 ### WebVTT
 
 WebVTT supports HTML5 character entities in cues.
+
+# Filename requirements
+
+_All_ filenames must:
+
+* Contain only the characters `[A-Za-z0-9._-]` (POSIX Portable Filename Character Set)
+* Not start with a hyphen‐minus (`-`) (POSIX Portable Filename)
+* Not end with a period (`.`) (Windows)
+* Not differ from another filename solely by case (Windows)
+* Not be one of the following (case insensitive), nor start with any of the following plus a period: `AUX CON NUL PRN COM[0-9] LPT[0-9]` (Windows)
+
+`filename` localization values must additionally not contain periods (`.`) at all.
+
+The maximum length is defined as 255&nbsp;bytes, although it could and probably should be lower. 255 is the maximum for most Unix-like systems. The limit on Windows is 260. Some old versions of `tar` limit lengths inside tarballs to 99. POSIX says portable filenames should be 14&nbsp;bytes or less. That limit is probably achievable for repository files. For `filename` values (used for downloads), a higher limit is probably fine.
+
+Must match regex (BRE): `^[A-Za-z0-9._-]\{1,14\}$`\
+Must not match regex: `^(-.*)|(.*\.)|(([Aa][Uu][Xx]|[Cc][Oo][Nn]|[Nn][Uu][Ll]|[Pp][Rr][Nn]|[Cc][Oo][Mm][0-9]|[Ll][Pp][Tt][0-9])\.\{0,1\}.*)$`
