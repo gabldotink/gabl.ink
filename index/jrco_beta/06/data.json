@@ -58,7 +58,8 @@
             "ascii": "Oh, hey, the last one?"
           },
           "fr": {
-            "text": "Oh, hé, le dernier\u202f?"
+            "text": "Oh, hé, le dernier\u202f?",
+            "html": "Oh, hé, le dernier&#8239;?"
           }
         }
       },
@@ -77,7 +78,8 @@
             "ascii": "Ooooh, next year! Middle school!"
           },
           "fr": {
-            "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!"
+            "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!",
+            "html": "Ooooh, l’année prochaine&#8239;! Le collège&#8239;!"
           }
         }
       },
@@ -96,7 +98,7 @@
             "html": "Well, I <em style=\"roman u\">loved</em> middle school."
           },
           "fr": {
-            "text": "Bah, j’ai bien aimée le collège."
+            "text": "Bah, j’ai aimée bien le collège."
           }
         }
       },

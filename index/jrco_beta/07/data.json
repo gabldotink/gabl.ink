@@ -30,6 +30,10 @@
   "tooltip": {
     "en": {
       "ascii": "featuring: several background characters in a white void"
+    },
+    "fr": {
+      "text": "avec\u202f: quelques personnages du fond dans un vide blanc",
+      "html": "avec&#8239;: quelques personnages du fond dans un vide blanc"
     }
   },
   "transcript": {
@@ -47,6 +51,10 @@
         "d": {
           "en": {
             "ascii": "featuring: several background characters in a white void"
+          },
+          "fr": {
+            "text": "avec\u202f: quelques personnages du fond dans un vide blanc",
+            "html": "avec&#8239;: quelques personnages du fond dans un vide blanc"
           }
         }
       }

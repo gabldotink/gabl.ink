@@ -52,6 +52,9 @@
         "d": {
           "en": {
             "ascii": "JoeRunner walks up to the boy."
+          },
+          "fr": {
+            "ascii": "JoeRunner marche jusqu’au garçon."
           }
         }
       },
@@ -60,6 +63,9 @@
         "d": {
           "en": {
             "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+          },
+          "fr": {
+            "text": "Hé, JoeRunner, tu es arrivé&#160;! Et ça n’a pris que, genre, deux décennies&#160;!"
           }
         }
       },
@@ -69,6 +75,10 @@
           "en": {
             "text": "Yeah, there was lots of traffic on North\u00a01 today.",
             "html": "Yeah, there was lots of traffic on North&#160;1 today."
+          },
+          "fr": {
+            "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui.",
+            "html": "Ouais, il y avait beaucoup de trafic sur Nord&#160;1 aujourd’hui."
           }
         }
       },
@@ -86,6 +96,10 @@
           "en": {
             "text": "T.T.\u00a0/ one heck of a guy",
             "html": "T.T.&#160;/ one heck of a guy"
+          },
+          "fr": {
+            "text": "T.T.\u00a0/ un sacré mec",
+            "html": "T.T.&#160;/ un sacré mec"
           }
         }
       },
@@ -94,6 +108,9 @@
         "d": {
           "en": {
             "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks&#160;III</cite>! <em class=\"i\">Six!</em>"
+          },
+          "fr": {
+            "html": "<p>Ouais, ouais, je veux pas tes excuses.</p><p>Allez&#160;! Nous aurons seulement de temps pour six parties de <cite class=\"i\">Hyper Galactic Battle Ducks&#160;III</cite>&#160;! Seulement six&#160;!</p>"
           }
         }
       }

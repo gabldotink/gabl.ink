@@ -39,6 +39,9 @@
         "d": {
           "en": {
             "html": "<code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I’m using tilt controls!"
+          },
+          "fr": {
+            "comment": "French for _I’m using tilt controls!_ is _Je joue avec le gyroscope\u202f!_ I downloaded _Mario Kart\u00a08 Deluxe_ just to check"
           }
         }
       },
@@ -72,6 +75,11 @@
           "en": {
             "text": ".\u00a0.\u00a0.\u00a0but that got me enough reputation to access the Pan‐Galactic Gargle Blaster from the Retnia shop!",
             "html": ".&#160;.&#160;.&#160;but that got me enough reputation to access the Pan‐Galactic Gargle Blaster from the Retnia shop!"
+          },
+          "fr": {
+            "text": "… mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin Retnia\u202f!",
+            "html": "… mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin Retnia&#8239;!",
+            "comment": "French for _Pan Galactic Gargle Blaster_ is _arrache-boyaux pan galactique_ (“pan galactic gut‐wrencher”), but that doesn’t say “blaster,” so I may or may not leave it in English."
           }
         }
       },
@@ -141,7 +149,7 @@
         "h": "jrco_beta/joerunner",
         "d": {
           "en": {
-            "html": "Every day there are what, like 300&#160;players and he keeps finding <em class=\"roman u\">us</em>?"
+            "html": "Every day there are what, like 300&#160;players and he keeps finding <em class=\"r u\">us</em>?"
           }
         }
       },
@@ -193,6 +201,10 @@
             "ascii": "The last four years, anyway. And now you are approximately 1.39729 * 10^12 molecules of space debris.",
             "text": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010¹² molecules of space debris.",
             "html": "The last four years, anyway. And now you are approximately 1.39729&#160;×&#160;10<sup>12</sup> molecules of space debris."
+          },
+          "fr": {
+            "text": "Pour ces quatres dernières années, de toute façon. Et maintenant vous êtes approximativement 1,39729\u202f×\u202f10¹² molécules de débris spatiaux.",
+            "html": "Pour ces quatres dernières années, de toute façon. Et maintenant vous êtes approximativement 1,39729&#160;×&#160;10<sup>12</sup> molécules de débris spatiaux."
           }
         }
       },
@@ -217,6 +229,10 @@
         "d": {
           "en": {
             "html": "(<i>saluting</i>) Farewell, Captain <code>tomatotoe07</code>. Farewell."
+          },
+          "fr": {
+            "html": "(<i>salué</i>) Au revoir, capitaine <code>tomate_taxidermiste_07</code>. Au revoir.",
+            "comment": "I don’t really know what to do here mdrrrrrr"
           }
         }
       }
