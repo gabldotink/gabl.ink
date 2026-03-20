@@ -89,6 +89,10 @@
           "en": {
             "text": "Say your last\u2060—",
             "html": "Say your last&#8288;—"
+          },
+          "fr": {
+            "text": "Dites tes derniers\u202f—",
+            "html": "Dites tes derniers&#8239;—"
           }
         }
       },

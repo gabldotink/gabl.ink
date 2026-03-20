@@ -65,6 +65,9 @@
         "d": {
           "en": {
             "html": "(<i>smiling</i>) Oh, really?"
+          },
+          "fr": {
+            "html": "(<i>souriant</i>) Oh, vraiment&#8239;?"
           }
         }
       },
@@ -130,6 +133,9 @@
         "d": {
           "en": {
             "ascii": "Brrrrrring!"
+          },
+          "fr": {
+            "text": "Drrrrrring\u202f!"
           }
         }
       },

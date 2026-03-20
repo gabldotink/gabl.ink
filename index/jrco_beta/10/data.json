@@ -42,6 +42,9 @@
         "d": {
           "en": {
             "ascii": "Oh, hey, I heard from my father that your class is getting a new kid."
+          },
+          "fr": {
+            "text": "Oh, hé, j’ai entendu de mon père que ta classe obté une petite nouvelle."
           }
         }
       },
@@ -52,6 +55,10 @@
             "ascii": "From Mr. Mahan?",
             "text": "From Mr.\u00a0Mahan?",
             "html": "From Mr.&#160;Mahan?"
+          },
+          "fr": {
+            "text": "De M.\u00a0Mahan\u202f?",
+            "html": "De M.&#160;Mahan&#8239;?"
           }
         }
       },
@@ -60,6 +67,9 @@
         "d": {
           "en": {
             "text": "What’s his name?"
+          },
+          "fr": {
+            "text": "Comment il s’appelle\u202f?"
           }
         }
       },
@@ -68,6 +78,9 @@
         "d": {
           "en": {
             "text": "She’s a girl, actually. She just moved from France."
+          },
+          "fr": {
+            "text": "J’ai utilisé le féminin, non\u202f? Elle vient d’arriver de la France."
           }
         }
       },
@@ -75,7 +88,7 @@
         "h": "jrco_beta/t_t",
         "d": {
           "en": {
-            "html": "(<i>raising eyebrows</i>) Wait&#160;.&#160;.&#160;. They have <em class=\"r u\">girls</em> in <em class=\"roman u\">France</em>?"
+            "html": "(<i>raising eyebrows</i>) Wait&#160;.&#160;.&#160;. They have <em class=\"r u\">girls</em> in <em class=\"r u\">France</em>?"
           }
         }
       },

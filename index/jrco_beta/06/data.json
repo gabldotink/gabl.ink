@@ -56,6 +56,9 @@
         "d": {
           "en": {
             "ascii": "Oh, hey, the last one?"
+          },
+          "fr": {
+            "text": "Oh, hé, le dernier\u202f?"
           }
         }
       },
@@ -72,6 +75,9 @@
         "d": {
           "en": {
             "ascii": "Ooooh, next year! Middle school!"
+          },
+          "fr": {
+            "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!"
           }
         }
       },
@@ -88,6 +94,9 @@
         "d": {
           "en": {
             "html": "Well, I <em style=\"roman u\">loved</em> middle school."
+          },
+          "fr": {
+            "text": "Bah, j’ai bien aimée le collège."
           }
         }
       },

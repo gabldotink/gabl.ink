@@ -59,7 +59,7 @@
         "h": "meta/none",
         "d": {
           "en": {
-            "text": "A box appears on the screen."
+            "ascii": "A box appears on the screen."
           }
         }
       },
@@ -84,6 +84,9 @@
         "d": {
           "en": {
             "ascii": "Click!"
+          },
+          "fr": {
+            "ascii": "Clic\u202f!"
           }
         }
       },

@@ -45,6 +45,9 @@
         "d": {
           "en": {
             "ascii": "Joseph?"
+          },
+          "fr": {
+            "text": "Joseph\u202f?"
           }
         }
       },
@@ -59,7 +62,7 @@
       {
         "h": "meta/sound_effect",
         "d": {
-          "en": {
+          "mul": {
             "ascii": "?"
           }
         }
@@ -102,6 +105,9 @@
         "d": {
           "en": {
             "html": "(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
+          },
+          "fr": {
+            "html": "(<i>souriant</i>) <i>Heh.</i> Ouais, je sais."
           }
         }
       },
