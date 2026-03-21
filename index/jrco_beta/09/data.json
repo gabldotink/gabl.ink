@@ -58,6 +58,9 @@
         "d": {
           "en": {
             "html": "(<i>off-panel</i>) Perhaps&#160;.&#160;.&#160;."
+          },
+          "fr": {
+            "html": "(<i>hors‐case</i>) Oui, peut‐être…"
           }
         }
       },
@@ -77,9 +80,9 @@
             "html": ".&#160;.&#160;.&#160;but that got me enough reputation to access the Pan‐Galactic Gargle Blaster from the Retnia shop!"
           },
           "fr": {
-            "text": "… mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin Retnia\u202f!",
-            "html": "… mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin Retnia&#8239;!",
-            "comment": "French for _Pan Galactic Gargle Blaster_ is _arrache-boyaux pan galactique_ (“pan galactic gut‐wrencher”), but that doesn’t say “blaster,” so I may or may not leave it in English."
+            "text": "…\u00a0mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin de Retnia\u202f!",
+            "html": "…&#160;mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin de Retnia&#8239;!",
+            "comment": "French for _Pan Galactic Gargle Blaster_ is _arrache‐boyaux pan galactique_ (“pan galactic gut‐wrencher”), but that doesn’t say “blaster,” so I may or may not leave it in English. (Adding a hyphen to _Pan Galactic_ was a mistake I made)"
           }
         }
       },
@@ -117,7 +120,10 @@
         "h": "jrco_beta/joerunner",
         "d": {
           "en": {
-            "html": "(<i>off‐panel, loudly</i>) <em class=\"r\">Shoot!</em>"
+            "html": "(<i>off‐panel, loudly</i>) Shoot!"
+          },
+          "fr": {
+            "html": "(<i>hors‐case, fort</i>) Zut&#160;!"
           }
         }
       },
