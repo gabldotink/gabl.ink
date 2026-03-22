@@ -8,7 +8,7 @@ exit 1' INT EXIT
 
 script="$0"
 
-deps='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
+deps='basename cat cmp cut dirname find grep jq mktemp rm seq sh sort tput xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -45,15 +45,13 @@ fi
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s\n' "$script" >&2
+  printf -- 'Usage: %s [-h]\n' "$script" >&2
 }
 
 usage_long(){
   usage
   printf -- '
 This script generates the gabl.ink website.
-
-If the only argument is “--”, the script will run as normal. This follows POSIX Utility Syntax Guideline 10. Other arguments will cause the script to display this help message and exit unsuccessfully.
 
 This script requires the following programs to be installed in PATH:
   %s
@@ -65,15 +63,22 @@ License: CC0 1.0 Universal (CC0 1.0)
   "$deps" "$tput_link" "$tput_reset" >&2
 }
 
-# Display help if any arguments are passed
-if [ "$#" -gt 0 ];then
-  if [ "$#" -eq 1 ] &&
-     [ "$1" = -- ];then
-    true
-  else
-    usage_long
-    exit 1
-  fi
+while getopts :hv opt;do
+  case "$opt" in
+    h)
+      usage_long
+      exit 0 ;;
+    *)
+      usage
+      exit 1
+  esac
+done
+
+shift "$((OPTIND-1))"
+
+if [ "$#" -ne 0 ];then
+  usage
+  exit 1
 fi
 
 scripts="$(dirname -- "$script")"
