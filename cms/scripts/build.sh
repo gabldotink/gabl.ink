@@ -420,7 +420,7 @@ make_page_list_entry "$8"' \
 
         printf '</ol></details></nav></div>'
 
-        printf '<details id="comic_transcript" open="">'
+        printf '<details id="comic_transcript">'
 
         printf -- '<summary>%s</summary>' "$(printf_l10n transcript_name)"
 
