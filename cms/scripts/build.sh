@@ -43,17 +43,14 @@ if printf -- '%s' "$-" | grep -Fqex;then
   printf -- '%s' "$tput_reset" >&2
 fi
 
-# Display help if any arguments are passed
-if [ "$#" -gt 0 ];then
-  if [ "$#" -eq 1 ] &&
-     [ "$1" = -- ];then
-    true
-  else
-    trap - INT EXIT
+usage(){
+  trap - INT EXIT
+  printf -- 'Usage: %s\n' "$script" >&2
+}
 
-    printf -- \
-'Usage: %s
-
+usage_long(){
+  usage
+  printf -- '
 This script generates the gabl.ink website.
 
 If the only argument is “--”, the script will run as normal. This follows POSIX Utility Syntax Guideline 10. Other arguments will cause the script to display this help message and exit unsuccessfully.
@@ -65,8 +62,16 @@ You have all of these installed already.
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
 %shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
-    "$script" "$deps" "$tput_link" "$tput_reset" >&2
+  "$deps" "$tput_link" "$tput_reset" >&2
+}
 
+# Display help if any arguments are passed
+if [ "$#" -gt 0 ];then
+  if [ "$#" -eq 1 ] &&
+     [ "$1" = -- ];then
+    true
+  else
+    usage_long
     exit 1
   fi
 fi
