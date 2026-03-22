@@ -18,10 +18,14 @@ err(){
   if [ "$1" = error ];then
     errored=true
     if   [ -z "$3" ];then
+      errored_code=1
       exit 1
-    elif [ "$3" -lt 1 ] ||
-         [ "$3" -gt 255 ];then
-      err error "Error exit code $3 is invalid; exiting with 1"
+    elif [ "$3" -ge 1 ] &&
+         [ "$3" -le 255 ];then
+      errored_code="$3"
+      exit "$3"
+    else
+      err warning "Error exit code $3 is invalid; exiting with 1"
     fi
   fi
 
@@ -29,10 +33,14 @@ err(){
     if [ "$config_exit_on_warning" = true ];then
       errored=true
       if   [ -z "$3" ];then
+        errored_code=1
         exit 1
-      elif [ "$3" -lt 1 ] ||
-           [ "$3" -gt 255 ];then
-        err error "Warning exit code $3 is invalid; exiting with 1"
+      elif [ "$3" -ge 1 ] &&
+           [ "$3" -le 255 ];then
+        errored_code="$3"
+        exit "$3"
+      else
+        err warning "Warning exit code $3 is invalid; exiting with 1"
       fi
     fi
     warned=true

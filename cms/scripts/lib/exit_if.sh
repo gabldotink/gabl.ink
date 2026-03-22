@@ -4,6 +4,11 @@
 
 exit_if(){
   if [ "$errored" = true ];then
-    exit 1
+    err 'Exiting due to previous error/warning'
+    if [ -n "$errored_code" ];then
+      exit "$errored_code"
+    else
+      exit 1
+    fi
   fi
 }

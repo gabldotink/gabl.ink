@@ -63,16 +63,28 @@ License: CC0 1.0 Universal (CC0 1.0)
   "$deps" "$tput_link" "$tput_reset" >&2
 }
 
-while getopts :hv opt;do
+scripts="$(dirname -- "$script")"
+lib="$scripts/lib"
+
+# shellcheck source-path=./lib
+for f in "$lib/"*.sh;do
+  . -- "$f"
+done
+
+while getopts :h opt;do
   case "$opt" in
     h)
       usage_long
       exit 0 ;;
+    '?')
+      err error "Unknown option: -$OPTARG" 2 ;;
     *)
       usage
       exit 1
   esac
 done
+
+exit_if
 
 shift "$((OPTIND-1))"
 
@@ -81,17 +93,10 @@ if [ "$#" -ne 0 ];then
   exit 1
 fi
 
-scripts="$(dirname -- "$script")"
 cms="$scripts/.."
 dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
-lib="$scripts/lib"
-
-# shellcheck source-path=./lib
-for f in "$lib/"*.sh;do
-  . -- "$f"
-done
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
 case "$scripts" in
@@ -624,7 +629,11 @@ make_page_list_entry "$8"' \
       fi
 
       printf '</footer></div></body></html>\n'
+
+      exit_if
     } > "$tmpfile"
+
+    exit_if
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
