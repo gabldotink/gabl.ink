@@ -33,13 +33,13 @@ done
 tput_underline="$(tput smul 2>/dev/null||true)"
 tput_italic="$(tput sitm 2>/dev/null||true)"
 tput_reset="$(tput sgr0 2>/dev/null||true)"
-tput_error="$(tput setaf 1 2>/dev/null||true)"
-tput_warning="$(tput setaf 3 2>/dev/null||true)"
-tput_link="$(tput setaf 4 2>/dev/null||true)"
+tput_red="$(tput setaf 1 2>/dev/null||true)"
+tput_yellow="$(tput setaf 3 2>/dev/null||true)"
+tput_blue="$(tput setaf 4 2>/dev/null||true)"
 #if [ "$tput_colors" -ge 256 ];then
-#  tput_link="$(tput setaf 21 2>/dev/null||true)"
+#  tput_blue="$(tput setaf 21 2>/dev/null||true)"
 #else
-#  tput_link="$(tput setaf 4 2>/dev/null||true)"
+#  tput_blue="$(tput setaf 4 2>/dev/null||true)"
 #fi
 
 # Prevent sh -x from having link styling
@@ -72,7 +72,7 @@ Note for %si%s and %sf%s: The file paths may not contain spaces. There are curre
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
 %s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
-  "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_link" "$tput_underline" "$tput_reset" >&2
+  "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_blue" "$tput_underline" "$tput_reset" >&2
 }
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.

@@ -4,9 +4,9 @@
 
 err(){
   if [ "$1" = error ];then
-    err_label_tput="$tput_error"
+    err_label_tput="$tput_red"
   elif [ "$1" = warning ];then
-    err_label_tput="$tput_warning"
+    err_label_tput="$tput_yellow"
   fi
 
   [ -n "$1" ] &&
