@@ -3,8 +3,7 @@
 
 export POSIXLY_CORRECT
 
-trap 'printf "Exiting. No changes were made.\n"
-exit 1' INT EXIT
+trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
@@ -28,15 +27,20 @@ for r in $deps;do
   esac
 done
 
-tput_colors="$(tput colors 2>/dev/null||true)"
+# Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
+
+#tput_colors="$(tput colors 2>/dev/null||true)"
+tput_underline="$(tput smul 2>/dev/null||true)"
+tput_italic="$(tput sitm 2>/dev/null||true)"
 tput_reset="$(tput sgr0 2>/dev/null||true)"
 tput_error="$(tput setaf 1 2>/dev/null||true)"
 tput_warning="$(tput setaf 3 2>/dev/null||true)"
-if [ "$tput_colors" -ge 256 ];then
-  tput_link="$(tput setaf 21 2>/dev/null||true)$(tput smul 2>/dev/null||true)"
-else
-  tput_link="$(tput setaf 4 2>/dev/null||true)$(tput smul 2>/dev/null||true)"
-fi
+tput_link="$(tput setaf 4 2>/dev/null||true)"
+#if [ "$tput_colors" -ge 256 ];then
+#  tput_link="$(tput setaf 21 2>/dev/null||true)"
+#else
+#  tput_link="$(tput setaf 4 2>/dev/null||true)"
+#fi
 
 # Prevent sh -x from having link styling
 if printf -- '%s' "$-" | grep -Fqex;then
@@ -45,7 +49,7 @@ fi
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h]\n' "$script" >&2
+  printf -- 'Usage: %s [-h] [-u] [-i <dir>] [-f <dir>]\n' "$script" >&2
 }
 
 usage_long(){
@@ -57,11 +61,27 @@ This script requires the following programs to be installed in PATH:
   %s
 You have all of these installed already.
 
+Options:
+  -h    Show help and exit successfully
+  -u    Show usage and exit successfully
+  -i    Directories of items to build, space separated (defaults to all items)
+  -f    Directories containing items to build, space separated (defaults to all items)
+
+Note for %si%s and %sf%s: The file paths may not contain spaces. There are currently few checks to make sure these are valid, so be careful.
+
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
-%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
-  "$deps" "$tput_link" "$tput_reset" >&2
+%s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
+  "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_link" "$tput_underline" "$tput_reset" >&2
 }
+
+# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
+case "$scripts" in
+  /*|./*|../*)
+    true ;;
+  *)
+    scripts="./$scripts"
+esac
 
 scripts="$(dirname -- "$script")"
 lib="$scripts/lib"
@@ -71,17 +91,38 @@ for f in "$lib/"*.sh;do
   . -- "$f"
 done
 
-while getopts :h opt;do
+while getopts :hui:f: opt;do
   case "$opt" in
     h)
       usage_long
       exit 0 ;;
+    u)
+      usage
+      exit 0 ;;
+    i)
+      for q in $OPTARG;do
+        case "$q" in
+          /*|./*|../*)
+            true ;;
+          *)
+            q="./$q"
+        esac
+        items="$items $q/data.json"
+      done ;;
+    f)
+      items="$items $(find $OPTARG -type f -name data.json)" ;;
     '?')
-      err error "Unknown option: -$OPTARG" 2 ;;
+      err error "Unknown option: $tput_italic$OPTARG$tput_reset" 2 ;;
     *)
       usage
       exit 1
   esac
+done
+
+for j in $items;do
+  if [ ! -f "$j" ];then
+    err error "File not found: $tput_italic$j$tput_reset (There may be more, but this is the first)"
+  fi
 done
 
 exit_if
@@ -98,14 +139,6 @@ dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
 
-# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
-case "$scripts" in
-  /*|./*|../*)
-    true ;;
-  *)
-    scripts="./$scripts"
-esac
-
 # We must use an if statement here to use a ShellCheck directive
 if [ -f "$scripts/config.sh" ];then
   # shellcheck source=./config.sh
@@ -118,8 +151,10 @@ else
   lang_default=en-US
 fi
 
-#items="$(find "$index" -type f -name data.json)"
-items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
+if [ -z "$items" ];then
+  #items="$(find "$index" -type f -name data.json)"
+  items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
+fi
 
 trap - INT EXIT
 
@@ -130,12 +165,12 @@ for i in $items;do (
   id="$(jq_r id "$i")"
 
   if [ "$type" != comic_page ];then
-    printf '[skip] %s/%s\n' "$id" "$lang" >&2
+    err skip "$id/$lang"
   fi
 
   ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
   #if [ "$type" = comic_series ];then
-  #  printf '[skip] %s/%s\n' "$id" "$lang" >&2
+  #  err skip "$id/$lang"
   #  # shellcheck disable=2106
   #  continue
   #fi
@@ -147,8 +182,7 @@ for i in $items;do (
 
     tmpfile="$(mktemp)"
 
-    trap 'rm -f -- "$tmpfile" >/dev/null 2>&1
-exit 1' INT EXIT
+    trap 'rm -f -- "$tmpfile" >/dev/null 2>&1' INT EXIT
 
     parse_lang
 
