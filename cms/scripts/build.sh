@@ -7,7 +7,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='basename cat cmp cut dirname find grep jq mktemp rm seq sh sort tput xargs'
+deps='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -275,7 +275,7 @@ for i in $items;do (
         styles="$(
           # ShellCheck warns “n” is unused, but that’s intentional
           # shellcheck disable=2034
-          for n in $(seq 1 "$up_directories");do
+          for n in $(count_from 1 "$up_directories");do
             printf ../
           done
           printf ../../cms/styles
