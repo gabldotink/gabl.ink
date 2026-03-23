@@ -67,7 +67,10 @@
         "h": "meta/screen",
         "d": {
           "en": {
-            "html": "Are you sure you want to turn in 📄&#65038;&#160;<cite>Joseph Runner&#160;– Magna Carta</cite><span class=\"spaced_right\">?</span> (<i>buttons</i>) Submit&#160;/ Cancel"
+            "html": "Are you sure you want to turn in 📄&#65038;&#160;<cite>Joseph Runner&#160;– Magna Carta</cite>? (<i>buttons</i>) Submit&#160;/ Cancel"
+          },
+          "fr": {
+            "html": "Êtes‐vous sûr vous vouloir rendre 📄&#65038;&#160;<cite>Joseph Runner&#160;– Magna Carta</cite>&#8239;? (<i>boutons</i>) Rendre&#160;/ Annuler"
           }
         }
       },
