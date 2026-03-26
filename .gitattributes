@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
-#*.bat text eol=crlf linguist-language=Batchfile
 *.css text eol=lf linguist-language=CSS
+.editorconfig text eol=lf linguist-language=EditorConfig
 .gitattributes text eol=lf linguist-language=Git-Attributes
 .gitconfig text eol=lf linguist-language=Git-Config
 .gitignore text eol=lf linguist-language=Ignore-List
