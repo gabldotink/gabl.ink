@@ -9,17 +9,18 @@ err(){
     err_label_tput="$tput_bold$tput_yellow"
   elif [ "$1" = info ];then
     err_label_tput="$tput_bold$tput_blue"
+  else
+    err error "Invalid error label: $1"
   fi
 
-  [ -n "$1" ] &&
-    err_msg_pre="[$err_label_tput$1$tput_reset] "
+  err_msg_pre="[$err_label_tput$1$tput_reset]"
   [ -n "$id" ] &&
     if [ -n "$lang" ];then
-      err_msg_pre="$err_msg_pre($id/$lang) "
+      err_msg_pre="$err_msg_pre ($id/$lang)"
     else
-      err_msg_pre="$err_msg_pre($id) "
+      err_msg_pre="$err_msg_pre ($id)"
     fi
-  printf -- '%s%s\n' "$err_msg_pre" "$2" >&2
+  printf -- '%s %s\n' "$err_msg_pre" "$2" >&2
 
   if [ "$1" = error ];then
     errored=true
