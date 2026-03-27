@@ -63,12 +63,12 @@ This script requires the following programs to be installed in PATH:
 You have all of these installed already.
 
 Options:
-  -h    Show help and exit successfully
-  -u    Show usage and exit successfully
-  -i    Directories of items to build, space separated (defaults to all items)
-  -f    Directories containing items to build, space separated (defaults to all items)
+  -h [help]  Show help and exit successfully
+  -u [usage] Show usage and exit successfully
+  -i [items] Directories of items to build, space/newline separated (defaults to all items)
+  -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
 
-Note for %si%s and %sf%s: The file paths may not contain spaces. There are currently few checks to make sure these are valid, so be careful.
+Note for %si%s and %sf%s: The file paths may not contain spaces or newlines. There are currently few checks to make sure these are valid, so be careful.
 
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
