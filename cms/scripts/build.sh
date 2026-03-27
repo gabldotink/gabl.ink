@@ -178,7 +178,7 @@ for i in $items;do (
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r 'langs[]' "$index/$id/data.json");do (
-    err 'item start' "$id/$lang"
+    err 'item start'
 
     tmpfile="$(mktemp)"
 
@@ -671,7 +671,7 @@ make_page_list_entry "$8"' \
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
-    err 'item done' "$id/$lang"
+    err 'item done'
     ) &
   done
   wait

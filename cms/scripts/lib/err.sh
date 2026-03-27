@@ -10,10 +10,10 @@ err(){
   fi
 
   [ -n "$1" ] &&
-    printf -- '[%s%s%s] ' "$err_label_tput" "$1" "$tput_reset" >&2
+    err_msg_pre="[$err_label_tput$1$tput_reset] "
   [ -n "$id" ] &&
-    printf -- '(%s/%s) ' "$id" "$lang" >&2
-  printf -- '%s\n' "$2" >&2
+    err_msg_pre="$err_msg_pre($id/$lang) "
+  printf -- '%s%s\n' "$err_msg_pre" "$2" >&2
 
   if [ "$1" = error ];then
     errored=true
