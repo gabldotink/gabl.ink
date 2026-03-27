@@ -20,9 +20,11 @@ for r in $deps;do
     *" $r "*)
       true ;;
     *)
-      printf '[error] This script requires the following programs to be installed in PATH: %s\n' "$deps" >&2
-      printf '        You have the following programs installed:%s\n' "$commands_v" >&2
-      printf '        Please install missing programs.\n' >&2
+      printf -- \
+'[error] This script requires the following programs to be installed in PATH: %s
+        You have the following programs installed:%s
+        Please install missing programs.
+' "$deps" "$commands_v" >&2
       exit 1
   esac
 done
@@ -72,11 +74,11 @@ Note for %si%s and %sf%s: The file paths may not contain spaces or newlines. The
 
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
-%s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s' \
-  "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_blue" "$tput_underline" "$tput_reset" >&2
+%s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s
+' "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_blue" "$tput_underline" "$tput_reset" >&2
 }
 
-# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a _JoeRunner_ PNG. Actually, that would be pretty sick.
+# This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a JoeRunner PNG. Actually, that would be pretty awesome.
 case "$scripts" in
   /*|./*|../*)
     true ;;
