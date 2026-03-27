@@ -3,10 +3,12 @@
 # SPDX-License-Identifier: CC0-1.0
 
 err(){
-  if [ "$1" = error ];then
-    err_label_tput="$tput_red"
+  if   [ "$1" = error ];then
+    err_label_tput="$tput_bold$tput_red"
   elif [ "$1" = warning ];then
-    err_label_tput="$tput_yellow"
+    err_label_tput="$tput_bold$tput_yellow"
+  elif [ "$1" = info ];then
+    err_label_tput="$tput_bold$tput_blue"
   fi
 
   [ -n "$1" ] &&

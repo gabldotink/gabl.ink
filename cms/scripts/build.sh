@@ -32,6 +32,7 @@ done
 #tput_colors="$(tput colors 2>/dev/null||true)"
 tput_underline="$(tput smul 2>/dev/null||true)"
 tput_italic="$(tput sitm 2>/dev/null||true)"
+tput_bold="$(tput bold 2>/dev/null||true)"
 tput_reset="$(tput sgr0 2>/dev/null||true)"
 tput_red="$(tput setaf 1 2>/dev/null||true)"
 tput_yellow="$(tput setaf 3 2>/dev/null||true)"
@@ -158,7 +159,7 @@ fi
 
 trap - INT EXIT
 
-err 'section start' items
+err info 'section start: items'
 
 for i in $items;do (
   type="$(jq_r type "$i")"
@@ -178,7 +179,7 @@ for i in $items;do (
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r 'langs[]' "$index/$id/data.json");do (
-    err 'item start'
+    err info 'item start'
 
     tmpfile="$(mktemp)"
 
@@ -671,7 +672,7 @@ make_page_list_entry "$8"' \
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
-    err 'item done'
+    err info 'item done'
     ) &
   done
   wait
@@ -679,7 +680,7 @@ make_page_list_entry "$8"' \
 done
 wait
 
-err 'section done' items
+err info 'section done: items'
 
 trap - INT EXIT
 
