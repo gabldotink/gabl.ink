@@ -166,8 +166,10 @@ for i in $items;do (
   id="$(jq_r id "$i")"
 
   if [ "$type" != comic_page ];then
-    err skip "$id/$lang"
+    err info skip
   fi
+
+  err info 'item start'
 
   ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
   #if [ "$type" = comic_series ];then
@@ -179,7 +181,7 @@ for i in $items;do (
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r 'langs[]' "$index/$id/data.json");do (
-    err info 'item start'
+    err info 'lang start'
 
     tmpfile="$(mktemp)"
 
@@ -672,10 +674,12 @@ make_page_list_entry "$8"' \
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
-    err info 'item done'
+    err info 'lang done'
     ) &
   done
   wait
+  unset lang
+  err info 'item done'
   ) &
 done
 wait

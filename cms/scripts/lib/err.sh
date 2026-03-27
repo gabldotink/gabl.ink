@@ -14,7 +14,11 @@ err(){
   [ -n "$1" ] &&
     err_msg_pre="[$err_label_tput$1$tput_reset] "
   [ -n "$id" ] &&
-    err_msg_pre="$err_msg_pre($id/$lang) "
+    if [ -n "$lang" ];then
+      err_msg_pre="$err_msg_pre($id/$lang) "
+    else
+      err_msg_pre="$err_msg_pre($id) "
+    fi
   printf -- '%s%s\n' "$err_msg_pre" "$2" >&2
 
   if [ "$1" = error ];then
