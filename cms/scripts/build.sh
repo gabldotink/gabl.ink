@@ -657,7 +657,7 @@ make_page_list_entry "$8"' \
       printf 'hreflang="en" type="text/html">'
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"
       ! test_null copyright_license_abbr &&
-        printf -- ' (<cite class="nw"><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
+        printf -- ' (<cite><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
       printf '</a></p>'
 
       if ! test_null disclaimer;then
