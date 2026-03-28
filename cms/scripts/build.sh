@@ -7,7 +7,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='basename cat cmp cut dirname find grep jq mktemp rm sh sort tput xargs'
+deps='basename cat cmp cut dirname find grep jq mktemp realpath rm sh sort tput xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -65,8 +65,9 @@ This script requires the following programs to be installed in PATH:
 You have all of these installed already.
 
 Options:
-  -h [help]  Show help and exit successfully
-  -u [usage] Show usage and exit successfully
+  -h [help]  Show help
+  -u [usage] Show usage
+  -w [where] Print the location of the script
   -i [items] Directories of items to build, space/newline separated (defaults to all items)
   -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
 
@@ -94,13 +95,16 @@ for f in "$lib/"*.sh;do
   . -- "$f"
 done
 
-while getopts :hui:f: opt;do
+while getopts :huwi:f: opt;do
   case "$opt" in
     h)
       usage_long
       exit 0 ;;
     u)
       usage
+      exit 0 ;;
+    w)
+      realpath -E -- "$script" >&2
       exit 0 ;;
     i)
       for q in $OPTARG;do
