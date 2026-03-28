@@ -104,7 +104,7 @@ while getopts :huwi:f: opt;do
       usage
       exit 0 ;;
     w)
-      realpath -E -- "$script" >&2
+      realpath -E "$script" >&2
       exit 0 ;;
     i)
       for q in $OPTARG;do
