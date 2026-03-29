@@ -52,7 +52,7 @@ fi
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h] [-u] [-w] [-i <dir>] [-f <dir>]\n' "$script" >&2
+  printf -- 'Usage: %s [-h] [-u] [-w] [-i <dir>] [-f <dir>]\n' "$script"
 }
 
 usage_long(){
@@ -61,9 +61,9 @@ usage_long(){
 
 This script generates the gabl.ink website.
 
-This script requires the following programs to be installed in PATH:
+This script requires the following programs to be available:
   %s
-You have all of these installed already.
+You have no problems there.
 
 Options:
   -h [help]  Show help
@@ -77,7 +77,7 @@ Options:
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
 %s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s
-' "$deps" "$tput_blue" "$tput_underline" "$tput_reset" >&2
+' "$deps" "$tput_blue" "$tput_underline" "$tput_reset"
 }
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a JoeRunner PNG. Actually, that would be pretty awesome.
@@ -105,7 +105,7 @@ while getopts :huwi:f: o;do
       usage
       exit 0 ;;
     w)
-      realpath -e "$script" >&2
+      realpath -e "$script"
       exit 0 ;;
     i)
       for q in $OPTARG;do
@@ -122,7 +122,7 @@ while getopts :huwi:f: o;do
     '?')
       err error "Unknown option: -$OPTARG" 2 ;;
     *)
-      usage
+      usage >&2
       exit 1
   esac
 done
