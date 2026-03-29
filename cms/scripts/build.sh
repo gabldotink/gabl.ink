@@ -52,12 +52,13 @@ fi
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h] [-u] [-i <dir>] [-f <dir>]\n' "$script" >&2
+  printf -- 'Usage: %s [-h] [-u] [-w] [-i <dir>] [-f <dir>]\n' "$script" >&2
 }
 
 usage_long(){
   usage
-  printf -- '
+  printf -- 'Version: dev
+
 This script generates the gabl.ink website.
 
 This script requires the following programs to be installed in PATH:
@@ -66,7 +67,7 @@ You have all of these installed already.
 
 Options:
   -h [help]  Show help
-  -u [usage] Show usage
+  -u [usage] Show short usage
   -w [where] Print the location of the script
   -i [items] Directories of items to build, space/newline separated (defaults to all items)
   -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
@@ -80,11 +81,11 @@ License: CC0 1.0 Universal (CC0 1.0)
 }
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a JoeRunner PNG. Actually, that would be pretty awesome.
-case "$scripts" in
+case "$script" in
   /*|./*|../*)
     true ;;
   *)
-    scripts="./$scripts"
+    script="./$script"
 esac
 
 scripts="$(dirname -- "$script")"
@@ -92,7 +93,7 @@ lib="$scripts/lib"
 
 # shellcheck source-path=./lib
 for f in "$lib/"*.sh;do
-  . -- "$f"
+  . "$f"
 done
 
 while getopts :huwi:f: opt;do
