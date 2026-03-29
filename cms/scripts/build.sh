@@ -636,7 +636,7 @@ make_page_list_entry "$8"' \
         make_share_link vk \
                        "$(
                           printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
+                          printf -- '%s”' "$title_text"
                           )" \
                        "$(
                           printf -- 'From https://gabl.ink/ : %s ' "$canonical"
