@@ -7,7 +7,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='basename cat cmp cut dirname find grep jq mktemp realpath rm sh sort tput xargs'
+deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -18,12 +18,12 @@ done
 for r in $deps;do
   case "$commands_v " in
     *" $r "*)
-      true ;;
+      : ;;
     *)
       printf -- \
-'[error] This script requires the following programs to be installed in PATH: %s
-        You have the following programs installed:%s
-        Please install missing programs.
+'[error] This script requires the following commands to be available: %s
+        You have the following commands available:%s
+        Please install missing commands.
 ' "$deps" "$commands_v" >&2
       exit 1
   esac
@@ -31,18 +31,18 @@ done
 
 # Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
 
-#tput_colors="$(tput colors 2>/dev/null||true)"
-tput_underline="$(tput smul 2>/dev/null||true)"
-tput_italic="$(tput sitm 2>/dev/null||true)"
-tput_bold="$(tput bold 2>/dev/null||true)"
-tput_reset="$(tput sgr0 2>/dev/null||true)"
-tput_red="$(tput setaf 1 2>/dev/null||true)"
-tput_yellow="$(tput setaf 3 2>/dev/null||true)"
-tput_blue="$(tput setaf 4 2>/dev/null||true)"
+#tput_colors="$(tput colors 2>/dev/null||:)"
+tput_underline="$(tput smul 2>/dev/null||:)"
+tput_italic="$(tput sitm 2>/dev/null||:)"
+tput_bold="$(tput bold 2>/dev/null||:)"
+tput_reset="$(tput sgr0 2>/dev/null||:)"
+tput_red="$(tput setaf 1 2>/dev/null||:)"
+tput_yellow="$(tput setaf 3 2>/dev/null||:)"
+tput_blue="$(tput setaf 4 2>/dev/null||:)"
 #if [ "$tput_colors" -ge 256 ];then
-#  tput_blue="$(tput setaf 21 2>/dev/null||true)"
+#  tput_blue="$(tput setaf 21 2>/dev/null||:)"
 #else
-#  tput_blue="$(tput setaf 4 2>/dev/null||true)"
+#  tput_blue="$(tput setaf 4 2>/dev/null||:)"
 #fi
 
 # Prevent sh -x from having link styling
@@ -72,18 +72,18 @@ Options:
   -i [items] Directories of items to build, space/newline separated (defaults to all items)
   -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
 
-Note for %si%s and %sf%s: The file paths may not contain spaces or newlines. There are currently few checks to make sure these are valid, so be careful.
+-i finds “value/data.json”, while -f recursively searches for “data.json” files. Note that the file paths may not contain spaces or newlines. There are currently few checks to make sure these are valid, so be careful.
 
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
 %s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s
-' "$deps" "$tput_italic" "$tput_reset" "$tput_italic" "$tput_reset" "$tput_blue" "$tput_underline" "$tput_reset" >&2
+' "$deps" "$tput_blue" "$tput_underline" "$tput_reset" >&2
 }
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a JoeRunner PNG. Actually, that would be pretty awesome.
 case "$script" in
   /*|./*|../*)
-    true ;;
+    : ;;
   *)
     script="./$script"
 esac
@@ -111,7 +111,7 @@ while getopts :huwi:f: opt;do
       for q in $OPTARG;do
         case "$q" in
           /*|./*|../*)
-            true ;;
+            : ;;
           *)
             q="./$q"
         esac
@@ -120,7 +120,7 @@ while getopts :huwi:f: opt;do
     f)
       items="$items $(find $OPTARG -type f -name data.json)" ;;
     '?')
-      err error "Unknown option: $tput_italic$OPTARG$tput_reset" 2 ;;
+      err error "Unknown option: -$OPTARG" 2 ;;
     *)
       usage
       exit 1
@@ -129,7 +129,7 @@ done
 
 for j in $items;do
   if [ ! -f "$j" ];then
-    err error "File not found: $tput_italic$j$tput_reset (There may be more, but this is the first)"
+    err error "File not found: “$j” (There may be more, but this is the first)"
   fi
 done
 
@@ -164,6 +164,9 @@ if [ -z "$items" ];then
   items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
 fi
 
+# Sorting these still doesn’t cause items to be built in a consistent order
+#items="$(printf '%s\n' "$items"|LC_ALL=C sort -u)"
+
 trap - INT EXIT
 
 err info 'section start: items'
@@ -174,13 +177,14 @@ for i in $items;do (
 
   if [ "$type" != comic_page ];then
     err info skip
+    continue
   fi
 
   err info 'item start'
 
   ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
   #if [ "$type" = comic_series ];then
-  #  err skip "$id/$lang"
+  #  err info skip
   #  # shellcheck disable=2106
   #  continue
   #fi
@@ -197,7 +201,7 @@ for i in $items;do (
     parse_lang
 
     copyright_license="$(jq_r copyright.license[0] "$i")"
-    # Literal quotation marks should be used when inserting variables into jq (hyphens can cause issues).
+    # Literal quotation marks should be used when inserting variables into jq (hyphen‐minuses can cause issues).
     # shellcheck disable=2016
     set_var_l10n copyright_license_abbr "\"$copyright_license\".abbr" "$dict/copyright_license.json"
     # shellcheck disable=2016
@@ -327,7 +331,7 @@ for i in $items;do (
 
         if test_null prev;then
           # This is the first page, so no prefetches are needed.
-          true
+          :
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
           printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
@@ -341,7 +345,7 @@ for i in $items;do (
 
         if test_null next;then
           # This is the last page, so no prefetches are needed.
-          true
+          :
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
           printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
