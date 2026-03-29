@@ -35,20 +35,15 @@ done
 tput_underline="$(tput smul 2>/dev/null||:)"
 tput_italic="$(tput sitm 2>/dev/null||:)"
 tput_bold="$(tput bold 2>/dev/null||:)"
-tput_reset="$(tput sgr0 2>/dev/null||:)"
 tput_red="$(tput setaf 1 2>/dev/null||:)"
 tput_yellow="$(tput setaf 3 2>/dev/null||:)"
 tput_blue="$(tput setaf 4 2>/dev/null||:)"
+tput_reset="$(tput sgr0 2>/dev/null||:)"
 #if [ "$tput_colors" -ge 256 ];then
 #  tput_blue="$(tput setaf 21 2>/dev/null||:)"
 #else
 #  tput_blue="$(tput setaf 4 2>/dev/null||:)"
 #fi
-
-# Prevent sh -x from having link styling
-if printf -- '%s' "$-" | grep -Fqex;then
-  printf -- '%s' "$tput_reset" >&2
-fi
 
 usage(){
   trap - INT EXIT
@@ -77,7 +72,7 @@ Options:
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
 %s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s
-' "$deps" "$tput_blue" "$tput_underline" "$tput_reset"
+' "$deps" "$tput_underline" "$tput_blue" "$tput_reset"
 }
 
 # This, most notably, prevents find from getting confused if the dirname starts with a hyphen‑minus. Better to be paranoid than to get one of your files replaced with a JoeRunner PNG. Actually, that would be pretty awesome.
@@ -129,17 +124,12 @@ done
 
 unset o
 
-for j in $items;do
-  if [ ! -f "$j" ];then
-    err error "File not found: “$j” (There may be more, but this is the first)"
-  fi
-done
-
 exit_if
 
 shift "$((OPTIND-1))"
 
-unset OPTIND
+# We aren’t allowed to do this. I still don’t fully understand why
+#unset OPTIND
 
 if [ "$#" -ne 0 ];then
   usage
@@ -157,19 +147,25 @@ if [ -f "$scripts/config.sh" ];then
   . "$scripts/config.sh"
 fi
 
-if [ "$config_lang_default" != en-US ];then
-  lang_default="$config_lang_default"
-else
-  lang_default=en-US
-fi
+[ -z "$config_lang_default" ] &&
+  config_lang_default=en-US
+
+lang_default="$config_lang_default"
 
 if [ -z "$items" ];then
   #items="$(find "$index" -type f -name data.json)"
   items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
 fi
 
-# Sorting these still doesn’t cause items to be built in a consistent order
-#items="$(printf '%s\n' "$items"|LC_ALL=C sort -u)"
+# Sorting these still doesn’t cause items to be built in a consistent order, but it does remove duplicates (only if separated by newlines, but this is safe in any case)
+# Locale affects sort order, so we set the POSIX locale
+items="$(printf '%s\n' "$items"|LC_ALL=C sort -u)"
+
+for j in $items;do
+  if [ ! -f "$j" ];then
+    err error "File not found: “$j” (There may be more, but this is the first)"
+  fi
+done
 
 trap - INT EXIT
 
@@ -482,7 +478,7 @@ for f in "$lib/"*.sh
 do . -- "$f"
 done
 make_page_list_entry "$8"' \
-          sh "$(printf '%s' "$-"|grep -Fex)" "$page" "$lib" "$lang" "$lang_l" "$lang_r" "$lang_default" {}
+          sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$lib" "$lang" "$lang_l" "$lang_r" "$lang_default" {}
 
         printf '</ol></details></nav></div>'
 
