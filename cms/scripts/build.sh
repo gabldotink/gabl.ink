@@ -68,7 +68,7 @@ Options:
   -i [items] Directories of items to build, space/newline separated (defaults to all items)
   -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
 
--i finds “value/data.json”, while -f recursively searches for “data.json” files. Note that the file paths may not contain spaces or newlines. There are currently few checks to make sure these are valid, so be careful.
+-i finds “value/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
@@ -92,8 +92,12 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-while getopts :huwi:f: o;do
+while getopts :-huwi:f: o;do
   case "$o" in
+    -)
+      printf 'This script does not accept long options.\n' >&2
+      usage >&2
+      exit 2 ;;
     h)
       usage_long
       exit 0 ;;
@@ -163,7 +167,7 @@ items="$(printf '%s\n' "$items"|sort -u)"
 
 for j in $items;do
   if [ ! -f "$j" ];then
-    err error "File not found: “$j” (There may be more, but this is the first)"
+    err error "File not found: “$j”. There may be more, but this is the first. Remember spaces, tabs, and newlines are not allowed as part of file paths."
   fi
 done
 
