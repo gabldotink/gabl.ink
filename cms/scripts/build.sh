@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 export POSIXLY_CORRECT
+LC_ALL=C
 
 trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
@@ -158,8 +159,7 @@ if [ -z "$items" ];then
 fi
 
 # Sorting these still doesn’t cause items to be built in a consistent order, but it does remove duplicates (only if separated by newlines, but this is safe in any case)
-# Locale affects sort order, so we set the POSIX locale
-items="$(printf '%s\n' "$items"|LC_ALL=C sort -u)"
+items="$(printf '%s\n' "$items"|sort -u)"
 
 for j in $items;do
   if [ ! -f "$j" ];then
