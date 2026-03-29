@@ -96,8 +96,8 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-while getopts :huwi:f: opt;do
-  case "$opt" in
+while getopts :huwi:f: o;do
+  case "$o" in
     h)
       usage_long
       exit 0 ;;
@@ -127,6 +127,8 @@ while getopts :huwi:f: opt;do
   esac
 done
 
+unset o
+
 for j in $items;do
   if [ ! -f "$j" ];then
     err error "File not found: “$j” (There may be more, but this is the first)"
@@ -136,6 +138,8 @@ done
 exit_if
 
 shift "$((OPTIND-1))"
+
+unset OPTIND
 
 if [ "$#" -ne 0 ];then
   usage
@@ -478,8 +482,7 @@ for f in "$lib/"*.sh
 do . -- "$f"
 done
 make_page_list_entry "$8"' \
-          sh "$(printf '%s' "$-"|grep -Fex)" "$page" "$lib" \
-             "$lang" "$lang_l" "$lang_r" "$lang_default" {}
+          sh "$(printf '%s' "$-"|grep -Fex)" "$page" "$lib" "$lang" "$lang_l" "$lang_r" "$lang_default" {}
 
         printf '</ol></details></nav></div>'
 
@@ -521,11 +524,9 @@ make_page_list_entry "$8"' \
 
         printf '</table></details>'
 
-        printf -- '<p id="first_published">%s' "$(printf_l10n first_published)"
-        
-        say_date first_published
+        printf -- '<p id="first_published">%s%s</p>' "$(printf_l10n first_published)" "$(say_date first_published)"
 
-        printf '</p><article id="post_'
+        printf '<article id="post_'
 
         for p in $(jq_r 'post|to_entries|.[].key' "$i");do
           set_var_l10n post_content "post.[$p].content" "$i"
@@ -533,15 +534,9 @@ make_page_list_entry "$8"' \
           post_date_m="$(jq -r --argjson p "$p" '.post[$p].date.m' "$i")"
           post_date_y="$(jq -r --argjson p "$p" '.post[$p].date.y' "$i")"
 
-          printf -- '%s-%s-%s">' "$(zero_pad 4 post_date_y)" \
-                                 "$(zero_pad 2 post_date_m)" \
-                                 "$(zero_pad 2 post_date_d)"
+          printf -- '%s-%s-%s">' "$(zero_pad 4 post_date_y)" "$(zero_pad 2 post_date_m)" "$(zero_pad 2 post_date_d)"
 
-          printf '<h2>'
-          
-          say_date post_date
-
-          printf '</h2>'
+          printf '<h2>%s</h2>' "$(say_date post_date)"
 
           printf -- '%s' "$post_content_html"
 
@@ -554,8 +549,7 @@ make_page_list_entry "$8"' \
 
         make_share_link email \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s”' "$title_text"
+                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
                         )" \
                        "$(
                           printf -- 'From https://gabl.ink/ : %s' "$canonical"
@@ -563,85 +557,64 @@ make_page_list_entry "$8"' \
 
         make_share_link sms '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '%s' "$canonical"
-                          )"
+                          printf -- 'gabl.ink: _%s_: “%s” %s' "$series_title_text" "$title_text" "$canonical"
+                        )"
 
         make_share_link x '' \
                        "$(
-                          printf -- 'gabl.ink @gabldotink: _%s_: “' "$series_title_text"
-                          printf -- '%s”' "$title_text"
+                          printf -- 'gabl.ink @gabldotink: _%s_: “%s”' "$series_title_text" "$title_text"
                         )" \
                        "gabldotink,$series_hashtag_id"
 
         make_share_link reddit \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s”' "$title_text"
+                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
                         )"
 
         make_share_link facebook
 
         make_share_link telegram '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
                         )"
 
         make_share_link bluesky '' \
                        "$(
-                          printf -- 'gabl.ink @gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '%s ' "$canonical"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink @gabl.ink: _%s_: “%s” %s #gabldotink #%s' "$series_title_text" "$title_text" "$canonical" "$series_hashtag_id"
                         )"
 
         make_share_link whatsapp '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '%s' "$canonical"
+                          printf -- 'gabl.ink: _%s_: “%s” %s' "$series_title_text" "$title_text" "$canonical"
                         )"
 
         make_share_link mastodon '' \
                        "$(
-                          printf -- 'gabl.ink @gabldotink@mstdn.party: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink @gabldotink@mstdn.party: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
                         )"
 
         make_share_link threads '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
                         )"
 
         make_share_link truth_social '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
                         )"
 
         make_share_link gab '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s” ' "$title_text"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
+                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
                         )"
 
         make_share_link vk \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “' "$series_title_text"
-                          printf -- '%s”' "$title_text"
-                          )" \
+                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
+                        )" \
                        "$(
-                          printf -- 'From https://gabl.ink/ : %s ' "$canonical"
-                          printf -- '#gabldotink #%s' "$series_hashtag_id"
-                          )"
+                          printf -- 'From https://gabl.ink/ : %s #gabldotink #%s' "$canonical" "$series_hashtag_id"
+                        )"
 
         printf '</ul></details>'
 
