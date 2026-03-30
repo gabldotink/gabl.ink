@@ -26,11 +26,9 @@ err(){
     errored=true
     if   [ -z "$3" ];then
       errored_code=1
-      exit 1
     elif [ "$3" -ge 1 ] &&
          [ "$3" -le 255 ];then
       errored_code="$3"
-      exit "$3"
     else
       err warning "Error exit code $3 is invalid; exiting with 1"
     fi
@@ -41,11 +39,9 @@ err(){
       errored=true
       if   [ -z "$3" ];then
         errored_code=1
-        exit 1
       elif [ "$3" -ge 1 ] &&
            [ "$3" -le 255 ];then
         errored_code="$3"
-        exit "$3"
       else
         err warning "Warning exit code $3 is invalid; exiting with 1"
       fi

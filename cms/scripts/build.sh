@@ -142,7 +142,7 @@ shift "$((OPTIND-1))"
 
 if [ "$#" -ne 0 ];then
   usage
-  exit 1
+  exit 2
 fi
 
 cms="$scripts/.."
@@ -174,6 +174,8 @@ for j in $items;do
     err error "File not found: “$j”. There may be more, but this is the first. Remember spaces, tabs, and newlines are not allowed as part of file paths."
   fi
 done
+
+exit_if
 
 trap - INT EXIT
 
@@ -676,9 +678,10 @@ err info 'section done: items'
 
 trap - INT EXIT
 
-# TODO: Doesn’t work with subshells
-[ "$warning_warned" = true ] &&
+[ "$warned" = true ] &&
   [ "$config_exit_nonzero_with_warnings" = true ] &&
     exit 2
+
+exit_if
 
 exit 0
