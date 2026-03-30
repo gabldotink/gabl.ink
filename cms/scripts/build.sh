@@ -48,7 +48,7 @@ tput_reset="$(tput sgr0 2>/dev/null||:)"
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h] [-u] [-w] [-i <dir>] [-f <dir>]\n' "$script"
+  printf -- 'Usage: %s [-h] [-u] [-w] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
 }
 
 usage_long(){
@@ -62,13 +62,15 @@ This script requires the following programs to be available:
 You have no problems there.
 
 Options:
-  -h [help]  Show help
-  -u [usage] Show short usage
-  -w [where] Print the location of the script
-  -i [items] Directories of items to build, space/newline separated (defaults to all items)
-  -f [find]  Directories containing items to build, space/newline separated (defaults to all items)
+  -h (help)   Show help
+  -u (usage)  Show short usage
+  -w (where)  Print the location of the script
+  -i (items)  Directories of items to build, space/newline separated (defaults to all items)
+  -f (find)   Directories containing items to build, space/newline separated (defaults to all items)
+  -q (quiet)  Suppress all stderr output (including errors!)
+  -s (silent) Same as -q
 
--i finds “value/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
+-i finds “[value]/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
 © 2024–2026 gabl.ink
 License: CC0 1.0 Universal (CC0 1.0)
@@ -92,8 +94,10 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-while getopts :-huwi:f: o;do
+while getopts :qs-huwi:f: o;do
   case "$o" in
+    q|s)
+      exec 2>/dev/null ;;
     -)
       printf 'This script does not accept long options.\n' >&2
       usage >&2
