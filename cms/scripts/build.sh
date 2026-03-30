@@ -484,8 +484,8 @@ lang="$4"
 lang_l="$5"
 lang_r="$6"
 lang_default="$7"
-for f in "$lib/"*.sh
-do . -- "$f"
+for f in err jq_r make_page_list_entry printf_l10n set_var_l10n test_null zero_pad
+do . "$lib/$f.sh"
 done
 make_page_list_entry "$8"' \
           sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$lib" "$lang" "$lang_l" "$lang_r" "$lang_default" {}
