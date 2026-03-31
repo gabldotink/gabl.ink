@@ -201,7 +201,7 @@ for i in $items;do (
 
   lang_original="$(jq_r lang_original "$i")"
 
-  for lang in $(jq_r 'langs[]' "$index/$id/data.json");do (
+  for lang in $(jq_r langs[] "$index/$id/data.json");do (
     err info 'lang start'
 
     tmpfile="$(mktemp)"
@@ -231,29 +231,17 @@ for i in $items;do (
     # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
     # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
     # In case of a video, image.png should act as a thumbnail.
-    if [ -f "$index/$id/$lang/video.webm" ];then
+    [ -f "$index/$id/$lang/video.webm" ] &&
       video_exists=true
-    else
-      unset video_exists
-    fi
 
-    if [ -f "$index/$id/$lang/cc.vtt" ];then
+    [ -f "$index/$id/$lang/cc.vtt" ] &&
       captions_exists=true
-    else
-      unset captions_exists
-    fi
 
-    if [ -f "$index/$id/$lang/subs.vtt" ];then
+    [ -f "$index/$id/$lang/subs.vtt" ] &&
       subs_exists=true
-    else
-      unset subs_exists
-    fi
 
-    if [ "$(jq_r tooltip "$i")" != null ];then
+    [ "$(jq_r tooltip "$i")" != null ] &&
       tooltip_exists=true
-    else
-      unset tooltip_exists
-    fi
 
     {
       printf '<!DOCTYPE html>\n'
@@ -326,10 +314,7 @@ for i in $items;do (
 
         printf -- '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url_id"
 
-        if   [ "$up_directories" -eq 2 ];then
-          unset volume chapter
-        elif [ "$up_directories" -eq 3 ];then
-          unset volume
+        if   [ "$up_directories" -eq 3 ];then
           chapter="$(jq_r location.chapter "$i")"
         elif [ "$up_directories" -eq 4 ];then
           volume="$(jq_r location.volume "$i")"
@@ -391,29 +376,17 @@ for i in $items;do (
         printf_l10n page_title_html "$title_html"
         printf '</h1>'
 
-        if ! test_null container_first;then
+        test_null container_first ||
           set_var_l10n container_first_title title "$index/$id/../$(zero_pad 2 container_first)/data.json"
-        else
-          unset container_first_title_text
-        fi
 
-        if ! test_null prev;then
+        test_null prev ||
           set_var_l10n prev_title title "$index/$id/../$(zero_pad 2 prev)/data.json"
-        else
-          unset prev_title_text
-        fi
 
-        if ! test_null next;then
+        test_null next ||
           set_var_l10n next_title title "$index/$id/../$(zero_pad 2 next)/data.json"
-        else
-          unset next_title_text
-        fi
 
-        if ! test_null container_last;then
+        test_null container_last ||
           set_var_l10n container_last_title title "$index/$id/../$(zero_pad 2 container_last)/data.json"
-        else
-          unset container_last_title_text
-        fi
 
         make_nav_buttons top
 
@@ -651,8 +624,6 @@ make_page_list_entry "$8"' \
       if ! test_null disclaimer;then
         set_var_l10n disclaimer "\"$disclaimer\"" "$dict/disclaimer.json"
         printf -- '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
-      else
-        unset disclaimer_html
       fi
 
       printf '</footer></div></body></html>\n'
