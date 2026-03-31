@@ -141,7 +141,7 @@ shift "$((OPTIND-1))"
 #unset OPTIND
 
 if [ "$#" -ne 0 ];then
-  usage
+  usage >&2
   exit 2
 fi
 
