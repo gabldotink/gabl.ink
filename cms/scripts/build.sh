@@ -150,16 +150,7 @@ dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
 
-# We must use an if statement here to use a ShellCheck directive
-if [ -f "$scripts/config.sh" ];then
-  # shellcheck source=./config.sh
-  . "$scripts/config.sh"
-fi
-
-[ -z "$config_lang_default" ] &&
-  config_lang_default=en-US
-
-lang_default="$config_lang_default"
+config_set
 
 if [ -z "$items" ];then
   #items="$(find "$index" -type f -name data.json)"
@@ -452,16 +443,17 @@ for i in $items;do (
 
         find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
 page="$2"
-lib="$3"
+cms="$3"
+lib="$cms/scripts/lib"
+dict="$cms/dictionaries"
 lang="$4"
-lang_l="$5"
-lang_r="$6"
-lang_default="$7"
-for f in err jq_r make_page_list_entry printf_l10n set_var_l10n test_null zero_pad
+for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null zero_pad
 do . "$lib/$f.sh"
 done
-make_page_list_entry "$8"' \
-          sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$lib" "$lang" "$lang_l" "$lang_r" "$lang_default" {}
+config_set
+parse_lang
+make_page_list_entry "$5"' \
+          sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$cms" "$lang" {}
 
         printf '</ol></details></nav></div>'
 
