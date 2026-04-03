@@ -8,7 +8,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput xargs'
+deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput uniq xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -157,8 +157,8 @@ if [ -z "$items" ];then
   items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
 fi
 
-# Sorting these still doesn’t cause items to be built in a consistent order, but it does remove duplicates (only if separated by newlines, but this is safe in any case)
-items="$(printf '%s\n' "$items"|sort -u)"
+# Remove duplicates; only works if separated by newlines, but it’s still safe
+items="$(printf '%s\n' "$items"|uniq)"
 
 for j in $items;do
   if [ ! -f "$j" ];then
