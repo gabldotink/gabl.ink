@@ -199,9 +199,9 @@ Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this an
 
 You may use character entities from the HTML5 Living Standard. Prefer terminating with semicolons, even if they are optional. If an entity is not predefined, use a decimal entity (e.g. `&#160;`).
 
-### printf
+### Shell
 
-Example: for U+00A0 NO-BREAK SPACE, use `\302\240`. POSIX does not define escape sequences for special characters without extensions, _except_ in printf, where arbitrary byte sequences can be written in octal format. Leading zeros can be omitted, but not if the character after is a digit. Escapes like `\n` are supported and preferred.
+Example: for U+00A0 NO-BREAK SPACE, use `\302\240`. POSIX does not define escape sequences for special characters without extensions, _except_ in specific utilities (most notably printf), where arbitrary byte sequences can be written in octal format. Leading zeros can be omitted, but not if the character after is a digit. Escapes like `\n` are supported and preferred.
 
 ### WebVTT
 

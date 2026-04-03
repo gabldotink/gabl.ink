@@ -32,20 +32,6 @@ done
 
 # Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
 
-#tput_colors="$(tput colors 2>/dev/null||:)"
-tput_underline="$(tput smul 2>/dev/null||:)"
-tput_italic="$(tput sitm 2>/dev/null||:)"
-tput_bold="$(tput bold 2>/dev/null||:)"
-tput_red="$(tput setaf 1 2>/dev/null||:)"
-tput_yellow="$(tput setaf 3 2>/dev/null||:)"
-tput_blue="$(tput setaf 4 2>/dev/null||:)"
-tput_reset="$(tput sgr0 2>/dev/null||:)"
-#if [ "$tput_colors" -ge 256 ];then
-#  tput_blue="$(tput setaf 21 2>/dev/null||:)"
-#else
-#  tput_blue="$(tput setaf 4 2>/dev/null||:)"
-#fi
-
 usage(){
   trap - INT EXIT
   printf -- 'Usage: %s [-h] [-u] [-w] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
@@ -62,13 +48,14 @@ This script requires the following programs to be available:
 You have no problems there.
 
 Options:
-  -h (help)   Show help
-  -u (usage)  Show short usage
-  -w (where)  Print the location of the script
-  -i (items)  Directories of items to build, space/newline separated (defaults to all items)
-  -f (find)   Directories containing items to build, space/newline separated (defaults to all items)
-  -q (quiet)  Suppress all stderr output (including errors!)
-  -s (silent) Same as -q
+  -h (help)       Show help
+  -u (usage)      Show short usage
+  -w (where)      Print the location of the script
+  -m (monochrome) Disable styling
+  -i (items)      Directories of items to build, space/newline separated (defaults to all items)
+  -f (find)       Directories containing items to build, space/newline separated (defaults to all items)
+  -q (quiet)      Suppress all stderr output (including errors!)
+  -s (silent)     Same as -q
 
 -i finds “[value]/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
@@ -94,23 +81,27 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-while getopts :qs-huwi:f: o;do
+tput_underline="$(tput smul 2>/dev/null||:)"
+tput_italic="$(tput sitm 2>/dev/null||:)"
+tput_bold="$(tput bold 2>/dev/null||:)"
+tput_red="$(tput setaf 1 2>/dev/null||:)"
+tput_yellow="$(tput setaf 3 2>/dev/null||:)"
+tput_blue="$(tput setaf 4 2>/dev/null||:)"
+tput_reset="$(tput sgr0 2>/dev/null||:)"
+
+# TODO: This ensures all options are processed before printing anything, but time could still be wasted if, for example, both -h and -f are used. However, this has zero chance of actually doing anything dangerous, so I’ll leave it for now.
+while getopts :mqs-huwi:f: o;do
   case "$o" in
+    m)
+      unset tput_underline tput_italic tput_bold tput_red tput_yellow tput_blue tput_reset ;;
     q|s)
       exec 2>/dev/null ;;
-    -)
-      printf 'This script does not accept long options.\n' >&2
-      usage >&2
-      exit 2 ;;
-    h)
-      usage_long
-      exit 0 ;;
-    u)
-      usage
-      exit 0 ;;
     w)
-      realpath -e "$script"
-      exit 0 ;;
+      help=w ;;
+    u)
+      help=u ;;
+    h)
+      help=h ;;
     i)
       for q in $OPTARG;do
         case "$q" in
@@ -124,14 +115,39 @@ while getopts :qs-huwi:f: o;do
     f)
       items="$items $(find $OPTARG -type f -name data.json)" ;;
     '?')
-      err error "Unknown option: -$OPTARG" 2 ;;
+      unknowns="$unknowns -$OPTARG" ;;
     *)
       usage >&2
-      exit 1
+      exit 2
   esac
 done
 
 unset o
+
+if [ -n "$unknowns" ];then
+  printf '%s\n' "$unknowns"|grep '-qve [A-Za-z0-9]' &&
+    printf 'One or more options are illegal.\n' >&2
+  printf 'Unknown option' >&2
+  [ "${#unknowns}" -gt 1 ] &&
+    printf s >&2
+  printf ':%s\n' "$unknowns" >&2
+  exit 2
+fi
+
+unset unknowns
+
+if [ "$help" = h ];then
+  usage_long
+  exit 0
+elif [ "$help" = u ];then
+  usage
+  exit 0
+elif [ "$help" = w ];then
+  realpath -e "$script"
+  exit 0
+fi
+
+unset help
 
 exit_if
 
@@ -157,15 +173,19 @@ if [ -z "$items" ];then
   items="$(find "$index" -type f -path "$index/jrco_beta/*/data.json")"
 fi
 
-# Remove duplicates; only works if separated by newlines, but it’s still safe
-items="$(printf '%s\n' "$items"|uniq)"
-
 for j in $items;do
   if [ ! -f "$j" ];then
-    err error "File not found: “$j”. There may be more, but this is the first. Remember spaces, tabs, and newlines are not allowed as part of file paths."
+    err error "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
   fi
 done
 
+exit_if
+
+# TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
+# The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
+items="$(printf '%s\n' "$items"|tr ' \t' '\n'|uniq)"
+
+# Last chance to error out before we actually do anything
 exit_if
 
 trap - INT EXIT
