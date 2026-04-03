@@ -8,7 +8,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput uniq xargs'
+deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput tr uniq xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
