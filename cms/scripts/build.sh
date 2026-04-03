@@ -22,9 +22,9 @@ for r in $deps;do
       : ;;
     *)
       printf -- \
-'[error] This script requires the following commands to be available: %s
-        You have the following commands available:%s
-        Please install missing commands.
+'This script requires the following commands to be available: %s
+You have the following commands available:%s
+Please install missing commands.
 ' "$deps" "$commands_v" >&2
       exit 1
   esac
