@@ -12,14 +12,14 @@ parse_lang(){
     parse_lang_loop="$((parse_lang_loop+1))"
   done
 
-  if printf '%s\n' "$parse_lang_1" | grep '-qe^[a-z]\{2,3\}$';then
+  if printf '%s\n' "$parse_lang_1"|grep '-qe^[a-z]\{2,3\}$';then
     # shellcheck disable=2034
     lang_l="$parse_lang_1"
   else
     err error 'Primary language subtag is not valid'
   fi
 
-  if printf '%s\n' "$parse_lang_2" | grep '-qe^[A-Z]\{2\}$';then
+  if printf '%s\n' "$parse_lang_2"|grep '-qe^[A-Z]\{2\}$';then
     # shellcheck disable=2034
     lang_r="$parse_lang_2"
   else

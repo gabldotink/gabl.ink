@@ -34,6 +34,7 @@ set_var_l10n(){
 
     unset -- "${set_var_l10n_name}_printf"
 
+    # verbatim filename to ascii
     if test_null "${set_var_l10n_name}_ascii";then
       if ! test_null "${set_var_l10n_name}_filename";then
         eval " $set_var_l10n_name"'_ascii="$'"$set_var_l10n_name"'_filename"'
@@ -42,6 +43,7 @@ set_var_l10n(){
       fi
     fi
 
+    # verbatim ascii to text
     if test_null "${set_var_l10n_name}_text";then
       if ! test_null "${set_var_l10n_name}_ascii";then
         eval " $set_var_l10n_name"'_text="$'"$set_var_l10n_name"'_ascii"'
@@ -50,9 +52,12 @@ set_var_l10n(){
       fi
     fi
 
+    # finish if html is set
     ! test_null "${set_var_l10n_name}_html" &&
       break
-    
+
+    # verbatim text to html
+    # TODO: replace this with conversion due to different handling of character escapes
     if [ -n "$(eval 'printf "%s" "$'"$set_var_l10n_name"'_text"')" ];then
       eval " $set_var_l10n_name"'_html="$'"$set_var_l10n_name"'_text"'
       break

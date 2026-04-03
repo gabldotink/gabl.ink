@@ -72,8 +72,8 @@ Options:
 
 -i finds “[value]/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
-© 2024–2026 gabl.ink
-License: CC0 1.0 Universal (CC0 1.0)
+©\302\2402024–2026 gabl.ink
+License: CC0\302\2401.0 Universal (CC0\302\2401.0)
 %s%shttps://creativecommons.org/publicdomain/zero/1.0/deed.en%s
 ' "$deps" "$tput_underline" "$tput_blue" "$tput_reset"
 }
@@ -303,7 +303,7 @@ for i in $items;do (
         printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
                "$styles"
 
-        printf -- '<link rel="external license" href="%s" hreflang="en" type="text/html"/>' "$copyright_license_url_id"
+        printf -- '<link rel="external license" href="%s" type="text/html"/>' "$copyright_license_url_id"
 
         if   [ "$up_directories" -eq 3 ];then
           chapter="$(jq_r location.chapter "$i")"
@@ -606,8 +606,7 @@ make_page_list_entry "$5"' \
         printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
       printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
-      printf -- '<p>%s<a rel="external license" href="%s" ' "$(printf_l10n license)" "$copyright_license_url_id"
-      printf 'hreflang="en" type="text/html">'
+      printf -- '<p>%s<a rel="external license" href="%s" type="text/html">' "$(printf_l10n license)" "$copyright_license_url_id"
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"
       ! test_null copyright_license_abbr &&
         printf -- ' (<cite><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"

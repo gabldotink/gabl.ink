@@ -94,58 +94,58 @@ A localized JSON value must have at least one of the `ascii`, `filename`, `text`
 
 Several Unicode characters are invisible or easily confusable with other characters. Many languages allow the use of character entities or escape sequences to make these more obvious, or to allow data transfer in ASCII. We’re more concerned about the former.
 
-The following characters are spaces, invisible, etc. and should always be escaped:
+The following characters are invisible, and should always be escaped:
 
-| Character   | Codepoint | Name                       | Decimal | HTML               | Control |
-|-------------|-----------|----------------------------|---------|--------------------|---------| 
-| ]&#8;[      | U+0008    | BACKSPACE                  | 8       |                    | `\b`    |
-| ]&Tab;[     | U+0009    | CHARACTER TABULATION       | 9       | `&Tab;`            | `\t`    |
-| ]&NewLine;[ | U+000A    | LINE FEED                  | 10      | `&NewLine;`        | `\n`    |
-| ]&#12;[     | U+000C    | FORM FEED                  | 12      |                    | `\f`    |
-| ]&#13;[     | U+000D    | CARRIAGE RETURN            | 13      |                    | `\r`    |
-| ] [         | U+00A0    | NO-BREAK SPACE             | 160     | `&nbsp;`           |         |
-| ]­[          | U+00AD    | SOFT HYPHEN                | 173     | `&shy;`            |         |
-| ] [         | U+2000    | EN QUAD                    | 8192    |                    |         |
-| ] [         | U+2001    | EM QUAD                    | 8193    |                    |         |
-| ] [         | U+2002    | EN SPACE                   | 8194    | `&ensp;`           |         |
-| ] [         | U+2003    | EM SPACE                   | 8195    | `&emsp;`           |         |
-| ] [         | U+2004    | THREE-PER-EM SPACE         | 8196    | `&emsp13;`         |         |
-| ] [         | U+2005    | FOUR-PER-EM SPACE          | 8197    | `&emsp14;`         |         |
-| ] [         | U+2006    | SIX-PER-EM SPACE           | 8198    |                    |         |
-| ] [         | U+2007    | FIGURE SPACE               | 8199    | `&numsp;`          |         |
-| ] [         | U+2008    | PUNCTUATION SPACE          | 8200    | `&puncsp;`         |         |
-| ] [         | U+2009    | THIN SPACE                 | 8201    | `&thinsp;`         |         |
-| ] [         | U+200A    | HAIR SPACE                 | 8202    | `&hairsp;`         |         |
-| ]​[          | U+200B    | ZERO WIDTH SPACE           | 8203    | `&ZeroWidthSpace;` |         |
-| ]‌[          | U+200C    | ZERO WIDTH NON-JOINER      | 8204    | `&zwnj;`           |         |
-| ]‍[          | U+200D    | ZERO WIDTH JOINER          | 8205    | `&zwj;`            |         |
-| ]‎[          | U+200E    | LEFT-TO-RIGHT MARK         | 8206    | `&lrm;`            |         |
-| ]‏[          | U+200F    | RIGHT-TO-LEFT MARK         | 8207    | `&rlm;`            |         |
-| ]‪[          | U+202A    | LEFT-TO-RIGHT EMBEDDING    | 8234    |                    |         |
-| ]‫[          | U+202B    | RIGHT-TO-LEFT EMBEDDING    | 8235    |                    |         |
-| ]‬[          | U+202C    | POP DIRECTIONAL FORMATTING | 8236    |                    |         |
-| ]‭[          | U+202D    | LEFT-TO-RIGHT OVERRIDE     | 8237    |                    |         |
-| ]‮[          | U+202E    | RIGHT-TO-LEFT OVERRIDE     | 8238    |                    |         |
-| ] [         | U+202F    | NARROW NO-BREAK SPACE      | 8239    |                    |         |
-| ]⁠[          | U+2060    | WORD JOINER                | 8288    | `&NoBreak;`        |         |
-| ]⁦[          | U+2066    | LEFT-TO-RIGHT ISOLATE      | 8294    |                    |         |
-| ]⁧[          | U+2067    | RIGHT-TO-LEFT ISOLATE      | 8295    |                    |         |
-| ]︀[          | U+FE00    | VARIATION SELECTOR-1       | 65024   |                    |         |
-| ]︁[          | U+FE01    | VARIATION SELECTOR-2       | 65025   |                    |         |
-| ]︂[          | U+FE02    | VARIATION SELECTOR-3       | 65026   |                    |         |
-| ]︃[          | U+FE03    | VARIATION SELECTOR-4       | 65027   |                    |         |
-| ]︄[          | U+FE04    | VARIATION SELECTOR-5       | 65028   |                    |         |
-| ]︅[          | U+FE05    | VARIATION SELECTOR-6       | 65029   |                    |         |
-| ]︆[          | U+FE06    | VARIATION SELECTOR-7       | 65030   |                    |         |
-| ]︇[          | U+FE07    | VARIATION SELECTOR-8       | 65031   |                    |         |
-| ]︈[          | U+FE08    | VARIATION SELECTOR-9       | 65032   |                    |         |
-| ]︉[          | U+FE09    | VARIATION SELECTOR-10      | 65033   |                    |         |
-| ]︊[          | U+FE0A    | VARIATION SELECTOR-11      | 65034   |                    |         |
-| ]︋[          | U+FE0B    | VARIATION SELECTOR-12      | 65035   |                    |         |
-| ]︌[          | U+FE0C    | VARIATION SELECTOR-13      | 65036   |                    |         |
-| ]︍[          | U+FE0D    | VARIATION SELECTOR-14      | 65037   |                    |         |
-| ]︎[          | U+FE0E    | VARIATION SELECTOR-15      | 65038   |                    |         |
-| ]️[          | U+FE0F    | VARIATION SELECTOR-16      | 65039   |                    |         |
+| Character   | Codepoint | Name                       | Decimal | HTML               | printf         | Control |
+|-------------|-----------|----------------------------|---------|--------------------|----------------|---------|
+| ]&#8;[      | U+0008    | BACKSPACE                  | 8       |                    | `\10`          | `\b`    |
+| ]&Tab;[     | U+0009    | CHARACTER TABULATION       | 9       | `&Tab;`            | `\11`          | `\t`    |
+| ]&NewLine;[ | U+000A    | LINE FEED                  | 10      | `&NewLine;`        | `\12`          | `\n`    |
+| ]&#12;[     | U+000C    | FORM FEED                  | 12      |                    | `\14`          | `\f`    |
+| ]&#13;[     | U+000D    | CARRIAGE RETURN            | 13      |                    | `\15`          | `\r`    |
+| ] [         | U+00A0    | NO-BREAK SPACE             | 160     | `&nbsp;`           | `\302\240`     |         |
+| ]­[          | U+00AD    | SOFT HYPHEN                | 173     | `&shy;`            | `\302\255`     |         |
+| ] [         | U+2000    | EN QUAD                    | 8192    |                    | `\342\200\200` |         |
+| ] [         | U+2001    | EM QUAD                    | 8193    |                    | `\342\200\201` |         |
+| ] [         | U+2002    | EN SPACE                   | 8194    | `&ensp;`           | `\342\200\202` |         |
+| ] [         | U+2003    | EM SPACE                   | 8195    | `&emsp;`           | `\342\200\203` |         |
+| ] [         | U+2004    | THREE-PER-EM SPACE         | 8196    | `&emsp13;`         | `\342\200\204` |         |
+| ] [         | U+2005    | FOUR-PER-EM SPACE          | 8197    | `&emsp14;`         | `\342\200\205` |         |
+| ] [         | U+2006    | SIX-PER-EM SPACE           | 8198    |                    | `\342\200\206` |         |
+| ] [         | U+2007    | FIGURE SPACE               | 8199    | `&numsp;`          | `\342\200\207` |         |
+| ] [         | U+2008    | PUNCTUATION SPACE          | 8200    | `&puncsp;`         | `\342\200\210` |         |
+| ] [         | U+2009    | THIN SPACE                 | 8201    | `&thinsp;`         | `\342\200\211` |         |
+| ] [         | U+200A    | HAIR SPACE                 | 8202    | `&hairsp;`         | `\342\200\212` |         |
+| ]​[          | U+200B    | ZERO WIDTH SPACE           | 8203    | `&ZeroWidthSpace;` | `\342\200\213` |         |
+| ]‌[          | U+200C    | ZERO WIDTH NON-JOINER      | 8204    | `&zwnj;`           | `\342\200\214` |         |
+| ]‍[          | U+200D    | ZERO WIDTH JOINER          | 8205    | `&zwj;`            | `\342\200\215` |         |
+| ]‎[          | U+200E    | LEFT-TO-RIGHT MARK         | 8206    | `&lrm;`            | `\342\200\216` |         |
+| ]‏[          | U+200F    | RIGHT-TO-LEFT MARK         | 8207    | `&rlm;`            | `\342\200\217` |         |
+| ]‪[          | U+202A    | LEFT-TO-RIGHT EMBEDDING    | 8234    |                    | `\342\200\252` |         |
+| ]‫[          | U+202B    | RIGHT-TO-LEFT EMBEDDING    | 8235    |                    | `\342\200\253` |         |
+| ]‬[          | U+202C    | POP DIRECTIONAL FORMATTING | 8236    |                    | `\342\200\254` |         |
+| ]‭[          | U+202D    | LEFT-TO-RIGHT OVERRIDE     | 8237    |                    | `\342\200\255` |         |
+| ]‮[          | U+202E    | RIGHT-TO-LEFT OVERRIDE     | 8238    |                    | `\342\200\256` |         |
+| ] [         | U+202F    | NARROW NO-BREAK SPACE      | 8239    |                    | `\342\200\257` |         |
+| ]⁠[          | U+2060    | WORD JOINER                | 8288    | `&NoBreak;`        | `\342\206\200` |         |
+| ]⁦[          | U+2066    | LEFT-TO-RIGHT ISOLATE      | 8294    |                    | `\342\201\246` |         |
+| ]⁧[          | U+2067    | RIGHT-TO-LEFT ISOLATE      | 8295    |                    | `\342\201\247` |         |
+| ]︀[          | U+FE00    | VARIATION SELECTOR-1       | 65024   |                    | `\357\270\200` |         |
+| ]︁[          | U+FE01    | VARIATION SELECTOR-2       | 65025   |                    | `\357\270\201` |         |
+| ]︂[          | U+FE02    | VARIATION SELECTOR-3       | 65026   |                    | `\357\270\202` |         |
+| ]︃[          | U+FE03    | VARIATION SELECTOR-4       | 65027   |                    | `\357\270\203` |         |
+| ]︄[          | U+FE04    | VARIATION SELECTOR-5       | 65028   |                    | `\357\270\204` |         |
+| ]︅[          | U+FE05    | VARIATION SELECTOR-6       | 65029   |                    | `\357\270\205` |         |
+| ]︆[          | U+FE06    | VARIATION SELECTOR-7       | 65030   |                    | `\357\270\206` |         |
+| ]︇[          | U+FE07    | VARIATION SELECTOR-8       | 65031   |                    | `\357\270\207` |         |
+| ]︈[          | U+FE08    | VARIATION SELECTOR-9       | 65032   |                    | `\357\270\210` |         |
+| ]︉[          | U+FE09    | VARIATION SELECTOR-10      | 65033   |                    | `\357\270\211` |         |
+| ]︊[          | U+FE0A    | VARIATION SELECTOR-11      | 65034   |                    | `\357\270\212` |         |
+| ]︋[          | U+FE0B    | VARIATION SELECTOR-12      | 65035   |                    | `\357\270\213` |         |
+| ]︌[          | U+FE0C    | VARIATION SELECTOR-13      | 65036   |                    | `\357\270\214` |         |
+| ]︍[          | U+FE0D    | VARIATION SELECTOR-14      | 65037   |                    | `\357\270\215` |         |
+| ]︎[          | U+FE0E    | VARIATION SELECTOR-15      | 65038   |                    | `\357\270\216` |         |
+| ]️[          | U+FE0F    | VARIATION SELECTOR-16      | 65039   |                    | `\357\270\217` |         |
 
 These characters may be confused with more common characters, in either proportional or monospace fonts; they are not required to be escaped:
 
@@ -199,9 +199,9 @@ Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this an
 
 You may use character entities from the HTML5 Living Standard. Prefer terminating with semicolons, even if they are optional. If an entity is not predefined, use a decimal entity (e.g. `&#160;`).
 
-### Shell
+### printf
 
-POSIX does not define escape sequences for special characters without extensions, so they may not be used in shell scripts. Use the literal character instead. Escapes like `\n` are supported.
+Example: for U+00A0 NO-BREAK SPACE, use `\302\240`. POSIX does not define escape sequences for special characters without extensions, _except_ in printf, where arbitrary byte sequences can be written in octal format. Leading zeros can be omitted, but not if the character after is a digit. Escapes like `\n` are supported and preferred.
 
 ### WebVTT
 
