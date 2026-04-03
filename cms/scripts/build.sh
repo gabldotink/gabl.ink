@@ -303,7 +303,7 @@ for i in $items;do (
         printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
                "$styles"
 
-        printf -- '<link rel="external license" href="%s" type="text/html"/>' "$copyright_license_url_id"
+        printf -- '<link rel="external license" href="%s"/>' "$copyright_license_url_id"
 
         if   [ "$up_directories" -eq 3 ];then
           chapter="$(jq_r location.chapter "$i")"
@@ -606,7 +606,7 @@ make_page_list_entry "$5"' \
         printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
       printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
 
-      printf -- '<p>%s<a rel="external license" href="%s" type="text/html">' "$(printf_l10n license)" "$copyright_license_url_id"
+      printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"
       ! test_null copyright_license_abbr &&
         printf -- ' (<cite><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
