@@ -4,13 +4,11 @@
 export POSIXLY_CORRECT
 LC_ALL=C
 
-trap_sigs='INT HUP TERM'
-
-trap 'kill -sTERM -- "-$$";printf "Exiting. No changes were made.\n"' $trap_sigs
+trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname find id grep jq kill mktemp printf realpath rm sh sort tput tr uniq xargs'
+deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput tr uniq xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -32,8 +30,11 @@ Please install missing commands.
   esac
 done
 
+# Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
+
 usage(){
-  printf -- 'Usage: %s [-h|-u|-w] [-q|-s] [-m] [-i <dir>] [-f <dir>]\n' "$script"
+  trap - INT EXIT
+  printf -- 'Usage: %s [-h] [-u] [-w] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
 }
 
 usage_long(){
@@ -51,11 +52,10 @@ Options:
   -u (usage)      Show short usage
   -w (where)      Print the location of the script
   -m (monochrome) Disable styling
-  -q (quiet)      Suppress all stderr output (including errors!)
-  -s (silent)     Same as -q
-  -t (threads)    Maximum parallel builds; 0 or less uses infinite threads (default is 10)
   -i (items)      Directories of items to build, space/newline separated (defaults to all items)
   -f (find)       Directories containing items to build, space/newline separated (defaults to all items)
+  -q (quiet)      Suppress all stderr output (including errors!)
+  -s (silent)     Same as -q
 
 -i finds “[value]/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
@@ -81,7 +81,6 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-# Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
 tput_underline="$(tput smul 2>/dev/null||:)"
 tput_italic="$(tput sitm 2>/dev/null||:)"
 tput_bold="$(tput bold 2>/dev/null||:)"
@@ -91,14 +90,12 @@ tput_blue="$(tput setaf 4 2>/dev/null||:)"
 tput_reset="$(tput sgr0 2>/dev/null||:)"
 
 # TODO: This ensures all options are processed before printing anything, but time could still be wasted if, for example, both -h and -f are used. However, this has zero chance of actually doing anything dangerous, so I’ll leave it for now.
-while getopts :mqst:-huwi:f: o;do
+while getopts :mqs-huwi:f: o;do
   case "$o" in
     m)
       unset tput_underline tput_italic tput_bold tput_red tput_yellow tput_blue tput_reset ;;
     q|s)
       exec 2>/dev/null ;;
-    t)
-      max_threads="$OPTARG" ;;
     w)
       help=w ;;
     u)
@@ -128,8 +125,10 @@ done
 unset o
 
 if [ -n "$unknowns" ];then
+  printf '%s\n' "$unknowns"|grep '-qve [A-Za-z0-9]' &&
+    printf 'One or more options are illegal.\n' >&2
   printf 'Unknown option' >&2
-  [ "${#unknowns}" -gt 3 ] &&
+  [ "${#unknowns}" -gt 1 ] &&
     printf s >&2
   printf ':%s\n' "$unknowns" >&2
   exit 2
@@ -186,32 +185,14 @@ exit_if
 # The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
 items="$(printf '%s\n' "$items"|tr ' \t' '\n'|uniq)"
 
-if [ -f "$scripts/build.lock" ];then
-  err error "Lockfile $scripts/build.lock exists. This indicates another instance of the script is running in its directory. If you are sure this is not the case, delete the lockfile and try again."
-else
-  : > "$scripts/build.lock"
-fi
-
-trap 'rm -f -- "$scripts/build.lock";kill -sTERM -- -$$;printf "Exiting. No changes were made.\n"' $trap_sigs
-
-exit_if
-
-[ -z "$max_threads" ] &&
-  max_threads=10
-
-if [ "$max_threads" -gt 0 ];then
-  threads="$(mktemp)"
-  printf '0\n' > "$threads"
-fi
-
 # Last chance to error out before we actually do anything
 exit_if
+
+trap - INT EXIT
 
 err info 'section start: items'
 
 for i in $items;do (
-  trap 'exit 3' $trap_sigs
-
   type="$(jq_r type "$i")"
   id="$(jq_r id "$i")"
 
@@ -222,16 +203,21 @@ for i in $items;do (
 
   err info 'item start'
 
+  ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
+  #if [ "$type" = comic_series ];then
+  #  err info skip
+  #  # shellcheck disable=2106
+  #  continue
+  #fi
+
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r langs[] "$index/$id/data.json");do (
-    trap 'exit 3' $trap_sigs
-
     err info 'lang start'
 
     tmpfile="$(mktemp)"
 
-    trap 'rm -f -- "$tmpfile";exit 3' $trap_sigs
+    trap 'rm -f -- "$tmpfile" >/dev/null 2>&1' INT EXIT
 
     parse_lang
 
@@ -476,19 +462,18 @@ for i in $items;do (
         printf '<ol id="nav_bottom_list_pages">'
 
         find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
-[ -n "$2" ]&&set -v
-page="$3"
-cms="$4"
+page="$2"
+cms="$3"
 lib="$cms/scripts/lib"
 dict="$cms/dictionaries"
-lang="$5"
+lang="$4"
 for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null zero_pad
 do . "$lib/$f.sh"
 done
 config_set
 parse_lang
-make_page_list_entry "$6"' \
-          sh "$(printf '%s\n' "$-"|grep -Fex)" "$(printf '%s\n' "$-"|grep -Fev)" "$page" "$cms" "$lang" {}
+make_page_list_entry "$5"' \
+          sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$cms" "$lang" {}
 
         printf '</ol></details></nav></div>'
 
@@ -673,7 +658,7 @@ wait
 
 err info 'section done: items'
 
-rm -f -- "$scripts/build.lock" "$threads"
+trap - INT EXIT
 
 [ "$warned" = true ] &&
   [ "$config_exit_nonzero_with_warnings" = true ] &&
