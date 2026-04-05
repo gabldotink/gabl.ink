@@ -34,7 +34,7 @@ done
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h] [-u] [-w] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
+  printf -- 'Usage: %s [-h|-u|-w] [-m] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
 }
 
 usage_long(){
@@ -51,11 +51,11 @@ Options:
   -h (help)       Show help
   -u (usage)      Show short usage
   -w (where)      Print the location of the script
-  -m (monochrome) Disable styling
-  -i (items)      Directories of items to build, space/newline separated (defaults to all items)
-  -f (find)       Directories containing items to build, space/newline separated (defaults to all items)
+  -m (monochrome) Disable text styling
   -q (quiet)      Suppress all stderr output (including errors!)
   -s (silent)     Same as -q
+  -i (items)      Directories of items to build, space/newline separated (defaults to all items)
+  -f (find)       Directories containing items to build, space/newline separated (defaults to all items)
 
 -i finds “[value]/data.json”, while -f recursively searches for “data.json” files. Note that the script will not function correctly if any of the file paths contain spaces, tabs, or newlines. There are currently few checks to make sure these are valid, so be careful.
 
@@ -92,16 +92,16 @@ tput_reset="$(tput sgr0 2>/dev/null||:)"
 # TODO: This ensures all options are processed before printing anything, but time could still be wasted if, for example, both -h and -f are used. However, this has zero chance of actually doing anything dangerous, so I’ll leave it for now.
 while getopts :mqs-huwi:f: o;do
   case "$o" in
+    h)
+      help=h ;;
+    u)
+      help=u ;;
+    w)
+      help=w ;;
     m)
       unset tput_underline tput_italic tput_bold tput_red tput_yellow tput_blue tput_reset ;;
     q|s)
       exec 2>/dev/null ;;
-    w)
-      help=w ;;
-    u)
-      help=u ;;
-    h)
-      help=h ;;
     i)
       for q in $OPTARG;do
         case "$q" in
@@ -125,8 +125,6 @@ done
 unset o
 
 if [ -n "$unknowns" ];then
-  printf '%s\n' "$unknowns"|grep '-qve [A-Za-z0-9]' &&
-    printf 'One or more options are illegal.\n' >&2
   printf 'Unknown option' >&2
   [ "${#unknowns}" -gt 1 ] &&
     printf s >&2
@@ -183,7 +181,7 @@ exit_if
 
 # TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
 # The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
-items="$(printf '%s\n' "$items"|tr ' \t' '\n'|uniq)"
+items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|uniq)"
 
 # Last chance to error out before we actually do anything
 exit_if
@@ -217,7 +215,7 @@ for i in $items;do (
 
     tmpfile="$(mktemp)"
 
-    trap 'rm -f -- "$tmpfile" >/dev/null 2>&1' INT EXIT
+    trap 'rm -f -- "$tmpfile"' INT EXIT
 
     parse_lang
 
