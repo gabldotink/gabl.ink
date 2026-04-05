@@ -2,3 +2,4 @@
 
 log*.txt
 cms/scripts/config.json
+cms/scripts/build.lock
