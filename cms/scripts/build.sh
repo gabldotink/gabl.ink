@@ -24,7 +24,18 @@ for r in $deps;do
       printf -- \
 'This script requires the following commands to be available: %s
 You have the following commands available:%s
-Please install missing commands.
+
+Arch Linux and derivatives:
+  sudo pacman -S --needed bash coreutils diffutils findutils grep jq ncurses
+
+Debian and derivatives:
+  sudo apt update && sudo apt install coreutils dash diffutils findutils grep jq ncurses-bin
+
+Termux:
+  pkg update && pkg install coreutils dash diffutils findutils grep jq ncurses-utils
+
+Cygwin:
+  [installer location]/setup-x86_64.exe -qP bash,coreutils,diffutils,findutils,grep,jq,ncurses
 ' "$deps" "$commands_v" >&2
       exit 1
   esac
