@@ -46,10 +46,12 @@ done
 usage(){
   trap - INT EXIT
   printf -- 'Usage: %s [-h|-u|-w] [-m] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
+  [ "$1" = - ]||
+    printf -- 'For help: %s -h\n' "$script"
 }
 
 usage_long(){
-  usage
+  usage -
   printf -- 'Version: dev
 
 This script generates the gabl.ink website.
@@ -140,6 +142,7 @@ if [ -n "$unknowns" ];then
   [ "${#unknowns}" -gt 1 ] &&
     printf s >&2
   printf ':%s\n' "$unknowns" >&2
+  usage >&2
   exit 2
 fi
 
@@ -149,7 +152,7 @@ if [ "$help" = h ];then
   usage_long
   exit 0
 elif [ "$help" = u ];then
-  usage
+  usage -
   exit 0
 elif [ "$help" = w ];then
   realpath -e "$script"
