@@ -186,9 +186,8 @@ if [ -z "$items" ];then
 fi
 
 for j in $items;do
-  if [ ! -f "$j" ];then
+  [ -f "$j" ]||
     err error "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
-  fi
 done
 
 exit_if
