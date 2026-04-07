@@ -472,7 +472,9 @@ for i in $items;do (
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- '[ -n "$1" ]&&set -x
+        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs -I{} -- sh -c -- 'for o in v x
+do printf -- "%s\n" "$1"|grep "-Fqe$o"&&set "-$o"
+done
 page="$2"
 cms="$3"
 lib="$cms/scripts/lib"
@@ -484,7 +486,7 @@ done
 config_set
 parse_lang
 make_page_list_entry "$5"' \
-          sh "$(printf '%s\n' "$-"|grep -Fex)" "$page" "$cms" "$lang" {}
+          sh "$(printf '%s\n' "$-")" "$page" "$cms" "$lang" {}
 
         printf '</ol></details></nav></div>'
 
