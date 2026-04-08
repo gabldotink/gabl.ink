@@ -3,12 +3,6 @@
 # SPDX-License-Identifier: CC0-1.0
 
 set_var_l10n(){
-  set_var_l10n_name="$1"
-  # shellcheck disable=2034
-  set_var_l10n_property="$2"
-  # shellcheck disable=2034
-  set_var_l10n_source="$3"
-
   # TODO: Allow using values from other regions (e.g. en-GB for en-US)
   for o in "$lang" "$lang_l" mul "$lang_default" e;do
     if [ "$o" = e ];then
@@ -16,53 +10,41 @@ set_var_l10n(){
       break
     fi
 
-    for t in ascii filename html id printf text; do
-      eval " ${set_var_l10n_name}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$set_var_l10n_property"'"'"'.[$o].[$t]'"'"' "$set_var_l10n_source")"' >/dev/null 2>&1
+    for t in ascii filename html id printf text;do
+      eval " ${1}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$2"'"'"'.[$o].[$t]'"'"' "$3")"' >/dev/null 2>&1
+      test_null "${1}_$t" &&
+        unset -- "${1}_$t"
     done
 
-    if ! test_null "${set_var_l10n_name}_id";then
-      unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_printf" "${set_var_l10n_name}_text"
+    if ! test_unset "${1}_id";then
+      unset -- "${1}_ascii" "${1}_filename" "${1}_html" "${1}_printf" "${1}_text"
       break
     fi
 
-    unset -- "${set_var_l10n_name}_id"
-
-    if ! test_null "${set_var_l10n_name}_printf";then
-      unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
+    if ! test_unset "${1}_printf";then
+      unset -- "${1}_ascii" "${1}_filename" "${1}_html" "${1}_text"
       break
     fi
-
-    unset -- "${set_var_l10n_name}_printf"
 
     # verbatim filename to ascii
-    if test_null "${set_var_l10n_name}_ascii";then
-      if ! test_null "${set_var_l10n_name}_filename";then
-        eval " $set_var_l10n_name"'_ascii="$'"$set_var_l10n_name"'_filename"'
-      else
-        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
-      fi
-    fi
+    test_unset "${1}_ascii" &&
+      ! test_unset "${1}_filename" &&
+        eval " $1"'_ascii="$'"$1"'_filename"'
 
     # verbatim ascii to text
-    if test_null "${set_var_l10n_name}_text";then
-      if ! test_null "${set_var_l10n_name}_ascii";then
-        eval " $set_var_l10n_name"'_text="$'"$set_var_l10n_name"'_ascii"'
-      else
-        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
-      fi
-    fi
+    test_unset "${1}_text" &&
+      ! test_unset "${1}_ascii" &&
+        eval " $1"'_text="$'"$1"'_ascii"'
 
     # finish if html is set
-    ! test_null "${set_var_l10n_name}_html" &&
+    test_unset "${1}_html" ||
       break
 
     # verbatim text to html
     # TODO: replace this with conversion due to different handling of character escapes
-    if [ -n "$(eval 'printf "%s" "$'"$set_var_l10n_name"'_text"')" ];then
-      eval " $set_var_l10n_name"'_html="$'"$set_var_l10n_name"'_text"'
+    if ! test_unset "${1}_text";then
+      eval " $1"'_html="$'"$1"'_text"'
       break
     fi
-
-    unset -- "${set_var_l10n_name}_ascii"
   done
 }

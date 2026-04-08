@@ -483,7 +483,7 @@ cms="$3"
 lib="$cms/scripts/lib"
 dict="$cms/dictionaries"
 lang="$4"
-for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null zero_pad
+for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
 do . "$lib/$f.sh"
 done
 config_set
