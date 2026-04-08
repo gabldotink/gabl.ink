@@ -36,15 +36,21 @@ set_var_l10n(){
       ! test_unset "${1}_ascii" &&
         eval " $1"'_text="$'"$1"'_ascii"'
 
+    # verbatim text to html
+    # TODO: replace this with conversion due to different handling of character escapes
+    test_unset "${1}_html" &&
+      ! test_unset "${1}_text" &&
+        eval " $1"'_html="$'"$1"'_text"'
+    
+    # convert ascii to filename
+    if test_unset "${1}_filename" &&
+       ! test_unset "${1}_ascii" &&
+       eval 'printf "%s\n" "$'"$1"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
+      eval " $1"'_filename="'"$(eval 'printf "%s" "$'"$1"'_ascii"'|tr ' ' '_')"'"'
+    fi
+
     # finish if html is set
     test_unset "${1}_html" ||
       break
-
-    # verbatim text to html
-    # TODO: replace this with conversion due to different handling of character escapes
-    if ! test_unset "${1}_text";then
-      eval " $1"'_html="$'"$1"'_text"'
-      break
-    fi
   done
 }

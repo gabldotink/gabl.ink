@@ -13,12 +13,10 @@
   ],
   "title": {
     "en": {
-      "ascii": "new kid",
-      "filename": "new_kid"
+      "ascii": "new kid"
     },
     "fr": {
-      "ascii": "petite nouvelle",
-      "filename": "petite_nouvelle"
+      "ascii": "petite nouvelle"
     }
   },
   "description": {
