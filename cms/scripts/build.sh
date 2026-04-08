@@ -472,7 +472,7 @@ for i in $items;do (
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs -I{} -- sh -c -- 'for o in v x
+        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- 'for o in v x
 do printf -- "%s\n" "$1"|grep "-Fqe$o"&&set "-$o"
 done
 page="$2"
