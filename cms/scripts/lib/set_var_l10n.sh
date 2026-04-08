@@ -16,6 +16,8 @@ set_var_l10n(){
         unset -- "${1}_$t"
     done
 
+    # mutually exclusive
+
     if ! test_unset "${1}_id";then
       unset -- "${1}_ascii" "${1}_filename" "${1}_html" "${1}_printf" "${1}_text"
       break
@@ -26,21 +28,35 @@ set_var_l10n(){
       break
     fi
 
-    # verbatim filename to ascii
+    # verbatim
+
+    # filename to ascii
     test_unset "${1}_ascii" &&
       ! test_unset "${1}_filename" &&
         eval " $1"'_ascii="$'"$1"'_filename"'
 
-    # verbatim ascii to text
+    # ascii to text
     test_unset "${1}_text" &&
       ! test_unset "${1}_ascii" &&
         eval " $1"'_text="$'"$1"'_ascii"'
 
-    # verbatim text to html
+    # text to html
     # TODO: replace this with conversion due to different handling of character escapes
     test_unset "${1}_html" &&
       ! test_unset "${1}_text" &&
         eval " $1"'_html="$'"$1"'_text"'
+
+    # conversions
+
+    # In the POSIX locale, grep and tr won’t allow us to match multibyte characters reliably. The C.UTF-8 locale is not required by POSIX. Therefore, this is unused.
+    ## convert text to ascii
+    #if test_unset "${1}_ascii" &&
+    #   ! test_unset "${1}_text" &&
+    #   eval 'printf "%s\n" "$'"$1"'_text"'|grep '-qe^[ -~]*$';then
+    #  eval " $1"'_ascii="'"$(eval 'printf "%s" "$'"$1"'_text"'|tr ' ' ' ')"'"'
+    #else
+    #  break
+    #fi
     
     # convert ascii to filename
     if test_unset "${1}_filename" &&
