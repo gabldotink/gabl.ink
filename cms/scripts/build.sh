@@ -181,8 +181,6 @@ if [ "$monochrome" != true ];then
   tput_reset="$(tput sgr0 2>/dev/null||:)"
 fi
 
-unset monochrome
-
 config_set
 
 if [ -z "$items" ];then
@@ -198,13 +196,8 @@ done
 exit_if
 
 # TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
+# The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
 items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|uniq)"
-
-# Check one more time, just in case
-for j in $items;do
-  [ -f "$j" ]||
-    err error "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
-done
 
 # Last chance to error out before we actually do anything
 exit_if
@@ -490,7 +483,7 @@ cms="$3"
 lib="$cms/scripts/lib"
 dict="$cms/dictionaries"
 lang="$4"
-for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
+for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null zero_pad
 do . "$lib/$f.sh"
 done
 config_set

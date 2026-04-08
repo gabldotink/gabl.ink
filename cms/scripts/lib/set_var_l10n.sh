@@ -16,48 +16,53 @@ set_var_l10n(){
       break
     fi
 
-    for t in ascii filename html id printf text;do
+    for t in ascii filename html id printf text; do
       eval " ${set_var_l10n_name}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$set_var_l10n_property"'"'"'.[$o].[$t]'"'"' "$set_var_l10n_source")"' >/dev/null 2>&1
-      test_null "${set_var_l10n_name}_$t" &&
-        unset -- "${set_var_l10n_name}_$t"
     done
 
-    if ! test_unset "${set_var_l10n_name}_id";then
+    if ! test_null "${set_var_l10n_name}_id";then
       unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_printf" "${set_var_l10n_name}_text"
       break
     fi
 
-    if ! test_unset "${set_var_l10n_name}_printf";then
+    unset -- "${set_var_l10n_name}_id"
+
+    if ! test_null "${set_var_l10n_name}_printf";then
       unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename" "${set_var_l10n_name}_html" "${set_var_l10n_name}_text"
       break
     fi
 
+    unset -- "${set_var_l10n_name}_printf"
+
     # verbatim filename to ascii
-    test_unset "${set_var_l10n_name}_ascii" &&
-      test_unset "${set_var_l10n_name}_filename"||
+    if test_null "${set_var_l10n_name}_ascii";then
+      if ! test_null "${set_var_l10n_name}_filename";then
         eval " $set_var_l10n_name"'_ascii="$'"$set_var_l10n_name"'_filename"'
+      else
+        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_filename"
+      fi
+    fi
 
     # verbatim ascii to text
-    test_null "${set_var_l10n_name}_text" &&
-      test_null "${set_var_l10n_name}_ascii"||
+    if test_null "${set_var_l10n_name}_text";then
+      if ! test_null "${set_var_l10n_name}_ascii";then
         eval " $set_var_l10n_name"'_text="$'"$set_var_l10n_name"'_ascii"'
+      else
+        unset -- "${set_var_l10n_name}_ascii" "${set_var_l10n_name}_text"
+      fi
+    fi
 
     # finish if html is set
-    test_unset "${set_var_l10n_name}_html"||
+    ! test_null "${set_var_l10n_name}_html" &&
       break
 
     # verbatim text to html
     # TODO: replace this with conversion due to different handling of character escapes
-    if test_unset "${set_var_l10n_name}_text";then
-      unset -- "${set_var_l10n_name}_html"
+    if [ -n "$(eval 'printf "%s" "$'"$set_var_l10n_name"'_text"')" ];then
+      eval " $set_var_l10n_name"'_html="$'"$set_var_l10n_name"'_text"'
       break
     fi
 
-    # convert ascii to filename
-    if test_unset "${set_var_l10n_name}_filename" &&
-       test_unset "${set_var_l10n_name}_ascii"||
-       eval 'printf "%s\n" "$'"$set_var_l10n_name"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
-      eval " $set_var_l10n_name"'_filename="'"$(eval 'printf "%s" "$'"$set_var_l10n_name"'_ascii"'|tr ' ' '_')"'"'
-    fi
+    unset -- "${set_var_l10n_name}_ascii"
   done
 }
