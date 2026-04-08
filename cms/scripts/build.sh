@@ -94,14 +94,6 @@ for f in "$lib/"*.sh;do
   . "$f"
 done
 
-tput_underline="$(tput smul 2>/dev/null||:)"
-tput_italic="$(tput sitm 2>/dev/null||:)"
-tput_bold="$(tput bold 2>/dev/null||:)"
-tput_red="$(tput setaf 1 2>/dev/null||:)"
-tput_yellow="$(tput setaf 3 2>/dev/null||:)"
-tput_blue="$(tput setaf 4 2>/dev/null||:)"
-tput_reset="$(tput sgr0 2>/dev/null||:)"
-
 # TODO: This ensures all options are processed before printing anything, but time could still be wasted if, for example, both -h and -f are used. However, this has zero chance of actually doing anything dangerous, so I’ll leave it for now.
 while getopts :mqs-huwi:f: o;do
   case "$o" in
@@ -112,8 +104,9 @@ while getopts :mqs-huwi:f: o;do
     w)
       help=w ;;
     m)
-      unset tput_underline tput_italic tput_bold tput_red tput_yellow tput_blue tput_reset ;;
+      monochrome=true ;;
     q|s)
+      monochrome=true
       exec 2>/dev/null ;;
     i)
       for q in $OPTARG;do
@@ -177,6 +170,16 @@ cms="$scripts/.."
 dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
+
+if [ "$monochrome" != true ];then
+  tput_underline="$(tput smul 2>/dev/null||:)"
+  tput_italic="$(tput sitm 2>/dev/null||:)"
+  tput_bold="$(tput bold 2>/dev/null||:)"
+  tput_red="$(tput setaf 1 2>/dev/null||:)"
+  tput_yellow="$(tput setaf 3 2>/dev/null||:)"
+  tput_blue="$(tput setaf 4 2>/dev/null||:)"
+  tput_reset="$(tput sgr0 2>/dev/null||:)"
+fi
 
 config_set
 
