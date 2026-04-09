@@ -7,10 +7,10 @@
   "name": {
     "label": {
       "en": {
-        "html": "Mr.&#160;Mahan"
+        "text": "Mr.\u00a0Mahan"
       },
       "fr": {
-        "html": "M.&#160;Mahan"
+        "text": "M.\u00a0Mahan"
       }
     },
     "sur": "Mahan"
@@ -24,7 +24,7 @@
     "html": "A fifth grade teacher."
   },
   "bio": {
-    "html": "Mr.&#160;Mahan is Harry Mahan’s father."
+    "html": "Mr.\u00a0Mahan is Harry Mahan’s father."
   },
   "copyright": {
     "year": {

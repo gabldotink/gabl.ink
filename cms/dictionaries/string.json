@@ -4,7 +4,7 @@
       "printf": "gabl.ink: “%s”"
     },
     "fr": {
-      "printf": "gabl.ink: «&#8239;%s&#8239;»"
+      "printf": "gabl.ink: «\u202f%s\u202f»"
     }
   },
   "gabldotink_logo": {
@@ -20,7 +20,7 @@
       "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
     },
     "fr": {
-      "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «&#8239;Transcription&#8239;» au‐dessous."
+      "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=\"./video.webm\" hreflang=\"%s\" type=\"video/webm\" download=\"%s_-_%s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous."
     }
   },
   "see_transcript": {
@@ -28,7 +28,7 @@
       "printf": "See “Transcript” below"
     },
     "fr": {
-      "printf": "Voir «&#8239;Transcription&#8239;» au‐dessous"
+      "printf": "Voir «\u202fTranscription\u202f» au‐dessous"
     }
   },
   "series_title_html": {
@@ -41,10 +41,10 @@
   },
   "comma_page": {
     "en": {
-      "printf": ", page&#160;%s "
+      "printf": ", page\u00a0%s "
     },
     "fr": {
-      "printf": ", page&#160;%s "
+      "printf": ", page\u00a0%s "
     }
   },
   "page_title_html": {
@@ -92,7 +92,7 @@
       "printf": "First published "
     },
     "fr": {
-      "printf": "Première publication&#8239;: "
+      "printf": "Première publication\u202f: "
     }
   },
   "nav_button_first": {
@@ -164,7 +164,7 @@
       "printf": "This is the %s page!"
     },
     "fr": {
-      "printf": "C’est la %s page&#8239;!"
+      "printf": "C’est la %s page\u202f!"
     }
   },
   "nav_button_page_title": {
@@ -172,7 +172,7 @@
       "printf": "“%s”"
     },
     "fr": {
-      "printf": "«&#8239;%s&#8239;»"
+      "printf": "«\u202f%s\u202f»"
     }
   },
   "share_this_page": {
@@ -207,7 +207,7 @@
       "printf": "Licence: "
     },
     "fr": {
-      "printf": "Licence&#8239;: "
+      "printf": "Licence\u202f: "
     }
   },
   "disclaimer": {
@@ -215,7 +215,7 @@
       "printf": "Disclaimer: "
     },
     "fr": {
-      "printf": "Disclaimer&#8239;: "
+      "printf": "Disclaimer\u202f: "
     }
   },
   "share_with": {

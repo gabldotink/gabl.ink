@@ -94,7 +94,7 @@ A localized JSON value must have at least one of the `ascii`, `filename`, `text`
 
 Several Unicode characters are invisible or easily confusable with other characters. Many languages allow the use of character entities or escape sequences to make these more obvious, or to allow data transfer in ASCII. We’re more concerned about the former.
 
-The following characters are invisible, and should always be escaped:
+The following characters are invisible, and should usually be escaped:
 
 | Character   | Codepoint | Name                       | Decimal | HTML               | printf         | Control |
 |-------------|-----------|----------------------------|---------|--------------------|----------------|---------|
@@ -185,7 +185,7 @@ All HTML in gabl.ink should also be valid XML (XHTML). Named character entities 
 
 Some of those aren’t even fully true. Whatever. Point is, if it displays correctly and validates as HTML and XML, it’s fine.
 
-Numeric character entities may be used as in HTML.
+Numeric character entities are supported in XML (e.g. `&#x00a0;`/`&#160;`). However, for simplicity, generated HTML pages should use the actual characters instead of entities.
 
 ### CSS
 

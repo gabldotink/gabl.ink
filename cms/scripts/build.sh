@@ -636,7 +636,7 @@ make_page_list_entry "$5"' \
       printf '</ul></details>'
 
       printf '<footer><p><span class="nw">'
-      printf -- '<abbr title="%s">©</abbr>&#160;' "$(printf_l10n copyright)"
+      printf -- '<abbr title="%s">©</abbr>\302\240' "$(printf_l10n copyright)"
       printf -- '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
       ! test_null copyright_year_last &&
         printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"

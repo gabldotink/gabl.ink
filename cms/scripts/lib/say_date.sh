@@ -16,13 +16,13 @@ say_date(){
   set_var_l10n say_date_m "months[$((say_date_m-1))]" "$dict/month_gregorian.json"
 
   if [ "$lang_l" = en ];then
-    printf '%s&#160;' "$say_date_m_html"
+    printf '%s\302\240' "$say_date_m_html"
     printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>, ' "$say_date_d"
     if   [ "${#say_date_y}" -lt 4 ] &&
          [ "$say_date_y" -ne 0 ];then
-      printf '<abbr title="anno Domini">AD</abbr>&#160;<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
+      printf '<abbr title="anno Domini">AD</abbr>\302\240<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     elif [ "$say_date_y" -eq 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="before Christ">BC</abbr>'
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>\302\240<abbr title="before Christ">BC</abbr>'
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
@@ -32,23 +32,23 @@ say_date(){
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>' "$say_date_d"
     fi
-    printf '&#160;%s ' "$say_date_m_html"
+    printf '\302\240%s ' "$say_date_m_html"
     if   [ "${#say_date_y}" -lt 4 ] &&
          [ "$say_date_y" -ne 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>&#160;<abbr title="après Jésus‐Christ">ap.&#160;J.‑C.</abbr>' "$say_date_y"
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>\302\240<abbr title="après Jésus‐Christ">ap.\302\240J.‑C.</abbr>' "$say_date_y"
     elif [ "$say_date_y" -eq 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="avant Jésus‐Christ">av.&#160;J.‑C.</abbr>'
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>\302\240<abbr title="avant Jésus‐Christ">av.\302\240J.‑C.</abbr>'
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
   elif [ "$lang_l" = es ];then
-    printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>&#160;de&#160;' "$say_date_d"
+    printf '<span data-ssml-say-as="date" data-ssml-say-as-format="d">%s</span>\302\240de\302\240' "$say_date_d"
     printf '%s de ' "$say_date_m_html"
     if   [ "${#say_date_y}" -lt 4 ] &&
          [ "$say_date_y" -ne 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>&#160;<abbr title="después de Cristo">d.&#160;C.</abbr>' "$say_date_y"
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>\302\240<abbr title="después de Cristo">d.\302\240C.</abbr>' "$say_date_y"
     elif [ "$say_date_y" -eq 0 ];then
-      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>&#160;<abbr title="antes de Cristo">a.&#160;C.</abbr>'
+      printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">1</span>\302\240<abbr title="antes de Cristo">a.\302\240C.</abbr>'
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi

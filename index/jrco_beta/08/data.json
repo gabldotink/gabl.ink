@@ -65,7 +65,7 @@
             "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
           },
           "fr": {
-            "text": "Hé, JoeRunner, tu es arrivé&#160;! Et ça n’a pris que, genre, deux décennies&#160;!"
+            "text": "Hé, JoeRunner, tu es arrivé\u00a0! Et ça n’a pris que, genre, deux décennies\u00a0!"
           }
         }
       },
@@ -74,11 +74,11 @@
         "d": {
           "en": {
             "text": "Yeah, there was lots of traffic on North\u00a01 today.",
-            "html": "Yeah, there was lots of traffic on North&#160;1 today."
+            "html": "Yeah, there was lots of traffic on North\u00a01 today."
           },
           "fr": {
             "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui.",
-            "html": "Ouais, il y avait beaucoup de trafic sur Nord&#160;1 aujourd’hui."
+            "html": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui."
           }
         }
       },
@@ -95,11 +95,11 @@
         "d": {
           "en": {
             "text": "T.T.\u00a0/ one heck of a guy",
-            "html": "T.T.&#160;/ one heck of a guy"
+            "html": "T.T.\u00a0/ one heck of a guy"
           },
           "fr": {
             "text": "T.T.\u00a0/ un sacré mec",
-            "html": "T.T.&#160;/ un sacré mec"
+            "html": "T.T.\u00a0/ un sacré mec"
           }
         }
       },
@@ -107,10 +107,10 @@
         "h": "jrco_beta/t_t",
         "d": {
           "en": {
-            "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks&#160;III</cite>! <em class=\"i\">Six!</em>"
+            "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>! <em class=\"i\">Six!</em>"
           },
           "fr": {
-            "html": "Ouais, ouais, je veux pas tes excuses.</p><p>Allez&#160;! Nous aurons seulement de temps pour six parties de <cite class=\"i\">Hyper Galactic Battle Ducks&#160;III</cite>&#160;! Seulement six&#160;!"
+            "html": "Ouais, ouais, je veux pas tes excuses.</p><p>Allez\u00a0! Nous aurons seulement de temps pour six parties de <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>\u00a0! Seulement six\u00a0!"
           }
         }
       }
