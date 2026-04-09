@@ -233,6 +233,8 @@ for i in $items;do (
 
     trap 'rm -f -- "$tmpfile"' INT EXIT
 
+    langs="$(jq -r '.langs[]' "$index/$id/data.json")"
+
     parse_lang
 
     copyright_license="$(jq_r copyright.license[0] "$i")"
@@ -394,7 +396,31 @@ for i in $items;do (
         printf '<header>'
         printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
         printf_l10n gabldotink_logo
-        printf '</a></header>'
+        printf '</a>'
+        
+        printf '<ul id="lang_select">'
+        for l in $langs;do (
+          main_lang="$lang"
+          lang="$l"
+          parse_lang
+          printf '<li data-lang_select_flag="%s">' "$lang_r_flag"
+          if [ "$l" = "$main_lang" ];then
+            printf '<b>'
+          else
+            printf '<a lang='%s' href="../%s">' "$l" "$l"
+          fi
+          printf '%s ' "$lang_l_name_html"
+          printf '(%s)' "$lang_r_name_html"
+          if [ "$l" = "$main_lang" ];then
+            printf '</b>'
+          else
+            printf '</a>'
+          fi
+          printf '</li>'
+        )
+        done
+        printf '</ul>'
+        printf '</header>'
         printf '<div id="panels">'
         printf '<div id="nav_top">'
         printf '<h1 id="nav_top_title">'
