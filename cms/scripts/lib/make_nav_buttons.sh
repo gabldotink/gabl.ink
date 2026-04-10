@@ -22,7 +22,7 @@ make_nav_buttons_f_l(){
     make_nav_buttons_f_l_u="$(printf_l10n nav_button_last)"
     make_nav_buttons_f_l_z=next
   else
-    err error 'make_nav_buttons_f_l direction is not < or >'
+    err e 'make_nav_buttons_f_l direction is not < or >'
   fi
 
   printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_f_l_i"
@@ -61,7 +61,7 @@ make_nav_buttons_p_n(){
     make_nav_buttons_p_n_u="$(printf_l10n nav_button_next)"
     make_nav_buttons_p_n_z=last
   else
-    err error 'make_nav_buttons_p_n direction is not < or >'
+    err e 'make_nav_buttons_p_n direction is not < or >'
   fi
 
   printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_p_n_i"

@@ -6,6 +6,6 @@ config_get(){
   if [ "$#" -eq 1 ];then
     eval 'printf "%s" "$config_'"$1"'"'
   else
-    err error 'config_get must have 0 or 1 arguments'
+    err e 'config_get must have 0 or 1 arguments'
   fi
 }

@@ -53,7 +53,7 @@ say_date(){
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
   else
-    err error 'unsupported language for say_date'
+    err e 'unsupported language for say_date'
   fi
 
   printf '</time>'

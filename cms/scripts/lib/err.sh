@@ -3,26 +3,25 @@
 # SPDX-License-Identifier: CC0-1.0
 
 err(){
-  if   [ "$1" = error ];then
-    err_label_tput="$tput_bold$tput_red"
-  elif [ "$1" = warning ];then
-    err_label_tput="$tput_bold$tput_yellow"
-  elif [ "$1" = info ];then
-    err_label_tput="$tput_bold$tput_blue"
+  if   [ "$1" = e ];then
+    err_label="${tput_red}error"
+  elif [ "$1" = w ];then
+    err_label="${tput_yellow}warning"
+  elif [ "$1" = i ];then
+    err_label="${tput_blue}info"
   else
-    err error "Invalid error label: $1"
+    err e "Invalid error label: $1"
   fi
 
-  err_msg_pre="[$err_label_tput$1$tput_reset]"
-  [ -n "$id" ] &&
-    if [ -n "$lang" ];then
-      err_msg_pre="$err_msg_pre ($id/$lang)"
+  test_unset id ||
+    if ! test_unset lang;then
+      err_item=" ($id/$lang)"
     else
-      err_msg_pre="$err_msg_pre ($id)"
+      err_item=" ($id)"
     fi
-  printf -- '%s %s\n' "$err_msg_pre" "$2" >&2
+  printf -- '[%s]%s %s\n' "$tput_bold$err_label$tput_reset" "$err_item" "$2" >&2
 
-  if [ "$1" = error ];then
+  if [ "$1" = e ];then
     errored=true
     if   [ -z "$3" ];then
       errored_code=1
@@ -30,11 +29,11 @@ err(){
          [ "$3" -le 255 ];then
       errored_code="$3"
     else
-      err warning "Error exit code $3 is invalid; exiting with 1"
+      err w "Error exit code $3 is invalid; exiting with 1"
     fi
   fi
 
-  if [ "$1" = warning ];then
+  if [ "$1" = w ];then
     if [ "$(config_get exit_on_warning)" = true ];then
       errored=true
       if   [ -z "$3" ];then
@@ -43,7 +42,7 @@ err(){
            [ "$3" -le 255 ];then
         errored_code="$3"
       else
-        err warning "Warning exit code $3 is invalid; exiting with 1"
+        err w "Warning exit code $3 is invalid; exiting with 1"
       fi
     fi
     warned=true

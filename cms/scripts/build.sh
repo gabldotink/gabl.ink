@@ -190,7 +190,7 @@ fi
 
 for j in $items;do
   [ -f "$j" ]||
-    err error "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
+    err e "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
 done
 
 exit_if
@@ -204,22 +204,22 @@ exit_if
 
 trap - INT EXIT
 
-err info 'section start: items'
+err i 'section start: items'
 
 for i in $items;do (
   type="$(jq_r type "$i")"
   id="$(jq_r id "$i")"
 
   if [ "$type" != comic_page ];then
-    err info skip
+    err i skip
     continue
   fi
 
-  err info 'item start'
+  err i 'item start'
 
   ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
   #if [ "$type" = comic_series ];then
-  #  err info skip
+  #  err i skip
   #  # shellcheck disable=2106
   #  continue
   #fi
@@ -227,7 +227,7 @@ for i in $items;do (
   lang_original="$(jq_r lang_original "$i")"
 
   for lang in $(jq_r langs[] "$index/$id/data.json");do (
-    err info 'lang start'
+    err i 'lang start'
 
     tmpfile="$(mktemp)"
 
@@ -259,16 +259,16 @@ for i in $items;do (
     # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
     # In case of a video, image.png should act as a thumbnail.
     [ -f "$index/$id/$lang/video.webm" ] &&
-      video_exists=true
+      video_exists=
 
     [ -f "$index/$id/$lang/cc.vtt" ] &&
-      captions_exists=true
+      captions_exists=
 
     [ -f "$index/$id/$lang/subs.vtt" ] &&
-      subs_exists=true
+      subs_exists=
 
     [ "$(jq_r tooltip "$i")" != null ] &&
-      tooltip_exists=true
+      tooltip_exists=
 
     {
       printf '<!DOCTYPE html>\n'
@@ -297,9 +297,8 @@ for i in $items;do (
         series="$(jq_r location.series "$i")"
         set_var_l10n series_hashtag hashtag "$index/$id/../data.json"
         set_var_l10n series_title title "$index/$id/../data.json"
-        if [ "$tooltip_exists" = true ];then
+        test_unset tooltip_exists ||
           set_var_l10n tooltip tooltip "$i"
-        fi
         volume="$(jq_r location.volume "$i")"
 
         # Determine how many directories deep from the series the page is
@@ -327,7 +326,7 @@ for i in $items;do (
         elif [ "$up_directories" -eq 4 ];then
           container=volume
         else
-          err error 'up_directories is not 2, 3, or 4'
+          err e 'up_directories is not 2, 3, or 4'
         fi
 
         printf -- '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
@@ -385,9 +384,8 @@ for i in $items;do (
         make_og site_name gabl.ink
         make_og url "$canonical"
         make_og image "${canonical}image.png"
-        if [ "$video_exists" = true ];then
+        test_unset video_exists ||
           make_og video "${canonical}video.webm"
-        fi
         make_og locale "${lang_l}_${lang_r}"
 
         printf '</head>'
@@ -446,19 +444,18 @@ for i in $items;do (
         printf '<div id="comic_page_'
 
         # TODO: Edge case: no captions
-        if [ "$video_exists" = true ];then
+        if ! test_unset video_exists;then
           printf 'video"><video controls="" poster="./image.png" preload="auto"'
-          if [ "$tooltip_exists" = true ];then
+          test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
-          fi
           printf '>'
           printf '<source src="./video.webm" type="video/webm"/>'
-          if [ "$captions_exists" = true ];then
+          if ! test_unset captions_exists;then
             printf '<track kind="captions" '
             printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_text" "$lang_r_name_text"
             printf -- 'src="./cc.vtt" srclang="%s"/>' "$lang"
           fi
-          if [ "$subs_exists" = true ];then
+          if ! test_unset subs_exists;then
             printf '<track default="" kind="subtitles" '
             printf -- 'label="%s (%s)" ' "$lang_l_name_text" "$lang_r_name_text"
             printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
@@ -469,7 +466,7 @@ for i in $items;do (
           printf '</video></div>'
         else
           printf 'image"><picture'
-          [ "$tooltip_exists" = true ] &&
+          test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
           printf '<img src="./image.png" alt="'
@@ -538,7 +535,7 @@ make_page_list_entry "$5"' \
           l_h_type="$(jq_r type "$encyclopedia/$l_h/data.json")"
           [ "$l_h_type" = character ] ||
             [ "$l_h_type" = meta_character ] ||
-              err error 'l_h_type is not character or meta_character'
+              err e 'l_h_type is not character or meta_character'
           if [ "$(jq_r name "$encyclopedia/$l_h/data.json")" = null ];then
             unset_var_l10n l_h_label
           else
@@ -688,17 +685,17 @@ make_page_list_entry "$5"' \
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
 
-    err info 'lang done'
+    err i 'lang done'
     ) &
   done
   wait
   unset lang
-  err info 'item done'
+  err i 'item done'
   ) &
 done
 wait
 
-err info 'section done: items'
+err i 'section done: items'
 
 trap - INT EXIT
 
