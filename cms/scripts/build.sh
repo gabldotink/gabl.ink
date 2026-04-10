@@ -1,8 +1,8 @@
 #!/bin/sh
 # SPDX-License-Identifier: CC0-1.0
 
-export POSIXLY_CORRECT
 LC_ALL=C
+export POSIXLY_CORRECT
 
 trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
@@ -455,12 +455,12 @@ for i in $items;do (
           printf '<source src="./video.webm" type="video/webm"/>'
           if [ "$captions_exists" = true ];then
             printf '<track kind="captions" '
-            printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
+            printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_text" "$lang_r_name_text"
             printf -- 'src="./cc.vtt" srclang="%s"/>' "$lang"
           fi
           if [ "$subs_exists" = true ];then
             printf '<track default="" kind="subtitles" '
-            printf -- 'label="%s (%s)" ' "$lang_l_name_local_text" "$lang_r_name_local_text"
+            printf -- 'label="%s (%s)" ' "$lang_l_name_text" "$lang_r_name_text"
             printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
           fi
           printf '<p>'
