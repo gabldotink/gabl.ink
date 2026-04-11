@@ -12,16 +12,16 @@
     "en-US"
   ],
   "title": {
-    "en": {
-      "filename": "Harry"
-    },
-    "fr": {
+    "mul": {
       "filename": "Harry"
     }
   },
   "description": {
     "en": {
       "ascii": "JoeRunner, T.T., and Harry play an online game."
+    },
+    "fr": {
+      "ascii": "JoeRunner, T.T. et Harry jouent un jeu en ligne."
     }
   },
   "transcript": {
@@ -50,6 +50,9 @@
         "d": {
           "en": {
             "html": "(<i>off-panel</i>) Ha! I berzork’d your rear energy shields!"
+          },
+          "fr": {
+            "html": "(<i>hors‐case</i>) Ha\u202f! J’ai berzorké tes boucliers d’énergie arrière\u202f!"
           }
         }
       },
@@ -79,7 +82,7 @@
             "text": ".\u00a0.\u00a0.\u00a0but that got me enough reputation to access the Pan‐Galactic Gargle Blaster from the Retnia shop!"
           },
           "fr": {
-            "text": "…\u00a0mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster de la magasin de Retnia\u202f!",
+            "text": "…\u00a0mais ça m’a donné assez de réputation pour accéder au Pan‐Galactic Gargle Blaster au magasin de Retnia\u202f!",
             "comment": "French for _Pan Galactic Gargle Blaster_ is _arrache‐boyaux pan galactique_ (“pan galactic gut‐wrencher”), but that doesn’t say “blaster,” so I may or may not leave it in English. (Adding a hyphen to _Pan Galactic_ was a mistake I made)"
           }
         }

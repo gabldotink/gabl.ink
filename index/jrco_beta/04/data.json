@@ -12,11 +12,7 @@
     "en-US"
   ],
   "title": {
-    "en": {
-      "ascii": "Magna Carta",
-      "html": "<cite>Magna Carta</cite>"
-    },
-    "fr": {
+    "mul": {
       "ascii": "Magna Carta",
       "html": "<cite>Magna Carta</cite>"
     }
@@ -58,6 +54,9 @@
         "d": {
           "en": {
             "ascii": "A box appears on the screen."
+          },
+          "fr": {
+            "ascii": "Une fenêtre apparaît sur l’écran."
           }
         }
       },
@@ -77,6 +76,9 @@
         "d": {
           "en": {
             "ascii": "The cursor selects the Submit button."
+          },
+          "fr":{
+            "ascii": "Le curseur sélectionne le bouton Rendre."
           }
         }
       },

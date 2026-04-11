@@ -29,6 +29,10 @@
   "tooltip": {
     "en": {
       "ascii": "you can really hear that semicolon"
+    },
+    "fr": {
+      "comment": "I think I’ll use _vous_ for posts and _tu_ for stuff like this",
+      "text": "Tu peux vraiment entendre ce point‐virgule"
     }
   },
   "transcript": {
@@ -84,6 +88,9 @@
         "d": {
           "en": {
             "html": "(<i>sulking</i>) Yeah; it’s kinda gonna stink, though."
+          },
+          "fr": {
+            "html": "(<i>boudant</i>) Ouais… mais ça va être un peu nul."
           }
         }
       },
@@ -103,6 +110,9 @@
         "d": {
           "en": {
             "text": "Well, yeah, but T.T.’s brother totally hated it, so\u00a0.\u00a0.\u00a0."
+          },
+          "fr": {
+            "text": "Eh bien, ouais, mais le frère de T.T. a carrément detesté, alors…"
           }
         }
       },
@@ -127,6 +137,9 @@
         "d": {
           "en": {
             "ascii": "you can really hear that semicolon"
+          },
+          "fr": {
+            "text": "Tu peux vraiment entendre ce point‐virgule"
           }
         }
       }
