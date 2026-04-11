@@ -23,7 +23,6 @@
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner isn't ecstatic about starting middle school next year.",
       "text": "JoeRunner isn’t ecstatic about starting middle school next year."
     }
   },
@@ -57,8 +56,7 @@
             "ascii": "Oh, hey, the last one?"
           },
           "fr": {
-            "text": "Oh, hé, le dernier\u202f?",
-            "html": "Oh, hé, le dernier\u202f?"
+            "text": "Oh, hé, le dernier\u202f?"
           }
         }
       },
@@ -77,8 +75,7 @@
             "ascii": "Ooooh, next year! Middle school!"
           },
           "fr": {
-            "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!",
-            "html": "Ooooh, l’année prochaine\u202f! Le collège\u202f!"
+            "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!"
           }
         }
       },
@@ -105,8 +102,7 @@
         "h": "jrco_beta/joerunner",
         "d": {
           "en": {
-            "text": "Well, yeah, but T.T.’s brother totally hated it, so\u00a0.\u00a0.\u00a0.",
-            "html": "Well, yeah, but T.T.’s brother totally hated it, so\u00a0.\u00a0.\u00a0."
+            "text": "Well, yeah, but T.T.’s brother totally hated it, so\u00a0.\u00a0.\u00a0."
           }
         }
       },

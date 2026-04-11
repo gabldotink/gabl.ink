@@ -24,7 +24,6 @@
   },
   "description": {
     "en-US": {
-      "ascii": "Enter Eden, JoeRunner's mom.",
       "text": "Enter Eden, JoeRunner’s mom."
     },
     "fr": {
@@ -86,8 +85,7 @@
         "h": "meta/bio",
         "d": {
           "en": {
-            "text": "Eden Runner\u00a0/ heavy sleeper and mom",
-            "html": "Eden Runner\u00a0/ heavy sleeper and mom"
+            "text": "Eden Runner\u00a0/ heavy sleeper and mom"
           }
         }
       },
