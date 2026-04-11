@@ -6,10 +6,7 @@
   },
   "name": {
     "label": {
-      "en": {
-        "filename": "JoeRunner"
-      },
-      "fr": {
+      "mul": {
         "filename": "JoeRunner"
       }
     },

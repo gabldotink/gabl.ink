@@ -6,26 +6,17 @@
   },
   "name": {
     "label": {
-      "en": {
-        "filename": "Harry"
-      },
-      "fr": {
+      "mul": {
         "filename": "Harry"
       }
     },
     "given": {
-      "en": {
-        "filename": "Harry"
-      },
-      "fr": {
+      "mul": {
         "filename": "Harry"
       }
     },
     "sur": {
-      "en": {
-        "filename": "Mahan"
-      },
-      "fr": {
+      "mul": {
         "filename": "Mahan"
       }
     }

@@ -6,26 +6,17 @@
   },
   "name": {
     "label": {
-      "en": {
-        "filename": "Eden"
-      },
-      "fr": {
+      "mul": {
         "filename": "Eden"
       }
     },
     "given": {
-      "en": {
-        "filename": "Eden"
-      },
-      "fr": {
+      "mul": {
         "filename": "Eden"
       }
     },
     "sur": {
-      "en": {
-        "filename": "Runner"
-      },
-      "fr": {
+      "mul": {
         "filename": "Runner"
       }
     }
