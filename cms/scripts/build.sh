@@ -8,7 +8,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput tr xargs'
+deps='[ basename cat cmp cut dirname find getopts grep jq mktemp printf realpath rm sh sort tput tr xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -45,9 +45,9 @@ done
 
 usage(){
   trap - INT EXIT
-  printf -- 'Usage: %s [-h|-u|-w] [-m] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
+  printf 'Usage: %s [-h|-u|-w] [-m] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
   [ "$1" = - ]||
-    printf -- 'For help: %s -h\n' "$script"
+    printf 'For help: %s -h\n' "$script"
 }
 
 usage_long(){
@@ -86,7 +86,7 @@ case "$script" in
     script="./$script"
 esac
 
-scripts="$(dirname -- "$script")"
+scripts="$(dirname "$script")"
 lib="$scripts/lib"
 
 # shellcheck source-path=./lib
@@ -119,7 +119,15 @@ while getopts :mqs-huwi:f: o;do
         items="$items $q/data.json"
       done ;;
     f)
-      items="$items $(find $OPTARG -type f -name data.json)" ;;
+      for q in $OPTARG;do
+        case "$q" in
+          /*|./*|../*)
+            : ;;
+          *)
+            q="./$q"
+        esac
+        items="$items $(find "$q" -type f -name data.json)"
+      done ;;
     '?')
       unknowns="$unknowns -$OPTARG" ;;
     *)
@@ -197,7 +205,7 @@ exit_if
 
 # TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
 # The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
-items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|sort -u)"
+items="$(printf '%s\n' "$items"|tr -s ' \t' '\n'|sort -u)"
 
 # paranoia!!
 for j in $items;do
@@ -407,14 +415,14 @@ for i in $items;do (
           main_lang="$lang"
           lang="$l"
           parse_lang
-          printf '<li data-lang_select_flag="%s">' "$lang_r_flag"
+          printf -- '<li data-lang_select_flag="%s">' "$lang_r_flag"
           if [ "$l" = "$main_lang" ];then
             printf '<b>'
           else
             printf '<a lang='%s' href="../%s">' "$l" "$l"
           fi
-          printf '%s ' "$lang_l_name_html"
-          printf '(%s)' "$lang_r_name_html"
+          printf -- '%s ' "$lang_l_name_html"
+          printf -- '(%s)' "$lang_r_name_html"
           if [ "$l" = "$main_lang" ];then
             printf '</b>'
           else
