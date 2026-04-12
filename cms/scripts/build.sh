@@ -8,7 +8,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput tr uniq xargs'
+deps='[ basename cat cmp cut dirname find grep jq mktemp printf realpath rm sh sort tput tr xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -197,7 +197,7 @@ exit_if
 
 # TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
 # The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
-items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|uniq)"
+items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|sort -u)"
 
 # Last chance to error out before we actually do anything
 exit_if

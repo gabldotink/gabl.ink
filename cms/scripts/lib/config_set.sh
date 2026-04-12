@@ -11,6 +11,6 @@ config_set(){
   done
   # arrays
   for d in validate_skip share_skip;do
-    eval "config_$d"'="$(jq_r "$d[]" "$cms/scripts/config.json"|uniq|tr -s "\n" " ")"'
+    eval "config_$d"'="$(jq_r "$d[]" "$cms/scripts/config.json"|sort -u|tr -s "\n" " ")"'
   done
 }
