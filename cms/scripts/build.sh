@@ -104,9 +104,9 @@ while getopts :mqs-huwi:f: o;do
     w)
       help=w ;;
     m)
-      monochrome=true ;;
+      monochrome= ;;
     q|s)
-      monochrome=true
+      monochrome=
       exec 2>/dev/null ;;
     i)
       for q in $OPTARG;do
@@ -171,7 +171,7 @@ dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
 
-if [ "$monochrome" != true ];then
+if test_unset monochrome;then
   tput_underline="$(tput smul 2>/dev/null||:)"
   tput_italic="$(tput sitm 2>/dev/null||:)"
   tput_bold="$(tput bold 2>/dev/null||:)"
@@ -198,6 +198,12 @@ exit_if
 # TODO: More robust checks for if file paths contain whitespace. In the meantime, I just have to be careful.
 # The if loop above will find most problems anyway, so we will assume we’re good to normalize the list for now.
 items="$(printf -- '%s\n' "$items"|tr -s ' \t' '\n'|sort -u)"
+
+# paranoia!!
+for j in $items;do
+  [ -f "$j" ]||
+    err e "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
+done
 
 # Last chance to error out before we actually do anything
 exit_if
