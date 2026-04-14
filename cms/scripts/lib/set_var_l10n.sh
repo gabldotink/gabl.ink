@@ -58,6 +58,7 @@ set_var_l10n(){
               -e 's/“/"/g' \
               -e 's/”/"/g' \
               -e 's/‐/-/g' \
+              -e 's/…/.../g'
       )"'"'
     fi
     
@@ -65,7 +66,7 @@ set_var_l10n(){
     if test_unset "${1}_filename" &&
        ! test_unset "${1}_ascii" &&
        eval 'printf "%s\n" "$'"$1"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
-      eval " $1"'_filename="'"$(eval 'printf "%s" "$'"$1"'_ascii"'|tr ' ' '_')"'"'
+      eval " $1"'_filename="'"$(eval 'printf "%s" "$'"$1"'_ascii"'|tr ' ' _)"'"'
     fi
 
     # finish if html is set
