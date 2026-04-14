@@ -677,7 +677,7 @@ make_page_list_entry "$5"' \
       printf -- '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
       ! test_null copyright_year_last &&
         printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
-      printf '</span> <span translate="no" data-ssml-phoneme-alphabet="ipa" data-ssml-phoneme-ph="ˈɡæbəl dɒt ˈɪŋk">gabl.ink</span></p>'
+      printf '</span> <span translate="no">gabl.ink</span></p>'
 
       printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"

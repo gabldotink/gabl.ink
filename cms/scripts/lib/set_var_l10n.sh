@@ -40,7 +40,7 @@ set_var_l10n(){
       ! test_unset "${1}_ascii" &&
         eval " $1"'_text="$'"$1"'_ascii"'
 
-    # text to htmls
+    # text to html
     test_unset "${1}_html" &&
       ! test_unset "${1}_text" &&
         eval " $1"'_html="$'"$1"'_text"'
