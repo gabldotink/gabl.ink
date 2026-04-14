@@ -54,6 +54,14 @@ say_date(){
     else
       printf '<span data-ssml-say-as="date" data-ssml-say-as-format="y">%s</span>' "$say_date_y"
     fi
+  elif [ "$lang_l" = ja ] ||
+       [ "$lang_l" = ko ] ||
+       [ "$lang_l" = zh ];then
+    [ "$say_date_y" -lt 0 ] &&
+      printf_l10n say_date_cjk_bc
+    printf '%s%s' "$say_date_y" "$(printf_l10n say_date_cjk_y)"
+    printf '%s%s' "$say_date_m" "$(printf_l10n say_date_cjk_m)"
+    printf '%s%s' "$say_date_d" "$(printf_l10n say_date_cjk_d)"
   else
     err e 'unsupported language for say_date'
   fi

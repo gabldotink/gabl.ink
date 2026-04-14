@@ -241,5 +241,54 @@
     "fr": {
       "printf": " en tant que "
     }
+  },
+  "say_date_cjk_year": {
+    "ja": {
+      "printf": "年"
+    },
+    "ko": {
+      "printf": "년\u00a0"
+    },
+    "zh": {
+      "printf": "年"
+    }
+  },
+  "say_date_cjk_month": {
+    "ja": {
+      "printf": "月"
+    },
+    "ko": {
+      "printf": "월\u00a0"
+    },
+    "zh": {
+      "printf": "月"
+    }
+  },
+  "say_date_cjk_day": {
+    "ja": {
+      "printf": "日"
+    },
+    "ko": { 
+      "printf": "일"
+    },
+    "zh": {
+      "printf": "日"
+    }
+  },
+  "say_date_cjk_bc": {
+    "ja": {
+      "printf": "紀元前"
+    },
+    "ko": {
+      "printf": "기원전\u00a0"
+    },
+    "zh-CN": {
+      "comment": "zh-Hans",
+      "printf": "纪元前"
+    },
+    "zh-TW": {
+      "comment": "zh-Hant",
+      "printf": "紀元前"
+    }
   }
 }
