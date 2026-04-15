@@ -97,7 +97,10 @@
         "h": "meta/none",
         "d": {
           "en": {
-            "text": "JoeRunner leans back in his chair. He speaks in an all‐capital font."
+            "ascii": "JoeRunner leans back in his chair. He speaks in all capitals."
+          },
+          "fr": {
+            "text": "JoeRunner se penche en arrière dans sa chaise. Il parle dans toutes les capitales."
           }
         }
       },
@@ -105,7 +108,10 @@
         "h": "jrco_beta/joerunner",
         "d": {
           "en": {
-            "html": "(<i>relaxed</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>closes eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
+            "html": "(<i>relaxed</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>closing eyes</i>) Well, <em class=\"roman u\">I’ve</em> had enough of the Magna Carta for a <em class=\"roman u\">lifetime</em>."
+          },
+          "fr": {
+            "html": "(<i>relaxé</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>ferme les yeux</i>) Eh bien, j’en ai assez de la Magna Carta pour toute une vie."
           }
         }
       },
@@ -134,6 +140,9 @@
       "content": {
         "en": {
           "html": "<p>I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again.</p><p>Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing.</p>"
+        },
+        "fr": {
+          "html": "<p>Je n’allais avoir encore des dessins isométriques, mais les outils de perspective ont être nul, alors félicitations, vous avez encore des dessins isométriques.</p><p>Aussi, sachez seulement que cela n’a aucune pertinence pour l’intrigue. C’est parce que je n’ai aucune idée de ce que je fais.</p>"
         }
       }
     }

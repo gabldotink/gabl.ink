@@ -78,6 +78,9 @@
         "d": {
           "en": {
             "ascii": "What are you doing up so early?"
+          },
+          "fr": {
+            "text": "Que fais-tu debout si tôt\u202f?"
           }
         }
       },
