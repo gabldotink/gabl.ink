@@ -572,17 +572,19 @@ make_page_list_entry "$5"' \
 
         printf '<article id="post_'
 
-        for p in $(jq_r 'post|to_entries|.[].key' "$i");do
-          set_var_l10n post_content "post.[$p].content" "$i"
-          post_date_d="$(jq -r --argjson p "$p" '.post[$p].date.d' "$i")"
-          post_date_m="$(jq -r --argjson p "$p" '.post[$p].date.m' "$i")"
-          post_date_y="$(jq -r --argjson p "$p" '.post[$p].date.y' "$i")"
+        for k in $(jq_r 'post|keys[]' "$i");do
+          post_date_d="$(jq -r --argjson k "$k" '.post[$k].date.d' "$i")"
+          post_date_m="$(jq -r --argjson k "$k" '.post[$k].date.m' "$i")"
+          post_date_y="$(jq -r --argjson k "$k" '.post[$k].date.y' "$i")"
 
           printf -- '%s-%s-%s">' "$(zero_pad 4 post_date_y)" "$(zero_pad 2 post_date_m)" "$(zero_pad 2 post_date_d)"
 
-          printf '<h2>%s</h2>' "$(say_date post_date)"
+          printf -- '<h2>%s</h2>' "$(say_date post_date)"
 
-          printf -- '%s' "$post_content_html"
+          for p in $(jq -r --argjson k "$k" '.post[$k].content|keys[]' "$i");do
+            set_var_l10n post_content_p "post[$k].content[$p]" "$i"
+            printf -- '%s' "$post_content_p_html"
+          done
 
           printf '</article>'
         done

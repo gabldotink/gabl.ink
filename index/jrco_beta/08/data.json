@@ -128,11 +128,13 @@
         "m": 2,
         "d": 24
       },
-      "content": {
-        "en": {
-          "html": "<details><summary>Irrelevant information</summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+      "content": [
+        {
+          "en": {
+            "html": "<details><summary>Irrelevant information</summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+          }
         }
-      }
+      ]
     }
   ],
   "copyright": {

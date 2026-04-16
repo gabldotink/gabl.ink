@@ -77,7 +77,7 @@
           "en": {
             "ascii": "The cursor selects the Submit button."
           },
-          "fr":{
+          "fr": {
             "ascii": "Le curseur sélectionne le bouton Rendre."
           }
         }
@@ -137,14 +137,24 @@
         "m": 6,
         "d": 21
       },
-      "content": {
-        "en": {
-          "html": "<p>I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again.</p><p>Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing.</p>"
+      "content": [
+        {
+          "en": {
+            "html": "<p>I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again.</p>"
+          },
+          "fr": {
+            "html": "<p>Je n’allais avoir encore des dessins isométriques, mais les outils de perspective ont être nul, alors félicitations, vous avez encore des dessins isométriques.</p>"
+          }
         },
-        "fr": {
-          "html": "<p>Je n’allais avoir encore des dessins isométriques, mais les outils de perspective ont être nul, alors félicitations, vous avez encore des dessins isométriques.</p><p>Aussi, sachez seulement que cela n’a aucune pertinence pour l’intrigue. C’est parce que je n’ai aucune idée de ce que je fais.</p>"
+        {
+          "en": {
+            "html": "<p>Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing.</p>"
+          },
+          "fr": {
+            "html": "<p>Aussi, sachez seulement que cela n’a aucune pertinence pour l’intrigue. C’est parce que je n’ai aucune idée de ce que je fais.</p>"
+          }
         }
-      }
+      ]
     }
   ],
   "copyright": {
