@@ -33,29 +33,27 @@
       "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
     }
   },
-  "transcript": {
-    "lines": [
-      {
-        "h": "meta/none",
-        "d": {
-          "en-US": {
-            "text": "A one‐story building has a sign which reads “Schulz Elementary School.” The school and yard are surrounded by trees. Two girls talk in the yard, while another plays on a portable video game console. A boy with black hair stands by the door, looking a bit annoyed."
-          }
-        }
-      },
-      {
-        "h": "meta/tooltip",
-        "d": {
-          "en": {
-            "ascii": "featuring: several background characters in a white void"
-          },
-          "fr": {
-            "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
-          }
+  "transcript": [
+    {
+      "h": "meta/none",
+      "d": {
+        "en-US": {
+          "text": "A one‐story building has a sign which reads “Schulz Elementary School.” The school and yard are surrounded by trees. Two girls talk in the yard, while another plays on a portable video game console. A boy with black hair stands by the door, looking a bit annoyed."
         }
       }
-    ]
-  },
+    },
+    {
+      "h": "meta/tooltip",
+      "d": {
+        "en": {
+          "ascii": "featuring: several background characters in a white void"
+        },
+        "fr": {
+          "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
+        }
+      }
+    }
+  ],
   "first_published": {
     "y": 2022,
     "m": 10,

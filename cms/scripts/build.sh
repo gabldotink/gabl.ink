@@ -541,10 +541,10 @@ make_page_list_entry "$5"' \
         printf -- '<th scope="col">%s</th>' "$(printf_l10n transcript_text)"
         printf '</tr></thead>'
 
-        for l in $(jq_r 'transcript.lines|to_entries|.[].key' "$i");do
+        for l in $(jq_r 'transcript|to_entries|.[].key' "$i");do
           # shellcheck disable=2016
-          l_h="$(jq -r --argjson l "$l" '.transcript.lines[$l].h' "$i")"
-          set_var_l10n l_d "transcript.lines[$l].d" "$i"
+          l_h="$(jq -r --argjson l "$l" '.transcript[$l].h' "$i")"
+          set_var_l10n l_d "transcript[$l].d" "$i"
 
           l_h_type="$(jq_r type "$encyclopedia/$l_h/data.json")"
           [ "$l_h_type" = character ] ||

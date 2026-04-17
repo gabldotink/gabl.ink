@@ -26,96 +26,94 @@
       "ascii": "JoeRunner meets his friend T.T. outside the school."
     }
   },
-  "transcript": {
-    "lines": [
-      {
-        "h": "meta/none",
-        "d": {
-          "en": {
-            "html": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T‐shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all‐lowercase sans‐serif font."
-          }
-        }
-      },
-      {
-        "h": "meta/boy",
-        "d": {
-          "en": {
-            "ascii": "Oh, finally."
-          },
-          "fr": {
-            "ascii": "Oh, enfin."
-          }
-        }
-      },
-      {
-        "h": "meta/none",
-        "d": {
-          "en": {
-            "ascii": "JoeRunner walks up to the boy."
-          },
-          "fr": {
-            "ascii": "JoeRunner marche jusqu’au garçon."
-          }
-        }
-      },
-      {
-        "h": "meta/boy",
-        "d": {
-          "en": {
-            "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
-          },
-          "fr": {
-            "text": "Hé, JoeRunner, tu es arrivé\u00a0! Et ça n’a pris que, genre, deux décennies\u00a0!"
-          }
-        }
-      },
-      {
-        "h": "jrco_beta/joerunner",
-        "d": {
-          "en": {
-            "text": "Yeah, there was lots of traffic on North\u00a01 today.",
-            "html": "Yeah, there was lots of traffic on North\u00a01 today."
-          },
-          "fr": {
-            "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui.",
-            "html": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui."
-          }
-        }
-      },
-      {
-        "h": "meta/none",
-        "d": {
-          "en": {
-            "ascii": "The boy starts walking to the door."
-          }
-        }
-      },
-      {
-        "h": "meta/bio",
-        "d": {
-          "en": {
-            "text": "T.T.\u00a0/ one heck of a guy",
-            "html": "T.T.\u00a0/ one heck of a guy"
-          },
-          "fr": {
-            "text": "T.T.\u00a0/ un sacré mec",
-            "html": "T.T.\u00a0/ un sacré mec"
-          }
-        }
-      },
-      {
-        "h": "jrco_beta/t_t",
-        "d": {
-          "en": {
-            "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>! <em class=\"i\">Six!</em>"
-          },
-          "fr": {
-            "html": "Ouais, ouais, je veux pas tes excuses.</p><p>Allez\u00a0! Nous aurons seulement de temps pour six parties de <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>\u00a0! Seulement six\u00a0!"
-          }
+  "transcript": [
+    {
+      "h": "meta/none",
+      "d": {
+        "en": {
+          "html": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T‐shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all‐lowercase sans‐serif font."
         }
       }
-    ]
-  },
+    },
+    {
+      "h": "meta/boy",
+      "d": {
+        "en": {
+          "ascii": "Oh, finally."
+        },
+        "fr": {
+          "ascii": "Oh, enfin."
+        }
+      }
+    },
+    {
+      "h": "meta/none",
+      "d": {
+        "en": {
+          "ascii": "JoeRunner walks up to the boy."
+        },
+        "fr": {
+          "ascii": "JoeRunner marche jusqu’au garçon."
+        }
+      }
+    },
+    {
+      "h": "meta/boy",
+      "d": {
+        "en": {
+          "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+        },
+        "fr": {
+          "text": "Hé, JoeRunner, tu es arrivé\u00a0! Et ça n’a pris que, genre, deux décennies\u00a0!"
+        }
+      }
+    },
+    {
+      "h": "jrco_beta/joerunner",
+      "d": {
+        "en": {
+          "text": "Yeah, there was lots of traffic on North\u00a01 today.",
+          "html": "Yeah, there was lots of traffic on North\u00a01 today."
+        },
+        "fr": {
+          "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui.",
+          "html": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui."
+        }
+      }
+    },
+    {
+      "h": "meta/none",
+      "d": {
+        "en": {
+          "ascii": "The boy starts walking to the door."
+        }
+      }
+    },
+    {
+      "h": "meta/bio",
+      "d": {
+        "en": {
+          "text": "T.T.\u00a0/ one heck of a guy",
+          "html": "T.T.\u00a0/ one heck of a guy"
+        },
+        "fr": {
+          "text": "T.T.\u00a0/ un sacré mec",
+          "html": "T.T.\u00a0/ un sacré mec"
+        }
+      }
+    },
+    {
+      "h": "jrco_beta/t_t",
+      "d": {
+        "en": {
+          "html": "Yeah, yeah, excuses, excuses.</p><p>Come on! We’re only gonna have time for six games of <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>! <em class=\"i\">Six!</em>"
+        },
+        "fr": {
+          "html": "Ouais, ouais, je veux pas tes excuses.</p><p>Allez\u00a0! Nous aurons seulement de temps pour six parties de <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>\u00a0! Seulement six\u00a0!"
+        }
+      }
+    }
+  ],
   "first_published": {
     "y": 2023,
     "m": 2,
@@ -131,7 +129,12 @@
       "content": [
         {
           "en": {
-            "html": "<details><summary>Irrelevant information</summary><p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+            "html": "<details><summary>Irrelevant information</summary>"
+          }
+        },
+        {
+          "en": {
+            "html": "<p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
           }
         }
       ]

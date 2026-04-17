@@ -36,65 +36,63 @@
       "text": "la première case est adapté en l’expérience de regarder mes dessins"
     }
   },
-  "transcript": {
-    "lines": [
-      {
-        "h": "meta/none",
-        "d": {
-          "en": {
-            "ascii": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
-          },
-          "fr": {
-            "text": "Le garçon regarde le miroir de salle de bain dans son pyjama, avec des cheveux ébouriffé et ses lunettes sur la comptoir. Il semble un peu dégoûtant."
-          }
-        }
-      },
-      {
-        "h": "meta/boy",
-        "d": {
-          "en": {
-            "html": "(<i>thinking</i>) Ugh."
-          },
-          "fr": {
-            "html": "(<i>pensant</i>) Euh."
-          }
-        }
-      },
-      {
-        "h": "meta/none",
-        "d": {
-          "en": {
-            "ascii": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
-          },
-          "fr": {
-            "ascii": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
-          }
-        }
-      },
-      {
-        "h": "meta/bio",
-        "d": {
-          "en": {
-            "text": "JoeRunner\u00a0/ master of mornings"
-          },
-          "fr": {
-            "text": "JoeRunner\u00a0/ maître des matins"
-          }
-        }
-      },
-      {
-        "h": "meta/tooltip",
-        "d": {
-          "en": {
-            "ascii": "first panel is based on the experience of looking at my drawings"
-          },
-          "fr": {
-            "text": "la première case est adapté en l’expérience de regarder mes dessins"
-          }
+  "transcript": [
+    {
+      "h": "meta/none",
+      "d": {
+        "en": {
+          "ascii": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+        },
+        "fr": {
+          "text": "Le garçon regarde le miroir de salle de bain dans son pyjama, avec des cheveux ébouriffé et ses lunettes sur la comptoir. Il semble un peu dégoûtant."
         }
       }
-    ]
-  },
+    },
+    {
+      "h": "meta/boy",
+      "d": {
+        "en": {
+          "html": "(<i>thinking</i>) Ugh."
+        },
+        "fr": {
+          "html": "(<i>pensant</i>) Euh."
+        }
+      }
+    },
+    {
+      "h": "meta/none",
+      "d": {
+        "en": {
+          "ascii": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+        },
+        "fr": {
+          "ascii": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
+        }
+      }
+    },
+    {
+      "h": "meta/bio",
+      "d": {
+        "en": {
+          "text": "JoeRunner\u00a0/ master of mornings"
+        },
+        "fr": {
+          "text": "JoeRunner\u00a0/ maître des matins"
+        }
+      }
+    },
+    {
+      "h": "meta/tooltip",
+      "d": {
+        "en": {
+          "ascii": "first panel is based on the experience of looking at my drawings"
+        },
+        "fr": {
+          "text": "la première case est adapté en l’expérience de regarder mes dessins"
+        }
+      }
+    }
+  ],
   "first_published": {
     "y": 2022,
     "m": 5,
