@@ -149,6 +149,18 @@ fi
 
 unset unknowns
 
+[ -t 2 ] ||
+  monochrome=
+
+if test_unset monochrome;then
+  tput_underline="$(tput smul 2>/dev/null||:)"
+  tput_bold="$(tput bold 2>/dev/null||:)"
+  tput_red="$(tput setaf 1 2>/dev/null||:)"
+  tput_yellow="$(tput setaf 3 2>/dev/null||:)"
+  tput_blue="$(tput setaf 4 2>/dev/null||:)"
+  tput_reset="$(tput sgr0 2>/dev/null||:)"
+fi
+
 if [ "$help" = h ];then
   usage_long
   exit 0
@@ -178,18 +190,6 @@ cms="$scripts/.."
 dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
-
-[ -t 2 ] ||
-  monochrome=
-
-if test_unset monochrome;then
-  tput_underline="$(tput smul 2>/dev/null||:)"
-  tput_bold="$(tput bold 2>/dev/null||:)"
-  tput_red="$(tput setaf 1 2>/dev/null||:)"
-  tput_yellow="$(tput setaf 3 2>/dev/null||:)"
-  tput_blue="$(tput setaf 4 2>/dev/null||:)"
-  tput_reset="$(tput sgr0 2>/dev/null||:)"
-fi
 
 config_set
 
