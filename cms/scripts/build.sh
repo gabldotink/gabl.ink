@@ -31,11 +31,15 @@ Arch Linux and derivatives:
 Debian and derivatives:
   sudo apt update && sudo apt install coreutils dash diffutils findutils grep jq ncurses-bin
 
+macOS (with Homebrew):
+  brew install bash coreutils diffutils findutils grep jq ncurses
+
 Termux:
   pkg update && pkg install coreutils dash diffutils findutils grep jq ncurses-utils
 
 Cygwin:
-  [installer location]/setup-x86_64.exe -qP bash,coreutils,diffutils,findutils,grep,jq,ncurses
+  [installer location]/setup-x86_64.exe -q -P bash,coreutils,diffutils,findutils,grep,jq,ncurses
+                   (or setup-x86.exe for 32‐bit)
 ' "$deps" "$commands_v" >&2
       exit 1
   esac
