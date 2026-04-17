@@ -179,6 +179,9 @@ dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
 
+[ -t 2 ] ||
+  monochrome=
+
 if test_unset monochrome;then
   tput_underline="$(tput smul 2>/dev/null||:)"
   tput_italic="$(tput sitm 2>/dev/null||:)"
