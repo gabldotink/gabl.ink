@@ -184,7 +184,6 @@ encyclopedia="$index/encyclopedia"
 
 if test_unset monochrome;then
   tput_underline="$(tput smul 2>/dev/null||:)"
-  tput_italic="$(tput sitm 2>/dev/null||:)"
   tput_bold="$(tput bold 2>/dev/null||:)"
   tput_red="$(tput setaf 1 2>/dev/null||:)"
   tput_yellow="$(tput setaf 3 2>/dev/null||:)"
