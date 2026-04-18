@@ -40,7 +40,6 @@ Termux:
 Cygwin:
   [installer location]/setup-x86_64.exe -q -P bash,coreutils,diffutils,findutils,grep,jq,ncurses
                    (or setup-x86.exe for 32‐bit)
-
 MSYS2:
   pacman -S --needed bash coreutils diffutils findutils grep jq ncurses
 ' "$deps" "$commands_v" >&2
