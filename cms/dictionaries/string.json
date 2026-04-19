@@ -268,7 +268,7 @@
     "ja": {
       "printf": "日"
     },
-    "ko": { 
+    "ko": {
       "printf": "일"
     },
     "zh": {
@@ -289,6 +289,14 @@
     "zh-TW": {
       "comment": "zh-Hant",
       "printf": "紀元前"
+    }
+  },
+  "canonical_url": {
+    "en": {
+      "printf": "Canonical <abbr title=\"Uniform Resource Locator\">URL</abbr>: "
+    },
+    "fr": {
+      "printf": "<abbr title=\"Uniform Resource Locator\">URL</abbr> canonique\u202f: "
     }
   }
 }

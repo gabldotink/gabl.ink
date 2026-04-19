@@ -597,6 +597,11 @@ make_page_list_entry "$5"' \
           printf '</article>'
         done
 
+        printf '<p id="canonical_url">'
+        printf '%s<a href="%s" type="text/html" hreflang="%s">%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
+        printf '</p>'
+
+
         printf '<details id="share_links">'
         printf '<summary>%s</summary>' "$(printf_l10n share_this_page)"
         printf '<ul>'
