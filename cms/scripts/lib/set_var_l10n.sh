@@ -51,15 +51,19 @@ set_var_l10n(){
     if test_unset "${1}_ascii" &&
        ! test_unset "${1}_text" &&
        eval 'printf "%s\n" "$'"$1"'_text"'|grep '-qe^\([ -~]|‘|’|“|”\)*$';then
+      sed_tmp="$(mktemp)"
+      printf 's/‘/'"'"'/g
+s/’/'"'"'/g
+s/“/"/g
+s/”/"/g
+s/‐/-/g
+s/…/.../g
+' > "$sed_tmp"
       eval " $1"'_ascii="'"$(
         eval 'printf "%s" "$'"$1"'_text"'|
-          sed -e "s/‘/'/g" \
-              -e "s/’/'/g" \
-              -e 's/“/"/g' \
-              -e 's/”/"/g' \
-              -e 's/‐/-/g' \
-              -e 's/…/.../g'
+          sed "-f$sed_tmp"
       )"'"'
+      rm -f -- "$sed_tmp"
     fi
     
     # convert ascii to filename
