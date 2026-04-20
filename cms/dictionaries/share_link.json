@@ -29,11 +29,7 @@
   },
   "x": {
     "name": {
-      "en": {
-        "filename": "X",
-        "html": "<cite>X</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "X",
         "html": "<cite>X</cite>"
       }
@@ -45,11 +41,7 @@
   },
   "reddit": {
     "name": {
-      "en": {
-        "filename": "Reddit",
-        "html": "<cite>Reddit</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Reddit",
         "html": "<cite>Reddit</cite>"
       }
@@ -60,11 +52,7 @@
   },
   "facebook": {
     "name": {
-      "en": {
-        "filename": "Facebook",
-        "html": "<cite>Facebook</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Facebook",
         "html": "<cite>Facebook</cite>"
       }
@@ -74,11 +62,7 @@
   },
   "telegram": {
     "name": {
-      "en": {
-        "filename": "Telegram",
-        "html": "<cite>Telegram</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Telegram",
         "html": "<cite>Telegram</cite>"
       }
@@ -89,11 +73,7 @@
   },
   "bluesky": {
     "name": {
-      "en": {
-        "filename": "Bluesky",
-        "html": "<cite>Bluesky</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Bluesky",
         "html": "<cite>Bluesky</cite>"
       }
@@ -103,11 +83,7 @@
   },
   "whatsapp": {
     "name": {
-      "en": {
-        "filename": "WhatsApp",
-        "html": "<cite>WhatsApp</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "WhatsApp",
         "html": "<cite>WhatsApp</cite>"
       }
@@ -117,11 +93,7 @@
   },
   "mastodon": {
     "name": {
-      "en": {
-        "filename": "Mastodon",
-        "html": "<cite>Mastodon</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Mastodon",
         "html": "<cite>Mastodon</cite>"
       }
@@ -132,11 +104,7 @@
   },
   "threads": {
     "name": {
-      "en": {
-        "filename": "Threads",
-        "html": "<cite>Threads</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Threads",
         "html": "<cite>Threads</cite>"
       }
@@ -147,11 +115,7 @@
   },
   "truth_social": {
     "name": {
-      "en": {
-        "ascii": "Truth Social",
-        "html": "<cite>Truth Social</cite>"
-      },
-      "fr": {
+      "mul": {
         "ascii": "Truth Social",
         "html": "<cite>Truth Social</cite>"
       }
@@ -162,11 +126,7 @@
   },
   "gab": {
     "name": {
-      "en": {
-        "filename": "Gab",
-        "html": "<cite>Gab</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "Gab",
         "html": "<cite>Gab</cite>"
       }
@@ -177,11 +137,7 @@
   },
   "vk": {
     "name": {
-      "en": {
-        "filename": "VK",
-        "html": "<cite>VK</cite>"
-      },
-      "fr": {
+      "mul": {
         "filename": "VK",
         "html": "<cite>VK</cite>"
       },

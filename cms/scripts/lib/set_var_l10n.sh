@@ -50,14 +50,20 @@ set_var_l10n(){
     # convert text to ascii
     if test_unset "${1}_ascii" &&
        ! test_unset "${1}_text" &&
-       eval 'printf "%s\n" "$'"$1"'_text"'|grep '-qe^\([ -~]|‘|’|“|”\)*$';then
+       eval 'printf "%s\n" "$'"$1"'_text"'|grep '-qe^\([ -~]| |‐|–|—|‘|’|“|”|…|−\)*$';then
       sed_tmp="$(mktemp)"
-      printf 's/‘/'"'"'/g
+      printf 's/\302\240.\302\240.\302\240./.../g
+s/.\302\240.\302\240./.../g
+s/\302\240/ /g
+s/‐/-/g
+s/–/-/g
+s/—/--/g
+s/‘/'"'"'/g
 s/’/'"'"'/g
 s/“/"/g
 s/”/"/g
-s/‐/-/g
 s/…/.../g
+s/−/-/g
 ' > "$sed_tmp"
       eval " $1"'_ascii="'"$(
         eval 'printf "%s" "$'"$1"'_text"'|
