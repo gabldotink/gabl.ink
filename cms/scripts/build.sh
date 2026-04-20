@@ -95,9 +95,28 @@ esac
 scripts="$(dirname "$script")"
 lib="$scripts/lib"
 
-# shellcheck source-path=./lib
-for f in "$lib/"*.sh;do
-  . "$f"
+# shellcheck source=./lib/config_get.sh
+# shellcheck source=./lib/config_set.sh
+# shellcheck source=./lib/count_from.sh
+# shellcheck source=./lib/err.sh
+# shellcheck source=./lib/exit_if.sh
+# shellcheck source=./lib/flush_from_tmp.sh
+# shellcheck source=./lib/jq_r.sh
+# shellcheck source=./lib/make_nav_buttons.sh
+# shellcheck source=./lib/make_og.sh
+# shellcheck source=./lib/make_page_list_entry.sh
+# shellcheck source=./lib/make_share_link.sh
+# shellcheck source=./lib/make_validate_link.sh
+# shellcheck source=./lib/parse_lang.sh
+# shellcheck source=./lib/printf_l10n.sh
+# shellcheck source=./lib/say_date.sh
+# shellcheck source=./lib/set_var_l10n.sh
+# shellcheck source=./lib/test_null.sh
+# shellcheck source=./lib/test_unset.sh
+# shellcheck source=./lib/unset_var_l10n.sh
+# shellcheck source=./lib/zero_pad.sh
+for f in config_get config_set count_from err exit_if flush_from_tmp jq_r make_nav_buttons make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
+  . "$lib/$f.sh"
 done
 
 # TODO: This ensures all options are processed before printing anything, but time could still be wasted if, for example, both -h and -f are used. However, this has zero chance of actually doing anything dangerous, so I’ll leave it for now.
@@ -408,7 +427,7 @@ for i in $items;do (
         make_og image "${canonical}image.png"
         test_unset video_exists ||
           make_og video "${canonical}video.webm"
-        make_og locale "${lang_l}_${lang_r}"
+        make_og locale "${lang_l}_$lang_r"
 
         printf '</head>'
 
