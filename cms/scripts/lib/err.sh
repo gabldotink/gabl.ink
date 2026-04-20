@@ -34,7 +34,7 @@ err(){
   fi
 
   if [ "$1" = w ];then
-    if [ "$(config_get exit_on_warning)" = true ];then
+    if [ "$config_exit_on_warning" = true ];then
       errored=true
       if   [ -z "$3" ];then
         errored_code=1

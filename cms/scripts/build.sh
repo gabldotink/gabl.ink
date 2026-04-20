@@ -95,7 +95,6 @@ esac
 scripts="$(dirname "$script")"
 lib="$scripts/lib"
 
-# shellcheck source=./lib/config_get.sh
 # shellcheck source=./lib/config_set.sh
 # shellcheck source=./lib/count_from.sh
 # shellcheck source=./lib/err.sh
@@ -115,7 +114,7 @@ lib="$scripts/lib"
 # shellcheck source=./lib/test_unset.sh
 # shellcheck source=./lib/unset_var_l10n.sh
 # shellcheck source=./lib/zero_pad.sh
-for f in config_get config_set count_from err exit_if flush_from_tmp jq_r make_nav_buttons make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
+for f in config_set count_from err exit_if flush_from_tmp jq_r make_nav_buttons make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
   . "$lib/$f.sh"
 done
 
@@ -547,7 +546,7 @@ cms="$3"
 lib="$cms/scripts/lib"
 dict="$cms/dictionaries"
 lang="$4"
-for f in config_get config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
+for f in config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
 do . "$lib/$f.sh"
 done
 config_set
