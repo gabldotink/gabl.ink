@@ -269,9 +269,15 @@ for i in $items;do (
   for lang in $(jq_r langs[] "$index/$id/data.json");do (
     err i 'lang start'
 
+    trap 'rm -f -- "$tmpfile"' INT EXIT
+
     tmpfile="$(mktemp)"
 
-    trap 'rm -f -- "$tmpfile"' INT EXIT
+    # Verify the tmpfile was actually created
+    [ -f "$tmpfile" ]||
+      err e 'Failed to create temporary file'
+    
+    exit_if
 
     langs="$(jq -r '.langs[]' "$index/$id/data.json")"
 
