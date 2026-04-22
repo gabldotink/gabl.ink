@@ -36,7 +36,7 @@ make_nav_buttons_f_l(){
 
   printf -- '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_f_l_a" "$make_nav_buttons_f_l_u"
 
-  [ "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'"')" != null ] &&
+  [ "$(eval 'printf -- "%s" "$'"$make_nav_buttons_f_l_z"'"')" = null ] ||
     printf '</a>'
 
   printf '</div>'
@@ -75,7 +75,7 @@ make_nav_buttons_p_n(){
 
   printf -- '<p><span class="nav_button_arrow" aria-hidden="true" data-ssml-sub-alias=" ">%s</span><br/>%s</p>' "$make_nav_buttons_p_n_a" "$make_nav_buttons_p_n_u"
 
-  [ "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')" != null ] &&
+  [ "$(eval 'printf -- "%s" "$'"$make_nav_buttons_p_n_i"'"')" = null ] ||
     printf '</a>'
 
   printf '</div>'

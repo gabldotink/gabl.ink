@@ -330,7 +330,7 @@ for i in $items;do (
 
       printf -- '<meta name="description" content="%s"/>' "$description_text"
       printf '<meta name="robots" content="index,follow"/>'
-      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang_bcp_47_full"
+      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang"
 
       if [ "$type" = comic_page ];then
         first_published_d="$(jq_r first_published.d "$i")"
@@ -402,12 +402,12 @@ for i in $items;do (
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
           printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 container_first)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 container_first)" "$lang"
           printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 prev)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 prev)" "$lang"
         elif [ "$container_first" = "$prev" ];then
           printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 prev)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 prev)" "$lang"
         fi
 
         if test_null next;then
@@ -416,12 +416,12 @@ for i in $items;do (
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
           printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 next)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 next)" "$lang"
           printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 container_last)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 container_last)" "$lang"
         elif [ "$container_last" = "$next" ];then
           printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 next)" "$lang_bcp_47_full"
+                 "$(zero_pad 2 next)" "$lang"
         fi
 
         make_og type article
@@ -451,7 +451,7 @@ for i in $items;do (
           if [ "$l" = "$main_lang" ];then
             printf '<b>'
           else
-            printf '<a lang='%s' href="../%s">' "$l" "$l"
+            printf '<a lang="%s" href="../%s">' "$l" "$l"
           fi
           printf -- '%s ' "$lang_l_name_html"
           printf -- '(%s)' "$lang_r_name_html"
