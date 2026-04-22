@@ -15,7 +15,7 @@ say_date(){
     printf '">'
   fi
 
-  set_var_l10n say_date_m "months[$((say_date_m-1))]" "$dict/month_gregorian.json"
+  set_var_l10n say_date_m "months[$((say_date_m-1))]" "$dict/month.json"
 
   if [ "$lang_l" = en ];then
     printf '%s\302\240' "$say_date_m_html"

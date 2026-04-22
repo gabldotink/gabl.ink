@@ -101,7 +101,7 @@ lib="$scripts/lib"
 # shellcheck source=./lib/exit_if.sh
 # shellcheck source=./lib/flush_from_tmp.sh
 # shellcheck source=./lib/jq_r.sh
-# shellcheck source=./lib/make_nav_buttons.sh
+# shellcheck source=./lib/make_nav.sh
 # shellcheck source=./lib/make_og.sh
 # shellcheck source=./lib/make_page_list_entry.sh
 # shellcheck source=./lib/make_share_link.sh
@@ -114,7 +114,7 @@ lib="$scripts/lib"
 # shellcheck source=./lib/test_unset.sh
 # shellcheck source=./lib/unset_var_l10n.sh
 # shellcheck source=./lib/zero_pad.sh
-for f in config_set count_from err exit_if flush_from_tmp jq_r make_nav_buttons make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
+for f in config_set count_from err exit_if flush_from_tmp jq_r make_nav make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
   . "$lib/$f.sh"
 done
 
@@ -483,7 +483,7 @@ for i in $items;do (
         test_null container_last ||
           set_var_l10n container_last_title title "$index/$id/../$(zero_pad 2 container_last)/data.json"
 
-        make_nav_buttons top
+        make_nav top
 
         printf '</div>'
 
@@ -522,7 +522,7 @@ for i in $items;do (
 
         printf '<div id="nav_bottom">'
 
-        make_nav_buttons bottom
+        make_nav bottom
 
         printf '<nav id="nav_bottom_list">'
 
