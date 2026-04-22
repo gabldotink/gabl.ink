@@ -7,28 +7,24 @@
 # TODO: Handle quotation marks in other page titles.
 
 make_nav_buttons_f_l(){
-  make_nav_buttons_f_l_d="$1"
-
-  if   [ "$make_nav_buttons_f_l_d" = '<' ];then
+  if   [ "$1" = f ];then
     make_nav_buttons_f_l_a=⇦
     make_nav_buttons_f_l_i=first
-    make_nav_buttons_f_l_l=first
     make_nav_buttons_f_l_u="$(printf_l10n nav_button_first)"
     make_nav_buttons_f_l_z=prev
-  elif [ "$make_nav_buttons_f_l_d" = '>' ];then
+  elif [ "$1" = l ];then
     make_nav_buttons_f_l_a=⇨
     make_nav_buttons_f_l_i=last
-    make_nav_buttons_f_l_l=last
     make_nav_buttons_f_l_u="$(printf_l10n nav_button_last)"
     make_nav_buttons_f_l_z=next
   else
-    err e 'make_nav_buttons_f_l direction is not < or >'
+    err e 'make_nav_buttons_f_l direction is not f or l'
   fi
 
   printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_f_l_i"
 
   if [ "$(eval 'printf "%s" "$'"$make_nav_buttons_f_l_z"'"')" = null ];then
-    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_f_l_l}_inline")")"
+    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_f_l_i}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'_title_text"')")"
     printf -- '<a href="../../%s/%s/" hreflang="%s" type="text/html">' "$(printf '%02d' "$(eval 'printf "%s" "$container_'"$make_nav_buttons_f_l_i"'"')")" "$lang" "$lang"
@@ -43,30 +39,23 @@ make_nav_buttons_f_l(){
 }
 
 make_nav_buttons_p_n(){
-  make_nav_buttons_p_n_d="$1"
-
-  if   [ "$make_nav_buttons_p_n_d" = '<' ];then
+  if   [ "$1" = p ];then
     make_nav_buttons_p_n_a=←
     make_nav_buttons_p_n_i=prev
-    # We don’t use this variable, but I’m keeping it in case other languages need it.
-    # shellcheck disable=2034
-    make_nav_buttons_p_n_l=previous
     make_nav_buttons_p_n_u="$(printf_l10n nav_button_prev)"
     make_nav_buttons_p_n_z=first
-  elif [ "$make_nav_buttons_p_n_d" = '>' ];then
+  elif [ "$1" = n ];then
     make_nav_buttons_p_n_a=→
     make_nav_buttons_p_n_i=next
-    # shellcheck disable=2034
-    make_nav_buttons_p_n_l=next
     make_nav_buttons_p_n_u="$(printf_l10n nav_button_next)"
     make_nav_buttons_p_n_z=last
   else
-    err e 'make_nav_buttons_p_n direction is not < or >'
+    err e 'make_nav_buttons_p_n direction is not p or n'
   fi
 
   printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_buttons_l" "$make_nav_buttons_p_n_i"
 
-  if [ "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'"')" = null ];then
+  if [ "$(eval 'printf -- "%s" "$'"$make_nav_buttons_p_n_i"'"')" = null ];then
     printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_buttons_p_n_z}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf "%s" "$'"$make_nav_buttons_p_n_i"'_title_text"')")"
@@ -84,12 +73,12 @@ make_nav_buttons_p_n(){
 make_nav_buttons(){
   make_nav_buttons_l="$1"
 
-  printf -- '<nav id="nav_%s_buttons">' "$make_nav_buttons_l"
+  printf '<nav id="nav_%s_buttons">' "$make_nav_buttons_l"
 
-  make_nav_buttons_f_l '<'
-  make_nav_buttons_p_n '<'
-  make_nav_buttons_p_n '>'
-  make_nav_buttons_f_l '>'
+  make_nav_buttons_f_l f
+  make_nav_buttons_p_n p
+  make_nav_buttons_p_n n
+  make_nav_buttons_f_l l
 
   printf '</nav>'
 }
