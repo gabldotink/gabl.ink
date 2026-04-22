@@ -71,22 +71,6 @@
       "printf": "Transcription"
     }
   },
-  "transcript_speaker": {
-    "en": {
-      "printf": "Speaker"
-    },
-    "fr": {
-      "printf": "Parleur/parleuse"
-    }
-  },
-  "transcript_text": {
-    "en": {
-      "printf": "Text"
-    },
-    "fr": {
-      "printf": "Texte"
-    }
-  },
   "first_published": {
     "en": {
       "printf": "First published "

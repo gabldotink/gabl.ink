@@ -566,12 +566,7 @@ make_page_list_entry "$5"' \
 
         printf -- '<summary>%s</summary>' "$(printf_l10n transcript_name)"
 
-        printf '<table id="comic_transcript_table">'
-
-        printf '<thead><tr>'
-        printf -- '<th scope="col">%s</th>' "$(printf_l10n transcript_speaker)"
-        printf -- '<th scope="col">%s</th>' "$(printf_l10n transcript_text)"
-        printf '</tr></thead>'
+        printf '<table id="comic_transcript_table"><tbody>'
 
         for l in $(jq_r 'transcript|to_entries|.[].key' "$i");do
           # shellcheck disable=2016
@@ -598,7 +593,7 @@ make_page_list_entry "$5"' \
           printf '</tr>'
         done
 
-        printf '</table></details>'
+        printf '</tbody></table></details>'
 
         printf -- '<p id="first_published">%s%s</p>' "$(printf_l10n first_published)" "$(say_date first_published)"
 
