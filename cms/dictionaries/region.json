@@ -1,6 +1,6 @@
 {
   "US": {
-    "names": {
+    "name": {
       "en": {
         "ascii": "United States"
       },
@@ -13,7 +13,7 @@
     }
   },
   "FR": {
-    "names": {
+    "name": {
       "en": {
         "filename": "France"
       },
@@ -26,7 +26,7 @@
     }
   },
   "GB": {
-    "names": {
+    "name": {
       "en": {
         "ascii": "United Kingdom"
       },
@@ -39,7 +39,7 @@
     }
   },
   "CA": {
-    "names": {
+    "name": {
       "en": {
         "filename": "Canada"
       },

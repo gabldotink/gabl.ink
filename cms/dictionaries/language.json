@@ -1,6 +1,6 @@
 {
   "en": {
-    "names": {
+    "name": {
       "en": {
         "filename": "English"
       },
@@ -16,7 +16,7 @@
     }
   },
   "fr": {
-    "names": {
+    "name": {
       "en": {
         "filename": "French"
       },
@@ -32,7 +32,7 @@
     }
   },
   "es": {
-    "names": {
+    "name": {
       "en": {
         "filename": "Spanish"
       },

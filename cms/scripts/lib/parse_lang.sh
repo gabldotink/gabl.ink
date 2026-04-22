@@ -31,9 +31,9 @@ parse_lang(){
   # shellcheck disable=2034
   lang_d="$(jq -r --arg l "$lang_s" '.[$l].dir' "$dict/script.json")"
 
-  set_var_l10n lang_l_name "\"$lang_l\".names" "$dict/language.json"
-  set_var_l10n lang_r_name "\"$lang_r\".names" "$dict/region.json"
-  set_var_l10n lang_s_name "\"$lang_s\".names" "$dict/script.json"
+  set_var_l10n lang_l_name "\"$lang_l\".name" "$dict/language.json"
+  set_var_l10n lang_r_name "\"$lang_r\".name" "$dict/region.json"
+  set_var_l10n lang_s_name "\"$lang_s\".name" "$dict/script.json"
 
   lang_r_flag="$(printf '%s' "$lang_r"|jq -Rr 'explode|map(.-65+127462)|implode')"
 }
