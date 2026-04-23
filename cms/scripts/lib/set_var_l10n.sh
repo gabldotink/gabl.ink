@@ -49,34 +49,21 @@ set_var_l10n(){
 
     # convert text to ascii
     if test_unset "${1}_ascii" &&
-       ! test_unset "${1}_text" &&
-       eval 'printf "%s\n" "$'"$1"'_text"'|grep '-qe^\([ -~]| |‐|–|—|‘|’|“|”|…|−\)*$';then
-      sed_tmp="$(mktemp)"
-      printf 's/\302\240.\302\240.\302\240./.../g
-s/.\302\240.\302\240./.../g
-s/\302\240/ /g
-s/‐/-/g
-s/–/-/g
-s/—/--/g
-s/‘/'"'"'/g
-s/’/'"'"'/g
-s/“/"/g
-s/”/"/g
-s/…/.../g
-s/−/-/g
-' > "$sed_tmp"
-      eval " $1"'_ascii="'"$(
-        eval 'printf "%s" "$'"$1"'_text"'|
-          sed "-f$sed_tmp"
-      )"'"'
-      rm -f -- "$sed_tmp"
+       ! test_unset "${1}_text";then
+      eval " ${1}_ascii_tmp='""$(
+        eval 'printf -- "%s" "$'"$1"'_text"'|
+          sed "-f$lib/text2ascii.sed"
+      )'"
+      eval 'printf -- "%s" "$'"$1"'_ascii_tmp"'|grep '-qe^[ -~]*$' &&
+        eval " $1"'_ascii="$'"$1"'_ascii_tmp"'
+      unset -- "${1}_ascii_tmp"
     fi
     
     # convert ascii to filename
     if test_unset "${1}_filename" &&
        ! test_unset "${1}_ascii" &&
-       eval 'printf "%s\n" "$'"$1"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
-      eval " $1"'_filename="'"$(eval 'printf "%s" "$'"$1"'_ascii"'|tr ' ' _)"'"'
+       eval 'printf -- "%s\n" "$'"$1"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
+      eval " $1"'_filename="'"$(eval 'printf -- "%s" "$'"$1"'_ascii"'|tr ' ' _)"'"'
     fi
 
     # finish if html is set
