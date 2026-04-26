@@ -39,7 +39,7 @@ Termux:
 
 Cygwin:
   [installer location]/setup-x86_64.exe -q -P bash,coreutils,diffutils,findutils,grep,jq,ncurses
-  
+
 MSYS2:
   pacman -S --needed bash coreutils diffutils findutils grep jq ncurses
 ' "$deps" "$commands_v" >&2
@@ -276,7 +276,7 @@ for i in $items;do (
     # Verify the tmpfile was actually created
     [ -f "$tmpfile" ]||
       err e 'Failed to create temporary file'
-    
+
     exit_if
 
     langs="$(jq -r '.langs[]' "$index/$id/data.json")"
@@ -441,7 +441,7 @@ for i in $items;do (
         printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
         printf_l10n gabldotink_logo
         printf '</a>'
-        
+
         printf '<ul id="lang_select">'
         for l in $langs;do (
           main_lang="$lang"

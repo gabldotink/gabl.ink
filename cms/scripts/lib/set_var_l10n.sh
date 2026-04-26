@@ -58,7 +58,7 @@ set_var_l10n(){
         eval " $1"'_ascii="$'"$1"'_ascii_tmp"'
       unset -- "${1}_ascii_tmp"
     fi
-    
+
     # convert ascii to filename
     if test_unset "${1}_filename" &&
        ! test_unset "${1}_ascii" &&
