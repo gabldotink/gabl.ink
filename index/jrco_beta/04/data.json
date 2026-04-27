@@ -118,7 +118,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "html": "<time datetime=\"2021-05-27\">May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace."
+          "html": "<p><time datetime=\"2021-05-27\">May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace.</p>"
         }
       }
     }
@@ -138,18 +138,18 @@
       "content": [
         {
           "en": {
-            "html": "<p>I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again.</p>"
+            "text": "I was going to not have isometric again, but the perspective tools were being weird, so congrats, you’re getting isometric again."
           },
           "fr": {
-            "html": "<p>Je n’allais avoir encore des dessins isométriques, mais les outils de perspective ont être nul, alors félicitations, vous avez encore des dessins isométriques.</p>"
+            "text": "Je n’allais avoir encore des dessins isométriques, mais les outils de perspective ont être nul, alors félicitations, vous avez encore des dessins isométriques."
           }
         },
         {
           "en": {
-            "html": "<p>Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing.</p>"
+            "text": "Also, just be aware that this has no plot relevance whatsoever. This is because I have no idea what I’m doing."
           },
           "fr": {
-            "html": "<p>Aussi, sachez seulement que cela n’a aucune pertinence pour l’intrigue. C’est parce que je n’ai aucune idée de ce que je fais.</p>"
+            "text": "Aussi, sachez seulement que cela n’a aucune pertinence pour l’intrigue. C’est parce que je n’ai aucune idée de ce que je fais."
           }
         }
       ]

@@ -37,7 +37,7 @@
       "h": "meta/chat",
       "d": {
         "en": {
-          "html": "<code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I'm using tilt controls!"
+          "html": "<p><code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I'm using tilt controls!</p>"
         },
         "fr": {
           "html": "<code class=\"u\">plein_de_brillant</code> En mouvement\u00a0!</p><p><code class=\"u\">plein_de_brillant_</code> Oups\u00a0!</p><p><code class=\"u\">sans_des_requin5</code> arrete de spammer ca</p><code class=\"u\">plein_de_brillant</code>Je joue avec le gyroscope\u00a0!"
@@ -257,27 +257,27 @@
       "content": [
         {
           "en": {
-            "html": "<p>Alas, poor <code>tomatotoe07</code>.</p>"
+            "html": "Alas, poor <code>tomatotoe07</code>."
           }
         },
         {
           "en": {
-            "html": "<p>This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length.</p>"
+            "html": "This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length."
           }
         },
         {
           "en": {
-            "html": "<p>Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time>?</em> I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all.</p>"
+            "html": "Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time>?</em> I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all."
           }
         },
         {
           "en": {
-            "html": "<p>I have 30\u00a0more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes.</p>"
+            "html": "I have 30\u00a0more pages drafted out, and while undoubtedly not all of it will stay, I’m excited to get through them. I’ve decided that I can get a comic done every week, posted on Thursday, while still doing school. So I’ll try it, and we’ll see how it goes."
           }
         },
         {
           "en": {
-            "html": "<p>Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless.</p>"
+            "html": "Once again, I so sincerely appreciate everyone who reads my silly, medium–low quality webcomic. I hope that you’ve enjoyed them regardless."
           }
         },
         {

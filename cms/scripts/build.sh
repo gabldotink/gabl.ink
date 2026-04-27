@@ -588,9 +588,15 @@ make_page_list_entry "$5"' \
           printf '<tr>'
           # shellcheck disable=2154
           printf '<th scope="row">%s</th>' "$l_h_label_html"
+          printf '<td>'
           # shellcheck disable=2154
-          printf '<td><p>%s</p></td>' "$l_d_html"
-          printf '</tr>'
+          case "$l_d_html" in
+            '<'*)
+              printf -- '%s' "$l_d_html" ;;
+            *)
+              printf -- '<p>%s</p>' "$l_d_html"
+          esac
+          printf '</td></tr>'
         done
 
         printf '</tbody></table></details>'
@@ -610,7 +616,12 @@ make_page_list_entry "$5"' \
 
           for p in $(jq -r --argjson k "$k" '.post[$k].content|keys[]' "$i");do
             set_var_l10n post_content_p "post[$k].content[$p]" "$i"
-            printf -- '%s' "$post_content_p_html"
+            case "$post_content_p_html" in
+              '<'*)
+                printf -- '%s' "$post_content_p_html" ;;
+              *)
+                printf '<p>%s</p>' "$post_content_p_html"
+            esac
           done
 
           printf '</article>'

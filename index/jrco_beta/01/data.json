@@ -63,10 +63,10 @@
       "h": "meta/logo",
       "d": {
         "en-US": {
-          "html": "<cite class=\"i\">JoeRunner and Co.</cite></p><p>by <span translate=\"no\">gabl</span></p><p>episode\u00a01 <cite class=\"i\">Edulympiad</cite></p><p>chapter\u00a01 “<cite>Thursday</cite>”"
+          "html": "<p><cite class=\"i\">JoeRunner and Co.</cite></p><p>by <span translate=\"no\">gabl</span></p><p>episode\u00a01 <cite class=\"i\">Edulympiad</cite></p><p>chapter\u00a01 “<cite>Thursday</cite>”</p>"
         },
         "fr": {
-          "html": "<cite class=\"i\">JoeRunner et cie</cite></p><p>par <span translate=\"no\">gabl</span></p><p>épisode\u00a01 <cite class=\"i\">Edulympiade</cite></p><p>chapitre\u00a01 <cite class=\"i\">jeudi</cite>"
+          "html": "<p><cite class=\"i\">JoeRunner et cie</cite></p><p>par <span translate=\"no\">gabl</span></p><p>épisode\u00a01 <cite class=\"i\">Edulympiade</cite></p><p>chapitre\u00a01 <cite class=\"i\">jeudi</cite></p>"
         }
       }
     },
@@ -119,39 +119,39 @@
       "content": [
         {
           "en-US": {
-            "html": "<p>Hey there! Welcome to <cite class=\"i nw\">JoeRunner and Co.</cite>!</p>"
+            "html": "Hey there! Welcome to <cite class=\"i nw\">JoeRunner and Co.</cite>!"
           },
           "fr": {
-            "html": "<p>Salut\u202f! Bienvenue dans <cite class=\"i nw\">JoeRunner et cie</cite>\u202f!</p>"
+            "html": "Salut\u202f! Bienvenue dans <cite class=\"i nw\">JoeRunner et cie</cite>\u202f!"
           }
         },
         {
           "en-US": {
-            "html": "<p>My name’s Gabriel, <abbr title=\"also known as\">a.k.a.</abbr> <span translate=\"no\">gabl</span>, and I can’t wait to share my passion‐project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for\u00a0.\u00a0.\u00a0. less years, but still multiple. Years.</p>"
+            "html": "My name’s Gabriel, <abbr title=\"also known as\">a.k.a.</abbr> <span translate=\"no\">gabl</span>, and I can’t wait to share my passion‐project comics with you. I’ve been drawing these characters for several years, and I’ve wanted to do a webcomic for\u00a0.\u00a0.\u00a0. less years, but still multiple. Years."
           },
           "fr": {
-            "html": "<p>Je m’appelle Gabriel, alias <span translate=\"no\">gabl</span>, et j’ai hâte de partager mes bandes dessinées, mes projets de passion, avec vous. Je dessine ces personnages depuis plusieurs années, et je veux faire un webcomic depuis… moins longtemps, mais encore plusieurs années.</p>"
+            "html": "Je m’appelle Gabriel, alias <span translate=\"no\">gabl</span>, et j’ai hâte de partager mes bandes dessinées, mes projets de passion, avec vous. Je dessine ces personnages depuis plusieurs années, et je veux faire un webcomic depuis… moins longtemps, mais encore plusieurs années."
           }
         },
         {
           "en-US": {
-            "html": "<p>They’re\u00a0.\u00a0.\u00a0. still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible.</p>"
+            "text": "They’re\u00a0.\u00a0.\u00a0. still a bit rough around the edges. I’ve been drawing cartoons for half of my life, but I haven’t been good about challenging myself. Hopefully, this comic will help improve my cartooning skills. Hopefully, I’ll be able to make people laugh. Maybe I’ll even be able to get a girlfriend. I dunno. It’s possible."
           },
           "fr": {
-            "html": "<p>Ils sont encore… un peu bruts. Je dessine les cartoons pour la moitié de ma vie, mais je n’ai pas été bon en défier moi‐même. Avec un peu de chance, cette BD m’aidera à améliorer mes compétences en dessin. Avec un peu de chance, je peux faire rire les gens. Peut‐être que je peux trouver une copine. J’sais pas. C’est possible.</p>"
+            "text": "Ils sont encore… un peu bruts. Je dessine les cartoons pour la moitié de ma vie, mais je n’ai pas été bon en défier moi‐même. Avec un peu de chance, cette BD m’aidera à améliorer mes compétences en dessin. Avec un peu de chance, je peux faire rire les gens. Peut‐être que je peux trouver une copine. J’sais pas. C’est possible."
           }
         },
         {
           "en-US": {
-            "html": "<p>.\u00a0.\u00a0.\u00a0I look forward to taking this journey with you!</p>"
+            "text": ".\u00a0.\u00a0.\u00a0I look forward to taking this journey with you!"
           },
           "fr": {
-            "html": "<p>…\u00a0J’ai hâte de faire ce voyage avec vous\u202f!</p>"
+            "text": "…\u00a0J’ai hâte de faire ce voyage avec vous\u202f!"
           }
         },
         {
           "mul": {
-            "html": "<p>—\u2060\u200a\u2060<span translate=\"no\">gabl</span></p>"
+            "html": "—\u2060\u200a\u2060<span translate=\"no\">gabl</span>"
           }
         }
       ]
