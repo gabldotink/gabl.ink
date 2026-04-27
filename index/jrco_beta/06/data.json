@@ -167,8 +167,13 @@
           }
         },
         {
+          "mul": {
+            "html": "<details>"
+          }
+        },
+        {
           "en": {
-            "html": "<details><summary>Click to uncollapse</summary>"
+            "html": "<summary>Click to uncollapse</summary>"
           }
         },
         {
@@ -193,7 +198,12 @@
         },
         {
           "en": {
-            "html": "<p>Alternatively, I have an <abbr>RSS</abbr> (Really Simple Syndication) feed! It’s located here <small>(<i>link removed</i>)</small>. If you click on the link, you’ll just see a bunch of code\u2060—it’s your job to get it to do its magic through an <abbr>RSS</abbr> reader, which will keep you posted whenever I update. You can learn how to do this at my handy\u2010dandy <abbr>RSS</abbr> info page <small>(<i>link removed</i>)</small>. Aren’t I so helpful? <small>(<i>not anymore</i>)</small></p></details>"
+            "html": "Alternatively, I have an <abbr>RSS</abbr> (Really Simple Syndication) feed! It’s located here <small>(<i>link removed</i>)</small>. If you click on the link, you’ll just see a bunch of code\u2060—it’s your job to get it to do its magic through an <abbr>RSS</abbr> reader, which will keep you posted whenever I update. You can learn how to do this at my handy‐dandy <abbr>RSS</abbr> info page <small>(<i>link removed</i>)</small>. Aren’t I so helpful? <small>(<i>not anymore</i>)</small>"
+          }
+        },
+        {
+          "mul": {
+            "html": "</details>"
           }
         },
         {

@@ -111,13 +111,23 @@
       },
       "content": [
         {
-          "en": {
-            "html": "<details><summary>Irrelevant info</summary>"
+          "mul": {
+            "html": "<details>"
           }
         },
         {
           "en": {
-            "html": "<p>JoeRunner gets to be in the thumbnail for his own comic again.</p></details>"
+            "html": "<summary>Irrelevant info</summary>"
+          }
+        },
+        {
+          "en": {
+            "html": "JoeRunner gets to be in the thumbnail for his own comic again."
+          }
+        },
+        {
+          "mul": {
+            "html": "</details>"
           }
         },
         {

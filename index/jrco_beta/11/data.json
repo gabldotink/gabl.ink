@@ -175,8 +175,13 @@
           }
         },
         {
+          "mul": {
+            "html": "<details>"
+          }
+        },
+        {
           "en": {
-            "html": "<details><summary>Irrelevant info</summary>"
+            "html": "<summary>Irrelevant info</summary>"
           }
         },
         {
@@ -186,7 +191,12 @@
         },
         {
           "en": {
-            "html": "<p>I was initially meaning to upload the full‐size versions to <cite>Patreon</cite>, but I’ll probably just save that for the <code><abbr title=\"Clip Studio Paint\">.clip</abbr></code> work files. I don’t know when I’ll get the images out, but I will.</p></details>"
+            "html": "I was initially meaning to upload the full‐size versions to <cite>Patreon</cite>, but I’ll probably just save that for the <code><abbr title=\"Clip Studio Paint\">.clip</abbr></code> work files. I don’t know when I’ll get the images out, but I will."
+          }
+        },
+        {
+          "mul": {
+            "html": "</details>"
           }
         },
         {
@@ -200,8 +210,13 @@
           }
         },
         {
+          "mul": {
+            "html": "<details>"
+          }
+        },
+        {
           "en": {
-            "html": "<details><summary>Irrelevant info</summary>"
+            "html": "<summary>Irrelevant info</summary>"
           }
         },
         {
@@ -211,7 +226,12 @@
         },
         {
           "en": {
-            "html": "<p>And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite> <small>(<i>link removed</i>)</small>, but I ended up not liking how it turned out.</p></details>"
+            "html": "And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite> <small>(<i>link removed</i>)</small>, but I ended up not liking how it turned out."
+          }
+        },
+        {
+          "mul": {
+            "html": "</details>"
           }
         }
       ]

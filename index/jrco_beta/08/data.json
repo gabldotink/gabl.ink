@@ -128,13 +128,23 @@
       },
       "content": [
         {
-          "en": {
-            "html": "<details><summary>Irrelevant information</summary>"
+          "mul": {
+            "html": "<details>"
           }
         },
         {
           "en": {
-            "html": "<p>I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is.</p></details>"
+            "html": "<summary>Irrelevant information</summary>"
+          }
+        },
+        {
+          "en": {
+            "html": "I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is."
+          }
+        },
+        {
+          "mul": {
+            "html": "</details>"
           }
         }
       ]
