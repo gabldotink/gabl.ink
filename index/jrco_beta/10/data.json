@@ -117,7 +117,12 @@
         },
         {
           "en": {
-            "html": "<summary>Irrelevant info</summary>"
+            "html": "<summary>Irrelevant info"
+          }
+        },
+        {
+          "mul": {
+            "html": "</summary>"
           }
         },
         {

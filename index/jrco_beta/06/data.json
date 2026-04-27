@@ -173,7 +173,12 @@
         },
         {
           "en": {
-            "html": "<summary>Click to uncollapse</summary>"
+            "html": "<summary>Click to uncollapse"
+          }
+        },
+        {
+          "mul": {
+            "html": "</summary>"
           }
         },
         {
