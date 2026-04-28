@@ -54,12 +54,7 @@
       }
     }
   ],
-  "first_published": {
-    "y": 2022,
-    "m": 10,
-    "d": 27
-  },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2022,
@@ -67,6 +62,14 @@
         "d": 27
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en-US": {
             "html": "I’m back! Between week‐long campouts, computer issues, low motivation, reading lots of <cite>Wikipedia</cite>, tweeting about the <cite class=\"i\">Mario</cite> movie, and discovering the lost city of Atlantis, I’ve had a lot on my plate. I’m pleased to announce that, <em>probably</em>, the pace of pages coming out should pick up, although unfortunately I’m still not ready to make an update schedule yet."

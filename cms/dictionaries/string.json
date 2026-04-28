@@ -282,5 +282,13 @@
     "fr": {
       "printf": "<abbr title=\"Uniform Resource Locator\">URL</abbr> canonique\u202f: "
     }
+  },
+  "log": {
+    "en": {
+      "printf": "Log"
+    },
+    "fr": {
+      "printf": "Journal"
+    }
   }
 }

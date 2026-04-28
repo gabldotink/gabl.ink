@@ -156,12 +156,7 @@
       }
     }
   ],
-  "first_published": {
-    "y": 2023,
-    "m": 7,
-    "d": 28
-  },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2023,
@@ -169,6 +164,14 @@
         "d": 28
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en": {
             "text": "Lucky number\u00a011! People\u00a0.\u00a0.\u00a0. people probably say that."

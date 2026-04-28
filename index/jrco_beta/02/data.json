@@ -53,12 +53,7 @@
       }
     }
   ],
-  "first_published": {
-    "y": 2022,
-    "m": 4,
-    "d": 7
-  },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2022,
@@ -66,6 +61,14 @@
         "d": 7
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en": {
             "html": "This one is laminated.\u00a0[<i>sic</i>]"

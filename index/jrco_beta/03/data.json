@@ -93,12 +93,7 @@
       }
     }
   ],
-  "first_published": {
-    "y": 2022,
-    "m": 5,
-    "d": 22
-  },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2022,
@@ -106,6 +101,14 @@
         "d": 22
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en": {
             "ascii": "If only it were really this easy."

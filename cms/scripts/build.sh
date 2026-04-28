@@ -338,9 +338,6 @@ for i in $items;do (
       printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang"
 
       if [ "$type" = comic_page ];then
-        first_published_d="$(jq_r first_published.d "$i")"
-        first_published_m="$(jq_r first_published.m "$i")"
-        first_published_y="$(jq_r first_published.y "$i")"
         chapter="$(jq_r location.chapter "$i")"
         next="$(jq_r location.next "$i")"
         page="$(jq_r location.page "$i")"
@@ -569,7 +566,7 @@ make_page_list_entry "$5"' \
 
         printf '<details id="comic_transcript">'
 
-        printf -- '<summary>%s</summary>' "$(printf_l10n transcript_name)"
+        printf -- '<summary><h2>%s</h2></summary>' "$(printf_l10n transcript_name)"
 
         printf '<table id="comic_transcript_table"><tbody>'
 
@@ -606,30 +603,31 @@ make_page_list_entry "$5"' \
 
         printf '</tbody></table></details>'
 
-        printf -- '<p id="first_published">%s%s</p>' "$(printf_l10n first_published)" "$(say_date first_published)"
+        printf '<h2>%s</h2>' "$(printf_l10n log)"
 
-        printf '<article id="post_'
+        for k in $(jq_r 'log|keys[]' "$i");do
+          log_date_d="$(jq -r --argjson k "$k" '.log[$k].date.d' "$i")"
+          log_date_m="$(jq -r --argjson k "$k" '.log[$k].date.m' "$i")"
+          log_date_y="$(jq -r --argjson k "$k" '.log[$k].date.y' "$i")"
 
-        for k in $(jq_r 'post|keys[]' "$i");do
-          post_date_d="$(jq -r --argjson k "$k" '.post[$k].date.d' "$i")"
-          post_date_m="$(jq -r --argjson k "$k" '.post[$k].date.m' "$i")"
-          post_date_y="$(jq -r --argjson k "$k" '.post[$k].date.y' "$i")"
+          printf '<article id="log_'
 
-          printf -- '%s-%s-%s">' "$(zero_pad 4 post_date_y)" "$(zero_pad 2 post_date_m)" "$(zero_pad 2 post_date_d)"
+          printf -- '%s-%s-%s">' "$(zero_pad 4 log_date_y)" "$(zero_pad 2 log_date_m)" "$(zero_pad 2 log_date_d)"
 
-          printf -- '<h2>%s</h2>' "$(say_date post_date)"
+          printf '<details>'
+          printf -- '<summary><h3>%s</h3></summary>' "$(say_date log_date)"
 
-          for p in $(jq -r --argjson k "$k" '.post[$k].content|keys[]' "$i");do
-            set_var_l10n post_content_p "post[$k].content[$p]" "$i"
-            case "$post_content_p_html" in
+          for p in $(jq -r --argjson k "$k" '.log[$k].content|keys[]' "$i");do
+            set_var_l10n log_content_p "log[$k].content[$p]" "$i"
+            case "$log_content_p_html" in
               '<'*)
-                printf -- '%s' "$post_content_p_html" ;;
+                printf -- '%s' "$log_content_p_html" ;;
               *)
-                printf '<p>%s</p>' "$post_content_p_html"
+                printf -- '<p>%s</p>' "$log_content_p_html"
             esac
           done
 
-          printf '</article>'
+          printf '</details></article>'
         done
 
         printf '<p id="canonical_url">'

@@ -109,7 +109,7 @@
     "m": 4,
     "d": 1
   },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2022,
@@ -117,6 +117,14 @@
         "d": 1
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en-US": {
             "html": "Hey there! Welcome to <cite class=\"i nw\">JoeRunner and Co.</cite>!"

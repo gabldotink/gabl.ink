@@ -143,12 +143,7 @@
       }
     }
   ],
-  "first_published": {
-    "y": 2022,
-    "m": 7,
-    "d": 22
-  },
-  "post": [
+  "log": [
     {
       "date": {
         "y": 2022,
@@ -156,6 +151,14 @@
         "d": 22
       },
       "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
         {
           "en": {
             "html": "<p><strong>Note: The collapsed portion is mostly technical, outdated, and near entirely irrelevant. It is included for completeness, but please disregard it.</strong></p>"
