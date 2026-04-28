@@ -15,9 +15,9 @@ err(){
 
   test_unset id ||
     if ! test_unset lang;then
-      err_item=" ($id/$lang)"
+      err_item=" ($tput_cyan$id$tput_reset/$tput_magenta$lang$tput_reset)"
     else
-      err_item=" ($id)"
+      err_item=" ($tput_cyan$id$tput_reset)"
     fi
   printf -- '[%s]%s %s\n' "$tput_bold$err_label$tput_reset" "$err_item" "$2" >&2
 
