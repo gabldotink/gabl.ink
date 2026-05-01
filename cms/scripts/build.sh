@@ -47,8 +47,6 @@ MSYS2:
   esac
 done
 
-# Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
-
 usage(){
   trap - INT EXIT
   printf 'Usage: %s [-h|-u|-w] [-m] [-q|-s] [-i <dir>] [-f <dir>]\n' "$script"
@@ -71,7 +69,7 @@ Options:
   -u (usage)      Show short usage
   -w (where)      Print the location of the script
   -m (monochrome) Disable text styling
-  -q (quiet)      Suppress all stderr output (including errors!)
+  -q (quiet)      Suppress messages (including errors!)
   -s (silent)     Same as -q
   -i (items)      Directories of items to build, space/newline separated (defaults to all items)
   -f (find)       Directories containing items to build, space/newline separated (defaults to all items)
@@ -131,7 +129,7 @@ while getopts :mqs-huwi:f: o;do
       monochrome= ;;
     q|s)
       monochrome=
-      exec 2>/dev/null ;;
+      silent= ;;
     i)
       for q in $OPTARG;do
         case "$q" in
@@ -176,6 +174,7 @@ unset unknowns
 [ -t 2 ] ||
   monochrome=
 
+# Note: These operands are not specified by POSIX, but I consider these POSIX‐compatible for this purpose; that is, if they are unsupported the styling will be ignored, and if they are supported only some text decorations will change.
 if test_unset monochrome;then
   tput_underline="$(tput smul 2>/dev/null||:)"
   tput_bold="$(tput bold 2>/dev/null||:)"

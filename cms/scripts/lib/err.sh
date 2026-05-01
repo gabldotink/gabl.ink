@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: CC0-1.0
 
 err(){
+  test_unset silent ||
+    return 0
+
   if   [ "$1" = e ];then
     err_label="${tput_red}error"
   elif [ "$1" = w ];then
