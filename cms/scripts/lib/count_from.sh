@@ -2,7 +2,7 @@
 # shellcheck disable=2154
 # SPDX-License-Identifier: CC0-1.0
 
-# This is essentially a reimplementation of seq.
+# This is essentially a pure shell reimplementation of seq.
 
 count_from(){
   count_from_i="$1"

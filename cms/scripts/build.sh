@@ -394,8 +394,24 @@ for i in $items;do (
           chapter="$(jq_r location.chapter "$i")"
         fi
 
-        container_first="$(jq_r pages.first "$index/$id/../data.json")"
-        container_last="$(jq_r pages.last "$index/$id/../data.json")"
+        parts="$({
+          for p in $(jq_r 'parts|to_entries|.[].key' "$index/$id/../data.json");do
+            if   [ "$(jq -r --argjson p "$p" -- '.parts[$p]|type' "$index/$id/../data.json")" = number ];then
+              printf '%s\n' "$(jq -r --argjson p "$p" -- '.parts[$p]' "$index/$id/../data.json")"
+            elif [ "$(jq -r --argjson p "$p" -- '.parts[$p]|type' "$index/$id/../data.json")" = string ];then
+              count_from \
+                "$(jq -r --argjson p "$p" -- '.parts[$p]' "$index/$id/../data.json"|cut -d- -f1)" \
+                "$(jq -r --argjson p "$p" -- '.parts[$p]' "$index/$id/../data.json"|cut -d- -f2)"
+            else
+              err e 'A part is not number or string'
+            fi
+          done
+        }|sort -nu)"
+
+        exit_if
+
+        container_first="$(printf '%s' "$parts"|head -n1)"
+        container_last="$(printf '%s' "$parts"|tail -n1)"
 
         if test_null prev;then
           # This is the first page, so no prefetches are needed.
@@ -545,21 +561,25 @@ for i in $items;do (
 
         printf '<ol id="nav_bottom_list_pages">'
 
-        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- 'for o in v x
-do printf -- "%s\n" "$1"|grep "-Fqe$o"&&set "-$o"
-done
-page="$2"
-cms="$3"
-lib="$cms/scripts/lib"
-dict="$cms/dictionaries"
-lang="$4"
-for f in config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
-do . "$lib/$f.sh"
-done
-config_set
-parse_lang
-make_page_list_entry "$5"' \
-          sh "$(printf '%s\n' "$-")" "$page" "$cms" "$lang" {}
+        for r in $parts;do
+          make_page_list_entry "$index/$id/../$(zero_pad 2 r)/data.json"
+        done
+
+#        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- 'for o in v x
+#do printf -- "%s\n" "$1"|grep "-Fqe$o"&&set "-$o"
+#done
+#page="$2"
+#cms="$3"
+#lib="$cms/scripts/lib"
+#dict="$cms/dictionaries"
+#lang="$4"
+#for f in config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
+#do . "$lib/$f.sh"
+#done
+#config_set
+#parse_lang
+#make_page_list_entry "$5"' \
+#          sh "$(printf '%s\n' "$-")" "$page" "$cms" "$lang" {}
 
         printf '</ol></details></nav></div>'
 

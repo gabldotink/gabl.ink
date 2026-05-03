@@ -5,7 +5,7 @@
 make_share_link(){
   make_share_link_id="$1"
   [ -n "$config_share_skip" ] &&
-    printf ' %s \n' "$config_share_skip"|grep "-Fqe $make_share_link_id " &&
+    printf '%s\n' "$config_share_skip"|grep "-Fqe^$make_share_link_id$" &&
       return 0
   set_var_l10n make_share_link_name "\"$make_share_link_id\".name" "$dict/share_link.json"
   make_share_link_base="$(jq_r "\"$make_share_link_id\".base" "$dict/share_link.json")"

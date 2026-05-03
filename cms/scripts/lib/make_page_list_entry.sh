@@ -3,14 +3,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 make_page_list_entry(){
-  make_page_list_entry_d="$1"
-  make_page_list_entry_s="$(printf -- '%02d' "$(jq_r location.page "$make_page_list_entry_d")")"
+  make_page_list_entry_s="$(printf -- '%02d' "$(jq_r location.page "$1")")"
 
-  set_var_l10n title title "$make_page_list_entry_d"
+  set_var_l10n list_title title "$1"
 
   printf '<li>'
 
-  if [ -z "$title_html" ];then
+  if [ -z "$list_title_html" ];then
     [ "$make_page_list_entry_s" = "$(zero_pad 2 page)" ] &&
       printf '<b>'
     printf_l10n no_title
@@ -34,13 +33,13 @@ make_page_list_entry(){
         printf '“<a href="../../'
         printf '%s' "$make_page_list_entry_s"
         printf '/%s/" hreflang="%s" type="text/html"><cite>' "$lang" "$lang"
-        printf '%s' "$title_html"
+        printf '%s' "$list_title_html"
         printf '</cite></a>”'
       elif [ "$lang_l" = fr ];then
         printf '<a href="../../'
         printf '%s' "$make_page_list_entry_s"
         printf '/%s/" hreflang="%s" type="text/html"><cite class="i">' "$lang" "$lang"
-        printf '%s' "$title_html"
+        printf '%s' "$list_title_html"
         printf '</cite></a>'
       fi
     fi

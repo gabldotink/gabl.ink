@@ -1,10 +1,9 @@
 {
   "id": "jrco_beta",
   "type": "comic_series",
-  "pages": {
-    "first": 1,
-    "last": 11
-  },
+  "parts": [
+    "1-11"
+  ],
   "lang_original": "en-US",
   "langs": [
     "en-US",
