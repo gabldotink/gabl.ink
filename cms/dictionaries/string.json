@@ -290,5 +290,21 @@
     "fr": {
       "printf": "Journal"
     }
+  },
+  "gabldotink_series_page": {
+    "en": {
+      "printf": "gabl.ink%s: _%s_: “%s”"
+    },
+    "fr": {
+      "printf": "gabl.ink%s\u202f: «\u202f%s\u202f»\u202f: «\u202f%s\u202f»"
+    }
+  },
+  "from_gabldotink": {
+    "en": {
+      "printf": "From https://gabl.ink/ : "
+    },
+    "fr": {
+      "printf": "De https://gabl.ink/ : "
+    }
   }
 }

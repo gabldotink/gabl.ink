@@ -565,21 +565,7 @@ for i in $items;do (
           make_page_list_entry "$index/$id/../$(zero_pad 2 r)/data.json"
         done
 
-#        find "$index/$id/.." -type f -path "$index/$id/../*/data.json"|sort -n|xargs '-I{}' -- sh -c -- 'for o in v x
-#do printf -- "%s\n" "$1"|grep "-Fqe$o"&&set "-$o"
-#done
-#page="$2"
-#cms="$3"
-#lib="$cms/scripts/lib"
-#dict="$cms/dictionaries"
-#lang="$4"
-#for f in config_set err jq_r make_page_list_entry parse_lang printf_l10n set_var_l10n test_null test_unset zero_pad
-#do . "$lib/$f.sh"
-#done
-#config_set
-#parse_lang
-#make_page_list_entry "$5"' \
-#          sh "$(printf '%s\n' "$-")" "$page" "$cms" "$lang" {}
+        unset_var_l10n list_title
 
         printf '</ol></details></nav></div>'
 
@@ -605,6 +591,8 @@ for i in $items;do (
             test_null l_h_label &&
               set_var_l10n l_h_label name.given "$encyclopedia/$l_h/data.json"
           fi
+
+          exit_if
 
           printf '<tr>'
           # shellcheck disable=2154
@@ -659,72 +647,76 @@ for i in $items;do (
         printf '<ul>'
 
         make_share_link email \
+                       "$(printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text")" \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
-                        )" \
-                       "$(
-                          printf -- 'From https://gabl.ink/ : %s' "$canonical"
+                          printf_l10n from_gabldotink
+                          printf -- '%s' "$canonical"
                         )"
 
         make_share_link sms '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” %s' "$series_title_text" "$title_text" "$canonical"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' %s' "$canonical"
                         )"
 
         make_share_link x '' \
-                       "$(
-                          printf -- 'gabl.ink @gabldotink: _%s_: “%s”' "$series_title_text" "$title_text"
-                        )" \
+                       "$(printf_l10n gabldotink_series_page ' @gabldotink' "$series_title_text" "$title_text")" \
                        "gabldotink,$series_hashtag_id"
 
         make_share_link reddit \
-                       "$(
-                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
-                        )"
+                       "$(printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text")"
 
         make_share_link facebook
 
         make_share_link telegram '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link bluesky '' \
                        "$(
-                          printf -- 'gabl.ink @gabl.ink: _%s_: “%s” %s #gabldotink #%s' "$series_title_text" "$title_text" "$canonical" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page ' @gabl.ink' "$series_title_text" "$title_text"
+                          printf ' %s #gabldotink #%s' "$canonical" "$series_hashtag_id"
                         )"
 
         make_share_link whatsapp '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” %s' "$series_title_text" "$title_text" "$canonical"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' %s' "$canonical"
                         )"
 
         make_share_link mastodon '' \
                        "$(
-                          printf -- 'gabl.ink @gabldotink@mstdn.party: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page ' @gabldotink@mstdn.party' "$series_title_text" "$title_text"
+                          printf ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link threads '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link truth_social '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link gab '' \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s” #gabldotink #%s' "$series_title_text" "$title_text" "$series_hashtag_id"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
+                          printf ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link vk \
                        "$(
-                          printf -- 'gabl.ink: _%s_: “%s”' "$series_title_text" "$title_text"
+                          printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
                         )" \
                        "$(
-                          printf -- 'From https://gabl.ink/ : %s #gabldotink #%s' "$canonical" "$series_hashtag_id"
+                          printf_l10n from_gabldotink
+                          printf -- '%s #gabldotink #%s' "$canonical" "$series_hashtag_id"
                         )"
 
         printf '</ul></details>'
