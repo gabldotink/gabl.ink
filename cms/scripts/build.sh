@@ -219,6 +219,11 @@ dict="$cms/dictionaries"
 index="$cms/../index"
 encyclopedia="$index/encyclopedia"
 
+[ -f "$index/data.json" ]||
+  err e "File not found: “$index/data.json”. Are you sure this is the gabl.ink directory?"
+
+exit_if
+
 config_set
 
 if [ -z "$items" ];then
