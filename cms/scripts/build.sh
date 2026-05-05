@@ -465,7 +465,7 @@ for i in $items;do (
         printf '</a>'
 
         printf '<ul id="lang_select">'
-        for l in $langs;do (
+        for l in $(printf '%s\n' "$langs"|sort -u);do (
           main_lang="$lang"
           lang="$l"
           parse_lang
