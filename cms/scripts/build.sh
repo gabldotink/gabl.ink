@@ -248,6 +248,13 @@ for j in $items;do
     err e "File not found: “$j”. Remember spaces, tabs, and newlines are not allowed as part of file paths."
 done
 
+if [ ! -f "$scripts/build.lock" ];then
+  : > "$scripts/build.lock"
+else
+  err e "Lock file found: “$scripts/build.lock”. This indicates another instance of the script is already running. If you are sure this is not the case, delete the lock file and try again."
+  exit 1
+fi
+
 # Last chance to error out before we actually do anything
 exit_if
 
@@ -772,6 +779,8 @@ for i in $items;do (
   ) &
 done
 wait
+
+rm -f "$scripts/build.lock"
 
 err i 'section done: items'
 
