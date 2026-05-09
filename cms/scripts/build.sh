@@ -26,7 +26,7 @@ for r in $deps;do
 You have the following commands available:%s
 
 Arch Linux and derivatives:
-  sudo pacman -S --needed bash coreutils diffutils findutils grep jq ncurses
+  sudo pacman --sync --needed bash coreutils diffutils findutils grep jq ncurses
 
 Debian and derivatives:
   sudo apt update && sudo apt install coreutils dash diffutils findutils grep jq ncurses-bin
@@ -38,10 +38,10 @@ Termux:
   pkg update && pkg install coreutils dash diffutils findutils grep jq ncurses-utils
 
 Cygwin:
-  [installer location]/setup-x86_64.exe -q -P bash,coreutils,diffutils,findutils,grep,jq,ncurses
+  [installer location]/setup-x86_64.exe --quiet-mode --packages=bash,coreutils,diffutils,findutils,grep,jq,ncurses
 
 MSYS2:
-  pacman -S --needed bash coreutils diffutils findutils grep jq ncurses
+  pacman --sync --needed bash coreutils diffutils findutils grep jq ncurses
 ' "$deps" "$commands_v" >&2
       exit 1
   esac
