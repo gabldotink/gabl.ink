@@ -38,7 +38,7 @@ Termux:
   pkg update && pkg install coreutils dash diffutils findutils grep jq ncurses-utils
 
 Cygwin:
-  [installer location]/setup-x86_64.exe --quiet-mode --packages=bash,coreutils,diffutils,findutils,grep,jq,ncurses
+  ./setup-x86_64.exe --quiet-mode --packages=bash,coreutils,diffutils,findutils,grep,jq,ncurses
 
 MSYS2:
   pacman --sync --needed bash coreutils diffutils findutils grep jq ncurses
