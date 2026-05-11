@@ -46,5 +46,24 @@
     "implicit": {
       "script": "Latn"
     }
+  },
+  "tok": {
+    "name": {
+      "en": {
+        "text": "Toki Pona"
+      },
+      "fr": {
+        "text": "toki pona"
+      },
+      "es": {
+        "text": "toki pona"
+      },
+      "tok:": {
+        "text": "toki pona"
+      }
+    },
+    "implicit": {
+      "script": "Latn"
+    }
   }
 }
