@@ -13,10 +13,10 @@
   ],
   "title": {
     "en": {
-      "ascii": "new kid"
+      "text": "new kid"
     },
     "fr": {
-      "ascii": "petite nouvelle"
+      "text": "petite nouvelle"
     }
   },
   "description": {
@@ -29,7 +29,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T."
+          "text": "JoeRunner, T.T., and Harry are sitting at a table. JoeRunner looks up from a book as Harry speaks, pointing at JoeRunner and T.T."
         }
       }
     },
@@ -37,7 +37,7 @@
       "h": "jrco_beta/harry_mahan",
       "d": {
         "en": {
-          "ascii": "Oh, hey, I heard from my father that your class is getting a new kid."
+          "text": "Oh, hey, I heard from my father that your class is getting a new kid."
         },
         "fr": {
           "text": "Oh, hé, j’ai entendu de mon père que votre classe obté une petite nouvelle."
@@ -48,7 +48,6 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "ascii": "From Mr. Mahan?",
           "text": "From Mr.\u00a0Mahan?",
           "html": "From Mr.\u00a0Mahan?"
         },

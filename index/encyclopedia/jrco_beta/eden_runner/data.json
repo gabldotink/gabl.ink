@@ -28,10 +28,10 @@
     "child": "joerunner"
   },
   "description": {
-    "ascii": "A mother."
+    "text": "A mother."
   },
   "bio": {
-    "html": "Eden is JoeRunner’s mother."
+    "text": "Eden is JoeRunner’s mother."
   },
   "copyright": {
     "year": {

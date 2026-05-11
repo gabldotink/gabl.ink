@@ -22,15 +22,15 @@
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner brushes his hair with his hand and puts on his glasses."
+      "text": "JoeRunner brushes his hair with his hand and puts on his glasses."
     },
     "fr": {
-      "ascii": "JoeRunner se brosse les cheveux avec son main et mette ses lunettes."
+      "text": "JoeRunner se brosse les cheveux avec son main et mette ses lunettes."
     }
   },
   "tooltip": {
     "en": {
-      "ascii": "first panel is based on the experience of looking at my drawings"
+      "text": "first panel is based on the experience of looking at my drawings"
     },
     "fr": {
       "text": "la première case est adapté en l’expérience de regarder mes dessins"
@@ -41,7 +41,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
+          "text": "The boy looks in the bathroom mirror in his pajamas, with unkempt hair and a pair of glasses on the counter. He looks kinda gross."
         },
         "fr": {
           "text": "Le garçon regarde le miroir de salle de bain dans son pyjama, avec des cheveux ébouriffé et ses lunettes sur la comptoir. Il semble un peu dégoûtant."
@@ -63,10 +63,10 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
+          "text": "He runs his hand through his hair, causing it to become smooth almost magically. He confidently sets his glasses on his face."
         },
         "fr": {
-          "ascii": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
+          "text": "Il passe ses mains dans ses cheveux, cause les cheveux deviennent lisse presque magiquement. Il mette avec confiance ses lunettes sur son visage."
         }
       }
     },
@@ -85,7 +85,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "ascii": "first panel is based on the experience of looking at my drawings"
+          "text": "first panel is based on the experience of looking at my drawings"
         },
         "fr": {
           "text": "la première case est adapté en l’expérience de regarder mes dessins"
@@ -111,7 +111,7 @@
         },
         {
           "en": {
-            "ascii": "If only it were really this easy."
+            "text": "If only it were really this easy."
           },
           "fr": {
             "text": "Si seulement il était si facile."
@@ -127,10 +127,10 @@
         },
         {
           "en": {
-            "ascii": "Some of them. Some of the other characters have noses."
+            "text": "Some of them. Some of the other characters have noses."
           },
           "fr": {
-            "ascii": "Eh bien, quelques des autres personnages ont les nez."
+            "text": "Eh bien, quelques des autres personnages ont les nez."
           }
         }
       ]

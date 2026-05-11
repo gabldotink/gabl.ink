@@ -13,7 +13,7 @@
   ],
   "title": {
     "en": {
-      "ascii": "establishing shot"
+      "text": "establishing shot"
     },
     "fr": {
       "filename": "plan_d-ensemble",
@@ -22,12 +22,12 @@
   },
   "description": {
     "en": {
-      "ascii": "A boy stands by the door of Schulz Elementary School."
+      "text": "A boy stands by the door of Schulz Elementary School."
     }
   },
   "tooltip": {
     "en": {
-      "ascii": "featuring: several background characters in a white void"
+      "text": "featuring: several background characters in a white void"
     },
     "fr": {
       "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
@@ -46,7 +46,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "ascii": "featuring: several background characters in a white void"
+          "text": "featuring: several background characters in a white void"
         },
         "fr": {
           "text": "avec\u202f: quelques personnages du fond dans un vide blanc"

@@ -2,13 +2,13 @@
   "US": {
     "name": {
       "en": {
-        "ascii": "United States"
+        "text": "United States"
       },
       "fr": {
         "text": "États‐Unis"
       },
       "es": {
-        "ascii": "Estados Unidos"
+        "text": "Estados Unidos"
       }
     }
   },
@@ -28,13 +28,13 @@
   "GB": {
     "name": {
       "en": {
-        "ascii": "United Kingdom"
+        "text": "United Kingdom"
       },
       "fr": {
         "text": "Royaume‐Uni"
       },
       "es": {
-        "ascii": "Reino Unido"
+        "text": "Reino Unido"
       }
     }
   },

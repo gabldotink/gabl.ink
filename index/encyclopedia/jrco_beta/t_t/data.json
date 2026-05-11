@@ -7,10 +7,10 @@
   "name": {
     "label": {
       "en": {
-        "ascii": "T.T."
+        "text": "T.T."
       },
       "fr": {
-        "ascii": "T.T."
+        "text": "T.T."
       }
     },
     "given": "T.T."
@@ -19,7 +19,7 @@
   "birthdate": {},
   "relationships": {},
   "description": {
-    "ascii": "A fifth grader with a laid-back attitude."
+    "text": "A fifth grader with a laid-back attitude."
   },
   "bio": {
     "html": "T.T. is JoeRunner’s best friend. They hang out and play video games together."

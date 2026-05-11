@@ -13,11 +13,10 @@
   ],
   "title": {
     "en": {
-      "ascii": "next year"
+      "text": "next year"
     },
     "fr": {
       "filename": "l-annee_prochaine",
-      "ascii": "l'annee prochaine",
       "text": "l’année prochaine"
     }
   },
@@ -28,7 +27,7 @@
   },
   "tooltip": {
     "en": {
-      "ascii": "you can really hear that semicolon"
+      "text": "you can really hear that semicolon"
     },
     "fr": {
       "comment": "I think I’ll use _vous_ for posts and _tu_ for stuff like this",
@@ -40,7 +39,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner and Eden are in the kitchen now."
+          "text": "JoeRunner and Eden are in the kitchen now."
         }
       }
     },
@@ -48,7 +47,7 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "ascii": "I was just finishing up the last essay of the year."
+          "text": "I was just finishing up the last essay of the year."
         }
       }
     },
@@ -56,7 +55,7 @@
       "h": "jrco_beta/eden_runner",
       "d": {
         "en": {
-          "ascii": "Oh, hey, the last one?"
+          "text": "Oh, hey, the last one?"
         },
         "fr": {
           "text": "Oh, hé, le dernier\u202f?"
@@ -75,7 +74,7 @@
       "h": "jrco_beta/eden_runner",
       "d": {
         "en": {
-          "ascii": "Ooooh, next year! Middle school!"
+          "text": "Ooooh, next year! Middle school!"
         },
         "fr": {
           "text": "Ooooh, l’année prochaine\u202f! Le collège\u202f!"
@@ -135,7 +134,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "ascii": "you can really hear that semicolon"
+          "text": "you can really hear that semicolon"
         },
         "fr": {
           "text": "Tu peux vraiment entendre ce point‐virgule"

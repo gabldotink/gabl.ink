@@ -4,7 +4,7 @@
   "name": {
     "label": {
       "en": {
-        "ascii": "out of frame"
+        "text": "out of frame"
       },
       "fr": {
         "text": "hors de cadre"
@@ -13,10 +13,10 @@
   },
   "description": {
     "en": {
-      "ascii": "Words whose speakers are not visible in the frame."
+      "text": "Words whose speakers are not visible in the frame."
     },
     "fr": {
-      "ascii": "Mots dont les locuteurs ne sont pas visibles dans le cadre."
+      "text": "Mots dont les locuteurs ne sont pas visibles dans le cadre."
     }
   },
   "copyright": {

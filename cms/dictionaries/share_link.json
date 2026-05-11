@@ -18,10 +18,10 @@
   "sms": {
     "name": {
       "en": {
-        "ascii": "text messaging"
+        "text": "text messaging"
       },
       "fr": {
-        "ascii": "messagerie texto"
+        "text": "messagerie texto"
       }
     },
     "base": "sms:",
@@ -116,7 +116,7 @@
   "truth_social": {
     "name": {
       "mul": {
-        "ascii": "Truth Social",
+        "text": "Truth Social",
         "html": "<cite>Truth Social</cite>"
       }
     },

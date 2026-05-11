@@ -17,7 +17,6 @@
       "text": "Joseph’s mom"
     },
     "fr": {
-      "ascii": "la mere de Joseph",
       "text": "la mère de Joseph"
     }
   },
@@ -26,13 +25,12 @@
       "text": "Enter Eden, JoeRunner’s mom."
     },
     "fr": {
-      "ascii": "Entre Eden, la mere de JoeRunner.",
       "text": "Entre Eden, la mère de JoeRunner."
     }
   },
   "tooltip": {
     "en": {
-      "ascii": "JoeRunner inherited having no nose from his dad"
+      "text": "JoeRunner inherited having no nose from his dad"
     }
   },
   "transcript": [
@@ -40,7 +38,7 @@
       "h": "meta/out_of_frame",
       "d": {
         "en": {
-          "ascii": "Joseph?"
+          "text": "Joseph?"
         },
         "fr": {
           "text": "Joseph\u202f?"
@@ -51,7 +49,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner looks over the back of the chair."
+          "text": "JoeRunner looks over the back of the chair."
         }
       }
     },
@@ -59,7 +57,7 @@
       "h": "meta/sound_effect",
       "d": {
         "mul": {
-          "ascii": "?"
+          "text": "?"
         }
       }
     },
@@ -75,7 +73,7 @@
       "h": "meta/woman",
       "d": {
         "en": {
-          "ascii": "What are you doing up so early?"
+          "text": "What are you doing up so early?"
         },
         "fr": {
           "text": "Que fais-tu debout si tôt\u202f?"
@@ -113,7 +111,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "ascii": "JoeRunner inherited having no nose from his dad"
+          "text": "JoeRunner inherited having no nose from his dad"
         }
       }
     }

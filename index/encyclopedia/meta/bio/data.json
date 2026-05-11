@@ -13,7 +13,7 @@
   },
   "description": {
     "en": {
-      "ascii": "Text that introduces a subject to the reader."
+      "text": "Text that introduces a subject to the reader."
     },
     "fr": {
       "text": "Texte qui présente un sujet au lecteur."

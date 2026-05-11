@@ -7,15 +7,15 @@
   "name": {
     "label": {
       "en": {
-        "ascii": "Runner family"
+        "text": "Runner family"
       },
       "fr": {
-        "ascii": "famille Runner"
+        "text": "famille Runner"
       }
     }
   },
   "description": {
-    "ascii": "A family."
+    "text": "A family."
   },
   "bio": {
     "html": "The Runner family includes JoeRunner and Eden."

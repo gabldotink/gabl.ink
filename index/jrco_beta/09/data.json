@@ -18,10 +18,10 @@
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner, T.T., and Harry play an online game."
+      "text": "JoeRunner, T.T., and Harry play an online game."
     },
     "fr": {
-      "ascii": "JoeRunner, T.T. et Harry jouent un jeu en ligne."
+      "text": "JoeRunner, T.T. et Harry jouent un jeu en ligne."
     }
   },
   "transcript": [
@@ -70,7 +70,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner and T.T. are sitting next to each other at computers. JoeRunner looks very confident."
+          "text": "JoeRunner and T.T. are sitting next to each other at computers. JoeRunner looks very confident."
         }
       }
     },
@@ -90,7 +90,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner is imagining his ship blowing up another, while his duck avatar gives a thumbs up."
+          "text": "JoeRunner is imagining his ship blowing up another, while his duck avatar gives a thumbs up."
         }
       }
     },
@@ -139,7 +139,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "T.T. raises his hand and gets an annoyed look."
+          "text": "T.T. raises his hand and gets an annoyed look."
         }
       }
     },
@@ -171,7 +171,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "A boy on another computer with long black hair and an unbuttoned polo shirt has a smug look on his face. He speaks in a textured font."
+          "text": "A boy on another computer with long black hair and an unbuttoned polo shirt has a smug look on his face. He speaks in a textured font."
         }
       }
     },
@@ -179,7 +179,7 @@
       "h": "meta/boy",
       "d": {
         "en": {
-          "ascii": "Ah, guilty as charged. It is just so funny when you guys rage."
+          "text": "Ah, guilty as charged. It is just so funny when you guys rage."
         }
       }
     },
@@ -203,7 +203,6 @@
       "h": "jrco_beta/harry_mahan",
       "d": {
         "en": {
-          "ascii": "The last four years, anyway. And now you are approximately 1.39729 * 10^12 molecules of space debris.",
           "text": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010¹² molecules of space debris.",
           "html": "The last four years, anyway. And now you are approximately 1.39729\u00a0×\u00a010<sup>12</sup> molecules of space debris."
         },
@@ -217,7 +216,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "T.T. and Harry dap each other up."
+          "text": "T.T. and Harry dap each other up."
         }
       }
     },
@@ -225,7 +224,7 @@
       "h": "jrco_beta/harry_mahan",
       "d": {
         "en": {
-          "ascii": "But, my friends, it was quite an honorable battle."
+          "text": "But, my friends, it was quite an honorable battle."
         }
       }
     },

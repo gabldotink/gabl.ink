@@ -14,7 +14,8 @@
   ],
   "title": {
     "en": {
-      "ascii": "alarm clock"
+      "filename": "alarm_clock",
+      "text": "alarm clock"
     },
     "fr": {
       "filename": "reveil",
@@ -23,10 +24,10 @@
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner wakes up."
+      "text": "JoeRunner wakes up."
     },
     "fr": {
-      "ascii": "JoeRunner se reveille."
+      "text": "JoeRunner se reveille."
     }
   },
   "transcript": [
@@ -45,7 +46,7 @@
       "h": "meta/boy",
       "d": {
         "en": {
-          "ascii": "I really need to get a new snooze button."
+          "text": "I really need to get a new snooze button."
         },
         "fr": {
           "text": "J’ai vraiment besoin d’un nouveau bouton de répétition."

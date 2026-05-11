@@ -4,16 +4,16 @@
   "name": {
     "label": {
       "en": {
-        "ascii": "sound effect"
+        "text": "sound effect"
       },
       "fr": {
-        "ascii": "effet sonore"
+        "text": "effet sonore"
       }
     }
   },
   "description": {
     "en": {
-      "ascii": "Text that represents a sound."
+      "text": "Text that represents a sound."
     },
     "fr": {
       "text": "Texte qui représente un son."

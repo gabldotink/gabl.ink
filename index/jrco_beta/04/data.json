@@ -13,16 +13,16 @@
   ],
   "title": {
     "mul": {
-      "ascii": "Magna Carta",
+      "text": "Magna Carta",
       "html": "<cite>Magna Carta</cite>"
     }
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner finishes an essay."
+      "text": "JoeRunner finishes an essay."
     },
     "fr": {
-      "ascii": "JoeRunner finit un essai."
+      "text": "JoeRunner finit un essai."
     }
   },
   "tooltip": {
@@ -52,10 +52,10 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "A box appears on the screen."
+          "text": "A box appears on the screen."
         },
         "fr": {
-          "ascii": "Une fenêtre apparaît sur l’écran."
+          "text": "Une fenêtre apparaît sur l’écran."
         }
       }
     },
@@ -74,10 +74,10 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "The cursor selects the Submit button."
+          "text": "The cursor selects the Submit button."
         },
         "fr": {
-          "ascii": "Le curseur sélectionne le bouton Rendre."
+          "text": "Le curseur sélectionne le bouton Rendre."
         }
       }
     },
@@ -85,10 +85,10 @@
       "h": "meta/sound_effect",
       "d": {
         "en": {
-          "ascii": "Click!"
+          "text": "Click!"
         },
         "fr": {
-          "ascii": "Clic\u202f!"
+          "text": "Clic\u202f!"
         }
       }
     },
@@ -96,7 +96,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner leans back in his chair. He speaks in all capitals."
+          "text": "JoeRunner leans back in his chair. He speaks in all capitals."
         },
         "fr": {
           "text": "JoeRunner se penche en arrière dans sa chaise. Il parle dans toutes les capitales."

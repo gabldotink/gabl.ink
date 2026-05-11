@@ -13,7 +13,7 @@
   },
   "description": {
     "en": {
-      "ascii": "Text emitted on a screen."
+      "text": "Text emitted on a screen."
     },
     "fr": {
       "text": "Texte émis sur un écran."

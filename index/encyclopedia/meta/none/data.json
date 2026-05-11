@@ -3,7 +3,7 @@
   "type": "meta_character",
   "description": {
     "en": {
-      "ascii": "Text that describes an image to the reader, appearing only in the transcript."
+      "text": "Text that describes an image to the reader, appearing only in the transcript."
     },
     "fr": {
       "text": "Texte qui décrit une image au lecteur, apparaissant seulement dans la transcription."

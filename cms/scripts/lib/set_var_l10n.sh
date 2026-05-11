@@ -10,7 +10,7 @@ set_var_l10n(){
       break
     fi
 
-    for t in ascii filename html id printf text;do
+    for t in filename html id printf text;do
       eval " ${1}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$2"'"'"'.[$o].[$t]'"'"' "$3")"' >/dev/null 2>&1
       test_null "${1}_$t" &&
         unset -- "${1}_$t"
@@ -19,26 +19,21 @@ set_var_l10n(){
     # mutually exclusive
 
     if ! test_unset "${1}_id";then
-      unset -- "${1}_ascii" "${1}_filename" "${1}_html" "${1}_printf" "${1}_text"
+      unset -- "${1}_filename" "${1}_html" "${1}_printf" "${1}_text"
       break
     fi
 
     if ! test_unset "${1}_printf";then
-      unset -- "${1}_ascii" "${1}_filename" "${1}_html" "${1}_text"
+      unset -- "${1}_filename" "${1}_html" "${1}_text"
       break
     fi
 
     # verbatim
 
-    # filename to ascii
-    test_unset "${1}_ascii" &&
-      ! test_unset "${1}_filename" &&
-        eval " $1"'_ascii="$'"$1"'_filename"'
-
-    # ascii to text
+    # filename to text
     test_unset "${1}_text" &&
-      ! test_unset "${1}_ascii" &&
-        eval " $1"'_text="$'"$1"'_ascii"'
+      ! test_unset "${1}_filename" &&
+        eval " $1"'_text="$'"$1"'_filename"'
 
     # text to html
     test_unset "${1}_html" &&
@@ -47,24 +42,18 @@ set_var_l10n(){
 
     # conversions
 
-    # convert text to ascii
-    if test_unset "${1}_ascii" &&
-       ! test_unset "${1}_text";then
-      eval " ${1}_ascii_tmp='""$(
-        eval 'printf -- "%s" "$'"$1"'_text"'|
-          sed "-f$lib/text2ascii.sed"
-      )'"
-      eval 'printf -- "%s" "$'"$1"'_ascii_tmp"'|grep '-qe^[ -~]*$' &&
-        eval " $1"'_ascii="$'"$1"'_ascii_tmp"'
-      unset -- "${1}_ascii_tmp"
-    fi
-
-    # convert ascii to filename
-    if test_unset "${1}_filename" &&
-       ! test_unset "${1}_ascii" &&
-       eval 'printf -- "%s\n" "$'"$1"'_ascii"'|grep '-qe^[A-Za-z0-9 _-]*$';then
-      eval " $1"'_filename="'"$(eval 'printf -- "%s" "$'"$1"'_ascii"'|tr ' ' _)"'"'
-    fi
+    # Currently removing ascii from project
+    ## convert text to ascii
+    #if test_unset "${1}_ascii" &&
+    #   ! test_unset "${1}_text";then
+    #  eval " ${1}_ascii_tmp='""$(
+    #    eval 'printf -- "%s" "$'"$1"'_text"'|
+    #      sed "-f$lib/text2ascii.sed"
+    #  )'"
+    #  eval 'printf -- "%s" "$'"$1"'_ascii_tmp"'|grep '-qe^[ -~]*$' &&
+    #    eval " $1"'_ascii="$'"$1"'_ascii_tmp"'
+    #  unset -- "${1}_ascii_tmp"
+    #fi
 
     # finish if html is set
     test_unset "${1}_html" ||

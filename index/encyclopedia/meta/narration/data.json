@@ -13,7 +13,7 @@
   },
   "description": {
     "en": {
-      "ascii": "Miscellaneous text that appears as a message to the reader."
+      "text": "Miscellaneous text that appears as a message to the reader."
     },
     "fr": {
       "text": "Texte diverse qui apparaît comme un message au lecteur."

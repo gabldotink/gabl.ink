@@ -14,16 +14,16 @@
   "title": {
     "en": {
       "filename": "T_T",
-      "ascii": "T.T."
+      "text": "T.T."
     },
     "fr": {
       "filename": "T_T",
-      "ascii": "T.T."
+      "text": "T.T."
     }
   },
   "description": {
     "en": {
-      "ascii": "JoeRunner meets his friend T.T. outside the school."
+      "text": "JoeRunner meets his friend T.T. outside the school."
     }
   },
   "transcript": [
@@ -39,10 +39,10 @@
       "h": "meta/boy",
       "d": {
         "en": {
-          "ascii": "Oh, finally."
+          "text": "Oh, finally."
         },
         "fr": {
-          "ascii": "Oh, enfin."
+          "text": "Oh, enfin."
         }
       }
     },
@@ -50,10 +50,10 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "JoeRunner walks up to the boy."
+          "text": "JoeRunner walks up to the boy."
         },
         "fr": {
-          "ascii": "JoeRunner marche jusqu’au garçon."
+          "text": "JoeRunner marche jusqu’au garçon."
         }
       }
     },
@@ -61,7 +61,7 @@
       "h": "meta/boy",
       "d": {
         "en": {
-          "ascii": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
+          "text": "Hey, JoeRunner, you made it! And it only took, like, two decades!"
         },
         "fr": {
           "text": "Hé, JoeRunner, tu es arrivé\u00a0! Et ça n’a pris que, genre, deux décennies\u00a0!"
@@ -85,7 +85,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "ascii": "The boy starts walking to the door."
+          "text": "The boy starts walking to the door."
         }
       }
     },

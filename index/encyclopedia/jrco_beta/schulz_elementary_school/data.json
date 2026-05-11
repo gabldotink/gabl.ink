@@ -7,10 +7,9 @@
   "name": {
     "label": {
       "en": {
-        "ascii": "Schulz Elementary School"
+        "text": "Schulz Elementary School"
       },
       "fr": {
-        "ascii": "Ecole primaire Schulz",
         "text": "École primaire Schulz"
       }
     },
