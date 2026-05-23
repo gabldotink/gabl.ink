@@ -1,5 +1,5 @@
 {
-  "US": {
+  "us": {
     "name": {
       "en": {
         "text": "United States"
@@ -12,7 +12,7 @@
       }
     }
   },
-  "FR": {
+  "fr": {
     "name": {
       "en": {
         "filename": "France"
@@ -25,7 +25,7 @@
       }
     }
   },
-  "GB": {
+  "gb": {
     "name": {
       "en": {
         "text": "United Kingdom"
@@ -38,7 +38,7 @@
       }
     }
   },
-  "CA": {
+  "ca": {
     "name": {
       "en": {
         "filename": "Canada"

@@ -12,7 +12,7 @@
       }
     },
     "implicit": {
-      "script": "Latn"
+      "script": "latn"
     }
   },
   "fr": {
@@ -28,7 +28,7 @@
       }
     },
     "implicit": {
-      "script": "Latn"
+      "script": "latn"
     }
   },
   "es": {
@@ -44,7 +44,7 @@
       }
     },
     "implicit": {
-      "script": "Latn"
+      "script": "latn"
     }
   },
   "tok": {
@@ -63,7 +63,7 @@
       }
     },
     "implicit": {
-      "script": "Latn"
+      "script": "latn"
     }
   }
 }
