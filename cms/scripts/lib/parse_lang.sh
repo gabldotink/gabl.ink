@@ -31,17 +31,18 @@ parse_lang(){
   if printf '%s\n' "$parse_lang_3"|grep '-qe^[A-Z][a-z]\{3\}$';then
     # shellcheck disable=2034
     lang_s="$parse_lang_3"
+    # shellcheck disable=2034
+    lang_s_l="$(jq -nr --arg s "$lang_s" '$s|ascii_downcase')"
   elif [ "$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")" != null ];then
     # shellcheck disable=2034
-    lang_s="$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")"
+    lang_s_l="$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")"
+    lang_s="$(jq -nr --arg s "$lang_s_l" '$s|(.[:1]|ascii_upcase)+.[1:]')"
   else
     err e 'Script subtag is not valid'
   fi
-  # shellcheck disable=2034
-  lang_s_l="$(jq -nr --arg s "$lang_s" '$s|ascii_downcase')"
 
   # shellcheck disable=2034
-  lang_d="$(jq -r --arg s "$lang_s" '.[$s].dir' "$dict/script.json")"
+  lang_d="$(jq -r --arg s "$lang_s_l" '.[$s].dir' "$dict/script.json")"
 
   set_var_l10n lang_l_name "\"$lang_l\".name" "$dict/language.json"
   set_var_l10n lang_r_name "\"$lang_r_l\".name" "$dict/region.json"
