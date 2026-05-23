@@ -9,7 +9,6 @@
 *.html text eol=lf linguist-language=HTML
 *.json text eol=lf linguist-language=JSON
 *.md text eol=lf linguist-language=Markdown
-*.sed text eol=lf
 *.sh text eol=lf linguist-language=Shell
 .shellcheckrc text eol=lf linguist-language=ShellCheck-Config
 *.svg text eol=lf linguist-language=SVG
@@ -19,8 +18,6 @@
 *.yml text eol=lf linguist-language=YAML
 
 *.clip binary
-#*.jpg binary
 *.png binary
 *.mp4 binary
 *.webm binary
-#*.webp binary
