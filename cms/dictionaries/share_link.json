@@ -2,13 +2,13 @@
   "email": {
     "name": {
       "en": {
-        "filename": "email"
+        "text": "email"
       },
       "fr-FR": {
-        "filename": "email"
+        "text": "email"
       },
       "fr-CA": {
-        "filename": "courriel"
+        "text": "courriel"
       }
     },
     "base": "mailto:",
@@ -30,7 +30,7 @@
   "x": {
     "name": {
       "mul": {
-        "filename": "X",
+        "text": "X",
         "html": "<cite>X</cite>"
       }
     },
@@ -42,7 +42,7 @@
   "reddit": {
     "name": {
       "mul": {
-        "filename": "Reddit",
+        "text": "Reddit",
         "html": "<cite>Reddit</cite>"
       }
     },
@@ -53,7 +53,7 @@
   "facebook": {
     "name": {
       "mul": {
-        "filename": "Facebook",
+        "text": "Facebook",
         "html": "<cite>Facebook</cite>"
       }
     },
@@ -63,7 +63,7 @@
   "telegram": {
     "name": {
       "mul": {
-        "filename": "Telegram",
+        "text": "Telegram",
         "html": "<cite>Telegram</cite>"
       }
     },
@@ -74,7 +74,7 @@
   "bluesky": {
     "name": {
       "mul": {
-        "filename": "Bluesky",
+        "text": "Bluesky",
         "html": "<cite>Bluesky</cite>"
       }
     },
@@ -84,7 +84,7 @@
   "whatsapp": {
     "name": {
       "mul": {
-        "filename": "WhatsApp",
+        "text": "WhatsApp",
         "html": "<cite>WhatsApp</cite>"
       }
     },
@@ -94,7 +94,7 @@
   "mastodon": {
     "name": {
       "mul": {
-        "filename": "Mastodon",
+        "text": "Mastodon",
         "html": "<cite>Mastodon</cite>"
       }
     },
@@ -105,7 +105,7 @@
   "threads": {
     "name": {
       "mul": {
-        "filename": "Threads",
+        "text": "Threads",
         "html": "<cite>Threads</cite>"
       }
     },
@@ -127,7 +127,7 @@
   "gab": {
     "name": {
       "mul": {
-        "filename": "Gab",
+        "text": "Gab",
         "html": "<cite>Gab</cite>"
       }
     },
@@ -138,11 +138,10 @@
   "vk": {
     "name": {
       "mul": {
-        "filename": "VK",
+        "text": "VK",
         "html": "<cite>VK</cite>"
       },
       "ru": {
-        "filename": "VKontakte",
         "text": "ВКонтакте",
         "html": "<cite>ВКонтакте</cite>"
       }

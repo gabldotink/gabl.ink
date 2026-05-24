@@ -4,10 +4,10 @@
   "name": {
     "label": {
       "en": {
-        "filename": "tooltip"
+        "text": "tooltip"
       },
       "fr": {
-        "filename": "infobulle"
+        "text": "infobulle"
       }
     }
   },

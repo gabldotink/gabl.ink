@@ -7,10 +7,10 @@
   "name": {
     "label": {
       "en": {
-        "filename": "city"
+        "text": "city"
       },
       "fr": {
-        "filename": "ville"
+        "text": "ville"
       }
     }
   },

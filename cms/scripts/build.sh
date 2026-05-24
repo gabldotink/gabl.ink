@@ -536,7 +536,7 @@ for i in $items;do (
             printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
           fi
           printf '<p>'
-          printf_l10n video_not_supported "$lang" "$series_title_filename" "$title_filename"
+          printf_l10n video_not_supported "$lang" "$series_title_text" "$title_text"
           printf '</p>'
           printf '</video></div>'
         else

@@ -4,10 +4,10 @@
   "name": {
     "label": {
       "en": {
-        "filename": "chat"
+        "text": "chat"
       },
       "fr": {
-        "filename": "chat"
+        "text": "chat"
       }
     }
   },

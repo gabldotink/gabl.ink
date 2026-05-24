@@ -13,10 +13,9 @@
   ],
   "title": {
     "en": {
-      "filename": "entrance"
+      "text": "entrance"
     },
     "fr": {
-      "filename": "entree",
       "text": "entrée"
     }
   },

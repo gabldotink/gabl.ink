@@ -14,11 +14,9 @@
   ],
   "title": {
     "en": {
-      "filename": "alarm_clock",
       "text": "alarm clock"
     },
     "fr": {
-      "filename": "reveil",
       "text": "réveil"
     }
   },

@@ -3,13 +3,13 @@
     "dir": "ltr",
     "name": {
       "en": {
-        "filename": "Latin"
+        "text": "Latin"
       },
       "fr": {
-        "filename": "latine"
+        "text": "latine"
       },
       "es": {
-        "filename": "latina"
+        "text": "latina"
       }
     }
   }

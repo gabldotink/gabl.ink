@@ -2,10 +2,10 @@
   "en": {
     "name": {
       "en": {
-        "filename": "English"
+        "text": "English"
       },
       "fr": {
-        "filename": "anglais"
+        "text": "anglais"
       },
       "es": {
         "text": "inglés"
@@ -18,7 +18,7 @@
   "fr": {
     "name": {
       "en": {
-        "filename": "French"
+        "text": "French"
       },
       "fr": {
         "text": "français"
@@ -34,10 +34,10 @@
   "es": {
     "name": {
       "en": {
-        "filename": "Spanish"
+        "text": "Spanish"
       },
       "fr": {
-        "filename": "espagnol"
+        "text": "espagnol"
       },
       "es": {
         "text": "español"

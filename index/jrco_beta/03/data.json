@@ -14,10 +14,10 @@
   ],
   "title": {
     "en": {
-      "filename": "mirror"
+      "text": "mirror"
     },
     "fr": {
-      "filename": "miroir"
+      "text": "miroir"
     }
   },
   "description": {

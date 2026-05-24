@@ -4,10 +4,10 @@
   "name": {
     "label": {
       "en": {
-        "filename": "letter"
+        "text": "letter"
       },
       "fr": {
-        "filename": "lettre"
+        "text": "lettre"
       }
     }
   },

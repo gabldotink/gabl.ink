@@ -7,17 +7,17 @@
   "name": {
     "label": {
       "mul": {
-        "filename": "Eden"
+        "text": "Eden"
       }
     },
     "given": {
       "mul": {
-        "filename": "Eden"
+        "text": "Eden"
       }
     },
     "sur": {
       "mul": {
-        "filename": "Runner"
+        "text": "Runner"
       }
     }
   },

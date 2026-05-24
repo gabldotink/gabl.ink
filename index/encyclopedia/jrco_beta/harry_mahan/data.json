@@ -7,17 +7,17 @@
   "name": {
     "label": {
       "mul": {
-        "filename": "Harry"
+        "text": "Harry"
       }
     },
     "given": {
       "mul": {
-        "filename": "Harry"
+        "text": "Harry"
       }
     },
     "sur": {
       "mul": {
-        "filename": "Mahan"
+        "text": "Mahan"
       }
     }
   },

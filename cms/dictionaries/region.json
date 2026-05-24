@@ -15,13 +15,13 @@
   "fr": {
     "name": {
       "en": {
-        "filename": "France"
+        "text": "France"
       },
       "fr": {
-        "filename": "France"
+        "text": "France"
       },
       "es": {
-        "filename": "Francia"
+        "text": "Francia"
       }
     }
   },
@@ -41,10 +41,10 @@
   "ca": {
     "name": {
       "en": {
-        "filename": "Canada"
+        "text": "Canada"
       },
       "fr": {
-        "filename": "Canada"
+        "text": "Canada"
       },
       "es": {
         "text": "Canadá"

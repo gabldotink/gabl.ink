@@ -4,10 +4,10 @@
   "name": {
     "label": {
       "en": {
-        "filename": "narration"
+        "text": "narration"
       },
       "fr": {
-        "filename": "narration"
+        "text": "narration"
       }
     }
   },
