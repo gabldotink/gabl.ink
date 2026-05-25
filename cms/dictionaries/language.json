@@ -107,5 +107,21 @@
         "text": "chinois"
       }
     }
+  },
+  "ko": {
+    "name": {
+      "ko": {
+        "text": "한국어"
+      },
+      "en": {
+        "text": "Korean"
+      },
+      "fr": {
+        "text": "coréen"
+      }
+    },
+    "implicit": {
+      "script": "kore"
+    }
   }
 }

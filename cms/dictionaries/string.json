@@ -266,12 +266,10 @@
     "ko": {
       "printf": "기원전\u00a0"
     },
-    "zh-CN": {
-      "comment": "zh-Hans",
+    "zh-Hans": {
       "printf": "纪元前"
     },
-    "zh-TW": {
-      "comment": "zh-Hant",
+    "zh-Hant": {
       "printf": "紀元前"
     }
   },
