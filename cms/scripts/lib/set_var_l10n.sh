@@ -10,11 +10,17 @@ set_var_l10n(){
       break
     fi
 
-    for t in html id printf text;do
+    for t in equal html id printf text;do
       eval " ${1}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$2"'"'"'.[$o].[$t]'"'"' "$3")"' >/dev/null 2>&1
       test_null "${1}_$t" &&
         unset -- "${1}_$t"
     done
+
+    if ! test_unset "${1}_equal" &&
+       [ "$o" != "$(eval 'printf "%s" "$'"$1"'_equal"')" ];then
+        eval 'lang="$'"$1"'_equal" set_var_l10n "$1" "$2" "$3"'
+        break
+    fi
 
     # mutually exclusive
 

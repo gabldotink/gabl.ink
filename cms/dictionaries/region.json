@@ -14,11 +14,11 @@
   },
   "fr": {
     "name": {
-      "en": {
-        "text": "France"
-      },
       "fr": {
         "text": "France"
+      },
+      "en": {
+        "equal": "fr"
       },
       "es": {
         "text": "Francia"
@@ -40,11 +40,11 @@
   },
   "ca": {
     "name": {
-      "en": {
-        "text": "Canada"
-      },
       "fr": {
         "text": "Canada"
+      },
+      "en": {
+        "equal": "fr"
       },
       "es": {
         "text": "Canadá"

@@ -6,8 +6,11 @@
   },
   "name": {
     "label": {
-      "mul": {
+      "en": {
         "text": "Eden"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "given": {

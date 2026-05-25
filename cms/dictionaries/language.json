@@ -52,14 +52,11 @@
       "en": {
         "text": "Toki Pona"
       },
-      "fr": {
-        "text": "toki pona"
-      },
-      "es": {
-        "text": "toki pona"
-      },
       "tok": {
         "text": "toki pona"
+      },
+      "mul": {
+        "equal": "tok"
       }
     },
     "implicit": {

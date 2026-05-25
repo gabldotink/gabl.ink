@@ -55,8 +55,11 @@
     {
       "h": "meta/sound_effect",
       "d": {
-        "mul": {
+        "en": {
           "text": "?"
+        },
+        "mul": {
+          "equal": "en"
         }
       }
     },

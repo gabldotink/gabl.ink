@@ -11,8 +11,8 @@
     "en": {
       "printf": "gabl.ink"
     },
-    "fr": {
-      "printf": "gabl.ink"
+    "mul": {
+      "equal": "en"
     }
   },
   "video_not_supported": {
@@ -36,15 +36,15 @@
       "printf": "<cite class=\"i\">%s</cite>"
     },
     "fr": {
-      "printf": "<cite class=\"i\">%s</cite>"
+      "equal": "en"
     }
   },
   "comma_page": {
-    "en": {
-      "printf": ", page\u00a0%s "
-    },
     "fr": {
       "printf": ", page\u00a0%s "
+    },
+    "en": {
+      "equal": "fr"
     }
   },
   "page_title_html": {

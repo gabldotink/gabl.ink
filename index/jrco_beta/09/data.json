@@ -12,8 +12,11 @@
     "en-US"
   ],
   "title": {
-    "mul": {
+    "en": {
       "text": "Harry"
+    },
+    "mul": {
+      "equal": "en"
     }
   },
   "description": {

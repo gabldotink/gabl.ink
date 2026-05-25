@@ -12,9 +12,12 @@
     "en-US"
   ],
   "title": {
-    "mul": {
+    "en": {
       "text": "Magna Carta",
       "html": "<cite>Magna Carta</cite>"
+    },
+    "fr": {
+      "equal": "en"
     }
   },
   "description": {

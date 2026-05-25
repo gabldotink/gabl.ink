@@ -6,8 +6,11 @@
   },
   "name": {
     "label": {
-      "mul": {
+      "en": {
         "text": "JoeRunner"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "given": "Joseph",

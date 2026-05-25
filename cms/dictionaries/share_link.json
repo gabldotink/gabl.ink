@@ -5,7 +5,7 @@
         "text": "email"
       },
       "fr-FR": {
-        "text": "email"
+        "equal": "en"
       },
       "fr-CA": {
         "text": "courriel"
@@ -29,9 +29,12 @@
   },
   "x": {
     "name": {
-      "mul": {
+      "en": {
         "text": "X",
         "html": "<cite>X</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://x.com/intent/tweet",
@@ -41,9 +44,12 @@
   },
   "reddit": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Reddit",
         "html": "<cite>Reddit</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://www.reddit.com/submit?type=LINK",
@@ -52,9 +58,12 @@
   },
   "facebook": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Facebook",
         "html": "<cite>Facebook</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://www.facebook.com/sharer/sharer.php",
@@ -62,9 +71,12 @@
   },
   "telegram": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Telegram",
         "html": "<cite>Telegram</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://t.me/share",
@@ -73,9 +85,12 @@
   },
   "bluesky": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Bluesky",
         "html": "<cite>Bluesky</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://bsky.app/intent/compose",
@@ -83,9 +98,12 @@
   },
   "whatsapp": {
     "name": {
-      "mul": {
+      "en": {
         "text": "WhatsApp",
         "html": "<cite>WhatsApp</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://wa.me/",
@@ -93,9 +111,12 @@
   },
   "mastodon": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Mastodon",
         "html": "<cite>Mastodon</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://mastodonshare.com/",
@@ -104,9 +125,12 @@
   },
   "threads": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Threads",
         "html": "<cite>Threads</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://www.threads.com/intent/post",
@@ -115,9 +139,12 @@
   },
   "truth_social": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Truth Social",
         "html": "<cite>Truth Social</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://truthsocial.com/share",
@@ -126,9 +153,12 @@
   },
   "gab": {
     "name": {
-      "mul": {
+      "en": {
         "text": "Gab",
         "html": "<cite>Gab</cite>"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "base": "https://gab.com/compose",
@@ -137,13 +167,13 @@
   },
   "vk": {
     "name": {
-      "mul": {
-        "text": "VK",
-        "html": "<cite>VK</cite>"
-      },
       "ru": {
         "text": "ВКонтакте",
         "html": "<cite>ВКонтакте</cite>"
+      },
+      "mul": {
+        "text": "VK",
+        "html": "<cite>VK</cite>"
       }
     },
     "base": "https://vk.com/share.php",
