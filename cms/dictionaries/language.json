@@ -62,5 +62,50 @@
     "implicit": {
       "script": "latn"
     }
+  },
+  "ru": {
+    "name": {
+      "ru": {
+        "text": "русский"
+      },
+      "en": {
+        "text": "Russian"
+      },
+      "fr": {
+        "text": "russe"
+      }
+    },
+    "implicit": {
+      "script": "cyrl"
+    }
+  },
+  "ja": {
+    "name": {
+      "ja": {
+        "text": "日本語"
+      },
+      "en": {
+        "text": "Japanese"
+      },
+      "fr": {
+        "text": "japonais"
+      }
+    },
+    "implicit": {
+      "script": "jpan"
+    }
+  },
+  "zh": {
+    "name": {
+      "zh": {
+        "text": "中文"
+      },
+      "en": {
+        "text": "Chinese"
+      },
+      "fr": {
+        "text": "chinois"
+      }
+    }
   }
 }

@@ -12,5 +12,75 @@
         "text": "latina"
       }
     }
+  },
+  "cryl": {
+    "dir": "ltr",
+    "name": {
+      "ru": {
+        "text": "кири́ллица"
+      },
+      "en": {
+        "text": "Cyrillic"
+      },
+      "fr": {
+        "text": "cyrillique"
+      }
+    }
+  },
+  "jpan": {
+    "dir": "ltr",
+    "name": {
+      "ja": {
+        "text": "漢字、平仮名、片仮名"
+      },
+      "en": {
+        "text": "kanji, hiragana, and katakana"
+      },
+      "fr": {
+        "text": "kanji, hiragana et katakana"
+      }
+    }
+  },
+  "kore": {
+    "dir": "ltr",
+    "name": {
+      "ko": {
+        "text": "한자와 한글"
+      },
+      "en": {
+        "text": "hangul and hanja"
+      },
+      "fr": {
+        "text": "hangeul et hanja"
+      }
+    }
+  },
+  "hant": {
+    "dir": "ltr",
+    "name": {
+      "zh-Hant": {
+        "text": "繁體中文"
+      },
+      "en": {
+        "text": "traditional Chinese"
+      },
+      "fr": {
+        "text": "chinois traditionnel"
+      }
+    }
+  },
+  "hans": {
+    "dir": "ltr",
+    "name": {
+      "zh-Hans": {
+        "text": "繁体中文"
+      },
+      "en": {
+        "text": "simplified Chinese"
+      },
+      "fr": {
+        "text": "chinois simplifié"
+      }
+    }
   }
 }
