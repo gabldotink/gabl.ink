@@ -50,5 +50,15 @@
         "text": "Canadá"
       }
     }
+  },
+  "419": {
+    "name": {
+      "es": {
+        "text": "América Latina"
+      },
+      "en": {
+        "text": "Latin America"
+      }
+    }
   }
 }

@@ -33,14 +33,14 @@
   },
   "es": {
     "name": {
+      "es": {
+        "text": "español"
+      },
       "en": {
         "text": "Spanish"
       },
       "fr": {
         "text": "espagnol"
-      },
-      "es": {
-        "text": "español"
       }
     },
     "implicit": {

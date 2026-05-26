@@ -19,7 +19,7 @@ parse_lang(){
     err e 'Primary language subtag is not valid'
   fi
 
-  if printf '%s\n' "$parse_lang_2"|grep '-qe^[A-Z]\{2\}$';then
+  if printf '%s\n' "$parse_lang_2"|grep '-qEe^[A-Z]{2}|[0-9]{3}$';then
     # shellcheck disable=2034
     lang_r="$parse_lang_2"
     # shellcheck disable=2034
@@ -48,5 +48,6 @@ parse_lang(){
   set_var_l10n lang_r_name "\"$lang_r_l\".name" "$dict/region.json"
   set_var_l10n lang_s_name "\"$lang_s_l\".name" "$dict/script.json"
 
+  # Convert to regional indicators
   lang_r_flag="$(jq -nr --arg r "$lang_r" '$r|explode|map(.-65+127462)|implode')"
 }
