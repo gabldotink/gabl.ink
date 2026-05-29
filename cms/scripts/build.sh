@@ -178,14 +178,15 @@ unset unknowns
 if test_unset monochrome;then
   tput_underline="$(tput smul 2>/dev/null||:)"
   tput_bold="$(tput bold 2>/dev/null||:)"
-  tput_black="$(tput setaf 0 2>/dev/null||:)"
+  #tput_italic="$(tput sitm 2>/dev/null||:)"
+  #tput_black="$(tput setaf 0 2>/dev/null||:)"
   tput_red="$(tput setaf 1 2>/dev/null||:)"
-  tput_green="$(tput setaf 2 2>/dev/null||:)"
+  #tput_green="$(tput setaf 2 2>/dev/null||:)"
   tput_yellow="$(tput setaf 3 2>/dev/null||:)"
   tput_blue="$(tput setaf 4 2>/dev/null||:)"
   tput_magenta="$(tput setaf 5 2>/dev/null||:)"
   tput_cyan="$(tput setaf 6 2>/dev/null||:)"
-  tput_white="$(tput setaf 7 2>/dev/null||:)"
+  #tput_white="$(tput setaf 7 2>/dev/null||:)"
   tput_reset="$(tput sgr0 2>/dev/null||:)"
 fi
 
