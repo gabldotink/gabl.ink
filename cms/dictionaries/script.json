@@ -48,10 +48,12 @@
         "text": "한자와 한글"
       },
       "en": {
-        "text": "hangul and hanja"
+        "text": "hangul and hanja",
+        "html": "hangul and <i>hanja</i>"
       },
       "fr": {
-        "text": "hangeul et hanja"
+        "text": "hangeul et hanja",
+        "html": "hangeul et <i>hanja</i>"
       }
     }
   },
