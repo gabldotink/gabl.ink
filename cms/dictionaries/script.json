@@ -49,11 +49,11 @@
       },
       "en": {
         "text": "hangul and hanja",
-        "html": "hangul and <i>hanja</i>"
+        "html": "hangul and <i lang=\"ko-Latn\">hanja</i>"
       },
       "fr": {
         "text": "hangeul et hanja",
-        "html": "hangeul et <i>hanja</i>"
+        "html": "<i lang=\"ko-Latn\">hangeul</i> et <i lang=\"ko-Latn\">hanja</i>"
       }
     }
   },
