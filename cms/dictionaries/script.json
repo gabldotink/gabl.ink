@@ -31,7 +31,8 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "漢字、平仮名、片仮名"
+        "text": "漢字、平仮名、片仮名",
+        "html": "漢字、<ruby>平仮名<rt>ひらがな</rt></ruby>、<ruby>片仮名<rt>カタカナ</rt></ruby>"
       },
       "en": {
         "text": "kanji, hiragana, and katakana"
@@ -45,7 +46,8 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "平仮名"
+        "text": "平仮名",
+        "html": "<ruby>平仮名<rt>ひらがな</rt></ruby>"
       },
       "ja-Hira": {
         "text": "ひらがな"
@@ -62,7 +64,8 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "片仮名"
+        "text": "片仮名",
+        "html": "<ruby>片仮名<rt>カタカナ</rt></ruby>"
       },
       "ja-Kana": {
         "text": "カタカナ"
