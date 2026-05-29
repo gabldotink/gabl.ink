@@ -41,6 +41,40 @@
       }
     }
   },
+  "hira": {
+    "dir": "ltr",
+    "name": {
+      "ja": {
+        "text": "平仮名"
+      },
+      "ja-Hira": {
+        "text": "ひらがな"
+      },
+      "ja-Latn": {
+        "text": "hiragana"
+      },
+      "mul": {
+        "equal": "ja-Latn"
+      }
+    }
+  },
+  "kana": {
+    "dir": "ltr",
+    "name": {
+      "ja": {
+        "text": "片仮名"
+      },
+      "ja-Kana": {
+        "text": "カタカナ"
+      },
+      "ja-Latn": {
+        "text": "katakana"
+      },
+      "mul": {
+        "equal": "ja-Latn"
+      }
+    }
+  },
   "kore": {
     "dir": "ltr",
     "name": {
@@ -54,6 +88,23 @@
       "fr": {
         "text": "hangeul et hanja",
         "html": "<i lang=\"ko-Latn\">hangeul</i> et <i lang=\"ko-Latn\">hanja</i>"
+      }
+    }
+  },
+  "hang": {
+    "dir": "ltr",
+    "name": {
+      "ko": {
+        "text": "한글"
+      },
+      "ko-Latn": {
+        "text": "hangeul"
+      },
+      "en": {
+        "text": "hangul"
+      },
+      "mul": {
+        "equal": "ko-Latn"
       }
     }
   },
