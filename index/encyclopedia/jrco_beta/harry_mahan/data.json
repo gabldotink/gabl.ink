@@ -6,18 +6,27 @@
   },
   "name": {
     "label": {
-      "mul": {
+      "en": {
         "text": "Harry"
+      },
+      "mul":{
+        "equal": "en"
       }
     },
     "given": {
-      "mul": {
+      "en": {
         "text": "Harry"
+      },
+      "mul":{
+        "equal": "en"
       }
     },
     "sur": {
-      "mul": {
+      "en": {
         "text": "Mahan"
+      },
+      "mul":{
+        "equal": "en"
       }
     }
   },

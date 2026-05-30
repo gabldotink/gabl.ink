@@ -9,11 +9,18 @@
       "en": {
         "text": "T.T."
       },
-      "fr": {
-        "text": "T.T."
+      "mul": {
+        "equal": "en"
       }
     },
-    "given": "T.T."
+    "given": {
+      "en": {
+        "text": "T.T."
+      },
+      "mul": {
+        "equal": "en"
+      }
+    }
   },
   "sex": "m",
   "birthdate": {},

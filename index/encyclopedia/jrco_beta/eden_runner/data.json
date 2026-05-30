@@ -14,13 +14,19 @@
       }
     },
     "given": {
-      "mul": {
+      "en": {
         "text": "Eden"
+      },
+      "mul": {
+        "equal": "en"
       }
     },
     "sur": {
-      "mul": {
+      "en": {
         "text": "Runner"
+      },
+      "mul": {
+        "equal": "en"
       }
     }
   },

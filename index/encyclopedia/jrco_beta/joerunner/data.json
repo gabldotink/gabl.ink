@@ -13,22 +13,41 @@
         "equal": "en"
       }
     },
-    "given": "Joseph",
-    "sur": "Runner",
+    "given": {
+      "en": {
+        "text": "Joseph"
+      },
+      "mul": {
+        "equal": "en"
+      }
+    },
+    "sur": {
+      "en": {
+        "text": "Runner"
+      },
+      "mul": {
+        "equal": "en"
+      }
+    },
     "nick": {
-      "name": "JoeRunner",
-      "decoration": "parentheses"
+      "en": {
+        "text": "JoeRunner"
+      },
+      "mul": {
+        "equal": "en"
+      }
+    },
+    "format": {
+      "en": {
+        "text": "%given %sur (%nick)"
+      },
+      "mul": {
+        "equal": "en"
+      }
     }
   },
   "sex": "m",
-  "birthdate": {
-    "year": 2011,
-    "month": 8,
-    "day": 2,
-    "hour": 21,
-    "minute": 58,
-    "tz": -6
-  },
+  "birthdate": {},
   "relationships": {
     "family": "runner_family",
     "parent": "eden_runner"

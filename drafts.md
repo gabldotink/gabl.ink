@@ -209,7 +209,7 @@ Example: for U+00A0 NO-BREAK SPACE, use `\302\240`. POSIX does not define escape
 
 WebVTT supports HTML5 character entities in cues.
 
-# Filename requirements
+## Filename requirements
 
 _All_ filenames must:
 
@@ -225,3 +225,16 @@ The maximum length is defined as 255&nbsp;bytes, although it could and probably 
 
 Must match regex (BRE): `^[A-Za-z0-9._-]\{1,14\}$`\
 Must not match regex: `^\(-.*\)|\(.*\.\)|\(\([Aa][Uu][Xx]|[Cc][Oo][Nn]|[Nn][Uu][Ll]|[Pp][Rr][Nn]|[Cc][Oo][Mm][0-9]|[Ll][Pp][Tt][0-9]\)\.\{0,1\}.*\)$`
+
+## Character name formatting
+
+For items with type `character`, `.name.format` is special. It overrides how the character’s name will be presented on their index page. Below is a table of the defaults for American English.
+
+| Defined values                 | Format                |
+|--------------------------------|-----------------------|
+| `label`                        | `%label`              |
+| `label` and `given` or `sur`   | `%label`              |
+| `given` and `sur` and? `label` | `%given %sur`         |
+| `given` and `sur` and `nick`   | `%given “%nick” %sur` |
+| `label` and `nick`             | `%label`              |
+| `nick`                         | `%nick`               |

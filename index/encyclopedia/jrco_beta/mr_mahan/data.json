@@ -13,7 +13,14 @@
         "text": "M.\u00a0Mahan"
       }
     },
-    "sur": "Mahan"
+    "sur": {
+      "en": {
+        "text": "Mahan"
+      },
+      "mul": {
+        "equal": "en"
+      }
+    }
   },
   "sex": "m",
   "birthdate": {},
