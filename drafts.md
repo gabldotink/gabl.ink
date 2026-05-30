@@ -187,7 +187,7 @@ All HTML in gabl.ink should also be valid XML (XHTML). Named character entities 
 
 Some of those aren’t even fully true. Whatever. Point is, if it displays correctly and validates as HTML and XML, it’s fine.
 
-Numeric character entities are supported in XML (e.g. `&#x00a0;`/`&#160;`). However, for simplicity, generated HTML pages should use the actual characters instead of entities.
+Numeric character entities are supported in XML (e.g. `&#x00a0;`/`&#160;`). However, for simplicity and file size, generated HTML pages should use the actual characters instead of entities.
 
 ### CSS
 
@@ -195,7 +195,7 @@ Example: for U+00A0 NO-BREAK SPACE, use `\a0` or `\00a0`. If the escape is follo
 
 ### JSON
 
-Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this and print the actual character. They still may not be used in `ascii` or `filename`, of course. Escapes like `\n` are supported.
+Example: for U+00A0 NO-BREAK SPACE, use `\u00a0`. `jq -r` will interpret this and print the actual character. Escapes like `\n` are supported.
 
 ### Markdown
 
@@ -214,27 +214,26 @@ WebVTT supports HTML5 character entities in cues.
 _All_ filenames must:
 
 * Contain only the characters `[A-Za-z0-9._-]` (POSIX Portable Filename Character Set)
-* Not start with a hyphen‐minus (`-`) (POSIX Portable Filename)
+* Not start with a hyphen&dash;minus (`-`) (POSIX Portable Filename)
 * Not end with a period (`.`) (Windows)
 * Not differ from another filename solely by case (Windows)
 * Not be one of the following (case insensitive), nor start with any of the following plus a period: `AUX CON NUL PRN COM[0-9] LPT[0-9]` (Windows)
 
-`filename` localization values must additionally not contain periods (`.`) at all.
-
-The maximum length is defined as 255&nbsp;bytes, although it could and probably should be lower. 255 is the maximum for most Unix-like systems. The limit on Windows is 260. Some old versions of `tar` limit lengths inside tarballs to 99. POSIX says portable filenames should be 14&nbsp;bytes or less. That limit is probably achievable for repository files. For `filename` values (used for downloads), a higher limit is probably fine.
+The maximum length is defined as 255&nbsp;bytes, although it could and probably should be lower. 255 is the maximum for most Unix-like systems. The limit on Windows is 260. Some old versions of `tar` limit lengths inside tarballs to 99. POSIX says portable filenames should be 14&nbsp;bytes or less. That limit is probably achievable for repository files. Filenames for downloads are less restrictive.
 
 Must match regex (BRE): `^[A-Za-z0-9._-]\{1,14\}$`\
 Must not match regex: `^\(-.*\)|\(.*\.\)|\(\([Aa][Uu][Xx]|[Cc][Oo][Nn]|[Nn][Uu][Ll]|[Pp][Rr][Nn]|[Cc][Oo][Mm][0-9]|[Ll][Pp][Tt][0-9]\)\.\{0,1\}.*\)$`
 
 ## Character name formatting
 
-For items with type `character`, `.name.format` is special. It overrides how the character’s name will be presented on their index page. Below is a table of the defaults for American English.
+For items with type `character`, `.name.format` is special. It overrides how the character’s name will be presented on their index page. Below is a table of the defaults.
 
-| Defined values                 | Format                |
-|--------------------------------|-----------------------|
-| `label`                        | `%label`              |
-| `label` and `given` or `sur`   | `%label`              |
-| `given` and `sur` and? `label` | `%given %sur`         |
-| `given` and `sur` and `nick`   | `%given “%nick” %sur` |
-| `label` and `nick`             | `%label`              |
-| `nick`                         | `%nick`               |
+| Defined values                 | `en-US`/`mul`         | `fr`                                |
+|--------------------------------|-----------------------|-------------------------------------|
+| `label`                        | `%label`              |                                     |
+| `label` and `given` or `sur`   | `%label`              |                                     |
+| `given` and `sur` and? `label` | `%given %sur`         |                                     |
+| `given` and `sur` and `nick`   | `%given “%nick” %sur` | `%given « %nick » %sur`             |
+| `label` and `nick`             | `%label`              |                                     |
+| `nick`                         | `%nick`               |                                     |
+| `given` and `nick`             | `%given (%nick)`      |                                     |
