@@ -315,19 +315,19 @@ for i in $items;do (
     disclaimer="$(jq_r 'disclaimer[0]' "$i")"
     set_var_l10n title title "$i"
 
-    canonical="https://gabl.ink/index/$id/$lang/"
+    canonical="https://gabl.ink/index/$id/$lang_i/"
 
     # For now, the below is to add later.
     # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
-    # WebM should be preferred due to being free (libre), and MP4 should be provided as a fallback for compatibility.
+    # WebM should be preferred due to being free (_libre_), and MP4 should be provided as a fallback for compatibility.
     # In case of a video, image.png should act as a thumbnail.
-    [ -f "$index/$id/$lang/video.webm" ] &&
+    [ -f "$index/$id/$lang_i/video.webm" ] &&
       video_exists=
 
-    [ -f "$index/$id/$lang/cc.vtt" ] &&
+    [ -f "$index/$id/$lang_i/cc.vtt" ] &&
       captions_exists=
 
-    [ -f "$index/$id/$lang/subs.vtt" ] &&
+    [ -f "$index/$id/$lang_i/subs.vtt" ] &&
       subs_exists=
 
     [ "$(jq_r tooltip "$i")" != null ] &&
@@ -481,7 +481,7 @@ for i in $items;do (
           if [ "$l" = "$main_lang" ];then
             printf '<b>'
           else
-            printf '<a lang="%s" href="../%s">' "$l" "$l"
+            printf '<a lang="%s" href="../%s/">' "$lang_i" "$lang_i"
           fi
           printf -- '%s ' "$lang_l_name_html"
           printf -- '(%s)' "$lang_r_name_html"
@@ -663,7 +663,7 @@ for i in $items;do (
                        "$(printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text")" \
                        "$(
                           printf_l10n from_gabldotink
-                          printf -- '%s' "$canonical"
+                          printf '%s' "$canonical"
                         )"
 
         make_share_link sms '' \
@@ -684,13 +684,13 @@ for i in $items;do (
         make_share_link telegram '' \
                        "$(
                           printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
-                          printf ' #gabldotink #%s' "$series_hashtag_id"
+                          printf -- ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link bluesky '' \
                        "$(
                           printf_l10n gabldotink_series_page ' @gabl.ink' "$series_title_text" "$title_text"
-                          printf ' %s #gabldotink #%s' "$canonical" "$series_hashtag_id"
+                          printf -- ' %s #gabldotink #%s' "$canonical" "$series_hashtag_id"
                         )"
 
         make_share_link whatsapp '' \
@@ -702,25 +702,25 @@ for i in $items;do (
         make_share_link mastodon '' \
                        "$(
                           printf_l10n gabldotink_series_page ' @gabldotink@mstdn.party' "$series_title_text" "$title_text"
-                          printf ' #gabldotink #%s' "$series_hashtag_id"
+                          printf -- ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link threads '' \
                        "$(
                           printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
-                          printf ' #gabldotink #%s' "$series_hashtag_id"
+                          printf -- ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link truth_social '' \
                        "$(
                           printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
-                          printf ' #gabldotink #%s' "$series_hashtag_id"
+                          printf -- ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link gab '' \
                        "$(
                           printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text"
-                          printf ' #gabldotink #%s' "$series_hashtag_id"
+                          printf -- ' #gabldotink #%s' "$series_hashtag_id"
                         )"
 
         make_share_link vk \
@@ -769,7 +769,7 @@ for i in $items;do (
 
     exit_if
 
-    flush_from_tmp "$tmpfile" "$index/$id/$lang/index.html"
+    flush_from_tmp "$tmpfile" "$index/$id/$lang_i/index.html"
 
     err i 'lang done'
     ) &
