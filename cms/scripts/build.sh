@@ -217,7 +217,7 @@ fi
 
 cms="$scripts/.."
 dict="$cms/dictionaries"
-index="$cms/../index"
+index="$cms/../i"
 encyclopedia="$index/encyclopedia"
 
 [ -f "$index/data.json" ]||
@@ -315,7 +315,7 @@ for i in $items;do (
     disclaimer="$(jq_r 'disclaimer[0]' "$i")"
     set_var_l10n title title "$i"
 
-    canonical="https://gabl.ink/index/$id/$lang_i/"
+    canonical="https://gabl.ink/i/$id/$lang_i/"
 
     # For now, the below is to add later.
     # For future reference: Each video should have a WebM (VP9/Opus) and MP4 (H.264/AAC) version.
