@@ -95,7 +95,7 @@
       "h": "jrco_beta/eden_runner",
       "d": {
         "en": {
-          "html": "Well, I <em style=\"roman u\">loved</em> middle school."
+          "html": "Well, I <em class=\"r u\">loved</em> middle school."
         },
         "fr": {
           "text": "Eh bien, j’ai adorée le collège."
