@@ -5,6 +5,8 @@
 parse_lang(){
   # TODO: Support more BCP 47 features (although I won’t use them for a while at least)
 
+  lang_i="$(jq -nr --arg l "$lang" '$l|ascii_downcase')"
+
   parse_lang_loop=1
 
   while [ "$parse_lang_loop" -le 3 ];do
@@ -15,6 +17,7 @@ parse_lang(){
   if printf '%s\n' "$parse_lang_1"|grep '-qe^[a-z]\{2,3\}$';then
     # shellcheck disable=2034
     lang_l="$parse_lang_1"
+    #lang_l_i="$lang_l"
   else
     err e 'Primary language subtag is not valid'
   fi
@@ -23,7 +26,7 @@ parse_lang(){
     # shellcheck disable=2034
     lang_r="$parse_lang_2"
     # shellcheck disable=2034
-    lang_r_l="$(jq -nr --arg r "$lang_r" '$r|ascii_downcase')"
+    lang_r_i="$(jq -nr --arg r "$lang_r" '$r|ascii_downcase')"
   else
     err e 'Region subtag is not valid'
   fi
@@ -32,21 +35,21 @@ parse_lang(){
     # shellcheck disable=2034
     lang_s="$parse_lang_3"
     # shellcheck disable=2034
-    lang_s_l="$(jq -nr --arg s "$lang_s" '$s|ascii_downcase')"
+    lang_s_i="$(jq -nr --arg s "$lang_s" '$s|ascii_downcase')"
   elif [ "$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")" != null ];then
     # shellcheck disable=2034
-    lang_s_l="$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")"
-    lang_s="$(jq -nr --arg s "$lang_s_l" '$s|(.[:1]|ascii_upcase)+.[1:]')"
+    lang_s_i="$(jq -r --arg l "$lang_l" '.[$l].implicit.script' "$dict/language.json")"
+    lang_s="$(jq -nr --arg s "$lang_s_i" '$s|(.[:1]|ascii_upcase)+.[1:]')"
   else
     err e 'Script subtag is not valid'
   fi
 
   # shellcheck disable=2034
-  lang_d="$(jq -r --arg s "$lang_s_l" '.[$s].dir' "$dict/script.json")"
+  lang_d="$(jq -r --arg s "$lang_s_i" '.[$s].dir' "$dict/script.json")"
 
   set_var_l10n lang_l_name "\"$lang_l\".name" "$dict/language.json"
-  set_var_l10n lang_r_name "\"$lang_r_l\".name" "$dict/region.json"
-  set_var_l10n lang_s_name "\"$lang_s_l\".name" "$dict/script.json"
+  set_var_l10n lang_r_name "\"$lang_r_i\".name" "$dict/region.json"
+  set_var_l10n lang_s_name "\"$lang_s_i\".name" "$dict/script.json"
 
   # Convert to regional indicators
   lang_r_flag="$(jq -nr --arg r "$lang_r" '$r|explode|map(.-65+127462)|implode')"
