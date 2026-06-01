@@ -1,0 +1,33 @@
+{
+  "id": "encyclopedia/meta/girl",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "text": "girl"
+      },
+      "fr": {
+        "text": "fille"
+      },
+      "eo": {
+        "text": "knabino"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "text": "Words from a girl."
+    },
+    "fr": {
+      "text": "Mots d’une fille."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "encyclopedia/meta/man",
+  "type": "meta_character",
+  "name": {
+    "label": {
+      "en": {
+        "text": "man"
+      },
+      "fr": {
+        "text": "homme"
+      },
+      "eo": {
+        "text": "viro"
+      }
+    }
+  },
+  "description": {
+    "en": {
+      "text": "Words from a man."
+    },
+    "fr": {
+      "text": "Mots d’un homme."
+    }
+  },
+  "copyright": {
+    "year": {
+      "first": 2026
+    },
+    "license": [
+      "cc0-1.0"
+    ]
+  }
+}
