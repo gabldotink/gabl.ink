@@ -85,11 +85,11 @@
         "text": "한자와 한글"
       },
       "en": {
-        "text": "hangul and hanja",
+        "text": "hangul and _hanja_",
         "html": "hangul and <i lang=\"ko-Latn\">hanja</i>"
       },
       "fr": {
-        "text": "hangeul et hanja",
+        "text": "_hangeul_ et _hanja_",
         "html": "<i lang=\"ko-Latn\">hangeul</i> et <i lang=\"ko-Latn\">hanja</i>"
       }
     }
@@ -106,8 +106,9 @@
       "en": {
         "text": "hangul"
       },
-      "mul": {
-        "equal": "ko-Latn"
+      "fr": {
+        "text": "_hangeul_",
+        "html": "<i lang=\"ko-Latn\">hangeul</i>"
       }
     }
   },
