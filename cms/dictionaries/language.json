@@ -123,5 +123,21 @@
     "implicit": {
       "script": "kore"
     }
+  },
+  "eo": {
+    "name": {
+      "eo": {
+        "text": "Esperanto"
+      },
+      "en": {
+        "equal": "eo"
+      },
+      "fr": {
+        "text": "espéranto"
+      }
+    },
+    "implicit": {
+      "script": "latn"
+    }
   }
 }
