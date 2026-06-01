@@ -11,6 +11,12 @@
       },
       "mul": {
         "equal": "en"
+      },
+      "eo": {
+        "text": "Edeno"
+      },
+      "tok": {
+        "text": "Iten"
       }
     },
     "given": {
@@ -19,6 +25,12 @@
       },
       "mul": {
         "equal": "en"
+      },
+      "eo": {
+        "text": "Edeno"
+      },
+      "tok": {
+        "text": "Iten"
       }
     },
     "sur": {

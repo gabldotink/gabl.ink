@@ -11,9 +11,22 @@
       },
       "fr": {
         "text": "États‐Unis"
+      },
+      "eo": {
+        "text": "Usono"
       }
     },
-    "official": "United States of America"
+    "official": {
+      "en": {
+        "text": "United States of America"
+      },
+      "fr": {
+        "text": "États‐Unis d’Amérique"
+      },
+      "eo": {
+        "text": "Unuiĝintaj Ŝtatoj de Ameriko"
+      }
+    }
   },
   "relationships": {},
   "description": "The third most populous country in the world.",
