@@ -8,7 +8,7 @@ trap 'printf "Exiting. No changes were made.\n"' INT EXIT
 
 script="$0"
 
-deps='[ basename cat cmp cut dirname eval find getopts grep jq mktemp printf realpath rm sh sort tput tr xargs'
+deps='[ basename cat cmp cut dirname eval find getopts grep jq mkdir mktemp printf realpath rm sh sort tput tr xargs'
 
 for c in $deps;do
   if command -v -- "$c" >/dev/null 2>&1;then
@@ -285,6 +285,9 @@ for i in $items;do (
 
   for lang in $(jq_r langs[] "$index/$id/data.json");do (
     err i 'lang start'
+
+    [ -d "$index/$id/$lang_i" ]||
+      mkdir -p "$index/$id/$lang_i"
 
     trap 'rm -f -- "$tmpfile"' INT EXIT
 
