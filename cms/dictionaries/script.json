@@ -34,6 +34,12 @@
         "text": "漢字、平仮名、片仮名",
         "html": "漢字、<ruby>平仮名<rp>（</rp><rt>ひらがな</rt><rp>）</rp></ruby>、<ruby>片仮名<rp>（</rp><rt>カタカナ</rt><rp>）</rp></ruby>"
       },
+      "ja-Hani": {
+        "text": "漢字、平仮名、片仮名"
+      },
+      "ja-Latn": {
+        "text": "kanji, hiragana, katakana"
+      },
       "en": {
         "text": "kanji, hiragana, and katakana"
       },
@@ -51,6 +57,9 @@
       },
       "ja-Hira": {
         "text": "ひらがな"
+      },
+      "ja-Hani": {
+        "text": "平仮名"
       },
       "ja-Latn": {
         "text": "hiragana"
@@ -70,6 +79,12 @@
       "ja-Kana": {
         "text": "カタカナ"
       },
+      "ja-Hira": {
+        "text": "かたかな"
+      },
+      "ja-Hani": {
+        "text": "片仮名"
+      },
       "ja-Latn": {
         "text": "katakana"
       },
@@ -82,7 +97,10 @@
     "dir": "ltr",
     "name": {
       "ko": {
-        "text": "한자와 한글"
+        "text": "한글과 한자"
+      },
+      "ko-Latn": {
+        "text": "hangeul‐gwa hanja"
       },
       "en": {
         "text": "hangul and _hanja_",
@@ -99,6 +117,9 @@
     "name": {
       "ko": {
         "text": "한글"
+      },
+      "ko-Hani": {
+        "text": "韓㐎"
       },
       "ko-Latn": {
         "text": "hangeul"
