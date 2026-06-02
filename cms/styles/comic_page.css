@@ -6,25 +6,25 @@ html {
   counter-reset: nav_bottom_list_page;
 }
 
-div#panels {
+#panels {
   margin: 0% 15%;
 }
 
-picture#gabldotink_logo {
+#gabldotink_logo {
   top: 0;
   left: 0;
 }
 
-picture#gabldotink_logo img {
+#gabldotink_logo img {
   width: 20%;
 }
 
-ul#lang_select {
+#lang_select {
   float: right;
   list-style-type: none;
 }
 
-ul#lang_select li::before {
+#lang_select li::before {
   content: attr(data-lang_select_flag) "\a0";
 }
 
@@ -32,8 +32,8 @@ ul#lang_select li::before {
   opacity: 10%;
 }
 
-nav#nav_top_buttons,
-nav#nav_bottom_buttons {
+#nav_top_buttons,
+#nav_bottom_buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -81,53 +81,53 @@ p.nav_buttons {
   display: block;
 }
 
-h1#nav_top_title {
+#nav_top_title {
   text-align: center;
 }
 
-div#comic_page_video video,
-div#comic_page_image picture img {
+#comic_page_video video,
+#comic_page_image picture img {
   width: 100%;
   max-width: 100%;
 }
 
-nav#nav_bottom_list details {
+#nav_bottom_list details {
   white-space: nowrap;
 }
 
-ol#nav_bottom_list_pages {
+#nav_bottom_list_pages {
   list-style: none;
 }
 
-ol#nav_bottom_list_pages li::before {
+#nav_bottom_list_pages li::before {
   white-space: nowrap;
   counter-increment: nav_bottom_list_page;
 }
 
-ol#nav_bottom_list_pages li:lang(en)::before,
-ol#nav_bottom_list_pages li:lang(fr)::before {
+#nav_bottom_list_pages li:lang(en)::before,
+#nav_bottom_list_pages li:lang(fr)::before {
   content: "page\a0" counter(nav_bottom_list_page) " ";
 }
 
-div#transcript_text {
+#transcript_text {
   margin-left: 1em;
 }
 
-details#share_links ul,
-details#validate_links ul {
+#share_links ul,
+#validate_links ul {
   list-style-type: none;
 }
 
-table#comic_transcript_table {
+#comic_transcript_table {
   border: none;
   margin-left: 1em;
 }
 
-table#comic_transcript_table thead {
+#comic_transcript_table thead {
   display: none;
 }
 
-table#comic_transcript_table th {
+#comic_transcript_table th {
   text-align: left;
   vertical-align: top;
   padding-right: .3em;
@@ -136,28 +136,28 @@ table#comic_transcript_table th {
   font-weight: normal;
 }
 
-table#comic_transcript_table th::before {
+#comic_transcript_table th::before {
   content: "[";
 }
 
-table#comic_transcript_table th::after {
+#comic_transcript_table th::after {
   content: "]";
 }
 
-table#comic_transcript_table th:empty::before {
+#comic_transcript_table th:empty::before {
   content: "—";
 }
 
-table#comic_transcript_table th:empty::after {
+#comic_transcript_table th:empty::after {
   content: "";
 }
 
-table#comic_trascript_table td {
+#comic_trascript_table td {
   text-align: left;
   vertical-align: top;
 }
 
-table#comic_transcript_table p {
+#comic_transcript_table p {
   margin-top: 0;
 }
 
@@ -167,7 +167,7 @@ summary h3 {
 }
 
 @media (max-width: 992px) {
-  div#panels {
+  #panels {
     margin: 0%
   }
 }
