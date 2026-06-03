@@ -3,16 +3,15 @@
 # SPDX-License-Identifier: CC0-1.0
 
 make_validate_link(){
-  make_validate_link_id="$1"
   [ -n "$config_validate_skip" ] &&
-    printf ' %s \n' "$config_validate_skip"|grep "-Fqe $make_validate_link_id " &&
+    printf ' %s \n' "$config_validate_skip"|grep "-Fqe $1 " &&
       return 0
-  set_var_l10n make_validate_link_name "\"$make_validate_link_id\".name" "$dict/validate_link.json"
-  set_var_l10n make_validate_link_format "\"$make_validate_link_id\".format" "$dict/validate_link.json"
-  make_validate_link_base="$(jq_r "\"$make_validate_link_id\".base" "$dict/validate_link.json")"
+  set_var_l10n make_validate_link_name "\"$1\".name" "$dict/validate_link.json"
+  set_var_l10n make_validate_link_format "\"$1\".format" "$dict/validate_link.json"
+  make_validate_link_base="$(jq_r "\"$1\".base" "$dict/validate_link.json")"
   make_validate_link_url="$(printf '%s' "$canonical"|jq -Rr @uri)"
 
-  printf '<li id="validate_links_%s">' "$make_validate_link_id"
+  printf '<li id="validate_links_%s">' "$1"
   printf '<a rel="external" href="%s' "$make_validate_link_base$make_validate_link_url"
 
   printf '">%s' "$(printf_l10n validate_with)"
