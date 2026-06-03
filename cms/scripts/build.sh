@@ -626,6 +626,8 @@ for i in $items;do (
 
         printf '</tbody></table></details>'
 
+        printf '<hr/>'
+
         printf '<h2>%s</h2>' "$(printf_l10n log)"
 
         for k in $(jq_r 'log|keys[]' "$i");do
@@ -652,6 +654,8 @@ for i in $items;do (
 
           printf '</details></article>'
         done
+
+        printf '<hr/>'
 
         printf '<p id="canonical_url">'
         printf '%s<a href="%s" type="text/html" hreflang="%s">%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
