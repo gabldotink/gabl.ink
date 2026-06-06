@@ -25,7 +25,7 @@ err(){
   printf -- '[%s]%s %s\n' "$tput_bold$err_label$tput_reset" "$err_item" "$2" >&2
 
   if [ "$1" = e ];then
-    errored=true
+    errored=
     if   [ -z "$3" ];then
       errored_code=1
     elif [ "$3" -ge 1 ] &&
@@ -38,7 +38,7 @@ err(){
 
   if [ "$1" = w ];then
     if [ "$config_exit_on_warning" = true ];then
-      errored=true
+      errored=
       if   [ -z "$3" ];then
         errored_code=1
       elif [ "$3" -ge 1 ] &&

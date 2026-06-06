@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 exit_if(){
-  if [ "$errored" = true ];then
+  if ! test_unset errored;then
     err i 'Exiting due to previous error/warning'
     if [ -n "$errored_code" ];then
       exit "$errored_code"
