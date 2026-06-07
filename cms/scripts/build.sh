@@ -283,7 +283,7 @@ for i in $items;do (
 
   lang_original="$(jq_r lang_original "$i")"
 
-  for lang in $(jq_r langs[] "$index/$id/data.json");do (
+  for lang in $(jq_r langs[] "$i");do (
     err i 'lang start'
 
     [ -d "$index/$id/$lang_i" ]||
@@ -299,7 +299,7 @@ for i in $items;do (
 
     exit_if
 
-    langs="$(jq -r '.langs[]' "$index/$id/data.json")"
+    langs="$(jq_r langs[] "$i")"
 
     parse_lang
 
