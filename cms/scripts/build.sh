@@ -98,7 +98,6 @@ lib="$scripts/lib"
 # shellcheck source=./lib/err.sh
 # shellcheck source=./lib/exit_if.sh
 # shellcheck source=./lib/flush_from_tmp.sh
-# shellcheck source=./lib/jq_r.sh
 # shellcheck source=./lib/make_nav.sh
 # shellcheck source=./lib/make_og.sh
 # shellcheck source=./lib/make_page_list_entry.sh
@@ -112,7 +111,7 @@ lib="$scripts/lib"
 # shellcheck source=./lib/test_unset.sh
 # shellcheck source=./lib/unset_var_l10n.sh
 # shellcheck source=./lib/zero_pad.sh
-for f in config_set count_from err exit_if flush_from_tmp jq_r make_nav make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
+for f in config_set count_from err exit_if flush_from_tmp make_nav make_og make_page_list_entry make_share_link make_validate_link parse_lang printf_l10n say_date set_var_l10n test_null test_unset unset_var_l10n zero_pad;do
   . "$lib/$f.sh"
 done
 
@@ -264,8 +263,8 @@ trap - INT EXIT
 err i 'section start: items'
 
 for i in $items;do (
-  type="$(jq_r type "$i")"
-  id="$(jq_r id "$i")"
+  type="$(jq -r .type "$i")"
+  id="$(jq -r .id "$i")"
 
   if [ "$type" != comic_page ];then
     err i skip
@@ -281,9 +280,9 @@ for i in $items;do (
   #  continue
   #fi
 
-  lang_original="$(jq_r lang_original "$i")"
+  lang_original="$(jq -r .lang_original "$i")"
 
-  for lang in $(jq_r langs[] "$i");do (
+  for lang in $(jq -r .langs[] "$i");do (
     err i 'lang start'
 
     [ -d "$index/$id/$lang_i" ]||
@@ -299,11 +298,11 @@ for i in $items;do (
 
     exit_if
 
-    langs="$(jq_r langs[] "$i")"
+    langs="$(jq -r .langs[] "$i")"
 
     parse_lang
 
-    copyright_license="$(jq_r copyright.license[0] "$i")"
+    copyright_license="$(jq -r .copyright.license[0] "$i")"
     # Literal quotation marks should be used when inserting variables into jq (hyphen‐minuses can cause issues).
     # shellcheck disable=2016
     set_var_l10n copyright_license_abbr "\"$copyright_license\".abbr" "$dict/copyright_license.json"
@@ -312,10 +311,10 @@ for i in $items;do (
     copyright_license_spdx="$(jq -r --arg l "$copyright_license" '.[$l].spdx' "$dict/copyright_license.json")"
     # shellcheck disable=2016
     set_var_l10n copyright_license_title "\"$copyright_license\".title" "$dict/copyright_license.json"
-    copyright_year_first="$(jq_r copyright.year.first "$i")"
-    copyright_year_last="$(jq_r copyright.year.last "$i")"
+    copyright_year_first="$(jq -r .copyright.year.first "$i")"
+    copyright_year_last="$(jq -r .copyright.year.last "$i")"
     set_var_l10n description description "$i"
-    disclaimer="$(jq_r 'disclaimer[0]' "$i")"
+    disclaimer="$(jq -r .disclaimer[0] "$i")"
     set_var_l10n title title "$i"
 
     canonical="https://gabl.ink/i/$id/$lang_i/"
@@ -333,7 +332,7 @@ for i in $items;do (
     [ -f "$index/$id/$lang_i/subs.vtt" ] &&
       subs_exists=
 
-    [ "$(jq_r tooltip "$i")" != null ] &&
+    [ "$(jq -r .tooltip "$i")" != null ] &&
       tooltip_exists=
 
     {
@@ -353,16 +352,16 @@ for i in $items;do (
       printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang"
 
       if [ "$type" = comic_page ];then
-        chapter="$(jq_r location.chapter "$i")"
-        next="$(jq_r location.next "$i")"
-        page="$(jq_r location.page "$i")"
-        prev="$(jq_r location.previous "$i")"
-        series="$(jq_r location.series "$i")"
+        chapter="$(jq -r .location.chapter "$i")"
+        next="$(jq -r .location.next "$i")"
+        page="$(jq -r .location.page "$i")"
+        prev="$(jq -r .location.previous "$i")"
+        series="$(jq -r .location.series "$i")"
         set_var_l10n series_hashtag hashtag "$index/$id/../data.json"
         set_var_l10n series_title title "$index/$id/../data.json"
         test_unset tooltip_exists ||
           set_var_l10n tooltip tooltip "$i"
-        volume="$(jq_r location.volume "$i")"
+        volume="$(jq -r .location.volume "$i")"
 
         # Determine how many directories deep from the series the page is
         up_directories=4
@@ -404,14 +403,14 @@ for i in $items;do (
         printf -- '<link rel="external license" href="%s"/>' "$copyright_license_url_id"
 
         if   [ "$up_directories" -eq 3 ];then
-          chapter="$(jq_r location.chapter "$i")"
+          chapter="$(jq -r .location.chapter "$i")"
         elif [ "$up_directories" -eq 4 ];then
-          volume="$(jq_r location.volume "$i")"
-          chapter="$(jq_r location.chapter "$i")"
+          volume="$(jq -r .location.volume "$i")"
+          chapter="$(jq -r .location.chapter "$i")"
         fi
 
         parts="$({
-          for p in $(jq_r 'parts|to_entries|.[].key' "$index/$id/../data.json");do
+          for p in $(jq -r '.parts|to_entries|.[].key' "$index/$id/../data.json");do
             if   [ "$(jq -r --argjson p "$p" -- '.parts[$p]|type' "$index/$id/../data.json")" = number ];then
               printf '%s\n' "$(jq -r --argjson p "$p" -- '.parts[$p]' "$index/$id/../data.json")"
             elif [ "$(jq -r --argjson p "$p" -- '.parts[$p]|type' "$index/$id/../data.json")" = string ];then
@@ -591,16 +590,16 @@ for i in $items;do (
 
         printf '<table id="comic_transcript_table"><tbody>'
 
-        for l in $(jq_r 'transcript|to_entries|.[].key' "$i");do
+        for l in $(jq -r '.transcript|to_entries|.[].key' "$i");do
           # shellcheck disable=2016
           l_h="$(jq -r --argjson l "$l" '.transcript[$l].h' "$i")"
           set_var_l10n l_d "transcript[$l].d" "$i"
 
-          l_h_type="$(jq_r type "$encyclopedia/$l_h/data.json")"
+          l_h_type="$(jq -r .type "$encyclopedia/$l_h/data.json")"
           [ "$l_h_type" = character ] ||
             [ "$l_h_type" = meta_character ] ||
               err e 'l_h_type is not character or meta_character'
-          if [ "$(jq_r name "$encyclopedia/$l_h/data.json")" = null ];then
+          if [ "$(jq -r .name "$encyclopedia/$l_h/data.json")" = null ];then
             unset_var_l10n l_h_label
           else
             set_var_l10n l_h_label name.label "$encyclopedia/$l_h/data.json"
@@ -630,7 +629,7 @@ for i in $items;do (
 
         printf '<h2>%s</h2>' "$(printf_l10n log)"
 
-        for k in $(jq_r 'log|keys[]' "$i");do
+        for k in $(jq -r '.log|keys[]' "$i");do
           log_date_d="$(jq -r --argjson k "$k" '.log[$k].date.d' "$i")"
           log_date_m="$(jq -r --argjson k "$k" '.log[$k].date.m' "$i")"
           log_date_y="$(jq -r --argjson k "$k" '.log[$k].date.y' "$i")"

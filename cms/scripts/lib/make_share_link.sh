@@ -7,11 +7,11 @@ make_share_link(){
     printf '%s\n' "$config_share_skip"|grep "-Fqe^$1$" &&
       return 0
   set_var_l10n make_share_link_name "\"$1\".name" "$dict/share_link.json"
-  make_share_link_base="$(jq_r "\"$1\".base" "$dict/share_link.json")"
-  make_share_link_title_param="$(jq_r "\"$1\".title" "$dict/share_link.json")"
-  make_share_link_url_param="$(jq_r "\"$1\".url" "$dict/share_link.json")"
-  make_share_link_text_param="$(jq_r "\"$1\".text" "$dict/share_link.json")"
-  make_share_link_hashtag_param="$(jq_r "\"$1\".hashtag" "$dict/share_link.json")"
+  make_share_link_base="$(jq -r --arg l "$1" '.[$l].base' "$dict/share_link.json")"
+  make_share_link_title_param="$(jq -r --arg l "$1" '.[$l].title' "$dict/share_link.json")"
+  make_share_link_url_param="$(jq -r --arg l "$1" '.[$l].url' "$dict/share_link.json")"
+  make_share_link_text_param="$(jq -r --arg l "$1" '.[$l].text' "$dict/share_link.json")"
+  make_share_link_hashtag_param="$(jq -r --arg l "$1" '.[$l].hashtag' "$dict/share_link.json")"
   make_share_link_title="$(jq -rn --arg s "$2" '$s|@uri')"
   make_share_link_text="$(jq -rn --arg t "$3" '$t|@uri')"
   make_share_link_hashtag="$(jq -rn --arg h "$4" '$h|@uri')"
