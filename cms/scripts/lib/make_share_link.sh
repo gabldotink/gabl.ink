@@ -1,5 +1,4 @@
 # shellcheck shell=sh
-# shellcheck disable=2154
 # SPDX-License-Identifier: CC0-1.0
 
 make_share_link(){

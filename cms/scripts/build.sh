@@ -276,7 +276,6 @@ for i in $items;do (
   ## This continue only exits this subshell, but that’s fine, since the subshell is the whole loop
   #if [ "$type" = comic_series ];then
   #  err i skip
-  #  # shellcheck disable=2106
   #  continue
   #fi
 
@@ -304,12 +303,9 @@ for i in $items;do (
 
     copyright_license="$(jq -r .copyright.license[0] "$i")"
     # Literal quotation marks should be used when inserting variables into jq (hyphen‐minuses can cause issues).
-    # shellcheck disable=2016
     set_var_l10n copyright_license_abbr "\"$copyright_license\".abbr" "$dict/copyright_license.json"
-    # shellcheck disable=2016
     set_var_l10n copyright_license_url "\"$copyright_license\".url" "$dict/copyright_license.json"
     copyright_license_spdx="$(jq -r --arg l "$copyright_license" '.[$l].spdx' "$dict/copyright_license.json")"
-    # shellcheck disable=2016
     set_var_l10n copyright_license_title "\"$copyright_license\".title" "$dict/copyright_license.json"
     copyright_year_first="$(jq -r .copyright.year.first "$i")"
     copyright_year_last="$(jq -r .copyright.year.last "$i")"
@@ -339,7 +335,6 @@ for i in $items;do (
       printf '<!DOCTYPE html>\n'
       printf -- '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
 
-      # shellcheck disable=2154
       printf -- '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
              "$lang" "$lang_d" "$lang"
 
@@ -373,8 +368,6 @@ for i in $items;do (
           up_directories="$((up_directories-1))"
 
         styles="$(
-          # ShellCheck warns “n” is unused, but that’s intentional
-          # shellcheck disable=2034
           for n in $(count_from 1 "$up_directories");do
             printf ../
           done
@@ -591,7 +584,6 @@ for i in $items;do (
         printf '<table id="comic_transcript_table"><tbody>'
 
         for l in $(jq -r '.transcript|to_entries|.[].key' "$i");do
-          # shellcheck disable=2016
           l_h="$(jq -r --argjson l "$l" '.transcript[$l].h' "$i")"
           set_var_l10n l_d "transcript[$l].d" "$i"
 
@@ -610,10 +602,8 @@ for i in $items;do (
           exit_if
 
           printf '<tr>'
-          # shellcheck disable=2154
           printf '<th scope="row">%s</th>' "$l_h_label_html"
           printf '<td>'
-          # shellcheck disable=2154
           case "$l_d_html" in
             '<'*)
               printf -- '%s' "$l_d_html" ;;
