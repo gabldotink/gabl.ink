@@ -1,0 +1,72 @@
+{
+  "id": "jrco_beta/a",
+  "lang_original": "en-US",
+  "langs": [
+    "fr-FR"
+  ],
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_beta",
+    "page": 1,
+    "previous": null,
+    "next": 2
+  },
+  "title": {
+    "fr": {
+      "text": "a"
+    }
+  },
+  "description": {
+    "fr": {
+      "text": "a"
+    }
+  },
+  "tooltip": {
+    "fr": {
+      "text": "a"
+    }
+  },
+  "transcript": [
+    {
+      "h": "meta/none",
+      "d": {
+        "mul": {
+          "text": "a"
+        }
+      }
+    }
+  ],
+  "first_published": {
+    "y": 2022,
+    "m": 4,
+    "d": 1
+  },
+  "log": [
+    {
+      "date": {
+        "y": 2022,
+        "m": 4,
+        "d": 1
+      },
+      "content": [
+        {
+          "fr": {
+            "text": "Ils sont encore… un peu bruts. Je dessine les cartoons pour la moitié de ma vie, mais je n’ai pas été bon en défier moi‐même. Avec un peu de chance, cette BD m’aidera à améliorer mes compétences en dessin. Avec un peu de chance, je peux faire rire les gens. Peut‐être que je peux trouver une copine. J’sais pas. C’est possible."
+          }
+        }
+      ]
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "disclaimer": [
+    "olympic"
+  ]
+}
