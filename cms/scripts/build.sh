@@ -282,6 +282,8 @@ for i in $items;do (
   lang_original="$(jq -r .lang_original "$i")"
 
   for lang in $(jq -r .langs[] "$i");do (
+    parse_lang
+    
     err i 'lang start'
 
     [ -d "$index/$id/$lang_i" ]||
@@ -298,8 +300,6 @@ for i in $items;do (
     exit_if
 
     langs="$(jq -r .langs[] "$i")"
-
-    parse_lang
 
     copyright_license="$(jq -r .copyright.license[0] "$i")"
     # Literal quotation marks should be used when inserting variables into jq (hyphen‐minuses can cause issues).
@@ -427,12 +427,12 @@ for i in $items;do (
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
           printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 container_first)" "$lang"
+                 "$container_first" "$lang"
           printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 prev)" "$lang"
+                 "$prev" "$lang"
         elif [ "$container_first" = "$prev" ];then
           printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 prev)" "$lang"
+                 "$prev" "$lang"
         fi
 
         if test_null next;then
@@ -441,12 +441,12 @@ for i in $items;do (
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
           printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 next)" "$lang"
+                 "$next" "$lang"
           printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 container_last)" "$lang"
+                 "$container_last" "$lang"
         elif [ "$container_last" = "$next" ];then
           printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
-                 "$(zero_pad 2 next)" "$lang"
+                 "$next" "$lang"
         fi
 
         make_og type article
@@ -497,16 +497,16 @@ for i in $items;do (
         printf '</h1>'
 
         test_null container_first ||
-          set_var_l10n container_first_title title "$index/$id/../$(zero_pad 2 container_first)/data.json"
+          set_var_l10n container_first_title title "$index/$id/../$container_first/data.json"
 
         test_null prev ||
-          set_var_l10n prev_title title "$index/$id/../$(zero_pad 2 prev)/data.json"
+          set_var_l10n prev_title title "$index/$id/../$prev/data.json"
 
         test_null next ||
-          set_var_l10n next_title title "$index/$id/../$(zero_pad 2 next)/data.json"
+          set_var_l10n next_title title "$index/$id/../$next/data.json"
 
         test_null container_last ||
-          set_var_l10n container_last_title title "$index/$id/../$(zero_pad 2 container_last)/data.json"
+          set_var_l10n container_last_title title "$index/$id/../$container_last/data.json"
 
         make_nav top
 
@@ -570,7 +570,7 @@ for i in $items;do (
         printf '<ol id="nav_bottom_list_pages">'
 
         for r in $parts;do
-          make_page_list_entry "$index/$id/../$(zero_pad 2 r)/data.json"
+          make_page_list_entry "$index/$id/../$r/data.json"
         done
 
         unset_var_l10n list_title

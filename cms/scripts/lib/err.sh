@@ -17,7 +17,7 @@ err(){
 
   test_unset id ||
     if ! test_unset lang;then
-      err_item=" ($tput_cyan$id$tput_reset/$tput_magenta$lang$tput_reset)"
+      err_item=" ($tput_cyan$id$tput_reset/$tput_magenta$lang_i$tput_reset)"
     else
       err_item=" ($tput_cyan$id$tput_reset)"
     fi

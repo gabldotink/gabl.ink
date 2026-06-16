@@ -1,0 +1,108 @@
+{
+  "id": "jrco_beta/7",
+  "type": "comic_page",
+  "location": {
+    "series": "jrco_beta",
+    "page": 7,
+    "previous": 6,
+    "next": 8
+  },
+  "lang_original": "en-US",
+  "langs": [
+    "en-US"
+  ],
+  "title": {
+    "en": {
+      "text": "establishing shot"
+    },
+    "fr": {
+      "text": "plan d’ensemble"
+    }
+  },
+  "description": {
+    "en": {
+      "text": "A boy stands by the door of Schulz Elementary School."
+    }
+  },
+  "tooltip": {
+    "en": {
+      "text": "featuring: several background characters in a white void"
+    },
+    "fr": {
+      "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
+    }
+  },
+  "transcript": [
+    {
+      "h": "meta/none",
+      "d": {
+        "en-US": {
+          "text": "A one‐story building has a sign which reads “Schulz Elementary School.” The school and yard are surrounded by trees. Two girls talk in the yard, while another plays on a portable video game console. A boy with black hair stands by the door, looking a bit annoyed."
+        }
+      }
+    },
+    {
+      "h": "meta/tooltip",
+      "d": {
+        "en": {
+          "text": "featuring: several background characters in a white void"
+        },
+        "fr": {
+          "text": "avec\u202f: quelques personnages du fond dans un vide blanc"
+        }
+      }
+    }
+  ],
+  "log": [
+    {
+      "date": {
+        "y": 2022,
+        "m": 10,
+        "d": 27
+      },
+      "content": [
+        {
+          "en-US": {
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+          },
+          "fr": {
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+          }
+        },
+        {
+          "en-US": {
+            "html": "I’m back! Between week‐long campouts, computer issues, low motivation, reading lots of <cite>Wikipedia</cite>, tweeting about the <cite class=\"i\">Mario</cite> movie, and discovering the lost city of Atlantis, I’ve had a lot on my plate. I’m pleased to announce that, <em>probably</em>, the pace of pages coming out should pick up, although unfortunately I’m still not ready to make an update schedule yet."
+          }
+        },
+        {
+          "en-US": {
+            "html": "This page was a bit rushed, and I forgot to preview the rendered image at half resolution, so when you zoom in this page kinda looks bad because of the brush I used. This is the first time the details have been so small yet, and I hadn’t tested <cite>Clip Studio Paint</cite>’s “Real G‐Pen” with those details yet. The full‐size version looks a bit better. I’m planning to release those bigger images (and <code>.clip</code> files) on <cite>Patreon</cite> at a later time, but I’m holding off on creating one until I’m able to establish a more consistent schedule."
+          }
+        },
+        {
+          "en-US": {
+            "html": "Who is that mysterious boy at the door? Will I ever flesh out the characters that are sitting around on the grass (that’s supposed to be grass)? Will I actually start posting more often, or will I slip into another slump of not drawing even though I love doing it? Find out next time on\u00a0.\u00a0.\u00a0. <cite class=\"i\">JoeRunner and Co.</cite>! Or something!"
+          }
+        },
+        {
+          "mul": {
+            "html": "—\u2060\u200a\u2060<span translate=\"no\">gabl</span>"
+          }
+        }
+      ]
+    }
+  ],
+  "copyright": {
+    "year": {
+      "first": 2022,
+      "last": 2025
+    },
+    "license": [
+      "cc-by-4.0"
+    ]
+  },
+  "comicsdot": {
+    "views": 476,
+    "likes": 9
+  }
+}
