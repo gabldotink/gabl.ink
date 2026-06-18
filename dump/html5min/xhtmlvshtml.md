@@ -12,9 +12,9 @@ The looser syntax allowed by HTML5 allows more aggressive minification, includin
 What are the savings in this example?
 
 * X/HTML: 13578 bytes
-* HTML5: 12724 bytes
+* HTML5: 12784 bytes
 
-That’s 854 bytes. Not _nothing_, but admittedly not much.
+That’s 794&nbsp;bytes. Not _nothing_, but admittedly not much.
 
 If I did do this, I would probably make a new localization data type for attributes. It would manage adding or omitting quotation marks, using double or single quotation marks depending on if there are the other type in the value, substituting quotation marks for character entities (`&quot;` and `&apos;`), and converting `text` to character entities (since we can’t use the `html` value).
 
