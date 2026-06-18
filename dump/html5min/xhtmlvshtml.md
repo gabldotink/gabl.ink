@@ -11,8 +11,8 @@ The looser syntax allowed by HTML5 allows more aggressive minification, includin
 
 What are the savings in this example?
 
-* X/HTML: 13578 bytes
-* HTML5: 12784 bytes
+* X/HTML: 13578&nbsp;bytes
+* HTML5: 12784&nbsp;bytes
 
 That’s 794&nbsp;bytes. Not _nothing_, but admittedly not much.
 
