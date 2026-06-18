@@ -60,5 +60,47 @@
         "text": "Latin America"
       }
     }
+  },
+  "ru": {
+    "name": {
+      "ru": {
+        "text": "Росси́я"
+      },
+      "en": {
+        "text": "Russia"
+      },
+      "fr": {
+        "text": "Russie"
+      }
+    }
+  },
+  "cn": {
+    "name": {
+      "zh-Hans": {
+        "text": "中国"
+      },
+      "zh-Hant": {
+        "text": "中國"
+      },
+      "en": {
+        "text": "China"
+      },
+      "fr": {
+        "text": "Chine"
+      }
+    }
+  },
+  "jp": {
+    "name": {
+      "ja": {
+        "text": "日本"
+      },
+      "en": {
+        "text": "Japan"
+      },
+      "fr": {
+        "text": "Japon"
+      }
+    }
   }
 }
