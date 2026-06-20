@@ -515,7 +515,7 @@ for i in $items;do (
 
         # TODO: Edge case: no captions
         if ! test_unset video_exists;then
-          printf 'video"><video controls="" poster="./image.png" preload="auto"'
+          printf 'video"><video controls poster="./image.png" preload="auto"'
           test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
@@ -526,7 +526,7 @@ for i in $items;do (
             printf -- 'src="./cc.vtt" srclang="%s"/>' "$lang"
           fi
           if ! test_unset subs_exists;then
-            printf '<track default="" kind="subtitles" '
+            printf '<track default kind="subtitles" '
             printf -- 'label="%s (%s)" ' "$lang_l_name_text" "$lang_r_name_text"
             printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
           fi
