@@ -335,7 +335,7 @@ for i in $items;do (
       printf '<!DOCTYPE html>\n'
       printf -- '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
 
-      printf -- '<html lang="%s" dir="%s" xmlns="http://www.w3.org/1999/xhtml" xml:lang="%s">' \
+      printf -- '<html lang="%s" dir="%s">' \
              "$lang" "$lang_d" "$lang"
 
       printf '<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>'
