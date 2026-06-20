@@ -12,6 +12,7 @@ make_share_link(){
   make_share_link_text_param="$(jq -r --arg l "$1" '.[$l].text' "$dict/share_link.json")"
   make_share_link_hashtag_param="$(jq -r --arg l "$1" '.[$l].hashtag' "$dict/share_link.json")"
   make_share_link_title="$(jq -rn --arg s "$2" '$s|@uri')"
+  # make_share_link_url is set once in build.sh
   make_share_link_text="$(jq -rn --arg t "$3" '$t|@uri')"
   make_share_link_hashtag="$(jq -rn --arg h "$4" '$h|@uri')"
 
@@ -24,30 +25,16 @@ make_share_link(){
     make_share_link_start_param='?'
   fi
 
-  if ! test_null make_share_link_title_param &&
-     [ -n "$make_share_link_title" ];then
-    printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_title_param" "$make_share_link_title"
-    [ "$make_share_link_start_param" = '?' ] &&
-      make_share_link_start_param='&amp;'
-  fi
-
-  if ! test_null make_share_link_url_param;then
-    printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_url_param" "$(printf '%s' "$canonical"|jq -Rr @uri)"
-    [ "$make_share_link_start_param" = '?' ] &&
-      make_share_link_start_param='&amp;'
-  fi
-
-  if ! test_null make_share_link_text_param &&
-     [ -n "$make_share_link_text" ];then
-    printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_text_param" "$make_share_link_text"
-    [ "$make_share_link_start_param" = '?' ] &&
-      make_share_link_start_param='&amp;'
-  fi
-
-  if ! test_null make_share_link_hashtag_param &&
-     [ -n "$make_share_link_hashtag" ];then
-    printf '%s%s=%s' "$make_share_link_start_param" "$make_share_link_hashtag_param" "$make_share_link_hashtag"
-  fi
+  for p in title url text hashtag;do
+    if ! test_null "make_share_link_${p}_param" &&
+       [ -n "$(eval 'printf "%s" "$make_share_link_'"$p"'"')" ];then
+      printf '%s%s=%s' "$make_share_link_start_param" \
+                       "$(eval 'printf "%s" "$make_share_link_'"$p"'_param"')" \
+                       "$(eval 'printf "%s" "$make_share_link_'"$p"'"')"
+      [ "$make_share_link_start_param" = '?' ] &&
+        make_share_link_start_param='&amp;'
+    fi
+  done
 
   printf '">%s' "$(printf_l10n share_with)"
 

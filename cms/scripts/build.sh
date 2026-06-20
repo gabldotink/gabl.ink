@@ -654,6 +654,8 @@ for i in $items;do (
         printf '<summary>%s</summary>' "$(printf_l10n share_this_page)"
         printf '<ul>'
 
+        make_share_link_url="$(printf '%s' "$canonical"|jq -Rr @uri)"
+
         make_share_link email \
                        "$(printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text")" \
                        "$(
@@ -735,9 +737,9 @@ for i in $items;do (
 
         make_validate_link vnu
         make_validate_link w3c
-      fi
 
-      printf '</ul></details>'
+        printf '</ul></details>'
+      fi
 
       printf '<footer><p><span class="nw">'
       printf -- '<abbr title="%s">©</abbr>\302\240' "$(printf_l10n copyright)"
