@@ -31,7 +31,7 @@ make_share_link(){
         [A-Za-z]*)
           make_share_link_start_param='&amp;' ;;
         *)
-          make_share_link_start_param='&' ;;
+          make_share_link_start_param='&'
       esac
     if ! test_null "make_share_link_${p}_param" &&
        [ -n "$(eval 'printf "%s" "$make_share_link_'"$p"'"')" ];then
