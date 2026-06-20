@@ -337,13 +337,13 @@ for i in $items;do (
 
       printf -- '<html lang="%s" dir="%s">' "$lang" "$lang_d"
 
-      printf '<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>'
+      printf '<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
 
       printf -- '<title>%s</title>' "$(printf_l10n html_title "$title_text")"
 
-      printf -- '<meta name="description" content="%s"/>' "$description_text"
-      printf '<meta name="robots" content="index,follow"/>'
-      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html"/>' "$canonical" "$lang"
+      printf -- '<meta name="description" content="%s">' "$description_text"
+      printf '<meta name="robots" content="index,follow">'
+      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html">' "$canonical" "$lang"
 
       if [ "$type" = comic_page ];then
         chapter="$(jq -r .location.chapter "$i")"
@@ -383,16 +383,16 @@ for i in $items;do (
           err e 'up_directories is not 2, 3, or 4'
         fi
 
-        printf -- '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css">' \
                "$styles"
-        printf -- '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css">' \
                "$styles"
-        printf -- '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css">' \
                "$styles"
-        printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css"/>' \
+        printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css">' \
                "$styles"
 
-        printf -- '<link rel="external license" href="%s"/>' "$copyright_license_url_id"
+        printf -- '<link rel="external license" href="%s">' "$copyright_license_url_id"
 
         if   [ "$up_directories" -eq 3 ];then
           chapter="$(jq -r .location.chapter "$i")"
@@ -425,12 +425,12 @@ for i in $items;do (
           :
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$container_first" "$lang"
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$prev" "$lang"
         elif [ "$container_first" = "$prev" ];then
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$prev" "$lang"
         fi
 
@@ -439,12 +439,12 @@ for i in $items;do (
           :
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$next" "$lang"
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$container_last" "$lang"
         elif [ "$container_last" = "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html"/>' \
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
                  "$next" "$lang"
         fi
 
@@ -519,16 +519,16 @@ for i in $items;do (
           test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
-          printf '<source src="./video.webm" type="video/webm"/>'
+          printf '<source src="./video.webm" type="video/webm">'
           if ! test_unset captions_exists;then
             printf '<track kind="captions" '
             printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_text" "$lang_r_name_text"
-            printf -- 'src="./cc.vtt" srclang="%s"/>' "$lang"
+            printf -- 'src="./cc.vtt" srclang="%s">' "$lang"
           fi
           if ! test_unset subs_exists;then
             printf '<track default kind="subtitles" '
             printf -- 'label="%s (%s)" ' "$lang_l_name_text" "$lang_r_name_text"
-            printf -- 'src="./subs.vtt" srclang="%s"/>' "$lang"
+            printf -- 'src="./subs.vtt" srclang="%s">' "$lang"
           fi
           printf '<p>'
           printf_l10n video_not_supported "$lang" "$series_title_text" "$title_text"
@@ -541,7 +541,7 @@ for i in $items;do (
           printf '>'
           printf '<img src="./image.png" alt="'
           printf_l10n see_transcript
-          printf '"/></picture></div>'
+          printf '"></picture></div>'
         fi
 
         printf '<div id="nav_bottom">'
@@ -614,7 +614,7 @@ for i in $items;do (
 
         printf '</tbody></table></details>'
 
-        printf '<hr/>'
+        printf '<hr>'
 
         printf '<h2>%s</h2>' "$(printf_l10n log)"
 
@@ -643,7 +643,7 @@ for i in $items;do (
           printf '</details></article>'
         done
 
-        printf '<hr/>'
+        printf '<hr>'
 
         printf '<p id="canonical_url">'
         printf '%s<a href="%s" type="text/html" hreflang="%s">%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
