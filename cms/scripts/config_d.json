@@ -1,7 +1,6 @@
 {
   "exit_on_warning": false,
   "exit_nonzero_with_warnings": true,
-  "lang_default": "en-US",
   "validate_skip": [
     
   ],

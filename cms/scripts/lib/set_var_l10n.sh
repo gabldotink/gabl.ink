@@ -3,7 +3,7 @@
 
 set_var_l10n(){
   # TODO: Allow using values from other regions (e.g. en-GB for en-US)
-  for o in "$lang" "$lang_l" mul "$lang_default" zxx e;do
+  for o in "$lang" "$lang_l" mul zxx e;do
     if [ "$o" = e ];then
       err e 'There is no suitable value for a variable'
       break

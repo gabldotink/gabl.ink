@@ -5,7 +5,7 @@ config_set(){
   [ -f "$cms/scripts/config.json" ] ||
     cat "$cms/scripts/config_d.json" > "$cms/scripts/config.json"
   # booleans/strings
-  for c in exit_on_warning exit_nonzero_with_warnings lang_default;do
+  for c in exit_on_warning exit_nonzero_with_warnings;do
     eval "config_$c"'="$(jq -r ".$c" "$cms/scripts/config.json")"'
   done
   # arrays
