@@ -289,8 +289,11 @@
           }
         },
         {
-          "mul": {
+          "en": {
             "html": "<p><b>—\u2060\u200a\u2060Gabriel\u00a0/ <span translate=\"no\">gabl</span></b></p>"
+          },
+          "mul": {
+            "equal": "en"
           }
         }
       ]

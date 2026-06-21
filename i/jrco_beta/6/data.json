@@ -168,7 +168,7 @@
           }
         },
         {
-          "mul": {
+          "zxx": {
             "html": "<details>"
           }
         },
@@ -178,7 +178,7 @@
           }
         },
         {
-          "mul": {
+          "zxx": {
             "html": "</summary>"
           }
         },
@@ -208,7 +208,7 @@
           }
         },
         {
-          "mul": {
+          "zxx": {
             "html": "</details>"
           }
         },
@@ -218,8 +218,11 @@
           }
         },
         {
-          "mul": {
+          "en": {
             "html": "<p><b>—\u2060\u200a\u2060<span translate=\"no\">gabl</span></b></p>"
+          },
+          "mul": {
+            "equal": "en"
           }
         }
       ]

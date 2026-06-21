@@ -152,8 +152,11 @@
           }
         },
         {
-          "mul": {
+          "en": {
             "html": "—\u2060\u200a\u2060<span translate=\"no\">gabl</span>"
+          },
+          "mul": {
+            "equal": "en"
           }
         }
       ]
