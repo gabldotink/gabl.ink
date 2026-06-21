@@ -425,13 +425,13 @@ for i in $items;do (
           :
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$container_first" "$lang"
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$prev" "$lang"
+          printf -- '<link rel="prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$container_first" "$lang_i" "$lang"
+          printf -- '<link rel="prev prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$prev" "$lang_i" "$lang"
         elif [ "$container_first" = "$prev" ];then
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$prev" "$lang"
+          printf -- '<link rel="prev prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$prev" "$lang_i" "$lang"
         fi
 
         if test_null next;then
@@ -439,13 +439,13 @@ for i in $items;do (
           :
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$next" "$lang"
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$container_last" "$lang"
+          printf -- '<link rel="next prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$next" "$lang_i" "$lang"
+          printf -- '<link rel="prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$container_last" "$lang_i" "$lang"
         elif [ "$container_last" = "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
-                 "$next" "$lang"
+          printf -- '<link rel="next prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
+                 "$next" "$lang_i" "$lang"
         fi
 
         make_og type article
