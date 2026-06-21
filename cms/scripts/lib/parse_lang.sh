@@ -50,6 +50,13 @@ parse_lang(){
   set_var_l10n lang_r_name "\"$lang_r_i\".name" "$dict/region.json"
   set_var_l10n lang_s_name "\"$lang_s_i\".name" "$dict/script.json"
 
+  if [ "$lang_l" = en ]||
+     [ "$lang_l" = fr ];then
+    # If there’s a way to do this with set_var_l10n, it’s harder than just doing this.
+    lang_name_text="$lang_l_name_text ($lang_r_name_text)"
+    lang_name_html="$lang_l_name_html ($lang_r_name_html)"
+  fi
+
   # Convert to regional indicators
   lang_r_flag="$(jq -nr --arg r "$lang_r" '$r|explode|map(.-65+127462)|implode')"
 }

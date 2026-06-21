@@ -304,5 +304,13 @@
     "fr": {
       "printf": "De https://gabl.ink/ : "
     }
+  },
+  "cc": {
+    "en": {
+      "printf": " (CC)"
+    },
+    "fr": {
+      "equal": "en"
+    }
   }
 }

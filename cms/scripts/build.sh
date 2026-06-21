@@ -425,13 +425,13 @@ for i in $items;do (
           :
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
-          printf -- '<link rel="prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$container_first" "$lang_i" "$lang"
-          printf -- '<link rel="prev prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$prev" "$lang_i" "$lang"
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$container_first" "$lang"
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$prev" "$lang"
         elif [ "$container_first" = "$prev" ];then
-          printf -- '<link rel="prev prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$prev" "$lang_i" "$lang"
+          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$prev" "$lang"
         fi
 
         if test_null next;then
@@ -439,13 +439,13 @@ for i in $items;do (
           :
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$next" "$lang_i" "$lang"
-          printf -- '<link rel="prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$container_last" "$lang_i" "$lang"
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$next" "$lang"
+          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$container_last" "$lang"
         elif [ "$container_last" = "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/%s/" hreflang="%s" type="text/html">' \
-                 "$next" "$lang_i" "$lang"
+          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+                 "$next" "$lang"
         fi
 
         make_og type article
@@ -477,8 +477,7 @@ for i in $items;do (
           else
             printf '<a lang="%s" href="../%s/">' "$lang_i" "$lang_i"
           fi
-          printf -- '%s ' "$lang_l_name_html"
-          printf -- '(%s)' "$lang_r_name_html"
+          printf -- '%s' "$lang_name_html"
           if [ "$l" = "$main_lang" ];then
             printf '</b>'
           else
@@ -522,12 +521,12 @@ for i in $items;do (
           printf '<source src="./video.webm" type="video/webm">'
           if ! test_unset captions_exists;then
             printf '<track kind="captions" '
-            printf -- 'label="%s (%s) (CC)" ' "$lang_l_name_text" "$lang_r_name_text"
+            printf -- 'label="%s%s" ' "$lang_name_text" "$(printf_l10n cc)"
             printf -- 'src="./cc.vtt" srclang="%s">' "$lang"
           fi
           if ! test_unset subs_exists;then
             printf '<track default kind="subtitles" '
-            printf -- 'label="%s (%s)" ' "$lang_l_name_text" "$lang_r_name_text"
+            printf -- 'label="%s" ' "$lang_name_text"
             printf -- 'src="./subs.vtt" srclang="%s">' "$lang"
           fi
           printf '<p>'
