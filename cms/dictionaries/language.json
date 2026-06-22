@@ -5,10 +5,10 @@
         "text": "English"
       },
       "fr": {
-        "text": "anglais"
+        "text": "Anglais"
       },
       "es": {
-        "text": "inglés"
+        "text": "Inglés"
       }
     },
     "implicit": {
@@ -21,10 +21,10 @@
         "text": "French"
       },
       "fr": {
-        "text": "français"
+        "text": "Français"
       },
       "es": {
-        "text": "francés"
+        "text": "Francés"
       }
     },
     "implicit": {
@@ -34,13 +34,13 @@
   "es": {
     "name": {
       "es": {
-        "text": "español"
+        "text": "Español"
       },
       "en": {
         "text": "Spanish"
       },
       "fr": {
-        "text": "espagnol"
+        "text": "Espagnol"
       }
     },
     "implicit": {
@@ -49,14 +49,14 @@
   },
   "tok": {
     "name": {
-      "en": {
-        "text": "Toki Pona"
-      },
       "tok": {
         "text": "toki pona"
       },
-      "mul": {
-        "equal": "tok"
+      "en": {
+        "text": "Toki Pona"
+      },
+      "fr": {
+        "text": "Toki pona"
       }
     },
     "implicit": {
@@ -66,13 +66,13 @@
   "ru": {
     "name": {
       "ru": {
-        "text": "русский"
+        "text": "Русский"
       },
       "en": {
         "text": "Russian"
       },
       "fr": {
-        "text": "russe"
+        "text": "Russe"
       }
     },
     "implicit": {
@@ -88,7 +88,7 @@
         "text": "Japanese"
       },
       "fr": {
-        "text": "japonais"
+        "text": "Japonais"
       }
     },
     "implicit": {
@@ -104,7 +104,7 @@
         "text": "Chinese"
       },
       "fr": {
-        "text": "chinois"
+        "text": "Chinois"
       }
     }
   },
@@ -117,7 +117,7 @@
         "text": "Korean"
       },
       "fr": {
-        "text": "coréen"
+        "text": "Coréen"
       }
     },
     "implicit": {
@@ -133,7 +133,7 @@
         "equal": "eo"
       },
       "fr": {
-        "text": "espéranto"
+        "text": "Espéranto"
       }
     },
     "implicit": {
