@@ -742,9 +742,9 @@ for i in $items;do (
 
       printf '<footer><p><span class="nw">'
       printf -- '<abbr title="%s">©</abbr>\302\240' "$(printf_l10n copyright)"
-      printf -- '<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_first"
+      printf -- '%s' "$copyright_year_first"
       ! test_null copyright_year_last &&
-        printf -- '–<time data-ssml-say-as="date" data-ssml-say-as-format="y">%s</time>' "$copyright_year_last"
+        printf -- '–%s' "$copyright_year_last"
       printf '</span> <span translate="no">gabl.ink</span></p>'
 
       printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
