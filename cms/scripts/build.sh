@@ -335,15 +335,15 @@ for i in $items;do (
       printf '<!DOCTYPE html>\n'
       printf -- '<!-- SPDX-License-Identifier: %s -->\n' "$copyright_license_spdx"
 
-      printf -- '<html lang="%s" dir="%s">' "$lang" "$lang_d"
+      printf -- '<html lang=%s dir=%s>' "$lang" "$lang_d"
 
-      printf '<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+      printf '<head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">'
 
       printf -- '<title>%s</title>' "$(printf_l10n html_title "$title_text")"
 
-      printf -- '<meta name="description" content="%s">' "$description_text"
-      printf '<meta name="robots" content="index,follow">'
-      printf -- '<link rel="canonical" href="%s" hreflang="%s" type="text/html">' "$canonical" "$lang"
+      printf -- '<meta name=description content="%s">' "$description_text"
+      printf '<meta name=robots content=index,follow>'
+      printf -- '<link rel=canonical href=%s hreflang=%s type=text/html>' "$canonical" "$lang"
 
       if [ "$type" = comic_page ];then
         chapter="$(jq -r .location.chapter "$i")"
@@ -383,14 +383,10 @@ for i in $items;do (
           err e 'up_directories is not 2, 3, or 4'
         fi
 
-        printf -- '<link rel="preload" href="%s/global.css" as="style" hreflang="zxx" type="text/css">' \
-               "$styles"
-        printf -- '<link rel="preload" href="%s/comic_page.css" as="style" hreflang="zxx" type="text/css">' \
-               "$styles"
-        printf -- '<link rel="stylesheet" href="%s/global.css" hreflang="zxx" type="text/css">' \
-               "$styles"
-        printf -- '<link rel="stylesheet" href="%s/comic_page.css" hreflang="zxx" type="text/css">' \
-               "$styles"
+        printf '<link rel=preload href=%s/global.css as=style hreflang=zxx type=text/css>' "$styles"
+        printf '<link rel=preload href=%s/comic_page.css as=style hreflang=zxx type=text/css>' "$styles"
+        printf '<link rel=stylesheet href=%s/global.css hreflang=zxx type=text/css>' "$styles"
+        printf '<link rel=stylesheet href=%s/comic_page.css hreflang=zxx type=text/css>' "$styles"
 
         printf -- '<link rel="external license" href="%s">' "$copyright_license_url_id"
 
@@ -425,12 +421,12 @@ for i in $items;do (
           :
         elif [ "$container_first" != "$page" ] ||
              [ "$container_first" != "$prev" ];then
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel=prefetch href=../../%s/ hreflang=%s type=text/html>' \
                  "$container_first" "$lang"
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel="prev prefetch" href=../../%s/ hreflang=%s type=text/html>' \
                  "$prev" "$lang"
         elif [ "$container_first" = "$prev" ];then
-          printf -- '<link rel="prev prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel="prev prefetch" href=../../%s/ hreflang=%s type=text/html>' \
                  "$prev" "$lang"
         fi
 
@@ -439,12 +435,12 @@ for i in $items;do (
           :
         elif [ "$container_last" != "$page" ] ||
              [ "$container_last" != "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel="next prefetch" href=../../%s/ hreflang=%s type=text/html>' \
                  "$next" "$lang"
-          printf -- '<link rel="prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel=prefetch href=../../%s/ hreflang=%s type=text/html>' \
                  "$container_last" "$lang"
         elif [ "$container_last" = "$next" ];then
-          printf -- '<link rel="next prefetch" href="../../%s/" hreflang="%s" type="text/html">' \
+          printf -- '<link rel="next prefetch" href=../../%s/ hreflang=%s type=text/html>' \
                  "$next" "$lang"
         fi
 
@@ -462,20 +458,20 @@ for i in $items;do (
 
         printf '<body>'
         printf '<header>'
-        printf '<a href="https://gabl.ink/" id="gabldotink_logo">'
+        printf '<a href=https://gabl.ink/ id=gabldotink_logo>'
         printf_l10n gabldotink_logo
         printf '</a>'
 
-        printf '<ul id="lang_select">'
+        printf '<ul id=lang_select>'
         for l in $(printf '%s\n' "$langs"|sort -u);do (
           main_lang="$lang"
           lang="$l"
           parse_lang
-          printf -- '<li data-lang_select_flag="%s">' "$lang_r_flag"
+          printf -- '<li data-lang_select_flag=%s>' "$lang_r_flag"
           if [ "$l" = "$main_lang" ];then
             printf '<b>'
           else
-            printf '<a lang="%s" href="../%s/">' "$lang_i" "$lang_i"
+            printf '<a lang=%s href=../%s/>' "$lang_i" "$lang_i"
           fi
           printf -- '%s' "$lang_name_html"
           if [ "$l" = "$main_lang" ];then
