@@ -9,7 +9,7 @@ parse_lang(){
   parse_lang_loop=1
 
   while [ "$parse_lang_loop" -le 3 ];do
-    eval 'parse_lang_'"$parse_lang_loop"'="$(printf "%s" "$lang"|cut -d- "-f$parse_lang_loop")"'
+    eval 'parse_lang_'"$parse_lang_loop"'="$(printf %s "$lang"|cut -d- "-f$parse_lang_loop")"'
     parse_lang_loop="$((parse_lang_loop+1))"
   done
 

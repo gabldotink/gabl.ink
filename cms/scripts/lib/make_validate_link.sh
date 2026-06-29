@@ -12,8 +12,8 @@ make_validate_link(){
   printf '<li id=validate_links_%s>' "$1"
   printf '<a rel=external href="%s' "$make_validate_link_base$make_share_link_url"
   printf '">%s' "$(printf_l10n validate_with)"
-  printf '%s' "$make_validate_link_name_html"
+  printf %s "$make_validate_link_name_html"
   [ -n "$make_validate_link_format_html" ] &&
-    printf '%s%s' "$(printf_l10n validate_as)" "$make_validate_link_format_html"
+    printf %s%s "$(printf_l10n validate_as)" "$make_validate_link_format_html"
   printf '</a></li>'
 }

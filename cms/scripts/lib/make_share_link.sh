@@ -27,17 +27,17 @@ make_share_link(){
 
   for p in title url text hashtag;do
     [ "$make_share_link_start_param" = '?' ] ||
-      case "$(eval 'printf "%s" "$make_share_link_'"$p"'_param"')" in
+      case "$(eval 'printf %s "$make_share_link_'"$p"'_param"')" in
         [A-Za-z]*)
           make_share_link_start_param='&amp;' ;;
         *)
           make_share_link_start_param='&'
       esac
     if ! test_null "make_share_link_${p}_param" &&
-       [ -n "$(eval 'printf "%s" "$make_share_link_'"$p"'"')" ];then
-      printf '%s%s=%s' "$make_share_link_start_param" \
-                       "$(eval 'printf "%s" "$make_share_link_'"$p"'_param"')" \
-                       "$(eval 'printf "%s" "$make_share_link_'"$p"'"')"
+       [ -n "$(eval 'printf %s "$make_share_link_'"$p"'"')" ];then
+      printf %s%s=%s "$make_share_link_start_param" \
+                     "$(eval 'printf %s "$make_share_link_'"$p"'_param"')" \
+                     "$(eval 'printf %s "$make_share_link_'"$p"'"')"
       [ "$make_share_link_start_param" = '?' ] &&
         make_share_link_start_param='&'
     fi
@@ -45,7 +45,7 @@ make_share_link(){
 
   printf '">%s' "$(printf_l10n share_with)"
 
-  printf '%s' "$make_share_link_name_html"
+  printf %s "$make_share_link_name_html"
 
   printf '</a></li>'
 }

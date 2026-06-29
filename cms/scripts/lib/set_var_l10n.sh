@@ -16,7 +16,7 @@ set_var_l10n(){
     done
 
     if ! test_unset "${1}_equal" &&
-       [ "$o" != "$(eval 'printf "%s" "$'"$1"'_equal"')" ];then
+       [ "$o" != "$(eval 'printf %s "$'"$1"'_equal"')" ];then
         eval 'lang="$'"$1"'_equal" set_var_l10n "$1" "$2" "$3"'
         break
     fi

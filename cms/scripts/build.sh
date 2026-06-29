@@ -328,7 +328,7 @@ for i in $items;do (
     [ -f "$index/$id/$lang_i/subs.vtt" ] &&
       subs_exists=
 
-    jq -er '.tooltip!=null' "$i" >/dev/null &&
+    jq -er .tooltip!=null "$i" >/dev/null &&
       tooltip_exists=
 
     {
@@ -414,8 +414,8 @@ for i in $items;do (
 
         exit_if
 
-        container_first="$(printf '%s' "$parts"|head -n1)"
-        container_last="$(printf '%s' "$parts"|tail -n1)"
+        container_first="$(printf %s "$parts"|head -n1)"
+        container_last="$(printf %s "$parts"|tail -n1)"
 
         if test_null prev;then
           # This is the first page, so no prefetches are needed.
@@ -474,7 +474,7 @@ for i in $items;do (
           else
             printf '<a lang=%s href=../%s/>' "$lang_i" "$lang_i"
           fi
-          printf -- '%s' "$lang_name_html"
+          printf -- %s "$lang_name_html"
           if [ "$l" = "$main_lang" ];then
             printf '</b>'
           else
@@ -586,7 +586,7 @@ for i in $items;do (
           [ "$l_h_type" = character ] ||
             [ "$l_h_type" = meta_character ] ||
               err e 'l_h_type is not character or meta_character'
-          if jq -er '.name==null' "$encyclopedia/$l_h/data.json" >/dev/null;then
+          if jq -er .name==null "$encyclopedia/$l_h/data.json" >/dev/null;then
             unset_var_l10n l_h_label
           else
             set_var_l10n l_h_label name.label "$encyclopedia/$l_h/data.json"
@@ -601,7 +601,7 @@ for i in $items;do (
           printf '<td>'
           case "$l_d_html" in
             '<'*)
-              printf -- '%s' "$l_d_html" ;;
+              printf -- %s "$l_d_html" ;;
             *)
               printf -- '<p>%s</p>' "$l_d_html"
           esac
@@ -621,16 +621,16 @@ for i in $items;do (
 
           printf '<article id=log_'
 
-          printf -- '%s-%s-%s>' "$(zero_pad 4 log_date_y)" "$(zero_pad 2 log_date_m)" "$(zero_pad 2 log_date_d)"
+          printf -- %s-%s-%s "$(zero_pad 4 log_date_y)" "$(zero_pad 2 log_date_m)" "$(zero_pad 2 log_date_d)"
 
-          printf '<details>'
+          printf '><details>'
           printf -- '<summary><h3>%s</h3></summary>' "$(say_date log_date)"
 
           for p in $(jq -r --argjson k "$k" '.log[$k].content|keys[]' "$i");do
             set_var_l10n log_content_p "log[$k].content[$p]" "$i"
             case "$log_content_p_html" in
               '<'*)
-                printf -- '%s' "$log_content_p_html" ;;
+                printf -- %s "$log_content_p_html" ;;
               *)
                 printf -- '<p>%s</p>' "$log_content_p_html"
             esac
@@ -650,13 +650,13 @@ for i in $items;do (
         printf '<summary>%s</summary>' "$(printf_l10n share_this_page)"
         printf '<ul>'
 
-        make_share_link_url="$(printf '%s' "$canonical"|jq -Rr @uri)"
+        make_share_link_url="$(printf %s "$canonical"|jq -Rr @uri)"
 
         make_share_link email \
                        "$(printf_l10n gabldotink_series_page '' "$series_title_text" "$title_text")" \
                        "$(
                           printf_l10n from_gabldotink
-                          printf '%s' "$canonical"
+                          printf %s "$canonical"
                         )"
 
         make_share_link sms '' \
@@ -739,9 +739,9 @@ for i in $items;do (
 
       printf '<footer><p><span class=nw>'
       printf -- '<abbr title=%s>©</abbr>\302\240' "$(printf_l10n copyright)"
-      printf -- '%s' "$copyright_year_first"
+      printf -- %s "$copyright_year_first"
       ! test_null copyright_year_last &&
-        printf -- '–%s' "$copyright_year_last"
+        printf -- –%s "$copyright_year_last"
       printf '</span> <span translate=no>gabl.ink</span></p>'
 
       printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
