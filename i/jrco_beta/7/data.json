@@ -71,7 +71,7 @@
         },
         {
           "en-US": {
-            "html": "I’m back! Between week‐long campouts, computer issues, low motivation, reading lots of <cite>Wikipedia</cite>, tweeting about the <cite class=\"i\">Mario</cite> movie, and discovering the lost city of Atlantis, I’ve had a lot on my plate. I’m pleased to announce that, <em>probably</em>, the pace of pages coming out should pick up, although unfortunately I’m still not ready to make an update schedule yet."
+            "html": "I’m back! Between week‐long campouts, computer issues, low motivation, reading lots of <cite>Wikipedia</cite>, tweeting about the <cite class=i>Mario</cite> movie, and discovering the lost city of Atlantis, I’ve had a lot on my plate. I’m pleased to announce that, <em>probably</em>, the pace of pages coming out should pick up, although unfortunately I’m still not ready to make an update schedule yet."
           }
         },
         {
@@ -81,12 +81,12 @@
         },
         {
           "en-US": {
-            "html": "Who is that mysterious boy at the door? Will I ever flesh out the characters that are sitting around on the grass (that’s supposed to be grass)? Will I actually start posting more often, or will I slip into another slump of not drawing even though I love doing it? Find out next time on\u00a0.\u00a0.\u00a0. <cite class=\"i\">JoeRunner and Co.</cite>! Or something!"
+            "html": "Who is that mysterious boy at the door? Will I ever flesh out the characters that are sitting around on the grass (that’s supposed to be grass)? Will I actually start posting more often, or will I slip into another slump of not drawing even though I love doing it? Find out next time on\u00a0.\u00a0.\u00a0. <cite class=i>JoeRunner and Co.</cite>! Or something!"
           }
         },
         {
           "en": {
-            "html": "—\u2060\u200a\u2060<span translate=\"no\">gabl</span>"
+            "html": "—\u2060<span translate=no>gabl</span>"
           },
           "mul": {
             "equal": "en"

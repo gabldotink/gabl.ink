@@ -32,7 +32,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "html": "A computer screen shows a video game, <cite class=\"i\">Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=\"2021-05-27T07:57-0600\">0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+          "html": "A computer screen shows a video game, <cite class=i>Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=2021-05-27T07:57-0600>0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
         }
       }
     },
@@ -40,10 +40,10 @@
       "h": "meta/chat",
       "d": {
         "en": {
-          "html": "<p><code class=\"u\">brightful</code> On the move!</p><p><code class=\"u\">brightful</code> Uh-oh!</p><p><code class=\"u\">sharkles5</code> stop spamming defaults</p><p><code class=\"u\">brightful</code> I'm using tilt controls!</p>"
+          "html": "<p><code class=u>brightful</code> On the move!</p><p><code class=u>brightful</code> Uh-oh!</p><p><code class=u>sharkles5</code> stop spamming defaults</p><p><code class=u>brightful</code> I'm using tilt controls!</p>"
         },
         "fr": {
-          "html": "<code class=\"u\">plein_de_brillant</code> En mouvement\u00a0!</p><p><code class=\"u\">plein_de_brillant_</code> Oups\u00a0!</p><p><code class=\"u\">sans_des_requin5</code> arrete de spammer ca</p><code class=\"u\">plein_de_brillant</code>Je joue avec le gyroscope\u00a0!"
+          "html": "<code class=u>plein_de_brillant</code> En mouvement\u00a0!</p><p><code class=u>plein_de_brillant</code> Oups\u00a0!</p><p><code class=u>sans_des_requin5</code> arrete de spammer ca</p><code class=u>plein_de_brillant</code>Je joue avec le gyroscope\u00a0!"
         }
       }
     },
@@ -101,12 +101,10 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "text": "Say your last\u2060—",
-          "html": "Say your last\u2060—"
+          "text": "Say your last\u2060—"
         },
         "fr": {
-          "text": "Dites tes derniers\u202f—",
-          "html": "Dites tes derniers\u202f—"
+          "text": "Dites tes derniers\u202f—"
         }
       }
     },
@@ -114,8 +112,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "text": "JoeRunner raises his eyebrows, and a burst symbol appears above his head. It turns into a loading wheel with the text “Processing\u00a0.\u00a0.\u00a0.” as JoeRunner stares blankly at the screen.",
-          "html": "JoeRunner raises his eyebrows, and a burst symbol appears above his head. It turns into a loading wheel with the text “Processing\u00a0.\u00a0.\u00a0.” as JoeRunner stares blankly at the screen."
+          "text": "JoeRunner raises his eyebrows, and a burst symbol appears above his head. It turns into a loading wheel with the text “Processing\u00a0.\u00a0.\u00a0.” as JoeRunner stares blankly at the screen."
         }
       }
     },
@@ -270,12 +267,12 @@
         },
         {
           "en": {
-            "html": "This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=\"2023-04-01\">April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length."
+            "html": "This page only took a month to come out instead of, like, five. There’s so much that I want to get to, and it’s a bit upsetting to me that I’ve only gotten this far, with <i><cite>JoeRunner and Co.</cite></i>’s first anniversary being in two days (<time datetime=2023-04-01>April\u00a01</time>). This page especially took a lot of effort\u2060—the most yet\u2060—due to its length."
           }
         },
         {
           "en": {
-            "html": "Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=\"i nw\"><time datetime=\"2021-05-25\">May\u00a025, 2021</time>?</em> I really <em class=\"i\">am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all."
+            "html": "Only about 60% of the draft I wrote back on\u00a0.\u00a0.\u00a0. <i>checks</i> <em class=nw><time datetime=2021-05-25>May\u00a025, 2021</time>?</em> I really <em>am</em> behind. <i>ahem</i> Only about 60% of the original draft is in this final version. None of these pages so far are super faithful to that draft\u2060—I wrote them when I was around 14\u00a0years old, and of course my dialogue has changed a lot in two years of my teenage life. It means the same thing, but it’s expanded and, dare I say, funnier. Assuming it’s funny at all."
           }
         },
         {
@@ -290,7 +287,7 @@
         },
         {
           "en": {
-            "html": "<p><b>—\u2060\u200a\u2060Gabriel\u00a0/ <span translate=\"no\">gabl</span></b></p>"
+            "html": "<p><b>—\u2060Gabriel\u00a0/ <span translate=no>gabl</span></b></p>"
           },
           "mul": {
             "equal": "en"
