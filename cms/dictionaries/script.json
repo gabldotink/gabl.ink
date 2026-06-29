@@ -104,11 +104,11 @@
       },
       "en": {
         "text": "hangul and _hanja_",
-        "html": "hangul and <i lang=\"ko-Latn\">hanja</i>"
+        "html": "hangul and <i lang=ko-Latn>hanja</i>"
       },
       "fr": {
         "text": "_hangeul_ et _hanja_",
-        "html": "<i lang=\"ko-Latn\">hangeul</i> et <i lang=\"ko-Latn\">hanja</i>"
+        "html": "<i lang=ko-Latn>hangeul</i> et <i lang=ko-Latn>hanja</i>"
       }
     }
   },
@@ -129,7 +129,7 @@
       },
       "fr": {
         "text": "_hangeul_",
-        "html": "<i lang=\"ko-Latn\">hangeul</i>"
+        "html": "<i lang=ko-Latn>hangeul</i>"
       }
     }
   },
