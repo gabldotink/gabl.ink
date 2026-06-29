@@ -238,7 +238,7 @@
         },
         {
           "en": {
-            "html": "And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite> <small>[<i>link removed</i>]</small>, but I ended up not liking how it turned out."
+            "html": "And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite>\u00a0<small>[<i>link removed</i>]</small>, but I ended up not liking how it turned out."
           }
         },
         {

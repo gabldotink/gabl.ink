@@ -184,12 +184,12 @@
         },
         {
           "en": {
-            "html": "First off, this comic has a mobile‐friendly version! Similarly to the format that <cite>Webtoon</cite> uses, the mobile version is comprised of several narrower images that are easier to read on a vertical screen. If you’re using a fullscreen desktop browser window, the “desktop” version should show up by default; if you’re on mobile, the mobile version should appear instead. I’m testing it out with this one, and I’ll see how well it turns out. (You can view the mobile comic on desktop by resizing your browser window to be narrower; however, I’m still trying to figure out a way to view the desktop comic on mobile. Your best bet for now is probably to just view the original image source here <small>[<i>link removed</i>]</small>.)"
+            "html": "First off, this comic has a mobile‐friendly version! Similarly to the format that <cite>Webtoon</cite> uses, the mobile version is comprised of several narrower images that are easier to read on a vertical screen. If you’re using a fullscreen desktop browser window, the “desktop” version should show up by default; if you’re on mobile, the mobile version should appear instead. I’m testing it out with this one, and I’ll see how well it turns out. (You can view the mobile comic on desktop by resizing your browser window to be narrower; however, I’m still trying to figure out a way to view the desktop comic on mobile. Your best bet for now is probably to just view the original image source here\u00a0<small>[<i>link removed</i>]</small>.)"
           }
         },
         {
           "en": {
-            "html": "Second, I’m renaming “episodes” to “seasons.” I know, I know, calm down. I know how attached people have gotten to episodes over the last five pages, but believe me, it’s for the greater good. I want you to know that I don’t make this dramatic change lightly, and that it has a purpose. I’m calling them seasons now because webcomic “episodes” have a different meaning in <cite class=i>JoeRunner and Co.</cite> than on <cite>Webtoon</cite>, the most popular webcomic publisher (that’s right, I mentioned <cite>Webtoon</cite> <em class=i>twice</em>), in addition to the fact that having both “episodes” and “chapters” at once is a bit confusing. I hope your anger has more or less subsided; I understand, however, that it will likely take a long time for you to truly forgive me."
+            "html": "Second, I’m renaming “episodes” to “seasons.” I know, I know, calm down. I know how attached people have gotten to episodes over the last five pages, but believe me, it’s for the greater good. I want you to know that I don’t make this dramatic change lightly, and that it has a purpose. I’m calling them seasons now because webcomic “episodes” have a different meaning in <cite class=\"i nw\">JoeRunner and Co.</cite> than on <cite>Webtoon</cite>, the most popular webcomic publisher (that’s right, I mentioned <cite>Webtoon</cite> <em>twice</em>), in addition to the fact that having both “episodes” and “chapters” at once is a bit confusing. I hope your anger has more or less subsided; I understand, however, that it will likely take a long time for you to truly forgive me."
           }
         },
         {
@@ -204,7 +204,7 @@
         },
         {
           "en": {
-            "html": "Alternatively, I have an <abbr>RSS</abbr> (Really Simple Syndication) feed! It’s located here <small>[<i>link removed</i>]</small>. If you click on the link, you’ll just see a bunch of code\u2060—it’s your job to get it to do its magic through an <abbr>RSS</abbr> reader, which will keep you posted whenever I update. You can learn how to do this at my handy‐dandy <abbr>RSS</abbr> info page <small>[<i>link removed</i>]</small>. Aren’t I so helpful? <small>[<i>not anymore</i>]</small>"
+            "html": "Alternatively, I have an <abbr>RSS</abbr> (Really Simple Syndication) feed! It’s located here\u00a0<small>[<i>link removed</i>]</small>. If you click on the link, you’ll just see a bunch of code\u2060—it’s your job to get it to do its magic through an <abbr>RSS</abbr> reader, which will keep you posted whenever I update. You can learn how to do this at my handy‐dandy <abbr>RSS</abbr> info page\u00a0<small>[<i>link removed</i>]</small>. Aren’t I so helpful?\u00a0<small>[<i>not anymore</i>]</small>"
           }
         },
         {
