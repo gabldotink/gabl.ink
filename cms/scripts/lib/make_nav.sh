@@ -20,16 +20,16 @@ make_nav_f_l(){
     err e 'make_nav_f_l direction is not f or l'
   fi
 
-  printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_l" "$make_nav_f_l_i"
+  printf -- '<div class=nav_button id=nav_%s_buttons_%s ' "$make_nav_l" "$make_nav_f_l_i"
 
   if [ "$(eval 'printf %s "$'"$make_nav_f_l_z"'"')" = null ];then
     printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_f_l_i}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf %s "$container_'"$make_nav_f_l_i"'_title_text"')")"
-    printf -- '<a href="../../%s/%s/" hreflang="%s" type="text/html">' "$(eval 'printf "%d" "$container_'"$make_nav_f_l_i"'"')" "$lang_i" "$lang"
+    printf -- '<a href=../../%s/%s/ hreflang=%s type=text/html>' "$(eval 'printf %d "$container_'"$make_nav_f_l_i"'"')" "$lang_i" "$lang"
   fi
 
-  printf -- '<p><span class="nav_button_arrow" aria-hidden="true">%s</span><br>%s</p>' "$make_nav_f_l_a" "$make_nav_f_l_u"
+  printf -- '<p><span class=nav_button_arrow aria-hidden=true>%s</span><br>%s</p>' "$make_nav_f_l_a" "$make_nav_f_l_u"
 
   [ "$(eval 'printf -- %s "$'"$make_nav_f_l_z"'"')" = null ] ||
     printf '</a>'
@@ -52,16 +52,16 @@ make_nav_p_n(){
     err e 'make_nav_p_n direction is not p or n'
   fi
 
-  printf -- '<div class="nav_button" id="nav_%s_buttons_%s" ' "$make_nav_l" "$make_nav_p_n_i"
+  printf -- '<div class=nav_button id=nav_%s_buttons_%s ' "$make_nav_l" "$make_nav_p_n_i"
 
   if [ "$(eval 'printf -- %s "$'"$make_nav_p_n_i"'"')" = null ];then
     printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_p_n_z}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf %s "$'"$make_nav_p_n_i"'_title_text"')")"
-    printf -- '<a href="../../%s/%s/" rel="%s" hreflang="%s" type="text/html">' "$(eval 'printf "%d" "$'"$make_nav_p_n_i"'"')" "$lang_i" "$make_nav_p_n_i" "$lang"
+    printf -- '<a href=../../%s/%s/ rel=%s hreflang=%s type=text/html>' "$(eval 'printf %d "$'"$make_nav_p_n_i"'"')" "$lang_i" "$make_nav_p_n_i" "$lang"
   fi
 
-  printf -- '<p><span class="nav_button_arrow" aria-hidden="true">%s</span><br>%s</p>' "$make_nav_p_n_a" "$make_nav_p_n_u"
+  printf -- '<p><span class=nav_button_arrow aria-hidden=true>%s</span><br>%s</p>' "$make_nav_p_n_a" "$make_nav_p_n_u"
 
   [ "$(eval 'printf -- %s "$'"$make_nav_p_n_i"'"')" = null ] ||
     printf '</a>'
@@ -72,7 +72,7 @@ make_nav_p_n(){
 make_nav(){
   make_nav_l="$1"
 
-  printf '<nav id="nav_%s_buttons">' "$make_nav_l"
+  printf '<nav id=nav_%s_buttons>' "$make_nav_l"
 
   make_nav_f_l f
   make_nav_p_n p
