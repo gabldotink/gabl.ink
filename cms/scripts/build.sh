@@ -337,7 +337,8 @@ for i in $items;do (
 
       printf -- '<html lang=%s dir=%s>' "$lang" "$lang_d"
 
-      printf '<head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">'
+      # <head>
+      printf '<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">'
 
       printf -- '<title>%s</title>' "$(printf_l10n html_title "$title_text")"
 
@@ -454,9 +455,9 @@ for i in $items;do (
           make_og video "${canonical}video.webm"
         make_og locale "${lang_l}_$lang_r"
 
-        printf '</head>'
+        # </head>
 
-        printf '<body>'
+        # <body>
         printf '<header>'
         printf '<a href=https://gabl.ink/ id=gabldotink_logo>'
         printf_l10n gabldotink_logo
@@ -754,7 +755,8 @@ for i in $items;do (
         printf -- '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
       fi
 
-      printf '</footer></div></body></html>\n'
+      printf '</footer></div></html>\n'
+      # </body>
 
       exit_if
     } > "$tmpfile"
