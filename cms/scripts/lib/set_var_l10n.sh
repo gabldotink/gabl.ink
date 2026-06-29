@@ -10,7 +10,7 @@ set_var_l10n(){
     fi
 
     for t in equal html id printf text;do
-      eval " ${1}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$2"'"'"'.[$o].[$t]'"'"' "$3")"' >/dev/null 2>&1
+      eval " ${1}_$t"'="$(jq -r --arg o "$o" --arg t "$t" -- ".$2"'"'"'.[$o].[$t]'"'"' "$3")"'
       test_null "${1}_$t" &&
         unset -- "${1}_$t"
     done

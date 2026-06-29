@@ -328,7 +328,7 @@ for i in $items;do (
     [ -f "$index/$id/$lang_i/subs.vtt" ] &&
       subs_exists=
 
-    jq -er '.tooltip!=null' "$i" >/dev/null 2>&1 &&
+    jq -er '.tooltip!=null' "$i" >/dev/null &&
       tooltip_exists=
 
     {
@@ -586,7 +586,7 @@ for i in $items;do (
           [ "$l_h_type" = character ] ||
             [ "$l_h_type" = meta_character ] ||
               err e 'l_h_type is not character or meta_character'
-          if jq -er '.name==null' "$encyclopedia/$l_h/data.json" >/dev/null 2>&1;then
+          if jq -er '.name==null' "$encyclopedia/$l_h/data.json" >/dev/null;then
             unset_var_l10n l_h_label
           else
             set_var_l10n l_h_label name.label "$encyclopedia/$l_h/data.json"
