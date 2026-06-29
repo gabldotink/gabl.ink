@@ -576,7 +576,7 @@ for i in $items;do (
 
         printf -- '<summary><h2>%s</h2></summary>' "$(printf_l10n transcript_name)"
 
-        printf '<table id=comic_transcript_table><tbody>'
+        printf '<table id=comic_transcript_table>'
 
         for l in $(jq -r '.transcript|to_entries|.[].key' "$i");do
           l_h="$(jq -r --argjson l "$l" '.transcript[$l].h' "$i")"
@@ -608,7 +608,7 @@ for i in $items;do (
           printf '</td></tr>'
         done
 
-        printf '</tbody></table></details>'
+        printf '</table></details>'
 
         printf '<hr>'
 
