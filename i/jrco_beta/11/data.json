@@ -83,7 +83,7 @@
       "h": "meta/letter",
       "d": {
         "en": {
-          "html": "Dear Mr.\u00a0Mahan, Thank you very much for having me for the last two weeks of school. I look forward to it. That is all I have to say. —\u2060\u200a\u2060Ma"
+          "html": "<p>Dear Mr.\u00a0Mahan, Thank you very much for having me for the last two weeks of school. I look forward to it. That is all I have to say.</p><p>—\u2060Ma</p>"
         }
       }
     },
