@@ -16,8 +16,8 @@ make_share_link(){
   make_share_link_text="$(jq -rn --arg t "$3" '$t|@uri')"
   make_share_link_hashtag="$(jq -rn --arg h "$4" '$h|@uri')"
 
-  printf '<li id="share_links_%s">' "$1"
-  printf '<a rel="external" href="%s' "$make_share_link_base"
+  printf '<li id=share_links_%s>' "$1"
+  printf '<a rel=external href="%s' "$make_share_link_base"
 
   if [ "$1" = reddit ];then
     make_share_link_start_param='&amp;'

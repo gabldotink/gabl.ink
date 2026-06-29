@@ -484,9 +484,9 @@ for i in $items;do (
         done
         printf '</ul>'
         printf '</header>'
-        printf '<div id="panels">'
-        printf '<div id="nav_top">'
-        printf '<h1 id="nav_top_title">'
+        printf '<div id=panels>'
+        printf '<div id=nav_top>'
+        printf '<h1 id=nav_top_title>'
         printf_l10n page_title_html "$title_html"
         printf '</h1>'
 
@@ -506,46 +506,46 @@ for i in $items;do (
 
         printf '</div>'
 
-        printf '<div id="comic_page_'
+        printf '<div id=comic_page_'
 
         # TODO: Edge case: no captions
         if ! test_unset video_exists;then
-          printf 'video"><video controls poster="./image.png" preload="auto"'
+          printf 'video><video controls poster=image.png preload=auto'
           test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
-          printf '<source src="./video.webm" type="video/webm">'
+          printf '<source src=video.webm type=video/webm>'
           if ! test_unset captions_exists;then
-            printf '<track kind="captions" '
+            printf '<track kind=captions '
             printf -- 'label="%s%s" ' "$lang_name_text" "$(printf_l10n cc)"
-            printf -- 'src="./cc.vtt" srclang="%s">' "$lang"
+            printf -- 'src=cc.vtt srclang=%s>' "$lang"
           fi
           if ! test_unset subs_exists;then
-            printf '<track default kind="subtitles" '
+            printf '<track default kind=subtitles '
             printf -- 'label="%s" ' "$lang_name_text"
-            printf -- 'src="./subs.vtt" srclang="%s">' "$lang"
+            printf -- 'src=subs.vtt srclang=%s>' "$lang"
           fi
           printf '<p>'
           printf_l10n video_not_supported "$lang" "$series_title_text" "$title_text"
           printf '</p>'
           printf '</video></div>'
         else
-          printf 'image"><picture'
+          printf 'image><picture'
           test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
-          printf '<img src="./image.png" alt="'
+          printf '<img src=image.png alt="'
           printf_l10n see_transcript
           printf '"></picture></div>'
         fi
 
-        printf '<div id="nav_bottom">'
+        printf '<div id=nav_bottom>'
 
         make_nav bottom
 
-        printf '<nav id="nav_bottom_list">'
+        printf '<nav id=nav_bottom_list>'
 
-        printf '<details id="nav_bottom_list_root">'
+        printf '<details id=nav_bottom_list_root>'
 
         printf '<summary>'
 
@@ -561,7 +561,7 @@ for i in $items;do (
 
         printf '</summary>'
 
-        printf '<ol id="nav_bottom_list_pages">'
+        printf '<ol id=nav_bottom_list_pages>'
 
         for r in $parts;do
           make_page_list_entry "$index/$id/../$r/data.json"
@@ -571,11 +571,11 @@ for i in $items;do (
 
         printf '</ol></details></nav></div>'
 
-        printf '<details id="comic_transcript">'
+        printf '<details id=comic_transcript>'
 
         printf -- '<summary><h2>%s</h2></summary>' "$(printf_l10n transcript_name)"
 
-        printf '<table id="comic_transcript_table"><tbody>'
+        printf '<table id=comic_transcript_table><tbody>'
 
         for l in $(jq -r '.transcript|to_entries|.[].key' "$i");do
           l_h="$(jq -r --argjson l "$l" '.transcript[$l].h' "$i")"
@@ -596,7 +596,7 @@ for i in $items;do (
           exit_if
 
           printf '<tr>'
-          printf '<th scope="row">%s</th>' "$l_h_label_html"
+          printf '<th scope=row>%s</th>' "$l_h_label_html"
           printf '<td>'
           case "$l_d_html" in
             '<'*)
@@ -618,9 +618,9 @@ for i in $items;do (
           log_date_m="$(jq -r --argjson k "$k" '.log[$k].date.m' "$i")"
           log_date_y="$(jq -r --argjson k "$k" '.log[$k].date.y' "$i")"
 
-          printf '<article id="log_'
+          printf '<article id=log_'
 
-          printf -- '%s-%s-%s">' "$(zero_pad 4 log_date_y)" "$(zero_pad 2 log_date_m)" "$(zero_pad 2 log_date_d)"
+          printf -- '%s-%s-%s>' "$(zero_pad 4 log_date_y)" "$(zero_pad 2 log_date_m)" "$(zero_pad 2 log_date_d)"
 
           printf '<details>'
           printf -- '<summary><h3>%s</h3></summary>' "$(say_date log_date)"
@@ -640,12 +640,12 @@ for i in $items;do (
 
         printf '<hr>'
 
-        printf '<p id="canonical_url">'
-        printf '%s<a href="%s" type="text/html" hreflang="%s">%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
+        printf '<p id=canonical_url>'
+        printf '%s<a href=%s hreflang=%s type=text/html>%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
         printf '</p>'
 
 
-        printf '<details id="share_links">'
+        printf '<details id=share_links>'
         printf '<summary>%s</summary>' "$(printf_l10n share_this_page)"
         printf '<ul>'
 
@@ -726,7 +726,7 @@ for i in $items;do (
 
         printf '</ul></details>'
 
-        printf '<details id="validate_links">'
+        printf '<details id=validate_links>'
         printf -- '<summary>%s</summary>' "$(printf_l10n validate_this_page)"
         printf '<ul>'
 
@@ -736,12 +736,12 @@ for i in $items;do (
         printf '</ul></details>'
       fi
 
-      printf '<footer><p><span class="nw">'
-      printf -- '<abbr title="%s">©</abbr>\302\240' "$(printf_l10n copyright)"
+      printf '<footer><p><span class=nw>'
+      printf -- '<abbr title=%s>©</abbr>\302\240' "$(printf_l10n copyright)"
       printf -- '%s' "$copyright_year_first"
       ! test_null copyright_year_last &&
         printf -- '–%s' "$copyright_year_last"
-      printf '</span> <span translate="no">gabl.ink</span></p>'
+      printf '</span> <span translate=no>gabl.ink</span></p>'
 
       printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"

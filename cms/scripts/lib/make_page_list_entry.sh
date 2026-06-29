@@ -19,7 +19,7 @@ make_page_list_entry(){
       if [ "$lang_l-$lang_r" = en-US ];then
         printf '“<b><cite>'
       elif [ "$lang_l" = fr ];then
-        printf '<b><cite class="i">'
+        printf '<b><cite class=i>'
       fi
       printf '%s' "$title_html"
       if [ "$lang_l-$lang_r" = en-US ];then
@@ -29,15 +29,15 @@ make_page_list_entry(){
       fi
     else
       if [ "$lang_l" = en ];then
-        printf '“<a href="../../'
+        printf '“<a href=../../'
         printf '%s' "$make_page_list_entry_s"
-        printf '/%s/" hreflang="%s" type="text/html"><cite>' "$lang_i" "$lang"
+        printf '/%s/ hreflang=%s type=text/html><cite>' "$lang_i" "$lang"
         printf '%s' "$list_title_html"
         printf '</cite></a>”'
       elif [ "$lang_l" = fr ];then
-        printf '<a href="../../'
+        printf '<a href=../../'
         printf '%s' "$make_page_list_entry_s"
-        printf '/%s/" hreflang="%s" type="text/html"><cite class="i">' "$lang_i" "$lang"
+        printf '/%s/ hreflang=%s type=text/html><cite class=i>' "$lang_i" "$lang"
         printf '%s' "$list_title_html"
         printf '</cite></a>'
       fi

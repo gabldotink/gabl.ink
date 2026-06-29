@@ -7,11 +7,11 @@ say_date(){
   say_date_d="$(eval 'printf "%s" "$'"$1"'_d"')"
 
   if [ "$say_date_y" -gt 0 ];then
-    printf '<time datetime="'
+    printf '<time datetime='
     printf '%s-%s-%s' "$(zero_pad 4 say_date_y)" \
                       "$(zero_pad 2 say_date_m)" \
                       "$(zero_pad 2 say_date_d)"
-    printf '">'
+    printf '>'
   fi
 
   set_var_l10n say_date_m "months[$((say_date_m-1))]" "$dict/month.json"
