@@ -6,5 +6,5 @@ printf_l10n(){
   shift
   # We want to have formatting in this string
   # shellcheck disable=2059
-  printf "$printf_l10n_msg_printf" "$@"
+  printf -- "$printf_l10n_msg_printf" "$@"
 }

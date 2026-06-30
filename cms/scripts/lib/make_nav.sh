@@ -23,7 +23,7 @@ make_nav_f_l(){
   printf -- '<div class=nav_button id=nav_%s_buttons_%s ' "$make_nav_l" "$make_nav_f_l_i"
 
   if [ "$(eval 'printf %s "$'"$make_nav_f_l_z"'"')" = null ];then
-    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_f_l_i}_inline")")"
+    printf -- 'title=%s>' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_f_l_i}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf %s "$container_'"$make_nav_f_l_i"'_title_text"')")"
     printf -- '<a href=../../%s/%s/ hreflang=%s type=text/html>' "$(eval 'printf %d "$container_'"$make_nav_f_l_i"'"')" "$lang_i" "$lang"
@@ -55,7 +55,7 @@ make_nav_p_n(){
   printf -- '<div class=nav_button id=nav_%s_buttons_%s ' "$make_nav_l" "$make_nav_p_n_i"
 
   if [ "$(eval 'printf -- %s "$'"$make_nav_p_n_i"'"')" = null ];then
-    printf -- 'title="%s">' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_p_n_z}_inline")")"
+    printf -- 'title=%s>' "$(printf_l10n this_is_x_page "$(printf_l10n "nav_button_${make_nav_p_n_z}_inline")")"
   else
     printf -- 'title="%s">' "$(printf_l10n nav_button_page_title "$(eval 'printf %s "$'"$make_nav_p_n_i"'_title_text"')")"
     printf -- '<a href=../../%s/%s/ rel=%s hreflang=%s type=text/html>' "$(eval 'printf %d "$'"$make_nav_p_n_i"'"')" "$lang_i" "$make_nav_p_n_i" "$lang"

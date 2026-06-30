@@ -145,10 +145,10 @@
   },
   "this_is_x_page": {
     "en": {
-      "printf": "This is the %s page!"
+      "printf": "\"This is the %s page!\""
     },
     "fr": {
-      "printf": "C’est la %s page\u202f!"
+      "printf": "\"C’est la %s page\u202f!\""
     }
   },
   "nav_button_page_title": {
