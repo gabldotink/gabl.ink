@@ -25,10 +25,10 @@
   },
   "see_transcript": {
     "en-US": {
-      "printf": "See “Transcript” below"
+      "printf": "\"See “Transcript” below\""
     },
     "fr": {
-      "printf": "Voir «\u202fTranscription\u202f» au‐dessous"
+      "printf": "\"Voir «\u202fTranscription\u202f» au‐dessous\""
     }
   },
   "series_title_html": {
