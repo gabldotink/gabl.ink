@@ -49,12 +49,24 @@ In Markdown, we only use `i` and `cite` for italicized titles, since Markdown do
 
 ## _The Chicago Manual of Style_ (_CMOS_)
 
-gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default style guide. This includes using American English conventions. Already&dash;written text, including quotations, generally does not need to be changed aside from minor typographical formatting.
+gabl.ink mostly defers to _The Chicago Manual of Style_ (_CMOS_) as its default English style guide. This includes using American English conventions. Already&dash;written text, including quotations, generally does not need to be changed aside from minor typographical formatting and/or for accessibility.
 
-### Exceptions to _CMOS_
+### Exceptions and annotations to _CMOS_
 
 * T.T.’s name is an initialism of his full name, so it would normally be written _TT_. However, I don’t like how that looks, so this is an exception. That’s basically the only reason.
   * When I restart _JoeRunner & Co._, I’ll make his name t.t., where _CMOS_ would allow the periods, although it would surely still make copyeditors groan for obvious reasons. Too bad, there’ll be an in&dash;universe reason for it so they can’t do anything about it. Also, I’m the copyeditor myself anyway.
+* In cases where text formatting is not supported (`text`):
+  * Italics for emphasis should use surrounding underscores. This is supported by the _Chicago Manual of Style_ Q&A.
+  * Titles should be put in quotation marks. [This is supported by _CMOS_ Q&A, although another option mentioned is to use no markup at all.](https://www.chicagomanualofstyle.org/qanda/data/faq/topics/CapitalizationTitles/faq0085.html)
+* _CMOS_ says that in cases of italicized titles within italicized titles, quotation marks should be used. [An example given by _CMOS_ Q&A](https://www.chicagomanualofstyle.org/qanda/data/faq/topics/CapitalizationTitles/faq0088.html) is _In Search of “The Stranger,”_ where the title _The Stranger_ is italicized on the book’s cover. (Unrelatedly, note the comma added before the closing quotation mark, which is annoying; this is how it was formatted in the Q&A in the context of a citation, where the period after the title was italicized when it is normally roman.)
+
+  However, I don’t think it’s needed to do this _all_ the time. This is how I would intuitively think to do these examples:
+  * _The Art of “Super Mario Odyssey”_ (art book)
+  * _The Legend of Zelda: Breath of the Wild&nbsp;&ndash; Creating a Champion_ (art book; _Creating a Champion_ is clearly a subtitle here)
+  * _Super Mario Advance&nbsp;4: Super Mario Bros.&nbsp;3_ (remake; not only a subtitle, but I’m less inclined to do it for fictional works)
+  * _DuckTales Remastered_ (somewhat annoyingly, this is a remake!)
+
+  idk, these are the only kinds of things I know about.
 
 ## Why program in shell? Not even a reasonable one, the standard POSIX shell?
 
