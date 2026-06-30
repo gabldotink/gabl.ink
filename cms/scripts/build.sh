@@ -761,6 +761,7 @@ for i in $items;do (
       exit_if
     } > "$tmpfile"
 
+    # Last chance to error out before permanently writing the file
     exit_if
 
     flush_from_tmp "$tmpfile" "$index/$id/$lang_i/index.html"
