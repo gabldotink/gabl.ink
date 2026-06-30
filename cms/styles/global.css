@@ -9,14 +9,6 @@ cite {
   all: unset;
 }
 
-:lang(en) {
-  quotes: "“" "”" "‘" "’";
-}
-
-:lang(fr) {
-  quotes: "«\202f" "\202f»" "“" "”" "‹\202f" "\202f›"
-}
-
 .bold,
 .b {
   font-weight: bold;
