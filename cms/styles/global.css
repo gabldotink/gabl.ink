@@ -5,8 +5,16 @@ abbr {
   all: unset;
 }
 
+body {
+  font-family: "Noto Serif", serif;
+}
+
 cite {
   all: unset;
+}
+
+code {
+  font-family: "Noto Sans Mono", monospace;
 }
 
 .bold,
@@ -23,8 +31,13 @@ cite {
   font-style: italic;
 }
 
-.lowsercase {
+.lowercase {
   text-transform: lowercase;
+}
+
+.monospace,
+.m {
+  font-family: "Noto Sans Mono", monospace;
 }
 
 .not_displayed,
