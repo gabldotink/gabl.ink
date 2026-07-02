@@ -32,7 +32,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "html": "A computer screen shows a video game, <cite class=i>Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <code>tomatotoe07</code>, and the time is <time datetime=2021-05-27T07:57-0600>0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
+          "html": "A computer screen shows a video game, <cite class=i>Hyper Galactic Battle Ducks\u00a0III</cite>. The player is <span class=m>tomatotoe07</span>, and the time is <time datetime=2021-05-27T07:57-0600>0757</time>. The player’s ship is shaped like a mouse cursor. They have a middling Physical bar, and a low Energy bar. There is a chat in the bottom left corner."
         }
       }
     },
@@ -40,10 +40,10 @@
       "h": "meta/chat",
       "d": {
         "en": {
-          "html": "<p><code class=u>brightful</code> On the move!</p><p><code class=u>brightful</code> Uh-oh!</p><p><code class=u>sharkles5</code> stop spamming defaults</p><p><code class=u>brightful</code> I'm using tilt controls!</p>"
+          "html": "<p><span class=\"u m\">brightful</span> On the move!</p><p><span class=\"u m\">brightful</span> Uh-oh!</p><p><span class=\"u m\">sharkles5</span> stop spamming defaults</p><p><span class=\"u m\">brightful</span> I'm using tilt controls!</p>"
         },
         "fr": {
-          "html": "<code class=u>plein_de_brillant</code> En mouvement\u00a0!</p><p><code class=u>plein_de_brillant</code> Oups\u00a0!</p><p><code class=u>sans_des_requin5</code> arrete de spammer ca</p><code class=u>plein_de_brillant</code>Je joue avec le gyroscope\u00a0!"
+          "html": "<span class=\"u m\">plein_de_brillant</span> En mouvement\u00a0!</p><p><span class=\"u m\">plein_de_brillant</span> Oups\u00a0!</p><p><span class=\"u m\">sans_des_requin5</span> arrete de spammer ca</p><span class=\"u m\">plein_de_brillant</span> Je joue avec le gyroscope\u00a0!"
         }
       }
     },
@@ -147,7 +147,7 @@
       "h": "jrco_beta/t_t",
       "d": {
         "en": {
-          "html": "Oh, heck, me too! <code>ottohammr</code> again?"
+          "html": "Oh, heck, me too! <span class=m>ottohammr</span> again?"
         }
       }
     },
@@ -195,7 +195,7 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "html": "(<i>surprised</i>) Harry, <em class=\"r u\">you’ve</em> been <code>ottohammr</code> this whole time?"
+          "html": "(<i>surprised</i>) Harry, <em class=\"r u\">you’ve</em> been <span class=m>ottohammr</span> this whole time?"
         }
       }
     },
@@ -232,10 +232,10 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "html": "(<i>saluting</i>) Farewell, Captain <code>tomatotoe07</code>. Farewell."
+          "html": "(<i>saluting</i>) Farewell, Captain <span class=m>tomatotoe07</span>. Farewell."
         },
         "fr": {
-          "html": "(<i>salué</i>) Au revoir, capitaine <code>tomate_taxidermiste_07</code>. Au revoir.",
+          "html": "(<i>salué</i>) Au revoir, capitaine <span class=m>tomate_taxidermiste_07</span>. Au revoir.",
           "comment": "I don’t really know what to do here mdrrrrrr"
         }
       }
@@ -259,10 +259,10 @@
         },
         {
           "en": {
-            "html": "Alas, poor <code>tomatotoe07</code>."
+            "html": "Alas, poor <span class=m>tomatotoe07</span>."
           },
           "fr": {
-            "html": "Hélas\u202f! pauvre <code>tomate_taxidermiste_07</code>."
+            "html": "Hélas\u202f! pauvre <span class=m>tomate_taxidermiste_07</span>."
           }
         },
         {
