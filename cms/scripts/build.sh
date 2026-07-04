@@ -755,8 +755,8 @@ for i in $items;do (
         printf -- '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
       fi
 
-      printf '</footer></div></html>\n'
-      # </body>
+      printf '</footer></div>\n'
+      # </body></html>
 
       exit_if
     } > "$tmpfile"
