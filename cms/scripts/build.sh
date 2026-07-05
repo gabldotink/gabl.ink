@@ -597,7 +597,7 @@ for i in $items;do (
           exit_if
 
           printf '<tr>'
-          printf '<th scope=row>%s</th>' "$l_h_label_html"
+          printf '<th scope=row>%s' "$l_h_label_html"
           printf '<td>'
           case "$l_d_html" in
             '<'*)
@@ -605,7 +605,6 @@ for i in $items;do (
             *)
               printf -- '<p>%s</p>' "$l_d_html"
           esac
-          printf '</td></tr>'
         done
 
         printf '</table></details>'
