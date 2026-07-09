@@ -57,10 +57,10 @@
   },
   "no_title": {
     "en": {
-      "printf": "<i>no title</i>"
+      "printf": "<i>No title</i>"
     },
     "fr": {
-      "printf": "<i>sans titre</i>"
+      "printf": "<i>Sans titre</i>"
     }
   },
   "transcript_name": {
@@ -227,50 +227,62 @@
     }
   },
   "say_date_cjk_year": {
-    "ja": {
+    "zh": {
       "printf": "年"
+    },
+    "ja": {
+      "equal": "zh"
     },
     "ko": {
       "printf": "년\u00a0"
     },
-    "zh": {
-      "printf": "年"
+    "ko-Hani": {
+      "printf": "年\u00a0"
     }
   },
   "say_date_cjk_month": {
-    "ja": {
+    "zh": {
       "printf": "月"
+    },
+    "ja": {
+      "equal": "zh"
     },
     "ko": {
       "printf": "월\u00a0"
     },
-    "zh": {
-      "printf": "月"
+    "ko-Hani": {
+      "printf": "月\u00a0"
     }
   },
   "say_date_cjk_day": {
-    "ja": {
+    "zh": {
       "printf": "日"
+    },
+    "ja": {
+      "equal": "zh"
     },
     "ko": {
       "printf": "일"
     },
-    "zh": {
-      "printf": "日"
+    "ko-Hani": {
+      "equal": "zh"
     }
   },
   "say_date_cjk_bc": {
-    "ja": {
+    "zh-Hant": {
       "printf": "紀元前"
-    },
-    "ko": {
-      "printf": "기원전\u00a0"
     },
     "zh-Hans": {
       "printf": "纪元前"
     },
-    "zh-Hant": {
-      "printf": "紀元前"
+    "ja": {
+      "equal": "zh-Hant"
+    },
+    "ko": {
+      "printf": "기원전\u00a0"
+    },
+    "ko-Hani": {
+      "printf": "紀元前\u00a0"
     }
   },
   "canonical_url": {
