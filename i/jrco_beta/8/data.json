@@ -129,28 +129,8 @@
           }
         },
         {
-          "zxx": {
-            "html": "<details>"
-          }
-        },
-        {
-          "en": {
-            "html": "<summary>Irrelevant information"
-          }
-        },
-        {
-          "zxx": {
-            "html": "</summary>"
-          }
-        },
-        {
           "en": {
             "html": "I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is."
-          }
-        },
-        {
-          "zxx": {
-            "html": "</details>"
           }
         }
       ]
