@@ -164,7 +164,7 @@
       "printf": "Share this page"
     },
     "fr": {
-      "printf": "Partagez ce page"
+      "printf": "Partager ce page"
     }
   },
   "validate_this_page": {
@@ -172,7 +172,7 @@
       "printf": "Validate this page"
     },
     "fr": {
-      "printf": "Validez ce page"
+      "printf": "Valider ce page"
     }
   },
   "copyright": {
