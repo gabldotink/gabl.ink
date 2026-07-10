@@ -535,7 +535,7 @@ for i in $items;do (
           test_unset tooltip_exists ||
             printf -- ' title="%s"' "$tooltip_text"
           printf '>'
-          printf '<img src=image.png alt='
+          printf '<img src=image.png fetchpriority=high alt='
           printf_l10n see_transcript
           printf '></picture></div>'
         fi

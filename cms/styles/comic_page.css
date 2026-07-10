@@ -1,10 +1,6 @@
 @charset "UTF-8";
 /* SPDX-License-Identifier: CC0-1.0 */
 
-html {
-  counter-reset: nav_bottom_list_page;
-}
-
 #panels {
   margin: 0% 15%;
 }
@@ -88,6 +84,10 @@ p.nav_buttons {
 #comic_page_image picture img {
   width: 100%;
   max-width: 100%;
+}
+
+#nav_bottom_list {
+  counter-reset: nav_bottom_list_page;
 }
 
 #nav_bottom_list details {
