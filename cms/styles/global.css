@@ -17,74 +17,26 @@ code {
   font-family: "Noto Sans Mono", monospace;
 }
 
-.bold,
 .b {
   font-weight: bold;
 }
 
-.bulleted {
-  list-style-type: disc;
-}
-
-.italic,
 .i {
   font-style: italic;
 }
 
-.lowercase {
-  text-transform: lowercase;
-}
-
-.monospace,
 .m {
   font-family: "Noto Sans Mono", monospace;
 }
 
-.not_displayed,
-.nd {
-  display: none;
-}
-
-.not_wrapped,
 .nw {
   white-space: nowrap;
 }
 
-.overlined {
-  text-decoration-line: overline;
-}
-
-.roman,
 .r {
   font-style: normal;
 }
 
-.small_capitalized {
-  font-variant: small-caps;
-}
-
-.spaced_right {
-  padding-left: 0.1em
-}
-
-.start_case {
-  text-transform: capitalize;
-}
-
-.struckthrough {
-  text-decoration-line: line-through;
-}
-
-.underlined,
 .u {
   text-decoration-line: underline;
-}
-
-.unset,
-.n {
-  all: unset;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
