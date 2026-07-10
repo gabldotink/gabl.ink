@@ -472,7 +472,7 @@ for i in $items;do (
           if [ "$l" = "$main_lang" ];then
             printf '<b>'
           else
-            printf '<a lang=%s href=../%s/>' "$lang_i" "$lang_i"
+            printf '<a lang=%s href=../%s/>' "$lang" "$lang_i"
           fi
           printf -- %s "$lang_name_html"
           if [ "$l" = "$main_lang" ];then
