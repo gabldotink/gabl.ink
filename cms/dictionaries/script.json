@@ -99,9 +99,6 @@
       "ko": {
         "text": "한글과 한자"
       },
-      "ko-Latn": {
-        "text": "hangeul‐gwa hanja"
-      },
       "en": {
         "text": "hangul and _hanja_",
         "html": "hangul and <i lang=ko-Latn>hanja</i>"

@@ -16,7 +16,7 @@
     }
   },
   "video_not_supported": {
-    "en-US": {
+    "en": {
       "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
     },
     "fr": {
@@ -24,7 +24,7 @@
     }
   },
   "see_transcript": {
-    "en-US": {
+    "en": {
       "printf": "\"See “Transcript” below\""
     },
     "fr": {
@@ -184,11 +184,8 @@
     }
   },
   "license": {
-    "en-US": {
-      "printf": "License: "
-    },
-    "en-GB": {
-      "printf": "Licence: "
+    "en": {
+      "printf": "<span lang=en-US>License</span><span lang=en-GB>Licence</span>: "
     },
     "fr": {
       "printf": "Licence\u202f: "
