@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* SPDX-License-Identifier: CC0-1.0 */
+
+:root {
+  --nav_bottom_list_pages_label: "Page\a0";
+}
+
+:lang(en-GB) {
+  display: none;
+}
+
+abbr {
+  all: unset;
+}
+
+body,
+::cue {
+  font-family: "Noto Serif", serif;
+}
+
+cite {
+  all: unset;
+}
+
+ins {
+  all: unset;
+}
+
+code,
+.m {
+  font-family: "Noto Sans Mono", monospace;
+}
+
+strong,
+b,
+.b {
+  font-weight: bold;
+}
+
+em,
+i,
+.i {
+  font-style: italic;
+}
+
+.nw {
+  white-space: nowrap;
+}
+
+.r {
+  font-style: normal;
+}
+
+.u {
+  text-decoration-line: underline;
+}

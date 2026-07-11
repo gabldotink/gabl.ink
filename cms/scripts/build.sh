@@ -384,9 +384,9 @@ for i in $items;do (
           err e 'up_directories is not 2, 3, or 4'
         fi
 
-        printf '<link rel=preload href=%s/global.css as=style hreflang=zxx type=text/css>' "$styles"
+        printf '<link rel=preload href=%s/%s.css as=style hreflang=zxx type=text/css>' "$styles" "$lang_l"
         printf '<link rel=preload href=%s/comic_page.css as=style hreflang=zxx type=text/css>' "$styles"
-        printf '<link rel=stylesheet href=%s/global.css hreflang=zxx type=text/css>' "$styles"
+        printf '<link rel=stylesheet href=%s/%s.css hreflang=zxx type=text/css>' "$styles" "$lang_l"
         printf '<link rel=stylesheet href=%s/comic_page.css hreflang=zxx type=text/css>' "$styles"
 
         printf -- '<link rel="external license" href="%s">' "$copyright_license_url_id"

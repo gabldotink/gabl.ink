@@ -103,9 +103,8 @@ p.nav_buttons {
   counter-increment: nav_bottom_list_page;
 }
 
-#nav_bottom_list_pages li:lang(en)::before,
-#nav_bottom_list_pages li:lang(fr)::before {
-  content: "page\a0" counter(nav_bottom_list_page) " ";
+#nav_bottom_list_pages li::before {
+  content: var(--nav_bottom_list_pages_label) counter(nav_bottom_list_page) " ";
 }
 
 #transcript_text {
