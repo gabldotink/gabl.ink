@@ -19,20 +19,25 @@ cite {
   all: unset;
 }
 
-code {
+ins {
+  all: unset;
+}
+
+code,
+.m {
   font-family: "Noto Sans Mono", monospace;
 }
 
+strong,
+b,
 .b {
   font-weight: bold;
 }
 
+em,
+i,
 .i {
   font-style: italic;
-}
-
-.m {
-  font-family: "Noto Sans Mono", monospace;
 }
 
 .nw {
