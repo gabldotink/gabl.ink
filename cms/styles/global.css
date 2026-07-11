@@ -10,7 +10,8 @@ abbr {
   all: unset;
 }
 
-body {
+body,
+::cue {
   font-family: "Noto Serif", serif;
 }
 
