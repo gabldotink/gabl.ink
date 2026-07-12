@@ -144,5 +144,25 @@
     "implicit": {
       "script": "latn"
     }
+  },
+  "mul": {
+    "name": {
+      "en": {
+        "text": "Multiple languages"
+      },
+      "fr": {
+        "text": "Plusieurs langues"
+      }
+    },
+    "implicit": {
+      "script": "latn"
+    }
+  },
+  "zxx": {
+    "name": {
+      "en": {
+        "text": "No linguistic content"
+      }
+    }
   }
 }
