@@ -12,6 +12,7 @@
       }
     },
     "implicit": {
+      "region": "us",
       "script": "latn"
     }
   },
@@ -28,6 +29,7 @@
       }
     },
     "implicit": {
+      "region": "fr",
       "script": "latn"
     }
   },
@@ -76,6 +78,7 @@
       }
     },
     "implicit": {
+      "region": "ru",
       "script": "cyrl"
     }
   },
@@ -92,6 +95,7 @@
       }
     },
     "implicit": {
+      "region": "ja",
       "script": "jpan"
     }
   },
@@ -121,6 +125,7 @@
       }
     },
     "implicit": {
+      "region": "kr",
       "script": "kore"
     }
   },
