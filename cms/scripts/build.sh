@@ -483,11 +483,7 @@ for i in $items;do (
           printf '</li>'
         )
         done
-        printf '</ul>'
-        printf '</header>'
-        printf '<div id=panels>'
-        printf '<div id=nav_top>'
-        printf '<h1 id=nav_top_title>'
+        printf '</ul></header><div id=panels><div id=nav_top><h1 id=nav_top_title>'
         printf_l10n page_title_html "$title_html"
         printf '</h1>'
 
@@ -505,9 +501,7 @@ for i in $items;do (
 
         make_nav top
 
-        printf '</div>'
-
-        printf '<div id=comic_page_'
+        printf '</div><div id=comic_page_'
 
         # TODO: Edge case: no captions
         if ! test_unset video_exists;then
@@ -544,11 +538,7 @@ for i in $items;do (
 
         make_nav bottom
 
-        printf '<nav id=nav_bottom_list>'
-
-        printf '<details id=nav_bottom_list_root>'
-
-        printf '<summary>'
+        printf '<nav id=nav_bottom_list><details id=nav_bottom_list_root><summary>'
 
         # TODO: Support lower containers (volumes and chapters).
 
@@ -607,9 +597,7 @@ for i in $items;do (
           esac
         done
 
-        printf '</table></details>'
-
-        printf '<hr>'
+        printf '</table></details><hr>'
 
         printf '<h2>%s</h2>' "$(printf_l10n log)"
 
