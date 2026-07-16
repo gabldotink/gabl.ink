@@ -480,7 +480,6 @@ for i in $items;do (
           else
             printf '</a>'
           fi
-          printf '</li>'
         )
         done
         printf '</ul></header><div id=panels><div id=nav_top><h1 id=nav_top_title>'
@@ -522,8 +521,7 @@ for i in $items;do (
           fi
           printf '<p>'
           printf_l10n video_not_supported "$lang" "$series_title_text" "$title_text"
-          printf '</p>'
-          printf '</video></div>'
+          printf '</p></video></div>'
         else
           printf 'image><picture'
           test_unset tooltip_exists ||
@@ -593,7 +591,7 @@ for i in $items;do (
             '<'*)
               printf -- %s "$l_d_html" ;;
             *)
-              printf -- '<p>%s</p>' "$l_d_html"
+              printf -- '<p>%s' "$l_d_html"
           esac
         done
 
@@ -619,7 +617,7 @@ for i in $items;do (
               '<'*)
                 printf -- %s "$log_content_p_html" ;;
               *)
-                printf -- '<p>%s</p>' "$log_content_p_html"
+                printf -- '<p>%s' "$log_content_p_html"
             esac
           done
 
@@ -630,7 +628,6 @@ for i in $items;do (
 
         printf '<p id=canonical_url>'
         printf '%s<a href=%s hreflang=%s type=text/html>%s</a>' "$(printf_l10n canonical_url)" "$canonical" "$lang" "$canonical"
-        printf '</p>'
 
 
         printf '<details id=share_links>'
@@ -729,17 +726,17 @@ for i in $items;do (
       printf -- %s "$copyright_year_first"
       ! test_null copyright_year_last &&
         printf -- –%s "$copyright_year_last"
-      printf '</span> <span translate=no>gabl.ink</span></p>'
+      printf '</span> <span translate=no>gabl.ink</span>'
 
       printf -- '<p>%s<a rel="external license" href="%s">' "$(printf_l10n license)" "$copyright_license_url_id"
       printf -- '<cite>%s</cite>' "$copyright_license_title_html"
       ! test_null copyright_license_abbr &&
         printf -- ' (<cite><abbr>%s</abbr></cite>)' "$copyright_license_abbr_html"
-      printf '</a></p>'
+      printf '</a>'
 
       if ! test_null disclaimer;then
         set_var_l10n disclaimer "\"$disclaimer\"" "$dict/disclaimer.json"
-        printf -- '<p>%s%s</p>' "$(printf_l10n disclaimer)" "$disclaimer_html"
+        printf -- '<p>%s%s' "$(printf_l10n disclaimer)" "$disclaimer_html"
       fi
 
       printf '</footer></div>\n'

@@ -57,10 +57,10 @@
       "h": "meta/logo",
       "d": {
         "en-US": {
-          "html": "<p><cite class=i>JoeRunner and Co.</cite></p><p>by <span translate=no>gabl</span></p><p>episode\u00a01 <cite class=i>Edulympiad</cite></p><p>chapter\u00a01 “<cite>Thursday</cite>”</p>"
+          "html": "<p><cite class=i>JoeRunner and Co.</cite><p>by <span translate=no>gabl</span><p>episode\u00a01 <cite class=i>Edulympiad</cite><p>chapter\u00a01 “<cite>Thursday</cite>”"
         },
         "fr": {
-          "html": "<p><cite class=i>JoeRunner et cie</cite></p><p>par <span translate=no>gabl</span></p><p>épisode\u00a01 <cite class=i>Edulympiade</cite></p><p>chapitre\u00a01 <cite class=i>jeudi</cite></p>"
+          "html": "<p><cite class=i>JoeRunner et cie</cite><p>par <span translate=no>gabl</span><p>épisode\u00a01 <cite class=i>Edulympiade</cite><p>chapitre\u00a01 <cite class=i>jeudi</cite>"
         }
       }
     },
@@ -113,10 +113,10 @@
       "content": [
         {
           "en-US": {
-            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
-            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i>"
           }
         },
         {

@@ -63,10 +63,10 @@
       "content": [
         {
           "en-US": {
-            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
-            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i>"
           }
         },
         {

@@ -121,7 +121,7 @@
       "h": "meta/tooltip",
       "d": {
         "en": {
-          "html": "<p><time datetime=2021-05-27>May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace.</p>"
+          "html": "<p><time datetime=2021-05-27>May\u00a027</time>. I have spent every waking moment for the last four weeks only experiencing the <cite>Magna Carta</cite>. My soul is the <cite>Magna Carta</cite>. My mind is the <cite>Magna Carta</cite>. My dreams are the <cite>Magna Carta</cite>. This school project has dragged on so long I’ve forgotten what it was like\u00a0.\u00a0.\u00a0. before. But now it is done. With the click of a mouse, I have finally found inner peace."
         }
       }
     }
@@ -136,10 +136,10 @@
       "content": [
         {
           "en-US": {
-            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
-            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i>"
           }
         },
         {

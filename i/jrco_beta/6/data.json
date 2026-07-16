@@ -117,7 +117,7 @@
       "h": "jrco_beta/eden_runner",
       "d": {
         "en": {
-          "html": "<p><i>Sigh.</i> Come get some cereal, Joseph.</p>"
+          "html": "<p><i>Sigh.</i> Come get some cereal, Joseph."
         }
       }
     },
@@ -151,10 +151,10 @@
       "content": [
         {
           "en-US": {
-            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
-            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i>"
           }
         },
         {
@@ -194,7 +194,7 @@
         },
         {
           "en": {
-            "html": "<p><b>—\u2060<span translate=no>gabl</span></b></p>"
+            "html": "<p><b>—\u2060<span translate=no>gabl</span></b>"
           },
           "mul": {
             "equal": "en"

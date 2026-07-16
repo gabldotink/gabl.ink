@@ -40,10 +40,10 @@
       "h": "meta/chat",
       "d": {
         "en": {
-          "html": "<p><span class=\"u m\">brightful</span> On the move!</p><p><span class=\"u m\">brightful</span> Uh-oh!</p><p><span class=\"u m\">sharkles5</span> stop spamming defaults</p><p><span class=\"u m\">brightful</span> I'm using tilt controls!</p>"
+          "html": "<p><span class=\"u m\">brightful</span> On the move!</p><p><span class=\"u m\">brightful</span> Uh-oh!</p><p><span class=\"u m\">sharkles5</span> stop spamming defaults</p><p><span class=\"u m\">brightful</span> I'm using tilt controls!"
         },
         "fr": {
-          "html": "<span class=\"u m\">plein_de_brillant</span> En mouvement\u00a0!</p><p><span class=\"u m\">plein_de_brillant</span> Oups\u00a0!</p><p><span class=\"u m\">sans_des_requin5</span> arrete de spammer ca</p><span class=\"u m\">plein_de_brillant</span> Je joue avec le gyroscope\u00a0!"
+          "html": "<p><span class=\"u m\">plein_de_brillant</span> En mouvement\u00a0!</p><p><span class=\"u m\">plein_de_brillant</span> Oups\u00a0!</p><p><span class=\"u m\">sans_des_requin5</span> arrete de spammer ca</p><span class=\"u m\">plein_de_brillant</span> Je joue avec le gyroscope\u00a0!"
         }
       }
     },
@@ -251,10 +251,10 @@
       "content": [
         {
           "en-US": {
-            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
-            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i></p>"
+            "html": "<p><i>Publiée en anglais sur <cite>comics.gabl.ink</cite></i>"
           }
         },
         {
@@ -287,7 +287,7 @@
         },
         {
           "en": {
-            "html": "<p><b>—\u2060Gabriel\u00a0/ <span translate=no>gabl</span></b></p>"
+            "html": "<p><b>—\u2060Gabriel\u00a0/ <span translate=no>gabl</span></b>"
           },
           "mul": {
             "equal": "en"
