@@ -47,5 +47,5 @@ make_share_link(){
 
   printf %s "$make_share_link_name_html"
 
-  printf '</a></li>'
+  printf '</a>'
 }

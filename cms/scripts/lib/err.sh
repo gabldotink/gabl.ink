@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 err(){
+  # TODO: This prevents `errored` from being set
   test_unset silent ||
     return 0
 

@@ -15,5 +15,5 @@ make_validate_link(){
   printf %s "$make_validate_link_name_html"
   [ -n "$make_validate_link_format_html" ] &&
     printf %s%s "$(printf_l10n validate_as)" "$make_validate_link_format_html"
-  printf '</a></li>'
+  printf '</a>'
 }
