@@ -2,7 +2,7 @@
   "cc-by-4.0": {
     "spdx": "CC-BY-4.0",
     "title": {
-      "en": {
+      "en-US": {
         "text": "Creative Commons Attribution\u00a04.0 International Public License"
       },
       "fr": {
@@ -33,7 +33,7 @@
   "cc-by-sa-4.0": {
     "spdx": "CC-BY-SA-4.0",
     "title": {
-      "en": {
+      "en-US": {
         "text": "Creative Commons Attribution‐ShareAlike\u00a04.0 International Public License"
       },
       "fr": {
@@ -63,7 +63,7 @@
   "cc-by-nc-sa-4.0": {
     "spdx": "CC-BY-NC-SA-4.0",
     "title": {
-      "en": {
+      "en-US": {
         "text": "Creative Commons Attribution‐NonCommercial‐ShareAlike\u00a04.0 International Public License"
       },
       "fr": {
@@ -90,7 +90,7 @@
   "cc0-1.0": {
     "spdx": "CC0-1.0",
     "title": {
-      "en": {
+      "en-US": {
         "text": "CC0\u00a01.0 Universal"
       },
       "fr": {

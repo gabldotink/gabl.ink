@@ -4,9 +4,11 @@
       "en": {
         "text": "email"
       },
-      "fr": {
-        "text": "email",
-        "html": "<span lang=fr-FR>email</span><span lang=fr-CA>courriel</span>"
+      "fr-FR": {
+        "text": "email"
+      },
+      "fr-CA": {
+        "text": "courriel"
       }
     },
     "base": "mailto:",

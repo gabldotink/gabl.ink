@@ -5,10 +5,6 @@
   --nav_bottom_list_pages_label: "Page\a0";
 }
 
-:lang(fr-CA) {
-  display: none;
-}
-
 abbr {
   all: unset;
 }

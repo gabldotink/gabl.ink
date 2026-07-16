@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: CC0-1.0 -->
 # Per-region user interface
 
+_Note:_ I no longer plan to do this, although I might come back to it?
+
 Although I don’t intend to make, say, a British English localization of content, it would be cool to allow the user to select the language variant they prefer for the UI. For example:
 
 ```json
