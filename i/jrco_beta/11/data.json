@@ -40,7 +40,7 @@
       "h": "jrco_beta/t_t",
       "d": {
         "en": {
-          "html": "But, like\u00a0.\u00a0.\u00a0. how come no one <em>told</em> me?"
+          "html": "<p>But, like\u00a0.\u00a0.\u00a0. how come no one <em>told</em> me?"
         }
       }
     },
@@ -64,10 +64,10 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "html": "(<i>smiling</i>) Oh, really?"
+          "html": "<p>(<i>smiling</i>) Oh, really?"
         },
         "fr": {
-          "html": "(<i>souriant</i>) Oh, vraiment\u202f?"
+          "html": "<p>(<i>souriant</i>) Oh, vraiment\u202f?"
         }
       }
     },
@@ -91,7 +91,7 @@
       "h": "jrco_beta/t_t",
       "d": {
         "en": {
-          "html": "(<i>off‑panel</i>) Oh, darn, I forgot to get her name from Harry."
+          "html": "<p>(<i>off‑panel</i>) Oh, darn, I forgot to get her name from Harry."
         }
       }
     },
@@ -123,7 +123,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "html": "A wall clock shows it’s <time datetime=2021-05-27T08:30-0600>8:30</time>."
+          "html": "<p>A wall clock shows it’s <time datetime=2021-05-27T08:30-0600>8:30</time>."
         }
       }
     },
@@ -164,7 +164,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
@@ -178,17 +178,17 @@
         },
         {
           "en": {
-            "html": "This page includes the full‐size image, while previously they’ve been half‐size. The <abbr title=\"Hypertext Markup Language\">HTML</abbr> <code>&lt;picture></code> element should either automatically choose one to display, or simply skip it and use the full image, depending on your browser\u00a0/ user agent."
+            "html": "<p>This page includes the full‐size image, while previously they’ve been half‐size. The <abbr title=\"Hypertext Markup Language\">HTML</abbr> <code>&lt;picture></code> element should either automatically choose one to display, or simply skip it and use the full image, depending on your browser\u00a0/ user agent."
           }
         },
         {
           "en": {
-            "html": "I was initially meaning to upload the full‐size versions to <cite>Patreon</cite>, but I’ll probably just save that for the <code><abbr title=\"Clip Studio Paint\">.clip</abbr></code> work files. I don’t know when I’ll get the images out, but I will."
+            "html": "<p>I was initially meaning to upload the full‐size versions to <cite>Patreon</cite>, but I’ll probably just save that for the <code><abbr title=\"Clip Studio Paint\">.clip</abbr></code> work files. I don’t know when I’ll get the images out, but I will."
           }
         },
         {
           "en": {
-            "html": "Of course, you can safely expect Patreon to be a pretty long ways away at this rate. If I can be real for a sec, one of the main reasons I started this comic was to feel like I was doing something with my life, and now it’s ended up as a huge source of anxiety for me because progress is so slow. I’m so excited to continue this, especially since I have a lot of other ideas to work on aside from <cite class=i>JoeRunner and co.</cite>\u2060—both apart from and on top of it. I’m so sorry that I’m not getting that out sooner."
+            "html": "<p>Of course, you can safely expect Patreon to be a pretty long ways away at this rate. If I can be real for a sec, one of the main reasons I started this comic was to feel like I was doing something with my life, and now it’s ended up as a huge source of anxiety for me because progress is so slow. I’m so excited to continue this, especially since I have a lot of other ideas to work on aside from <cite class=i>JoeRunner and co.</cite>\u2060—both apart from and on top of it. I’m so sorry that I’m not getting that out sooner."
           }
         },
         {
@@ -198,12 +198,12 @@
         },
         {
           "en": {
-            "html": "On a dumb, overthinking‐related note (feel free to skip this), I’m trying to decide if I want to stick with <cite><abbr title=\"Creative Commons Attribution‐ShareAlike\u00a04.0\">CC\u00a0BY‑SA\u00a04.0</abbr></cite>, or if I want to move it to <cite><abbr title=\"Creative Commons Attribution\">CC\u00a0BY</abbr></cite>. At the start it was <cite><abbr title=Attribution‐NonCommercial‐ShareAlike>BY‑NC‑SA</abbr></cite>. Both times the <abbr title=ShareAlike>SA</abbr> was because I wanted to keep derivatives of actual, general utility free, like books and translations. I know that <a rel=external href=https://peppercarrot.com/ type=text/html><cite class=i>Pepper&amp;Carrot</cite></a> is thriving in those regards under <abbr>CC\u00a0BY</abbr>, but that may or may not be different, considering that <cite class=i>Pepper&amp;Carrot</cite> isn’t one of the most egregious abominations known to man."
+            "html": "<p>On a dumb, overthinking‐related note (feel free to skip this), I’m trying to decide if I want to stick with <cite><abbr title=\"Creative Commons Attribution‐ShareAlike\u00a04.0\">CC\u00a0BY‑SA\u00a04.0</abbr></cite>, or if I want to move it to <cite><abbr title=\"Creative Commons Attribution\">CC\u00a0BY</abbr></cite>. At the start it was <cite><abbr title=Attribution‐NonCommercial‐ShareAlike>BY‑NC‑SA</abbr></cite>. Both times the <abbr title=ShareAlike>SA</abbr> was because I wanted to keep derivatives of actual, general utility free, like books and translations. I know that <a rel=external href=https://peppercarrot.com/ type=text/html><cite class=i>Pepper&amp;Carrot</cite></a> is thriving in those regards under <abbr>CC\u00a0BY</abbr>, but that may or may not be different, considering that <cite class=i>Pepper&amp;Carrot</cite> isn’t one of the most egregious abominations known to man."
           }
         },
         {
           "en": {
-            "html": "And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite>\u00a0<small>[<i>link removed</i>]</small>, but I ended up not liking how it turned out."
+            "html": "<p>And about those multiple image size problems, I want to make a <cite>Git</cite> repository to hold all of those (and the other stuff, of course) in order to have a sort of structured, static <abbr title=\"application programming interface\">API</abbr>, while also just having the files available in a human‐browsable and easily downloadable manner. I already tried that with <cite>files.gabl.ink</cite>\u00a0<small>[<i>link removed</i>]</small>, but I ended up not liking how it turned out."
           }
         }
       ]

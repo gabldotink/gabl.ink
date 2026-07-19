@@ -105,10 +105,10 @@
       "h": "jrco_beta/eden_runner",
       "d": {
         "en": {
-          "html": "(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
+          "html": "<p>(<i>smiling</i>) <i>Heh.</i> Yeah, I know."
         },
         "fr": {
-          "html": "(<i>souriant</i>) <i>Heh.</i> Ouais, je sais."
+          "html": "<p>(<i>souriant</i>) <i>Heh.</i> Ouais, je sais."
         }
       }
     },
@@ -130,7 +130,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {

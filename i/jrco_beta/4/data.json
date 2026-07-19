@@ -47,7 +47,7 @@
       "h": "meta/screen",
       "d": {
         "en": {
-          "html": "first version in 1215. Even 800\u00a0years after its original issuance, the Magna Carta continues to be relevant today as a symbol and foundation for democracy and liberty, an influence of the United States constitution, and a lasting presence in the United Kingdom. (<i>page break</i>) WORKS CITED"
+          "html": "<p>first version in 1215. Even 800\u00a0years after its original issuance, the Magna Carta continues to be relevant today as a symbol and foundation for democracy and liberty, an influence of the United States constitution, and a lasting presence in the United Kingdom. (<i>page break</i>) WORKS CITED"
         }
       }
     },
@@ -66,10 +66,10 @@
       "h": "meta/screen",
       "d": {
         "en": {
-          "html": "Are you sure you want to turn in 📄\ufe0e\u00a0<cite>Joseph Runner\u00a0– Magna Carta</cite>? (<i>buttons</i>) Submit\u00a0/ Cancel"
+          "html": "<p>Are you sure you want to turn in 📄\ufe0e\u00a0<cite>Joseph Runner\u00a0– Magna Carta</cite>? (<i>buttons</i>) Submit\u00a0/ Cancel"
         },
         "fr": {
-          "html": "Êtes‐vous sûr vous vouloir rendre 📄\ufe0e\u00a0<cite>Joseph Runner\u00a0– Magna Carta</cite>\u202f? (<i>boutons</i>) Rendre\u00a0/ Annuler"
+          "html": "<p>Êtes‐vous sûr vous vouloir rendre 📄\ufe0e\u00a0<cite>Joseph Runner\u00a0– Magna Carta</cite>\u202f? (<i>boutons</i>) Rendre\u00a0/ Annuler"
         }
       }
     },
@@ -110,10 +110,10 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "html": "(<i>relaxed</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>closing eyes</i>) Well, <em class=\"r u\">I’ve</em> had enough of the Magna Carta for a <em class=\"r u\">lifetime</em>."
+          "html": "<p>(<i>relaxed</i>) Ahh\u00a0.\u00a0.\u00a0. (<i>closing eyes</i>) Well, <em class=\"r u\">I’ve</em> had enough of the Magna Carta for a <em class=\"r u\">lifetime</em>."
         },
         "fr": {
-          "html": "(<i>relaxé</i>) Ahh… (<i>ferme les yeux</i>) Eh bien, j’en ai assez de la Magna Carta pour toute une vie."
+          "html": "<p>(<i>relaxé</i>) Ahh… (<i>ferme les yeux</i>) Eh bien, j’en ai assez de la Magna Carta pour toute une vie."
         }
       }
     },
@@ -135,7 +135,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {

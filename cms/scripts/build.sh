@@ -587,12 +587,19 @@ for i in $items;do (
           printf '<tr>'
           printf '<th scope=row>%s' "$l_h_label_html"
           printf '<td>'
-          case "$l_d_html" in
-            '<'*)
-              printf -- %s "$l_d_html" ;;
-            *)
-              printf -- '<p>%s' "$l_d_html"
-          esac
+
+          if [ "$l_d_text" = "$l_d_html" ];then
+            printf -- '<p>%s' "$l_d_html"
+          else
+            printf -- %s "$l_d_html"
+          fi
+
+          #case "$l_d_html" in
+            #'<'*)
+            #  printf -- %s "$l_d_html" ;;
+            #*)
+            #  printf -- '<p>%s' "$l_d_html"
+          #esac
         done
 
         printf '</table></details><hr>'
@@ -613,12 +620,11 @@ for i in $items;do (
 
           for p in $(jq -r --argjson k "$k" '.log[$k].content|keys[]' "$i");do
             set_var_l10n log_content_p "log[$k].content[$p]" "$i"
-            case "$log_content_p_html" in
-              '<'*)
-                printf -- %s "$log_content_p_html" ;;
-              *)
-                printf -- '<p>%s' "$log_content_p_html"
-            esac
+            if [ "$log_content_p_text" = "$log_content_p_html" ];then
+              printf -- '<p>%s' "$log_content_p_html"
+            else
+              printf -- %s "$log_content_p_html"
+            fi
           done
 
           printf '</details></article>'

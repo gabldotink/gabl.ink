@@ -29,7 +29,7 @@
       "h": "meta/none",
       "d": {
         "en": {
-          "html": "The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T‐shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all‐lowercase sans‐serif font."
+          "html": "<p>The boy with black hair watches as JoeRunner walks out of a minivan with a canoe strapped to the top. The boy wears a T‐shirt reading <i>77</i> and shorts, has constant dropped eyebrows, and speaks in an all‐lowercase sans‐serif font."
         }
       }
     },
@@ -70,12 +70,10 @@
       "h": "jrco_beta/joerunner",
       "d": {
         "en": {
-          "text": "Yeah, there was lots of traffic on North\u00a01 today.",
-          "html": "Yeah, there was lots of traffic on North\u00a01 today."
+          "text": "Yeah, there was lots of traffic on North\u00a01 today."
         },
         "fr": {
-          "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui.",
-          "html": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui."
+          "text": "Ouais, il y avait beaucoup de trafic sur Nord\u00a01 aujourd’hui."
         }
       }
     },
@@ -91,12 +89,10 @@
       "h": "meta/bio",
       "d": {
         "en": {
-          "text": "T.T.\u00a0/ one heck of a guy",
-          "html": "T.T.\u00a0/ one heck of a guy"
+          "text": "T.T.\u00a0/ one heck of a guy"
         },
         "fr": {
-          "text": "T.T.\u00a0/ un sacré mec",
-          "html": "T.T.\u00a0/ un sacré mec"
+          "text": "T.T.\u00a0/ un sacré mec"
         }
       }
     },
@@ -121,7 +117,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
@@ -130,7 +126,7 @@
         },
         {
           "en": {
-            "html": "I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is."
+            "text": "I’m posting this technically before I’m ready. I’ll be reorganizing some parts of the site shortly, but I’ve been waiting too long to post this as it is."
           }
         }
       ]

@@ -55,10 +55,10 @@
       "h": "meta/boy",
       "d": {
         "en": {
-          "html": "(<i>thinking</i>) Ugh."
+          "html": "<p>(<i>thinking</i>) Ugh."
         },
         "fr": {
-          "html": "(<i>pensant</i>) Euh."
+          "html": "<p>(<i>pensant</i>) Euh."
         }
       }
     },
@@ -105,7 +105,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {

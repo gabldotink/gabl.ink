@@ -64,7 +64,7 @@
       },
       "content": [
         {
-          "en-US": {
+          "en": {
             "html": "<p><i>Published at <cite>comics.gabl.ink</cite></i>"
           },
           "fr": {
@@ -73,10 +73,10 @@
         },
         {
           "en": {
-            "html": "This one is laminated.\u00a0[<i>sic</i>]"
+            "html": "<p>This one is laminated.\u00a0[<i>sic</i>]"
           },
           "fr": {
-            "html": "Cette vidéo est aimée.\u00a0[<i>sic</i>]"
+            "html": "<p>Cette vidéo est aimée.\u00a0[<i>sic</i>]"
           }
         },
         {
@@ -89,10 +89,10 @@
         },
         {
           "en": {
-            "html": "Aside from page\u00a04, I don’t have another animated page written for at least the next thirty‐or‐so pages, and there probably won’t be many (or any) more until the end of <cite class=i>Edulympiad</cite>. This one and page\u00a04 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t."
+            "html": "<p>Aside from page\u00a04, I don’t have another animated page written for at least the next thirty‐or‐so pages, and there probably won’t be many (or any) more until the end of <cite class=i>Edulympiad</cite>. This one and page\u00a04 are animated mostly to better get the jokes across, and since I am incredibly lazy, if I don’t need to animate them for that purpose I probably won’t."
           },
           "fr": {
-            "html": "Excepter page\u00a04, je n’ai pas une autre page animée écrit depuis au moins de les troixante pages prochaines, et il n’y a pas principalement beaucoup (ou du tout) des plus avant la fin d’<cite class=i>Edulympiade</cite>. Celui‐ci et page\u00a04 sont animées primarement passer les gags mieux, et parce que je suis incroyablement paresseux, si je ne dois pas les animate pour ce objectif, je ne fais pas probalement."
+            "html": "<p>Excepter page\u00a04, je n’ai pas une autre page animée écrit depuis au moins de les troixante pages prochaines, et il n’y a pas principalement beaucoup (ou du tout) des plus avant la fin d’<cite class=i>Edulympiade</cite>. Celui‐ci et page\u00a04 sont animées primarement passer les gags mieux, et parce que je suis incroyablement paresseux, si je ne dois pas les animate pour ce objectif, je ne fais pas probalement."
           }
         }
       ]
