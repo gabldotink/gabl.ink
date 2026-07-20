@@ -10,6 +10,8 @@ import subprocess
 import json
 # Arch: python-langcodes
 from langcodes import Language
+# Arch: python-jq
+import jq
 
 script=os.path.abspath(sys.argv[0])
 scripts=os.path.dirname(script)
@@ -19,10 +21,42 @@ dicts=Path(cms)/"dictionaries"
 index=Path(cms)/"../i"
 encyclopedia=Path(index)/"encyclopedia"
 
-items=subprocess.run(["find",Path(index),"-type","f","-path",Path(index)/"jrco_beta/*/data.json"],capture_output=True,text=True).stdout.splitlines()
+data={}
+
+items=subprocess.run(["find",Path(index),"-type","f","-name","data.json"],capture_output=True,text=True).stdout.splitlines()
+
+for i in items:
+    i_id=jq.compile(".id").input(Path(i).read_text(encoding="utf-8")).first()
+    data[i_id]=json.loads(Path(i).read_text(encoding="utf-8"))
 
 for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
     globals()[f"dict_{dict}"]=json.loads((Path(dicts)/f"{dict}.json").read_text(encoding="utf-8"))
+
+def get_var_l10n(key,format,dict):
+    try:
+        dict
+    except NameError:
+        dict=data
+    else:
+        dict=f"dict_{dict}"
+
+    for o in lang,lang.language,"mul","zxx","e":
+        if format=="e":
+            return False
+
+        if format=="id":
+            try:
+                dict[key][o]["id"]
+            except KeyError:
+                try:
+                    dict[key][o]["equal"]
+                except KeyError:
+                    continue
+                else:
+
+            else:
+                return dict[key][o]["id"]
+                
 
 print("section start: items")
 
