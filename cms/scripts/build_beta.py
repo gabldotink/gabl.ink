@@ -10,8 +10,6 @@ import subprocess
 import json
 # Arch: python-langcodes
 from langcodes import Language
-# Arch: python-jq
-import jq
 
 script=os.path.abspath(sys.argv[0])
 scripts=os.path.dirname(script)
@@ -23,56 +21,66 @@ encyclopedia=Path(index)/"encyclopedia"
 
 data={}
 
-items=subprocess.run(["find",Path(index),"-type","f","-name","data.json"],capture_output=True,text=True).stdout.splitlines()
+item_files=subprocess.run(["find",Path(index),"-type","f","-name","data.json"],capture_output=True,text=True).stdout.splitlines()
 
-for i in items:
-    i_id=jq.compile(".id").input(Path(i).read_text(encoding="utf-8")).first()
-    data[i_id]=json.loads(Path(i).read_text(encoding="utf-8"))
+for i in item_files:
+    with open(i,"r",encoding="utf-8") as f:
+        obj=json.load(f)
+        i_id=obj.get("id")
+        data[i_id]=obj
 
 for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
-    globals()[f"dict_{dict}"]=json.loads((Path(dicts)/f"{dict}.json").read_text(encoding="utf-8"))
+    with open(Path(dicts)/f"{dict}.json","r",encoding="utf-8") as f:
+        globals()[f"dict_{dict}"]=json.load(f)
 
-def get_var_l10n(key,format,dict):
-    try:
-        dict
-    except NameError:
-        dict=data
-    else:
-        dict=f"dict_{dict}"
+#def get_var_l10n(key,format,dict):
+#    try:
+#        dict
+#    except NameError:
+#        dict=data
+#    else:
+#        dict=f"dict_{dict}"
+#
+#    for o in lang,lang.language,"mul","zxx","e":
+#        if format=="e":
+#            return False
+#
+#        if format=="id":
+#            try:
+#                dict[key][o]["id"]
+#            except KeyError:
+#                try:
+#                    dict[key][o]["equal"]
+#                except KeyError:
+#                    continue
+#                else:
+#
+#            else:
+#                return dict[key][o]["id"]
 
-    for o in lang,lang.language,"mul","zxx","e":
-        if format=="e":
-            return False
-
-        if format=="id":
-            try:
-                dict[key][o]["id"]
-            except KeyError:
-                try:
-                    dict[key][o]["equal"]
-                except KeyError:
-                    continue
-                else:
-
-            else:
-                return dict[key][o]["id"]
-                
+def get_i_id(i):
+    with open(i,"r",encoding="utf-8") as f:
+        obj=json.load(f)
+        return obj["id"]
 
 print("section start: items")
 
-for i in items:
-    data=json.loads(Path(i).read_text(encoding="utf-8"))
+for i in item_files:
+    i_id=get_i_id(i)
+    
+    if data[i_id]["type"] != "comic_page":
+        continue
 
-    for lang in data["langs"]:
+    for lang in data[i_id]["langs"]:
         lang=Language.get(lang)
 
-        canonical="https://gabl.ink/i/"+str(data["id"])+"/"+str(lang).lower()+"/"
+        canonical=f"https://gabl.ink/i/{str(data[i_id]["id"])}/{str(lang).lower()}/"
 
         print("<!DOCTYPE html>")
-        print("<!-- SPDX-License-Identifier: "+dict_copyright_license[data["copyright"]["license"][0]]["spdx"]+" -->")
+        print(f"<!-- SPDX-License-Identifier: {dict_copyright_license[data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
 
         # TODO: Skipping the dir attribute for now, but it should be implemented later
-        print("<html lang="+str(lang)+">",end="")
+        print(f"<html lang={str(lang)}>",end="")
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end="")
 

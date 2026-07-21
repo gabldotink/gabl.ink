@@ -1,4 +1,6 @@
 {
+  "id": "encyclopedia/jrco_beta",
+  "type": "container",
   "contents": [
     "city",
     "eden_runner",

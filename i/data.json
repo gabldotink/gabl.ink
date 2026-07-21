@@ -1,5 +1,6 @@
 {
-  "type": "root",
+  "id": null,
+  "type": "container",
   "contents": [
     "encyclopedia",
     "jrco_beta"

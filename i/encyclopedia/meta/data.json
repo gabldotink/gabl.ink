@@ -1,4 +1,6 @@
 {
+  "id": "encyclopedia/meta",
+  "type": "container",
   "contents": [
     "bio",
     "boy",

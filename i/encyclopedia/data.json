@@ -1,4 +1,6 @@
 {
+  "id": "encyclopedia",
+  "type": "container",
   "contents": [
     "jrco_beta",
     "meta"
