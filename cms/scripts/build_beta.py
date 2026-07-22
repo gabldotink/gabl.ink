@@ -11,8 +11,8 @@ import json
 # Arch: python-langcodes
 from langcodes import Language
 
-script=os.path.abspath(sys.argv[0])
-scripts=os.path.dirname(script)
+script=Path(os.path.abspath(sys.argv[0]))
+scripts=Path(os.path.dirname(script))
 cms=Path(scripts)/".."
 lib=Path(scripts)/"lib"
 dicts=Path(cms)/"dictionaries"
