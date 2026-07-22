@@ -21,7 +21,11 @@ encyclopedia=Path(index)/"encyclopedia"
 
 data={}
 
-item_files=subprocess.run(["find",Path(index),"-type","f","-name","data.json"],capture_output=True,text=True).stdout.splitlines()
+item_files = [
+    path
+    for path in Path(index).rglob("data.json")
+    if path.is_file()
+]
 
 for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
     data[f"dictionaries/{dict}"]={}
@@ -33,8 +37,6 @@ for i in item_files:
         obj=json.load(f)
         i_id=obj.get("id")
         data[i_id]=obj
-
-print(data["dictionaries/copyright_license"])
 
 #def get_var_l10n(key,format,dict):
 #    try:
@@ -77,7 +79,7 @@ for i in item_files:
     for lang in data[i_id]["langs"]:
         lang=Language.get(lang)
 
-        canonical=f"https://gabl.ink/i/{str(data[i_id]["id"])}/{str(lang).lower()}/"
+        canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
 
         print("<!DOCTYPE html>")
         print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
@@ -87,4 +89,4 @@ for i in item_files:
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end="")
 
-        # This is when it starts getting hard
+        # Now I need to implement the l10n function
