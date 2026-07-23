@@ -38,30 +38,48 @@ for i in item_files:
         i_id=obj.get("id")
         data[i_id]=obj
 
-#def get_var_l10n(key,format,dict):
-#    try:
-#        dict
-#    except NameError:
-#        dict=data
-#    else:
-#        dict=f"dict_{dict}"
-#
-#    for o in lang,lang.language,"mul","zxx","e":
-#        if format=="e":
-#            return False
-#
-#        if format=="id":
-#            try:
-#                dict[key][o]["id"]
-#            except KeyError:
-#                try:
-#                    dict[key][o]["equal"]
-#                except KeyError:
-#                    continue
-#                else:
-#
-#            else:
-#                return dict[key][o]["id"]
+def get_var_l10n(dict,key,format,l10n_lang):
+    # e.g.   get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
+    l10n_lang=Language.get(l10n_lang)
+
+    for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
+        if o=="e":
+            return False
+
+        if format=="id":
+            if "id" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["id"]
+            elif "equal" in dict.get(key,{}).get(o,{}):
+                get_var_l10n(dict,key,format,data[key][o]["equal"])
+            else:
+                continue
+
+        # TODO: I might not need printf in Python
+        if format=="printf":
+            if "printf" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["printf"]
+            elif "equal" in dict.get(key,{}).get(o,{}):
+                get_var_l10n(dict,key,format,data[key][o]["equal"])
+            else:
+                continue
+
+        if format=="text":
+            if "text" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["text"]
+            elif "equal" in dict.get(key,{}).get(o,{}):
+                get_var_l10n(dict,key,format,data[key][o]["equal"])
+            else:
+                continue
+
+        if format=="html":
+            if "html" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["html"]
+            elif "text" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["text"]
+            elif "equal" in dict.get(key,{}).get(o,{}):
+                get_var_l10n(dict,key,format,data[key][o]["equal"])
+            else:
+                continue
 
 def get_i_id(i):
     with open(i,"r",encoding="utf-8") as f:
@@ -89,4 +107,10 @@ for i in item_files:
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end="")
 
-        # Now I need to implement the l10n function
+        # TODO: title
+        
+        print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end="")
+
+        print("<meta name=robots content=index,follow>",end="")
+
+        print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end="")
