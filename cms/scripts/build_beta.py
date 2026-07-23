@@ -11,6 +11,9 @@ import json
 # Arch: python-langcodes
 from langcodes import Language
 
+# Use LF on all platforms (Windows)
+sys.stdout.reconfigure(newline="\n")
+
 script=Path(os.path.abspath(sys.argv[0]))
 scripts=Path(os.path.dirname(script))
 cms=Path(scripts)/".."
@@ -90,7 +93,7 @@ print("section start: items")
 
 for i in item_files:
     i_id=get_i_id(i)
-    
+
     if data[i_id]["type"] != "comic_page":
         continue
 
@@ -108,7 +111,7 @@ for i in item_files:
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end="")
 
         # TODO: title
-        
+
         print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end="")
 
         print("<meta name=robots content=index,follow>",end="")
@@ -125,7 +128,5 @@ for i in item_files:
         print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end="")
         print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end="")
 
-        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">')
-
-        
+        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">',end="")
 
