@@ -114,3 +114,18 @@ for i in item_files:
         print("<meta name=robots content=index,follow>",end="")
 
         print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end="")
+
+        # TODO: Only works for one type of depth, but I want to redesign that whole system anyway
+        styles="../../../../cms/styles"
+
+        # TODO: `if type != comic_page`
+
+        print(f"<link rel=preload href={styles}/{lang.language}.css as=style hreflang=zxx type=text/css>",end="")
+        print(f"<link rel=preload href={styles}/comic_page.css as=style hreflang=zxx type=text/css>",end="")
+        print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end="")
+        print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end="")
+
+        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">')
+
+        
+
