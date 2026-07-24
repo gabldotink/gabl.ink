@@ -3,11 +3,11 @@
 
 # I’ve been meaning to learn Python anyway
 
-import sys
-import os
-from pathlib import Path
-import subprocess
 import json
+import os
+import sys
+from pathlib import Path
+
 # Arch: python-langcodes
 from langcodes import Language
 
