@@ -105,28 +105,42 @@ for i in item_files:
         print("<!DOCTYPE html>")
         print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
 
-        # TODO: Skipping the dir attribute for now, but it should be implemented later
-        print(f"<html lang={lang}>",end="")
+        # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
+        print(f"<html lang={lang}>",end='')
 
-        print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end="")
+        print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        # TODO: title
+        # TODO: title (sh:343)
 
-        print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end="")
+        print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
 
-        print("<meta name=robots content=index,follow>",end="")
+        print("<meta name=robots content=index,follow>",end='')
 
-        print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end="")
+        print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end='')
 
-        # TODO: Only works for one type of depth, but I want to redesign that whole system anyway
+        # TODO: Only works for one type of depth, but I want to redesign that whole system anyway (sh:349–385)
         styles="../../../../cms/styles"
 
-        # TODO: `if type != comic_page`
+        # TODO: `if type != comic_page` (sh:349)
 
-        print(f"<link rel=preload href={styles}/{lang.language}.css as=style hreflang=zxx type=text/css>",end="")
-        print(f"<link rel=preload href={styles}/comic_page.css as=style hreflang=zxx type=text/css>",end="")
-        print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end="")
-        print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end="")
+        print(f"<link rel=preload href={styles}/{lang.language}.css as=style hreflang=zxx type=text/css>",end='')
+        print(f"<link rel=preload href={styles}/comic_page.css as=style hreflang=zxx type=text/css>",end='')
+        print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end='')
+        print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end='')
 
-        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">',end="")
+        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">',end='')
 
+        # TODO: Prefetches (starting at sh:420)
+
+        print("<meta property=og:type content=article>",end='')
+        print(f'<meta property=og:title content="{get_var_l10n(data[i_id],"title","text",lang)}">',end='')
+        print(f'<meta property=og:description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
+        print("<meta property=og:site_name content=gabl.ink>",end='')
+        print(f"<meta property=og:url content={canonical}>",end='')
+        print(f"<meta property=og:image content={canonical}image.png>",end='')
+        # TODO: video_exists (sh:322–332, sh:454)
+        # TODO: Should this use babel or something instead? There’s probably not really much point
+        print(f"<meta property=og:locale content={lang.language}_{lang.region}>",end='')
+
+        print("<header>",end='')
+        print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>")
