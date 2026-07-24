@@ -143,4 +143,4 @@ for i in item_files:
         print(f"<meta property=og:locale content={lang.language}_{lang.region}>",end='')
 
         print("<header>",end='')
-        print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>")
+        print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>",end='')
