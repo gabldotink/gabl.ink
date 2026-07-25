@@ -43,7 +43,6 @@ for i in item_files:
 
 def get_var_l10n(dict,key,format,l10n_lang):
     # e.g.   get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
-    l10n_lang=Language.get(l10n_lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
         if o=="e":
