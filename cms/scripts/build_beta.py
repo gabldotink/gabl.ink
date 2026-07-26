@@ -139,7 +139,7 @@ for i in item_files:
         print(f"<meta property=og:image content={canonical}image.png>",end='')
         # TODO: video_exists (sh:322–332, sh:454)
         # TODO: Should this use babel or something instead? There’s probably not really much point
-        print(f"<meta property=og:locale content={lang.language}_{lang.region}>",end='')
+        print(f"<meta property=og:locale content={lang.language}_{lang.territory}>",end='')
 
         print("<header>",end='')
         print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>",end='')
