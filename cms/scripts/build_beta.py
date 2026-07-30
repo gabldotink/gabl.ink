@@ -88,6 +88,22 @@ def get_i_id(i):
         obj=json.load(f)
         return obj["id"]
 
+def to_sentence_case(string):
+    if lang.language=="en" or lang.language=="fr":
+        return string[:1].upper()+string[1:]
+    if lang.language=="tok":
+        return string
+
+def to_regional_indicators(string):
+    out_chars=[]
+    for ch in string:
+        out_chars.append(chr(0x1F1E6 + (ord(ch) - ord("A"))))
+    return ''.join(out_chars)
+
+def say_lang(lang,format):
+    if lang.language=="en" or lang.language=="fr":
+        return print(f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})",end='')
+
 print("section start: items")
 
 for i in item_files:
@@ -143,3 +159,22 @@ for i in item_files:
 
         print("<header>",end='')
         print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>",end='')
+
+        print("<ul id=lang_select>",end='')
+        for l in sorted(data[i_id]["langs"]):
+            l=Language.get(l)
+
+            print(f"<li data-lang_select_flag={to_regional_indicators(l.region)}>",end='')
+
+            if l==lang:
+                print("<b>",end='')
+            else:
+                print(f"<a lang={l} href=../{str(l).lower()}/ hreflang={l}>",end='')
+
+            say_lang(l,"html")
+
+            if l==lang:
+                print("</b>",end='')
+            else:
+                print("</a>",end='')
+        print("</ul></header>",end='')
