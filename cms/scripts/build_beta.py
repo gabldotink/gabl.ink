@@ -89,10 +89,10 @@ def get_i_id(i):
         return obj["id"]
 
 def to_sentence_case(string):
-    if lang.language=="en" or lang.language=="fr":
-        return string[:1].upper()+string[1:]
     if lang.language=="tok":
         return string
+    else:
+        return string[:1].upper()+string[1:]
 
 def to_regional_indicators(string):
     out_chars=[]
@@ -101,7 +101,7 @@ def to_regional_indicators(string):
     return ''.join(out_chars)
 
 def say_lang(lang,format):
-    if lang.language=="en" or lang.language=="fr":
+    if lang.language in ("en","fr"):
         return print(f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})",end='')
 
 print("section start: items")
