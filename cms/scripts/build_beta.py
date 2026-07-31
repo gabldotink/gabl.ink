@@ -32,6 +32,9 @@ item_files = [
 
 for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
     data[f"dictionaries/{dict}"]={}
+    data[f"dictionaries/{dict}"]["id"]=f"dictionaries/{dict}"
+    data[f"dictionaries/{dict}"]["type"]="dictionary"
+    data[f"dictionaries/{dict}"]["dictionary_name"]=dict
     with open(Path(dicts)/f"{dict}.json","r",encoding="utf-8") as f:
         data[f"dictionaries/{dict}"]["dictionary"]=json.load(f)
 
@@ -56,10 +59,9 @@ def get_var_l10n(dict,key,format,l10n_lang):
             else:
                 continue
 
-        # TODO: I might not need printf in Python
-        if format=="printf":
-            if "printf" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["printf"]
+        if format=="print":
+            if "print" in dict.get(key,{}).get(o,{}):
+                return dict[key][o]["print"]
             elif "equal" in dict.get(key,{}).get(o,{}):
                 get_var_l10n(dict,key,format,data[key][o]["equal"])
             else:

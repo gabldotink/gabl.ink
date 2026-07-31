@@ -1,15 +1,18 @@
 {
   "html_title": {
     "en": {
-      "printf": "gabl.ink: “%s”"
+      "printf": "gabl.ink: “%s”",
+      "print": "gabl.ink: “{t}”"
     },
     "fr": {
-      "printf": "gabl.ink: «\u202f%s\u202f»"
+      "printf": "gabl.ink: «\u202f%s\u202f»",
+      "print": "gabl.ink\u202f: «\u202f{t}\u202f»"
     }
   },
   "gabldotink_logo": {
     "en": {
-      "printf": "gabl.ink"
+      "printf": "gabl.ink",
+      "print": "gabl.ink"
     },
     "mul": {
       "equal": "en"
@@ -17,23 +20,28 @@
   },
   "video_not_supported": {
     "en": {
-      "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
+      "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below.",
+      "print": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang={l} type=video/webm download=\"{s} - {t}.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
     },
     "fr": {
-      "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous."
+      "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous.",
+      "print": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang={l} type=video/webm download=\"{s} - {t}.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous."
     }
   },
   "see_transcript": {
     "en": {
-      "printf": "\"See “Transcript” below\""
+      "printf": "\"See “Transcript” below\"",
+      "print": "\"See “Transcript” below\""
     },
     "fr": {
-      "printf": "\"Voir «\u202fTranscription\u202f» au‐dessous\""
+      "printf": "\"Voir «\u202fTranscription\u202f» au‐dessous\"",
+      "print": "\"Voir «\u202fTranscription\u202f» au‐dessous\""
     }
   },
   "series_title_html": {
     "en": {
-      "printf": "<cite class=i>%s</cite>"
+      "printf": "<cite class=i>%s</cite>",
+      "print": "<cite class=i>{s}</cite>"
     },
     "fr": {
       "equal": "en"
@@ -41,7 +49,8 @@
   },
   "comma_page": {
     "fr": {
-      "printf": ", page\u00a0%s "
+      "printf": ", page\u00a0%s ",
+      "print": ", page\u00a0{n} "
     },
     "en": {
       "equal": "fr"
@@ -49,217 +58,269 @@
   },
   "page_title_html": {
     "en": {
-      "printf": "“<cite>%s</cite>”"
+      "printf": "“<cite>%s</cite>”",
+      "print": "“<cite>{t}</cite>”"
     },
     "fr": {
-      "printf": "<cite class=i>%s</cite>"
+      "printf": "<cite class=i>%s</cite>",
+      "print": "<cite class=i>{t}</cite>"
     }
   },
   "no_title": {
     "en": {
-      "printf": "<i>No title</i>"
+      "printf": "<i>No title</i>",
+      "print": "<i>No title</i>"
     },
     "fr": {
-      "printf": "<i>Sans titre</i>"
+      "printf": "<i>Sans titre</i>",
+      "print": "<i>Sans titre</i>"
     }
   },
   "transcript_name": {
     "en": {
-      "printf": "Transcript"
+      "printf": "Transcript",
+      "print": "Transcript"
     },
     "fr": {
-      "printf": "Transcription"
+      "printf": "Transcription",
+      "print": "Transcription"
     }
   },
   "first_published": {
     "en": {
-      "printf": "First published "
+      "printf": "First published ",
+      "print": "First published "
     },
     "fr": {
-      "printf": "Première publication\u202f: "
+      "printf": "Première publication\u202f: ",
+      "print": "Première publication\u202f: "
     }
   },
   "nav_button_first": {
     "en": {
-      "printf": "First"
+      "printf": "First",
+      "print": "First"
     },
     "fr": {
-      "printf": "Première"
+      "printf": "Première",
+      "print": "Première"
     }
   },
   "nav_button_prev": {
     "en": {
-      "printf": "Previous"
+      "printf": "Previous",
+      "print": "Previous"
     },
     "fr": {
-      "printf": "Précédente"
+      "printf": "Précédente",
+      "print": "Précédente"
     }
   },
   "nav_button_next": {
     "en": {
-      "printf": "Next"
+      "printf": "Next",
+      "print": "Next"
     },
     "fr": {
-      "printf": "Prochaine"
+      "printf": "Prochaine",
+      "print": "Prochaine"
     }
   },
   "nav_button_last": {
     "en": {
-      "printf": "Last"
+      "printf": "Last",
+      "print": "Last"
     },
     "fr": {
-      "printf": "Dernière"
+      "printf": "Dernière",
+      "print": "Dernière"
     }
   },
   "nav_button_first_inline": {
     "en": {
-      "printf": "first"
+      "printf": "first",
+      "print": "first"
     },
     "fr": {
-      "printf": "première"
+      "printf": "première",
+      "print": "première"
     }
   },
   "nav_button_next_inline": {
     "en": {
-      "printf": "next"
+      "printf": "next",
+      "print": "next"
     },
     "fr": {
-      "printf": "prochaine"
+      "printf": "prochaine",
+      "print": "prochaine"
     }
   },
   "nav_button_prev_inline": {
     "en": {
-      "printf": "previous"
+      "printf": "previous",
+      "print": "previous"
     },
     "fr": {
-      "printf": "précédente"
+      "printf": "précédente",
+      "print": "précédente"
     }
   },
   "nav_button_last_inline": {
     "en": {
-      "printf": "last"
+      "printf": "last",
+      "print": "last"
     },
     "fr": {
-      "printf": "dernière"
+      "printf": "dernière",
+      "print": "dernière"
     }
   },
   "this_is_x_page": {
     "en": {
-      "printf": "\"This is the %s page!\""
+      "printf": "\"This is the %s page!\"",
+      "print": "\"This is the {x} page!\""
     },
     "fr": {
-      "printf": "\"C’est la %s page\u202f!\""
+      "printf": "\"C’est la %s page\u202f!\"",
+      "print": "\"C’est la {x} page\u202f!\""
     }
   },
   "nav_button_page_title": {
     "en": {
-      "printf": "“%s”"
+      "printf": "“%s”",
+      "print": "“{t}”"
     },
     "fr": {
-      "printf": "«\u202f%s\u202f»"
+      "printf": "«\u202f%s\u202f»",
+      "print": "«\u202f{t}\u202f»"
     }
   },
   "share_this_page": {
     "en": {
-      "printf": "Share this page"
+      "printf": "Share this page",
+      "print": "Share this page"
     },
     "fr": {
-      "printf": "Partager ce page"
+      "printf": "Partager ce page",
+      "print": "Partager ce page"
     }
   },
   "validate_this_page": {
     "en": {
-      "printf": "Validate this page"
+      "printf": "Validate this page",
+      "print": "Validate this page"
     },
     "fr": {
-      "printf": "Valider ce page"
+      "printf": "Valider ce page",
+      "print": "Valider ce page"
     }
   },
   "copyright": {
     "en": {
-      "printf": "Copyright"
+      "printf": "Copyright",
+      "print": "Copyright"
     },
     "fr": {
-      "printf": "\"Droit d’auteur\""
+      "printf": "\"Droit d’auteur\"",
+      "print": "\"Droit d’auteur\""
     }
   },
   "license": {
-    "en": {
-      "printf": "<span lang=en-US>License</span><span lang=en-GB>Licence</span>: "
+    "en-US": {
+      "printf": "<span lang=en-US>License</span><span lang=en-GB>Licence</span>: ",
+      "print": "<span lang=en-US>License</span><span lang=en-GB>Licence</span>: "
     },
     "fr": {
-      "printf": "Licence\u202f: "
+      "printf": "Licence\u202f: ",
+      "print": "Licence\u202f: "
     }
   },
   "disclaimer": {
     "en": {
-      "printf": "Disclaimer: "
+      "printf": "Disclaimer: ",
+      "print": "Disclaimer: "
     },
     "fr": {
-      "printf": "Disclaimer\u202f: "
+      "printf": "Disclaimer\u202f: ",
+      "print": "Disclaimer\u202f: "
     }
   },
   "share_with": {
     "en": {
-      "printf": "Share with "
+      "printf": "Share with ",
+      "print": "Share with "
     },
     "fr": {
-      "printf": "Partagez avec "
+      "printf": "Partagez avec ",
+      "print": "Partagez avec "
     }
   },
   "validate_with": {
     "en": {
-      "printf": "Validate with "
+      "printf": "Validate with ",
+      "print": "Validate with "
     },
     "fr": {
-      "printf": "Validez avec "
+      "printf": "Validez avec ",
+      "print": "Validez avec "
     }
   },
   "validate_as": {
     "en": {
-      "printf": " as "
+      "printf": " as ",
+      "print": " as "
     },
     "fr": {
-      "printf": " en tant que "
+      "printf": " en tant que ",
+      "print": " en tant que "
     }
   },
   "say_date_cjk_year": {
     "zh": {
-      "printf": "年"
+      "printf": "年",
+      "print": "年"
     },
     "ja": {
       "equal": "zh"
     },
     "ko": {
-      "printf": "년\u00a0"
+      "printf": "년\u00a0",
+      "print": "년\u00a0"
     },
     "ko-Hani": {
-      "printf": "年\u00a0"
+      "printf": "年\u00a0",
+      "print": "年\u00a0"
     }
   },
   "say_date_cjk_month": {
     "zh": {
-      "printf": "月"
+      "printf": "月",
+      "print": "月"
     },
     "ja": {
       "equal": "zh"
     },
     "ko": {
-      "printf": "월\u00a0"
+      "printf": "월\u00a0",
+      "print": "월\u00a0"
     },
     "ko-Hani": {
-      "printf": "月\u00a0"
+      "printf": "月\u00a0",
+      "print": "月\u00a0"
     }
   },
   "say_date_cjk_day": {
     "zh": {
-      "printf": "日"
+      "printf": "日",
+      "print": "日"
     },
     "ja": {
       "equal": "zh"
     },
     "ko": {
-      "printf": "일"
+      "printf": "일",
+      "print": "일"
     },
     "ko-Hani": {
       "equal": "zh"
@@ -267,56 +328,69 @@
   },
   "say_date_cjk_bc": {
     "zh-Hant": {
-      "printf": "紀元前"
+      "printf": "紀元前",
+      "print": "紀元前"
     },
     "zh-Hans": {
-      "printf": "纪元前"
+      "printf": "纪元前",
+      "print": "纪元前"
     },
     "ja": {
       "equal": "zh-Hant"
     },
     "ko": {
-      "printf": "기원전\u00a0"
+      "printf": "기원전\u00a0",
+      "print": "기원전\u00a0"
     },
     "ko-Hani": {
-      "printf": "紀元前\u00a0"
+      "printf": "紀元前\u00a0",
+      "print": "紀元前\u00a0"
     }
   },
   "canonical_url": {
     "en": {
-      "printf": "Canonical <abbr title=\"Uniform Resource Locator\">URL</abbr>: "
+      "printf": "Canonical <abbr title=\"Uniform Resource Locator\">URL</abbr>: ",
+      "print": "Canonical <abbr title=\"Uniform Resource Locator\">URL</abbr>: "
     },
     "fr": {
-      "printf": "<abbr title=\"Uniform Resource Locator\">URL</abbr> canonique\u202f: "
+      "printf": "<abbr title=\"Uniform Resource Locator\">URL</abbr> canonique\u202f: ",
+      "print": "<abbr title=\"Uniform Resource Locator\">URL</abbr> canonique\u202f: "
     }
   },
   "log": {
     "en": {
-      "printf": "Log"
+      "printf": "Log",
+      "print": "Log"
     },
     "fr": {
-      "printf": "Journal"
+      "printf": "Journal",
+      "print": "Journal"
     }
   },
   "gabldotink_series_page": {
     "en": {
-      "printf": "gabl.ink%s: _%s_: “%s”"
+      "printf": "gabl.ink%s: _%s_: “%s”",
+      "print": "gabl.ink{u}: “{s}”: “{t}”"
     },
     "fr": {
-      "printf": "gabl.ink%s\u202f: «\u202f%s\u202f»\u202f: «\u202f%s\u202f»"
+      "printf": "gabl.ink%s\u202f: «\u202f%s\u202f»\u202f: «\u202f%s\u202f»",
+      "print": "gabl.ink{u}\u202f: «\u202f{s}\u202f»\u202f: «\u202f{t}}\u202f»"
     }
   },
   "from_gabldotink": {
     "en": {
-      "printf": "From https://gabl.ink/ : "
+      "printf": "From https://gabl.ink/ : ",
+      "print": "From https://gabl.ink/ : "
     },
     "fr": {
-      "printf": "De https://gabl.ink/ : "
+      "printf": "De https://gabl.ink/ : ",
+      "print": "De https://gabl.ink/ : "
     }
   },
   "cc": {
     "en": {
-      "printf": "\u00a0(CC)"
+      "printf": "\u00a0(CC)",
+      "print": "\u00a0(CC)"
     },
     "fr": {
       "equal": "en"
