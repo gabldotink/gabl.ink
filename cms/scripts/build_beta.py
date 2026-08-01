@@ -106,6 +106,9 @@ def say_lang(lang,format):
     if lang.language in ("en","fr"):
         return print(f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})",end='')
 
+def print_l10n(*args,lang,string):
+    return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
+
 print("section start: items")
 
 for i in item_files:
@@ -127,7 +130,7 @@ for i in item_files:
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        # TODO: title (sh:343)
+        print(f"<title>{print_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>")
 
         print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
 

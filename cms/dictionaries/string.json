@@ -2,11 +2,11 @@
   "html_title": {
     "en": {
       "printf": "gabl.ink: “%s”",
-      "print": "gabl.ink: “{t}”"
+      "print": "gabl.ink: “{}”"
     },
     "fr": {
       "printf": "gabl.ink: «\u202f%s\u202f»",
-      "print": "gabl.ink\u202f: «\u202f{t}\u202f»"
+      "print": "gabl.ink\u202f: «\u202f{}\u202f»"
     }
   },
   "gabldotink_logo": {
@@ -21,11 +21,11 @@
   "video_not_supported": {
     "en": {
       "printf": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below.",
-      "print": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang={l} type=video/webm download=\"{s} - {t}.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
+      "print": "It looks like your web browser doesn’t support the <code>video</code> element. You can <a href=video.webm hreflang={0} type=video/webm download=\"{1} - {2}.webm\">download the video</a> to watch with your preferred media player. You can also view the transcript for the video at “Transcript” below."
     },
     "fr": {
       "printf": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang=%s type=video/webm download=\"%s - %s.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous.",
-      "print": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang={l} type=video/webm download=\"{s} - {t}.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous."
+      "print": "On dirait que votre navigateur Web ne prenne pas en charge l’élément <code>video</code>. Vous pouvez <a href=video.webm hreflang={0} type=video/webm download=\"{1} - {2}.webm\">télécharger le vidéo</a> pour regarder avec votre lecteur multimédia préferé. Vous pouvez aussi voir le transcription pour le vidéo à «\u202fTranscription\u202f» au‐dessous."
     }
   },
   "see_transcript": {
@@ -41,7 +41,7 @@
   "series_title_html": {
     "en": {
       "printf": "<cite class=i>%s</cite>",
-      "print": "<cite class=i>{s}</cite>"
+      "print": "<cite class=i>{}</cite>"
     },
     "fr": {
       "equal": "en"
@@ -50,7 +50,7 @@
   "comma_page": {
     "fr": {
       "printf": ", page\u00a0%s ",
-      "print": ", page\u00a0{n} "
+      "print": ", page\u00a0{} "
     },
     "en": {
       "equal": "fr"
@@ -59,11 +59,11 @@
   "page_title_html": {
     "en": {
       "printf": "“<cite>%s</cite>”",
-      "print": "“<cite>{t}</cite>”"
+      "print": "“<cite>{}</cite>”"
     },
     "fr": {
       "printf": "<cite class=i>%s</cite>",
-      "print": "<cite class=i>{t}</cite>"
+      "print": "<cite class=i>{}</cite>"
     }
   },
   "no_title": {
@@ -179,21 +179,21 @@
   "this_is_x_page": {
     "en": {
       "printf": "\"This is the %s page!\"",
-      "print": "\"This is the {x} page!\""
+      "print": "\"This is the {} page!\""
     },
     "fr": {
       "printf": "\"C’est la %s page\u202f!\"",
-      "print": "\"C’est la {x} page\u202f!\""
+      "print": "\"C’est la {} page\u202f!\""
     }
   },
   "nav_button_page_title": {
     "en": {
       "printf": "“%s”",
-      "print": "“{t}”"
+      "print": "“{}”"
     },
     "fr": {
       "printf": "«\u202f%s\u202f»",
-      "print": "«\u202f{t}\u202f»"
+      "print": "«\u202f{}\u202f»"
     }
   },
   "share_this_page": {
@@ -370,11 +370,11 @@
   "gabldotink_series_page": {
     "en": {
       "printf": "gabl.ink%s: _%s_: “%s”",
-      "print": "gabl.ink{u}: “{s}”: “{t}”"
+      "print": "gabl.ink{0}: “{1}”: “{2}”"
     },
     "fr": {
       "printf": "gabl.ink%s\u202f: «\u202f%s\u202f»\u202f: «\u202f%s\u202f»",
-      "print": "gabl.ink{u}\u202f: «\u202f{s}\u202f»\u202f: «\u202f{t}}\u202f»"
+      "print": "gabl.ink{0}\u202f: «\u202f{1}\u202f»\u202f: «\u202f{2}}\u202f»"
     }
   },
   "from_gabldotink": {
