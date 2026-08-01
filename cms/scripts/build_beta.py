@@ -183,3 +183,5 @@ for i in item_files:
             else:
                 print("</a>",end='')
         print("</ul></header>",end='')
+
+        print(f"<h1>{print_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
