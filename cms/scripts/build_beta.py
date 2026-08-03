@@ -49,7 +49,7 @@ def get_var_l10n(dict,key,format,l10n_lang):
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
         if o=="e":
-            return False
+            return None
 
         if format=="id":
             if "id" in dict.get(key,{}).get(o,{}):
@@ -104,7 +104,7 @@ def to_regional_indicators(string):
 
 def say_lang(lang,format):
     if lang.language in ("en","fr"):
-        return print(f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})",end='')
+        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
 
 def msg_l10n(*args,lang,string):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
@@ -240,4 +240,23 @@ for i in item_files:
 
         print("</nav>",end='')
 
-
+        if Path(index/i_id/str(lang).lower()/"video.webm").is_file():
+            print("<video controls poster=image.png preload=auto>",end='')
+            print("<source src=video.webm type=video/webm>",end='')
+            if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
+                print(f"<track default src=subs.vtt srclang={lang} kind=subtitles ",end='')
+                print(f'label="{say_lang(lang,"text")}">',end='')
+            if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
+                print(f"<track src=cc.vtt srclang={lang} kind=captions ",end='')
+                print(f'label="{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}">',end='')
+            print("<p>",end='')
+            print(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"),end='')
+            print("</p>",end='')
+            print("</video>",end='')
+        elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
+            print("<picture",end='')
+            if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
+                print(f' title="{get_var_l10n(data[i_id],"tooltip","text",lang)}"',end='')
+            print(">",end='')
+            print(f'<img src=image.png fetchpriority=high alt="{msg_l10n(lang=lang,string="see_transcript")}">',end='')
+            print("</picture>",end='')
