@@ -55,7 +55,7 @@ def get_var_l10n(dict,key,format,l10n_lang):
             if "id" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["id"]
             elif "equal" in dict.get(key,{}).get(o,{}):
-                get_var_l10n(dict,key,format,data[key][o]["equal"])
+                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
             else:
                 continue
 
@@ -63,7 +63,7 @@ def get_var_l10n(dict,key,format,l10n_lang):
             if "print" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["print"]
             elif "equal" in dict.get(key,{}).get(o,{}):
-                get_var_l10n(dict,key,format,data[key][o]["equal"])
+                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
             else:
                 continue
 
@@ -71,7 +71,7 @@ def get_var_l10n(dict,key,format,l10n_lang):
             if "text" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["text"]
             elif "equal" in dict.get(key,{}).get(o,{}):
-                get_var_l10n(dict,key,format,data[key][o]["equal"])
+                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
             else:
                 continue
 
@@ -81,7 +81,7 @@ def get_var_l10n(dict,key,format,l10n_lang):
             elif "text" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["text"]
             elif "equal" in dict.get(key,{}).get(o,{}):
-                get_var_l10n(dict,key,format,data[key][o]["equal"])
+                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
             else:
                 continue
 
@@ -106,8 +106,53 @@ def say_lang(lang,format):
     if lang.language in ("en","fr"):
         return print(f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})",end='')
 
-def print_l10n(*args,lang,string):
+def msg_l10n(*args,lang,string):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
+
+def make_nav_button(button,lang):
+    if button=="f":
+        button_arrow="⇦"
+        button_id="first"
+        button_fl=button_id
+    elif button=="p":
+        button_arrow="←"
+        button_id="prev"
+        button_fl="first"
+    elif button=="n":
+        button_arrow="→"
+        button_id="next"
+        button_fl="last"
+    elif button=="l":
+        button_arrow="⇨"
+        button_id="last"
+        button_fl=button_id
+
+    print("<div class=nav_button title=",end='')
+
+    if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
+        print(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page"),end='')
+        print(">",end='')
+    else:
+        print('"',end='')
+        if button in ("f","l"):
+            print(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
+        elif button in ("p","n"):
+            print(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
+        print('">',end='')
+        print("<a href=../../",end='')
+        if button in ("f","l"):
+            print(data[data[i_id]["location"]["series"]][button_id],end='')
+        elif button in ("p","n"):
+            print(data[i_id]["location"][button_id],end='')
+        print(f"/{str(lang).lower()}/ hreflang={lang}>",end='')
+
+    print(f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}",end='')
+
+    if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
+        print("</a>",end='')
+
+    print("</div>",end='')
+
 
 print("section start: items")
 
@@ -130,7 +175,7 @@ for i in item_files:
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        print(f"<title>{print_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>")
+        print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>")
 
         print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
 
@@ -184,4 +229,15 @@ for i in item_files:
                 print("</a>",end='')
         print("</ul></header>",end='')
 
-        print(f"<h1>{print_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
+        print(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
+
+        print("<nav class=nav_buttons>",end='')
+
+        make_nav_button("f",lang)
+        make_nav_button("p",lang)
+        make_nav_button("n",lang)
+        make_nav_button("l",lang)
+
+        print("</nav>",end='')
+
+

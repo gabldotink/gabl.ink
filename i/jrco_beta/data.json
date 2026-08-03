@@ -1,6 +1,8 @@
 {
   "id": "jrco_beta",
   "type": "container",
+  "first": 1,
+  "last": 11,
   "parts": [
     "1-11"
   ],
