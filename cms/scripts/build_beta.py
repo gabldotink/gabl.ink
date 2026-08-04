@@ -258,5 +258,24 @@ for i in item_files:
             if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
                 print(f' title="{get_var_l10n(data[i_id],"tooltip","text",lang)}"',end='')
             print(">",end='')
-            print(f'<img src=image.png fetchpriority=high alt="{msg_l10n(lang=lang,string="see_transcript")}">',end='')
+            print(f'<img src=image.png fetchpriority=high alt={msg_l10n(lang=lang,string="see_transcript")}>',end='')
             print("</picture>",end='')
+
+            print("<nav class=nav_buttons>",end='')
+
+        make_nav_button("f",lang)
+        make_nav_button("p",lang)
+        make_nav_button("n",lang)
+        make_nav_button("l",lang)
+
+        print("</nav>",end='')
+
+        print("<nav><details><summary>",end='')
+
+        # TODO: Support multiple container depths
+
+        print(msg_l10n(get_var_l10n(data[data[i_id]["location"]["series"]],"title","html",lang),lang=lang,string="series_title_html"),end='')
+        print(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"),end='')
+        print(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"),end='')
+        print("</summary>",end='')
+
