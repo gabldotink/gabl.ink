@@ -56,24 +56,18 @@ def get_var_l10n(dict,key,format,l10n_lang):
                 return dict[key][o]["id"]
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
-            else:
-                continue
 
         if format=="print":
             if "print" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["print"]
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
-            else:
-                continue
 
         if format=="text":
             if "text" in dict.get(key,{}).get(o,{}):
                 return dict[key][o]["text"]
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
-            else:
-                continue
 
         if format=="html":
             if "html" in dict.get(key,{}).get(o,{}):
@@ -82,8 +76,6 @@ def get_var_l10n(dict,key,format,l10n_lang):
                 return dict[key][o]["text"]
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
-            else:
-                continue
 
 def get_i_id(i):
     with open(i,"r",encoding="utf-8") as f:
