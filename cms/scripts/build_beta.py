@@ -11,8 +11,8 @@ from pathlib import Path
 # Arch: python-langcodes
 from langcodes import Language
 
-# Use LF on all platforms (Windows)
-sys.stdout.reconfigure(newline="\n")
+# Disable newline conversion
+sys.stdout.reconfigure(newline='')
 
 script=Path(os.path.abspath(sys.argv[0]))
 scripts=Path(os.path.dirname(script))
