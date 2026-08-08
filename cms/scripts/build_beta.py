@@ -96,7 +96,7 @@ def to_regional_indicators(string):
 
 def say_lang(lang,format):
     if lang.language in ("en","fr"):
-        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
+        return f'{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})'
 
 def msg_l10n(*args,lang,string):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
@@ -127,9 +127,9 @@ def make_nav_button(button,lang):
     else:
         print('"',end='')
         if button in ("f","l"):
-            print(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
+            print(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
         elif button in ("p","n"):
-            print(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
+            print(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
         print('">',end='')
         print("<a href=../../",end='')
         if button in ("f","l"):
@@ -138,7 +138,7 @@ def make_nav_button(button,lang):
             print(data[i_id]["location"][button_id],end='')
         print(f"/{str(lang).lower()}/ hreflang={lang}>",end='')
 
-    print(f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}",end='')
+    print(f'<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}',end='')
 
     if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
         print("</a>",end='')
@@ -157,17 +157,17 @@ for i in item_files:
     for lang in data[i_id]["langs"]:
         lang=Language.get(lang)
 
-        canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
+        canonical=f'https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/'
 
         print("<!DOCTYPE html>")
-        print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
+        print(f'<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->')
 
         # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
         print(f"<html lang={lang}>",end='')
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>")
+        print(f'<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>',end='')
 
         print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
 
@@ -221,7 +221,7 @@ for i in item_files:
                 print("</a>",end='')
         print("</ul></header>",end='')
 
-        print(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
+        print(f'<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>',end='')
 
         print("<nav class=nav_buttons>",end='')
 
