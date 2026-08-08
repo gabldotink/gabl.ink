@@ -5,6 +5,7 @@
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -145,7 +146,32 @@ def make_nav_button(button,lang):
 
     print("</div>",end='')
 
+def attribute_string(string):
+    if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
+        quoted=True
+    else:
+        quoted=False
+        quote_char=''
 
+    if quoted==True:
+        if '"' in string and "'" not in string:
+            quote_char="'"
+        elif "'" in string and '"' not in string:
+            quote_char='"'
+        elif '"' in string and "'" in string:
+            if string.count('"')>string.count("'"):
+                quote_char="'"
+            else:
+                quote_char='"'
+
+    if quote_char=='"':
+        string=string.replace('"','&#34;')
+
+    if quote_char=="'":
+        string=string.replace("'","&#39;")
+
+    string=re.sub(r"&(?=[#A-Za-z])","&amp;",string)
+    
 print("section start: items")
 
 for i in item_files:
