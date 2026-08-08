@@ -165,13 +165,14 @@ def attribute_string(string):
                 quote_char='"'
 
     if quote_char=='"':
-        string=string.replace('"','&#34;')
+        string=string.replace('"','&#34;') # &quot;
+    elif quote_char=="'":
+        string=string.replace("'","&#39;") # &apos;
 
-    if quote_char=="'":
-        string=string.replace("'","&#39;")
+    string=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
+    # &lt; &#60;
+    # &gt; &#62;
 
-    string=re.sub(r"&(?=[#A-Za-z])","&amp;",string)
-    
 print("section start: items")
 
 for i in item_files:
