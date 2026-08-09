@@ -97,7 +97,7 @@ def to_regional_indicators(string):
 
 def say_lang(lang,format):
     if lang.language in ("en","fr"):
-        return f'{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})'
+        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
 
 def msg_l10n(*args,lang,string):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
@@ -123,15 +123,14 @@ def make_nav_button(button,lang):
     print("<div class=nav_button title=",end='')
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        print(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page"),end='')
+        print(attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")),end='')
         print(">",end='')
     else:
-        print('"',end='')
         if button in ("f","l"):
-            print(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
+            print(attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title")),end='')
         elif button in ("p","n"):
-            print(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"),end='')
-        print('">',end='')
+            print(attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title")),end='')
+        print(">",end='')
         print("<a href=../../",end='')
         if button in ("f","l"):
             print(data[data[i_id]["location"]["series"]][button_id],end='')
@@ -139,19 +138,19 @@ def make_nav_button(button,lang):
             print(data[i_id]["location"][button_id],end='')
         print(f"/{str(lang).lower()}/ hreflang={lang}>",end='')
 
-    print(f'<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}',end='')
+    print(f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}",end='')
 
     if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
         print("</a>",end='')
 
     print("</div>",end='')
 
+# This function assumes the input is plaintext!
 def attribute_string(string):
     if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
         quoted=True
     else:
         quoted=False
-        quote_char=''
 
     if quoted==True:
         if '"' in string and "'" not in string:
@@ -163,15 +162,21 @@ def attribute_string(string):
                 quote_char="'"
             else:
                 quote_char='"'
-
-    if quote_char=='"':
-        string=string.replace('"','&#34;') # &quot;
-    elif quote_char=="'":
-        string=string.replace("'","&#39;") # &apos;
+        else:
+            quote_char='"'
 
     string=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
-    # &lt; &#60;
-    # &gt; &#62;
+
+    if quoted==True:
+        if quote_char=='"':
+            string=string.replace('"',"&#34;") # &quot;
+        elif quote_char=="'":
+            string=string.replace("'","&#39;") # &apos;
+
+    if quoted==True:
+        return f"{quote_char}{string}{quote_char}"
+    else:
+        return string
 
 print("section start: items")
 
@@ -184,19 +189,19 @@ for i in item_files:
     for lang in data[i_id]["langs"]:
         lang=Language.get(lang)
 
-        canonical=f'https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/'
+        canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
 
         print("<!DOCTYPE html>")
-        print(f'<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->')
+        print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
 
         # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
         print(f"<html lang={lang}>",end='')
 
         print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        print(f'<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>',end='')
+        print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>",end='')
 
-        print(f'<meta name=description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
+        print(f"<meta name=description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
 
         print("<meta name=robots content=index,follow>",end='')
 
@@ -212,13 +217,13 @@ for i in item_files:
         print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end='')
         print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end='')
 
-        print(f'<link rel="external license" href="{get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang)}">',end='')
+        print(f'<link rel="external license" href={attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>',end='')
 
         # TODO: Prefetches (starting at sh:420)
 
         print("<meta property=og:type content=article>",end='')
-        print(f'<meta property=og:title content="{get_var_l10n(data[i_id],"title","text",lang)}">',end='')
-        print(f'<meta property=og:description content="{get_var_l10n(data[i_id],"description","text",lang)}">',end='')
+        print(f"<meta property=og:title content={attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>",end='')
+        print(f"<meta property=og:description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
         print("<meta property=og:site_name content=gabl.ink>",end='')
         print(f"<meta property=og:url content={canonical}>",end='')
         print(f"<meta property=og:image content={canonical}image.png>",end='')
@@ -248,7 +253,7 @@ for i in item_files:
                 print("</a>",end='')
         print("</ul></header>",end='')
 
-        print(f'<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>',end='')
+        print(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
 
         print("<nav class=nav_buttons>",end='')
 
@@ -264,10 +269,10 @@ for i in item_files:
             print("<source src=video.webm type=video/webm>",end='')
             if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
                 print(f"<track default src=subs.vtt srclang={lang} kind=subtitles ",end='')
-                print(f'label="{say_lang(lang,"text")}">',end='')
+                print(f"label={attribute_string(say_lang(lang,"text"))}>",end='')
             if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
                 print(f"<track src=cc.vtt srclang={lang} kind=captions ",end='')
-                print(f'label="{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}">',end='')
+                print(f"label={attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>",end='')
             print("<p>",end='')
             print(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"),end='')
             print("</p>",end='')
@@ -275,9 +280,9 @@ for i in item_files:
         elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
             print("<picture",end='')
             if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
-                print(f' title="{get_var_l10n(data[i_id],"tooltip","text",lang)}"',end='')
+                print(f" title={attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}",end='')
             print(">",end='')
-            print(f'<img src=image.png fetchpriority=high alt={msg_l10n(lang=lang,string="see_transcript")}>',end='')
+            print(f"<img src=image.png fetchpriority=high alt={attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>",end='')
             print("</picture>",end='')
 
             print("<nav class=nav_buttons>",end='')
@@ -297,4 +302,3 @@ for i in item_files:
         print(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"),end='')
         print(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"),end='')
         print("</summary>",end='')
-
