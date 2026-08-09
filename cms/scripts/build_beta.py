@@ -245,7 +245,7 @@ for i in item_files:
             else:
                 print(f"<a lang={l} href=../{str(l).lower()}/ hreflang={l}>",end='')
 
-            say_lang(l,"html")
+            print(say_lang(l,"html"),end='')
 
             if l==lang:
                 print("</b>",end='')
