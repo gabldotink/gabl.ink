@@ -15,36 +15,6 @@ from langcodes import Language
 # Disable newline conversion
 sys.stdout.reconfigure(newline='')
 
-script=Path(os.path.abspath(sys.argv[0]))
-scripts=Path(os.path.dirname(script))
-cms=Path(scripts)/".."
-lib=Path(scripts)/"lib"
-dicts=Path(cms)/"dictionaries"
-index=Path(cms)/".."/"i"
-encyclopedia=Path(index)/"encyclopedia"
-
-data={}
-
-item_files = [
-    path
-    for path in Path(index).rglob("data.json")
-    if path.is_file()
-]
-
-for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
-    data[f"dictionaries/{dict}"]={}
-    data[f"dictionaries/{dict}"]["id"]=f"dictionaries/{dict}"
-    data[f"dictionaries/{dict}"]["type"]="dictionary"
-    data[f"dictionaries/{dict}"]["dictionary_name"]=dict
-    with open(Path(dicts)/f"{dict}.json","r",encoding="utf-8") as f:
-        data[f"dictionaries/{dict}"]["dictionary"]=json.load(f)
-
-for i in item_files:
-    with open(i,"r",encoding="utf-8") as f:
-        obj=json.load(f)
-        i_id=obj.get("id")
-        data[i_id]=obj
-
 def get_var_l10n(dict,key:str,format:str,l10n_lang:Language):
     # e.g.   get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
@@ -178,127 +148,158 @@ def attribute_string(string:str):
     else:
         return string
 
-print("section start: items")
+if __name__=="__main__":
+    script=Path(os.path.abspath(sys.argv[0]))
+    scripts=Path(os.path.dirname(script))
+    cms=Path(scripts)/".."
+    lib=Path(scripts)/"lib"
+    dicts=Path(cms)/"dictionaries"
+    index=Path(cms)/".."/"i"
+    encyclopedia=Path(index)/"encyclopedia"
 
-for i in item_files:
-    i_id=get_i_id(i)
+    data={}
 
-    if data[i_id]["type"] != "comic_page":
-        continue
+    item_files=[
+        path
+        for path in Path(index).rglob("data.json")
+        if path.is_file()
+    ]
 
-    for lang in data[i_id]["langs"]:
-        lang=Language.get(lang)
+    for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
+        data[f"dictionaries/{dict}"]={}
+        data[f"dictionaries/{dict}"]["id"]=f"dictionaries/{dict}"
+        data[f"dictionaries/{dict}"]["type"]="dictionary"
+        data[f"dictionaries/{dict}"]["dictionary_name"]=dict
+        with open(Path(dicts)/f"{dict}.json","r",encoding="utf-8") as f:
+            data[f"dictionaries/{dict}"]["dictionary"]=json.load(f)
 
-        canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
+    for i in item_files:
+        with open(i,"r",encoding="utf-8") as f:
+            obj=json.load(f)
+            i_id=obj.get("id")
+            data[i_id]=obj
 
-        print("<!DOCTYPE html>")
-        print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
+    print("section start: items")
 
-        # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
-        print(f"<html lang={lang}>",end='')
+    for i in item_files:
+        i_id=get_i_id(i)
 
-        print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
+        if data[i_id]["type"] != "comic_page":
+            continue
 
-        print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>",end='')
+        for lang in data[i_id]["langs"]:
+            lang=Language.get(lang)
 
-        print(f"<meta name=description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
+            canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
 
-        print("<meta name=robots content=index,follow>",end='')
+            print("<!DOCTYPE html>")
+            print(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->")
 
-        print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end='')
+            # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
+            print(f"<html lang={lang}>",end='')
 
-        # TODO: Only works for one type of depth, but I want to redesign that whole system anyway (sh:349–385)
-        styles="../../../../cms/styles"
+            print('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">',end='')
 
-        # TODO: `if type != comic_page` (sh:349)
+            print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>",end='')
 
-        print(f"<link rel=preload href={styles}/{lang.language}.css as=style hreflang=zxx type=text/css>",end='')
-        print(f"<link rel=preload href={styles}/comic_page.css as=style hreflang=zxx type=text/css>",end='')
-        print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end='')
-        print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end='')
+            print(f"<meta name=description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
 
-        print(f'<link rel="external license" href={attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>',end='')
+            print("<meta name=robots content=index,follow>",end='')
 
-        # TODO: Prefetches (starting at sh:420)
+            print(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>",end='')
 
-        print("<meta property=og:type content=article>",end='')
-        print(f"<meta property=og:title content={attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>",end='')
-        print(f"<meta property=og:description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
-        print("<meta property=og:site_name content=gabl.ink>",end='')
-        print(f"<meta property=og:url content={canonical}>",end='')
-        print(f"<meta property=og:image content={canonical}image.png>",end='')
-        # TODO: video_exists (sh:322–332, sh:454)
-        # TODO: Should this use babel or something instead? There’s probably not really much point
-        print(f"<meta property=og:locale content={lang.language}_{lang.territory}>",end='')
+            # TODO: Only works for one type of depth, but I want to redesign that whole system anyway (sh:349–385)
+            styles="../../../../cms/styles"
 
-        print("<header>",end='')
-        print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>",end='')
+            # TODO: `if type != comic_page` (sh:349)
 
-        print("<ul id=lang_select>",end='')
-        for l in sorted(data[i_id]["langs"]):
-            l=Language.get(l)
+            print(f"<link rel=preload href={styles}/{lang.language}.css as=style hreflang=zxx type=text/css>",end='')
+            print(f"<link rel=preload href={styles}/comic_page.css as=style hreflang=zxx type=text/css>",end='')
+            print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end='')
+            print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end='')
 
-            print(f"<li data-lang_select_flag={to_regional_indicators(l.region)}>",end='')
+            print(f'<link rel="external license" href={attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>',end='')
 
-            if l==lang:
-                print("<b>",end='')
-            else:
-                print(f"<a lang={l} href=../{str(l).lower()}/ hreflang={l}>",end='')
+            # TODO: Prefetches (starting at sh:420)
 
-            print(say_lang(l,"html"),end='')
+            print("<meta property=og:type content=article>",end='')
+            print(f"<meta property=og:title content={attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>",end='')
+            print(f"<meta property=og:description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
+            print("<meta property=og:site_name content=gabl.ink>",end='')
+            print(f"<meta property=og:url content={canonical}>",end='')
+            print(f"<meta property=og:image content={canonical}image.png>",end='')
+            # TODO: video_exists (sh:322–332, sh:454)
+            # TODO: Should this use babel or something instead? There’s probably not really much point
+            print(f"<meta property=og:locale content={lang.language}_{lang.territory}>",end='')
 
-            if l==lang:
-                print("</b>",end='')
-            else:
-                print("</a>",end='')
-        print("</ul></header>",end='')
+            print("<header>",end='')
+            print("<a href=https://gabl.ink/ id=gabldotink_logo>gabl.ink</a>",end='')
 
-        print(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
+            print("<ul id=lang_select>",end='')
+            for l in sorted(data[i_id]["langs"]):
+                l=Language.get(l)
 
-        print("<nav class=nav_buttons>",end='')
+                print(f"<li data-lang_select_flag={to_regional_indicators(l.region)}>",end='')
 
-        make_nav_button("f",lang)
-        make_nav_button("p",lang)
-        make_nav_button("n",lang)
-        make_nav_button("l",lang)
+                if l==lang:
+                    print("<b>",end='')
+                else:
+                    print(f"<a lang={l} href=../{str(l).lower()}/ hreflang={l}>",end='')
 
-        print("</nav>",end='')
+                print(say_lang(l,"html"),end='')
 
-        if Path(index/i_id/str(lang).lower()/"video.webm").is_file():
-            print("<video controls poster=image.png preload=auto>",end='')
-            print("<source src=video.webm type=video/webm>",end='')
-            if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
-                print(f"<track default src=subs.vtt srclang={lang} kind=subtitles ",end='')
-                print(f"label={attribute_string(say_lang(lang,"text"))}>",end='')
-            if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
-                print(f"<track src=cc.vtt srclang={lang} kind=captions ",end='')
-                print(f"label={attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>",end='')
-            print("<p>",end='')
-            print(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"),end='')
-            print("</p>",end='')
-            print("</video>",end='')
-        elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
-            print("<picture",end='')
-            if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
-                print(f" title={attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}",end='')
-            print(">",end='')
-            print(f"<img src=image.png fetchpriority=high alt={attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>",end='')
-            print("</picture>",end='')
+                if l==lang:
+                    print("</b>",end='')
+                else:
+                    print("</a>",end='')
+            print("</ul></header>",end='')
+
+            print(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>",end='')
 
             print("<nav class=nav_buttons>",end='')
 
-        make_nav_button("f",lang)
-        make_nav_button("p",lang)
-        make_nav_button("n",lang)
-        make_nav_button("l",lang)
+            make_nav_button("f",lang)
+            make_nav_button("p",lang)
+            make_nav_button("n",lang)
+            make_nav_button("l",lang)
 
-        print("</nav>",end='')
+            print("</nav>",end='')
 
-        print("<nav><details><summary>",end='')
+            if Path(index/i_id/str(lang).lower()/"video.webm").is_file():
+                print("<video controls poster=image.png preload=auto>",end='')
+                print("<source src=video.webm type=video/webm>",end='')
+                if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
+                    print(f"<track default src=subs.vtt srclang={lang} kind=subtitles ",end='')
+                    print(f"label={attribute_string(say_lang(lang,"text"))}>",end='')
+                if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
+                    print(f"<track src=cc.vtt srclang={lang} kind=captions ",end='')
+                    print(f"label={attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>",end='')
+                print("<p>",end='')
+                print(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"),end='')
+                print("</p>",end='')
+                print("</video>",end='')
+            elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
+                print("<picture",end='')
+                if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
+                    print(f" title={attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}",end='')
+                print(">",end='')
+                print(f"<img src=image.png fetchpriority=high alt={attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>",end='')
+                print("</picture>",end='')
 
-        # TODO: Support multiple container depths
+                print("<nav class=nav_buttons>",end='')
 
-        print(msg_l10n(get_var_l10n(data[data[i_id]["location"]["series"]],"title","html",lang),lang=lang,string="series_title_html"),end='')
-        print(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"),end='')
-        print(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"),end='')
-        print("</summary>",end='')
+            make_nav_button("f",lang)
+            make_nav_button("p",lang)
+            make_nav_button("n",lang)
+            make_nav_button("l",lang)
+
+            print("</nav>",end='')
+
+            print("<nav><details><summary>",end='')
+
+            # TODO: Support multiple container depths
+
+            print(msg_l10n(get_var_l10n(data[data[i_id]["location"]["series"]],"title","html",lang),lang=lang,string="series_title_html"),end='')
+            print(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"),end='')
+            print(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"),end='')
+            print("</summary>",end='')
