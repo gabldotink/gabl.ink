@@ -142,8 +142,6 @@ def attribute_string(string:str):
             string=string.replace('"',"&#34;") # &quot;
         elif quote_char=="'":
             string=string.replace("'","&#39;") # &apos;
-
-    if quoted==True:
         return f"{quote_char}{string}{quote_char}"
     else:
         return string
