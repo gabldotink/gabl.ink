@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: CC0-1.0
+
+[project]
+name="gabl.ink generator"
+description="The static site generator for gabl.ink"
+version="dev"
+requires-python=">=3.12"
+dependencies=[
+  "langcodes"
+]
+authors=[
+  {name="Gabriel “gabldotink”,email="gabl@gabl.ink"}
+]
+license="CC0-1.0"
+classifiers=[
+  "Development Status :: 2 - Pre-Alpha",
+  "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+  "Natural Language :: English",
+  "Private :: Do Not Upload",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: File Formats :: JSON"
+]
+
+[project.urls]
+Repository="https://github.com/gabldotink/gabl.ink_dev"
+Issues="https://github.com/gabldotink/gabl.ink_dev/issues"
