@@ -179,7 +179,7 @@
   "this_is_x_page": {
     "en": {
       "printf": "This is the %s page!",
-      "print": "\"This is the {} page!\""
+      "print": "This is the {} page!"
     },
     "fr": {
       "printf": "C’est la %s page\u202f!",
