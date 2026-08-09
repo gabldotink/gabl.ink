@@ -30,12 +30,12 @@
   },
   "see_transcript": {
     "en": {
-      "printf": "\"See “Transcript” below\"",
-      "print": "\"See “Transcript” below\""
+      "printf": "See “Transcript” below",
+      "print": "See “Transcript” below"
     },
     "fr": {
-      "printf": "\"Voir «\u202fTranscription\u202f» au‐dessous\"",
-      "print": "\"Voir «\u202fTranscription\u202f» au‐dessous\""
+      "printf": "Voir «\u202fTranscription\u202f» au‐dessous",
+      "print": "Voir «\u202fTranscription\u202f» au‐dessous"
     }
   },
   "series_title_html": {
@@ -178,12 +178,12 @@
   },
   "this_is_x_page": {
     "en": {
-      "printf": "\"This is the %s page!\"",
+      "printf": "This is the %s page!",
       "print": "\"This is the {} page!\""
     },
     "fr": {
-      "printf": "\"C’est la %s page\u202f!\"",
-      "print": "\"C’est la {} page\u202f!\""
+      "printf": "C’est la %s page\u202f!",
+      "print": "C’est la {} page\u202f!"
     }
   },
   "nav_button_page_title": {
@@ -222,8 +222,8 @@
       "print": "Copyright"
     },
     "fr": {
-      "printf": "\"Droit d’auteur\"",
-      "print": "\"Droit d’auteur\""
+      "printf": "Droit d’auteur",
+      "print": "Droit d’auteur"
     }
   },
   "license": {
