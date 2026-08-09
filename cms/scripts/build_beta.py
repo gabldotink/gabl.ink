@@ -45,7 +45,7 @@ for i in item_files:
         i_id=obj.get("id")
         data[i_id]=obj
 
-def get_var_l10n(dict,key,format,l10n_lang):
+def get_var_l10n(dict,key:str,format:str,l10n_lang:Language):
     # e.g.   get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
@@ -83,26 +83,26 @@ def get_i_id(i):
         obj=json.load(f)
         return obj["id"]
 
-def to_sentence_case(string):
+def to_sentence_case(string:str,lang:Language):
     if lang.language=="tok":
         return string
     else:
         return string[:1].upper()+string[1:]
 
-def to_regional_indicators(string):
+def to_regional_indicators(string:str):
     out_chars=[]
     for ch in string:
         out_chars.append(chr(0x1F1E6 + (ord(ch) - ord("A"))))
     return ''.join(out_chars)
 
-def say_lang(lang,format):
+def say_lang(lang:Language,format:str):
     if lang.language in ("en","fr"):
-        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang))} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
+        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang),lang)} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
 
-def msg_l10n(*args,lang,string):
+def msg_l10n(*args,lang:Language,string:str):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
 
-def make_nav_button(button,lang):
+def make_nav_button(button:str,lang:Language):
     if button=="f":
         button_arrow="⇦"
         button_id="first"
@@ -146,7 +146,7 @@ def make_nav_button(button,lang):
     print("</div>",end='')
 
 # This function assumes the input is plaintext!
-def attribute_string(string):
+def attribute_string(string:str):
     if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
         quoted=True
     else:
