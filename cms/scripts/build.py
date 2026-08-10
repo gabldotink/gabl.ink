@@ -7,6 +7,7 @@ import json
 import os
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 # Arch: python-langcodes
@@ -16,7 +17,7 @@ from langcodes import Language
 sys.stdout.reconfigure(newline='')
 
 def get_var_l10n(dict,key:str,format:str,l10n_lang:Language):
-    # e.g.   get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
+    # e.g. get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
         if o=="e":
@@ -76,7 +77,7 @@ def make_nav_button(button:str,lang:Language):
     if button=="f":
         button_arrow="⇦"
         button_id="first"
-        button_fl=button_id
+        button_fl="first"
     elif button=="p":
         button_arrow="←"
         button_id="prev"
@@ -88,7 +89,7 @@ def make_nav_button(button:str,lang:Language):
     elif button=="l":
         button_arrow="⇨"
         button_id="last"
-        button_fl=button_id
+        button_fl="last"
 
     print("<div class=nav_button title=",end='')
 
@@ -145,6 +146,36 @@ def attribute_string(string:str):
         return f"{quote_char}{string}{quote_char}"
     else:
         return string
+
+def say_date(date:date,lang:Language):
+    if date.year>=0:
+        print("<date datetime={date.year:04}-{date.month:02}-{date.day:02}>",end='')
+
+    if lang.language=="en":
+        if lang.region=="US":
+            print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get("en-US")),end='')
+            print(f"\xa0{date.day}, ",end='')
+            if date.year>0 and date.year<1000:
+                print('<abbr title="anno Domini">AD</abbr>\xa0',end='')
+                print(-(-date.year-1))
+        elif lang.region=="GB":
+            print(f"{date.day}\xa0",end='')
+            print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get("en-GB")),end='')
+            print(date.year,end='')
+
+        if date.year<1:
+            print('<abbr title="before Christ">BC</abbr>',end='')
+    elif lang.language="fr":
+        if date.day==1:
+            print("1er",end='')
+        else
+            print(date.day,end='')
+        print("\xa0",end='')
+        print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get(lang)),end='')
+        print(date.year,end='')
+
+    if date.year<=0:
+        print("</date>",end='')
 
 if __name__=="__main__":
     script=Path(os.path.abspath(sys.argv[0]))
