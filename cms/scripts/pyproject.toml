@@ -9,7 +9,7 @@ dependencies=[
   "langcodes"
 ]
 authors=[
-  {name="Gabriel “gabldotink”,email="gabl@gabl.ink"}
+  {name="Gabriel “gabldotink”",email="gabl@gabl.ink"}
 ]
 license="CC0-1.0"
 classifiers=[
