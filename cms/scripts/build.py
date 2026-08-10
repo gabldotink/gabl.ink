@@ -16,7 +16,7 @@ from langcodes import Language
 # Disable newline conversion
 sys.stdout.reconfigure(newline='')
 
-def get_var_l10n(dict,key:str,format:str,l10n_lang:Language):
+def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language):
     # e.g. get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
@@ -123,7 +123,7 @@ def attribute_string(string:str):
     else:
         quoted=False
 
-    if quoted==True:
+    if quoted:
         if '"' in string and "'" not in string:
             quote_char="'"
         elif "'" in string and '"' not in string:
@@ -138,7 +138,7 @@ def attribute_string(string:str):
 
     string=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
 
-    if quoted==True:
+    if quoted:
         if quote_char=='"':
             string=string.replace('"',"&#34;") # &quot;
         elif quote_char=="'":
@@ -147,35 +147,53 @@ def attribute_string(string:str):
     else:
         return string
 
-def say_date(date:date,lang:Language):
-    if date.year>=0:
-        print("<date datetime={date.year:04}-{date.month:02}-{date.day:02}>",end='')
+def say_date(d:date,lang:Language):
+    r=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
+
+    if d.year>0 and d.year<1000:
+        ad=True
+    else:
+        ad=False
 
     if lang.language=="en":
         if lang.region=="US":
-            print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get("en-US")),end='')
-            print(f"\xa0{date.day}, ",end='')
-            if date.year>0 and date.year<1000:
-                print('<abbr title="anno Domini">AD</abbr>\xa0',end='')
-                print(-(-date.year-1))
+            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",Language.get("en-US"))
+            r+=f"\xa0{d.day}, "
+            if ad:
+                r+='<abbr title="anno Domini">AD</abbr>\xa0'
+            r+=str(d.year)
         elif lang.region=="GB":
-            print(f"{date.day}\xa0",end='')
-            print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get("en-GB")),end='')
-            print(date.year,end='')
+            r+=f"{d.day}\xa0"
+            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",Language.get("en-GB"))
+            r+=" "
+            if ad:
+                r+='<abbr title="anno Domini">AD</abbr>\xa0'
+            r+=d.year
+    elif lang.language=="fr":
+        if d.day==1:
+            r+="1er"
+        else:
+            r+=d.day
+        r+="\xa0"
+        r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
+        if ad:
+            r+=f'{d.year}\xa0<abbr title="après Jésus‐Christ">ap.\xa0J.‐C.</abbr>'
+        r+=d.year
+    elif lang.language=="es":
+        r+=f"{d.day}\xa0de\xa0"
+        r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
+        r+=" de "
+        if ad:
+            r+=f'{d.year}\xa0<abbr title="después de Cristo">d.\xa0C.</abbr>'
+        r+=d.year
+    elif lang.language in ("ja","ko","zh"):
+        r+=f"{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}"
+        r+=f"{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}"
+        r+=f"{d.day}{msg_l10n(lang=lang,string="say_date_cjk_day")}"
 
-        if date.year<1:
-            print('<abbr title="before Christ">BC</abbr>',end='')
-    elif lang.language="fr":
-        if date.day==1:
-            print("1er",end='')
-        else
-            print(date.day,end='')
-        print("\xa0",end='')
-        print(get_var_l10n(dict["dictionaries/month"],date.month,"html",Language.get(lang)),end='')
-        print(date.year,end='')
+    r+="</time>"
 
-    if date.year<=0:
-        print("</date>",end='')
+    return r
 
 if __name__=="__main__":
     script=Path(os.path.abspath(sys.argv[0]))
