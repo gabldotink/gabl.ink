@@ -91,7 +91,7 @@ def make_nav_button(button:str,lang:Language):
         button_id="last"
         button_fl="last"
 
-    print("<div class=nav_button title=",end='')
+    print("<div class=nav_button title",end='')
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
         print(attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")),end='')
@@ -118,6 +118,9 @@ def make_nav_button(button:str,lang:Language):
 
 # This function assumes the input is plaintext!
 def attribute_string(string:str):
+    if not string:
+        return
+
     if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
         quoted=True
     else:
@@ -143,9 +146,9 @@ def attribute_string(string:str):
             string=string.replace('"',"&#34;") # &quot;
         elif quote_char=="'":
             string=string.replace("'","&#39;") # &apos;
-        return f"{quote_char}{string}{quote_char}"
+        return f"={quote_char}{string}{quote_char}"
     else:
-        return string
+        return f"={string}"
 
 def say_date(d:date,lang:Language):
     r=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
@@ -249,7 +252,7 @@ if __name__=="__main__":
 
             print(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>",end='')
 
-            print(f"<meta name=description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
+            print(f"<meta name=description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
 
             print("<meta name=robots content=index,follow>",end='')
 
@@ -265,13 +268,13 @@ if __name__=="__main__":
             print(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>",end='')
             print(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>",end='')
 
-            print(f'<link rel="external license" href={attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>',end='')
+            print(f'<link rel="external license" href{attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>',end='')
 
             # TODO: Prefetches (starting at sh:420)
 
             print("<meta property=og:type content=article>",end='')
-            print(f"<meta property=og:title content={attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>",end='')
-            print(f"<meta property=og:description content={attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
+            print(f"<meta property=og:title content{attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>",end='')
+            print(f"<meta property=og:description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>",end='')
             print("<meta property=og:site_name content=gabl.ink>",end='')
             print(f"<meta property=og:url content={canonical}>",end='')
             print(f"<meta property=og:image content={canonical}image.png>",end='')
@@ -317,10 +320,10 @@ if __name__=="__main__":
                 print("<source src=video.webm type=video/webm>",end='')
                 if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
                     print(f"<track default src=subs.vtt srclang={lang} kind=subtitles ",end='')
-                    print(f"label={attribute_string(say_lang(lang,"text"))}>",end='')
+                    print(f"label{attribute_string(say_lang(lang,"text"))}>",end='')
                 if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
                     print(f"<track src=cc.vtt srclang={lang} kind=captions ",end='')
-                    print(f"label={attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>",end='')
+                    print(f"label{attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>",end='')
                 print("<p>",end='')
                 print(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"),end='')
                 print("</p>",end='')
@@ -328,9 +331,9 @@ if __name__=="__main__":
             elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
                 print("<picture",end='')
                 if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
-                    print(f" title={attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}",end='')
+                    print(f" title{attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}",end='')
                 print(">",end='')
-                print(f"<img src=image.png fetchpriority=high alt={attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>",end='')
+                print(f"<img src=image.png fetchpriority=high alt{attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>",end='')
                 print("</picture>",end='')
 
                 print("<nav class=nav_buttons>",end='')
