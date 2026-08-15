@@ -198,6 +198,18 @@ def say_date(d:date,lang:Language):
 
     return r
 
+def expand_parts(parts:list):
+    result=set()
+
+    for part in parts:
+        if isinstance(part,int):
+            result.add(part)
+        else:
+            start,end=map(int,part.split("-"))
+            result.update(range(start,end+1))
+
+    return sorted(result)
+
 if __name__=="__main__":
     script=Path(os.path.abspath(sys.argv[0]))
     scripts=Path(os.path.dirname(script))
@@ -353,3 +365,4 @@ if __name__=="__main__":
             print(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"),end='')
             print(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"),end='')
             print("</summary>",end='')
+            print("<ol>",end='')
