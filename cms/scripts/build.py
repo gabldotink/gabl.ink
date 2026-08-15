@@ -91,30 +91,32 @@ def make_nav_button(button:str,lang:Language):
         button_id="last"
         button_fl="last"
 
-    print("<div class=nav_button title",end='')
+    r="<div class=nav_button title"
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        print(attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")),end='')
-        print(">",end='')
+        r+=attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page"))
+        r+=">"
     else:
         if button in ("f","l"):
-            print(attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title")),end='')
+            r+=attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"))
         elif button in ("p","n"):
-            print(attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title")),end='')
-        print(">",end='')
-        print("<a href=../../",end='')
+            r+=attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"))
+        r+=">"
+        r+="<a href=../../"
         if button in ("f","l"):
-            print(data[data[i_id]["location"]["series"]][button_id],end='')
+            r+=str(data[data[i_id]["location"]["series"]][button_id])
         elif button in ("p","n"):
-            print(data[i_id]["location"][button_id],end='')
-        print(f"/{str(lang).lower()}/ hreflang={lang}>",end='')
+            r+=str(data[i_id]["location"][button_id])
+        r+=f"/{str(lang).lower()}/ hreflang={lang}>"
 
-    print(f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}",end='')
+    r+=f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}"
 
     if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        print("</a>",end='')
+        r+="</a>"
 
-    print("</div>",end='')
+    r+="</div>"
+
+    return r
 
 # This function assumes the input is plaintext!
 def attribute_string(string:str):
@@ -320,10 +322,10 @@ if __name__=="__main__":
 
             print("<nav class=nav_buttons>",end='')
 
-            make_nav_button("f",lang)
-            make_nav_button("p",lang)
-            make_nav_button("n",lang)
-            make_nav_button("l",lang)
+            print(make_nav_button("f",lang),end='')
+            print(make_nav_button("p",lang),end='')
+            print(make_nav_button("n",lang),end='')
+            print(make_nav_button("l",lang),end='')
 
             print("</nav>",end='')
 
@@ -350,10 +352,10 @@ if __name__=="__main__":
 
                 print("<nav class=nav_buttons>",end='')
 
-            make_nav_button("f",lang)
-            make_nav_button("p",lang)
-            make_nav_button("n",lang)
-            make_nav_button("l",lang)
+            print(make_nav_button("f",lang),end='')
+            print(make_nav_button("p",lang),end='')
+            print(make_nav_button("n",lang),end='')
+            print(make_nav_button("l",lang),end='')
 
             print("</nav>",end='')
 
