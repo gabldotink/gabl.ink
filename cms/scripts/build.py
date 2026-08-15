@@ -200,6 +200,18 @@ def say_date(d:date,lang:Language):
 
     return r
 
+def id_parent(i_id:str):
+    if "/" in i_id:
+        return i_id.rpartition("/")[0]
+    else:
+        return None
+
+def id_base(i_id:str):
+    if "/" in i_id:
+        return i_id.rpartition("/")[2]
+    else:
+        return i_id
+
 def expand_parts(parts:list):
     result=set()
 
