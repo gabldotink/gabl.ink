@@ -243,7 +243,7 @@ if __name__=="__main__":
             i_id=obj.get("id")
             data[i_id]=obj
 
-    print("section start: items")
+    print("section start: items",file=sys.stderr)
 
     for i in item_files:
         i_id=get_i_id(i)
