@@ -383,4 +383,4 @@ if __name__=="__main__":
 
                 F.flush()
                 F.seek(0)
-                shutil.copyfileobj(F,Path(index/i_id/str(lang).lower()/f"index_py.html").open("w",encoding="utf-8",newline=''))
+                shutil.copyfileobj(F,Path(index/i_id/str(lang).lower()/"index_py.html").open("w",encoding="utf-8",newline=''))
