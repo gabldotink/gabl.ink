@@ -15,7 +15,7 @@ from pathlib import Path
 # Arch: python-langcodes
 from langcodes import Language
 
-def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language):
+def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language)->str:
     # e.g. get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
@@ -48,49 +48,49 @@ def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language):
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
 
-def get_i_id(i):
+def get_i_id(i:str)->str:
     with open(i,"r",encoding="utf-8") as f:
         obj=json.load(f)
         return obj["id"]
 
-def to_sentence_case(string:str,lang:Language):
+def to_sentence_case(string:str,lang:Language)->str:
     if lang.language=="tok":
         return string
     else:
-        return string[:1].upper()+string[1:]
+        return f"{string[:1].upper()}{string[1:]}"
 
-def to_regional_indicators(string:str):
+def to_regional_indicators(string:str)->str:
     out_chars=[]
     for ch in string:
-        out_chars.append(chr(0x1F1E6 + (ord(ch) - ord("A"))))
+        out_chars.append(chr(0x1F1E6+(ord(ch)-ord("A"))))
     return ''.join(out_chars)
 
-def say_lang(lang:Language,format:str):
+def say_lang(lang:Language,format:str)->str:
     if lang.language in ("en","fr"):
         return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang),lang)} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
 
 def msg_l10n(*args,lang:Language,string:str):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
 
-def make_nav_button(button:str,lang:Language):
+def make_nav_button(button:str,lang:Language)->str:
     if button=="f":
-        button_arrow="⇦"
-        button_id="first"
-        button_fl="first"
+        button_arrow:str="⇦"
+        button_id:str="first"
+        button_fl:str="first"
     elif button=="p":
-        button_arrow="←"
-        button_id="prev"
-        button_fl="first"
+        button_arrow:str="←"
+        button_id:str="prev"
+        button_fl:str="first"
     elif button=="n":
-        button_arrow="→"
-        button_id="next"
-        button_fl="last"
+        button_arrow:str="→"
+        button_id:str="next"
+        button_fl:str="last"
     elif button=="l":
-        button_arrow="⇨"
-        button_id="last"
-        button_fl="last"
+        button_arrow:str="⇨"
+        button_id:str="last"
+        button_fl:str="last"
 
-    r="<div class=nav_button title"
+    r:str="<div class=nav_button title"
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
         r+=attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page"))
@@ -118,46 +118,46 @@ def make_nav_button(button:str,lang:Language):
     return r
 
 # This function assumes the input is plaintext!
-def attribute_string(string:str):
+def attribute_string(string:str)->str:
     if not string:
         return
 
     if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
-        quoted=True
+        quoted:bool=True
     else:
-        quoted=False
+        quoted:bool=False
 
     if quoted:
         if '"' in string and "'" not in string:
-            quote_char="'"
+            quote_char:str="'"
         elif "'" in string and '"' not in string:
-            quote_char='"'
+            quote_char:str='"'
         elif '"' in string and "'" in string:
             if string.count('"')>string.count("'"):
-                quote_char="'"
+                quote_char:str="'"
             else:
-                quote_char='"'
+                quote_char:str='"'
         else:
-            quote_char='"'
+            quote_char:str='"'
 
-    string=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
+    string:str=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
 
     if quoted:
         if quote_char=='"':
-            string=string.replace('"',"&#34;") # &quot;
+            string:str=string.replace('"',"&#34;") # &quot;
         elif quote_char=="'":
-            string=string.replace("'","&#39;") # &apos;
+            string:str=string.replace("'","&#39;") # &apos;
         return f"={quote_char}{string}{quote_char}"
     else:
         return f"={string}"
 
-def say_date(d:date,lang:Language):
-    r=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
+def say_date(d:date,lang:Language)->str:
+    r:str=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
 
     if d.year>0 and d.year<1000:
-        ad=True
+        ad:bool=True
     else:
-        ad=False
+        ad:bool=False
 
     if lang.language=="en":
         if lang.region=="US":
@@ -199,19 +199,19 @@ def say_date(d:date,lang:Language):
 
     return r
 
-def id_parent(i_id:str):
+def id_parent(i_id:str)->str:
     if "/" in i_id:
         return i_id.rpartition("/")[0]
     else:
         return None
 
-def id_base(i_id:str):
+def id_base(i_id:str)->str:
     if "/" in i_id:
         return i_id.rpartition("/")[2]
     else:
         return i_id
 
-def expand_parts(parts:list):
+def expand_parts(parts:list)->list:
     result=set()
 
     for part in parts:
@@ -224,17 +224,17 @@ def expand_parts(parts:list):
     return sorted(result)
 
 if __name__=="__main__":
-    script=Path(os.path.abspath(sys.argv[0]))
-    scripts=Path(os.path.dirname(script))
-    cms=Path(scripts)/".."
-    lib=Path(scripts)/"lib"
-    dicts=Path(cms)/"dictionaries"
-    index=Path(cms)/".."/"i"
-    encyclopedia=Path(index)/"encyclopedia"
+    script:Path=Path(os.path.abspath(sys.argv[0]))
+    scripts:Path=Path(os.path.dirname(script))
+    cms:Path=Path(scripts)/".."
+    lib:Path=Path(scripts)/"lib"
+    dicts:Path=Path(cms)/"dictionaries"
+    index:Path=Path(cms)/".."/"i"
+    encyclopedia:Path=Path(index)/"encyclopedia"
 
-    data={}
+    data:dict={}
 
-    item_files=[
+    item_files:list=[
         path
         for path in Path(index).rglob("data.json")
         if path.is_file()
@@ -257,16 +257,16 @@ if __name__=="__main__":
     sys.stderr.write("section start: items\n")
 
     for i in item_files:
-        i_id=get_i_id(i)
+        i_id:str=get_i_id(i)
 
-        if data[i_id]["type"] != "comic_page":
+        if data[i_id]["type"]!="comic_page":
             continue
 
         for lang in data[i_id]["langs"]:
             with tempfile.TemporaryFile(mode="a+",encoding="utf-8",newline='',errors="xmlcharrefreplace") as F:
-                lang=Language.get(lang)
+                lang:Language=Language.get(lang)
 
-                canonical=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
+                canonical:str=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
 
                 F.write("<!DOCTYPE html>\n")
                 F.write(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->\n")
@@ -285,7 +285,7 @@ if __name__=="__main__":
                 F.write(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>")
 
                 # TODO: Only works for one type of depth, but I want to redesign that whole system anyway (sh:349–385)
-                styles="../../../../cms/styles"
+                styles:str="../../../../cms/styles"
 
                 # TODO: `if type != comic_page` (sh:349)
 
@@ -313,7 +313,7 @@ if __name__=="__main__":
 
                 F.write("<ul id=lang_select>")
                 for l in sorted(data[i_id]["langs"]):
-                    l=Language.get(l)
+                    l:Language=Language.get(l)
 
                     F.write(f"<li data-lang_select_flag={to_regional_indicators(l.region)}>")
 
