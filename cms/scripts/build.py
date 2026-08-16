@@ -13,9 +13,6 @@ from pathlib import Path
 # Arch: python-langcodes
 from langcodes import Language
 
-# Disable newline conversion
-sys.stdout.reconfigure(newline='')
-
 def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language):
     # e.g. get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
