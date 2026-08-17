@@ -15,7 +15,7 @@ from pathlib import Path
 # Arch: python-langcodes
 from langcodes import Language
 
-def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language)->str:
+def get_var_l10n(index,key:str|int,format:str,l10n_lang:Language)->str:
     # e.g. get_var_l10n(data["jrco_beta/1"]["location"],"series","text",lang)
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
@@ -23,30 +23,30 @@ def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language)->str:
             return None
 
         if format=="id":
-            if "id" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["id"]
-            elif "equal" in dict.get(key,{}).get(o,{}):
-                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
+            if "id" in index.get(key,{}).get(o,{}):
+                return index[key][o]["id"]
+            elif "equal" in index.get(key,{}).get(o,{}):
+                return get_var_l10n(index,key,format,Language.get(index[key][o]["equal"]))
 
         if format=="print":
-            if "print" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["print"]
-            elif "equal" in dict.get(key,{}).get(o,{}):
-                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
+            if "print" in index.get(key,{}).get(o,{}):
+                return index[key][o]["print"]
+            elif "equal" in index.get(key,{}).get(o,{}):
+                return get_var_l10n(index,key,format,Language.get(index[key][o]["equal"]))
 
         if format=="text":
-            if "text" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["text"]
-            elif "equal" in dict.get(key,{}).get(o,{}):
-                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
+            if "text" in index.get(key,{}).get(o,{}):
+                return index[key][o]["text"]
+            elif "equal" in index.get(key,{}).get(o,{}):
+                return get_var_l10n(index,key,format,Language.get(index[key][o]["equal"]))
 
         if format=="html":
-            if "html" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["html"]
-            elif "text" in dict.get(key,{}).get(o,{}):
-                return dict[key][o]["text"]
-            elif "equal" in dict.get(key,{}).get(o,{}):
-                return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
+            if "html" in index.get(key,{}).get(o,{}):
+                return index[key][o]["html"]
+            elif "text" in index.get(key,{}).get(o,{}):
+                return index[key][o]["text"]
+            elif "equal" in index.get(key,{}).get(o,{}):
+                return get_var_l10n(index,key,format,Language.get(index[key][o]["equal"]))
 
 def get_i_id(i:Path)->str:
     with open(i,"r",encoding="utf-8") as f:
@@ -236,13 +236,13 @@ if __name__=="__main__":
         if path.is_file()
     ]
 
-    for dict in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
-        data[f"dictionaries/{dict}"]={}
-        data[f"dictionaries/{dict}"]["id"]=f"dictionaries/{dict}"
-        data[f"dictionaries/{dict}"]["type"]="dictionary"
-        data[f"dictionaries/{dict}"]["dictionary_name"]=dict
-        with open(Path(dicts)/f"{dict}.json","r",encoding="utf-8") as f:
-            data[f"dictionaries/{dict}"]["dictionary"]=json.load(f)
+    for dictionary in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
+        data[f"dictionaries/{dictionary}"]={}
+        data[f"dictionaries/{dictionary}"]["id"]=f"dictionaries/{dictionary}"
+        data[f"dictionaries/{dictionary}"]["type"]="dictionary"
+        data[f"dictionaries/{dictionary}"]["dictionary_name"]=dictionary
+        with open(Path(dicts)/f"{dictionary}.json","r",encoding="utf-8") as f:
+            data[f"dictionaries/{dictionary}"]["dictionary"]=json.load(f)
 
     for i in item_files:
         with open(i,"r",encoding="utf-8") as f:
