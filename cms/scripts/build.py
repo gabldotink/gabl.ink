@@ -48,7 +48,7 @@ def get_var_l10n(dict,key:str|int,format:str,l10n_lang:Language)->str:
             elif "equal" in dict.get(key,{}).get(o,{}):
                 return get_var_l10n(dict,key,format,Language.get(dict[key][o]["equal"]))
 
-def get_i_id(i:str)->str:
+def get_i_id(i:Path)->str:
     with open(i,"r",encoding="utf-8") as f:
         obj=json.load(f)
         return obj["id"]

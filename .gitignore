@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: CC0-1.0
 
 log*.txt
+cms/scripts/build
 cms/scripts/build.lock
 cms/scripts/config.json
