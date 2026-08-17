@@ -73,22 +73,12 @@ def msg_l10n(*args,lang:Language,string:str):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
 
 def make_nav_button(button:str,lang:Language)->str:
-    if button=="f":
-        button_arrow:str="⇦"
-        button_id:str="first"
-        button_fl:str="first"
-    elif button=="p":
-        button_arrow:str="←"
-        button_id:str="prev"
-        button_fl:str="first"
-    elif button=="n":
-        button_arrow:str="→"
-        button_id:str="next"
-        button_fl:str="last"
-    elif button=="l":
-        button_arrow:str="⇨"
-        button_id:str="last"
-        button_fl:str="last"
+    button_arrow,button_id,button_fl={
+        "f":("⇦","first","first"),
+        "p":("←","prev","first"),
+        "n":("→","next","last"),
+        "l":("⇨","last","last"),
+    }[button]
 
     r:str="<div class=nav_button title"
 
@@ -122,23 +112,27 @@ def attribute_string(string:str)->str:
     if not string:
         return
 
+    quoted:bool
+
     if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
-        quoted:bool=True
+        quoted=True
     else:
-        quoted:bool=False
+        quoted=False
+
+    quote_char:str
 
     if quoted:
         if '"' in string and "'" not in string:
-            quote_char:str="'"
+            quote_char="'"
         elif "'" in string and '"' not in string:
-            quote_char:str='"'
+            quote_char='"'
         elif '"' in string and "'" in string:
             if string.count('"')>string.count("'"):
-                quote_char:str="'"
+                quote_char="'"
             else:
-                quote_char:str='"'
+                quote_char='"'
         else:
-            quote_char:str='"'
+            quote_char='"'
 
     string:str=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
 
@@ -154,10 +148,12 @@ def attribute_string(string:str)->str:
 def say_date(d:date,lang:Language)->str:
     r:str=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
 
+    ad:bool
+
     if d.year>0 and d.year<1000:
-        ad:bool=True
+        ad=True
     else:
-        ad:bool=False
+        ad=False
 
     if lang.language=="en":
         if lang.region=="US":
@@ -172,24 +168,24 @@ def say_date(d:date,lang:Language)->str:
             r+=" "
             if ad:
                 r+='<abbr title="anno Domini">AD</abbr>\xa0'
-            r+=d.year
+            r+=str(d.year)
     elif lang.language=="fr":
         if d.day==1:
             r+="1er"
         else:
-            r+=d.day
+            r+=str(d.day)
         r+="\xa0"
         r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
         if ad:
             r+=f'{d.year}\xa0<abbr title="après Jésus‐Christ">ap.\xa0J.‐C.</abbr>'
-        r+=d.year
+        r+=str(d.year)
     elif lang.language=="es":
         r+=f"{d.day}\xa0de\xa0"
         r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
         r+=" de "
         if ad:
             r+=f'{d.year}\xa0<abbr title="después de Cristo">d.\xa0C.</abbr>'
-        r+=d.year
+        r+=str(d.year)
     elif lang.language in ("ja","ko","zh"):
         r+=f"{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}"
         r+=f"{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}"
@@ -251,8 +247,8 @@ if __name__=="__main__":
     for i in item_files:
         with open(i,"r",encoding="utf-8") as f:
             obj=json.load(f)
-            i_id=obj.get("id")
-            data[i_id]=obj
+            obj_id=obj.get("id")
+            data[obj_id]=obj
 
     sys.stderr.write("section start: items\n")
 
