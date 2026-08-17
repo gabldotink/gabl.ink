@@ -67,7 +67,7 @@ def to_regional_indicators(string:str)->str:
 
 def say_lang(lang:Language,format:str)->str:
     if lang.language in ("en","fr"):
-        return f"{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang),lang)} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})"
+        return f'{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang),lang)} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})'
 
 def msg_l10n(*args,lang:Language,string:str):
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
@@ -87,9 +87,9 @@ def make_nav_button(button:str,lang:Language)->str:
         r+=">"
     else:
         if button in ("f","l"):
-            r+=attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"))
+            r+=attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"))
         elif button in ("p","n"):
-            r+=attribute_string(msg_l10n(get_var_l10n(data[f"{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}"],"title","text",lang),lang=lang,string="nav_button_page_title"))
+            r+=attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"))
         r+=">"
         r+="<a href=../../"
         if button in ("f","l"):
@@ -98,7 +98,7 @@ def make_nav_button(button:str,lang:Language)->str:
             r+=str(data[i_id]["location"][button_id])
         r+=f"/{str(lang).lower()}/ hreflang={lang}>"
 
-    r+=f"<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}"
+    r+=f'<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}'
 
     if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
         r+="</a>"
@@ -187,9 +187,9 @@ def say_date(d:date,lang:Language)->str:
             r+=f'{d.year}\xa0<abbr title="después de Cristo">d.\xa0C.</abbr>'
         r+=str(d.year)
     elif lang.language in ("ja","ko","zh"):
-        r+=f"{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}"
-        r+=f"{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}"
-        r+=f"{d.day}{msg_l10n(lang=lang,string="say_date_cjk_day")}"
+        r+=f'{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}'
+        r+=f'{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}'
+        r+=f'{d.day}{msg_l10n(lang=lang,string="say_date_cjk_day")}'
 
     r+="</time>"
 
@@ -262,19 +262,19 @@ if __name__=="__main__":
             with tempfile.TemporaryFile(mode="a+",encoding="utf-8",newline='',errors="xmlcharrefreplace") as F:
                 lang:Language=Language.get(lang)
 
-                canonical:str=f"https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/"
+                canonical:str=f'https://gabl.ink/i/{data[i_id]["id"]}/{str(lang).lower()}/'
 
                 F.write("<!DOCTYPE html>\n")
-                F.write(f"<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->\n")
+                F.write(f'<!-- SPDX-License-Identifier: {data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]]["spdx"]} -->\n')
 
                 # TODO: Skipping the dir attribute for now, but it should be implemented later (sh:338)
                 F.write(f"<html lang={lang}>")
 
                 F.write('<meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">')
 
-                F.write(f"<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>")
+                F.write(f'<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>')
 
-                F.write(f"<meta name=description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>")
+                F.write(f'<meta name=description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>')
 
                 F.write("<meta name=robots content=index,follow>")
 
@@ -295,8 +295,8 @@ if __name__=="__main__":
                 # TODO: Prefetches (starting at sh:420)
 
                 F.write("<meta property=og:type content=article>")
-                F.write(f"<meta property=og:title content{attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>")
-                F.write(f"<meta property=og:description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>")
+                F.write(f'<meta property=og:title content{attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>')
+                F.write(f'<meta property=og:description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>')
                 F.write("<meta property=og:site_name content=gabl.ink>")
                 F.write(f"<meta property=og:url content={canonical}>")
                 F.write(f"<meta property=og:image content={canonical}image.png>")
@@ -326,7 +326,7 @@ if __name__=="__main__":
                         F.write("</a>")
                 F.write("</ul></header>")
 
-                F.write(f"<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>")
+                F.write(f'<h1>{msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html")}</h1>')
 
                 F.write("<nav class=nav_buttons>")
 
@@ -342,10 +342,10 @@ if __name__=="__main__":
                     F.write("<source src=video.webm type=video/webm>")
                     if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
                         F.write(f"<track default src=subs.vtt srclang={lang} kind=subtitles ")
-                        F.write(f"label{attribute_string(say_lang(lang,"text"))}>")
+                        F.write(f'label{attribute_string(say_lang(lang,"text"))}>')
                     if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
                         F.write(f"<track src=cc.vtt srclang={lang} kind=captions ")
-                        F.write(f"label{attribute_string(f"{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}")}>")
+                        F.write(f'''label{attribute_string(f'{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}')}>''')
                     F.write("<p>")
                     F.write(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"))
                     F.write("</p>")
@@ -353,9 +353,9 @@ if __name__=="__main__":
                 elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
                     F.write("<picture")
                     if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
-                        F.write(f" title{attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}")
+                        F.write(f' title{attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}')
                     F.write(">")
-                    F.write(f"<img src=image.png fetchpriority=high alt{attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>")
+                    F.write(f'<img src=image.png fetchpriority=high alt{attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>')
                     F.write("</picture>")
 
                     F.write("<nav class=nav_buttons>")
