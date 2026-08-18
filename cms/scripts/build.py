@@ -157,17 +157,14 @@ def say_date(d:date,lang:Language)->str:
 
     if lang.language=="en":
         if lang.region=="US":
-            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",Language.get("en-US"))
+            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
             r+=f"\xa0{d.day}, "
-            if ad:
-                r+='<abbr title="anno Domini">AD</abbr>\xa0'
-            r+=str(d.year)
         elif lang.region=="GB":
             r+=f"{d.day}\xa0"
-            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",Language.get("en-GB"))
+            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
             r+=" "
-            if ad:
-                r+='<abbr title="anno Domini">AD</abbr>\xa0'
+        if ad:
+            r+='<abbr title="anno Domini">AD</abbr>\xa0'
             r+=str(d.year)
     elif lang.language=="fr":
         if d.day==1:
