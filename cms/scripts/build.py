@@ -298,7 +298,6 @@ if __name__=="__main__":
                 F.write(f"<meta property=og:url content={canonical}>")
                 F.write(f"<meta property=og:image content={canonical}image.png>")
                 # TODO: video_exists (sh:322–332, sh:454)
-                # TODO: Should this use babel or something instead? There’s probably not really much point
                 F.write(f"<meta property=og:locale content={lang.language}_{lang.territory}>")
 
                 F.write("<header>")
