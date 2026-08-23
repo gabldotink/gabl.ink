@@ -80,32 +80,32 @@ def make_nav_button(button:str,lang:Language)->str:
         "l":("⇨","last","last"),
     }[button]
 
-    r:str="<div class=nav_button title"
+    r:list=["<div class=nav_button title"]
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        r+=attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page"))
-        r+=">"
+        r.append(attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")))
+        r.append(">")
     else:
         if button in ("f","l"):
-            r+=attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"))
+            r.append(attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
         elif button in ("p","n"):
-            r+=attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title"))
-        r+=">"
-        r+="<a href=../../"
+            r.append(attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
+        r.append(">")
+        r.append("<a href=../../")
         if button in ("f","l"):
-            r+=str(data[data[i_id]["location"]["series"]][button_id])
+            r.append(str(data[data[i_id]["location"]["series"]][button_id]))
         elif button in ("p","n"):
-            r+=str(data[i_id]["location"][button_id])
-        r+=f"/{str(lang).lower()}/ hreflang={lang}>"
+            r.append(str(data[i_id]["location"][button_id]))
+        r.append(f"/{str(lang).lower()}/ hreflang={lang}>")
 
-    r+=f'<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}'
+    r.append(f'<span class=nav_button_arrow aria-hidden=true>{button_arrow}</span><br>{msg_l10n(lang=lang,string=f"nav_button_{button_id}")}')
 
     if data[i_id]["location"]["page"]!=data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        r+="</a>"
+        r.append("</a>")
 
-    r+="</div>"
+    r.append("</div>")
 
-    return r
+    return ''.join(r)
 
 # This function assumes the input is plaintext!
 def attribute_string(string:str)->str:
@@ -146,7 +146,7 @@ def attribute_string(string:str)->str:
         return f"={string}"
 
 def say_date(d:date,lang:Language)->str:
-    r:str=f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"
+    r:list=[f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"]
 
     ad:bool
 
@@ -157,40 +157,40 @@ def say_date(d:date,lang:Language)->str:
 
     if lang.language=="en":
         if lang.region=="US":
-            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
-            r+=f"\xa0{d.day}, "
+            r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))
+            r.append(f"\xa0{d.day}, ")
         elif lang.region=="GB":
-            r+=f"{d.day}\xa0"
-            r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
-            r+=" "
+            r.append(f"{d.day}\xa0")
+            r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))
+            r.append(" ")
         if ad:
-            r+='<abbr title="anno Domini">AD</abbr>\xa0'
-            r+=str(d.year)
+            r.append('<abbr title="anno Domini">AD</abbr>\xa0')
+            r.append(str(d.year))
     elif lang.language=="fr":
         if d.day==1:
-            r+="1er"
+            r.append("1er")
         else:
-            r+=str(d.day)
-        r+="\xa0"
-        r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
+            r.append(str(d.day))
+        r.append("\xa0")
+        r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))
         if ad:
-            r+=f'{d.year}\xa0<abbr title="après Jésus‐Christ">ap.\xa0J.‐C.</abbr>'
-        r+=str(d.year)
+            r.append(f'{d.year}\xa0<abbr title="après Jésus‐Christ">ap.\xa0J.‐C.</abbr>')
+        r.append(str(d.year))
     elif lang.language=="es":
-        r+=f"{d.day}\xa0de\xa0"
-        r+=get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang)
-        r+=" de "
+        r.append(f"{d.day}\xa0de\xa0")
+        r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))
+        r.append(" de ")
         if ad:
-            r+=f'{d.year}\xa0<abbr title="después de Cristo">d.\xa0C.</abbr>'
-        r+=str(d.year)
+            r.append(f'{d.year}\xa0<abbr title="después de Cristo">d.\xa0C.</abbr>')
+        r.append(str(d.year))
     elif lang.language in ("ja","ko","zh"):
-        r+=f'{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}'
-        r+=f'{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}'
-        r+=f'{d.day}{msg_l10n(lang=lang,string="say_date_cjk_day")}'
+        r.append(f'{d.year}{msg_l10n(lang=lang,string="say_date_cjk_year")}')
+        r.append(f'{d.month}{msg_l10n(lang=lang,string="say_date_cjk_month")}')
+        r.append(f'{d.day}{msg_l10n(lang=lang,string="say_date_cjk_day")}')
 
-    r+="</time>"
+    r.append("</time>")
 
-    return r
+    return ''.join(r)
 
 def id_parent(i_id:str)->str:
     if "/" in i_id:
