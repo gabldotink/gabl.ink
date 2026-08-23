@@ -373,5 +373,5 @@ if __name__=="__main__":
             F.append("</summary>")
             F.append("<ol>")
 
-            with open(Path(index/i_id/str(lang).lower()/"index_py.html"),"w",encoding="utf-8",newline='',errors="xmlcharrefreplace") as output_file:
+            with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w",encoding="utf-8",newline='',errors="xmlcharrefreplace") as output_file:
                 output_file.write(''.join(F))
