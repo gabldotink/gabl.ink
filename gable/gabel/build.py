@@ -218,10 +218,10 @@ def expand_parts(parts:list)->list:
 if __name__=="__main__":
     script:Path=Path(os.path.abspath(sys.argv[0]))
     scripts:Path=Path(os.path.dirname(script))
-    cms:Path=Path(scripts)/".."
+    gabel:Path=Path(scripts)/".."
     lib:Path=Path(scripts)/"lib"
-    dicts:Path=Path(cms)/"dictionaries"
-    index:Path=Path(cms)/".."/"i"
+    dicts:Path=Path(gabel)/"dictionaries"
+    index:Path=Path(gabel)/".."/"i"
     encyclopedia:Path=Path(index)/"encyclopedia"
 
     data:dict={}
@@ -277,7 +277,7 @@ if __name__=="__main__":
             F.append(f"<link rel=canonical href={canonical} hreflang={lang} type=text/html>")
 
             # TODO: Only works for one type of depth, but I want to redesign that whole system anyway (sh:349–385)
-            styles:str="../../../../cms/styles"
+            styles:str="../../../../gabel/styles"
 
             # TODO: `if type != comic_page` (sh:349)
 

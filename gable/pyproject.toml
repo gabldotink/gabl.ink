@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: CC0-1.0
 
 [project]
-name="gabldotink_generator"
-description="The static site generator for gabl.ink"
+name="gabel"
+description="Gabel, the static site generator for gabl.ink"
 version="0"
 requires-python=">=3.10"
 dependencies=[
