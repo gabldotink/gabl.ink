@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: CC0-1.0
+
+import re
+
+# This function assumes the input is plaintext!
+def attr_string(string:str)->str:
+    if not string:
+        return
+
+    quoted:bool
+
+    if any(sub in string for sub in ["\t","\n","\v","\f","\r"," ",'"',"'","<","=",">","`"]):
+        quoted=True
+    else:
+        quoted=False
+
+    quote_char:str
+
+    if quoted:
+        if '"' in string and "'" not in string:
+            quote_char="'"
+        elif "'" in string and '"' not in string:
+            quote_char='"'
+        elif '"' in string and "'" in string:
+            if string.count('"')>string.count("'"):
+                quote_char="'"
+            else:
+                quote_char='"'
+        else:
+            quote_char='"'
+
+    string:str=re.sub(r"&(?=[#A-Za-z])","&amp;",string) # &#38;
+
+    if quoted:
+        if quote_char=='"':
+            string:str=string.replace('"',"&#34;") # &quot;
+        elif quote_char=="'":
+            string:str=string.replace("'","&#39;") # &apos;
+        return f"={quote_char}{string}{quote_char}"
+    else:
+        return f"={string}"
