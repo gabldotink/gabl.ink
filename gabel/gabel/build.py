@@ -7,7 +7,6 @@ import json
 import os
 import re
 import sys
-import tempfile
 from datetime import date
 from pathlib import Path
 
