@@ -31,14 +31,7 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "漢字、平仮名、片仮名",
-        "html": "漢字、<ruby>平仮名<rp>（</rp><rt>ひらがな</rt><rp>）</rp></ruby>、<ruby>片仮名<rp>（</rp><rt>カタカナ</rt><rp>）</rp></ruby>"
-      },
-      "ja-Hani": {
         "text": "漢字、平仮名、片仮名"
-      },
-      "ja-Latn": {
-        "text": "kanji, hiragana, katakana"
       },
       "en": {
         "text": "kanji, hiragana, and katakana"
@@ -52,13 +45,6 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "平仮名",
-        "html": "<ruby>平仮名<rp>（</rp><rt>ひらがな</rt><rp>）</rp></ruby>"
-      },
-      "ja-Hira": {
-        "text": "ひらがな"
-      },
-      "ja-Hani": {
         "text": "平仮名"
       },
       "ja-Latn": {
@@ -73,16 +59,6 @@
     "dir": "ltr",
     "name": {
       "ja": {
-        "text": "片仮名",
-        "html": "<ruby>片仮名<rp>（</rp><rt>カタカナ</rt><rp>）</rp></ruby>"
-      },
-      "ja-Kana": {
-        "text": "カタカナ"
-      },
-      "ja-Hira": {
-        "text": "かたかな"
-      },
-      "ja-Hani": {
         "text": "片仮名"
       },
       "ja-Latn": {
