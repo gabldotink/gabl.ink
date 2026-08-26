@@ -37,9 +37,10 @@ def say_lang(lang:Language,format:str)->str:
     if lang.language in ("en","fr"):
         return f'{to_sentence_case(get_var_l10n(data["dictionaries/language"]["dictionary"][lang.language],"name",format,lang),lang)} ({get_var_l10n(data["dictionaries/region"]["dictionary"][str(lang.region).lower()],"name",format,lang)})'
 
-def msg_l10n(*args,lang:Language,string:str):
+def msg_l10n(*args,lang:Language,string:str)->str:
     return get_var_l10n(data["dictionaries/string"]["dictionary"],string,"print",lang).format(*args)
 
+# TODO: remove global variable (`data`) reference
 def make_nav_button(button:str,lang:Language)->str:
     button_arrow,button_id,button_fl={
         "f":("⇦","first","first"),

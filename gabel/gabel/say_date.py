@@ -6,6 +6,8 @@ from langcodes import Language
 
 from get_var_l10n import get_var_l10n
 
+# The shell script supports negative years, but `datetime` does not.
+
 def say_date(d:date,lang:Language)->str:
     r:list=[f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"]
 
