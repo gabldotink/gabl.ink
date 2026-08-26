@@ -3,7 +3,7 @@
 import re
 
 # This function assumes the input is plaintext!
-def attr_string(string:str)->str:
+def attribute_string(string:str)->str:
     # In HTML5, `attribute` is equivalent to `attribute=""`
     if not string:
         return

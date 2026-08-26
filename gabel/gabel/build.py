@@ -8,7 +8,7 @@ import os
 import sys
 from pathlib import Path
 
-from attr_string import attr_string
+from attr_string import attribute_string
 from get_var_l10n import get_var_l10n
 #from id_split import id_parent,id_base
 #from say_date import say_date
@@ -52,13 +52,13 @@ def make_nav_button(button:str,lang:Language)->str:
     r:list=["<div class=nav_button title"]
 
     if data[i_id]["location"]["page"]==data[data[i_id]["location"]["series"]].get(button_fl,{}):
-        r.append(attr_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")))
+        r.append(attribute_string(msg_l10n(msg_l10n(lang=lang,string=f"nav_button_{button_id}_inline"),lang=lang,string="this_is_x_page")))
         r.append(">")
     else:
         if button in ("f","l"):
-            r.append(attr_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
+            r.append(attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[data[i_id]["location"]["series"]][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
         elif button in ("p","n"):
-            r.append(attr_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
+            r.append(attribute_string(msg_l10n(get_var_l10n(data[f'{data[i_id]["location"]["series"]}/{data[i_id]["location"][button_id]}'],"title","text",lang),lang=lang,string="nav_button_page_title")))
         r.append(">")
         r.append("<a href=../../")
         if button in ("f","l"):
@@ -143,7 +143,7 @@ if __name__=="__main__":
 
             F.append(f'<title>{msg_l10n(get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="html_title")}</title>')
 
-            F.append(f'<meta name=description content{attr_string(get_var_l10n(data[i_id],"description","text",lang))}>')
+            F.append(f'<meta name=description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>')
 
             F.append("<meta name=robots content=index,follow>")
 
@@ -159,13 +159,13 @@ if __name__=="__main__":
             F.append(f"<link rel=stylesheet href={styles}/{lang.language}.css hreflang=zxx type=text/css>")
             F.append(f"<link rel=stylesheet href={styles}/comic_page.css hreflang=zxx type=text/css>")
 
-            F.append(f'<link rel="external license" href{attr_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>')
+            F.append(f'<link rel="external license" href{attribute_string(get_var_l10n(data["dictionaries/copyright_license"]["dictionary"][data[i_id]["copyright"]["license"][0]],"url","id",lang))}>')
 
             # TODO: Prefetches (starting at sh:420)
 
             F.append("<meta property=og:type content=article>")
-            F.append(f'<meta property=og:title content{attr_string(get_var_l10n(data[i_id],"title","text",lang))}>')
-            F.append(f'<meta property=og:description content{attr_string(get_var_l10n(data[i_id],"description","text",lang))}>')
+            F.append(f'<meta property=og:title content{attribute_string(get_var_l10n(data[i_id],"title","text",lang))}>')
+            F.append(f'<meta property=og:description content{attribute_string(get_var_l10n(data[i_id],"description","text",lang))}>')
             F.append("<meta property=og:site_name content=gabl.ink>")
             F.append(f"<meta property=og:url content={canonical}>")
             F.append(f"<meta property=og:image content={canonical}image.png>")
@@ -210,19 +210,19 @@ if __name__=="__main__":
                 F.append("<source src=video.webm type=video/webm>")
                 if Path(index/i_id/str(lang).lower()/"subs.vtt").is_file():
                     F.append(f"<track default src=subs.vtt srclang={lang} kind=subtitles ")
-                    F.append(f'label{attr_string(say_lang(lang,"text"))}>')
+                    F.append(f'label{attribute_string(say_lang(lang,"text"))}>')
                 if Path(index/i_id/str(lang).lower()/"cc.vtt").is_file():
                     F.append(f"<track src=cc.vtt srclang={lang} kind=captions ")
-                    F.append(f'''label{attr_string(f'{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}')}>''')
+                    F.append(f'''label{attribute_string(f'{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}')}>''')
                 F.append("<p>")
                 F.append(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"))
                 F.append("</p></video>")
             elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
                 F.append("<picture")
                 if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
-                    F.append(f' title{attr_string(get_var_l10n(data[i_id],"tooltip","text",lang))}')
+                    F.append(f' title{attribute_string(get_var_l10n(data[i_id],"tooltip","text",lang))}')
                 F.append(">")
-                F.append(f'<img src=image.png fetchpriority=high alt{attr_string(msg_l10n(lang=lang,string="see_transcript"))}>')
+                F.append(f'<img src=image.png fetchpriority=high alt{attribute_string(msg_l10n(lang=lang,string="see_transcript"))}>')
                 F.append("</picture>")
 
                 F.append("<nav class=nav_buttons>")
