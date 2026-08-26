@@ -216,8 +216,7 @@ if __name__=="__main__":
                     F.append(f'''label{attr_string(f'{say_lang(lang,"text")}{msg_l10n(lang=lang,string="cc")}')}>''')
                 F.append("<p>")
                 F.append(msg_l10n(lang,get_var_l10n(data[data[i_id]["location"]["series"]],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),get_var_l10n(data[i_id],"title","text",lang),lang=lang,string="video_not_supported"))
-                F.append("</p>")
-                F.append("</video>")
+                F.append("</p></video>")
             elif Path(index/i_id/str(lang).lower()/"image.png").is_file():
                 F.append("<picture")
                 if get_var_l10n(data[i_id],"tooltip","html",lang) is not None:
@@ -233,17 +232,16 @@ if __name__=="__main__":
             F.append(make_nav_button("n",lang))
             F.append(make_nav_button("l",lang))
 
-            F.append("</nav>")
-
-            F.append("<nav><details><summary>")
+            F.append("</nav><nav><details><summary>")
 
             # TODO: Support multiple container depths
 
             F.append(msg_l10n(get_var_l10n(data[data[i_id]["location"]["series"]],"title","html",lang),lang=lang,string="series_title_html"))
             F.append(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"))
             F.append(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"))
-            F.append("</summary>")
-            F.append("<ol>")
+            F.append("</summary><ol>")
 
-            with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w",encoding="utf-8",newline='') as output_file:
-                output_file.write(''.join(F))
+            with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w+",encoding="utf-8",newline='') as output_file:
+                # Only write if there is a change
+                if F!=output_file.read():
+                    output_file.write(''.join(F))
