@@ -105,7 +105,7 @@ if __name__=="__main__":
         if path.is_file()
     ]
 
-    for dictionary in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link"]:
+    for dictionary in ["copyright_license","disclaimer","language","month","region","script","share_link","string","validate_link","weekday"]:
         data[f"dictionaries/{dictionary}"]={}
         data[f"dictionaries/{dictionary}"]["id"]=f"dictionaries/{dictionary}"
         data[f"dictionaries/{dictionary}"]["type"]="dictionary"
