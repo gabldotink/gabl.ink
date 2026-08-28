@@ -176,7 +176,7 @@
         "html": "<cite>VK</cite>"
       }
     },
-    "base": "https://vk.com/share.php",
+    "base": "https://vk.ru/share.php",
     "title": "title",
     "text": "comment",
     "url": "url"
