@@ -9,6 +9,9 @@
       },
       "es": {
         "text": "Estados Unidos"
+      },
+      "eo": {
+        "text": "Usono"
       }
     }
   },
@@ -22,6 +25,9 @@
       },
       "es": {
         "text": "Francia"
+      },
+      "eo": {
+        "text": "Francio"
       }
     }
   },
@@ -35,6 +41,9 @@
       },
       "es": {
         "text": "Reino Unido"
+      },
+      "eo": {
+        "text": "Unuiĝinta Reĝlando"
       }
     }
   },
@@ -48,6 +57,9 @@
       },
       "es": {
         "text": "Canadá"
+      },
+      "eo": {
+        "text": "Kanado"
       }
     }
   },
@@ -58,6 +70,12 @@
       },
       "en": {
         "text": "Latin America"
+      },
+      "fr": {
+        "text": "Amérique latine"
+      },
+      "eo": {
+        "text": "Latinameriko"
       }
     }
   },
@@ -71,6 +89,9 @@
       },
       "fr": {
         "text": "Russie"
+      },
+      "eo": {
+        "text": "Rusio"
       }
     }
   },
@@ -90,6 +111,9 @@
       },
       "fr": {
         "text": "Chine"
+      },
+      "eo": {
+        "text": "Ĉinio"
       }
     }
   },
@@ -106,6 +130,9 @@
       },
       "fr": {
         "text": "Japon"
+      },
+      "eo": {
+        "text": "Japanio"
       }
     }
   }
