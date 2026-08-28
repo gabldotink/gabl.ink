@@ -9,6 +9,9 @@
       },
       "es": {
         "text": "inglés"
+      },
+      "eo": {
+        "text": "la angla"
       }
     },
     "implicit": {
@@ -26,6 +29,9 @@
       },
       "es": {
         "text": "francés"
+      },
+      "eo": {
+        "text": "la franco"
       }
     },
     "implicit": {
@@ -43,6 +49,9 @@
       },
       "fr": {
         "text": "espagnol"
+      },
+      "eo": {
+        "text": "la hispana"
       }
     },
     "implicit": {
@@ -59,6 +68,9 @@
       },
       "mul": {
         "equal": "tok"
+      },
+      "eo": {
+        "text": "Tokipono"
       }
     },
     "implicit": {
@@ -75,6 +87,9 @@
       },
       "fr": {
         "text": "russe"
+      },
+      "eo": {
+        "text": "la rusa"
       }
     },
     "implicit": {
@@ -87,15 +102,21 @@
       "ja": {
         "text": "日本語"
       },
+      "zh": {
+        "text": "日文"
+      },
       "en": {
         "text": "Japanese"
       },
       "fr": {
         "text": "japonais"
+      },
+      "eo": {
+        "text": "la japana"
       }
     },
     "implicit": {
-      "region": "ja",
+      "region": "jp",
       "script": "jpan"
     }
   },
@@ -104,11 +125,17 @@
       "zh": {
         "text": "中文"
       },
+      "ja": {
+        "text": "中国語"
+      },
       "en": {
         "text": "Chinese"
       },
       "fr": {
         "text": "chinois"
+      },
+      "eo": {
+        "text": "la ĉina"
       }
     }
   },
@@ -122,6 +149,9 @@
       },
       "fr": {
         "text": "coréen"
+      },
+      "eo": {
+        "text": "la korea"
       }
     },
     "implicit": {

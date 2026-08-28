@@ -1,4 +1,5 @@
 {
+  "comment": "Chinese, Japanese, and Korean should not be included here; their month names are programmatically generated (number + “month”).",
   "months": [
     {
       "name": {
@@ -10,6 +11,9 @@
         },
         "es": {
           "text": "enero"
+        },
+        "eo": {
+          "text": "januaro"
         }
       }
     },
@@ -23,6 +27,9 @@
         },
         "es": {
           "text": "febrero"
+        },
+        "eo": {
+          "text": "februaro"
         }
       }
     },
@@ -36,6 +43,9 @@
         },
         "es": {
           "text": "marzo"
+        },
+        "eo": {
+          "text": "marto"
         }
       }
     },
@@ -49,6 +59,9 @@
         },
         "es": {
           "text": "abril"
+        },
+        "eo": {
+          "text": "aprilo"
         }
       }
     },
@@ -62,6 +75,9 @@
         },
         "es": {
           "text": "mayo"
+        },
+        "eo": {
+          "text": "majo"
         }
       }
     },
@@ -75,6 +91,9 @@
         },
         "es": {
           "text": "junio"
+        },
+        "eo": {
+          "equal": "es"
         }
       }
     },
@@ -88,6 +107,9 @@
         },
         "es": {
           "text": "julio"
+        },
+        "eo": {
+          "equal": "es"
         }
       }
     },
@@ -101,6 +123,9 @@
         },
         "es": {
           "text": "agosto"
+        },
+        "eo": {
+          "text": "aŭgusto"
         }
       }
     },
@@ -114,6 +139,9 @@
         },
         "es": {
           "text": "septiembre"
+        },
+        "eo": {
+          "text": "septembro"
         }
       }
     },
@@ -127,6 +155,9 @@
         },
         "es": {
           "text": "octubre"
+        },
+        "eo": {
+          "text": "oktobro"
         }
       }
     },
@@ -140,6 +171,9 @@
         },
         "es": {
           "text": "noviembre"
+        },
+        "eo": {
+          "text": "novembro"
         }
       }
     },
@@ -153,6 +187,9 @@
         },
         "es": {
           "text": "diciembre"
+        },
+        "eo": {
+          "text": "decembro"
         }
       }
     }

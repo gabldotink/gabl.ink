@@ -82,6 +82,9 @@
       "zh-Hant": {
         "text": "中國"
       },
+      "ja": {
+        "equal": "zh-Hans"
+      },
       "en": {
         "text": "China"
       },
@@ -92,8 +95,11 @@
   },
   "jp": {
     "name": {
-      "ja": {
+      "zh": {
         "text": "日本"
+      },
+      "ja": {
+        "equal": "zh"
       },
       "en": {
         "text": "Japan"
