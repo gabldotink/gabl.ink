@@ -1,0 +1,117 @@
+{
+  "comment": "Monday is the first day of the week per ISO 8601",
+  "weekdays": [
+    {
+      "name": {
+        "en": {
+          "text": "Monday"
+        },
+        "fr": {
+          "text": "lundi"
+        },
+        "eo": {
+          "text": "lundo"
+        },
+        "es": {
+          "text": "lunes"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Tuesday"
+        },
+        "fr": {
+          "text": "mardi"
+        },
+        "eo": {
+          "text": "mardo"
+        },
+        "es": {
+          "text": "martes"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Wednesday"
+        },
+        "fr": {
+          "text": "mercredi"
+        },
+        "eo": {
+          "text": "merkredo"
+        },
+        "es": {
+          "text": "miércoles"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Thursday"
+        },
+        "fr": {
+          "text": "jeudi"
+        },
+        "eo": {
+          "text": "ĵaŭdo"
+        },
+        "es": {
+          "text": "jueves"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Friday"
+        },
+        "fr": {
+          "text": "vendredi"
+        },
+        "eo": {
+          "text": "vendredo"
+        },
+        "es": {
+          "text": "viernes"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Saturday"
+        },
+        "fr": {
+          "text": "samedi"
+        },
+        "eo": {
+          "text": "sabato"
+        },
+        "es": {
+          "text": "sábado"
+        }
+      }
+    },
+    {
+      "name": {
+        "en": {
+          "text": "Sunday"
+        },
+        "fr": {
+          "text": "dimanche"
+        },
+        "eo": {
+          "text": "dimanĉo"
+        },
+        "es": {
+          "text": "domingo"
+        }
+      }
+    }
+  ]
+}
