@@ -7,7 +7,7 @@ def get_var_l10n(index,key:str|int,format:str,l10n_lang:Language)->str:
 
     for o in str(l10n_lang),str(l10n_lang.language),"mul","zxx","e":
         if o=="e":
-            return None
+            return ""
 
         if format=="id":
             if "id" in index.get(key,{}).get(o,{}):

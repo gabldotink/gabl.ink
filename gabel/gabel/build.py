@@ -254,9 +254,9 @@ if __name__=="__main__":
                 F.append("<th scope=row>")
                 line_h_label:str
                 if data.get(f'encyclopedia/{line["h"]}',{}).get("name",{}).get("label",{}):
-                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}']["name"],"label","html",lang)
+                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}'].get("name",{}),"label","html",lang)
                 else:
-                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}']["name"],"label","html",lang)
+                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}'].get("name",{}),"label","html",lang)
                 F.append(line_h_label)
 
                 F.append("<td>")
