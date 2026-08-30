@@ -239,7 +239,33 @@ if __name__=="__main__":
             F.append(msg_l10n(get_var_l10n(data[data[i_id]["location"]["series"]],"title","html",lang),lang=lang,string="series_title_html"))
             F.append(msg_l10n(data[i_id]["location"]["page"],lang=lang,string="comma_page"))
             F.append(msg_l10n(get_var_l10n(data[i_id],"title","html",lang),lang=lang,string="page_title_html"))
-            F.append("</summary><ol>")
+            F.append("</summary></details></nav>")
+
+            # TODO: Page list
+
+            F.append("<details>")
+            F.append(f'<summary><h2>{msg_l10n(lang=lang,string="transcript_name")}</h2></summary>')
+            F.append("<table>")
+
+            for line in data[i_id]["transcript"]:
+                # TODO: Check encyclopedia item type
+                #line_h_type=data[f'encyclopedia/{line["h"]}']["type"]
+                F.append("<tr>")
+                F.append("<th scope=row>")
+                line_h_label:str
+                if data.get(f'encyclopedia/{line["h"]}',{}).get("name",{}).get("label",{}):
+                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}']["name"],"label","html",lang)
+                else:
+                    line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}']["name"],"label","html",lang)
+                F.append(line_h_label)
+
+                F.append("<td>")
+                if get_var_l10n(line,"d","text",lang)==get_var_l10n(line,"d","html",lang):
+                    F.append("<p>")
+                    F.append(get_var_l10n(line,"d","html",lang))
+                else:
+                    F.append(get_var_l10n(line,"d","html",lang))
+            F.append("</table></details>")
 
             with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w+",encoding="utf-8",newline='') as output_file:
                 # Only write if there is a change
