@@ -265,7 +265,12 @@ if __name__=="__main__":
                     F.append(get_var_l10n(line,"d","html",lang))
                 else:
                     F.append(get_var_l10n(line,"d","html",lang))
-            F.append("</table></details>")
+            F.append("</table></details><hr>")
+
+            F.append(f"<h2>{msg_l10n(lang=lang,string="log")}</h2>")
+
+            #for entry in data[i_id]["log"]:
+
 
             with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w+",encoding="utf-8",newline='') as output_file:
                 # Only write if there is a change
