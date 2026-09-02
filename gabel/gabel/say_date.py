@@ -8,7 +8,7 @@ from get_var_l10n import get_var_l10n
 
 # The shell script supports negative years, but `datetime` does not.
 
-def say_date(d:date,lang:Language)->str:
+def say_date(d:date,lang:Language,data:dict)->str:
     r:list=[f"<time datetime={d.year:04}-{d.month:02}-{d.day:02}>"]
 
     ad:bool
@@ -28,7 +28,7 @@ def say_date(d:date,lang:Language)->str:
             r.append(" ")
         if ad:
             r.append('<abbr title="anno Domini">AD</abbr>\xa0')
-            r.append(str(d.year))
+        r.append(str(d.year))
     elif lang.language=="fr":
         if d.day==1:
             r.append("1er")
@@ -38,7 +38,7 @@ def say_date(d:date,lang:Language)->str:
         r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))
         if ad:
             r.append(f'{d.year}\xa0<abbr title="après Jésus‐Christ">ap.\xa0J.‐C.</abbr>')
-        r.append(str(d.year))
+        r.append(f" {d.year}")
     elif lang.language=="es":
         r.append(f"{d.day}\xa0de\xa0")
         r.append(get_var_l10n(data["dictionaries/month"]["dictionary"]["months"][d.month-1],"name","html",lang))

@@ -6,12 +6,13 @@
 import json
 import os
 import sys
+from datetime import date
 from pathlib import Path
 
 from attr_string import attribute_string
 from get_var_l10n import get_var_l10n
 #from id_split import id_parent,id_base
-#from say_date import say_date
+from say_date import say_date
 
 # Arch: python-langcodes
 from langcodes import Language
@@ -253,7 +254,7 @@ if __name__=="__main__":
                 F.append("<tr>")
                 F.append("<th scope=row>")
                 line_h_label:str
-                if data.get(f'encyclopedia/{line["h"]}',{}).get("name",{}).get("label",{}):
+                if data[f'encyclopedia/{line["h"]}'].get("name",{}).get("label"):
                     line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}'].get("name",{}),"label","html",lang)
                 else:
                     line_h_label=get_var_l10n(data[f'encyclopedia/{line["h"]}'].get("name",{}),"label","html",lang)
@@ -267,10 +268,17 @@ if __name__=="__main__":
                     F.append(get_var_l10n(line,"d","html",lang))
             F.append("</table></details><hr>")
 
-            F.append(f"<h2>{msg_l10n(lang=lang,string="log")}</h2>")
+            F.append(f'<h2>{msg_l10n(lang=lang,string="log")}</h2>')
 
-            #for entry in data[i_id]["log"]:
-
+            for entry in data[i_id]["log"]:
+                F.append(f'<article id=log_{entry["date"]}><details>')
+                F.append(f'<summary><h3>{say_date(date.fromisoformat(entry["date"]),lang,data)}</h3></summary>')
+                for line in entry["content"]:
+                    if get_var_l10n(line,"d","text",lang)==get_var_l10n(line,"d","html",lang):
+                        F.append("<p>")
+                        F.append(get_var_l10n(line,"d","html",lang))
+                    else:
+                        F.append(get_var_l10n(line,"d","html",lang))
 
             with open(Path(index)/i_id/str(lang).lower()/"index_py.html","w+",encoding="utf-8",newline='') as output_file:
                 # Only write if there is a change
