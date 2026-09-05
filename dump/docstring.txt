@@ -1,0 +1,16 @@
+"""Returns an HTML5 attribute string from a given plaintext string. The
+shortest possible syntax is returned.
+
+This handles the equal sign, quotes, and character references only if
+necessary. Character references in the input string are treated literally.
+
+Examples:
+    attribute_string("foo") == "=foo"
+    attribute_string("foo bar") == '="foo bar"'
+    attribute_string("&") == "=&<"
+    attribute_string("&amp;") == "=&amp;amp;"
+    attribute_string("<p>") == '="<p>"'
+    attribute_string("'") == '="\'"'
+    attribute_string('"') == '=\'"\''
+    attribute_string('') == ''
+"""
